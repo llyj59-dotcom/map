@@ -17,7 +17,7 @@
         name: 'What was the Korean War?',
         date: 'Jun 25, 1950 – Jul 27, 1953',
         place: 'The whole Korean Peninsula',
-        story: 'At dawn on June 25, 1950, North Korean troops crossed the 38th parallel and invaded the South. The war lasted more than three years, and countless people lost their families and homes. Many countries came to help South Korea under the flag of the United Nations.',
+        story: 'At dawn on June 25, 1950, North Korean troops crossed the 38th parallel and attacked South Korea. The war lasted more than three years, and very many people lost their families and homes. Many countries came to help South Korea under the flag of the United Nations.',
         find: {
           q: 'Where is the 38th parallel that the North Korean army crossed? Tap the map where the line runs!',
           hint: 'Hint: it runs across the "waist" of the peninsula, a little north of Seoul.',
@@ -34,7 +34,7 @@
         videos: ['The Story of the Korean War', 'The Korean War in a history cartoon'],
         quiz: {
           q: 'During the Korean War, only the United States came to help South Korea.',
-          explain: 'No! 22 countries helped: 16 sent combat troops and 6 sent medical support. Colombia was one of them.'
+          explain: 'False! 22 countries helped: 16 sent combat troops and 6 sent medical support. Colombia was one of them.'
         }
       },
       incheon: {
@@ -97,11 +97,11 @@
         name: 'Battle of Heukuntoryeong',
         date: 'Aug 6, 1951',
         place: 'Central front, Gangwon (south of Kumsong, Hill 851)',
-        story: 'On August 6, 1951, the Colombia Battalion fought its first battle. Among tall mountains and unfamiliar weather, the Colombian soldiers bravely climbed toward Hill 851, held by the enemy.',
+        story: 'On August 6, 1951, the Colombia Battalion fought its first battle. In tall mountains and strange weather, the Colombian soldiers bravely climbed toward Hill 851, which the enemy held.',
         videos: ['"We will always remember our Colombian allies" (Defense News)'],
         quiz: {
           q: 'The Battle of Heukuntoryeong was the Colombia Battalion\'s first battle in Korea.',
-          explain: 'Correct! It was their first battle, on August 6, 1951, less than two months after arriving in Busan.'
+          explain: 'True! It was their first battle, on August 6, 1951, less than two months after arriving in Busan.'
         }
       },
       geumseong: {
@@ -124,7 +124,7 @@
         story: 'On June 21, 1952, the Colombia Battalion, then part of the US 7th Infantry Division, made a surprise attack on enemy positions on Hill 400 near Gimhwa. The quick attack destroyed the enemy positions, but 2 Colombian soldiers were killed and 15 were wounded.',
         quiz: {
           q: 'The "400" in "Hill 400" means the height of the hill (about 400 m).',
-          explain: 'Correct! The number in a hill\'s name is its height in meters on the map. That\'s why they are called Hill 400, Hill 180, and so on.'
+          explain: 'True! The number in a hill\'s name is its height in meters on the map. That\'s why they are called Hill 400, Hill 180, and so on.'
         }
       },
       hill180: {
@@ -149,7 +149,7 @@
         quiz: {
           q: 'What does the name "Old Baldy" (Bulmo-goji) mean?',
           options: ['A mountain with lots of snow', 'A bare hill without a single plant', 'A mountain with buried treasure', 'A mountain where many birds live'],
-          explain: 'That\'s right. Just the name tells you how fierce the fighting was.'
+          explain: 'A bare hill! Just the name tells you how fierce the fighting was.'
         }
       },
       armistice: {
@@ -162,10 +162,10 @@
           hint: 'Hint: near the western (left) end of the armistice line, a little north of Seoul.',
           explain: 'Panmunjom is a village on the armistice line. The Armistice Agreement was signed there on July 27, 1953, and it is still where North and South meet.'
         },
-        story: 'After 3 years and 1 month of fighting, the Armistice Agreement was signed at Panmunjom and the guns fell silent. It was not an "end" to the war but a "pause" in the fighting, so the armistice line still exists today.',
+        story: 'After 3 years and 1 month of fighting, the Armistice Agreement was signed at Panmunjom and the fighting stopped. It was not an "end" to the war but a "pause" in the fighting, so the armistice line still exists today.',
         quiz: {
           q: 'The Armistice Agreement completely ended the war.',
-          explain: 'No. An armistice only stops the fighting. That is why we must keep working to protect peace.'
+          explain: 'False! An armistice only stops the fighting. That is why we must keep working to protect peace.'
         }
       },
       westsea: {
@@ -173,7 +173,7 @@
         name: 'The Colombian Navy in the Yellow Sea',
         date: '1951 – 1955',
         place: 'Yellow Sea (Cho-do to Sok-do) · East Sea',
-        story: 'In May 1951, the Almirante Padilla, the Colombian Navy\'s first ship, arrived in Korea. From May 14 it patrolled the Yellow Sea between the islands of Cho-do and Sok-do to block the enemy\'s sea routes, and in the East Sea it supported ground troops with its guns. The Colombian Navy kept guarding Korea\'s seas until 1955, even after the fighting stopped.',
+        story: 'In May 1951, the Almirante Padilla, the Colombian Navy\'s first ship, arrived in Korea. From May 14 it patrolled the Yellow Sea between the islands of Cho-do and Sok-do to stop enemy ships. In the East Sea, it fired its guns to help soldiers on land. The Colombian Navy kept guarding Korea\'s seas until 1955, even after the fighting stopped.',
         heroes: [
           { author: 'Story written by Group 5', name: 'The Colombian Navy that guarded the Yellow Sea', role: 'Defending the Yellow Sea', body: 'The Colombian Navy firmly guarded the waters of the Yellow Sea. To remember the sacrifice of the Colombian soldiers, there is a memorial in Gyeongmyeong Park in Incheon today.' },
           { author: 'Heroes researched by Group 1', name: 'The captain and crew of the Almirante Padilla', role: 'Colombian Navy', body: 'Heroes of the Colombian Navy who patrolled the Yellow Sea, blocked the enemy\'s sea routes and protected the UN forces\' sea lanes.' },
@@ -182,7 +182,7 @@
         quiz: {
           q: 'What was the name of the first warship Colombia sent to Korea?',
           options: ['Almirante Padilla', 'Titanic', 'Turtle ship', 'Mayflower'],
-          explain: 'Correct! The Colombian Navy sent three frigates: the Almirante Padilla, the Capitán Tono and the Almirante Brión.'
+          explain: 'The Almirante Padilla! The Colombian Navy sent three frigates: the Almirante Padilla, the Capitán Tono and the Almirante Brión.'
         }
       },
       memorial: {
@@ -203,7 +203,7 @@
     ops: {
       xray: {
         short: 'Operation X-RAY', name: 'Operation X-RAY on Yeongheungdo', date: 'Mid-Aug – Sep 14, 1950',
-        text: 'On August 24, 1950, before the Incheon Landing, Major Ham Myeong-su and his team of navy spies, 17 in all, secretly slipped onto the island of Yeongheungdo. With help from the islanders, they found out how deep the sea was, where the tidal flats and hidden mines were, and where the enemy\'s guns and soldiers were, and reported it to the UN forces. The movie "Operation Chromite" is based on this true story.',
+        text: 'On August 24, 1950, before the Incheon Landing, Major Ham Myeong-su and his team of navy spies, 17 in all, secretly slipped onto the island of Yeongheungdo. The islanders helped them. They learned how deep the sea was. They found the tidal flats and hidden mines. They found the enemy\'s guns and soldiers. Then they reported all of this to the UN forces. The movie "Operation Chromite" is based on this true story.',
         heroes: [
           { name: 'Major Ham Myeong-su', text: 'Navy intelligence commander who led Operation X-RAY and found a safe route to Incheon' },
           { name: 'Lt. Im Byeong-rae · Sgt. Hong Si-uk', text: 'Heroes who were surrounded by the enemy on September 14, 1950, and gave their lives to protect the secret of the landing' }
@@ -242,6 +242,7 @@
     cards: {
       battalion: {
         name: 'Colombia Battalion', role: 'Latin America\'s only combat unit in the war',
+        credit: 'Republic of Korea Armed Forces (Flickr), CC BY-SA 2.0, Wikimedia Commons',
         deeds: [
           'The infantry unit of Colombia, the only Latin American country that sent combat troops.',
           'It fought on the central front as part of the US 24th and later the US 7th Infantry Division.',
@@ -259,6 +260,7 @@
       },
       padilla: {
         name: 'ARC Almirante Padilla', role: 'Colombia\'s first warship in the war (frigate)',
+        credit: 'Colombian Navy via NavSource, public domain, Wikimedia Commons',
         deeds: [
           'Colombia\'s first warship in the Korean War: it left Colombia in November 1950 and reached Korean waters in May 1951.',
           'From May 14, 1951, it patrolled the Yellow Sea between Cho-do and Sok-do to block the enemy.',
@@ -270,7 +272,7 @@
         deeds: [
           'He protected the seas of Korea aboard a Colombian Navy warship. In his video he told us he served on the Almirante Padilla.',
           'He sailed the Yellow Sea, the East Sea and the waters south of the peninsula, patrolling the seas around Korea.',
-          'At 92, he sent a video reply to the questions of our 6th graders: "Brothers in war, brothers in peace."'
+          'At 92, he sent a video reply to the questions of our 6th graders, with a sentence that holds the key to the Door to Tomorrow.'
         ]
       },
       suarez: {
@@ -283,6 +285,7 @@
       },
       sonwonil: {
         name: 'Admiral Sohn Won-il', role: 'Father of the Korean Navy',
+        credit: 'Ministry of National Defense of Korea (1953), National Archives of Korea, public domain, Wikimedia Commons',
         deeds: [
           'He was the son of Pastor Son Jeong-do, an independence activist.',
           'After liberation, in November 1945, he founded the Maritime Defense Corps, the root of the Korean Navy, and became the navy\'s first Chief of Naval Operations.',
@@ -292,6 +295,7 @@
       },
       hammyeongsu: {
         name: 'Major Ham Myeong-su', role: 'Navy intelligence commander · Operation X-RAY',
+        credit: 'U.S. Naval History and Heritage Command, NH 104908 (1966, as Chief of Naval Operations), public domain',
         deeds: [
           'On August 24, 1950, he secretly led a team of 17 navy spies, himself included, onto Yeongheungdo.',
           'He investigated the depth of the sea, the tidal flats and the enemy\'s positions at Incheon, and reported them to the UN forces.',
@@ -300,6 +304,8 @@
       },
       imhong: {
         name: 'Lt. Im Byeong-rae · Sgt. Hong Si-uk', role: 'Members of Operation X-RAY',
+        years: 'Sep 14, 1950',
+        credit: 'Lt. Im Byeong-rae · War Memorial of Korea, Wikimedia Commons (no photo of Sgt. Hong Si-uk found)',
         deeds: [
           'As members of Operation X-RAY, they gathered information on Yeongheungdo that the Incheon Landing needed.',
           'On September 14, 1950, when they were surrounded by the enemy, they gave their lives to protect the secret of the operation.',
@@ -309,6 +315,7 @@
       },
       choigyubong: {
         name: 'Choi Gyu-bong', role: 'Leader of the KLO "Goat" group',
+        credit: 'Palmido lighthouse (in place of a portrait) · Korea Heritage Service, KOGL Type 1',
         deeds: [
           'He led the "Goat" group of the KLO unit, which gathered intelligence behind enemy lines.',
           'On September 14, 1950, he went onto Palmido with Lt. Clark and Korean officers and took back the lighthouse.',
@@ -325,6 +332,7 @@
       },
       macarthur: {
         name: 'General Douglas MacArthur', role: 'Commander of the UN forces',
+        credit: 'MacArthur at the Incheon Landing · U.S. Naval History and Heritage Command, public domain',
         deeds: [
           'He planned and led the Incheon Landing, even though almost everyone thought it was too difficult.',
           'The operation was so hard that people spoke of "a 1 in 5,000 chance", but it succeeded.',
@@ -333,6 +341,7 @@
       },
       clark: {
         name: 'Lt. Eugene Clark', role: 'US Navy intelligence officer',
+        credit: 'Palmido lighthouse (in place of a portrait) · Korea Heritage Service, KOGL Type 1',
         deeds: [
           'On September 1, 1950, he landed first on Deokjeokdo and then moved to Yeongheungdo, secretly watching the sea at Incheon for two weeks.',
           'Together with Korean team members, he took back the Palmido lighthouse.',
@@ -357,7 +366,7 @@
       ['transport ship', 'A ship that carries soldiers and supplies.'],
       ['blockade', 'Blocking the way so the enemy cannot come in or go out.'],
       ['supplies', 'Food, weapons and clothes that soldiers need.'],
-      ['Hill 400', 'A hill about 400 m high. Hills were named after their height on the map.'],
+      ['Hill 400', 'A hill that both sides fought hard to take and hold.'],
       ['battalion', 'A military unit of a few hundred to about a thousand soldiers.'],
       ['Infantry Division', 'A large military unit of more than ten thousand soldiers.'],
       ['Marines', 'Soldiers trained to fight both at sea and on land.'],
@@ -373,7 +382,10 @@
       ['comrades', 'Fellow soldiers who fight together.'],
       ['tolerance', 'Kindly accepting people who are different from us.'],
       ['buoys', 'Floating markers that show ships the safe way.'],
-      ['memorial', 'A monument built so that people remember an event or people.']
+      ['memorial', 'A monument built so that people remember an event or people.'],
+      ['sacrifice', 'Giving up something very important, even your life, for others.'],
+      ['patrolled', 'Went around an area again and again to guard it.'],
+      ['retaken', 'Taken back.']
     ],
 
     // 질문 카드: 질문 원문은 data.js 의 en 을 그대로 써요. 여기는 참전용사 답변 요약.
@@ -444,7 +456,7 @@
   (window.HERO_CARDS || []).forEach((c) => {
     const e = EN.cards[c.id];
     if (!e) return;
-    put(c.name, e.name); put(c.role, e.role);
+    put(c.name, e.name); put(c.role, e.role); put(c.credit, e.credit); put(c.years, e.years);
     (c.deeds || []).forEach((d, i) => put(d, e.deeds[i]));
   });
   if (window.GLOSSARY) window.GLOSSARY.en = EN.glossary;

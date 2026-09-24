@@ -151,7 +151,7 @@
       kMission: '미션: 팔미도 등대를 켜라!',
       m1: '1950년 9월 15일, 자정을 막 넘긴 새벽. 캄캄한 바다에서 261척의 함대가 기다리고 있어요.',
       m2: '① 지도에서 팔미도 등대 🗼를 눌러 불을 켜세요.',
-      m3: '② 바다 쪽부터 부표를 차례로 눌러 함대를 월미도까지 안내하세요. 갯벌 쪽 부표는 조심!',
+      m3: '② 배 🚢에서 가장 가까운 부표(동그라미)부터 하나씩 눌러 배를 월미도까지 데려가세요. 육지 가까운 갯벌 쪽의 가짜 부표는 조심!',
       mLit: '등대에 불이 켜졌어요! 이제 바닷길의 부표를 찾아요.',
       mDecoy: '앗! 그쪽은 갯벌이에요. 배가 걸릴 뻔했어요!',
       mOrder: '그 부표는 아직이에요. 배에서 가까운 부표부터!',
@@ -159,6 +159,7 @@
       mSuccess: '작전 성공! 함대가 무사히 월미도에 도착했어요.',
       mRetry: '처음부터 다시 하기',
       quizRetry: '아쉬워요! 한 번 더 골라 볼까요?',
+      oxT: '', oxF: '', // O/X 아래 작은 글씨 (한국어는 O/X만)
       albumTitle: '영웅 카드 도감',
       albumLead: (a, b) => `${b}장 중 ${a}장을 모았어요. 작전 지점을 돌며 영웅을 만나면 카드가 생겨요!`,
       albumWhere: (w) => `${w}에서 만날 수 있어요`,
@@ -213,7 +214,7 @@
       goldHowEnding: '질문 카드 5장에 모두 예상 답을 남기면 금빛이 돼요.',
       retryBtn: '다시 도전하기',
       gRetry: '다시 도전! 이번엔 첫 번째에 맞혀 보자. 모자랐던 별만큼 더 받을 수 있어.',
-      watchNeed: '이 영상은 끝까지 봐야 [다음]으로 넘어갈 수 있어요. (빨리 감기는 안 세요)',
+      watchNeed: '▶를 눌러 이 영상을 끝까지 봐야 [다음]으로 넘어갈 수 있어요. (빨리 감기로 건너뛴 부분은 본 시간에 들어가지 않아요)',
       watchNeedLink: '꼭 볼 영상이에요. 아래를 눌러 유튜브에서 끝까지 본 뒤, 돌아와서 [다 봤어요]를 눌러 주세요. (영상 길이만큼 시간이 지나야 눌려요)',
       watchDoneBtn: '✅ 다 봤어요',
       watchLeft: (t) => `${t} 뒤에 누를 수 있어요`,
@@ -228,7 +229,7 @@
       gWatchDone: '끝까지 봤구나! 다음으로 가 보자.',
       longTitle: '집에서 볼 긴 영상 (10분 넘음)',
       certTitle: '평화의 지도 완성 인증서',
-      certLead: (n) => `${n} 님이 완성한 평화의 지도예요! 이름·학교·국적을 적고, 여정의 마지막 한 걸음으로 나의 평화 다짐을 한 줄 적어 주세요. 모두 인증서에 새겨지면 그림으로 저장해서 패들렛에 올릴 수 있어요.`,
+      certLead: (n) => `${n} 님, 평화의 지도를 완성했어요! 아래 칸을 모두 채우면 인증서가 만들어져요. 마지막 칸에는 나의 평화 다짐을 한 줄 적어요.`,
       certNeedPledge: '이름·학교·국적·평화 다짐을 모두 적으면 인증서를 저장할 수 있어요.',
       certRealName: '이름',
       certRealNamePh: '예) 홍길동',
@@ -264,6 +265,8 @@
       endStatGuess: (a, b) => `예상 답 ${a} / ${b}`,
       endStart: '진짜 답 만나러 가기 ▶',
       endTip: '영상은 모두 합쳐 15분쯤이에요. 선생님과 함께 큰 화면으로 봐도 좋아요.',
+      endLeadText: '여러분이 참전용사께 드린 질문에 참전용사님이 답을 보내 주셨어요. 답을 짧게 줄여 옮겨 두었으니, 내가 예상한 답과 나란히 비교해 봐요.',
+      endTipText: '답을 읽고, 내 예상과 같은 점·다른 점을 찾아봐요.',
       qLabel: (n, total) => `질문 ${n} / ${total}`,
       myGuessTitle: '내 예상',
       realTitle: '참전용사님의 진짜 답',
@@ -314,7 +317,7 @@
       worldDist: '직선거리만 약 15,000km',
       worldVoyage: '태평양을 건너 한국으로',
       kOps: '친구들이 만든 인천 지도',
-      opsHint: '지도 위 번호나 아래 목록을 눌러 보세요. 친구들이 조사한 인천상륙작전 5대 작전이에요!',
+      opsHint: '지도 위 번호나 아래 목록을 눌러 보세요. 친구들이 조사한 인천상륙작전 5대 작전이에요! (다 보지 않아도 다음으로 넘어갈 수 있어요)',
       opsBy: (g) => `🎒 ${g}모둠 친구들이 조사했어요`,
       opsSeen: (n, t) => `${t}곳 중 ${n}곳 살펴봤어요`,
       opsHeroes: '이 작전의 영웅',
@@ -342,7 +345,7 @@
       qIntro: '6학년 친구가 콜롬비아 참전용사께 진짜로 보낸 질문이에요. 참전용사님은 뭐라고 답하셨을까요?',
       showEn: '영어 원문 보기',
       myGuessLabel: '참전용사님은 이렇게 답하실 것 같아요',
-      guessPh: '내가 참전용사라면…',
+      guessPh: '내가 참전용사라면… (예: "나는 ○○ 때문에 용기를 냈어요.")',
       saveGuess: '방명록에 남기기',
       editGuess: '고쳐서 다시 남기기',
       saved: '방명록에 남겼어요!',
@@ -417,6 +420,7 @@
       pwHashOut: (h) => `js/data.js 의 teacherPasswordHash 를 '${h}' 로 바꿔 주세요.`,
 
       mapAria: '콜롬비아대대의 여정 지도',
+      worldAria: '세계 지도', incheonAria: '인천 지도', playAria: '재생',
       seaW: '서 해', seaE: '동 해', seaS: '남 해',
       line38: '38도선', dmz: '휴전선', fromCol: '지구 반대편 콜롬비아에서',
       pyongyang: '평양'
@@ -434,7 +438,7 @@
       mapTo: '→ to Tomorrow: con ese mapa dibujamos juntos un mañana en paz',
       aboutTitle: '💡 ¿Por qué hicimos este juego?',
       about: [
-        'Este mapa de la paz nace de las investigaciones de los estudiantes de 6.º grado de la Escuela Primaria Singeomdan, en Incheon (Corea del Sur), y está pensado para compartirlo con nuestros amigos de Colombia.',
+        'Este mapa de la paz nace de las investigaciones de los estudiantes de 6.º de primaria (11-12 años) de la Escuela Primaria Singeomdan, en Incheon (Corea del Sur), y está pensado para compartirlo con nuestros amigos de Colombia.',
         'Nuestra escuela está en el distrito de Seo-gu, en Incheon. En ese mismo distrito, en el parque Gyeongmyeong, se levanta el monumento a los soldados colombianos. Colombia fue el único país de América Latina que envió tropas de combate a la Guerra de Corea, y en el monumento están grabadas las batallas de Heukuntoryeong y Kumsong.',
         'El Desembarco de Incheon (1950) ocurrió antes de que llegara el Batallón Colombia. Pero esa operación, que empezó en nuestra ciudad, cambió el rumbo de la guerra; después, los soldados colombianos llegaron desde el otro lado del mundo para luchar en las colinas, y la Armada colombiana protegió el Mar Amarillo. Unimos toda esa historia en un solo mapa que empieza y termina en Incheon.'
       ],
@@ -464,7 +468,7 @@
       breakText: 'Continuaremos en la próxima clase. Como quizá uses otro dispositivo, anota este código en tu cuaderno.',
       backTeacher: '‹ Volver a la pantalla docente',
       resumeTitle: 'Continuar un viaje de otro dispositivo',
-      resumeHelp: 'Escribe tu apodo y el código de 6 letras del botón [🔑 Código].',
+      resumeHelp: 'Escribe tu apodo y el código de 6 caracteres del botón [🔑 Código].',
       codeLabel: 'Mi código de viaje',
       resumeBtn: 'Continuar con el código ▶',
       badCode: 'El código no es correcto. Revisa las letras.',
@@ -511,12 +515,12 @@
       keyListTitle: 'Palabras clave y fragmentos de memoria reunidos',
       keyFrom: (a, b) => `puntos ${a} y ${b}`,
       keyMemo: [
-        'Veintidós países acudieron en ayuda de Corea del Sur, y en el Desembarco de Incheon combatieron juntos soldados de varias naciones. A quienes lucharon por un país ajeno los llamamos hermanos.',
-        'Los soldados colombianos cruzaron el Pacífico para defender la paz de un país que nunca habían visto.',
-        'Heukuntoryeong y Kumsong: el Batallón Colombia combatió en pleno corazón de la guerra.',
-        'En las colinas, los soldados colombianos y las demás tropas de la ONU se protegieron la vida unos a otros, como hermanos.',
-        'Tras el gran sacrificio de Old Baldy, el armisticio del 27 de julio de 1953 silenció las armas. Nos toca recordar los nombres que quedaron en esa memoria.',
-        'La Armada colombiana en el Mar Amarillo y el monumento de Incheon: la memoria sigue viva hoy, a nuestro lado.'
+        'Veintidós países acudieron en ayuda de Corea del Sur en una guerra que dejó a innumerables personas sin hogar. En Incheon, soldados de varias naciones lucharon juntos.',
+        'Los soldados colombianos cruzaron el Pacífico para defender a un país que nunca habían visto. Quien arriesga la vida por otro pueblo se gana el nombre de hermano.',
+        'Heukuntoryeong y Kumsong: en sus primeros combates, los colombianos y las demás tropas de la ONU lucharon hombro a hombro, como hermanos.',
+        'En las colinas 400 y 180, cada posición conquistada acercaba un poco más la paz, pagada con la vida de muchos jóvenes.',
+        'Tras el gran sacrificio de Old Baldy, el armisticio del 27 de julio de 1953 silenció las armas. Nos toca guardar sus nombres en la memoria.',
+        'La Armada colombiana en el Mar Amarillo y el monumento de Incheon: su historia sigue viva en la memoria de dos países.'
       ],
       keyLabel: '🔑 Palabras clave',
       keyWords: ['Hermanos', 'en la', 'guerra,', 'hermanos', 'en la', 'paz.'],
@@ -544,7 +548,7 @@
       gCard: (n) => `Nueva tarjeta de héroe: ${n}.`,
       gMission: 'El mar está a oscuras. Primero hay que encender el faro.',
       gMissionDone: 'Misión cumplida: gracias a ti, la flota llegó a salvo.',
-      gQuizRetry: 'Tranquilo, tienes otra oportunidad.',
+      gQuizRetry: 'Tranqui, tienes otra oportunidad.',
       dirs: { N: 'norte', S: 'sur', E: 'este', W: 'oeste', NE: 'noreste', NW: 'noroeste', SE: 'sureste', SW: 'suroeste' },
       kFind: 'Misión: ubícalo en el mapa',
       findTap: '👆 Toca el mapa',
@@ -560,12 +564,13 @@
       mSuccess: 'Misión cumplida: la flota llegó a salvo a Wolmido.',
       mRetry: 'Empezar de nuevo',
       quizRetry: 'Casi. ¿Lo intentas otra vez?',
+      oxT: 'Verdadero', oxF: 'Falso',
       albumTitle: 'Álbum de tarjetas de héroes',
       albumLead: (a, b) => `Tienes ${a} de ${b} tarjetas. Conoce a los héroes de cada punto de misión para completar el álbum.`,
       albumWhere: (w) => `Se encuentra en: ${w}`,
       albumEnding: 'el final',
       newCard: 'Nueva tarjeta de héroe',
-      ranks: [[0, 'Explorador novato'], [300, 'Explorador de la memoria'], [600, 'Capitán de la paz'], [900, 'Guardián de la memoria y la paz'], [1083, 'Estrella de la paz: recordaste a los 1.083 soldados']],
+      ranks: [[0, 'Aprendiz de la memoria'], [300, 'Integrante de la expedición de la memoria'], [600, 'Líder de la expedición de la paz'], [900, 'Guarda de la memoria y la paz'], [1083, 'Estrella de la paz: recordaste a los 1.083 soldados']],
       rankLine: (n, t, r) => `⭐ ${n.toLocaleString('es')} / ${t.toLocaleString('es')} · Título «${r}»`,
       gHelloStars: 'Tu objetivo: reunir 1.083 estrellas, una por cada uno de los 1.083 soldados colombianos que cruzaron el Pacífico en 1951.',
       starInfoTitle: '1.083 estrellas de la paz',
@@ -599,16 +604,16 @@
       albumSections: { co: 'Colombia', kr: 'Corea del Sur', us: 'Fuerzas de la ONU' },
       albumTap: 'Toca una tarjeta para ver lo que hizo cada héroe.',
       deedsTitle: 'Lo que hizo',
-      cardBy: (g) => `🎒 Investigado por el Grupo ${g}`,
+      cardBy: (g) => `🎒 Investigado por el Grupo ${g} (estudiantes coreanos)`,
       cardMet: (w) => `Dónde lo conociste: ${w}`,
       pieceLabel: '🧩 Piezas del mapa de la paz',
       piecePop: '🧩 Encontraste una pieza del mapa',
       mapComplete: '🎉 Completaste el mapa de la paz',
       gMapDone: (n) => `Reuniste las ${n} piezas: el mapa de la paz está completo.`,
-      goldLabel: 'Carta dorada',
+      goldLabel: 'Tarjeta dorada',
       goldNew: 'Ahora es dorada',
-      gGold: (n) => `Excelente: la carta de ${n} ahora brilla en dorado.`,
-      goldCount: (a, b) => `Cartas doradas ${a} / ${b}`,
+      gGold: (n) => `Excelente: la tarjeta de ${n} ahora brilla en dorado.`,
+      goldCount: (a, b) => `Tarjetas doradas ${a} / ${b}`,
       goldHowTitle: '¿Cómo se vuelve dorada?',
       goldHow: 'Logra al primer intento el quiz, la búsqueda y la misión de este punto, y si hay tarjeta de pregunta, deja tu respuesta.',
       goldHowEnding: 'Deja tu respuesta en las 5 tarjetas de pregunta y se volverá dorada.',
@@ -660,11 +665,13 @@
       certHow: '💡 Computador: [Copiar imagen] → Ctrl+V en Padlet · Tableta/celular: [Guardar] o [Compartir] → sube la imagen en Padlet',
 
       endTitle: 'Volvimos de los recuerdos de aquel día',
-      endLead: 'Desde Colombia, los veteranos respondieron en video a las preguntas de estudiantes coreanos de 6.º grado. Compara tu hipótesis con su respuesta real.',
+      endLead: 'Desde Colombia, los veteranos respondieron en video a las preguntas de estudiantes coreanos de 6.º de primaria. Compara tu hipótesis con su respuesta real.',
       endStatQuiz: (a, b) => `Quiz ${a} / ${b}`,
       endStatGuess: (a, b) => `Respuestas ${a} / ${b}`,
       endStart: 'Ver las respuestas reales ▶',
       endTip: 'Los videos duran unos 15 minutos en total. Pueden verlos juntos en la pantalla grande.',
+      endLeadText: 'Desde Colombia, los veteranos respondieron a las preguntas de estudiantes coreanos de 6.º de primaria. Aquí tienes un resumen de cada respuesta: compáralo con tu hipótesis.',
+      endTipText: 'Lee el resumen de cada respuesta y compáralo con lo que pensaste.',
       qLabel: (n, total) => `Pregunta ${n} / ${total}`,
       myGuessTitle: 'Lo que yo pensé',
       realTitle: 'La respuesta real del veterano',
@@ -679,8 +686,8 @@
       moreTitle: 'Para saber más',
       moreLead: 'Descubre más historias de los veteranos en los recursos del Ministerio de Patriotas y Veteranos de Corea.',
       worksTitle: 'Trabajos de los grupos',
-      finishTitle: 'Guardián de la memoria y la paz',
-      finishText: (n) => `${n} siguió hasta el final los pasos de los veteranos colombianos que vinieron desde el otro lado del mundo. Tú eres quien lleva sus recuerdos a la paz de hoy.`,
+      finishTitle: 'Guardianes de la memoria y la paz',
+      finishText: (n) => `${n}, seguiste hasta el final los pasos de los veteranos colombianos que vinieron desde el otro lado del mundo. Ahora te toca a ti llevar sus recuerdos a la paz de hoy.`,
       finishQuote: '“Hermanos en la guerra, hermanos en la paz.”',
       finishQuoteBy: '— de la respuesta de Jaime Álvarez',
       toMapBtn: 'Volver al mapa',
@@ -715,8 +722,8 @@
       worldDist: 'Unos 15.000 km en línea recta',
       worldVoyage: 'Cruzando el Pacífico hacia Corea',
       kOps: 'Incheon según los estudiantes coreanos',
-      opsHint: 'Toca los números del mapa o la lista: son las 5 operaciones de Incheon que investigaron los estudiantes coreanos.',
-      opsBy: (g) => `🎒 Investigado por el Grupo ${g}`,
+      opsHint: 'Toca los números del mapa o la lista: son las 5 operaciones de Incheon que investigaron los estudiantes coreanos. (Opcional: puedes seguir sin verlas todas)',
+      opsBy: (g) => `🎒 Investigado por el Grupo ${g} (estudiantes coreanos)`,
       opsSeen: (n, t) => `Viste ${n} de ${t} lugares`,
       opsHeroes: 'Héroes de esta operación',
       opsWorks: 'Ver la página del grupo ↗',
@@ -739,8 +746,8 @@
       lastStop: 'Llegaste al último punto de misión.',
       preview: 'Vista previa',
 
-      askedBy: (name) => `Pregunta de ${name} (6.º grado, Corea) a los veteranos`,
-      qIntro: 'Esta pregunta la envió de verdad uno de los estudiantes coreanos de 6.º grado a los veteranos colombianos. ¿Qué crees que respondieron?',
+      askedBy: (name) => `Pregunta de ${name} (6.º de primaria, Corea) a los veteranos`,
+      qIntro: 'Esta pregunta la envió de verdad uno de los estudiantes coreanos de 6.º de primaria a los veteranos colombianos. ¿Qué crees que respondieron?',
       showEn: 'Ver el original en inglés',
       myGuessLabel: 'Creo que el veterano respondería así',
       guessPh: 'Si yo fuera el veterano…',
@@ -750,7 +757,7 @@
       emptyGuess: 'Escribe al menos una línea.',
       skipGuess: 'Si no se te ocurre nada, puedes seguir. También puedes leer primero lo que pensaron tus compañeros.',
       othersTitle: 'Lo que dejaron tus compañeros en este dispositivo',
-      noOthers: 'Nadie ha escrito todavía. ¿Quieres ser el primero?',
+      noOthers: 'Nadie ha escrito todavía. ¿Te animas a empezar?',
 
       guestbookTitle: 'Nuestro libro de visitas',
       gbIntro: 'Lo que tus compañeros creen que respondieron los veteranos.',
@@ -818,6 +825,7 @@
       pwHashOut: (h) => `Cambia teacherPasswordHash en js/data.js por '${h}'.`,
 
       mapAria: 'Mapa del viaje del Batallón Colombia',
+      worldAria: 'Mapa del mundo', incheonAria: 'Mapa de Incheon', playAria: 'Reproducir',
       seaW: 'Mar Amarillo', seaE: 'Mar del Este', seaS: 'Mar del Sur',
       line38: 'Paralelo 38', dmz: 'Línea de demarcación', fromCol: 'Desde Colombia, al otro lado del mundo',
       pyongyang: 'Pyongyang'
@@ -826,7 +834,7 @@
       subtitle: 'A map of memory, connection and peace',
       narration: ['In 1950, a war broke out on the Korean Peninsula.', 'On the other side of the world, in Colombia, a young man boarded a ship.', "Let's step into the memories of that day."],
       startTagline: 'A peaceful tomorrow, drawn with a map of Memory, Across and Peace',
-      startLead: 'From the Incheon Landing to the Colombia Battalion’s battles, the Colombian Navy in the Yellow Sea and the memorial in Incheon: pass all 12 mission points and complete the map of peace!',
+      startLead: 'Start with the Incheon Landing. Then follow the Colombia Battalion’s battles, the Colombian Navy in the Yellow Sea and the memorial in Incheon. Pass all 12 mission points and complete the map of peace!',
       mapLetters: [
         ['M', 'Memory', 'Find and remember the heroes in the records'],
         ['A', 'Across', 'Meet friends in Colombia across time and borders'],
@@ -865,7 +873,7 @@
       breakText: 'We will continue next time. You might use a different device, so write this code in your notebook.',
       backTeacher: '‹ Back to teacher screen',
       resumeTitle: 'Continue a journey from another device',
-      resumeHelp: 'Enter your nickname and the 6-letter code from the [🔑 Code] button.',
+      resumeHelp: 'Enter your nickname and the 6-character code from the [🔑 Code] button.',
       codeLabel: 'My journey code',
       resumeBtn: 'Continue with code ▶',
       badCode: "That code doesn't match. Please check the letters again.",
@@ -880,7 +888,7 @@
       chIncheon: 'Incheon Landing',
       chJourney: 'Battles of the Colombia Battalion',
       chReturn: 'Back to Incheon · The sea of memory',
-      gToIncheon: "Chapter A (Across) is done! Now the last one, P (Peace): back to Incheon, to the Yellow Sea the Colombian Navy guarded and the memorial of today.",
+      gToIncheon: "Chapter A (Across) is done! Now the last one, P (Peace): back to Incheon, to the Yellow Sea the Colombian Navy guarded and today's memorial.",
       lensTitle: 'Incheon lens',
       nowEyebrow: (i, n) => `Next mission point · ${i} / ${n}`,
       enterStation: 'Enter mission point ▶',
@@ -893,13 +901,13 @@
       starChip: (n) => `⭐ ${n}`,
       cardChip: (a, b) => `🎴 ${a}/${b}`,
       starPop: (n) => `+${n} ⭐`,
-      gHello: (n) => `Hi, ${n}! I'm Paz, the dove of peace. We're trapped in the memory of the war in the 1950s. To get back to today, we must collect the map of peace and open the "Door to Tomorrow"!`,
+      gHello: (n) => `Hi, ${n}! I'm Paz, the dove of peace. We are stuck in a memory of the Korean War. To go back to today, we must find the pieces of the map of peace and open the "Door to Tomorrow"!`,
       briefTitle: 'Mission: get back to today!',
       brief: [
         'You have stepped into the memory of the Korean War in the 1950s. There is only one way back to today: open the "Door to Tomorrow".',
-        'But the "map of peace" that opens the door was torn into 12 pieces and scattered across the battlefields.',
+        'But the "map of peace" that opens the door is torn into 12 pieces. The pieces are spread over the battle places.',
         'Pass the mission points one by one and collect the pieces. Every 2 pieces, a 🔑 key word appears.',
-        'Use the 6 key words to rebuild a sentence left by a Colombian veteran, and the door will open in Incheon!'
+        'Put the 6 key words in the right order to make a sentence from a Colombian veteran. Then the door in Incheon will open!'
       ],
       briefGo: 'Start the mission ▶',
       routeTitle: 'Journey map: M → A → P → to Tomorrow',
@@ -912,12 +920,12 @@
       keyListTitle: 'Key words and memory fragments so far',
       keyFrom: (a, b) => `points ${a} & ${b}`,
       keyMemo: [
-        '22 countries came to help South Korea, and at the Incheon Landing soldiers from many nations fought on the same side. People who fought for someone else’s country — we call them brothers.',
-        'The Colombian soldiers crossed the Pacific to protect the peace of a country they had never seen.',
-        'Heukuntoryeong and Kumsong: the Colombia Battalion fought in the very middle of the war.',
-        'On the hills, the Colombian soldiers and the other UN troops protected each other’s lives like brothers.',
-        'After the great sacrifice at Old Baldy, the armistice of July 27, 1953 silenced the guns. We remember the names kept in that memory.',
-        'The Colombian Navy in the Yellow Sea and the memorial in Incheon: the memory is still here with us today.'
+        '22 countries came to help South Korea in the war. Many people lost their homes. In Incheon, soldiers from many countries fought together.',
+        'The Colombian soldiers crossed the Pacific to help a country they had never seen. When you risk your life for other people, you become their brother.',
+        'Heukuntoryeong and Kumsong were their first battles. The Colombians and the other UN soldiers fought side by side, like brothers.',
+        'On Hill 400 and Hill 180, every hill they took brought peace a little closer. Many young soldiers gave their lives for it.',
+        'After the big sacrifice at Old Baldy, the armistice on July 27, 1953 stopped the fighting. Now we must keep their names in our memory.',
+        'The Colombian Navy in the Yellow Sea and the memorial in Incheon: their story still lives in the memory of two countries.'
       ],
       keyLabel: '🔑 Key words',
       keyWords: ['Brothers', 'in', 'war,', 'brothers', 'in', 'peace.'],
@@ -927,16 +935,16 @@
       doorTitle: 'The Door to Tomorrow',
       doorMeta: "Rebuild the veteran's words with the 6 key words to get back to today.",
       doorBtn: '🔑 Open the Door to Tomorrow ▶',
-      doorStory: 'As the 12th piece clicks into place, an old door appears in front of the memorial in Incheon. Six blanks are carved into it. Tap your key words in the right order.',
+      doorStory: 'You put in the 12th piece. Now an old door appears in front of the memorial in Incheon. It has 6 empty boxes. Tap your key words in the right order to fill them.',
       doorHint1: 'These are words the Colombian veteran Jaime Álvarez sent to Korean students. What are the two countries to each other, in war and in peace today?',
       doorHint2: 'Hint: "Brothers in ___, brothers in ___."',
-      doorWrong: "The door won't budge… try a different order!",
+      doorWrong: "The door won't open… Try a different order!",
       doorReset: 'Start over',
-      doorOpen: "The Door to Tomorrow is open! You brought back the Memory (M), crossed the ocean (A) and completed the map of Peace (P). Now you're back in today: meet the veterans' real answers, and at the end, leave your own peace pledge for tomorrow (to Tomorrow).",
+      doorOpen: "The Door to Tomorrow is open! You remembered the past (M), crossed the ocean (A) and finished the map of peace (P). Now you are back in the present. Read the veterans' real answers. At the end, write your own peace promise for tomorrow.",
       doorGo: 'Back to today ▶',
       gDoorOpen: 'You did it! The door is open. Back to today!',
       gNext: (name) => `Next stop: "${name}"! Tap the blinking number.`,
-      gToColombia: "You've finished chapter M (Memory)! Now begins A (Across): let's meet the Colombian soldiers who crossed the Pacific from the other side of the world. 🌎",
+      gToColombia: "You've finished chapter M (Memory)! Now chapter A (Across) begins: let's meet the Colombian soldiers who crossed the Pacific from the other side of the world. 🌎",
       gAllDone: "You passed every mission point! The veterans' reply (the ending) is waiting for you.",
       gFind: "I hid all the road signs. Find it on the map yourself!",
       gFindWrong: (d) => `So close! A little more to the ${d}.`,
@@ -961,6 +969,7 @@
       mSuccess: 'Mission complete! The fleet arrived safely at Wolmido.',
       mRetry: 'Start over',
       quizRetry: 'So close! Want to pick again?',
+      oxT: 'True', oxF: 'False',
       albumTitle: 'Hero card album',
       albumLead: (a, b) => `You collected ${a} of ${b} cards. Meet heroes at each mission point to get more cards!`,
       albumWhere: (w) => `Found at: ${w}`,
@@ -1066,6 +1075,8 @@
       endStatGuess: (a, b) => `Guesses ${a} / ${b}`,
       endStart: 'Meet the real answers ▶',
       endTip: 'The videos are about 15 minutes in total. You can watch them together on a big screen with your teacher.',
+      endLeadText: "The veterans sent answers from Colombia to the questions you asked them. We wrote a short summary of each answer. Let's compare it with your guess, side by side.",
+      endTipText: 'Read each answer. What is the same as your guess? What is different?',
       qLabel: (n, total) => `Question ${n} / ${total}`,
       myGuessTitle: 'My guess',
       realTitle: "The veteran's real answer",
@@ -1116,7 +1127,7 @@
       worldDist: 'About 15,000 km in a straight line',
       worldVoyage: 'Across the Pacific to Korea',
       kOps: 'Incheon map made by our classmates',
-      opsHint: 'Tap the numbers on the map or the list below. These are the 5 Incheon Landing operations our classmates researched!',
+      opsHint: 'Tap the numbers on the map or the list below. These are the 5 Incheon Landing operations our classmates researched! (Optional: you can go on without opening them all)',
       opsBy: (g) => `🎒 Researched by Group ${g}`,
       opsSeen: (n, t) => `You looked at ${n} of ${t} places`,
       opsHeroes: 'Heroes of this operation',
@@ -1219,6 +1230,7 @@
       pwHashOut: (h) => `Change teacherPasswordHash in js/data.js to '${h}'.`,
 
       mapAria: "Map of the Colombia Battalion's journey",
+      worldAria: 'World map', incheonAria: 'Map of Incheon', playAria: 'Play',
       seaW: 'Yellow Sea', seaE: 'East Sea', seaS: 'South Sea',
       line38: '38th parallel', dmz: 'Armistice line', fromCol: 'From Colombia, on the other side of the world',
       pyongyang: 'Pyongyang'
@@ -1367,8 +1379,11 @@
     $('langBtn').innerHTML = `<span class="lb-globe" aria-hidden="true">🌐 </span><span>${esc(lcode)}</span><span class="lb-long"> · ${esc(lname)}</span>`;
     $('langMenu').innerHTML = LANGS.map(([id, code, name]) => `<button type="button" role="menuitemradio" aria-checked="${id === lang}" data-lang="${id}" lang="${id}"><b>${code}</b> ${esc(name)}</button>`).join('');
     $('map').setAttribute('aria-label', T('mapAria'));
+    $('world').setAttribute('aria-label', T('worldAria'));
+    $('incheon').setAttribute('aria-label', T('incheonAria'));
+    $('mapHome').setAttribute('aria-label', T('mapHome'));
     ['sheetClose', 'infoClose'].forEach((id) => $(id).setAttribute('aria-label', T('close')));
-    $('nickInput').maxLength = CONFIG.nicknameMaxLength + 4; // 넘치면 안내 문구로 알려 줌
+    $('nickInput').maxLength = Math.max(CONFIG.nicknameMaxLength, 12) + 4; // 넘치면 안내 문구로 알려 줌
   }
 
   function showScreen(id) {
@@ -1512,12 +1527,13 @@
   const whereName = (c) => (c.where === 'ending' ? T('albumEnding') : `${c.where + 1}. ${L(STATIONS[c.where].name)}`);
 
   // 카드 앞면 (도감 칸 · 카드 얻을 때 뜨는 창)
-  // 카드 사진 (사진이 없으면 국기 색 바탕에 이름 첫 글자)
+  // 카드 사진 (사진이 없거나 못 불러오면 그 나라 국기 바탕에 이름 첫 글자)
   function photoHtml(c, big) {
     const initial = Array.from(L(c.name).replace(/^(ARC|USS)\s+/, ''))[0] || '?';
+    const mark = esc(c.unit ? (c.id === 'padilla' ? '⚓' : '🎖️') : initial);
     return c.img
-      ? `<span class="hcard-photo${big ? ' big' : ''}"><img src="${esc(c.img)}" alt="${esc(L(c.name))}" loading="lazy" referrerpolicy="no-referrer"></span>`
-      : `<span class="hcard-photo ph flag-${esc(c.flag)}${big ? ' big' : ''}" aria-hidden="true">${esc(c.unit ? (c.id === 'padilla' ? '⚓' : '🎖️') : initial)}</span>`;
+      ? `<span class="hcard-photo flag-${esc(c.flag)}${big ? ' big' : ''}" data-mark="${mark}"><img src="${esc(c.img)}" alt="${esc(L(c.name))}" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('ph');this.parentNode.innerHTML='&lt;b class=&quot;ph-i&quot;&gt;'+this.parentNode.dataset.mark+'&lt;/b&gt;'"></span>`
+      : `<span class="hcard-photo ph flag-${esc(c.flag)}${big ? ' big' : ''}" aria-hidden="true"><b class="ph-i">${mark}</b></span>`;
   }
   function cardHtml(c, open) {
     if (!open) {
@@ -1531,7 +1547,7 @@
       <span class="hcard-flag">${flagHtml(c.flag)}</span>
       <b>${esc(L(c.name))}</b>
       <span class="hcard-role">${esc(L(c.role))}</span>
-      ${c.years ? `<span class="hcard-years">${esc(c.years)}</span>` : ''}
+      ${L(c.years) ? `<span class="hcard-years">${esc(L(c.years))}</span>` : ''}
       <p>${esc(L((c.deeds || [])[0]))}</p>
     </button>`;
   }
@@ -1543,8 +1559,8 @@
     openInfo('🎴', L(c.name), `
       <article class="card-detail flag-${esc(c.flag)}">
         ${photoHtml(c, true)}
-        ${c.img && c.credit ? `<p class="photo-credit">${esc(T('photoCredit'))}: ${esc(c.credit)}</p>` : ''}
-        <div class="cd-top">${flagHtml(c.flag)}<span class="hcard-role">${esc(L(c.role))}</span>${c.years ? `<span class="hcard-years">${esc(c.years)}</span>` : ''}</div>
+        ${c.img && L(c.credit) ? `<p class="photo-credit">${esc(T('photoCredit'))}: ${esc(L(c.credit))}</p>` : ''}
+        <div class="cd-top">${flagHtml(c.flag)}<span class="hcard-role">${esc(L(c.role))}</span>${L(c.years) ? `<span class="hcard-years">${esc(L(c.years))}</span>` : ''}</div>
         <h4>🏅 ${esc(T('deedsTitle'))}</h4>
         <ol class="deeds">${(c.deeds || []).map((d) => `<li>${esc(L(d))}</li>`).join('')}</ol>
         ${(c.groups || []).length ? `<p class="op-by">${esc(T('cardBy', c.groups.join('·')))}</p>` : ''}
@@ -1686,19 +1702,21 @@
     const words = foundWords(player);
     // 섞어서 보여 주기 (정답 순서와 다르게)
     const tiles = words.map((w, i) => ({ w, i })).sort((a, b) => ((a.i * 7 + 3) % KEY_N) - ((b.i * 7 + 3) % KEY_N));
+    // 문 위에서는 대문자·문장부호를 빼고 보여 줘요 (첫 낱말·끝 낱말 자리가 드러나지 않도록)
+    const shown = (w) => String(w).toLocaleLowerCase(lang).replace(/[.,!?¡¿"“”]/g, '');
     let picked = [];
     let tries = 0;
     openInfo('🚪', T('doorTitle'), `<div class="door" id="doorBox">
         <p class="door-story">${esc(T('doorStory'))}</p>
         <p class="door-hint" id="doorHint">💡 ${esc(T('doorHint1'))}</p>
         <div class="door-slots" id="doorSlots"></div>
-        <div class="door-tiles" id="doorTiles">${tiles.map((t) => `<button type="button" class="door-tile" data-i="${t.i}">${esc(t.w)}</button>`).join('')}</div>
+        <div class="door-tiles" id="doorTiles">${tiles.map((t) => `<button type="button" class="door-tile" data-i="${t.i}">${esc(shown(t.w))}</button>`).join('')}</div>
         <p class="door-msg" id="doorMsg" role="status"></p>
         <button type="button" class="btn btn-ghost btn-sm" id="doorReset">↺ ${esc(T('doorReset'))}</button>
       </div>`);
     const draw = () => {
       $('doorSlots').innerHTML = Array.from({ length: KEY_N }, (_, k) => picked[k] != null
-        ? `<button type="button" class="ds filled" data-k="${k}">${esc(words[picked[k]])}</button>`
+        ? `<button type="button" class="ds filled" data-k="${k}">${esc(shown(words[picked[k]]))}</button>`
         : `<span class="ds">${k + 1}</span>`).join('');
       document.querySelectorAll('#doorTiles .door-tile').forEach((b) => { b.disabled = picked.includes(+b.dataset.i); });
       // 놓은 낱말을 누르면 다시 빼요
@@ -1851,9 +1869,12 @@
   /* =====================================================================
      시작 화면
      ===================================================================== */
+  // 닉네임 길이: 한글은 8글자, 로마자(스페인어·영어 이름 Valentina, Sebastián …)는 12글자까지
+  const nickMax = (nick) => (/[ㄱ-힣]/.test(nick || '') || (!nick && lang === 'ko')
+    ? CONFIG.nicknameMaxLength : Math.max(CONFIG.nicknameMaxLength, 12));
   function nickProblem(nick) {
     if (!nick) return T('needNick');
-    if (Array.from(nick).length > CONFIG.nicknameMaxLength) return T('tooLong', CONFIG.nicknameMaxLength);
+    if (Array.from(nick).length > nickMax(nick)) return T('tooLong', nickMax(nick));
     const low = nick.toLowerCase().replace(/\s/g, '');
     if ((CONFIG.bannedWords || []).some((w) => low.includes(w.toLowerCase()))) return T('banned');
     // 🧹 바른말 거르개 (js/filter.js): 욕설·비하·ㅗ·18·ㅋㅋㅋ·반복·이모지 …
@@ -2948,7 +2969,7 @@
           <small>YouTube${v.len ? ` · ${esc(v.len)}` : ''}</small></a>`
       : `<div class="video-box yt-thumb" id="ytBox" data-yt="${esc(v.yt)}"${(v.lang || 'ko') !== lang ? ' data-cc="1"' : ''}>
         <img src="https://i.ytimg.com/vi/${esc(v.yt)}/hqdefault.jpg" alt="" loading="lazy">
-        <button type="button" class="yt-play" id="ytPlay" aria-label="재생">▶</button>
+        <button type="button" class="yt-play" id="ytPlay" aria-label="${esc(T('playAria'))}">▶</button>
       </div>`;
     return `<div class="kicker">${esc(T('kVideo'))}</div>
       ${SANDBOX ? sbGate : gate}
@@ -3290,8 +3311,10 @@
   function renderQuiz(s) {
     const q = s.quiz;
     const picked = quizStore()[s.id];
+    // O/X는 한국식 표기라, 스페인어·영어 화면에서는 아래에 '참/거짓' 말을 작게 붙여요
+    const oxBtn = (v, mark, key) => { const l = T(key); return `<button type="button" data-v="${v}" aria-label="${esc(l || mark)}">${mark}${l ? `<small class="ox-l">${esc(l)}</small>` : ''}</button>`; };
     const btns = q.type === 'ox'
-      ? `<div class="ox"><button type="button" data-v="true" aria-label="O">O</button><button type="button" data-v="false" aria-label="X">X</button></div>`
+      ? `<div class="ox">${oxBtn('true', 'O', 'oxT')}${oxBtn('false', 'X', 'oxF')}</div>`
       : `<div class="choices">${q.options.map((o, k) => `<button type="button" data-v="${k}"><span class="k">${k + 1}</span>${esc(L(o))}</button>`).join('')}</div>`;
     return `<div class="kicker">${esc(T('kQuiz'))}</div>
       <div class="quiz${picked !== undefined ? ' answered' : ''}" id="quizBox">
@@ -3318,14 +3341,15 @@
       if (hint) hint.remove();
       annotate($('sheetBody'));
     };
-    // 한 번 틀리면 한 번 더 기회! (처음에 맞히면 ⭐2, 두 번째에 맞히면 ⭐1)
+    // 고르기 퀴즈는 한 번 틀리면 한 번 더 기회! (처음에 맞히면 ⭐35, 두 번째에 맞히면 ⭐15 — RULES.quiz)
+    // O/X 퀴즈는 답이 둘뿐이라 두 번째 기회 없이 바로 정답을 보여 줘요
     cur.qwrong = cur.qwrong || {};
     box.querySelectorAll('button').forEach((b) => b.addEventListener('click', () => {
       if (quizStore()[s.id] !== undefined) return;
       const v = q.type === 'ox' ? b.dataset.v === 'true' : Number(b.dataset.v);
       const correct = String(v) === String(q.answer);
       const firstWrong = cur.qwrong[s.id];
-      if (!correct && firstWrong === undefined) {
+      if (!correct && firstWrong === undefined && q.type !== 'ox') {
         cur.qwrong[s.id] = v;
         b.classList.add('wrong'); b.disabled = true;
         $('quizFeedback').innerHTML = `<div class="feedback bad"><b>${esc(T('quizRetry'))}</b></div>`;
@@ -3807,7 +3831,7 @@
     const who = D.realName || D.nick;
     let ns = 60; ctx.font = certFont(ns, true);
     while (ctx.measureText(who).width > RW && ns > 30) { ns -= 4; ctx.font = certFont(ns, true); }
-    ry += ns + 4; ctx.fillStyle = '#003893'; ctx.fillText(who, RX, ry);
+    ry += ns + 4; ctx.fillStyle = '#003893'; ctx.fillText(who, RX, ry, RW); // 아주 긴 이름(콜롬비아식 성 두 개)은 칸에 맞게 눌러요
     // 학교
     ry += 10;
     ctx.fillStyle = '#14224b'; ctx.font = bodyFont(22, true);
@@ -3974,7 +3998,7 @@
         <p class="end-lead">${esc(T('certLead', player.nick))}</p>
         <div class="cert-form">
           <label for="certName" class="cert-step">① 🙋 ${esc(T('certRealName'))}</label>
-          <input id="certName" type="text" maxlength="20" value="${esc(player.realName || '')}" placeholder="${esc(T('certRealNamePh'))}" autocomplete="off" spellcheck="false">
+          <input id="certName" type="text" maxlength="40" value="${esc(player.realName || '')}" placeholder="${esc(T('certRealNamePh'))}" autocomplete="off" spellcheck="false">
           <label for="certSchool" class="cert-step">② 🏫 ${esc(T('certSchool'))}</label>
           <div class="cert-school">
             <input id="certSchool" type="text" maxlength="60" value="${esc(player.school || '')}" placeholder="${esc(ex ? T('certExample', ex) : T('certSchoolPh'))}" autocomplete="off" spellcheck="false">
@@ -4030,7 +4054,7 @@
     });
     // 이름·학교·국적·평화 다짐을 모두 적어야 저장·복사 버튼이 열려요 (다짐 = 여정의 마지막 한 걸음)
     const read = () => {
-      player.realName = $('certName').value.slice(0, 20);
+      player.realName = $('certName').value.slice(0, 40);
       player.school = $('certSchool').value.slice(0, 60);
       player.nation = $('certNation').value;
       player.nationOther = $('certNationOther').value.slice(0, 20);
@@ -4135,12 +4159,14 @@
     let html = '';
 
     if (step === 'intro') {
+      // 답장 영상이 하나도 없으면 '영상' 대신 '글로 옮긴 답'이라고 솔직하게 안내해요
+      const hasVideo = Object.values(QUESTIONS).some((q) => (q.answers || []).some((a) => L(a.video && a.video.src)));
       html = `<div class="end-hero">
         <span class="end-flags" aria-hidden="true"><i class="f-y"></i><i class="f-b"></i><i class="f-r"></i></span>
         <h1>${esc(T('endTitle'))}</h1>
-        <p class="end-lead">${esc(T('endLead'))}</p>
+        <p class="end-lead">${esc(T(hasVideo ? 'endLead' : 'endLeadText'))}</p>
         <div class="facts"><span>✓ ${esc(T('endStatQuiz', quizRight, quizTotal))}</span><span>✎ ${esc(T('endStatGuess', guessCount, QIDS.length))}</span></div>
-        <p class="t-help">⏱ ${esc(T('endTip'))}</p>
+        <p class="t-help">${hasVideo ? '⏱' : '💡'} ${esc(T(hasVideo ? 'endTip' : 'endTipText'))}</p>
       </div>`;
     } else if (QUESTIONS[step]) {
       const q = QUESTIONS[step];
@@ -4171,7 +4197,7 @@
               return `<button type="button" role="tab" aria-selected="${k === vi}" data-k="${k}">${esc(v ? L(v.name) : x.veteran)}</button>`;
             }).join('')}</div>` : ''}
             <div class="vet-line"><b>${esc(L(vet.name))}</b> <span>${esc(L(vet.role))}</span></div>
-            ${videoHtml(a.video)}
+            ${L(a.video && a.video.src) ? videoHtml(a.video) : ''}
             <div class="summary">
               <span class="summary-label">${esc(T('summaryLabel'))}</span>
               <p>${esc(L(a.summary))}</p>

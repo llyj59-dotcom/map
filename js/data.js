@@ -9,7 +9,7 @@
 
 window.MAP_CONFIG = {
   // 만든 곳 (엔딩·교사 화면 아래쪽에 작게 표시)
-  madeBy: { ko: '인천신검단초등학교 6학년 · 국가보훈부 유엔참전국 글로벌 아카데미', es: 'Escuela Primaria Singeomdan, 6.º grado (Incheon, Corea) · Academia Global de Países Aliados de la ONU' },
+  madeBy: { ko: '인천신검단초등학교 6학년 · 국가보훈부 유엔참전국 글로벌 아카데미', es: 'Escuela Primaria Singeomdan, 6.º de primaria (Incheon, Corea) · Academia Global de Países Aliados de la ONU' },
 
   // 서버·로그인 없음. 모든 기록은 그 기기(브라우저)에만 저장되고, 인터넷으로 보내지 않아요.
   //  · 다른 기기에서 이어 할 때 / 선생님께 결과를 알릴 때 → 게임 속 "나의 여정 코드" 6글자
@@ -30,7 +30,7 @@ window.MAP_CONFIG = {
   ],
 
   // 1차시를 끝낼 작전 지점 id — 이 작전 지점을 통과하면 "1차시는 여기까지!"와 코드를 크게 보여 줘요 ('' = 안 나눔)
-  lessonBreakAfter: 'hill400',
+  lessonBreakAfter: 'busan',
 
   // 📡 진행 상황 자동 모으기 (선택) — 선생님의 구글 설문지로 조용히 보내요. Apps Script·서버 없이 설문지 응답(시트)으로 쌓여요.
   //   보내는 것: 닉네임 · 여정 코드 · 진행(몇 곳) · 별 · 카드 · 언어 · 어떤 순간인지(시작/작전 지점 통과/문 열기/인증서)
@@ -104,12 +104,12 @@ window.STATIONS = [
     // 전쟁 흐름 (이 작전 지점에만 있는 특별 카드) — 하나씩 누르면 지도 위 전선이 움직여요
     // front: 지도에 그릴 전선 'start' | 'nakdong' | 'north' | 'retreat' | 'dmz' | 'armistice'
     timeline: [
-      { front: 'start', date: { ko: '1950. 6. 25.', es: '25 jun. 1950' }, text: { ko: '새벽, 북한군이 38도선을 넘어 기습 남침했어요.', es: 'Al amanecer, el ejército norcoreano cruza el paralelo 38 en un ataque sorpresa hacia el Sur.' } },
-      { front: 'nakdong', date: { ko: '1950. 8.', es: 'ago. 1950' }, text: { ko: '국군과 유엔군은 낙동강까지 밀려 마지막 방어선을 지켰어요.', es: 'Las fuerzas surcoreanas y de la ONU, replegadas hasta el río Nakdong, resisten en su última línea de defensa.' } },
+      { front: 'start', date: { ko: '1950. 6. 25.', es: '25 jun. 1950' }, text: { ko: '새벽, 북한군이 38도선을 넘어 갑자기 남쪽으로 쳐들어왔어요.', es: 'Al amanecer, el ejército norcoreano cruza el paralelo 38 en un ataque sorpresa hacia el Sur.' } },
+      { front: 'nakdong', date: { ko: '1950. 8.', es: 'ago. 1950' }, text: { ko: '국군과 유엔군은 낙동강까지 밀려났지만, 그곳만은 끝까지 지켜 냈어요.', es: 'Las fuerzas surcoreanas y de la ONU, replegadas hasta el río Nakdong, resisten en su última línea de defensa.' } },
       { front: 'north', date: { ko: '1950. 9. ~ 11.', es: 'sep. – nov. 1950' }, text: { ko: '인천상륙작전 성공! 서울을 되찾고 북쪽 끝까지 올라갔어요.', es: 'El Desembarco de Incheon cambia el rumbo: se recupera Seúl y se avanza hasta el extremo norte.' } },
-      { front: 'retreat', date: { ko: '1950. 10. ~ 1951. 1.', es: 'oct. 1950 – ene. 1951' }, text: { ko: '중국군이 끼어들어 다시 후퇴했어요. (1·4 후퇴)', es: 'La intervención china obliga a una nueva retirada (la “retirada del 4 de enero”).' } },
-      { front: 'dmz', date: { ko: '1951 ~ 1953', es: '1951 – 1953' }, text: { ko: '38도선 근처 산(고지)에서 치열하게 싸웠어요. 콜롬비아대대가 싸운 때예요!', es: 'Guerra de posiciones: feroces combates por las colinas cercanas al paralelo 38. En esta etapa luchó el Batallón Colombia.' } },
-      { front: 'armistice', date: { ko: '1953. 7. 27.', es: '27 jul. 1953' }, text: { ko: '판문점에서 정전협정을 맺고, 지금의 휴전선이 생겼어요.', es: 'Se firma el armisticio en Panmunjom y se traza la actual línea de demarcación.' } }
+      { front: 'retreat', date: { ko: '1950. 10. ~ 1951. 1.', es: 'oct. 1950 – ene. 1951' }, text: { ko: '중국군이 전쟁에 뛰어들어, 국군과 유엔군은 다시 남쪽으로 물러났어요. (1·4 후퇴)', es: 'La intervención china obliga a una nueva retirada (la “retirada del 4 de enero”).' } },
+      { front: 'dmz', date: { ko: '1951 ~ 1953', es: '1951 – 1953' }, text: { ko: '38도선 근처의 높은 산(고지)을 서로 차지하려고 아주 세게 싸웠어요. 콜롬비아대대가 싸운 때예요!', es: 'Guerra de posiciones: feroces combates por las colinas cercanas al paralelo 38. En esta etapa luchó el Batallón Colombia.' } },
+      { front: 'armistice', date: { ko: '1953. 7. 27.', es: '27 jul. 1953' }, text: { ko: '판문점에서 "싸움을 멈추자"는 약속(정전협정)을 맺고, 지금의 휴전선이 생겼어요.', es: 'Se firma el armisticio en Panmunjom y se traza la actual línea de demarcación.' } }
     ],
     videos: [
       { yt: '_zojHBvJe4w', title: { ko: '6·25 전쟁 이야기', es: 'Historia de la Guerra de Corea' }, by: '국가보훈부', len: '3:21', req: true },
@@ -120,7 +120,7 @@ window.STATIONS = [
       type: 'ox',
       q: { ko: '6·25 전쟁 때 대한민국을 도우러 온 나라는 미국 한 나라뿐이었다.', es: 'Estados Unidos fue el único país que acudió en apoyo de Corea del Sur durante la guerra.' },
       answer: false,
-      explain: { ko: '아니에요! 전투 부대를 보낸 16개 나라와 의료 지원을 한 6개 나라, 모두 22개 나라가 도왔어요. 콜롬비아도 그중 하나예요.', es: 'Falso. Participaron 22 países: 16 enviaron tropas de combate y 6 aportaron apoyo médico. Colombia fue uno de ellos.' }
+      explain: { ko: 'X, 사실이 아니에요! 전투 부대를 보낸 16개 나라와 의료 지원을 한 6개 나라, 모두 22개 나라가 도왔어요. 콜롬비아도 그중 하나예요.', es: 'Falso. Participaron 22 países: 16 enviaron tropas de combate y 6 aportaron apoyo médico. Colombia fue uno de ellos.' }
     },
     questions: []
   },
@@ -133,7 +133,7 @@ window.STATIONS = [
     date: { ko: '1950. 9. 15.', es: '15 sep. 1950' },
     place: { ko: '인천 월미도·팔미도', es: 'Wolmido y Palmido, Incheon' },
     story: {
-      ko: '밀물과 썰물의 차이가 아주 큰 인천은 배가 들어오기 어려운 곳이었어요. 그래서 "성공할 확률이 5000분의 1"이라는 말이 나올 만큼 모두가 걱정한 작전이었지요. 하지만 팔미도 등대에 불을 밝히고, 새벽에 월미도부터 상륙하면서 작전은 성공했어요. 덕분에 9월 28일 서울을 되찾았답니다.',
+      ko: '바닷물이 들어오고 빠질 때(밀물과 썰물) 높이 차이가 아주 큰 인천은 큰 배가 들어오기 어려운 곳이었어요. 그래서 "성공할 확률이 5000분의 1(5000번 해서 1번)"이라는 말이 나올 만큼 모두가 걱정한 작전이었지요. 하지만 팔미도 등대에 불을 밝히고, 새벽에 월미도부터 상륙하면서 작전은 성공했어요. 덕분에 9월 28일 서울을 되찾았답니다.',
       es: 'En Incheon la diferencia entre marea alta y marea baja es enorme, lo que hacía muy difícil el acceso de los barcos. Tanto preocupaba la Operación Chromite que se llegó a decir que tenía "1 posibilidad entre 5.000" de éxito. Sin embargo, se encendió el faro de Palmido y, al amanecer, las tropas desembarcaron primero en Wolmido. La operación anfibia fue un éxito y permitió recuperar Seúl el 28 de septiembre.'
     },
     // 아이들이 캔바에 찾아 둔 영상 (group = 찾은 모둠)
@@ -160,7 +160,7 @@ window.STATIONS = [
         { ko: '울릉도', es: 'Ulleungdo' }
       ],
       answer: 0,
-      explain: { ko: '정답은 월미도! 1950년 9월 15일 새벽 6시 30분, 월미도부터 상륙이 시작됐어요.', es: 'Correcto: Wolmido. El desembarco comenzó allí el 15 de septiembre de 1950, a las 6:30 de la mañana.' }
+      explain: { ko: '월미도! 1950년 9월 15일 새벽 6시 30분, 월미도부터 상륙이 시작됐어요.', es: 'Wolmido. El desembarco comenzó allí el 15 de septiembre de 1950, a las 6:30 de la mañana.' }
     },
     questions: []
   },
@@ -173,8 +173,8 @@ window.STATIONS = [
     date: { ko: '1950 ~ 1951', es: '1950 – 1951' },
     place: { ko: '지구 반대편, 콜롬비아', es: 'Colombia, al otro lado del mundo' },
     story: {
-      ko: '콜롬비아는 한국에서 지구 반대편에 있는 나라예요. 말도, 음식도, 풍습도 달랐지만 콜롬비아는 라틴아메리카에서 유일하게 싸우는 군대(전투 병력)를 보냈어요. 육군 "콜롬비아대대"와 해군 배(프리깃함) 3척이 먼 바다를 건너왔답니다.',
-      es: 'Colombia está en el otro extremo del planeta respecto a Corea. El idioma, la comida y las costumbres no tenían nada en común; aun así, fue el único país de América Latina que envió tropas de combate. Cruzaron el océano el "Batallón Colombia" del Ejército y tres fragatas de la Armada.'
+      ko: '콜롬비아는 한국에서 지구 반대편에 있는 나라예요. 말도, 음식도, 사는 모습도 달랐지만 콜롬비아는 라틴아메리카에서 유일하게 싸우는 군대(전투 병력)를 보냈어요. 육군 "콜롬비아대대"와 해군 배(프리깃함) 3척이 먼 바다를 건너왔답니다.',
+      es: 'Colombia está en el otro extremo del planeta respecto a Corea. Su idioma, su comida y sus costumbres eran muy distintos de los de Corea; aun así, fue el único país de América Latina que envió tropas de combate. Cruzaron el océano el "Batallón Colombia" del Ejército y tres fragatas de la Armada.'
     },
     // lang: 'es' = 스페인어 화면에서만 보여요 / 'ko' = 한국어 화면에서만
     videos: [
@@ -198,7 +198,7 @@ window.STATIONS = [
     ],
     quiz: {
       type: 'choice',
-      q: { ko: '6·25 전쟁 때 라틴아메리카에서 유일하게 전투 병력을 보낸 나라는?', es: '¿Cuál fue el único país latinoamericano que envió tropas de combate a la Guerra de Corea?' },
+      q: { ko: '6·25 전쟁 때 라틴아메리카(중남미)에서 단 하나, 싸우는 군대를 보낸 나라는?', es: '¿Cuál fue el único país latinoamericano que envió tropas de combate a la Guerra de Corea?' },
       options: [
         { ko: '브라질', es: 'Brasil' },
         { ko: '콜롬비아', es: 'Colombia' },
@@ -206,7 +206,7 @@ window.STATIONS = [
         { ko: '아르헨티나', es: 'Argentina' }
       ],
       answer: 1,
-      explain: { ko: '바로 콜롬비아! 그래서 한국과 콜롬비아는 "피를 나눈 형제 나라"라고 불려요.', es: 'Colombia. Por eso a Corea y Colombia se les llama "naciones hermanas de sangre".' }
+      explain: { ko: '콜롬비아! 그래서 한국과 콜롬비아는 "피를 나눈 형제 나라"라고 불려요.', es: 'Colombia. Por eso a Corea y Colombia se les llama "naciones hermanas de sangre".' }
     },
     questions: ['q1']
   },
@@ -219,7 +219,7 @@ window.STATIONS = [
     date: { ko: '1951. 6. 15.', es: '15 jun. 1951' },
     place: { ko: '부산항', es: 'Puerto de Busan' },
     story: {
-      ko: '1951년 5월 21일, 콜롬비아대대 1,083명은 콜롬비아의 부에나벤투라 항구에서 미군 수송선에 올랐어요. 약 25일 동안 태평양을 건너 6월 15일 부산항에 도착해 성대한 환영을 받았어요. 콜롬비아대대는 미군 제24사단에 속해 중부 전선으로 올라갔어요. 전쟁 동안 콜롬비아는 육군과 해군을 합쳐 약 5,100명을 보냈어요.',
+      ko: '1951년 5월 21일, 콜롬비아대대 군인 1,083명이 콜롬비아의 부에나벤투라 항구에서 미국의 큰 배에 올랐어요. 약 25일 동안 태평양을 건너 6월 15일 부산항에 도착하자, 많은 사람이 크게 환영해 주었어요. 콜롬비아대대는 미군 부대와 한 팀이 되어 한반도 가운데의 싸움터로 올라갔어요. 전쟁 동안 콜롬비아에서 온 군인은 모두 약 5,100명이에요.',
       es: 'El 21 de mayo de 1951, los 1.083 hombres del Batallón Colombia zarparon de Buenaventura a bordo de un buque de transporte estadounidense. Tras unos 25 días de travesía por el Pacífico, desembarcaron en Busan el 15 de junio, donde fueron recibidos con honores. El batallón quedó adscrito a la 24.ª División de Infantería de EE. UU. y avanzó hacia el frente central. A lo largo de la guerra, Colombia envió en total unos 5.100 efectivos del Ejército y la Armada.'
     },
     // 출처: 국가보훈부(출항 1951.5.21., 부산 도착 6.15., 참전 연인원 5,100명 · 전사 213 · 부상 448 · 포로 28),
@@ -231,7 +231,7 @@ window.STATIONS = [
         name: { ko: '하이메 폴라니아 푸요 대대장', es: 'Comandante Jaime Polanía Puyo' },
         role: { ko: '콜롬비아 보병대대의 첫 대대장', es: 'Primer comandante del Batallón Colombia' },
         body: {
-          ko: '콜롬비아 보병대대의 첫 대대장으로, 1,000여 명의 용사들을 이끌고 한국 땅에 첫발을 내디딘 영웅이에요.',
+          ko: '콜롬비아대대를 처음 이끈 대장이에요. 1,000명이 넘는 군인과 함께 한국 땅에 처음 발을 디뎠어요.',
           es: 'Primer comandante del batallón de infantería colombiano, estuvo al mando de más de 1.000 hombres cuando pisaron suelo coreano por primera vez.'
         },
         link: 'https://www.canva.com/design/DAHT6E1N4Fc/qUVAedjz1E1_4GMGCx81hQ/view'
@@ -278,7 +278,7 @@ window.STATIONS = [
       type: 'ox',
       q: { ko: '흑운토령 전투는 콜롬비아대대가 한국에서 치른 첫 전투였다.', es: 'Heukuntoryeong fue el primer combate del Batallón Colombia en Corea.' },
       answer: true,
-      explain: { ko: '맞아요! 1951년 8월 6일, 부산에 도착한 지 두 달도 안 되어 치른 첫 전투였어요.', es: 'Verdadero. Fue su primer combate, el 6 de agosto de 1951, menos de dos meses después de su llegada a Busan.' }
+      explain: { ko: 'O, 사실이에요! 1951년 8월 6일, 부산에 도착한 지 두 달도 안 되어 치른 첫 전투였어요.', es: 'Verdadero. Fue su primer combate, el 6 de agosto de 1951, menos de dos meses después de su llegada a Busan.' }
     },
     questions: []
   },
@@ -291,7 +291,7 @@ window.STATIONS = [
     date: { ko: '1951. 10.', es: 'oct. 1951' },
     place: { ko: '강원도 금성 일대 (지금은 휴전선 북쪽)', es: 'Zona de Kumsong (hoy al norte de la línea de demarcación)' },
     story: {
-      ko: '1951년 10월, 콜롬비아대대는 미군 제24사단과 함께 "노매드 작전"에 나섰어요. 금성 쪽으로 밀고 올라가 570고지 등 적의 고지들을 차지하며 큰 공을 세웠어요.',
+      ko: '1951년 10월, 콜롬비아대대는 미군 부대와 함께 "노매드 작전"에 나섰어요. 금성 쪽으로 한 걸음씩 나아가며, 적이 차지하고 있던 높은 산(570고지 등)을 빼앗아 큰 공을 세웠어요.',
       es: 'En octubre de 1951, el Batallón Colombia participó junto a la 24.ª División de Infantería de EE. UU. en la Operación Nomad. Avanzó hacia Kumsong y conquistó posiciones enemigas como la colina 570, una acción muy destacada.'
     },
     // 출처: 국가보훈부 영문 누리집 — Hill 570 (1951.10.13.), Operation Nomad
@@ -306,7 +306,7 @@ window.STATIONS = [
         { ko: '미국', es: 'Estados Unidos' }
       ],
       answer: 3,
-      explain: { ko: '정답은 미국! 콜롬비아대대는 미군 사단에 소속되어 함께 싸웠어요.', es: 'Estados Unidos. El batallón estaba integrado en una división de infantería estadounidense y combatía con ella.' }
+      explain: { ko: '미국! 콜롬비아대대는 미군 사단에 소속되어 함께 싸웠어요.', es: 'Estados Unidos. El batallón estaba integrado en una división de infantería estadounidense y combatía con ella.' }
     },
     questions: []
   },
@@ -319,7 +319,7 @@ window.STATIONS = [
     date: { ko: '1952. 6. 21.', es: '21 jun. 1952' },
     place: { ko: '강원도 김화 일대 (중부 전선)', es: 'Zona de Gimhwa, Gangwon (frente central)' },
     story: {
-      ko: '1952년 6월 21일, 미군 제7사단에 속해 있던 콜롬비아대대는 김화 부근 400고지의 적 진지를 기습했어요. 재빠른 공격으로 적 진지를 무너뜨렸지만, 콜롬비아 용사 2명이 목숨을 잃고 15명이 다쳤어요.',
+      ko: '1952년 6월 21일, 콜롬비아대대는 김화 근처 400고지에 있는 적의 진지로 몰래 다가가 갑자기 공격했어요. 재빠른 공격으로 적의 진지를 무너뜨렸지만, 콜롬비아 군인 2명이 목숨을 잃고 15명이 다쳤어요.',
       es: 'El 21 de junio de 1952, el Batallón Colombia, entonces adscrito a la 7.ª División de Infantería de EE. UU., lanzó un asalto sorpresa contra las posiciones enemigas de la colina 400, cerca de Gimhwa. La rapidez del ataque permitió destruirlas, pero 2 soldados colombianos murieron y 15 resultaron heridos.'
     },
     // 출처: 국가보훈부 영문 누리집 — Hill 400 (1952. 6. 21.) 기습, 콜롬비아군 전사 2 · 부상 15
@@ -328,7 +328,7 @@ window.STATIONS = [
       type: 'ox',
       q: { ko: '"400고지"의 400은 그 산의 높이(약 400m)를 뜻한다.', es: 'En "colina 400", el número indica la altura aproximada del terreno: unos 400 m.' },
       answer: true,
-      explain: { ko: '맞아요! 고지 이름에 붙은 숫자는 지도에 적힌 그 산의 높이(m)예요. 그래서 400고지, 180고지처럼 불러요.', es: 'Verdadero. Las colinas se identificaban por la altura en metros marcada en el mapa; de ahí nombres como colina 400 o colina 180.' }
+      explain: { ko: 'O, 사실이에요! 고지 이름에 붙은 숫자는 지도에 적힌 그 산의 높이(m)예요. 그래서 400고지, 180고지처럼 불러요.', es: 'Verdadero. Las colinas se identificaban por la altura en metros marcada en el mapa; de ahí nombres como colina 400 o colina 180.' }
     },
     questions: []
   },
@@ -341,14 +341,14 @@ window.STATIONS = [
     date: { ko: '1953. 3. 10.', es: '10 mar. 1953' },
     place: { ko: '경기도 연천 일대', es: 'Yeoncheon, Gyeonggi' },
     story: {
-      ko: '1953년 3월 10일 새벽, 콜롬비아대대는 "바르불라 작전"으로 연천의 180고지를 기습했어요. 짧은 시간에 적 진지를 공격하고 돌아온 이 작전은 콜롬비아대대의 용맹을 널리 알렸어요. 그리고 2주 뒤, 가장 힘든 불모고지 전투가 기다리고 있었어요.',
+      ko: '1953년 3월 10일 새벽, 콜롬비아대대는 "바르불라 작전"으로 연천의 180고지에 몰래 다가가 갑자기 공격했어요. 짧은 시간에 적의 진지를 공격하고 돌아온 이 작전으로, 콜롬비아대대가 얼마나 용감한지 널리 알려졌어요. 그리고 2주쯤 뒤, 가장 힘든 불모고지 전투가 기다리고 있었어요.',
       es: 'En la madrugada del 10 de marzo de 1953, el Batallón Colombia lanzó un golpe sorpresa contra la colina 180, en Yeoncheon: la Operación Bárbula. Fue una incursión relámpago —atacar la posición enemiga y replegarse— que dio fama al valor del batallón. Dos semanas después le esperaba su batalla más dura: Old Baldy.'
     },
     // 출처: 국가보훈부 영문 누리집 — Hill 180 (1953. 3. 10.), 미 육군 특수전 역사 기사(Operation Barbula)
     heroes: [],
     quiz: {
       type: 'choice',
-      q: { ko: '콜롬비아대대가 180고지를 기습한 작전의 이름은?', es: '¿Cómo se llamó la incursión del Batallón Colombia contra la colina 180?' },
+      q: { ko: '콜롬비아대대가 180고지를 몰래 공격한 작전의 이름은?', es: '¿Cómo se llamó la incursión del Batallón Colombia contra la colina 180?' },
       options: [
         { ko: '바르불라 작전', es: 'Operación Bárbula' },
         { ko: '노매드 작전', es: 'Operación Nomad' },
@@ -356,7 +356,7 @@ window.STATIONS = [
         { ko: '크로마이트 작전', es: 'Operación Chromite' }
       ],
       answer: 0,
-      explain: { ko: '정답은 바르불라 작전! 노매드 작전은 금성 진격전, X-RAY는 영흥도 첩보 작전, 크로마이트는 인천상륙작전의 작전 이름이에요.', es: 'Operación Bárbula. Nomad fue la ofensiva hacia Kumsong; X-RAY, la misión de inteligencia en Yeongheungdo, y Chromite, el nombre en clave del Desembarco de Incheon.' }
+      explain: { ko: '바르불라 작전! 노매드 작전은 금성 진격전, X-RAY는 영흥도 첩보 작전, 크로마이트는 인천상륙작전의 작전 이름이에요.', es: 'Operación Bárbula. Nomad fue la ofensiva hacia Kumsong; X-RAY, la misión de inteligencia en Yeongheungdo, y Chromite, el nombre en clave del Desembarco de Incheon.' }
     },
     questions: []
   },
@@ -370,7 +370,7 @@ window.STATIONS = [
     place: { ko: '경기도 연천 일대', es: 'Yeoncheon, Gyeonggi' },
     story: {
       ko: '"불모고지"는 폭탄을 너무 많이 맞아 풀 한 포기 남지 않은 산이라는 뜻이에요. 콜롬비아대대에게 가장 힘들고 슬픈 전투였어요. 많은 군인이 다치거나 목숨을 잃었지만, 끝까지 동료를 지키며 싸웠어요.',
-      es: '"Old Baldy" significa "colina calva": los bombardeos fueron tan intensos que no quedó en pie ni una planta. Fue la batalla más dura y dolorosa para el Batallón Colombia. Muchos soldados resultaron heridos o perdieron la vida, pero combatieron hasta el final sin abandonar a sus compañeros.'
+      es: '"Old Baldy" (en español, "Monte Calvo") recibió ese nombre porque los bombardeos fueron tan intensos que no quedó en pie ni una planta. Fue la batalla más dura y dolorosa para el Batallón Colombia. Muchos soldados resultaron heridos o perdieron la vida, pero combatieron hasta el final sin abandonar a sus compañeros.'
     },
     videos: [
       { yt: 'sQspC5vg2G8', title: { ko: '(스페인어) 참호의 악마들', es: 'Los Demonios de las Trincheras' }, by: 'El Gran Historium', len: '14:03', lang: 'es', long: true }
@@ -379,15 +379,15 @@ window.STATIONS = [
     heroes: [],
     quiz: {
       type: 'choice',
-      q: { ko: '"불모고지"라는 이름은 무슨 뜻일까요?', es: '¿Qué significa el nombre "Old Baldy" (en coreano, "colina estéril")?' },
+      q: { ko: '"불모고지"라는 이름은 무슨 뜻일까요?', es: '¿Qué significa el nombre "Old Baldy"?' },
       options: [
-        { ko: '눈이 많이 오는 산', es: 'Un monte cubierto de nieve' },
+        { ko: '눈이 많이 오는 산', es: 'Un monte donde vivían muchas águilas' },
         { ko: '풀 한 포기 없는 민둥산', es: 'Un monte pelado, sin vegetación' },
-        { ko: '보물이 묻힌 산', es: 'Un monte donde se enterró un tesoro' },
-        { ko: '새가 많이 사는 산', es: 'Un monte habitado por muchas aves' }
+        { ko: '보물이 묻힌 산', es: 'Un monte cubierto de nieve todo el año' },
+        { ko: '새가 많이 사는 산', es: 'Un monte sagrado para los coreanos' }
       ],
       answer: 1,
-      explain: { ko: '맞아요. 얼마나 치열한 싸움이었는지 이름만 들어도 알 수 있어요.', es: 'Exacto. El solo nombre revela la intensidad de los combates que se libraron allí.' }
+      explain: { ko: '민둥산! 얼마나 치열한 싸움이었는지 이름만 들어도 알 수 있어요.', es: 'Un monte pelado. El solo nombre revela la intensidad de los combates que se libraron allí.' }
     },
     questions: ['q2']
   },
@@ -406,7 +406,7 @@ window.STATIONS = [
       explain: { ko: '판문점은 휴전선 위에 있는 마을이에요. 1953년 7월 27일 이곳에서 정전협정을 맺었고, 지금도 남과 북이 만나는 곳이에요.', es: 'Panmunjom es una aldea situada sobre la línea de demarcación. Allí se firmó el armisticio el 27 de julio de 1953, y todavía hoy es el punto de encuentro entre el Norte y el Sur.' }
     },
     story: {
-      ko: '3년 1개월 동안의 싸움 끝에, 판문점에서 정전협정을 맺고 총소리가 멈췄어요. 전쟁이 완전히 끝난 "종전"이 아니라 잠시 멈춘 "정전"이라서, 지금도 휴전선이 남아 있어요.',
+      ko: '3년 1개월 동안의 싸움 끝에, 판문점에서 "이제 싸움을 멈추자"는 약속(정전협정)을 맺고 총소리가 멈췄어요. 전쟁이 완전히 끝난 것(종전)이 아니라 잠시 멈춘 것(정전)이라서, 지금도 남과 북 사이에 휴전선이 있어요.',
       es: 'Tras 3 años y 1 mes de guerra, la firma del armisticio en Panmunjom silenció las armas. Pero no fue el fin formal de la guerra, sino un cese de los combates; por eso la línea de demarcación sigue dividiendo la península.'
     },
     heroes: [],
@@ -414,7 +414,7 @@ window.STATIONS = [
       type: 'ox',
       q: { ko: '정전협정은 전쟁을 완전히 끝낸 약속이다.', es: 'El armisticio fue un acuerdo que puso fin definitivo a la guerra.' },
       answer: false,
-      explain: { ko: '아니에요. "정전"은 싸움을 멈춘 것이에요. 그래서 평화를 지키는 노력이 계속 필요해요.', es: 'Falso. El armisticio solo suspendió los combates; técnicamente, la guerra no ha terminado. Por eso mantener la paz exige un esfuerzo constante.' }
+      explain: { ko: 'X, 사실이 아니에요! "정전"은 싸움을 멈춘 것이에요. 그래서 평화를 지키는 노력이 계속 필요해요.', es: 'Falso. El armisticio solo suspendió los combates; técnicamente, la guerra no ha terminado. Por eso mantener la paz exige un esfuerzo constante.' }
     },
     questions: ['q3']
   },
@@ -427,7 +427,7 @@ window.STATIONS = [
     date: { ko: '1951 ~ 1955', es: '1951 – 1955' },
     place: { ko: '서해 (초도~석도 일대) · 동해', es: 'Mar Amarillo y Mar del Este' },
     story: {
-      ko: '1951년 5월, 콜롬비아 해군의 첫 배 알미란테 파디야호가 한국에 왔어요. 5월 14일부터 서해의 초도와 석도 사이 바다를 돌며 북한군이 바다로 오가는 길을 막았고, 동해에서는 함포로 지상군을 도왔어요. 콜롬비아 해군은 전쟁이 멈춘 뒤에도 1955년까지 한국 바다를 지켰어요.',
+      ko: '1951년 5월, 콜롬비아 해군의 첫 배 알미란테 파디야호가 한국에 왔어요. 5월 14일부터 서해의 초도와 석도 사이 바다를 돌며 북한군이 바다로 오가는 길을 막았고, 동해에서는 배에 달린 대포로 땅에서 싸우는 군인들을 도왔어요. 콜롬비아 해군은 전쟁이 멈춘 뒤에도 1955년까지 한국 바다를 지켰어요.',
       es: 'En mayo de 1951 llegó a Corea la fragata Almirante Padilla, el primer buque de la Armada colombiana en llegar. Desde el 14 de mayo patrulló el Mar Amarillo entre las islas Cho-do y Sok-do para cortar las rutas marítimas norcoreanas, y en el Mar del Este dio apoyo de artillería naval a las tropas en tierra. La Armada colombiana siguió custodiando las aguas coreanas incluso después del armisticio, hasta 1955.'
     },
     // 출처: 국가보훈부 영문 누리집(파디야호 1951.5.14.부터 서해 초도~석도 순찰, 동해 함포 지원, 1955년 10월 철수)
@@ -435,7 +435,7 @@ window.STATIONS = [
     heroes: [
       {
         author: { ko: '5모둠 친구들이 쓴 이야기', es: 'Relato escrito por el Grupo 5 (Incheon)' },
-        name: { ko: '강화도를 지킨 콜롬비아 해군', es: 'La Armada que protegió Ganghwa' },
+        name: { ko: '서해를 지킨 콜롬비아 해군', es: 'La Armada que protegió el Mar Amarillo' },
         role: { ko: '서해 방어 작전', es: 'Defensa del Mar Amarillo' },
         body: {
           ko: '콜롬비아 해군은 서해안 바다를 철통같이 지켜 냈어요. 콜롬비아 용사들의 희생을 기리기 위해, 지금 인천 경명공원에는 참전기념비가 있어요.',
@@ -457,9 +457,9 @@ window.STATIONS = [
       {
         author: { ko: '4모둠 친구들이 조사한 이야기', es: 'Relato investigado por el Grupo 4 (Incheon)' },
         name: { ko: '서해와 동해를 지킨 호위함', es: 'Fragatas en el Mar Amarillo y el Mar del Este' },
-        role: { ko: '해상 봉쇄 작전', es: 'Bloqueo naval' },
+        role: { ko: '바닷길 막기 작전', es: 'Bloqueo naval' },
         body: {
-          ko: '콜롬비아 해군은 호위함을 보내 서해와 동해의 바다를 막는 작전에 참여했어요. 적의 보급선을 끊고, 해안을 포격하고, 유엔군의 상륙을 도우며 바다를 안전하게 지켰어요.',
+          ko: '콜롬비아 해군은 호위함을 보내 서해와 동해의 바다를 막는 작전에 참여했어요. 적이 물건을 나르는 바닷길을 끊고, 바닷가의 적을 대포로 공격하고, 유엔군이 땅에 오르는 것을 도우며 바다를 안전하게 지켰어요.',
           es: 'La Armada colombiana envió fragatas a las operaciones de bloqueo en el Mar Amarillo y el Mar del Este: cortaron las líneas de suministros enemigas, bombardearon la costa y apoyaron los desembarcos de la ONU.'
         },
         link: 'https://canva.link/ac622kddxmupdrr'
@@ -470,12 +470,12 @@ window.STATIONS = [
       q: { ko: '콜롬비아가 한국에 보낸 첫 번째 군함의 이름은?', es: '¿Cuál fue el primer buque de guerra que Colombia envió a Corea?' },
       options: [
         { ko: '알미란테 파디야호', es: 'Almirante Padilla' },
-        { ko: '타이타닉호', es: 'Titanic' },
-        { ko: '거북선', es: 'Barco tortuga (geobukseon)' },
-        { ko: '메이플라워호', es: 'Mayflower' }
+        { ko: '타이타닉호', es: 'ARC Capitán Tono' },
+        { ko: '거북선', es: 'ARC Almirante Brión' },
+        { ko: '메이플라워호', es: 'ARC Gloria' }
       ],
       answer: 0,
-      explain: { ko: '정답! 콜롬비아 해군은 알미란테 파디야호, 카피탄 토노호, 알미란테 브리온호 3척을 보냈어요.', es: 'Correcto. La Armada colombiana envió en total tres fragatas: la Almirante Padilla, la Capitán Tono y la Almirante Brión.' }
+      explain: { ko: '알미란테 파디야호! 콜롬비아 해군은 알미란테 파디야호, 카피탄 토노호, 알미란테 브리온호 3척을 보냈어요.', es: 'La Almirante Padilla, la primera en llegar, en 1951. Después la siguieron la Capitán Tono y la Almirante Brión: la Armada colombiana envió en total tres fragatas.' }
     },
     questions: []
   },
@@ -485,10 +485,10 @@ window.STATIONS = [
     short: { ko: '기념비', es: 'Monumento' },
     map: { x: 232, y: 548 }, label: 'bottom',
     name: { ko: '콜롬비아군 참전기념비', es: 'Monumento a los combatientes colombianos' },
-    date: { ko: '1975. 9. 24. 세움 → 2018. 7. 25. 이전', es: 'Erigido el 24 sep. 1975 → trasladado el 25 jul. 2018' },
+    date: { ko: '1975. 9. 24. 세움 → 2018. 7. 25. 경명공원으로 옮김', es: 'Erigido el 24 sep. 1975 → trasladado el 25 jul. 2018' },
     place: { ko: '인천 경명공원', es: 'Parque Gyeongmyeong, Incheon' },
     story: {
-      ko: '인천 경명공원에 콜롬비아군 참전기념비가 있어요. 칼을 든 군인과 무릎 꿇고 기도하는 여인의 조각, 그리고 배의 돛을 닮은 하얀 벽이 있어요. 비석에는 한국어와 스페인어로 611명의 희생을 기억하는 글이 새겨져 있어요. 해마다 이곳에서 추모식이 열려요.',
+      ko: '인천 경명공원에 콜롬비아군 참전기념비가 있어요. 칼을 든 군인과 무릎 꿇고 기도하는 여인의 조각, 그리고 배의 돛을 닮은 하얀 벽이 있어요. 비석에는 한국어와 스페인어로 611명의 희생을 기억하는 글이 새겨져 있어요. 해마다 이곳에서 돌아가신 분들을 기리는 행사(추모식)가 열려요.',
       es: 'En el parque Gyeongmyeong de Incheon se alza el monumento a los combatientes colombianos: la escultura de un soldado con una espada, una mujer arrodillada en oración y un muro blanco que evoca la vela de un barco. Su inscripción, en coreano y en español, honra el sacrificio de 611 combatientes. Cada año se celebra allí una ceremonia conmemorativa.'
     },
     videos: [
@@ -585,7 +585,7 @@ window.INCHEON_OPS = [
     // 출처: 부대 편성 8월 16~17일, 부산 출발 8.18., 영흥도 도착 8.24., 작전 종료 9.14.
     text: {
       ko: '인천상륙작전 전인 1950년 8월 24일, 함명수 소령 등 해군 첩보대원 17명이 적들 몰래 영흥도로 들어갔어요. 영흥도 주민들의 도움을 받아 인천 바다의 깊이와 갯벌, 바다 밑에 숨겨진 폭탄, 적의 대포와 군사가 어디 있는지 알아내 유엔군에 알렸어요. 영화 《인천상륙작전》의 이야기가 된 실화예요.',
-      es: 'El 24 de agosto de 1950, antes del desembarco, el mayor Ham Myeong-su y otros agentes de inteligencia naval —17 en total— se infiltraron en la isla Yeongheungdo. Con ayuda de los isleños, reunieron datos sobre la profundidad del mar, las marismas, las minas ocultas y la ubicación de la artillería y las tropas enemigas, y los transmitieron al Comando de las Naciones Unidas. Esta historia real inspiró la película "Operation Chromite".'
+      es: 'El 24 de agosto de 1950, antes del desembarco, el mayor Ham Myeong-su y otros agentes de inteligencia naval —17 en total— se infiltraron en la isla Yeongheungdo. Con ayuda de los isleños, reunieron datos sobre la profundidad del mar, las marismas, las minas ocultas y la ubicación de la artillería y las tropas enemigas, y los transmitieron al Comando de las Naciones Unidas. Esta historia real inspiró la película "Operación Chromite" (2016).'
     },
     heroes: [
       { card: 'hammyeongsu', name: { ko: '함명수 소령', es: 'Mayor Ham Myeong-su' }, text: { ko: 'X-RAY 작전을 이끌고 인천항으로 가는 안전한 길을 찾아낸 해군 첩보부대 지휘관', es: 'Jefe de la unidad de inteligencia naval que dirigió la operación X-RAY y halló una ruta segura hacia el puerto de Incheon.' } },
@@ -597,7 +597,7 @@ window.INCHEON_OPS = [
     id: 'palmido',
     pin: [126.511, 37.358], short: { ko: '등대 점등 작전', es: 'Faro de Palmido' },
     name: { ko: '팔미도 등대 점등 작전', es: 'Operación del faro de Palmido' },
-    date: { ko: '1950. 9. 14. 밤 ~ 9. 15. 새벽', es: 'Noche del 14 al madrugada del 15 sep. 1950' },
+    date: { ko: '1950. 9. 14. 밤 ~ 9. 15. 새벽', es: 'Noche del 14 a la madrugada del 15 de sep. de 1950' },
     // 출처: 국방일보 — 점등 명령은 0시 30분, 실제로는 조금 늦게 켜졌어요(기록마다 0시 50분~1시 50분). 모둠 글의 '0시 12분'은 고쳤어요.
     text: {
       ko: '배들이 인천으로 들어오려면 캄캄한 밤바다를 밝혀 줄 팔미도 등대(1903년, 우리나라 최초의 근대식 등대)가 꼭 필요했어요. 미 해군 클라크 대위와 켈로부대 최규봉 대장, 한국군 장교들이 팔미도에 들어가 등대를 되찾고, 적이 빼돌린 부품을 찾아 고쳤어요. 9월 15일 자정을 넘긴 새벽, 등대에 불이 켜지자 261척의 유엔군 함대가 좁고 위험한 바닷길을 따라 인천으로 들어왔어요.',
@@ -631,8 +631,8 @@ window.INCHEON_OPS = [
     name: { ko: '인천항 본대 상륙', es: 'Desembarco principal en el puerto de Incheon' },
     date: { ko: '1950. 9. 15. 오후 5시 30분', es: '15 sep. 1950, 17:30' },
     text: {
-      ko: '그날 오후 5시 30분쯤, 두 번째 밀물에 맞춰 미 해병대가 레드비치와 블루비치로 상륙했어요. 높은 방파제를 사다리로 넘어 시내로 들어갔고, 밤에는 한국 해병대도 뒤따라 상륙했어요. 약 7만 5천 명의 병력과 261척의 배가 함께한 이 작전 덕분에, 13일 뒤인 9월 28일 서울을 되찾았어요. 콜롬비아는 9개월 뒤인 1951년 6월, 지상군을 보내 유엔군과 함께 싸웠어요.',
-      es: 'Esa misma tarde, hacia las 17:30, aprovechando la segunda marea alta, los marines de EE. UU. desembarcaron en Red Beach y Blue Beach. Escalaron con escaleras los altos malecones y avanzaron hacia la ciudad; por la noche los siguió la Infantería de Marina surcoreana. Con unos 75.000 efectivos y 261 buques, la operación permitió recuperar Seúl 13 días después, el 28 de septiembre. Nueve meses más tarde, en junio de 1951, Colombia desplegó sus tropas terrestres junto a las fuerzas de la ONU.'
+      ko: '그날 오후 5시 30분쯤, 두 번째 밀물에 맞춰 미 해병대가 레드비치와 블루비치로 상륙했어요. 바닷가의 높은 둑(방파제)을 사다리로 넘어 시내로 들어갔고, 밤에는 한국 해병대도 뒤따라 상륙했어요. 약 7만 5천 명의 군인과 261척의 배가 함께한 이 작전 덕분에, 13일 뒤인 9월 28일 서울을 되찾았어요. 콜롬비아는 9개월 뒤인 1951년 6월, 땅에서 싸우는 군대를 보내 유엔군과 함께 싸웠어요.',
+      es: 'Esa misma tarde, hacia las 17:30, aprovechando la segunda marea alta, los marines de EE. UU. desembarcaron en Red Beach y Blue Beach. Treparon con escaleras los altos malecones y avanzaron hacia la ciudad; por la noche los siguió la Infantería de Marina surcoreana. Con unos 75.000 efectivos y 261 buques, la operación permitió recuperar Seúl 13 días después, el 28 de septiembre. Nueve meses más tarde, en junio de 1951, Colombia desplegó sus tropas terrestres junto a las fuerzas de la ONU.'
     },
     heroes: [],
     groups: [1, 3, 4]
@@ -640,7 +640,7 @@ window.INCHEON_OPS = [
   {
     id: 'bupyeong',
     pin: [126.725, 37.495], short: { ko: '부평 전투', es: 'Bupyeong' },
-    name: { ko: '부평·경인축선 탈환전 & 서해 해상 봉쇄', es: 'Batalla de Bupyeong y bloqueo del Mar Amarillo' },
+    name: { ko: '부평 전투 & 서해 바닷길 막기', es: 'Batalla de Bupyeong y bloqueo del Mar Amarillo' },
     date: { ko: '1950. 9. 16. ~', es: 'desde el 16 sep. 1950' },
     text: {
       ko: '인천을 되찾은 뒤, 9월 17일 미 해병대를 비롯한 연합군이 부평 원통이고개에서 북한군 탱크 부대를 물리치고 서울로 가는 길을 열었어요. 지금도 부평아트센터에 이를 기리는 부평전투 승전기념비가 있어요. 바다에서는 유엔군이 서해를 막아 북한군의 이동과 보급을 끊었고, 뒤에 온 콜롬비아 해군도 서해 바다를 지켰어요.',
@@ -668,7 +668,7 @@ window.HERO_CARDS = [
     role: { ko: '라틴아메리카 유일의 전투 부대', es: 'La única unidad de combate latinoamericana' },
     years: '1951 – 1954',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/%EC%BD%9C%EB%A1%AC%EB%B9%84%EC%95%84_%287445437980%29.jpg/330px-%EC%BD%9C%EB%A1%AC%EB%B9%84%EC%95%84_%287445437980%29.jpg',
-    credit: '대한민국 국군 (Flickr), CC BY-SA 2.0, Wikimedia Commons',
+    credit: { ko: '대한민국 국군 (Flickr), CC BY-SA 2.0, Wikimedia Commons', es: 'Fuerzas Armadas de la República de Corea (Flickr), CC BY-SA 2.0, Wikimedia Commons' },
     deeds: [
       { ko: '라틴아메리카에서 유일하게 싸우는 군대를 보낸 나라, 콜롬비아의 보병 부대예요.', es: 'Batallón de infantería de Colombia, el único país latinoamericano que envió tropas de combate.' },
       { ko: '미군 제24사단, 뒤에는 미군 제7사단에 속해 중부 전선에서 싸웠어요.', es: 'Combatió en el frente central, adscrito primero a la 24.ª y luego a la 7.ª División de Infantería de EE. UU.' },
@@ -698,7 +698,7 @@ window.HERO_CARDS = [
     role: { ko: '콜롬비아 해군의 첫 참전 군함 (프리깃함)', es: 'Primer buque de guerra colombiano en Corea (fragata)' },
     years: '1951 –',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/ARC_Almirante_Padilla_%28CM_51%29.jpg/330px-ARC_Almirante_Padilla_%28CM_51%29.jpg',
-    credit: 'Colombian Navy via NavSource, 퍼블릭 도메인, Wikimedia Commons',
+    credit: { ko: 'Colombian Navy via NavSource, 퍼블릭 도메인, Wikimedia Commons', es: 'Armada de Colombia vía NavSource, dominio público, Wikimedia Commons' },
     deeds: [
       { ko: '1950년 11월 콜롬비아를 떠나 1951년 5월 한국 바다에 온, 콜롬비아의 첫 번째 참전 군함이에요.', es: 'Zarpó de Colombia en noviembre de 1950 y llegó a aguas coreanas en mayo de 1951: fue el primer buque de guerra colombiano en el conflicto.' },
       { ko: '1951년 5월 14일부터 서해의 초도와 석도 사이를 돌며 적의 바닷길을 막았어요.', es: 'Desde el 14 de mayo de 1951 patrulló el Mar Amarillo entre Cho-do y Sok-do para cerrar las rutas marítimas enemigas.' },
@@ -716,7 +716,7 @@ window.HERO_CARDS = [
     deeds: [
       { ko: '콜롬비아 해군 군함을 타고 한국 바다를 지켰어요. 영상에서 "알미란테 파디야호에서 복무했다"고 이야기해 주셨어요.', es: 'Defendió las aguas coreanas a bordo de un buque de la Armada colombiana. En su video contó que sirvió en la Almirante Padilla.' },
       { ko: '서해와 동해, 남해를 돌며 한반도 둘레의 바다를 순찰했어요.', es: 'Patrulló los mares que rodean la península: el Mar Amarillo, el Mar del Este y las aguas del sur.' },
-      { ko: '92세에 6학년 친구들의 질문에 영상으로 답장을 보내 주셨어요. "전쟁 속의 형제, 평화 속의 형제."', es: 'A los 92 años respondió en video a las preguntas de estudiantes coreanos de 6.º grado: "Hermanos en la guerra, hermanos en la paz."' }
+      { ko: '92세에 6학년 친구들의 질문에 영상으로 답장을 보내 주셨어요. 내일의 문을 여는 한 문장도 이 답장에 들어 있어요.', es: 'A los 92 años respondió en video a las preguntas de estudiantes coreanos de 6.º de primaria, con una frase que guarda la clave de la Puerta del Mañana.' }
     ],
     // 출처: 참전용사 본인의 답장 영상
     groups: []
@@ -730,7 +730,7 @@ window.HERO_CARDS = [
     deeds: [
       { ko: '한국전쟁에 참전해 전우들과 함께 싸웠어요.', es: 'Combatió en la Guerra de Corea junto a sus compañeros de armas.' },
       { ko: '"가장 힘들었던 순간은 전우들이 쓰러지는 것을 볼 때였어요"라고 이야기해 주셨어요.', es: 'Lo recuerda así: "Lo más difícil fue ver caer a los compañeros".' },
-      { ko: '6학년 친구들에게 "지금 가진 평화를 잘 지키세요"라는 메시지를 보내 주셨어요.', es: 'A los estudiantes coreanos de 6.º grado les dejó un mensaje: "Cuiden la paz que tienen".' }
+      { ko: '6학년 친구들에게 "지금 가진 평화를 잘 지키세요"라는 메시지를 보내 주셨어요.', es: 'A los estudiantes coreanos de 6.º de primaria les dejó un mensaje: "Cuiden la paz que tienen".' }
     ],
     // 출처: 참전용사 본인의 답장 영상
     groups: []
@@ -742,7 +742,7 @@ window.HERO_CARDS = [
     role: { ko: '대한민국 해군의 아버지', es: 'Padre de la Armada de la República de Corea' },
     years: '1909 – 1980',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/%EC%A0%9C5%EB%8C%80%EA%B5%AD%EB%B0%A9%EB%B6%80%EC%9E%A5%EA%B4%80%EC%86%90%EC%9B%90%EC%9D%BC.jpg/330px-%EC%A0%9C5%EB%8C%80%EA%B5%AD%EB%B0%A9%EB%B6%80%EC%9E%A5%EA%B4%80%EC%86%90%EC%9B%90%EC%9D%BC.jpg',
-    credit: '국방부(1953), 국가기록원, 퍼블릭 도메인, Wikimedia Commons',
+    credit: { ko: '국방부(1953), 국가기록원, 퍼블릭 도메인, Wikimedia Commons', es: 'Ministerio de Defensa de Corea (1953), Archivo Nacional de Corea, dominio público, Wikimedia Commons' },
     deeds: [
       { ko: '독립운동가 손정도 목사의 아들이에요.', es: 'Hijo del pastor Son Jeong-do, activista del movimiento de independencia coreano.' },
       { ko: '광복 뒤인 1945년 11월 해군의 뿌리인 해방병단을 만들고, 첫 해군참모총장이 되었어요.', es: 'Tras la liberación, en noviembre de 1945, fundó el Haebang Byeongdan, cuerpo naval que dio origen a la Armada, y fue el primer jefe del Estado Mayor de la Armada.' },
@@ -758,7 +758,7 @@ window.HERO_CARDS = [
     role: { ko: '해군 첩보부대 지휘관 · X-RAY 작전', es: 'Jefe de inteligencia naval · Operación X-RAY' },
     years: '1928 – 2016',
     img: 'https://upload.wikimedia.org/wikipedia/commons/5/52/Navy_%28ROKN%29_Vice_Admiral_Hahm_Myong-soo_%ED%95%B4%EA%B5%B0%EC%A4%91%EC%9E%A5_%ED%95%A8%EB%AA%85%EC%88%98_%28NH_104908_Korean_Chief_of_Naval_Operations_visits_Norfolk%2C_Virginia%29.jpg',
-    credit: '미 해군 역사유산사령부 NH 104908 (1966년, 해군참모총장 시절), 퍼블릭 도메인',
+    credit: { ko: '미 해군 역사유산사령부 NH 104908 (1966년, 해군참모총장 시절), 퍼블릭 도메인', es: 'Comando de Historia y Patrimonio Naval de EE. UU., NH 104908 (1966, como jefe de la Armada), dominio público' },
     deeds: [
       { ko: '1950년 8월 24일, 자신을 포함한 해군 첩보대원 17명을 이끌고 영흥도에 몰래 들어갔어요.', es: 'El 24 de agosto de 1950 se infiltró en Yeongheungdo al frente de un equipo de 17 agentes de inteligencia naval, él incluido.' },
       { ko: '인천 바다의 깊이와 갯벌, 적의 진지를 조사해 유엔군에 알렸어요.', es: 'Reconoció la profundidad del mar, las marismas y las posiciones enemigas, y lo reportó a las fuerzas de la ONU.' },
@@ -771,9 +771,9 @@ window.HERO_CARDS = [
     id: 'imhong', flag: 'kr',
     name: { ko: '임병래 중위 · 홍시욱 하사', es: 'Teniente Im Byeong-rae y sargento Hong Si-uk' },
     role: { ko: 'X-RAY 작전 대원', es: 'Integrantes de la Operación X-RAY' },
-    years: '1950. 9. 14.',
+    years: { ko: '1950. 9. 14.', es: '14 sep. 1950' },
     img: 'https://upload.wikimedia.org/wikipedia/commons/5/57/%EC%9E%84%EB%B3%91%EB%9E%98.jpg',
-    credit: '임병래 중위 사진 · 전쟁기념관, Wikimedia Commons (홍시욱 하사 사진은 찾지 못했어요)',
+    credit: { ko: '임병래 중위 사진 · 전쟁기념관, Wikimedia Commons (홍시욱 하사 사진은 찾지 못했어요)', es: 'Foto del teniente Im Byeong-rae · Memorial de Guerra de Corea, Wikimedia Commons (no se encontró foto del sargento Hong Si-uk)' },
     deeds: [
       { ko: 'X-RAY 작전 대원으로 영흥도에서 인천상륙작전에 필요한 정보를 모았어요.', es: 'Como integrantes de X-RAY, reunieron en Yeongheungdo información clave para el Desembarco de Incheon.' },
       { ko: '1950년 9월 14일 적에게 둘러싸이자, 작전의 비밀을 지키려고 끝까지 싸우다 목숨을 바쳤어요.', es: 'El 14 de septiembre de 1950, cercados por el enemigo, combatieron hasta el final y dieron la vida para no revelar el secreto de la operación.' },
@@ -789,7 +789,7 @@ window.HERO_CARDS = [
     role: { ko: '켈로부대(KLO) 고트대 대장', es: 'Jefe del grupo Goat de la unidad KLO' },
     years: '1926 – 2016',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/%EC%9D%B8%EC%B2%9C_%ED%8C%94%EB%AF%B8%EB%8F%84_%EB%93%B1%EB%8C%80.jpg/330px-%EC%9D%B8%EC%B2%9C_%ED%8C%94%EB%AF%B8%EB%8F%84_%EB%93%B1%EB%8C%80.jpg',
-    credit: '인물 사진 대신 팔미도 등대 · 국가유산청, 공공누리 제1유형',
+    credit: { ko: '인물 사진 대신 팔미도 등대 · 국가유산청, 공공누리 제1유형', es: 'En lugar de un retrato: faro de Palmido · Servicio de Patrimonio Nacional de Corea, KOGL tipo 1' },
     deeds: [
       { ko: '적진 뒤에서 정보를 모으는 켈로부대의 고트대를 이끈 대장이었어요.', es: 'Dirigía el grupo Goat de la unidad KLO, que recopilaba información tras las líneas enemigas.' },
       { ko: '1950년 9월 14일, 클라크 대위·한국군 장교들과 함께 팔미도에 들어가 등대를 되찾았어요.', es: 'El 14 de septiembre de 1950 desembarcó en Palmido con el teniente Clark y oficiales surcoreanos, y retomaron el faro.' },
@@ -819,7 +819,7 @@ window.HERO_CARDS = [
     role: { ko: '유엔군 총사령관', es: 'Comandante en jefe del Comando de las Naciones Unidas' },
     years: '1880 – 1964',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Douglas_MacArthur_Inchon_Invasion.jpg/330px-Douglas_MacArthur_Inchon_Invasion.jpg',
-    credit: '인천상륙작전 때의 맥아더 · 미 해군 역사유산사령부, 퍼블릭 도메인',
+    credit: { ko: '인천상륙작전 때의 맥아더 · 미 해군 역사유산사령부, 퍼블릭 도메인', es: 'MacArthur en el Desembarco de Incheon · Comando de Historia y Patrimonio Naval de EE. UU., dominio público' },
     deeds: [
       { ko: '모두가 어렵다고 반대한 인천상륙작전을 계획하고 이끌었어요.', es: 'Planeó y dirigió el Desembarco de Incheon pese a que casi todos lo consideraban inviable.' },
       { ko: '"성공 확률 5000분의 1"이라는 말이 나올 만큼 어려운 작전이었지만 성공시켰어요.', es: 'Se decía que tenía "1 posibilidad entre 5.000" de éxito, y aun así la operación triunfó.' },
@@ -833,7 +833,7 @@ window.HERO_CARDS = [
     role: { ko: '미 해군 정보장교', es: 'Oficial de inteligencia de la Armada de EE. UU.' },
     years: '1911 – 1998',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/%EC%9D%B8%EC%B2%9C_%ED%8C%94%EB%AF%B8%EB%8F%84_%EB%93%B1%EB%8C%80.jpg/330px-%EC%9D%B8%EC%B2%9C_%ED%8C%94%EB%AF%B8%EB%8F%84_%EB%93%B1%EB%8C%80.jpg',
-    credit: '인물 사진 대신 팔미도 등대 · 국가유산청, 공공누리 제1유형',
+    credit: { ko: '인물 사진 대신 팔미도 등대 · 국가유산청, 공공누리 제1유형', es: 'En lugar de un retrato: faro de Palmido · Servicio de Patrimonio Nacional de Corea, KOGL tipo 1' },
     deeds: [
       { ko: '1950년 9월 1일 덕적도에 먼저 내린 뒤 영흥도로 옮겨, 2주 동안 인천 바다를 몰래 살폈어요.', es: 'El 1 de septiembre de 1950 desembarcó en Deokjeokdo y luego se trasladó a Yeongheungdo, desde donde vigiló en secreto el mar de Incheon durante dos semanas.' },
       { ko: '한국인 대원들과 함께 팔미도 등대를 되찾았어요.', es: 'Junto a sus compañeros coreanos, retomó el faro de Palmido.' },
@@ -866,7 +866,7 @@ window.GLOSSARY = {
     ['수송선', '군인과 물자를 실어 나르는 배예요.'],
     ['봉쇄', '적이 드나들지 못하도록 길을 막는 것이에요.'],
     ['보급', '군인에게 필요한 음식·무기·옷 등을 보내 주는 것이에요.'],
-    ['고지', '싸울 때 서로 차지하려고 다투는 높은 산이나 언덕이에요. "400고지"는 높이가 약 400m인 곳이에요.'],
+    ['고지', '싸울 때 서로 차지하려고 다투는 높은 산이나 언덕이에요.'],
     ['대대장', '대대를 이끄는 지휘관이에요.'],
     ['대대', '수백 명에서 천 명쯤의 군인으로 이루어진 군대 단위예요.'],
     ['사단', '1만 명이 넘는 군인으로 이루어진 큰 군대 단위예요.'],
@@ -892,7 +892,12 @@ window.GLOSSARY = {
     ['전우', '함께 싸운 동료 군인이에요.'],
     ['관용', '나와 다른 사람을 너그럽게 받아들이는 마음이에요.'],
     ['부표', '물 위에 띄워 배가 다니는 길이나 위험한 곳을 알려 주는 표시예요.'],
-    ['기념비', '어떤 일이나 사람을 오래 기억하려고 세운 비석이에요.']
+    ['기념비', '어떤 일이나 사람을 오래 기억하려고 세운 비석이에요.'],
+    ['기습', '적이 모르게 갑자기 공격하는 것이에요.'],
+    ['함포', '군함에 달린 대포예요.'],
+    ['추모식', '돌아가신 분을 기억하고 기리는 행사예요.'],
+    ['침략', '남의 나라에 쳐들어가 땅이나 권리를 빼앗는 것이에요.'],
+    ['방파제', '큰 파도를 막으려고 바닷가에 쌓은 높은 둑이에요.']
   ],
   es: [
     ['armisticio', 'Acuerdo entre los bandos para suspender los combates. A diferencia de un tratado de paz, no pone fin formal a la guerra.'],
@@ -915,7 +920,7 @@ window.GLOSSARY = {
     ['batallón', 'Unidad militar de varios cientos a unos mil soldados, al mando de un teniente coronel o mayor.'],
     ['adscrito', 'Asignado a una unidad mayor para combatir bajo su mando.'],
     ['efectivos', 'Miembros de una fuerza militar; se usa para contar tropas.'],
-    ['colina', 'Altura estratégica que los bandos se disputaban. Su número (colina 400) indica la altura en metros.'],
+    ['colina', 'Altura estratégica que los bandos se disputaban.'],
     ['flota', 'Conjunto de buques de guerra que operan juntos.'],
     ['fragata', 'Buque de guerra de tamaño medio dedicado a escoltar a otros barcos y patrullar el mar.'],
     ['artillería naval', 'Cañones instalados en buques de guerra, capaces de atacar objetivos en tierra.'],
