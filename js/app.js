@@ -163,6 +163,7 @@
       albumTitle: '영웅 카드 도감',
       albumLead: (a, b) => `${b}장 중 ${a}장을 모았어요. 작전 지점을 돌며 영웅을 만나면 카드가 생겨요!`,
       albumWhere: (w) => `${w}에서 만날 수 있어요`,
+      lockedCard: '아직 못 모은 카드',
       albumEnding: '엔딩',
       newCard: '새 영웅 카드!',
       ranks: [[0, '기억 탐험 새내기'], [300, '기억 탐험대원'], [600, '평화 탐험대장'], [900, '평화의 기억 지킴이'], [1083, '1,083명의 용사를 모두 기억한 평화의 별']],
@@ -568,6 +569,7 @@
       albumTitle: 'Álbum de tarjetas de héroes',
       albumLead: (a, b) => `Tienes ${a} de ${b} tarjetas. Conoce a los héroes de cada punto de misión para completar el álbum.`,
       albumWhere: (w) => `Se encuentra en: ${w}`,
+      lockedCard: 'Tarjeta sin desbloquear',
       albumEnding: 'el final',
       newCard: 'Nueva tarjeta de héroe',
       ranks: [[0, 'Aprendiz de la memoria'], [300, 'Integrante de la expedición de la memoria'], [600, 'Líder de la expedición de la paz'], [900, 'Guarda de la memoria y la paz'], [1083, 'Estrella de la paz: recordaste a los 1.083 soldados']],
@@ -973,6 +975,7 @@
       albumTitle: 'Hero card album',
       albumLead: (a, b) => `You collected ${a} of ${b} cards. Meet heroes at each mission point to get more cards!`,
       albumWhere: (w) => `Found at: ${w}`,
+      lockedCard: 'Not collected yet',
       albumEnding: 'the ending',
       newCard: 'New hero card!',
       ranks: [[0, 'Rookie memory explorer'], [300, 'Memory explorer'], [600, 'Peace expedition captain'], [900, 'Keeper of peaceful memories'], [1083, 'Star of peace who remembered all 1,083 soldiers']],
@@ -1449,7 +1452,82 @@
     return CARDS;
   }
   const cardCount = () => allCards().filter((c) => player && player.cards && player.cards[c.id]).length;
-  // 국기 이모지는 윈도우 컴퓨터에서 'KR'처럼 글자로 보여서, CSS로 그린 작은 국기를 써요
+  /* ---------- 🏳️ 국기: 공식 규격대로 한 곳에서 그려요 ----------
+     국기 이모지는 윈도우 컴퓨터에서 'KR'처럼 글자로 보여서 직접 그려요.
+     같은 모양 정보로 ① 화면용 그림(SVG) ② 인증서 캔버스 그림을 둘 다 만들어요.
+     모양: ['rect', x, y, w, h, 색] · ['circle', cx, cy, r, 색] · ['path', d, 색] · ['rot', 각도, [모양…]] */
+  const FLAGS = (() => {
+    // 태극기 (가로:세로 = 3:2, 태극 지름 = 세로의 1/2, 괘 막대 두께 = 태극 지름의 1/12)
+    const KR_RED = '#cd2e3a', KR_BLUE = '#0047a0';
+    const bars = (ys, broken) => ys.flatMap((y, k) => (broken[k]
+      ? [['rect', -6, y - 1, 5.5, 2, '#000'], ['rect', 0.5, y - 1, 5.5, 2, '#000']]
+      : [['rect', -6, y - 1, 12, 2, '#000']]));
+    const kr = { vb: [-36, -24, 72, 48], s: [
+      ['rect', -36, -24, 72, 48, '#fff'],
+      ['rot', -56.3099325, [
+        ...bars([-25, -22, -19], [0, 0, 0]),   // 건 ☰ (왼쪽 위)
+        ...bars([19, 22, 25], [1, 1, 1]),      // 곤 ☷ (오른쪽 아래)
+        ['circle', 0, 0, 12, KR_RED],
+        ['path', 'M0-12A6 6 0 0 0 0 0A6 6 0 0 1 0 12A12 12 0 0 1 0-12Z', KR_BLUE]
+      ]],
+      ['rot', -123.6900675, [
+        ...bars([-25, -22, -19], [0, 1, 0]),   // 리 ☲ (왼쪽 아래)
+        ...bars([19, 22, 25], [1, 0, 1])       // 감 ☵ (오른쪽 위)
+      ]]
+    ] };
+    // 콜롬비아 (3:2, 노랑 1/2 · 파랑 1/4 · 빨강 1/4)
+    const co = { vb: [0, 0, 6, 4], s: [['rect', 0, 0, 6, 2, '#fcd116'], ['rect', 0, 2, 6, 1, '#003893'], ['rect', 0, 3, 6, 1, '#ce1126']] };
+    // 미국 성조기 (세로 1 : 가로 1.9, 줄 13개, 파란 칸 7줄 높이 × 0.76, 별 50개)
+    const H = 3900, star = (cx, cy, R) => Array.from({ length: 10 }, (_, k) => {
+      const r = k % 2 ? R * 0.381966 : R, a = -Math.PI / 2 + (k * Math.PI) / 5;
+      return `${k ? 'L' : 'M'}${(cx + r * Math.cos(a)).toFixed(1)} ${(cy + r * Math.sin(a)).toFixed(1)}`;
+    }).join('') + 'Z';
+    let stars = '';
+    for (let row = 0; row < 9; row++) for (let col = row % 2; col < 11; col += 2) stars += star(0.063 * H * (col + 1), 0.054 * H * (row + 1), 0.0308 * H);
+    const us = { vb: [0, 0, 1.9 * H, H], s: [
+      ['rect', 0, 0, 1.9 * H, H, '#fff'],
+      ...Array.from({ length: 7 }, (_, k) => ['rect', 0, (2 * k * H) / 13, 1.9 * H, H / 13, '#b22234']),
+      ['rect', 0, 0, 0.76 * H, (7 * H) / 13, '#3c3b6e'],
+      ['path', stars, '#fff']
+    ] };
+    return { kr, co, us };
+  })();
+  function flagSvg(code) {
+    const f = FLAGS[code];
+    if (!f) return '';
+    const draw = (list) => list.map((s) => (s[0] === 'rect' ? `<rect x="${s[1]}" y="${s[2]}" width="${s[3]}" height="${s[4]}" fill="${s[5]}"/>`
+      : s[0] === 'circle' ? `<circle cx="${s[1]}" cy="${s[2]}" r="${s[3]}" fill="${s[4]}"/>`
+        : s[0] === 'path' ? `<path d="${s[1]}" fill="${s[2]}"/>`
+          : `<g transform="rotate(${s[1]})">${draw(s[2])}</g>`)).join('');
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${f.vb.join(' ')}">${draw(f.s)}</svg>`;
+  }
+  const flagUrl = (code) => `url("data:image/svg+xml,${encodeURIComponent(flagSvg(code))}")`;
+  const flagRatio = (code) => (FLAGS[code] ? FLAGS[code].vb[2] / FLAGS[code].vb[3] : 1.5);
+  // 캔버스(인증서)에 같은 모양으로: 칸 안에 비율 그대로 가운데 맞춰 그려요
+  function paintFlag(ctx, code, x, y, w, h) {
+    const f = FLAGS[code];
+    if (!f) return;
+    const [vx, vy, vw, vh] = f.vb, k = Math.min(w / vw, h / vh);
+    const draw = (list) => list.forEach((s) => {
+      if (s[0] === 'rect') { ctx.fillStyle = s[5]; ctx.fillRect(s[1], s[2], s[3], s[4]); }
+      else if (s[0] === 'circle') { ctx.fillStyle = s[4]; ctx.beginPath(); ctx.arc(s[1], s[2], s[3], 0, Math.PI * 2); ctx.fill(); }
+      else if (s[0] === 'path') { ctx.fillStyle = s[2]; ctx.fill(new Path2D(s[1])); }
+      else { ctx.save(); ctx.rotate((s[1] * Math.PI) / 180); draw(s[2]); ctx.restore(); }
+    });
+    ctx.save();
+    ctx.translate(x + (w - vw * k) / 2, y + (h - vh * k) / 2);
+    ctx.scale(k, k);
+    ctx.translate(-vx, -vy);
+    draw(f.s);
+    ctx.restore();
+  }
+  // 화면의 국기 그림을 CSS로 한 번에 (작은 국기 · 사진 없는 카드 바탕)
+  (() => {
+    const st = document.createElement('style');
+    st.textContent = Object.keys(FLAGS).map((c) => `.mf-${c}{background:${flagUrl(c)} center/100% 100% no-repeat;width:${Math.round(16 * flagRatio(c))}px}
+.hcard-photo.ph.flag-${c}{background:${flagUrl(c)} center/contain no-repeat content-box,var(--flag-ground,#eef1f7)}`).join('\n');
+    document.head.appendChild(st);
+  })();
   const flagHtml = (code) => `<span class="mini-flag mf-${code}" aria-hidden="true"></span>`;
 
   function unlockCard(id) {
@@ -1527,19 +1605,17 @@
   const whereName = (c) => (c.where === 'ending' ? T('albumEnding') : `${c.where + 1}. ${L(STATIONS[c.where].name)}`);
 
   // 카드 앞면 (도감 칸 · 카드 얻을 때 뜨는 창)
-  // 카드 사진 (사진이 없거나 못 불러오면 그 나라 국기 바탕에 이름 첫 글자)
+  // 카드 사진 (사진이 없거나 못 불러오면 그 나라 국기를 가리는 것 없이 그대로)
   function photoHtml(c, big) {
-    const initial = Array.from(L(c.name).replace(/^(ARC|USS)\s+/, ''))[0] || '?';
-    const mark = esc(c.unit ? (c.id === 'padilla' ? '⚓' : '🎖️') : initial);
     return c.img
-      ? `<span class="hcard-photo flag-${esc(c.flag)}${big ? ' big' : ''}" data-mark="${mark}"><img src="${esc(c.img)}" alt="${esc(L(c.name))}" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('ph');this.parentNode.innerHTML='&lt;b class=&quot;ph-i&quot;&gt;'+this.parentNode.dataset.mark+'&lt;/b&gt;'"></span>`
-      : `<span class="hcard-photo ph flag-${esc(c.flag)}${big ? ' big' : ''}" aria-hidden="true"><b class="ph-i">${mark}</b></span>`;
+      ? `<span class="hcard-photo flag-${esc(c.flag)}${big ? ' big' : ''}"><img src="${esc(c.img)}" alt="${esc(L(c.name))}" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('ph');this.remove()"></span>`
+      : `<span class="hcard-photo ph flag-${esc(c.flag)}${big ? ' big' : ''}" aria-hidden="true"></span>`;
   }
   function cardHtml(c, open) {
     if (!open) {
-      // 아직 못 모은 카드: 이름은 보이지만 흑백 + 자물쇠
-      return `<div class="hcard locked flag-${esc(c.flag)}">${photoHtml(c)}<span class="hcard-lock">🔒</span>
-        <b>${esc(L(c.name))}</b><small>${esc(T('albumWhere', whereName(c)))}</small></div>`;
+      // 아직 못 모은 카드: 사진·이름·국기 없이 카드 뒷면만 (어디서 만나는지만 알려 줘요)
+      return `<div class="hcard locked" aria-label="${esc(T('lockedCard'))}"><span class="hcard-back" aria-hidden="true"><span class="hb-lock">🔒</span></span>
+        <b class="hb-title">${esc(T('lockedCard'))}</b><small>${esc(T('albumWhere', whereName(c)))}</small></div>`;
     }
     return `<button type="button" class="hcard flag-${esc(c.flag)}${c.unit ? ' unit' : ''}${isGold(c) ? ' gold' : ''}" data-card="${esc(c.id)}">
       ${photoHtml(c)}
@@ -2544,7 +2620,10 @@
       const st = isDone(s.id) ? 'done' : i === ni ? 'next' : 'locked';
       const [ax, ay] = ATLAS_POS[s.id] || [s.map.x, s.map.y];
       svgEl('line', { x1: s.map.x, y1: s.map.y, x2: ax, y2: ay, class: `atlas-line ${st}` }, lines);
-      const thumbs = cardsAt(i).map((c) => `<i class="ab-thumb flag-${esc(c.flag)} ${hasCard(c) ? 'own' : ''}" title="${esc(L(c.name))}">${c.img ? `<img src="${esc(c.img)}" alt="" loading="lazy" referrerpolicy="no-referrer">` : esc(Array.from(L(c.name))[0] || '?')}</i>`).join('');
+      // 못 모은 카드는 사진·이름 없이 🔒 만
+      const thumbs = cardsAt(i).map((c) => (hasCard(c)
+        ? `<i class="ab-thumb flag-${esc(c.flag)} own" title="${esc(L(c.name))}">${c.img ? `<img src="${esc(c.img)}" alt="" loading="lazy" referrerpolicy="no-referrer">` : esc(Array.from(L(c.name))[0] || '?')}</i>`
+        : `<i class="ab-thumb" title="${esc(T('lockedCard'))}">🔒</i>`)).join('');
       const ops = s.inset === 'incheon' ? `<span class="ab-ops">📍 ${(window.INCHEON_OPS || []).length}</span>` : '';
       return `<button type="button" class="ab ${st} ch-${chapterOf(s)}" data-si="${i}" style="--bob:${(i % 4) * 0.35}s" title="${esc(L(s.name))}">
         <span class="ab-head"><span class="ab-num">${st === 'done' ? '✓' : i + 1}</span><span class="ab-name">${esc(L(s.short || s.name))}</span></span>
@@ -3685,21 +3764,7 @@
   function drawFlag(ctx, flag, x, y, w, h) {
     ctx.save();
     roundRect(ctx, x, y, w, h, 3); ctx.clip();
-    if (flag === 'co') {
-      ctx.fillStyle = '#fcd116'; ctx.fillRect(x, y, w, h / 2);
-      ctx.fillStyle = '#003893'; ctx.fillRect(x, y + h / 2, w, h / 4);
-      ctx.fillStyle = '#ce1126'; ctx.fillRect(x, y + h * 0.75, w, h / 4);
-    } else if (flag === 'kr') {
-      ctx.fillStyle = '#fff'; ctx.fillRect(x, y, w, h);
-      const cx = x + w / 2, cy = y + h / 2, r = h * 0.25;
-      ctx.fillStyle = '#cd2e3a'; ctx.beginPath(); ctx.arc(cx, cy, r, Math.PI, 0); ctx.fill();
-      ctx.fillStyle = '#0047a0'; ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI); ctx.fill();
-      ctx.fillStyle = '#14224b';
-      [[-1, -1], [1, 1], [1, -1], [-1, 1]].forEach(([sx, sy]) => ctx.fillRect(cx + sx * w * 0.33 - 2, cy + sy * h * 0.3 - 3, 4, 6));
-    } else {
-      for (let i = 0; i < 7; i++) { ctx.fillStyle = i % 2 ? '#fff' : '#b22234'; ctx.fillRect(x, y + (i * h) / 7, w, h / 7 + 0.5); }
-      ctx.fillStyle = '#3c3b6e'; ctx.fillRect(x, y, w * 0.42, h * 0.54);
-    }
+    paintFlag(ctx, flag, x, y, w, h); // 공식 규격 국기 (FLAGS)
     ctx.restore();
     ctx.strokeStyle = 'rgba(20,34,75,.25)'; ctx.lineWidth = 1; roundRect(ctx, x, y, w, h, 3); ctx.stroke();
   }
@@ -3840,7 +3905,7 @@
     // 국적 (국기 + 이름)
     ry += 12;
     let fx = RX;
-    if (D.nation) { drawFlag(ctx, D.nation, RX, ry, 39, 26); fx += 50; }
+    if (FLAGS[D.nation]) { drawFlag(ctx, D.nation, RX, ry, 39, 26); fx += 50; } // 그 밖의 나라는 국기 없이 이름만
     ctx.fillStyle = '#14224b'; ctx.font = bodyFont(22, true);
     ctx.fillText(D.nationName || '🌏 ─', fx, ry + 21, RW - (fx - RX));
     ry += 26 + 14;
@@ -3879,7 +3944,7 @@
     ctx.strokeStyle = gold ? '#e0b12a' : hero ? { co: '#fcd116', kr: '#0047a0', us: '#3c3b6e' }[hero.flag] || '#0047a0' : '#d9e2ef';
     ctx.lineWidth = 4; roundRect(ctx, RX, ry, RW, hh, 18); ctx.stroke();
     if (hero) {
-      drawFlag(ctx, hero.flag, RX + 18, ry + 20, 48, 32);
+      drawFlag(ctx, hero.flag, RX + 18, ry + 20, Math.round(32 * flagRatio(hero.flag)), 32);
       if (gold) { ctx.fillStyle = '#f5c542'; roundRect(ctx, RX + RW - 118, ry + 20, 100, 30, 15); ctx.fill(); ctx.fillStyle = '#3a2a00'; ctx.font = bodyFont(15, true); ctx.textAlign = 'center'; ctx.fillText(T('goldLabel'), RX + RW - 68, ry + 41, 92); ctx.textAlign = 'left'; }
       ctx.fillStyle = '#14224b'; ctx.font = certFont(34, true);
       const nl = wrapLines(ctx, L(hero.name), RW - 36, 2);
