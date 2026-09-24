@@ -380,6 +380,13 @@
       rosterGuide: '학생의 "나의 여정 코드"만 넣어도 진행 정도와 퀴즈 결과가 보여요. 닉네임은 선택이에요. 코드 여러 개를 한꺼번에 붙여 넣어도 돼요 (띄어쓰기·줄바꿈으로 구분).',
       rosterAdd: '명단에 추가',
       reportNote: '📡 게임 진행 상황(닉네임·여정 코드·별)은 선생님께 자동으로 전달돼요. 실명이나 학교는 보내지 않아요.',
+      feedbackBtn: '게임 소감 남기기 (설문)',
+      surveyNext: '📝 마지막: 소감 남기기 ▶',
+      surveyTitle: '마지막 한 걸음: 게임 소감 남기기',
+      surveyLead: '평화의 지도 여행은 어땠나요? 솔직한 소감을 남겨 주면 더 좋은 게임을 만드는 데 쓸게요. (약 3분)',
+      surveyHelp: '설문이 잘 안 보이면',
+      surveyOpen: '새 창에서 설문 열기',
+      surveyThanks: '끝까지 함께해 줘서 고마워요. 오늘 기억한 이야기를 내일의 평화로 이어 가요!',
       rosterNickOpt: '닉네임 (선택)',
       rosterCodePh: 'ABC-123 (여러 개 가능)',
       rosterBad: (list) => `잘못된 코드는 빼고 넣었어요: ${list}`,
@@ -774,6 +781,13 @@
       rosterGuide: 'Basta con el "código de viaje" de cada estudiante para ver su progreso y sus resultados. El apodo es opcional. Puedes pegar varios códigos a la vez (separados por espacios o saltos de línea).',
       rosterAdd: 'Añadir',
       reportNote: '📡 Tu progreso (apodo, código de viaje y estrellas) se envía automáticamente a los docentes. No se envían tu nombre real ni tu colegio.',
+      feedbackBtn: 'Deja tu opinión sobre el juego (encuesta)',
+      surveyNext: '📝 Último paso: tu opinión ▶',
+      surveyTitle: 'Último paso: tu opinión sobre el juego',
+      surveyLead: '¿Qué te pareció el viaje por el Mapa de la Paz? Tus respuestas sinceras nos ayudarán a mejorar el juego. (Unos 3 minutos)',
+      surveyHelp: 'Si la encuesta no se ve bien,',
+      surveyOpen: 'ábrela en otra pestaña',
+      surveyThanks: 'Gracias por llegar hasta el final. Llevemos lo que recordamos hoy hacia la paz del mañana.',
       rosterNickOpt: 'Apodo (opcional)',
       rosterCodePh: 'ABC-123 (uno o varios)',
       rosterBad: (list) => `Se omitieron los códigos no válidos: ${list}`,
@@ -1168,6 +1182,13 @@
       rosterGuide: "A student's journey code alone shows their progress and quiz results. The nickname is optional. You can paste several codes at once (separated by spaces or new lines).",
       rosterAdd: 'Add to list',
       reportNote: '📡 Your progress (nickname, journey code and stars) is sent to your teacher automatically. Your real name and school are not sent.',
+      feedbackBtn: 'Share your feedback (survey)',
+      surveyNext: '📝 Last step: your feedback ▶',
+      surveyTitle: 'Last step: share your feedback',
+      surveyLead: 'How was your journey on the Map of Peace? Your honest answers will help us make the game better. (About 3 minutes)',
+      surveyHelp: "If the survey doesn't show well,",
+      surveyOpen: 'open it in a new tab',
+      surveyThanks: "Thank you for coming all the way. Let's carry what we remembered today into tomorrow's peace!",
       rosterNickOpt: 'Nickname (optional)',
       rosterCodePh: 'ABC-123 (one or more)',
       rosterBad: (list) => `Invalid codes were skipped: ${list}`,
@@ -2702,6 +2723,10 @@
   };
   const fmtSec = (x) => `${Math.floor(x / 60)}:${String(Math.floor(x % 60)).padStart(2, '0')}`;
   const lenSec = (len) => { const [m, s2] = String(len || '0:0').split(':').map(Number); return m * 60 + (s2 || 0); };
+  // ✂️ 영상의 보여 줄 부분만: data.js 에서 from: '0:30', to: '2:10' 처럼 적으면 그 구간만 재생되고, 그만큼만 보면 돼요
+  const clipOf = (v) => ({ from: v.from ? lenSec(v.from) : 0, to: v.to ? lenSec(v.to) : 0 });
+  const clipLen = (v) => { const c = clipOf(v); return (c.to || lenSec(v.len)) - c.from; };
+  const clipLabel = (v) => (v.from || v.to ? `${v.from || '0:00'}~${v.to || v.len || ''} (${fmtSec(clipLen(v))})` : (v.len || ''));
   let ytApi = null;
   function loadYtApi() {
     if (ytApi) return ytApi;
@@ -2735,7 +2760,8 @@
   }
   function trackWatch(v, frame) {
     stopWatch();
-    const w = cur.watch = { yt: v.yt, sec: 0, last: null, dur: lenSec(v.len), timer: null };
+    const cut = clipOf(v);
+    const w = cur.watch = { yt: v.yt, sec: 0, last: null, dur: clipLen(v), timer: null };
     loadYtApi().then((YT) => {
       if (!cur || cur.watch !== w) return;
       const p = new YT.Player(frame, { events: { onError: () => watchDone(v, 'error') } });
@@ -2748,7 +2774,7 @@
         else if (Date.now() - t0 > 20000) { watchDone(v, 'blocked'); return; }
         try {
           const d = p.getDuration && p.getDuration();
-          if (d > 0) w.dur = d;
+          if (d > 0) w.dur = (cut.to && cut.to < d ? cut.to : d) - cut.from; // 보여 줄 부분만 (from~to)
           const t = p.getCurrentTime ? p.getCurrentTime() : 0;
           const playing = p.getPlayerState && p.getPlayerState() === 1;
           if (playing && w.last != null) { const dt = t - w.last; if (dt > 0 && dt < 2.5) w.sec += dt; } // 건너뛰기(큰 점프)는 안 세요
@@ -2906,11 +2932,11 @@
     // 🔒 꼭 볼 영상 안내: 지금 보는 영상이 그 영상이면 진행 막대, 아니면 그 영상으로 가는 버튼
     const gate = !must ? '' : must.yt === v.yt
       ? `<div class="watch-gate" id="watchGate" role="status">🔒 ${esc(T('watchNeed'))}
-          <span class="watch-bar"><i id="watchFill"></i></span><b id="watchTime">0:00 / ${esc(v.len || '')}</b></div>`
+          <span class="watch-bar"><i id="watchFill"></i></span><b id="watchTime">0:00 / ${esc(fmtSec(clipLen(v)))}</b></div>`
       : `<div class="watch-gate" id="watchGate" role="status">🔒 ${esc(T('watchOther', L(must.title)))}
           <button type="button" class="btn btn-sm btn-blue" id="watchGo">${esc(T('watchGo'))}</button></div>`;
     // 🔗 링크 모드: 유튜브를 새 탭으로 열고, 영상 길이만큼 시간이 지나면 [다 봤어요]가 눌려요
-    const ccq = (v.lang || 'ko') !== lang ? `&cc_load_policy=1&cc_lang_pref=${lang}&hl=${lang}` : '';
+    const ccq = ((v.lang || 'ko') !== lang ? `&cc_load_policy=1&cc_lang_pref=${lang}&hl=${lang}` : '') + (clipOf(v).from ? `&t=${clipOf(v).from}s` : '');
     const sbGate = !must ? '' : must.yt === v.yt
       ? `<div class="watch-gate" id="watchGate" role="status">🔒 ${esc(T('watchNeedLink'))}
           <button type="button" class="btn btn-sm btn-go" id="watchDoneBtn" disabled>${esc(T('watchDoneBtn'))}</button><b id="watchTime"></b></div>`
@@ -2929,7 +2955,7 @@
       ${box}
       <div class="v-meta">
         <b>${esc(L(v.title))}</b>
-        <span>${esc(lang === 'ko' ? (v.by || '') : (CHANNEL_NAMES[v.by] || v.by || ''))}${v.len ? ` · ${esc(v.len)}` : ''}${(must && must.yt === v.yt) || SANDBOX ? '' : ` · <a href="https://www.youtube.com/watch?v=${esc(v.yt)}" target="_blank" rel="noopener">${esc(T('onYoutube'))}</a>`}</span>
+        <span>${esc(lang === 'ko' ? (v.by || '') : (CHANNEL_NAMES[v.by] || v.by || ''))}${v.len ? ` · ${esc(clipLabel(v))}` : ''}${(must && must.yt === v.yt) || SANDBOX ? '' : ` · <a href="https://www.youtube.com/watch?v=${esc(v.yt)}" target="_blank" rel="noopener">${esc(T('onYoutube'))}</a>`}</span>
         ${credit}
         ${v.long ? `<small class="v-long">⏱ ${esc(T('videoLong'))}</small>` : ''}
       </div>
@@ -2937,7 +2963,7 @@
         <div class="v-list">${list.map((x, k) => `
           <button type="button" data-k="${k}" aria-pressed="${k === cur.video}">
             ${SANDBOX ? '<i class="v-ico" aria-hidden="true">▶</i>' : `<img src="https://i.ytimg.com/vi/${esc(x.yt)}/mqdefault.jpg" alt="" loading="lazy">`}
-            <span>${x.req && CONFIG.requireVideos !== false ? `<em class="v-must">${esc(T('watchBadge'))}</em>` : ''}${esc(L(x.title))}${x.len ? ` <small class="v-len">${esc(x.len)}</small>` : ''}${x.group ? `<small>🎒 ${esc(T('videoGroup', x.group))}</small>` : ''}</span>
+            <span>${x.req && CONFIG.requireVideos !== false ? `<em class="v-must">${esc(T('watchBadge'))}</em>` : ''}${esc(L(x.title))}${x.len ? ` <small class="v-len">${esc(clipLabel(x))}</small>` : ''}${x.group ? `<small>🎒 ${esc(T('videoGroup', x.group))}</small>` : ''}</span>
           </button>`).join('')}</div>` : must ? '' : `<p class="skip-hint">${esc(T('videoOptional'))}</p>`}`;
   }
   function bindVideo() {
@@ -2951,7 +2977,11 @@
       const must = mustWatch(cur.s);
       const track = must && must.yt === box.dataset.yt;
       const api = track ? `&enablejsapi=1&origin=${encodeURIComponent(location.origin)}` : '';
-      box.innerHTML = `<iframe id="ytFrame" src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(box.dataset.yt)}?autoplay=1&rel=0&playsinline=1&hl=${lang}${cc}${api}" title="video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+      // ✂️ 보여 줄 부분만 (from~to)
+      const cv = videosOf(cur.s).find((x) => x.yt === box.dataset.yt) || {};
+      const cut = clipOf(cv);
+      const range = `${cut.from ? `&start=${cut.from}` : ''}${cut.to ? `&end=${cut.to}` : ''}`;
+      box.innerHTML = `<iframe id="ytFrame" src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(box.dataset.yt)}?autoplay=1&rel=0&playsinline=1&hl=${lang}${cc}${api}${range}" title="video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
       if (track) trackWatch(must, $('ytFrame'));
     });
     document.querySelectorAll('.v-list button').forEach((b) => b.addEventListener('click', () => { cur.video = +b.dataset.k; renderStep(); }));
@@ -2966,7 +2996,7 @@
     const must = mustWatch(cur.s);
     const btn = $('watchDoneBtn');
     if (!must || !btn) return;
-    const need = Math.max(30, Math.round(lenSec(must.len) * 0.9)) * 1000;
+    const need = Math.max(30, Math.round(clipLen(must) * 0.9)) * 1000;
     // 영상을 연 시각은 기록에 저장해요 — 작전 지점을 닫았다 다시 열거나,
     // 태블릿이 유튜브 앱에서 돌아오며 페이지를 새로 불러와도 기다린 시간이 그대로 이어져요
     player.linkOpened = player.linkOpened || {};
@@ -3513,7 +3543,8 @@
      엔딩 — 내 예상 vs 참전용사의 진짜 답 (질문 하나씩)
      ===================================================================== */
   const QIDS = Object.keys(QUESTIONS);
-  const END_STEPS = ['intro', ...QIDS, 'more', 'finish'];
+  // 엔딩: 시작 → 질문 5개(진짜 답) → 더 알아보기 → 인증서 → 📝 소감 설문 (게임의 맨 마지막)
+  const END_STEPS = ['intro', ...QIDS, 'more', 'finish', ...(CONFIG.feedbackForms ? ['survey'] : [])];
   let endStep = 0;
   const endVet = {}; // 질문별로 지금 보고 있는 참전용사 (답이 두 분일 때)
 
@@ -4023,7 +4054,7 @@
     };
     lockCert();
     const first = ['certName', 'certSchool', 'certPledge'].find((id) => !$(id).value.trim());
-    if (first) setTimeout(() => $(first).focus({ preventScroll: true }), 300);
+    if (first) setTimeout(() => { if ($(first)) $(first).focus({ preventScroll: true }); }, 300); // (그새 다음 화면으로 넘어갔으면 건너뛰기)
     let typing;
     const onEdit = () => {
       lockCert();
@@ -4165,7 +4196,19 @@
           <ul class="works">${window.GROUP_WORKS.map((w) => `<li><a href="${esc(w.url)}" target="_blank" rel="noopener">${esc(L(w.name))} ↗</a></li>`).join('')}</ul>` : ''}
         ${CONFIG.padletUrl ? `<a class="btn btn-ghost" href="${esc(CONFIG.padletUrl)}" target="_blank" rel="noopener">${esc(T('padletTitle'))} ↗</a>` : ''}`;
     } else if (step === 'finish') {
-      html = `${certHtml()}
+      html = certHtml();
+    } else if (step === 'survey') {
+      // 📝 마지막 한 걸음: 게임 안에서 바로 쓰는 소감 설문 (화면 언어에 맞는 설문지)
+      const fb = (CONFIG.feedbackForms || {})[lang] || (CONFIG.feedbackForms || {}).ko;
+      html = `<div class="survey">
+          <h2 class="end-h2">📝 ${esc(T('surveyTitle'))}</h2>
+          <p class="end-lead">${esc(T('surveyLead'))}</p>
+          ${SANDBOX
+            ? `<a class="btn btn-go feedback-btn" href="${esc(fb)}" target="_blank" rel="noopener">📝 ${esc(T('feedbackBtn'))} ↗</a>`
+            : `<div class="survey-frame"><iframe src="${esc(fb)}?embedded=true" title="${esc(T('surveyTitle'))}" loading="lazy">…</iframe></div>
+               <p class="t-help">${esc(T('surveyHelp'))} <a href="${esc(fb)}" target="_blank" rel="noopener">${esc(T('surveyOpen'))} ↗</a></p>`}
+          <p class="survey-thanks">🕊️ ${esc(T('surveyThanks'))}</p>
+        </div>
         <div class="t-buttons end-buttons">
           ${previewMode ? '' : `<button id="endCode" class="btn btn-blue" type="button">${esc(T('showCodeBtn'))}</button>`}
           <button id="endMap" class="btn btn-ghost" type="button">${esc(T('toMapBtn'))}</button>
@@ -4195,8 +4238,8 @@
 
     $('endDots').innerHTML = END_STEPS.map((x, k) => `<i class="${k === endStep ? 'on' : ''}${QUESTIONS[x] ? ' q' : ''}"></i>`).join('');
     $('endPrev').textContent = endStep === 0 ? T('toMapBtn') : T('prev');
-    $('endNext').textContent = step === 'intro' ? T('endStart') : T('next');
-    $('endNext').hidden = step === 'finish';
+    $('endNext').textContent = step === 'intro' ? T('endStart') : step === 'finish' ? T('surveyNext') : T('next');
+    $('endNext').hidden = endStep === END_STEPS.length - 1; // 맨 마지막 화면에서는 [다음]이 없어요
   }
 
   $('endNext').addEventListener('click', () => {

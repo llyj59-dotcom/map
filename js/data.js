@@ -36,9 +36,21 @@ window.MAP_CONFIG = {
   //   보내는 것: 닉네임 · 여정 코드 · 진행(몇 곳) · 별 · 카드 · 언어 · 어떤 순간인지(시작/작전 지점 통과/문 열기/인증서)
   //   보내지 않는 것: 본명·학교(인증서 칸), 방명록 글
   //   action: 설문지의 formResponse 주소, entries: 질문마다의 entry 번호 ('' 이면 꺼져 있어요)
+  //   설문지: "M.A.P. to Tomorrow 진행 기록 (자동)" — 선생님 구글 드라이브 (llyj59@gmail.com)
+  //   ⚠️ 설문지의 질문을 지우거나 순서·종류를 바꾸면 연결이 끊길 수 있어요 (질문 이름만 바꾸는 건 괜찮아요)
   progressForm: {
-    action: '',
-    entries: { nick: '', code: '', progress: '', stars: '', cards: '', lang: '', event: '' }
+    action: 'https://docs.google.com/forms/d/e/1FAIpQLSfcuhgoBemuDflcCqFPr-I3CqlszpytusgaMw3RqGUKBeVj-Q/formResponse',
+    entries: {
+      nick: 'entry.171130984', code: 'entry.803654098', progress: 'entry.391296851', stars: 'entry.1055213013',
+      cards: 'entry.2036435516', lang: 'entry.1750093903', event: 'entry.92413745'
+    }
+  },
+
+  // 📝 게임 소감 설문 (언어별) — 엔딩 마지막 화면의 [게임 소감 남기기] 버튼이 화면 언어에 맞는 설문을 열어요
+  feedbackForms: {
+    ko: 'https://docs.google.com/forms/d/e/1FAIpQLSdLZD-VciD7mV06bXqmokETqC1jQ_8hcrMh2-k0IhnTeM6DQA/viewform',
+    en: 'https://docs.google.com/forms/d/e/1FAIpQLSezOqEe5eBlJzE3OHMglVylJiaopMqYn9kFU2uedIY7T1ie3A/viewform',
+    es: 'https://docs.google.com/forms/d/e/1FAIpQLSdKVD2iXuLPz51P_o_adn1dXdXBar_FA4inhQAGh-iF1WQiGg/viewform'
   },
 
   // 🎬 꼭 볼 영상: true면 작전 지점마다 표시된 짧은 영상(req) 하나를 끝까지 봐야 [다음]으로 넘어가요.

@@ -1028,6 +1028,12 @@ button.hcard:hover { transform: translateY(-3px) rotate(-1deg); box-shadow: 0 8p
 }
 .cert-form input:focus, .cert-form select:focus { border-color: var(--co-blue); outline: none; }
 .cert-step { color: var(--co-red); }
+.survey { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+.survey .end-lead { max-width: 34em; margin: 0; }
+.survey-frame { width: min(100%, 680px); height: min(75vh, 900px); border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 8px 24px rgba(20,34,75,.15); }
+.survey-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+.survey-thanks { margin: 4px 0 0; font-family: var(--display); font-size: 18px; color: var(--co-blue); }
+.feedback-btn { display: flex; width: min(100%, 540px); margin: 14px auto 0; justify-content: center; text-decoration: none; }
 .cert-school, .cert-nation { display: flex; flex-wrap: wrap; gap: 6px; min-width: 0; }
 .cert-school input, .cert-nation select, .cert-nation input { flex: 1 1 160px; }
 .chip-fill {
