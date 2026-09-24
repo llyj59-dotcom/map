@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#fffdf5"/>
+  <clipPath id="c"><rect width="512" height="512" rx="112"/></clipPath>
+  <g clip-path="url(#c)">
+    <rect y="0" width="512" height="64" fill="#fcd116"/>
+    <rect y="64" width="512" height="32" fill="#003893"/>
+    <rect y="96" width="512" height="32" fill="#ce1126"/>
+    <rect y="464" width="256" height="48" fill="#cd2e3a"/>
+    <rect x="256" y="464" width="256" height="48" fill="#0047a0"/>
+  </g>
+  <text x="256" y="330" text-anchor="middle" font-family="'Baloo 2','Arial Rounded MT Bold',Arial,sans-serif" font-weight="800" font-size="150" fill="#003893">M.A.P.</text>
+  <text x="256" y="410" text-anchor="middle" font-family="'Baloo 2','Arial Rounded MT Bold',Arial,sans-serif" font-weight="800" font-size="58" fill="#ce1126">to Tomorrow</text>
+</svg>

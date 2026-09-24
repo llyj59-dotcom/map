@@ -1,0 +1,14 @@
+{
+  "name": "M.A.P. to Tomorrow",
+  "short_name": "M.A.P.",
+  "description": "Memory · Across · Peace — an interactive map game about the Colombia Battalion and the Korean War",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#eaf4fb",
+  "theme_color": "#003893",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>M.A.P. to Tomorrow</title>
+  <meta name="description" content="M.A.P. to Tomorrow (Memory · Across · Peace) — 인천상륙작전부터 콜롬비아대대의 전투, 서해와 인천 참전기념비까지 따라가며 평화의 지도를 완성하는 인터랙티브 지도 게임">
+  <!-- 웹앱: 휴대폰·태블릿에서 '홈 화면에 추가'하면 앱처럼 열려요 -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#003893">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="M.A.P.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Baloo+2:wght@600;800&family=Noto+Sans+KR:wght@400;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- 상단 바 -->
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-flags" aria-hidden="true"><i class="f-y"></i><i class="f-b"></i><i class="f-r"></i></span>
+        <div>
+          <div class="brand-title">M.A.P. to Tomorrow</div>
+          <div class="brand-sub" data-i18n="subtitle"></div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <button id="starChip" class="chip chip-star" type="button" hidden aria-live="polite"></button>
+        <button id="cardChip" class="chip chip-card" type="button" hidden></button>
+        <button id="codeChip" class="chip chip-code" type="button" hidden></button>
+        <button id="playerChip" class="chip" type="button" hidden></button>
+        <div class="lang-wrap">
+          <button id="langBtn" class="lang-btn" type="button" hidden aria-haspopup="true" aria-expanded="false" aria-label="언어 / Idioma / Language"></button>
+          <div id="langMenu" class="lang-menu" role="menu" hidden></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 시작 화면 -->
+    <section id="startScreen" class="screen start" hidden>
+      <div class="start-inner">
+        <p class="narration" id="narration"></p>
+        <h1 class="start-title"><span class="st-map">M.A.P.</span> <span class="st-to">to Tomorrow</span></h1>
+        <p class="start-tagline" data-i18n="startTagline"></p>
+        <!-- M.A.P.의 뜻 -->
+        <div class="map-letters" id="mapLetters"></div>
+        <p class="start-lead" data-i18n="startLead"></p>
+
+        <!-- 이 기기에 저장된 여정 -->
+        <div id="savedBox" class="saved-box" hidden>
+          <h2 class="box-title" data-i18n="savedTitle"></h2>
+          <ul id="savedList" class="saved-list"></ul>
+        </div>
+
+        <!-- 새로 시작: 닉네임 -->
+        <form id="startForm" class="start-form" autocomplete="off" novalidate>
+          <h2 class="box-title" data-i18n="newTitle"></h2>
+          <label for="nickInput" data-i18n="nickLabel"></label>
+          <input id="nickInput" name="nickname" type="text" autocomplete="off" spellcheck="false">
+          <p class="nick-guide" data-i18n="nickGuide"></p>
+          <p class="nick-guide report-note" id="reportNote" data-i18n="reportNote" hidden></p>
+          <button id="startBtn" class="btn btn-go" type="submit" data-i18n="startBtn"></button>
+          <p id="startError" class="form-error" role="alert"></p>
+        </form>
+
+        <!-- 이 게임을 만든 까닭 (M.A.P. to Tomorrow의 취지) -->
+        <details class="fold about-fold" id="aboutFold" open>
+          <summary data-i18n="aboutTitle"></summary>
+          <div class="fold-body" id="aboutBody"></div>
+        </details>
+
+        <!-- 코드로 이어 하기 -->
+        <details class="fold" id="resumeFold">
+          <summary data-i18n="resumeTitle"></summary>
+          <form id="resumeForm" class="fold-body" autocomplete="off" novalidate>
+            <p class="fold-help" data-i18n="resumeHelp"></p>
+            <label for="resumeNick" data-i18n="nickLabel"></label>
+            <input id="resumeNick" type="text" autocomplete="off" spellcheck="false">
+            <label for="resumeCode" data-i18n="codeLabel"></label>
+            <input id="resumeCode" type="text" class="code-input" maxlength="9" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="ABC-123">
+            <button class="btn btn-blue" type="submit" data-i18n="resumeBtn"></button>
+            <p id="resumeError" class="form-error" role="alert"></p>
+          </form>
+        </details>
+
+        <!-- 선생님용 -->
+        <details class="fold fold-quiet" id="teacherFold">
+          <summary data-i18n="teacherOpen"></summary>
+          <form id="teacherLogin" class="fold-body" autocomplete="off" novalidate>
+            <p class="fold-help" data-i18n="teacherGuide"></p>
+            <label for="teacherPw" data-i18n="password"></label>
+            <input id="teacherPw" type="password" autocomplete="off">
+            <button class="btn btn-ghost" type="submit" data-i18n="enter"></button>
+            <p id="teacherError" class="form-error" role="alert"></p>
+          </form>
+        </details>
+      </div>
+    </section>
+
+    <!-- 선생님 화면 -->
+    <section id="teacherScreen" class="screen teacher" hidden>
+      <div class="teacher-inner">
+        <button id="teacherBack" class="text-link" type="button" data-i18n="back"></button>
+        <h1 class="t-title" data-i18n="teacherTitle"></h1>
+        <p class="t-help" data-i18n="teacherNote"></p>
+
+        <!-- 학생 결과 모으기 -->
+        <section class="t-card">
+          <h2 data-i18n="rosterTitle"></h2>
+          <p class="t-help" data-i18n="rosterGuide"></p>
+          <form id="rosterForm" class="roster-form" autocomplete="off" novalidate>
+            <input id="rosterNick" type="text" aria-label="닉네임" spellcheck="false">
+            <input id="rosterCode" type="text" class="code-input" aria-label="코드" autocapitalize="characters" spellcheck="false" placeholder="ABC-123">
+            <button class="btn btn-blue" type="submit" data-i18n="rosterAdd"></button>
+          </form>
+          <p id="rosterError" class="form-error" role="alert"></p>
+          <div id="rosterTable" class="table-wrap"></div>
+          <div class="t-buttons">
+            <button id="rosterCopy" class="btn btn-ghost" type="button" data-i18n="rosterCopy"></button>
+            <button id="rosterClear" class="btn btn-ghost" type="button" data-i18n="rosterClear"></button>
+          </div>
+        </section>
+
+        <!-- 이 기기의 방명록 -->
+        <section class="t-card">
+          <h2 data-i18n="deviceGbTitle"></h2>
+          <p class="t-help" data-i18n="deviceGbGuide"></p>
+          <div class="t-buttons">
+            <button id="gbOpenT" class="btn btn-ghost" type="button" data-i18n="gbOpen"></button>
+            <button id="gbCopyAll" class="btn btn-ghost" type="button" data-i18n="gbCopyAll"></button>
+            <button id="gbDownload" class="btn btn-ghost" type="button" data-i18n="gbDownload"></button>
+          </div>
+        </section>
+
+        <!-- 작전 지점 미리 보기 -->
+        <section class="t-card">
+          <h2 data-i18n="previewTitle"></h2>
+          <p class="t-help" data-i18n="previewGuide"></p>
+          <div id="previewList" class="preview-list"></div>
+        </section>
+
+        <!-- 기록 관리 -->
+        <section class="t-card">
+          <h2 data-i18n="manageTitle"></h2>
+          <p id="savedCount" class="t-help"></p>
+          <div class="t-buttons">
+            <button id="clearDevice" class="btn btn-ghost" type="button" data-i18n="clearDevice"></button>
+          </div>
+          <div id="confirmBox" class="confirm-box" hidden></div>
+          <details class="fold fold-quiet">
+            <summary data-i18n="pwMakeTitle"></summary>
+            <div class="fold-body">
+              <label for="pwNew" data-i18n="pwNew"></label>
+              <input id="pwNew" type="text" autocomplete="off">
+              <p id="pwHashOut" class="t-help"></p>
+            </div>
+          </details>
+        </section>
+      </div>
+    </section>
+
+    <!-- 게임 화면: 지도 + 여정 패널 -->
+    <main id="gameScreen" class="screen game" hidden>
+      <div class="map-wrap">
+        <svg id="map" viewBox="30 330 560 670" role="img" aria-label="지도"></svg>
+        <svg id="world" class="world" viewBox="0 0 800 304" role="img" aria-label="세계 지도" hidden></svg>
+        <svg id="incheon" class="world" viewBox="70 200 660 600" role="img" aria-label="인천 지도" hidden></svg>
+        <!-- 전쟁 흐름 설명 (① 작전 지점 타임라인에서만) -->
+        <div id="mapCaption" class="map-caption" hidden></div>
+        <button id="mapHome" class="map-home" type="button" hidden aria-label="지도 전체 보기">⤢</button>
+        <!-- 🗺️ 전체 지도: 장소마다 전투 이름과 영웅 카드가 떠 있어요 -->
+        <button id="atlasBtn" class="atlas-btn" type="button"></button>
+        <div id="atlasLayer" class="atlas-layer" hidden></div>
+        <p id="atlasHint" class="atlas-hint" hidden></p>
+        <!-- 길잡이 비둘기 '파스(Paz)' -->
+        <div id="guide" class="guide" aria-live="polite">
+          <span class="guide-bird" aria-hidden="true">🕊️</span>
+          <p id="guideText" class="guide-bubble"></p>
+        </div>
+      </div>
+
+      <!-- 작전 지점 카드: 지도 옆(휴대폰은 지도 아래)에 붙어서 열려요 -->
+      <section id="stationSheet" class="station-panel" hidden aria-labelledby="sheetTitle">
+        <header class="sheet-head">
+          <span id="sheetNum" class="sheet-num"></span>
+          <h2 id="sheetTitle"></h2>
+          <button id="sheetClose" class="icon-btn" type="button" aria-label="닫기">✕</button>
+        </header>
+        <div id="sheetBody" class="sheet-body"></div>
+        <footer class="sheet-foot">
+          <button id="prevBtn" class="btn btn-ghost" type="button"></button>
+          <div id="dots" class="dots" aria-hidden="true"></div>
+          <button id="nextBtn" class="btn btn-go" type="button"></button>
+        </footer>
+      </section>
+
+      <aside class="panel">
+        <div id="nowCard" class="now-card"></div>
+        <button id="guestbookBtn" class="btn btn-ghost gb-btn" type="button" data-i18n="guestbookBtn"></button>
+        <div class="progress-row">
+          <span data-i18n="pieceLabel"></span>
+          <span id="progressText" class="progress-text"></span>
+        </div>
+        <div class="progress-bar"><i id="progressFill"></i></div>
+        <!-- 🔑 열쇠 낱말: 지도 조각 2개마다 하나씩 → 6개로 '내일의 문'을 열어요 -->
+        <div id="keyRow" class="key-row" hidden></div>
+        <div id="stationList" class="station-list"></div>
+      </aside>
+    </main>
+
+    <!-- 엔딩: 내 예상 vs 진짜 답 -->
+    <section id="endingScreen" class="screen ending" hidden>
+      <div class="ending-scroll">
+        <div id="endingBody" class="ending-inner"></div>
+      </div>
+      <footer class="ending-foot">
+        <button id="endPrev" class="btn btn-ghost" type="button"></button>
+        <div id="endDots" class="dots" aria-hidden="true"></div>
+        <button id="endNext" class="btn btn-go" type="button"></button>
+      </footer>
+    </section>
+
+    <!-- 방명록 / 나의 여정 코드 (작은 창) -->
+    <section id="infoSheet" class="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="infoTitle">
+      <div class="sheet-inner">
+        <header class="sheet-head">
+          <span id="infoIcon" class="sheet-num gb-icon" aria-hidden="true"></span>
+          <h2 id="infoTitle"></h2>
+          <button id="infoClose" class="icon-btn" type="button" aria-label="닫기">✕</button>
+        </header>
+        <div id="infoBody" class="sheet-body"></div>
+      </div>
+    </section>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/data-en.js"></script>
+  <script src="js/filter.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
