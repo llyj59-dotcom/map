@@ -206,7 +206,7 @@ window.STATIONS = [
         { ko: '아르헨티나', es: 'Argentina' }
       ],
       answer: 1,
-      explain: { ko: '콜롬비아! 그래서 한국과 콜롬비아는 "피를 나눈 형제 나라"라고 불려요.', es: 'Colombia. Por eso a Corea y Colombia se les llama "naciones hermanas de sangre".' }
+      explain: { ko: '콜롬비아! 콜롬비아는 남아메리카 대륙 북쪽 끝에 있는 나라예요. 그래서 한국과 콜롬비아는 "피를 나눈 형제 나라"라고 불려요.', es: 'Colombia. Por eso a Corea y Colombia se les llama "naciones hermanas de sangre".' }
     },
     questions: ['q1']
   },

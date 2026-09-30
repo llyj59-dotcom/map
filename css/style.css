@@ -804,13 +804,17 @@ button.hcard:hover { transform: translateY(-3px) rotate(-1deg); box-shadow: 0 8p
 .m-night.dim { opacity: .45; }
 .m-night.dawn { opacity: 0; }
 .m-lh { cursor: pointer; }
+.m-lh:focus:not(:focus-visible), .m-buoy:focus:not(:focus-visible) { outline: none; }
 .m-lh-glow { fill: rgba(255,255,255,.15); stroke: #fff; stroke-width: 3; stroke-dasharray: 5 5; animation: focusPulse 1.4s ease-in-out infinite; }
 .m-lh.lit .m-lh-glow { fill: rgba(252,209,22,.55); stroke: var(--co-yellow); stroke-dasharray: none; r: 60; transition: r .6s ease; }
 .m-lh-icon { font-size: 30px; }
 .m-buoys { opacity: 0; pointer-events: none; transition: opacity .6s ease; }
 .m-buoys.show { opacity: 1; pointer-events: auto; }
 .m-buoy { cursor: pointer; }
-.m-buoy-hit { fill: rgba(255,255,255,.01); }
+.m-lh.lit { pointer-events: none; } /* 불이 켜진 뒤 등대 빛이 부표 누르기를 가로막지 않게 */
+.m-buoy-ring { fill: rgba(255,255,255,.08); stroke: rgba(255,255,255,.55); stroke-width: 2; }
+.m-buoy.hint .m-buoy-ring { stroke: var(--co-yellow); stroke-width: 4; animation: focusPulse 1s ease-in-out infinite; }
+.m-buoy.done .m-buoy-ring { stroke: var(--ok); }
 .m-buoy-dot { fill: #ff8a00; stroke: #fff; stroke-width: 3; }
 .m-buoy.done .m-buoy-dot { fill: var(--ok); }
 .m-buoy.bad .m-buoy-dot { animation: buoyBad .6s ease; }

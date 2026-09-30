@@ -66,7 +66,7 @@
         quiz: {
           q: 'Which was the only Latin American country to send combat troops to the Korean War?',
           options: ['Brazil', 'Colombia', 'Mexico', 'Argentina'],
-          explain: 'Colombia! That is why Korea and Colombia call each other "brother nations".'
+          explain: 'Colombia! It is a country at the northern tip of South America. That is why Korea and Colombia call each other "brother nations".'
         }
       },
       busan: {

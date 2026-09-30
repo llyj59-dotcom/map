@@ -215,7 +215,8 @@
       goldHowEnding: '질문 카드 5장에 모두 예상 답을 남기면 금빛이 돼요.',
       retryBtn: '다시 도전하기',
       gRetry: '다시 도전! 이번엔 첫 번째에 맞혀 보자. 모자랐던 별만큼 더 받을 수 있어.',
-      watchNeed: '▶를 눌러 이 영상을 끝까지 봐야 [다음]으로 넘어갈 수 있어요. (빨리 감기로 건너뛴 부분은 본 시간에 들어가지 않아요)',
+      watchNeed: '▶를 눌러 이 영상을 끝까지 봐야 [다음]으로 넘어갈 수 있어요. (빨리 감기·배속으로 본 부분은 본 시간에 들어가지 않아요)',
+      watchRate: '영상은 보통 속도(1배)로만 볼 수 있어요. 배속은 본 시간에 들어가지 않아요.',
       watchNeedLink: '꼭 볼 영상이에요. 아래를 눌러 유튜브에서 끝까지 본 뒤, 돌아와서 [다 봤어요]를 눌러 주세요. (영상 길이만큼 시간이 지나야 눌려요)',
       watchDoneBtn: '✅ 다 봤어요',
       watchLeft: (t) => `${t} 뒤에 누를 수 있어요`,
@@ -621,7 +622,8 @@
       goldHowEnding: 'Deja tu respuesta en las 5 tarjetas de pregunta y se volverá dorada.',
       retryBtn: 'Intentar de nuevo',
       gRetry: 'Otra oportunidad: si aciertas al primer intento, recuperas las estrellas que te faltaron.',
-      watchNeed: 'Mira este video hasta el final para pasar a [Siguiente]. (Adelantar no cuenta)',
+      watchNeed: 'Mira este video hasta el final para pasar a [Siguiente]. (Adelantar o acelerar no cuenta)',
+      watchRate: 'El video solo cuenta a velocidad normal (1x).',
       watchNeedLink: 'Video obligatorio: ábrelo en YouTube, míralo completo y vuelve para pulsar [Ya lo vi]. (El botón se activa cuando pasa el tiempo del video)',
       watchDoneBtn: '✅ Ya lo vi',
       watchLeft: (t) => `Disponible en ${t}`,
@@ -1027,7 +1029,8 @@
       goldHowEnding: 'Leave your guess on all 5 question cards and it turns gold.',
       retryBtn: 'Try again',
       gRetry: "Try again! Get it right on the first try this time. You'll earn the stars you missed.",
-      watchNeed: 'Watch this video to the end to unlock [Next]. (Skipping ahead does not count.)',
+      watchNeed: 'Watch this video to the end to unlock [Next]. (Skipping ahead or speeding up does not count.)',
+      watchRate: 'Videos only count at normal speed (1x).',
       watchNeedLink: 'Must-see video: open it on YouTube, watch it to the end, then come back and press [I watched it]. (The button unlocks after the length of the video.)',
       watchDoneBtn: '✅ I watched it',
       watchLeft: (t) => `Available in ${t}`,
@@ -2864,7 +2867,11 @@
     const w = cur.watch = { yt: v.yt, sec: 0, last: null, dur: clipLen(v), timer: null };
     loadYtApi().then((YT) => {
       if (!cur || cur.watch !== w) return;
-      const p = new YT.Player(frame, { events: { onError: () => watchDone(v, 'error') } });
+      // ⏩ 배속 막기: 1배가 아닌 속도로 바꾸면 바로 1배로 되돌리고 알려 줘요
+      const p = new YT.Player(frame, { events: {
+        onError: () => watchDone(v, 'error'),
+        onPlaybackRateChange: (e) => { if (e.data !== 1) { try { p.setPlaybackRate(1); } catch (err) { /* 무시 */ } say(T('watchRate')); toast(T('watchRate')); } }
+      } });
       const t0 = Date.now();
       w.timer = setInterval(() => {
         if (!cur || cur.watch !== w || !document.body.contains(frame)) { clearInterval(w.timer); return; }
@@ -2876,9 +2883,15 @@
           const d = p.getDuration && p.getDuration();
           if (d > 0) w.dur = (cut.to && cut.to < d ? cut.to : d) - cut.from; // 보여 줄 부분만 (from~to)
           const t = p.getCurrentTime ? p.getCurrentTime() : 0;
-          const playing = p.getPlayerState && p.getPlayerState() === 1;
-          if (playing && w.last != null) { const dt = t - w.last; if (dt > 0 && dt < 2.5) w.sec += dt; } // 건너뛰기(큰 점프)는 안 세요
-          w.last = t;
+          const now = Date.now();
+          // 본 시간 = 영상이 실제로 앞으로 간 만큼, 단 '진짜로 흐른 시간'을 넘지 않게
+          //  → 2배속·건너뛰기로는 빨리 못 채워요. 전체화면에서 재생 상태를 못 읽는 기기도 영상이 앞으로 가면 세요.
+          if (w.last != null && w.lastAt) {
+            const dt = t - w.last, real = (now - w.lastAt) / 1000;
+            if (dt > 0) w.sec += Math.min(dt, real);
+          }
+          w.last = t; w.lastAt = now;
+          if (p.getPlaybackRate && p.getPlaybackRate() > 1) { try { p.setPlaybackRate(1); } catch (err) { /* 무시 */ } }
           const fill = $('watchFill'), time = $('watchTime');
           if (fill && w.dur) fill.style.width = `${Math.min(100, (w.sec / w.dur) * 100)}%`;
           if (time && w.dur) time.textContent = `${fmtSec(w.sec)} / ${fmtSec(w.dur)}`;
@@ -3203,19 +3216,38 @@
     cur.mission = { lit: false, next: 0, done: false };
     const g = svgEl('g', { id: 'mission' }, svg);
     svgEl('rect', { x: 0, y: 150, width: 800, height: 700, class: 'm-night', id: 'mNight' }, g);
+    const [lx, ly] = IP(...PALMI);
+    const lh = svgEl('g', { class: 'm-lh', transform: `translate(${lx} ${ly})`, role: 'button', tabindex: 0, id: 'mLh' }, g);
+    // 부표는 등대 '위'에 그려요 (불 켜진 등대 빛이 2·3번째 부표를 덮어 눌리지 않던 문제)
     const buoyG = svgEl('g', { id: 'mBuoys', class: 'm-buoys' }, g);
     const all = BUOYS.map((c, i) => ({ c, i, ok: true })).concat(DECOYS.map((c) => ({ c, ok: false })));
     all.forEach((b) => {
       const [x, y] = IP(...b.c);
       const bg = svgEl('g', { class: 'm-buoy', transform: `translate(${x} ${y})`, role: 'button', tabindex: 0 }, buoyG);
-      svgEl('circle', { r: 16, class: 'm-buoy-hit' }, bg);
-      svgEl('circle', { r: 9, class: 'm-buoy-dot' }, bg);
-      const hit = () => tapBuoy(b, bg);
-      bg.addEventListener('click', hit);
-      bg.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); hit(); } });
+      if (b.ok) bg.dataset.i = b.i;
+      svgEl('circle', { r: 22, class: 'm-buoy-ring' }, bg);
+      svgEl('circle', { r: 11, class: 'm-buoy-dot' }, bg);
+      b.el = bg; b.x = x; b.y = y;
+      bg.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tapBuoy(b, bg); } });
     });
-    const [lx, ly] = IP(...PALMI);
-    const lh = svgEl('g', { class: 'm-lh', transform: `translate(${lx} ${ly})`, role: 'button', tabindex: 0, id: 'mLh' }, g);
+    cur.mission.all = all;
+    // 👆 손가락으로 대충 눌러도 되게: 누른 곳에서 가장 가까운 부표(화면에서 36px 안)를 골라요 — 타이밍·정확히 맞히기 없이
+    const onTap = (e) => {
+      const m = cur && cur.mission;
+      if (!m || m.done) return;
+      const ctm = svg.getScreenCTM();
+      if (!ctm) return;
+      const pt = svg.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY;
+      const p = pt.matrixTransform(ctm.inverse());
+      const reach = 36 / ctm.a; // 화면 36px → 지도 단위
+      if (!m.lit) { if (Math.hypot(p.x - lx, p.y - ly) <= Math.max(reach, 30)) light(); return; }
+      const near = all.filter((b) => !b.el.classList.contains('done'))
+        .map((b) => ({ b, d: Math.hypot(p.x - b.x, p.y - b.y) }))
+        .filter((o) => o.d <= reach).sort((a, b2) => a.d - b2.d)[0];
+      if (near) tapBuoy(near.b, near.b.el);
+    };
+    svg.addEventListener('click', onTap);
+    cur.mission.off = () => svg.removeEventListener('click', onTap);
     svgEl('circle', { r: 26, class: 'm-lh-glow' }, lh);
     svgEl('text', { 'text-anchor': 'middle', 'dominant-baseline': 'central', class: 'm-lh-icon' }, lh).textContent = '🗼';
     const light = () => {
@@ -3227,7 +3259,7 @@
       $('mStep1').classList.add('ok');
       $('mStatus').textContent = `💡 ${T('mLit')} (${T('mProgress', 0, BUOYS.length)})`;
     };
-    lh.addEventListener('click', light);
+    // 누르기는 지도 전체의 onTap 한 곳에서만 (등대를 누른 그 한 번이 옆 부표까지 누르지 않게)
     lh.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); light(); } });
     const [sx, sy] = IP(...SHIP_START);
     const ship = svgEl('g', { class: 'm-ship', id: 'mShip' }, g);
@@ -3246,12 +3278,14 @@
       el.classList.remove('bad'); void el.getBoundingClientRect(); el.classList.add('bad');
       $('mStatus').textContent = `⚠️ ${T('mDecoy')}`;
       say(T('mDecoy'));
+      hintBuoy(m);
       return;
     }
     if (b.i !== m.next) {
-      if (b.i > m.next) { $('mStatus').textContent = `🤔 ${T('mOrder')}`; say(T('mOrder')); }
+      if (b.i > m.next) { $('mStatus').textContent = `🤔 ${T('mOrder')}`; say(T('mOrder')); hintBuoy(m); }
       return;
     }
+    el.classList.remove('hint');
     el.classList.add('done');
     m.next++;
     const [x, y] = IP(...b.c);
@@ -3271,7 +3305,12 @@
       }, 700);
     }
   }
+  // 한 번 헷갈리면 다음에 누를 부표가 반짝여요 (순서를 몰라 막히지 않게)
+  function hintBuoy(m) {
+    (m.all || []).forEach((x) => x.el.classList.toggle('hint', x.ok && x.i === m.next));
+  }
   function endMission() {
+    if (cur && cur.mission && cur.mission.off) cur.mission.off();
     const old = $('mission'); if (old) old.remove();
     const svg = $('incheon'); if (svg) svg.classList.remove('missioning');
     if (cur) cur.mission = null;
