@@ -73,6 +73,13 @@ button { cursor: pointer; }
   background: var(--co-blue); color: #fff; font-weight: 700; font-size: 15px;
 }
 
+/* 🔊 소리 켜기/끄기 */
+.sound-btn {
+  border: 2px solid var(--line, #d6deec); border-radius: 999px; min-height: 44px; min-width: 44px; padding: 0 10px;
+  background: var(--paper, #fff); font-size: 20px; line-height: 1; cursor: pointer; flex: none;
+}
+.sound-btn[aria-pressed="false"] { opacity: .65; }
+
 /* ---------- 공통 버튼 ---------- */
 .btn {
   border: 0; border-radius: 999px; min-height: 56px; padding: 10px 24px;
@@ -1103,6 +1110,7 @@ button.hcard:hover { transform: translateY(-3px) rotate(-1deg); box-shadow: 0 8p
   .topbar { padding-inline: 10px; gap: 6px; }
   .topbar-right { gap: 4px; }
   .chip, .lang-btn { padding: 4px 9px; font-size: 13px; min-height: 40px; }
+  .sound-btn { min-width: 34px; min-height: 40px; padding: 0 4px; font-size: 16px; border-width: 1px; }
   .lb-long { display: none; }
   .lb-globe { display: none; } /* 휴대폰: 윗줄이 넘치지 않게 KO/ES/EN 글자만 */
   .topbar-right { flex: 0 1 auto; min-width: 0; justify-content: flex-end; }

@@ -58,6 +58,23 @@ window.MAP_CONFIG = {
   //   선생님이 큰 화면으로 같이 볼 때는 false로 바꾸세요.
   requireVideos: true,
 
+  // 🎵 배경음악 — 우리 반 모둠이 만든 mp3를 audio 폴더에 넣고 파일 이름을 적어요 (비워 두면 배경음악 없이, 효과음만)
+  //    영상이 나올 때는 저절로 멈추고, 오른쪽 위 🔊 버튼으로 끌 수 있어요
+  bgm: {
+    start: '',     // 1모둠: 시작 화면·지도·① 6·25 전쟁·② 인천 (예: 'audio/1_start.mp3')
+    mission: '',   // 2모둠: 팔미도 등대 미션 (밤바다)
+    voyage: '',    // 3모둠: ③ 콜롬비아 → ④ 부산 항해
+    battle: '',    // 4모둠: ⑤ 흑운토령 ~ ⑩ 판문점 (고지의 기억)
+    ending: '',    // 5모둠: ⑪ 서해 · ⑫ 기념비 · 내일의 문 · 엔딩
+    volume: 0.35   // 배경음악 크기 (0~1) — 글을 읽는 데 방해되지 않게 작게
+  },
+  // 작전 지점마다 어떤 배경음악을 틀지 (적지 않은 곳은 start)
+  bgmStations: {
+    colombia: 'voyage', busan: 'voyage',
+    heukun: 'battle', geumseong: 'battle', hill400: 'battle', hill180: 'battle', oldbaldy: 'battle', armistice: 'battle',
+    westsea: 'ending', memorial: 'ending'
+  },
+
   // 선생님 모드 비밀번호를 뒤섞은 값 (지금 비밀번호: admin)
   // 바꾸려면: 선생님 모드 → 맨 아래 "비밀번호 바꾸기 값 만들기"에서 새 값을 만들어 여기에 붙여 넣으세요.
   teacherPasswordHash: '845wqw',

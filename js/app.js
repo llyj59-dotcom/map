@@ -217,6 +217,8 @@
       gRetry: '다시 도전! 이번엔 첫 번째에 맞혀 보자. 모자랐던 별만큼 더 받을 수 있어.',
       watchNeed: '▶를 눌러 이 영상을 끝까지 봐야 [다음]으로 넘어갈 수 있어요. (빨리 감기·배속으로 본 부분은 본 시간에 들어가지 않아요)',
       watchRate: '영상은 보통 속도(1배)로만 볼 수 있어요. 배속은 본 시간에 들어가지 않아요.',
+      soundOn: '소리 켜짐 (누르면 꺼져요)',
+      soundOff: '소리 꺼짐 (누르면 켜져요)',
       watchNeedLink: '꼭 볼 영상이에요. 아래를 눌러 유튜브에서 끝까지 본 뒤, 돌아와서 [다 봤어요]를 눌러 주세요. (영상 길이만큼 시간이 지나야 눌려요)',
       watchDoneBtn: '✅ 다 봤어요',
       watchLeft: (t) => `${t} 뒤에 누를 수 있어요`,
@@ -624,6 +626,8 @@
       gRetry: 'Otra oportunidad: si aciertas al primer intento, recuperas las estrellas que te faltaron.',
       watchNeed: 'Mira este video hasta el final para pasar a [Siguiente]. (Adelantar o acelerar no cuenta)',
       watchRate: 'El video solo cuenta a velocidad normal (1x).',
+      soundOn: 'Sonido activado (toca para silenciar)',
+      soundOff: 'Sonido desactivado (toca para activar)',
       watchNeedLink: 'Video obligatorio: ábrelo en YouTube, míralo completo y vuelve para pulsar [Ya lo vi]. (El botón se activa cuando pasa el tiempo del video)',
       watchDoneBtn: '✅ Ya lo vi',
       watchLeft: (t) => `Disponible en ${t}`,
@@ -1031,6 +1035,8 @@
       gRetry: "Try again! Get it right on the first try this time. You'll earn the stars you missed.",
       watchNeed: 'Watch this video to the end to unlock [Next]. (Skipping ahead or speeding up does not count.)',
       watchRate: 'Videos only count at normal speed (1x).',
+      soundOn: 'Sound on (tap to mute)',
+      soundOff: 'Sound off (tap to turn on)',
       watchNeedLink: 'Must-see video: open it on YouTube, watch it to the end, then come back and press [I watched it]. (The button unlocks after the length of the video.)',
       watchDoneBtn: '✅ I watched it',
       watchLeft: (t) => `Available in ${t}`,
@@ -1400,6 +1406,139 @@
     $('starChip').hidden = !inGame;
     $('cardChip').hidden = !inGame;
     if (inGame) updateChips();
+    renderSoundBtn();
+    bgmSync();
+  }
+
+  /* =====================================================================
+     🔊 소리: 효과음은 파일 없이 브라우저가 직접 만들어요 (Web Audio)
+     배경음악은 우리 반 모둠이 만든 mp3 (data.js 의 MAP_CONFIG.bgm) — 비어 있으면 조용히
+     오른쪽 위 🔊 버튼으로 끄고 켜요 (이 기기에 기억)
+     ===================================================================== */
+  const Sound = (() => {
+    let ac = null, master = null;
+    const isOn = () => store.sound !== false;
+    function ctx() {
+      if (!ac) {
+        const C = window.AudioContext || window.webkitAudioContext;
+        if (!C) return null;
+        ac = new C();
+        master = ac.createGain(); master.gain.value = 0.3; master.connect(ac.destination);
+      }
+      if (ac.state === 'suspended') ac.resume().catch(() => {});
+      return ac;
+    }
+    // 음 하나: 주파수 f (→ f2 로 미끄러지기), 시작 t, 길이 d
+    function tone(t, f, d, { type = 'sine', gain = 0.5, f2 = null, attack = 0.01 } = {}) {
+      const o = ac.createOscillator(), g = ac.createGain();
+      o.type = type; o.frequency.setValueAtTime(f, t);
+      if (f2) o.frequency.exponentialRampToValueAtTime(f2, t + d);
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(gain, t + attack);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + d);
+      o.connect(g); g.connect(master); o.start(t); o.stop(t + d + 0.05);
+    }
+    // 맑은 종소리 (배음 두 개)
+    const bell = (t, f, d = 0.6, gain = 0.35) => { tone(t, f, d, { gain }); tone(t, f * 2.01, d * 0.6, { gain: gain * 0.3 }); };
+    // 탁 치는 소리 (짧은 잡음)
+    function thump(t, d = 0.18, gain = 0.6, freq = 900) {
+      const len = Math.floor(ac.sampleRate * d), buf = ac.createBuffer(1, len, ac.sampleRate), ch = buf.getChannelData(0);
+      for (let i = 0; i < len; i++) ch[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3);
+      const src = ac.createBufferSource(), lp = ac.createBiquadFilter(), g = ac.createGain();
+      src.buffer = buf; lp.type = 'lowpass'; lp.frequency.value = freq; g.gain.value = gain;
+      src.connect(lp); lp.connect(g); g.connect(master); src.start(t);
+    }
+    const NOTE = { C4: 261.6, E4: 329.6, G4: 392, A4: 440, C5: 523.3, D5: 587.3, E5: 659.3, G5: 784, A5: 880, C6: 1046.5, E6: 1318.5 };
+    // 효과음 모음 — 기억하고 기리는 게임이라, 크고 요란하지 않게 맑고 짧게
+    const FX = {
+      right: (t) => { bell(t, NOTE.C5, 0.35); bell(t + 0.09, NOTE.E5, 0.35); bell(t + 0.18, NOTE.G5, 0.55); },
+      retry: (t) => { tone(t, NOTE.E4, 0.22, { type: 'triangle', gain: 0.3 }); },
+      wrong: (t) => { tone(t, NOTE.E4, 0.2, { type: 'triangle', gain: 0.32 }); tone(t + 0.16, NOTE.C4, 0.35, { type: 'triangle', gain: 0.3 }); },
+      star: (t) => { bell(t + 0.2, NOTE.E6, 0.25, 0.18); bell(t + 0.27, NOTE.C6 * 1.5, 0.3, 0.14); },
+      card: (t) => { [NOTE.C5, NOTE.E5, NOTE.G5, NOTE.C6].forEach((f, k) => bell(t + k * 0.08, f, 0.45, 0.28)); },
+      gold: (t) => { [NOTE.C5, NOTE.E5, NOTE.G5, NOTE.C6, NOTE.E6].forEach((f, k) => bell(t + k * 0.07, f, 0.6, 0.28)); bell(t + 0.45, NOTE.G5 * 2, 0.9, 0.16); },
+      key: (t) => { bell(t, NOTE.A5, 1.1, 0.3); bell(t + 0.14, NOTE.E6, 1.2, 0.2); },
+      piece: (t) => { bell(t, NOTE.G4, 0.5, 0.25); bell(t + 0.12, NOTE.D5, 0.7, 0.25); },
+      lighthouse: (t) => { tone(t, 220, 0.9, { type: 'sine', gain: 0.28, f2: 880, attack: 0.25 }); bell(t + 0.7, NOTE.A5, 0.8, 0.22); },
+      buoy: (t) => { bell(t, NOTE.C6, 0.5, 0.3); },
+      decoy: (t) => { tone(t, 150, 0.16, { type: 'triangle', gain: 0.45 }); tone(t + 0.18, 130, 0.22, { type: 'triangle', gain: 0.4 }); },
+      fanfare: (t) => { [NOTE.G4, NOTE.C5, NOTE.E5].forEach((f, k) => tone(t + k * 0.13, f, 0.18, { type: 'triangle', gain: 0.3 })); [NOTE.C5, NOTE.E5, NOTE.G5].forEach((f) => tone(t + 0.42, f, 0.9, { type: 'triangle', gain: 0.22 })); },
+      horn: (t) => { tone(t, 110, 1.2, { type: 'sawtooth', gain: 0.12, attack: 0.15 }); tone(t, 165, 1.2, { type: 'sine', gain: 0.18, attack: 0.15 }); },
+      door: (t) => { tone(t, 98, 1.4, { type: 'sine', gain: 0.3, f2: 196, attack: 0.3 }); [NOTE.C5, NOTE.E5, NOTE.G5, NOTE.C6].forEach((f, k) => bell(t + 0.8 + k * 0.12, f, 1.0, 0.22)); },
+      stamp: (t) => { thump(t, 0.2, 0.9, 700); tone(t, 90, 0.18, { type: 'sine', gain: 0.5 }); }
+    };
+    function sfx(name) {
+      if (!isOn() || previewMode || !FX[name]) return;
+      try { const c = ctx(); if (c) FX[name](c.currentTime + 0.02); } catch (e) { /* 소리가 안 나도 게임은 그대로 */ }
+    }
+
+    // 🎵 배경음악 (장면마다: start · mission · voyage · battle · ending)
+    const BGM = CONFIG.bgm || {};
+    const music = new Audio();
+    music.loop = true; music.preload = 'none';
+    let scene = null, fade = 0;
+    const target = () => (isOn() && scene && BGM[scene] ? BGM[scene] : '');
+    function fadeTo(vol, done) {
+      clearInterval(fade);
+      fade = setInterval(() => {
+        const v = music.volume + (vol > music.volume ? 0.05 : -0.05);
+        if (Math.abs(vol - music.volume) <= 0.05) { music.volume = Math.max(0, Math.min(1, vol)); clearInterval(fade); if (done) done(); }
+        else music.volume = Math.max(0, Math.min(1, v));
+      }, 60);
+    }
+    function apply() {
+      const src = target();
+      const vol = BGM.volume != null ? BGM.volume : 0.35;
+      if (!src) { if (!music.paused) fadeTo(0, () => music.pause()); return; }
+      const same = music.getAttribute('data-src') === src;
+      if (same && !music.paused) { fadeTo(vol); return; }
+      const start = () => {
+        if (!same) { music.setAttribute('data-src', src); music.src = src; }
+        music.volume = 0;
+        music.play().then(() => fadeTo(vol)).catch(() => { /* 아직 화면을 누르기 전 — 누르면 다시 시도 */ });
+      };
+      if (!music.paused) fadeTo(0, () => { music.pause(); start(); }); else start();
+    }
+    function bgm(next) { if (next === scene) { if (music.paused && target()) apply(); return; } scene = next; apply(); }
+    // 브라우저는 화면을 한 번 누른 뒤에야 소리를 내요
+    document.addEventListener('pointerdown', () => { if (isOn()) { ctx(); if (music.paused && target()) apply(); } }, { passive: true });
+    function toggle() {
+      store.sound = !isOn();
+      save();
+      if (isOn()) { ctx(); apply(); sfx('buoy'); } else { clearInterval(fade); music.pause(); }
+      renderSoundBtn();
+    }
+    return { sfx, bgm, toggle, isOn };
+  })();
+  const sfx = (name) => Sound.sfx(name);
+  // 장면에 맞는 배경음악: 작전 지점마다 data.js 의 MAP_CONFIG.bgmStations 로 정해요
+  function bgmSync() {
+    if (!$('teacherScreen').hidden || previewMode) { Sound.bgm(null); return; }
+    if (!$('startScreen').hidden) { Sound.bgm('start'); return; }
+    if (!$('endingScreen').hidden) { Sound.bgm('ending'); return; }
+    if (cur) {
+      const st = cur.steps[cur.step];
+      if (st && st.type === 'video') { Sound.bgm(null); return; }       // 영상이 나올 땐 배경음악을 멈춰요
+      if (st && st.type === 'mission') { Sound.bgm('mission'); return; }
+      Sound.bgm(((CONFIG.bgmStations || {})[cur.s.id]) || 'start');
+      return;
+    }
+    Sound.bgm(player && player.keyDone ? 'ending' : 'start');
+  }
+  function renderSoundBtn() {
+    let b = $('soundBtn');
+    if (!b) {
+      b = document.createElement('button');
+      b.id = 'soundBtn'; b.type = 'button'; b.className = 'sound-btn';
+      b.addEventListener('click', () => Sound.toggle());
+      const wrap = document.querySelector('.topbar-right .lang-wrap');
+      wrap.parentNode.insertBefore(b, wrap);
+    }
+    const on = Sound.isOn();
+    b.textContent = on ? '🔊' : '🔇';
+    b.setAttribute('aria-pressed', String(on));
+    b.setAttribute('aria-label', T(on ? 'soundOn' : 'soundOff'));
+    b.title = T(on ? 'soundOn' : 'soundOff');
   }
 
   /* =====================================================================
@@ -1424,6 +1563,7 @@
     player.stars[key] = n;
     const gain = n - (old || 0);
     save();
+    sfx('star');
     updateChips();
     checkGold();
     const pop = document.createElement('span');
@@ -1599,6 +1739,7 @@
     pop.innerHTML = `<span class="card-pop-k">${item.gold ? `✨ ${esc(T('goldNew'))}` : `🎴 ${esc(T('newCard'))}`}</span>${cardHtml(c, true)}`;
     pop.addEventListener('click', () => pop.classList.add('out'));
     document.body.appendChild(pop);
+    sfx(item.gold ? 'gold' : 'card');
     say(item.gold ? T('gGold', L(c.name)) : T('gCard', L(c.name)));
     const wait = popQueue.length > 1 ? 1100 : 1800; // 여러 장이면 빠르게
     setTimeout(() => pop.classList.add('out'), wait);
@@ -1755,6 +1896,7 @@
       <div class="key-card"><b class="kt big">${esc(k.word)}</b><small>${esc(k.from)}</small><p>${esc(k.memo)}</p></div>`;
     pop.addEventListener('click', () => pop.classList.add('out'));
     document.body.appendChild(pop);
+    sfx('key');
     setTimeout(() => pop.classList.add('out'), 5200);
     setTimeout(() => pop.remove(), 5700);
   }
@@ -1806,6 +1948,8 @@
       if (ok) {
         player.keyDone = Date.now();
         save();
+        sfx('door');
+        Sound.bgm('ending');
         reportProgress('door');
         $('doorBox').classList.add('open');
         $('doorBox').innerHTML = `<div class="door-light" aria-hidden="true">🌅</div>
@@ -1818,6 +1962,7 @@
         return;
       }
       tries++;
+      sfx('wrong');
       $('doorMsg').textContent = T('doorWrong');
       $('doorBox').classList.remove('shake'); void $('doorBox').offsetWidth; $('doorBox').classList.add('shake');
       if (tries >= 1) $('doorHint').textContent = `💡 ${T('doorHint1')} ${T('doorHint2')}`;
@@ -2951,6 +3096,7 @@
     setWarPhase(null);
     const wasDone = cur && cur.completed;
     cur = null;
+    bgmSync();
     refreshGame(wasDone);
     requestAnimationFrame(() => flyTo(FULL.slice()));
     sayNext();
@@ -2960,6 +3106,7 @@
       const newKey = dc % 2 === 0 && keysFound(player) > 0; // 조각 2개마다 열쇠 낱말 하나
       const word = newKey ? foundWords(player)[keysFound(player) - 1] : '';
       toast(all ? T('mapComplete') : newKey ? `${T('piecePop')} ${T('keyPop', word)}` : T('piecePop'));
+      sfx(all ? 'fanfare' : 'piece');
       if (all) { say(`${T('gMapDone', N)} ${T('gDoorReady')}`); setTimeout(() => { if ($('stationSheet').hidden) enterAtlas(); }, 2600); } // 완성된 지도를 바로 보여 줘요
       else if (newKey) say(T('gKey', word, keysFound(player), KEY_N));
       if (newKey) {
@@ -3178,6 +3325,7 @@
     const fb = $('findFeedback');
     if (ok) {
       fd.done = true;
+      sfx('right');
       svgEl('circle', { cx: p.x, cy: p.y, r: 14, class: 'find-tap ok' }, layer);
       reveal();
       const full = RULES.find[fd.sid] || 0; // 38도선 38 · 부산 15 · 판문점 27 (두 번째에 찾으면 절반)
@@ -3186,6 +3334,7 @@
       say(T('gFindRight'));
     } else {
       fd.tries++;
+      sfx('wrong');
       const m = svgEl('g', { class: 'find-tap no', transform: `translate(${p.x} ${p.y})` }, layer);
       svgEl('path', { d: 'M-10 -10 L10 10 M10 -10 L-10 10' }, m);
       if (fd.tries >= 2) {
@@ -3253,6 +3402,7 @@
     const light = () => {
       if (cur.mission.lit) return;
       cur.mission.lit = true;
+      sfx('lighthouse');
       lh.classList.add('lit');
       $('mNight').classList.add('dim');
       buoyG.classList.add('show');
@@ -3277,6 +3427,7 @@
     if (!b.ok) {
       el.classList.remove('bad'); void el.getBoundingClientRect(); el.classList.add('bad');
       $('mStatus').textContent = `⚠️ ${T('mDecoy')}`;
+      sfx('decoy');
       say(T('mDecoy'));
       hintBuoy(m);
       return;
@@ -3287,6 +3438,7 @@
     }
     el.classList.remove('hint');
     el.classList.add('done');
+    sfx('buoy');
     m.next++;
     const [x, y] = IP(...b.c);
     $('mShip').style.transform = `translate(${x}px, ${y}px)`;
@@ -3300,6 +3452,7 @@
         $('mNight').classList.add('dawn');
         $('mStep2').classList.add('ok');
         $('mStatus').textContent = `🎉 ${T('mSuccess')}`;
+        sfx('fanfare');
         giveStars('mission', RULES.mission, $('mStatus')); // 함대 261척
         say(T('gMissionDone'));
       }, 700);
@@ -3412,6 +3565,8 @@
     $('nextBtn').textContent = st.type === 'done' ? T('toMap') : T('next');
     // 🎬 꼭 볼 영상을 끝까지 봐야 [다음]이 열려요
     $('nextBtn').disabled = st.type === 'video' && !!mustWatch(s);
+    bgmSync();
+    if (step === 0 && s.id === 'busan') sfx('horn'); // 부산항 도착 뱃고동
   }
 
   function markDone(id) {
@@ -3469,6 +3624,7 @@
       const firstWrong = cur.qwrong[s.id];
       if (!correct && firstWrong === undefined && q.type !== 'ox') {
         cur.qwrong[s.id] = v;
+        sfx('retry');
         b.classList.add('wrong'); b.disabled = true;
         $('quizFeedback').innerHTML = `<div class="feedback bad"><b>${esc(T('quizRetry'))}</b></div>`;
         say(T('gQuizRetry'));
@@ -3477,6 +3633,7 @@
       quizStore()[s.id] = v;
       if (cur.retryQuiz && correct && !previewMode) player.quiz[s.id] = v; // 다시 도전해서 맞히면 기록도 '맞음'으로
       save();
+      sfx(correct ? 'right' : 'wrong');
       if (correct) giveStars(`quiz:${s.id}`, RULES.quiz[firstWrong === undefined ? 0 : 1], b);
       show(v);
     }));
@@ -4170,6 +4327,9 @@
       const bad = ['certName', 'certSchool', 'certNationOther', 'certPledge'].map((id) => [id, textProblem($(id).value)]).filter(([, p]) => p);
       ['certName', 'certSchool', 'certNationOther', 'certPledge'].forEach((id) => $(id).classList.toggle('is-error', bad.some(([b]) => b === id)));
       const ok = certInfoOk(player) && !bad.length;
+      // 칸을 다 채워 인증서가 완성되는 순간 '쾅' 도장 소리 (다시 잠겼다 풀릴 때만)
+      const certBtn = document.querySelector('.cert-need');
+      if (ok && certBtn && certBtn.disabled) sfx('stamp');
       document.querySelectorAll('.cert-need').forEach((b) => { b.disabled = !ok; });
       $('certLock').hidden = ok;
       $('certLock').textContent = `✍️ ${bad.length ? bad[0][1] : T('certNeedPledge')}`;
