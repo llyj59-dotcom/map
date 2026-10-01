@@ -251,7 +251,7 @@ window.STATIONS = [
           ko: '콜롬비아대대를 처음 이끈 대장이에요. 1,000명이 넘는 군인과 함께 한국 땅에 처음 발을 디뎠어요.',
           es: 'Primer comandante del batallón de infantería colombiano, estuvo al mando de más de 1.000 hombres cuando pisaron suelo coreano por primera vez.'
         },
-        link: 'https://www.canva.com/design/DAHT6E1N4Fc/qUVAedjz1E1_4GMGCx81hQ/view'
+        link: 'https://lldfg.my.canva.site/1'
       }
     ],
     find: {
@@ -458,7 +458,7 @@ window.STATIONS = [
           ko: '콜롬비아 해군은 서해안 바다를 철통같이 지켜 냈어요. 콜롬비아 용사들의 희생을 기리기 위해, 지금 인천 경명공원에는 참전기념비가 있어요.',
           es: 'La Armada colombiana defendió sin descanso las aguas del Mar Amarillo. En homenaje al sacrificio de los combatientes colombianos, hoy se levanta un monumento en el parque Gyeongmyeong de Incheon.'
         },
-        link: 'https://canva.link/c5g6hginkh0p586'
+        link: 'https://lldfg.my.canva.site/5'
       },
       {
         card: 'padilla',
@@ -469,7 +469,7 @@ window.STATIONS = [
           ko: '서해 바다를 돌며 북한군이 바다로 오가는 길을 막고, 유엔군의 바닷길을 지켜 낸 콜롬비아 해군 영웅들이에요.',
           es: 'Marinos colombianos que patrullaron el Mar Amarillo, cerraron las rutas marítimas norcoreanas y aseguraron las líneas de navegación de las fuerzas de la ONU.'
         },
-        link: 'https://www.canva.com/design/DAHT6E1N4Fc/qUVAedjz1E1_4GMGCx81hQ/view'
+        link: 'https://lldfg.my.canva.site/1'
       },
       {
         author: { ko: '4모둠 친구들이 조사한 이야기', es: 'Relato investigado por el Grupo 4 (Incheon)' },
@@ -479,7 +479,7 @@ window.STATIONS = [
           ko: '콜롬비아 해군은 호위함을 보내 서해와 동해의 바다를 막는 작전에 참여했어요. 적이 물건을 나르는 바닷길을 끊고, 바닷가의 적을 대포로 공격하고, 유엔군이 땅에 오르는 것을 도우며 바다를 안전하게 지켰어요.',
           es: 'La Armada colombiana envió fragatas a las operaciones de bloqueo en el Mar Amarillo y el Mar del Este: cortaron las líneas de suministros enemigas, bombardearon la costa y apoyaron los desembarcos de la ONU.'
         },
-        link: 'https://canva.link/ac622kddxmupdrr'
+        link: 'https://lldfg.my.canva.site/4'
       }
     ],
     quiz: {
@@ -1120,11 +1120,11 @@ window.LINKS = [
 ];
 
 /* 학생 모둠 캔바 작품 (엔딩 화면 갤러리)
-   ★TODO 공개 전: 캔바 '공유 → 보기 전용 링크'로 바꿔 주세요 (편집 링크는 누구나 고칠 수 있어요!) */
+   캔바 '웹사이트로 게시'한 주소라 로그인 없이 누구나 볼 수 있어요 */
 window.GROUP_WORKS = [
-  { name: { ko: '1모둠 · 인천 6·25 전쟁 5대 전투 & 잊지 말아야 할 영웅들', es: 'Grupo 1 · Las cinco grandes batallas de Incheon y los héroes que no debemos olvidar' }, url: 'https://www.canva.com/design/DAHT6E1N4Fc/qUVAedjz1E1_4GMGCx81hQ/view' },
-  { name: { ko: '2모둠 · 6·25 전쟁 때 콜롬비아가 참전한 전투', es: 'Grupo 2 · Las batallas en las que participó Colombia' }, url: 'https://canva.link/afq75w0bon61f9l' },
-  { name: { ko: '3모둠 · 콜롬비아', es: 'Grupo 3 · Colombia' }, url: 'https://canva.link/w1zhvd3j3a0wlfq' },
-  { name: { ko: '4모둠', es: 'Grupo 4' }, url: 'https://canva.link/ac622kddxmupdrr' },
-  { name: { ko: '5모둠 · 기억해야 할 그날, 6·25 전쟁 속 인천', es: 'Grupo 5 · Un día para recordar: Incheon en la Guerra de Corea' }, url: 'https://canva.link/c5g6hginkh0p586' }
+  { name: { ko: '1모둠 · 인천 6·25 전쟁 5대 전투 & 잊지 말아야 할 영웅들', es: 'Grupo 1 · Las cinco grandes batallas de Incheon y los héroes que no debemos olvidar' }, url: 'https://lldfg.my.canva.site/1' },
+  { name: { ko: '2모둠 · 6·25 전쟁 때 콜롬비아가 참전한 전투', es: 'Grupo 2 · Las batallas en las que participó Colombia' }, url: 'https://lldfg.my.canva.site/2' },
+  { name: { ko: '3모둠 · 콜롬비아', es: 'Grupo 3 · Colombia' }, url: 'https://lldfg.my.canva.site/3' },
+  { name: { ko: '4모둠', es: 'Grupo 4' }, url: 'https://lldfg.my.canva.site/4' },
+  { name: { ko: '5모둠 · 기억해야 할 그날, 6·25 전쟁 속 인천', es: 'Grupo 5 · Un día para recordar: Incheon en la Guerra de Corea' }, url: 'https://lldfg.my.canva.site/5' }
 ];
