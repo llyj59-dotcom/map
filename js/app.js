@@ -3031,16 +3031,26 @@
           const now = Date.now();
           // 본 시간 = 영상이 실제로 앞으로 간 만큼, 단 '진짜로 흐른 시간'을 넘지 않게
           //  → 2배속·건너뛰기로는 빨리 못 채워요. 전체화면에서 재생 상태를 못 읽는 기기도 영상이 앞으로 가면 세요.
+          // 영상의 '몇 번째 초'를 봤는지 하나하나 기록해요 → 같은 부분을 두 번 봐도 한 번만, 건너뛴 부분은 안 셈
+          //  (보통 속도로 재생될 때만: 영상이 흐른 시간이 실제로 흐른 시간보다 많이 앞서면 = 건너뛰기·배속 → 안 셈)
           if (w.last != null && w.lastAt) {
             const dt = t - w.last, real = (now - w.lastAt) / 1000;
-            if (dt > 0) w.sec += Math.min(dt, real);
+            // 1.25·1.5·2배속 등 1배보다 빠르게 재생 중인 동안은 하나도 안 세요 (느리게 보는 건 괜찮아요)
+            const rate = p.getPlaybackRate ? p.getPlaybackRate() : 1;
+            if (dt > 0 && rate <= 1 && dt <= real + 0.6) {
+              w.seen = w.seen || new Set();
+              const end = cut.to || Infinity;
+              for (let k = Math.floor(w.last); k <= Math.floor(t); k++) if (k >= cut.from && k < end) w.seen.add(k);
+              w.sec = w.seen.size;
+            }
           }
           w.last = t; w.lastAt = now;
           if (p.getPlaybackRate && p.getPlaybackRate() > 1) { try { p.setPlaybackRate(1); } catch (err) { /* 무시 */ } }
           const fill = $('watchFill'), time = $('watchTime');
           if (fill && w.dur) fill.style.width = `${Math.min(100, (w.sec / w.dur) * 100)}%`;
           if (time && w.dur) time.textContent = `${fmtSec(w.sec)} / ${fmtSec(w.dur)}`;
-          if (w.dur && w.sec >= w.dur * 0.92) watchDone(v, 'watched');
+          // 끝까지 봤는지: 영상의 97% 이상(맨 끝 1~2초 여유)을 보통 속도로 실제로 봤을 때
+          if (w.dur && w.sec >= Math.min(w.dur * 0.97, w.dur - 1)) watchDone(v, 'watched');
         } catch (e) { /* 플레이어 준비 중 */ }
       }, 1000);
     }).catch(() => watchDone(v, 'blocked')); // 학교망에서 유튜브가 막힌 경우
