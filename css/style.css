@@ -1159,3 +1159,11 @@ button.hcard:hover { transform: translateY(-3px) rotate(-1deg); box-shadow: 0 8p
 .survey-tip { margin: 0 auto 14px; max-width: 640px; text-align: left; padding: 12px 16px; border-left: 6px solid #cd2e3a; border-radius: 12px; background: #fff1f2; color: #14224b; }
 .survey-tip b { display: block; margin-bottom: 4px; font-size: 16px; }
 .survey-tip ul { margin: 0; padding-left: 20px; display: grid; gap: 4px; font-size: 15px; line-height: 1.55; }
+/* 🎯 더 해 보기: 못 채운 작전 지점과 [다시 도전] */
+.extra-list { list-style: none; margin: 14px auto; padding: 0; max-width: 640px; display: grid; gap: 10px; text-align: left; }
+.extra-list li { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border-radius: 14px; background: #fff; border: 2px solid #d6deec; }
+.extra-list li > div { display: grid; gap: 2px; min-width: 0; }
+.extra-list b { font-family: var(--display); font-size: 18px; color: #14224b; }
+.extra-list small { color: #55607e; font-size: 13.5px; line-height: 1.45; }
+.extra-list .btn { flex: none; }
+@media (max-width: 480px) { .extra-list li { flex-direction: column; align-items: stretch; } }

@@ -409,6 +409,23 @@
       surveyTip: ['✍️ 쓰기 전에 잠깐!', '"저희 나라"(✕) → "우리나라"(○): 나라는 낮추어 말하지 않아요. 참전용사님께 쓰는 글에도 "우리나라"라고 써요. (우리나라는 붙여 써요)', '본명과 반을 정확히 쓰고, 참전용사님께 드리는 말은 예의 바르게 정성껏 써요.'],
       surveyAuto: '소감을 보내 줘서 고마워요! 이제 마지막으로 평화의 지도 인증서를 만들어 패들렛에 올려요.',
       toCertBtn: '🗺️ 인증서 만들기 ▶',
+      extraTitle: '더 해 보기',
+      extraLead: '아직 다 모으지 못한 별과 영웅 카드가 있어요. [다시 도전]으로 그곳만 다시 해서 채울 수 있어요. 이대로 끝내도 괜찮아요!',
+      extraStars: (a, b) => `⭐ 평화의 별 ${a} / ${b}`,
+      extraCards: (a, b) => `🎴 영웅 카드 ${a} / ${b}`,
+      extraMissing: '아직:',
+      extraRetry: '🔁 다시 도전',
+      extraFinish: '✅ 끝내기 (소감 쓰러 가기) ▶',
+      extraHint: '다시 도전한 곳을 마치면 지도에서 [🎯 더 해 보기로 돌아가기]를 눌러 이 화면으로 돌아와요.',
+      backToExtra: '🎯 더 해 보기로 돌아가기 ▶',
+      gapQuiz: '퀴즈 한 번에 맞히기',
+      gapFind: '지도에서 한 번에 찾기',
+      gapMission: '등대 미션',
+      gapTimeline: '전쟁의 흐름 끝까지 보기',
+      gapVoyage: '태평양 항해',
+      gapOps: (n) => `인천 작전 ${n}곳 더 보기`,
+      gapGuess: (n) => `질문 카드 예상 답 ${n}개 쓰기`,
+      gapCards: (n) => `영웅 카드 ${n}장`,
       endFinishBtn: '🏁 여정 마치기 ▶',
       doneHeading: '🎉 M.A.P. to Tomorrow 여정 완료!',
       doneCheckMap: (n) => `평화의 지도 ${n}조각 모으기`,
@@ -841,6 +858,23 @@
       surveyTip: [],
       surveyAuto: '¡Gracias por tu opinión! Ahora, como último paso, crea tu certificado y súbelo al Padlet.',
       toCertBtn: '🗺️ Crear mi certificado ▶',
+      extraTitle: 'Sigue jugando',
+      extraLead: 'Todavía te faltan algunas estrellas y tarjetas de héroes. Con [Volver a intentar] puedes repetir solo esa parada para completarlas. ¡También puedes terminar así!',
+      extraStars: (a, b) => `⭐ Estrellas de la paz ${a} / ${b}`,
+      extraCards: (a, b) => `🎴 Tarjetas de héroes ${a} / ${b}`,
+      extraMissing: 'Falta:',
+      extraRetry: '🔁 Volver a intentar',
+      extraFinish: '✅ Terminar (ir a la encuesta) ▶',
+      extraHint: 'Cuando termines la parada, pulsa [🎯 Volver a Sigue jugando] en el mapa para regresar aquí.',
+      backToExtra: '🎯 Volver a Sigue jugando ▶',
+      gapQuiz: 'acertar el quiz al primer intento',
+      gapFind: 'ubicar en el mapa al primer intento',
+      gapMission: 'misión del faro',
+      gapTimeline: 'ver toda la línea de la guerra',
+      gapVoyage: 'travesía del Pacífico',
+      gapOps: (n) => `ver ${n} operaciones más de Incheon`,
+      gapGuess: (n) => `escribir ${n} hipótesis en las tarjetas de pregunta`,
+      gapCards: (n) => `${n} tarjeta(s) de héroes`,
       endFinishBtn: '🏁 Terminar el viaje ▶',
       doneHeading: '🎉 ¡Viaje M.A.P. to Tomorrow completado!',
       doneCheckMap: (n) => `Reunir las ${n} piezas del mapa de la paz`,
@@ -1273,6 +1307,23 @@
       surveyTip: [],
       surveyAuto: 'Thank you for your feedback! Now, as the last step, make your certificate and post it on the Padlet.',
       toCertBtn: '🗺️ Make my certificate ▶',
+      extraTitle: 'Keep exploring',
+      extraLead: 'You still have some stars and hero cards to collect. With [Try again] you can replay just that stop to fill them in. It is also fine to finish now!',
+      extraStars: (a, b) => `⭐ Peace stars ${a} / ${b}`,
+      extraCards: (a, b) => `🎴 Hero cards ${a} / ${b}`,
+      extraMissing: 'Missing:',
+      extraRetry: '🔁 Try again',
+      extraFinish: '✅ Finish (go to the survey) ▶',
+      extraHint: 'When you finish that stop, tap [🎯 Back to Keep exploring] on the map to come back here.',
+      backToExtra: '🎯 Back to Keep exploring ▶',
+      gapQuiz: 'quiz right on the first try',
+      gapFind: 'find it on the map on the first try',
+      gapMission: 'lighthouse mission',
+      gapTimeline: 'watch the whole war timeline',
+      gapVoyage: 'Pacific voyage',
+      gapOps: (n) => `open ${n} more Incheon operations`,
+      gapGuess: (n) => `write ${n} guesses on question cards`,
+      gapCards: (n) => `${n} hero card(s)`,
       endFinishBtn: '🏁 Finish the journey ▶',
       doneHeading: '🎉 M.A.P. to Tomorrow journey complete!',
       doneCheckMap: (n) => `Collect all ${n} pieces of the map of peace`,
@@ -2938,8 +2989,9 @@
         <button class="btn btn-go" type="button" id="enterBtn">${esc(T('doorBtn'))}</button>`;
       $('enterBtn').addEventListener('click', openDoor);
     } else {
+      // '더 해 보기'에서 다시 도전하러 왔으면, 끝나고 그 화면으로 바로 돌아가는 버튼
       now.innerHTML = `<span class="eyebrow">${flagHtml('kr')} ${flagHtml('co')}</span><h3>${esc(T('allDone'))}</h3><span class="meta">${esc(T('allDoneMeta'))}</span>
-        <button class="btn btn-go" type="button" id="enterBtn">${esc(T('toEnding'))}</button>`;
+        <button class="btn btn-go" type="button" id="enterBtn">${esc(player.endResume ? T('backToExtra') : T('toEnding'))}</button>`;
       $('enterBtn').addEventListener('click', () => openEnding());
     }
     renderKeyRow();
@@ -3953,14 +4005,43 @@
   // 엔딩: 시작 → 질문 5개(진짜 답) → 더 알아보기 → 인증서 → 📝 소감 설문 (게임의 맨 마지막)
   // 순서: 진짜 답 → 더 알아보기 → 소감 설문 → 인증서(패들렛에 올리기) → 🏁 여정 완료
   // (소감을 먼저 쓰고, 제출하면 저절로 인증서로 — 인증서를 빼먹지 않게)
-  const END_STEPS = ['intro', ...QIDS, 'more', ...(CONFIG.feedbackForms ? ['survey'] : []), 'finish', 'done'];
+  const END_STEPS = ['intro', ...QIDS, 'more', 'extra', ...(CONFIG.feedbackForms ? ['survey'] : []), 'finish', 'done'];
+  let endDir = 1; // 마지막으로 움직인 방향 (다 모은 아이는 '더 해 보기'를 건너뛸 때 씀)
+
+  /* 🎯 더 해 보기: 작전 지점마다 아직 못 받은 별·영웅 카드 (전부 모았으면 빈 목록 → 화면을 건너뜀) */
+  function stationGaps(i) {
+    const s = STATIONS[i], st = (player && player.stars) || {}, items = [];
+    const need = (key, max, label) => { if (max > 0 && (st[key] || 0) < max) items.push(label); };
+    if (s.quiz) need(`quiz:${s.id}`, RULES.quiz[0], T('gapQuiz'));
+    if (s.find) need(`find:${s.id}`, RULES.find[s.id] || 0, T('gapFind'));
+    if (s.mission) need('mission', RULES.mission, T('gapMission'));
+    if (s.timeline && s.timeline.length) need('allies', RULES.allies, T('gapTimeline'));
+    if (s.offMap) need('voyage', RULES.voyage, T('gapVoyage'));
+    if (s.inset === 'incheon') { const m = (window.INCHEON_OPS || []).filter((op) => !st[`op:${op.id}`]).length; if (m) items.push(T('gapOps', m)); }
+    const g = (s.questions || []).filter((q) => QUESTIONS[q] && !st[`q:${q}`]).length;
+    if (g) items.push(T('gapGuess', g));
+    const c = allCards().filter((x) => x.where === i && !hasCard(x)).length;
+    if (c) items.push(T('gapCards', c));
+    return items;
+  }
+  const allGaps = () => STATIONS.map((s, i) => ({ i, items: stationGaps(i) })).filter((g) => g.items.length);
+  // 다시 도전 → 지도로 가서 그 작전 지점을 다시 열고, 끝나면 지도의 버튼으로 이 화면에 돌아와요
+  function retryFromEnding(i) {
+    player.endResume = 'extra';
+    save();
+    enterGame();
+    setTimeout(() => retryStation(i), 350);
+  }
   let endStep = 0;
   const endVet = {}; // 질문별로 지금 보고 있는 참전용사 (답이 두 분일 때)
 
   function openEnding() {
     // 지도는 다 모았는데 아직 문을 안 열었으면 문부터 (선생님 미리 보기는 바로)
     if (!previewMode && player && doneCount(player) === N && !player.keyDone) { openDoor(); return; }
-    endStep = 0;
+    // 다시 도전하고 돌아온 거면 '더 해 보기' 화면부터
+    endStep = player && player.endResume ? Math.max(0, END_STEPS.indexOf(player.endResume)) : 0;
+    endDir = 1;
+    if (player && player.endResume) { delete player.endResume; save(); }
     resetStationUI();
     showScreen('endingScreen');
     applyStaticText();
@@ -4629,6 +4710,19 @@
                <p class="t-help">${esc(T('surveyHelp'))} <a href="${esc(fb)}" target="_blank" rel="noopener">${esc(T('surveyOpen'))} ↗</a></p>`}
           <p class="survey-next-note">➡️ ${esc(T('surveyAutoNote'))}</p>
         </div>`;
+    } else if (step === 'extra') {
+      const gaps = allGaps();
+      // 별·영웅 카드를 전부 모았으면 이 화면은 건너뛰어요 (다시 도전이 필요 없으니까)
+      if (!gaps.length || previewMode) { endStep = Math.max(0, Math.min(END_STEPS.length - 1, endStep + endDir)); renderEnding(); return; }
+      const cards = allCards();
+      html = `<h2 class="end-h2">🎯 ${esc(T('extraTitle'))}</h2>
+        <p class="end-lead">${esc(T('extraLead'))}</p>
+        <div class="facts"><span>${esc(T('extraStars', starTotal(player).toLocaleString(lang), RULES.total.toLocaleString(lang)))}</span><span>${esc(T('extraCards', cards.filter(hasCard).length, cards.length))}</span></div>
+        <ul class="extra-list">${gaps.map(({ i, items }) => `<li>
+            <div><b>${i + 1}. ${esc(L(STATIONS[i].name))}</b><small>${esc(T('extraMissing'))} ${esc(items.join(' · '))}</small></div>
+            <button type="button" class="btn btn-sm btn-blue" data-retry="${i}">${esc(T('extraRetry'))}</button>
+          </li>`).join('')}</ul>
+        <p class="t-help">💡 ${esc(T('extraHint'))}</p>`;
     } else if (step === 'done') {
       // 🏁 여정 완료: 무엇을 해냈는지 한눈에 + 여정 코드·지도·처음으로
       const checks = [
@@ -4687,10 +4781,11 @@
       });
     }
     if (step === 'done') sfx('fanfare');
+    body.querySelectorAll('[data-retry]').forEach((b) => b.addEventListener('click', () => retryFromEnding(+b.dataset.retry)));
 
     $('endDots').innerHTML = END_STEPS.map((x, k) => `<i class="${k === endStep ? 'on' : ''}${QUESTIONS[x] ? ' q' : ''}"></i>`).join('');
     $('endPrev').textContent = endStep === 0 ? T('toMapBtn') : T('prev');
-    $('endNext').textContent = step === 'intro' ? T('endStart') : step === 'survey' ? T('toCertBtn') : step === 'finish' ? T('endFinishBtn') : T('next');
+    $('endNext').textContent = step === 'intro' ? T('endStart') : step === 'extra' ? T('extraFinish') : step === 'survey' ? T('toCertBtn') : step === 'finish' ? T('endFinishBtn') : T('next');
     $('endNext').hidden = endStep === END_STEPS.length - 1; // 맨 마지막 화면에서는 [다음]이 없어요
   }
 
@@ -4698,6 +4793,7 @@
     saveEndGuess();
     // 인증서 화면에서 소감으로 넘어가기 전에 "패들렛에 올렸나요?" 한 번 물어봐요
     if (END_STEPS[endStep] === 'finish' && !previewMode && CONFIG.padletUrl && !player.certUploaded) { askCertUploaded(); return; }
+    endDir = 1;
     if (endStep < END_STEPS.length - 1) { endStep++; renderEnding(); }
   });
   function askCertUploaded() {
@@ -4724,6 +4820,7 @@
   $('endPrev').addEventListener('click', () => {
     saveEndGuess();
     if (endStep === 0) { previewMode ? showTeacher() : enterGame(); return; }
+    endDir = -1;
     endStep--; renderEnding();
   });
 
