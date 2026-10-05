@@ -4030,7 +4030,25 @@
     player.endResume = 'extra';
     save();
     enterGame();
-    setTimeout(() => retryStation(i), 350);
+    setTimeout(() => { retryStation(i); jumpToGap(); }, 350);
+  }
+  // 다시 도전으로 연 작전 지점에서, 이야기부터 넘기지 않고 '아직 못 채운 첫 부분'으로 바로 가요
+  function jumpToGap() {
+    if (!cur || !player) return;
+    const s = cur.s, st = player.stars || {};
+    const lacking = (key, max) => max > 0 && (st[key] || 0) < max;
+    const k = cur.steps.findIndex((x) => {
+      if (x.type === 'story') return (s.cards || []).some((id) => !player.cards || !player.cards[id]) || (s.offMap && lacking('voyage', RULES.voyage));
+      if (x.type === 'find') return lacking(`find:${s.id}`, RULES.find[s.id] || 0);
+      if (x.type === 'mission') return lacking('mission', RULES.mission);
+      if (x.type === 'timeline') return lacking('allies', RULES.allies);
+      if (x.type === 'ops') return (window.INCHEON_OPS || []).some((op) => !st[`op:${op.id}`] || (op.heroes || []).some((h) => h.card && !(player.cards || {})[h.card]));
+      if (x.type === 'hero') return !!x.cid && !(player.cards || {})[x.cid];
+      if (x.type === 'quiz') return lacking(`quiz:${s.id}`, RULES.quiz[0]);
+      if (x.type === 'question') return !st[`q:${x.qid}`];
+      return false;
+    });
+    if (k > 0) { cur.step = k; renderStep(); }
   }
   let endStep = 0;
   const endVet = {}; // 질문별로 지금 보고 있는 참전용사 (답이 두 분일 때)
