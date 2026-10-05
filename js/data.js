@@ -509,7 +509,7 @@ window.STATIONS = [
       es: 'En el parque Gyeongmyeong de Incheon se alza el monumento a los combatientes colombianos: la escultura de un soldado con una espada, una mujer arrodillada en oración y un muro blanco que evoca la vela de un barco. Su inscripción, en coreano y en español, honra el sacrificio de 611 combatientes. Cada año se celebra allí una ceremonia conmemorativa.'
     },
     videos: [
-      { yt: 'TQIYpORL2Pc', title: { ko: '고지전은 우리에게 맡겨라! 콜롬비아군 참전기념비', es: '"Déjennos la guerra de colinas": el monumento colombiano de Incheon' }, by: '꼬끼오 History', len: '5:31', req: true },
+      { yt: 'TQIYpORL2Pc', title: { ko: '고지전은 우리에게 맡겨라! 콜롬비아군 참전기념비', es: '"Déjennos la guerra de colinas": el monumento colombiano de Incheon' }, by: '꼬끼오 History', len: '5:31', from: '1:54', to: '3:44', req: true }, // ✂️ 동상의 뜻·611명 비문·전통 문양·콜롬비아대대 전투만 (1분 50초)
       { yt: 'f_zao2_kxSs', title: { ko: '70년 만의 만남, 콜롬비아 참전용사 초청 행사', es: 'Reencuentro 70 años después: veteranos colombianos de visita en Corea' }, by: 'TV나라사랑', len: '3:30' },
       { yt: 'Bze-QbeThmg', title: { ko: '"할아버지가 목숨 바친 나라가 궁금했어요"', es: '"Quería conocer el país por el que mi abuelo dio la vida"' }, by: '연합뉴스TV', len: '1:28' }
     ],

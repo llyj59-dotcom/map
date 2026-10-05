@@ -217,6 +217,7 @@
       gRetry: '다시 도전! 이번엔 첫 번째에 맞혀 보자. 모자랐던 별만큼 더 받을 수 있어.',
       watchNeed: '▶를 눌러 이 영상을 끝까지 봐야 [다음]으로 넘어갈 수 있어요. (빨리 감기·배속으로 본 부분은 본 시간에 들어가지 않아요)',
       watchRate: '영상은 보통 속도(1배)로만 볼 수 있어요. 배속은 본 시간에 들어가지 않아요.',
+      watchResume: (s) => `전에 본 곳(${s})에 이어서 볼게요.`,
       soundOn: '소리 켜짐 (누르면 꺼져요)',
       soundOff: '소리 꺼짐 (누르면 켜져요)',
       watchNeedLink: '꼭 볼 영상이에요. 아래를 눌러 유튜브에서 끝까지 본 뒤, 돌아와서 [다 봤어요]를 눌러 주세요. (영상 길이만큼 시간이 지나야 눌려요)',
@@ -256,12 +257,25 @@
       certGoldStamp: '금빛 도장 = 첫 시도에 완벽하게 해낸 작전 지점',
       certPerfect: '완벽!',
       certSave: '인증서 그림으로 저장',
-      certCopy: '그림 복사 (패들렛에 붙여 넣기)',
+      certCopy: '인증서 캡처하기 (자동 복사)',
       certShare: '공유 · 사진에 저장',
       certSaved: '저장했어요! 패들렛에서 ＋ → 이미지(파일) 올리기로 올려 보세요.',
       certCopied: '그림을 복사했어요! 패들렛에서 ＋를 누르고 붙여 넣으세요 (Ctrl+V).',
       certPadletHint: '패들렛에서 ＋ → 이미지(파일) 올리기로 저장한 그림을 올려 주세요.',
-      certHow: '💡 컴퓨터: [그림 복사] → 패들렛에서 Ctrl+V · 태블릿/휴대폰: [저장] 또는 [공유]로 사진에 저장 → 패들렛에서 이미지 올리기',
+      certHow: '💡 컴퓨터: [인증서 캡처하기] → 패들렛에서 Ctrl+V · 태블릿/휴대폰: [저장] 또는 [공유]로 사진에 저장 → 패들렛에서 이미지 올리기',
+      certUpTitle: '인증서를 우리 반 패들렛에 올려요',
+      certUp1: '[📸 인증서 캡처하기]를 눌러요. 인증서 그림이 자동으로 복사돼요.',
+      certUp1Save: '[📸 인증서 그림으로 저장]을 눌러 그림을 저장해요.',
+      certUp2: '[🗂️ 패들렛 열기]를 눌러 패들렛을 열어요.',
+      certUpOpen: '패들렛 열기',
+      certUp3: '패들렛 화면을 한 번 누르고 Ctrl + V 를 눌러요. 인증서 그림이 붙으면 [게시]를 눌러 올려요!',
+      certUp3Save: '패들렛에서 ＋ → 이미지(파일) 올리기로 저장한 그림을 골라 [게시]를 눌러요.',
+      certUpTablet: '태블릿·휴대폰은 Ctrl+V가 없어요. 아래 [인증서 그림으로 저장]이나 [공유]로 사진에 저장한 뒤, 패들렛의 ＋ → 이미지 올리기로 올려요.',
+      certAskTitle: '잠깐! 인증서를 패들렛에 올렸나요?',
+      certAskText: '내 인증서가 우리 반 패들렛 "기억의 벽"에 모여야 평화의 지도가 완성돼요. 아직이라면 이렇게 올려요.',
+      certAskNo: '아직이요, 지금 올릴게요',
+      certAskYes: '네, 올렸어요 ▶',
+      certCopyFallback: '이 기기에서는 그림 자동 복사가 안 돼요. 대신 인증서를 그림 파일로 저장했어요(다운로드 폴더). 패들렛에서 ＋ → 이미지(파일) 올리기로 그 그림을 골라 [게시]를 눌러 주세요.',
 
       endTitle: '그날의 기억에서 돌아왔어요',
       endLead: '여러분이 참전용사께 드린 질문에, 참전용사님이 콜롬비아에서 영상으로 답을 보내 주셨어요. 내가 예상한 답과 진짜 답을 나란히 비교해 봐요.',
@@ -389,8 +403,17 @@
       reportNote: '📡 게임 진행 상황(닉네임·여정 코드·별)은 선생님께 자동으로 전달돼요. 실명이나 학교는 보내지 않아요.',
       feedbackBtn: '게임 소감 남기기 (설문)',
       surveyNext: '📝 마지막: 소감 남기기 ▶',
-      surveyTitle: '마지막 한 걸음: 게임 소감 남기기',
+      surveyTitle: '게임 소감 남기기',
       surveyLead: '평화의 지도 여행은 어땠나요? 솔직한 소감을 남겨 주면 더 좋은 게임을 만드는 데 쓸게요. (약 3분)',
+      surveyAutoNote: '설문 맨 아래 [제출]을 누르면 저절로 마지막 단계인 인증서 화면으로 넘어가요.',
+      surveyTip: ['✍️ 쓰기 전에 잠깐!', '"저희 나라"(✕) → "우리나라"(○): 나라는 낮추어 말하지 않아요. 참전용사님께 쓰는 글에도 "우리나라"라고 써요. (우리나라는 붙여 써요)', '본명과 반을 정확히 쓰고, 참전용사님께 드리는 말은 예의 바르게 정성껏 써요.'],
+      surveyAuto: '소감을 보내 줘서 고마워요! 이제 마지막으로 평화의 지도 인증서를 만들어 패들렛에 올려요.',
+      toCertBtn: '🗺️ 인증서 만들기 ▶',
+      endFinishBtn: '🏁 여정 마치기 ▶',
+      doneHeading: '🎉 M.A.P. to Tomorrow 여정 완료!',
+      doneCheckMap: (n) => `평화의 지도 ${n}조각 모으기`,
+      doneCheckSurvey: '게임 소감 남기기',
+      doneCheckCert: '인증서를 패들렛에 올리기',
       surveyHelp: '설문이 잘 안 보이면',
       surveyOpen: '새 창에서 설문 열기',
       surveyThanks: '끝까지 함께해 줘서 고마워요. 오늘 기억한 이야기를 내일의 평화로 이어 가요!',
@@ -626,6 +649,7 @@
       gRetry: 'Otra oportunidad: si aciertas al primer intento, recuperas las estrellas que te faltaron.',
       watchNeed: 'Mira este video hasta el final para pasar a [Siguiente]. (Adelantar o acelerar no cuenta)',
       watchRate: 'El video solo cuenta a velocidad normal (1x).',
+      watchResume: (s) => `Seguimos desde donde ibas (${s} vistos).`,
       soundOn: 'Sonido activado (toca para silenciar)',
       soundOff: 'Sonido desactivado (toca para activar)',
       watchNeedLink: 'Video obligatorio: ábrelo en YouTube, míralo completo y vuelve para pulsar [Ya lo vi]. (El botón se activa cuando pasa el tiempo del video)',
@@ -665,12 +689,25 @@
       certGoldStamp: 'Sello dorado = punto superado a la perfección al primer intento',
       certPerfect: 'Perfecto',
       certSave: 'Guardar el certificado como imagen',
-      certCopy: 'Copiar imagen (pegar en Padlet)',
+      certCopy: 'Capturar certificado (se copia solo)',
       certShare: 'Compartir · Guardar en fotos',
       certSaved: 'Guardado. En Padlet pulsa ＋ y sube la imagen.',
       certCopied: 'Imagen copiada. En Padlet pulsa ＋ y pega (Ctrl+V).',
       certPadletHint: 'En Padlet pulsa ＋ y sube la imagen que guardaste.',
-      certHow: '💡 Computador: [Copiar imagen] → Ctrl+V en Padlet · Tableta/celular: [Guardar] o [Compartir] → sube la imagen en Padlet',
+      certHow: '💡 Computador: [Capturar certificado] → Ctrl+V en Padlet · Tableta/celular: [Guardar] o [Compartir] → sube la imagen en Padlet',
+      certUpTitle: 'Sube tu certificado al Padlet',
+      certUp1: 'Pulsa [📸 Capturar certificado]: la imagen se copia automáticamente.',
+      certUp1Save: 'Pulsa [📸 Guardar el certificado como imagen].',
+      certUp2: 'Pulsa [🗂️ Abrir Padlet] para abrir el muro.',
+      certUpOpen: 'Abrir Padlet',
+      certUp3: 'Haz clic una vez en el Padlet y pulsa Ctrl + V. Cuando aparezca el certificado, pulsa [Publicar].',
+      certUp3Save: 'En el Padlet, pulsa ＋ → subir imagen, elige el certificado guardado y pulsa [Publicar].',
+      certUpTablet: 'En tableta o celular no hay Ctrl+V: guarda la imagen con [Guardar] o [Compartir] y súbela en el Padlet con ＋ → imagen.',
+      certAskTitle: '¡Un momento! ¿Ya subiste tu certificado al Padlet?',
+      certAskText: 'Tu certificado completa el Muro de la Memoria que compartimos con Corea. Si aún no lo subiste, hazlo así:',
+      certAskNo: 'Todavía no, lo subo ahora',
+      certAskYes: 'Sí, ya lo subí ▶',
+      certCopyFallback: 'Este dispositivo no permite copiar la imagen. En su lugar, guardamos el certificado como archivo (carpeta Descargas). En el Padlet pulsa ＋ → subir imagen, elige ese archivo y pulsa [Publicar].',
 
       endTitle: 'Volvimos de los recuerdos de aquel día',
       endLead: 'Desde Colombia, los veteranos respondieron en video a las preguntas de estudiantes coreanos de 6.º de primaria. Compara tu hipótesis con su respuesta real.',
@@ -798,8 +835,17 @@
       reportNote: '📡 Tu progreso (apodo, código de viaje y estrellas) se envía automáticamente a los docentes. No se envían tu nombre real ni tu colegio.',
       feedbackBtn: 'Deja tu opinión sobre el juego (encuesta)',
       surveyNext: '📝 Último paso: tu opinión ▶',
-      surveyTitle: 'Último paso: tu opinión sobre el juego',
+      surveyTitle: 'Tu opinión sobre el juego',
       surveyLead: '¿Qué te pareció el viaje por el Mapa de la Paz? Tus respuestas sinceras nos ayudarán a mejorar el juego. (Unos 3 minutos)',
+      surveyAutoNote: 'Al pulsar [Enviar] al final de la encuesta, pasarás solo al último paso: el certificado.',
+      surveyTip: [],
+      surveyAuto: '¡Gracias por tu opinión! Ahora, como último paso, crea tu certificado y súbelo al Padlet.',
+      toCertBtn: '🗺️ Crear mi certificado ▶',
+      endFinishBtn: '🏁 Terminar el viaje ▶',
+      doneHeading: '🎉 ¡Viaje M.A.P. to Tomorrow completado!',
+      doneCheckMap: (n) => `Reunir las ${n} piezas del mapa de la paz`,
+      doneCheckSurvey: 'Dejar tu opinión sobre el juego',
+      doneCheckCert: 'Subir el certificado al Padlet',
       surveyHelp: 'Si la encuesta no se ve bien,',
       surveyOpen: 'ábrela en otra pestaña',
       surveyThanks: 'Gracias por llegar hasta el final. Llevemos lo que recordamos hoy hacia la paz del mañana.',
@@ -1035,6 +1081,7 @@
       gRetry: "Try again! Get it right on the first try this time. You'll earn the stars you missed.",
       watchNeed: 'Watch this video to the end to unlock [Next]. (Skipping ahead or speeding up does not count.)',
       watchRate: 'Videos only count at normal speed (1x).',
+      watchResume: (s) => `Picking up where you left off (${s} watched).`,
       soundOn: 'Sound on (tap to mute)',
       soundOff: 'Sound off (tap to turn on)',
       watchNeedLink: 'Must-see video: open it on YouTube, watch it to the end, then come back and press [I watched it]. (The button unlocks after the length of the video.)',
@@ -1074,12 +1121,25 @@
       certGoldStamp: 'Gold stamp = a mission point done perfectly on the first try',
       certPerfect: 'Perfect!',
       certSave: 'Save certificate as a picture',
-      certCopy: 'Copy picture (paste into Padlet)',
+      certCopy: 'Capture certificate (copies automatically)',
       certShare: 'Share · Save to photos',
       certSaved: 'Saved! On Padlet, press ＋ and upload the picture.',
       certCopied: 'Picture copied! On Padlet, press ＋ and paste (Ctrl+V).',
       certPadletHint: 'On Padlet, press ＋ and upload the picture you saved.',
-      certHow: '💡 Computer: [Copy picture] → Ctrl+V on Padlet · Tablet/phone: [Save] or [Share] to your photos → upload on Padlet',
+      certHow: '💡 Computer: [Capture certificate] → Ctrl+V on Padlet · Tablet/phone: [Save] or [Share] to your photos → upload on Padlet',
+      certUpTitle: 'Post your certificate on our Padlet',
+      certUp1: 'Tap [📸 Capture certificate]. The picture is copied automatically.',
+      certUp1Save: 'Tap [📸 Save certificate as a picture].',
+      certUp2: 'Tap [🗂️ Open Padlet] to open the wall.',
+      certUpOpen: 'Open Padlet',
+      certUp3: 'Click once on the Padlet and press Ctrl + V. When your certificate appears, click [Publish]!',
+      certUp3Save: 'On the Padlet, tap ＋ → upload image, choose your saved certificate and tap [Publish].',
+      certUpTablet: 'Tablets and phones have no Ctrl+V: save the picture with [Save] or [Share], then on the Padlet tap ＋ → image.',
+      certAskTitle: 'Wait! Did you post your certificate on the Padlet?',
+      certAskText: 'Our Wall of Memory is complete when everyone\'s certificate is on it. If you have not posted yet, here is how:',
+      certAskNo: 'Not yet, I\'ll post it now',
+      certAskYes: 'Yes, I posted it ▶',
+      certCopyFallback: 'This device cannot copy the picture. Instead, we saved your certificate as a file (Downloads folder). On the Padlet tap ＋ → upload image, choose that file and tap [Publish].',
 
       endTitle: 'Back from the memories of that day',
       endLead: "The veterans sent video answers from Colombia to the questions you asked them. Let's compare your guess with the real answer, side by side.",
@@ -1207,8 +1267,17 @@
       reportNote: '📡 Your progress (nickname, journey code and stars) is sent to your teacher automatically. Your real name and school are not sent.',
       feedbackBtn: 'Share your feedback (survey)',
       surveyNext: '📝 Last step: your feedback ▶',
-      surveyTitle: 'Last step: share your feedback',
+      surveyTitle: 'Share your feedback',
       surveyLead: 'How was your journey on the Map of Peace? Your honest answers will help us make the game better. (About 3 minutes)',
+      surveyAutoNote: 'When you tap [Submit] at the end of the survey, you will move on to the last step: your certificate.',
+      surveyTip: [],
+      surveyAuto: 'Thank you for your feedback! Now, as the last step, make your certificate and post it on the Padlet.',
+      toCertBtn: '🗺️ Make my certificate ▶',
+      endFinishBtn: '🏁 Finish the journey ▶',
+      doneHeading: '🎉 M.A.P. to Tomorrow journey complete!',
+      doneCheckMap: (n) => `Collect all ${n} pieces of the map of peace`,
+      doneCheckSurvey: 'Share your feedback',
+      doneCheckCert: 'Post your certificate on the Padlet',
       surveyHelp: "If the survey doesn't show well,",
       surveyOpen: 'open it in a new tab',
       surveyThanks: "Thank you for coming all the way. Let's carry what we remembered today into tomorrow's peace!",
@@ -2991,7 +3060,16 @@
     ytApi.catch(() => { ytApi = null; });
     return ytApi;
   }
-  function stopWatch() { if (cur && cur.watch) { clearInterval(cur.watch.timer); cur.watch = null; } }
+  // 본 부분(초)을 이 기기에 남겨 둬요 → 실수로 다른 곳을 눌러 화면이 바뀌어도 처음부터 다시 볼 필요 없이 이어서 (6반 피드백)
+  function keepWatch(w) {
+    if (!w || !w.seen || !w.dirty || !player || previewMode) return;
+    player.watchSeen = player.watchSeen || {};
+    player.watchSeen[w.yt] = [...w.seen];
+    w.dirty = false;
+    save();
+  }
+  function stopWatch() { if (cur && cur.watch) { clearInterval(cur.watch.timer); keepWatch(cur.watch); cur.watch = null; } }
+  const savedSeen = (yt) => new Set((player && player.watchSeen && player.watchSeen[yt]) || []);
   function watchDone(v, why) {
     const w = cur && cur.watch;
     if (w) clearInterval(w.timer);
@@ -3009,11 +3087,19 @@
   function trackWatch(v, frame) {
     stopWatch();
     const cut = clipOf(v);
-    const w = cur.watch = { yt: v.yt, sec: 0, last: null, dur: clipLen(v), timer: null };
+    const seen0 = savedSeen(v.yt);
+    const w = cur.watch = { yt: v.yt, sec: seen0.size, seen: seen0, last: null, dur: clipLen(v), timer: null, ticks: 0 };
     loadYtApi().then((YT) => {
       if (!cur || cur.watch !== w) return;
       // ⏩ 배속 막기: 1배가 아닌 속도로 바꾸면 바로 1배로 되돌리고 알려 줘요
       const p = new YT.Player(frame, { events: {
+        // 전에 보던 곳이 있으면 아직 안 본 첫 부분부터 이어서
+        onReady: () => {
+          if (!w.seen.size) return;
+          let k = cut.from;
+          while (w.seen.has(k)) k++;
+          if (k > cut.from + 3) { try { p.seekTo(Math.max(cut.from, k - 2), true); } catch (err) { /* 무시 */ } toast(T('watchResume', fmtSec(w.sec))); }
+        },
         onError: () => watchDone(v, 'error'),
         onPlaybackRateChange: (e) => { if (e.data !== 1) { try { p.setPlaybackRate(1); } catch (err) { /* 무시 */ } say(T('watchRate')); toast(T('watchRate')); } }
       } });
@@ -3038,13 +3124,13 @@
             // 1.25·1.5·2배속 등 1배보다 빠르게 재생 중인 동안은 하나도 안 세요 (느리게 보는 건 괜찮아요)
             const rate = p.getPlaybackRate ? p.getPlaybackRate() : 1;
             if (dt > 0 && rate <= 1 && dt <= real + 0.6) {
-              w.seen = w.seen || new Set();
               const end = cut.to || Infinity;
-              for (let k = Math.floor(w.last); k <= Math.floor(t); k++) if (k >= cut.from && k < end) w.seen.add(k);
+              for (let k = Math.floor(w.last); k <= Math.floor(t); k++) if (k >= cut.from && k < end && !w.seen.has(k)) { w.seen.add(k); w.dirty = true; }
               w.sec = w.seen.size;
             }
           }
           w.last = t; w.lastAt = now;
+          if (++w.ticks % 5 === 0) keepWatch(w); // 5초마다 저장
           if (p.getPlaybackRate && p.getPlaybackRate() > 1) { try { p.setPlaybackRate(1); } catch (err) { /* 무시 */ } }
           const fill = $('watchFill'), time = $('watchTime');
           if (fill && w.dur) fill.style.width = `${Math.min(100, (w.sec / w.dur) * 100)}%`;
@@ -3202,7 +3288,7 @@
     // 🔒 꼭 볼 영상 안내: 지금 보는 영상이 그 영상이면 진행 막대, 아니면 그 영상으로 가는 버튼
     const gate = !must ? '' : must.yt === v.yt
       ? `<div class="watch-gate" id="watchGate" role="status">🔒 ${esc(T('watchNeed'))}
-          <span class="watch-bar"><i id="watchFill"></i></span><b id="watchTime">0:00 / ${esc(fmtSec(clipLen(v)))}</b></div>`
+          <span class="watch-bar"><i id="watchFill" style="width:${Math.min(100, (savedSeen(v.yt).size / Math.max(1, clipLen(v))) * 100)}%"></i></span><b id="watchTime">${esc(fmtSec(savedSeen(v.yt).size))} / ${esc(fmtSec(clipLen(v)))}</b></div>`
       : `<div class="watch-gate" id="watchGate" role="status">🔒 ${esc(T('watchOther', L(must.title)))}
           <button type="button" class="btn btn-sm btn-blue" id="watchGo">${esc(T('watchGo'))}</button></div>`;
     // 🔗 링크 모드: 유튜브를 새 탭으로 열고, 영상 길이만큼 시간이 지나면 [다 봤어요]가 눌려요
@@ -3367,7 +3453,7 @@
   const DECOYS = [[126.43, 37.40], [126.60, 37.33], [126.36, 37.36]];                      // 갯벌 쪽 (함정)
   const SHIP_START = [126.30, 37.23], WOLMI = [126.597, 37.476], PALMI = [126.511, 37.358];
 
-  function startMission() {
+  function startMission(fresh) {
     const svg = $('incheon');
     if (!svg || svg.hasAttribute('hidden')) return;
     endMission();
@@ -3427,7 +3513,19 @@
     svgEl('circle', { r: 17, class: 'w-ship-bg' }, ship);
     svgEl('text', { 'text-anchor': 'middle', 'dominant-baseline': 'central', class: 'm-ship-icon' }, ship).textContent = '🚢';
     $('mStatus').textContent = '';
-    $('mRetry').onclick = startMission;
+    $('mRetry').onclick = () => startMission(true);
+    // 이미 성공한 미션이면, 다시 들어와도 처음부터가 아니라 '성공한 모습'으로 (원하면 [다시 해 보기])
+    if (fresh !== true && !previewMode && player && player.stars && player.stars.mission != null) {
+      cur.mission.lit = true; cur.mission.done = true; cur.mission.next = BUOYS.length;
+      lh.classList.add('lit'); buoyG.classList.add('show');
+      $('mNight').classList.add('dim', 'dawn');
+      all.forEach((b) => { if (b.ok) b.el.classList.add('done'); });
+      const [wx, wy] = IP(...WOLMI);
+      ship.style.transform = `translate(${wx}px, ${wy}px)`;
+      $('mStep1').classList.add('ok'); $('mStep2').classList.add('ok');
+      $('mStatus').textContent = `🎉 ${T('mSuccess')}`;
+      return;
+    }
     say(T('gMission'));
   }
 
@@ -3853,7 +3951,9 @@
      ===================================================================== */
   const QIDS = Object.keys(QUESTIONS);
   // 엔딩: 시작 → 질문 5개(진짜 답) → 더 알아보기 → 인증서 → 📝 소감 설문 (게임의 맨 마지막)
-  const END_STEPS = ['intro', ...QIDS, 'more', 'finish', ...(CONFIG.feedbackForms ? ['survey'] : [])];
+  // 순서: 진짜 답 → 더 알아보기 → 소감 설문 → 인증서(패들렛에 올리기) → 🏁 여정 완료
+  // (소감을 먼저 쓰고, 제출하면 저절로 인증서로 — 인증서를 빼먹지 않게)
+  const END_STEPS = ['intro', ...QIDS, 'more', ...(CONFIG.feedbackForms ? ['survey'] : []), 'finish', 'done'];
   let endStep = 0;
   const endVet = {}; // 질문별로 지금 보고 있는 참전용사 (답이 두 분일 때)
 
@@ -4294,18 +4394,28 @@
           <p class="cert-tap" id="certInfo" aria-live="polite">👆 ${esc(T('certTap'))}</p>
         </div>
         <p class="cert-lock" id="certLock" role="status">✍️ ${esc(T('certNeedPledge'))}</p>
-        <div class="cert-actions">
-          <button id="certSave" class="btn btn-go cert-need" type="button">📸 ${esc(T('certSave'))}</button>
-          ${canCopy ? `<button id="certCopy" class="btn btn-blue cert-need" type="button">📋 ${esc(T('certCopy'))}</button>` : ''}
-          ${canShare ? `<button id="certShare" class="btn btn-ghost cert-need" type="button" hidden>📤 ${esc(T('certShare'))}</button>` : ''}
-          ${CONFIG.padletUrl ? `<button id="certPadlet" class="btn btn-ghost cert-need" type="button">${esc(T('gbBoard'))}</button>` : ''}
-        </div>
+        <!-- 📌 패들렛에 올리기: 세 걸음을 큰 글씨로 (2·6반은 이 안내를 못 보고 소감으로 넘어갔어요) -->
+        <section class="cert-upload" aria-labelledby="certUpH">
+          <h3 id="certUpH">📌 ${esc(T('certUpTitle'))}</h3>
+          <ol class="cert-up-steps">
+            <li id="cu1"><span class="cu-n">1</span><div><p>${esc(T(canCopy ? 'certUp1' : 'certUp1Save'))}</p>
+              ${canCopy ? `<button id="certCopy" class="btn btn-go cert-need" type="button">📸 ${esc(T('certCopy'))}</button>`
+                : `<button id="certSave" class="btn btn-go cert-need" type="button">📸 ${esc(T('certSave'))}</button>`}</div></li>
+            ${CONFIG.padletUrl ? `<li id="cu2"><span class="cu-n">2</span><div><p>${esc(T('certUp2'))}</p>
+              <button id="certPadlet" class="btn btn-blue cert-need" type="button">🗂️ ${esc(T('certUpOpen'))}</button></div></li>` : ''}
+            <li id="cu3"><span class="cu-n">${CONFIG.padletUrl ? 3 : 2}</span><div><p>${esc(T(canCopy ? 'certUp3' : 'certUp3Save'))}</p></div></li>
+          </ol>
+          <p class="t-help">📱 ${esc(T('certUpTablet'))}</p>
+          <div class="cert-actions">
+            ${canCopy ? `<button id="certSave" class="btn btn-ghost btn-sm cert-need" type="button">💾 ${esc(T('certSave'))}</button>` : ''}
+            ${canShare ? `<button id="certShare" class="btn btn-ghost btn-sm cert-need" type="button" hidden>📤 ${esc(T('certShare'))}</button>` : ''}
+          </div>
+        </section>
         <div class="cert-titleline">
           <span>${esc(T('certPadletTitle'))}</span>
           <b id="certTitleLine"></b>
           ${navigator.clipboard ? `<button type="button" class="btn btn-sm btn-ghost cert-need" id="certTitleCopy">📋 ${esc(T('certTitleCopy'))}</button>` : ''}
         </div>
-        <p class="t-help">${esc(T('certHow'))}</p>
       </div>`;
   }
   function bindCert() {
@@ -4374,9 +4484,9 @@
       navigator.clipboard.writeText(certTitleLine()).then(() => toast(T('certTitleCopied')), () => toast(T('copyFail')));
     });
     // 링크 모드: 저장 확인 창(downloads)으로 받고, 안 되면 그림을 크게 띄워 길게 눌러 저장하게
-    const showCertImage = (blob) => {
+    const showCertImage = (blob, lead) => {
       const url = URL.createObjectURL(blob);
-      openInfo('📸', T('certTitle'), `<p class="t-help">${esc(T('certLongPress'))}</p>
+      openInfo('📸', T('certTitle'), `${lead ? `<p class="cert-fallback">${esc(lead)}</p>` : ''}<p class="t-help">${esc(T('certLongPress'))}</p>
         <img class="cert-full" src="${url}" alt="${esc(T('certTitle'))}">`);
     };
     $('certSave').addEventListener('click', async () => {
@@ -4394,6 +4504,7 @@
       }
       downloadBlob(blob, certFileName());
       toast(T('certSaved'));
+      certStep('cu1');
       reportProgress('certificate');
       // 휴대폰·태블릿: 사진 앱에 저장하거나 패들렛 앱으로 바로 보낼 수 있게
       const file = new File([blob], certFileName(), { type: 'image/png' });
@@ -4408,19 +4519,27 @@
         try { await navigator.share({ files: [new File([blob], certFileName(), { type: 'image/png' })], title: T('certTitle') }); } catch (e) { /* 취소 */ }
       });
     }
+    // 해낸 걸음에 ✓ 표시 (1 캡처 · 2 패들렛 열기)
+    const certStep = (id) => { const li = $(id); if (li) li.classList.add('ok'); player[id === 'cu1' ? 'certCaptured' : 'certPadlet'] = Date.now(); save(); };
+    if (player.certCaptured && $('cu1')) $('cu1').classList.add('ok');
+    if (player.certPadlet && $('cu2')) $('cu2').classList.add('ok');
     const copyImg = async () => {
       flush();
       try { await navigator.clipboard.write([new ClipboardItem({ 'image/png': certBlob() })]); return true; } catch (e) { return false; }
     };
     if ($('certCopy')) $('certCopy').addEventListener('click', async () => {
-      if (await copyImg()) { toast(T('certCopied')); return; }
-      // 그림 복사가 막힌 곳(링크 모드 등)이면 그림을 띄워서 길게 눌러 복사·저장하게
-      if (SANDBOX) showCertImage(await certBlob()); else toast(T('copyFail'));
+      if (await copyImg()) { toast(T('certCopied')); certStep('cu1'); reportProgress('certificate'); return; }
+      // 그림 복사가 막힌 기기·브라우저면: 인증서를 그림 파일로 저장해 주고, 그림도 크게 띄워서 패들렛에 올리는 방법을 알려 줘요
+      const blob = await certBlob();
+      if (!blob) { toast(T('copyFail')); return; }
+      if (!SANDBOX) { downloadBlob(blob, certFileName()); certStep('cu1'); reportProgress('certificate'); }
+      showCertImage(blob, T('certCopyFallback'));
     });
     if ($('certPadlet')) $('certPadlet').addEventListener('click', () => {
       const copying = $('certCopy') ? copyImg() : Promise.resolve(false);
       openPadlet();
-      copying.then((ok) => toast(ok ? T('certCopied') : T('certPadletHint')));
+      certStep('cu2');
+      copying.then((ok) => { toast(ok ? T('certCopied') : T('certPadletHint')); if (ok) certStep('cu1'); });
     });
   }
 
@@ -4503,10 +4622,27 @@
       html = `<div class="survey">
           <h2 class="end-h2">📝 ${esc(T('surveyTitle'))}</h2>
           <p class="end-lead">${esc(T('surveyLead'))}</p>
+          ${(T('surveyTip') || []).length ? `<aside class="survey-tip"><b>${esc(T('surveyTip')[0])}</b><ul>${T('surveyTip').slice(1).map((x) => `<li>${esc(x)}</li>`).join('')}</ul></aside>` : ''}
           ${SANDBOX
             ? `<a class="btn btn-go feedback-btn" href="${esc(fb)}" target="_blank" rel="noopener">📝 ${esc(T('feedbackBtn'))} ↗</a>`
-            : `<div class="survey-frame"><iframe src="${esc(fb)}?embedded=true" title="${esc(T('surveyTitle'))}" loading="lazy">…</iframe></div>
+            : `<div class="survey-frame"><iframe id="surveyFrame" src="${esc(fb)}?embedded=true" title="${esc(T('surveyTitle'))}" loading="lazy">…</iframe></div>
                <p class="t-help">${esc(T('surveyHelp'))} <a href="${esc(fb)}" target="_blank" rel="noopener">${esc(T('surveyOpen'))} ↗</a></p>`}
+          <p class="survey-next-note">➡️ ${esc(T('surveyAutoNote'))}</p>
+        </div>`;
+    } else if (step === 'done') {
+      // 🏁 여정 완료: 무엇을 해냈는지 한눈에 + 여정 코드·지도·처음으로
+      const checks = [
+        [doneCount(player) === N, T('doneCheckMap', N)],
+        [!!player.surveyDone, T('doneCheckSurvey')],
+        [!!(player.certUploaded || player.certCaptured), T('doneCheckCert')]
+      ];
+      html = `<div class="end-hero journey-done">
+          <span class="end-flags" aria-hidden="true"><i class="f-y"></i><i class="f-b"></i><i class="f-r"></i></span>
+          <h1>${esc(T('doneHeading'))}</h1>
+          <p class="done-badge">🏅 ${esc(T('finishTitle'))}</p>
+          <p class="end-lead">${esc(T('finishText', player.nick))}</p>
+          <p class="door-quote">${esc(T('finishQuote'))}</p>
+          <ul class="done-checks">${checks.map(([ok, label]) => `<li class="${ok ? 'ok' : ''}">${ok ? '✅' : '⬜'} ${esc(label)}</li>`).join('')}</ul>
           <p class="survey-thanks">🕊️ ${esc(T('surveyThanks'))}</p>
         </div>
         <div class="t-buttons end-buttons">
@@ -4535,17 +4671,56 @@
     if ($('endCode')) $('endCode').addEventListener('click', showCode);
     if ($('endMap')) $('endMap').addEventListener('click', () => (previewMode ? showTeacher() : enterGame()));
     if ($('endHome')) $('endHome').addEventListener('click', () => (previewMode ? showTeacher() : showStart()));
+    // 📝 소감 설문을 '제출'하면 구글 설문이 '응답이 기록되었습니다' 화면으로 바뀌어요(= 틀이 한 번 더 읽힘)
+    //    → 그걸 알아채고 잠시 뒤 저절로 인증서 화면으로
+    const sf = $('surveyFrame');
+    if (sf) {
+      let loads = 0, t0 = 0;
+      sf.addEventListener('load', () => {
+        loads++;
+        if (loads === 1) { t0 = Date.now(); return; }                      // 처음 = 설문이 열린 것
+        if (Date.now() - t0 < 4000 || END_STEPS[endStep] !== 'survey') return; // 너무 빠르면 제출이 아님
+        if (!previewMode && player) { player.surveyDone = Date.now(); save(); }
+        sfx('right');
+        toast(T('surveyAuto'));
+        setTimeout(() => { if (END_STEPS[endStep] === 'survey') { endStep++; renderEnding(); } }, 2500);
+      });
+    }
+    if (step === 'done') sfx('fanfare');
 
     $('endDots').innerHTML = END_STEPS.map((x, k) => `<i class="${k === endStep ? 'on' : ''}${QUESTIONS[x] ? ' q' : ''}"></i>`).join('');
     $('endPrev').textContent = endStep === 0 ? T('toMapBtn') : T('prev');
-    $('endNext').textContent = step === 'intro' ? T('endStart') : step === 'finish' ? T('surveyNext') : T('next');
+    $('endNext').textContent = step === 'intro' ? T('endStart') : step === 'survey' ? T('toCertBtn') : step === 'finish' ? T('endFinishBtn') : T('next');
     $('endNext').hidden = endStep === END_STEPS.length - 1; // 맨 마지막 화면에서는 [다음]이 없어요
   }
 
   $('endNext').addEventListener('click', () => {
     saveEndGuess();
+    // 인증서 화면에서 소감으로 넘어가기 전에 "패들렛에 올렸나요?" 한 번 물어봐요
+    if (END_STEPS[endStep] === 'finish' && !previewMode && CONFIG.padletUrl && !player.certUploaded) { askCertUploaded(); return; }
     if (endStep < END_STEPS.length - 1) { endStep++; renderEnding(); }
   });
+  function askCertUploaded() {
+    openInfo('📌', T('certAskTitle'), `<div class="cert-ask">
+        <p>${esc(T('certAskText'))}</p>
+        <ol class="cert-ask-steps">${(navigator.clipboard && navigator.clipboard.write && window.ClipboardItem ? ['certUp1', 'certUp2', 'certUp3'] : ['certUp1Save', 'certUp2', 'certUp3Save']).map((k) => `<li>${esc(T(k))}</li>`).join('')}</ol>
+        <div class="t-buttons">
+          <button type="button" class="btn btn-go" id="certAskNo">${esc(T('certAskNo'))}</button>
+          <button type="button" class="btn btn-ghost" id="certAskYes">${esc(T('certAskYes'))}</button>
+        </div>
+      </div>`);
+    $('certAskNo').addEventListener('click', () => {
+      $('infoSheet').hidden = true;
+      const box = document.querySelector('.cert-upload');
+      if (box) { box.scrollIntoView({ behavior: 'smooth', block: 'center' }); box.classList.remove('flash'); void box.offsetWidth; box.classList.add('flash'); }
+    });
+    $('certAskYes').addEventListener('click', () => {
+      player.certUploaded = Date.now();
+      save();
+      $('infoSheet').hidden = true;
+      if (endStep < END_STEPS.length - 1) { endStep++; renderEnding(); }
+    });
+  }
   $('endPrev').addEventListener('click', () => {
     saveEndGuess();
     if (endStep === 0) { previewMode ? showTeacher() : enterGame(); return; }
