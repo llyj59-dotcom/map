@@ -1186,3 +1186,14 @@ button.hcard:hover { transform: translateY(-3px) rotate(-1deg); box-shadow: 0 8p
 .sound-panel .sp-vol { display: flex; justify-content: space-between; font-weight: 700; font-size: 14px; }
 .sound-panel input[type=range] { width: 100%; accent-color: #003893; }
 .sound-panel .sp-help { color: #55607e; font-size: 12px; line-height: 1.45; }
+/* 🔎 영상이 왜 안 넘어가는지 */
+.watch-why { margin: 8px 0 0; font-weight: 700; font-size: 14.5px; line-height: 1.5; }
+.watch-gaps { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 6px; }
+.watch-gaps:empty { display: none; }
+.watch-gaps span { font-weight: 700; font-size: 13.5px; }
+.watch-help { margin-top: 8px; font-size: 13.5px; }
+.watch-help summary { cursor: pointer; color: #55607e; font-weight: 700; }
+.watch-help p { margin: 6px 0; line-height: 1.5; }
+.watch-pw { display: flex; flex-wrap: wrap; gap: 6px; }
+.watch-pw input { flex: 1 1 140px; min-width: 0; padding: 8px 10px; border-radius: 10px; border: 2px solid #d6deec; font: inherit; }
+#watchPwMsg { color: #cd2e3a; font-weight: 700; }

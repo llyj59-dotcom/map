@@ -237,6 +237,20 @@
       watchNeed: '▶를 눌러 이 영상을 끝까지 봐야 [다음]으로 넘어갈 수 있어요. (빨리 감기·배속으로 본 부분은 본 시간에 들어가지 않아요)',
       watchRate: '영상은 보통 속도(1배)로만 볼 수 있어요. 배속은 본 시간에 들어가지 않아요.',
       watchResume: (s) => `전에 본 곳(${s})에 이어서 볼게요.`,
+      watchTeacher: '선생님 확인으로 열었어요. 이제 [다음]으로 넘어가요.',
+      whyRate: '⏩ 지금 배속으로 재생 중이라 본 시간에 들어가지 않아요. 보통 속도(1배)로 돌려 주세요.',
+      whyBuffer: '⏳ 영상을 불러오는 중이에요. 인터넷이 느리면 잠깐 기다려 주세요.',
+      whyStart: '▶ 영상의 재생 버튼을 눌러 시작해요.',
+      whyPaused: (s) => `⏸ 영상이 멈춰 있어요. ▶를 눌러 이어 봐요. (약 ${s} 더 보면 열려요)`,
+      whyEnded: (s) => `⚠️ 영상은 끝났는데, 아직 못 본 부분이 약 ${s} 있어요. 아래 버튼으로 그 부분만 보면 열려요.`,
+      whyPlaying: (s) => `▶ 잘 보고 있어요! 약 ${s} 더 보면 [다음]이 열려요.`,
+      whyGaps: '못 본 부분:',
+      whyMore: (n) => `외 ${n}곳`,
+      watchHelpQ: '끝까지 봤는데도 안 넘어가나요?',
+      watchHelpText: '위에 적힌 "못 본 부분"을 먼저 보세요. 그래도 안 되면 선생님께 말씀드려요. 선생님이 비밀번호를 넣으면 넘어갈 수 있어요.',
+      watchPwPh: '선생님 비밀번호',
+      watchPwBtn: '선생님 확인으로 넘어가기',
+      watchPwWrong: '비밀번호가 맞지 않아요.',
       soundOn: '소리 켜짐 (누르면 꺼져요)',
       soundOff: '소리 꺼짐 (누르면 켜져요)',
       watchNeedLink: '꼭 볼 영상이에요. 아래를 눌러 유튜브에서 끝까지 본 뒤, 돌아와서 [다 봤어요]를 눌러 주세요. (영상 길이만큼 시간이 지나야 눌려요)',
@@ -705,6 +719,20 @@
       watchNeed: 'Mira este video hasta el final para pasar a [Siguiente]. (Adelantar o acelerar no cuenta)',
       watchRate: 'El video solo cuenta a velocidad normal (1x).',
       watchResume: (s) => `Seguimos desde donde ibas (${s} vistos).`,
+      watchTeacher: 'Desbloqueado con la confirmación del docente. Ya puedes pasar a [Siguiente].',
+      whyRate: '⏩ El video está acelerado y no cuenta. Ponlo a velocidad normal (1x).',
+      whyBuffer: '⏳ El video está cargando. Si la conexión es lenta, espera un momento.',
+      whyStart: '▶ Pulsa reproducir para empezar el video.',
+      whyPaused: (s) => `⏸ El video está en pausa. Pulsa ▶ para seguir. (Faltan unos ${s})`,
+      whyEnded: (s) => `⚠️ El video terminó, pero te faltan unos ${s} sin ver. Usa los botones de abajo para ver solo esas partes.`,
+      whyPlaying: (s) => `▶ ¡Vas bien! En unos ${s} se desbloquea [Siguiente].`,
+      whyGaps: 'Partes sin ver:',
+      whyMore: (n) => `y ${n} más`,
+      watchHelpQ: '¿Lo viste completo y aún no avanza?',
+      watchHelpText: 'Primero mira las "partes sin ver" de arriba. Si sigue sin funcionar, avisa a tu docente: con su contraseña puedes continuar.',
+      watchPwPh: 'Contraseña del docente',
+      watchPwBtn: 'Continuar con el docente',
+      watchPwWrong: 'La contraseña no es correcta.',
       soundOn: 'Sonido activado (toca para silenciar)',
       soundOff: 'Sonido desactivado (toca para activar)',
       watchNeedLink: 'Video obligatorio: ábrelo en YouTube, míralo completo y vuelve para pulsar [Ya lo vi]. (El botón se activa cuando pasa el tiempo del video)',
@@ -1173,6 +1201,20 @@
       watchNeed: 'Watch this video to the end to unlock [Next]. (Skipping ahead or speeding up does not count.)',
       watchRate: 'Videos only count at normal speed (1x).',
       watchResume: (s) => `Picking up where you left off (${s} watched).`,
+      watchTeacher: 'Unlocked by your teacher. You can go to [Next] now.',
+      whyRate: '⏩ The video is sped up, so it does not count. Please set it to normal speed (1x).',
+      whyBuffer: '⏳ The video is loading. If the internet is slow, please wait a moment.',
+      whyStart: '▶ Press play to start the video.',
+      whyPaused: (s) => `⏸ The video is paused. Press ▶ to keep watching. (About ${s} to go)`,
+      whyEnded: (s) => `⚠️ The video ended, but about ${s} was not watched. Use the buttons below to watch just those parts.`,
+      whyPlaying: (s) => `▶ Good! About ${s} more and [Next] unlocks.`,
+      whyGaps: 'Parts not watched:',
+      whyMore: (n) => `and ${n} more`,
+      watchHelpQ: 'Watched it all but still stuck?',
+      watchHelpText: 'First watch the "parts not watched" above. If it still does not work, tell your teacher. Your teacher can enter the password to let you continue.',
+      watchPwPh: 'Teacher password',
+      watchPwBtn: 'Continue with teacher',
+      watchPwWrong: 'That password is not correct.',
       soundOn: 'Sound on (tap to mute)',
       soundOff: 'Sound off (tap to turn on)',
       watchNeedLink: 'Must-see video: open it on YouTube, watch it to the end, then come back and press [I watched it]. (The button unlocks after the length of the video.)',
@@ -1662,58 +1704,84 @@
 
     // 🎵 배경음악 (장면마다: start · mission · voyage · battle · ending)
     const BGM = CONFIG.bgm || {};
-    const music = new Audio();
-    music.loop = false; music.preload = 'none'; // 반복은 직접: 끝나기 전에 서서히 작아졌다가 처음부터 서서히 커지게
-    let scene = null, fade = 0, looping = false;
-    const FADE_OUT = 1500, FADE_IN = 2500, LOOP_FADE = 2000; // 밀리초 — 음악이 뚝 끊기지 않게
+    // 플레이어 두 개를 번갈아 써요: 곡이 끝나 갈 때 다음 바퀴를 다른 플레이어로 미리 시작해 겹쳐 주면(크로스페이드)
+    // 그 장면이 끝날 때까지 소리가 끊기거나 조용해지는 틈 없이 계속 반복돼요
+    const players = [new Audio(), new Audio()];
+    players.forEach((p) => { p.loop = false; p.preload = 'auto'; p._fade = 0; });
+    let music = players[0];   // 지금 주로 들리는 플레이어
+    let scene = null, wantPause = false;
+    const FADE_OUT = 1500, FADE_IN = 2500, XFADE = 3000; // 밀리초 — 장면 바뀔 때 / 처음 시작 / 반복 이음새
     const target = () => (isOn() && scene && BGM[scene] ? BGM[scene] : '');
     // 🎚️ 소리 크기 (아이가 고르는 배율, 0~150%) — 곡마다 맞춘 크기 × 배율
     const mult = () => (typeof store.vol === 'number' ? store.vol : 1);
     const levelOf = (sc) => Math.min(1, ((BGM.levels || {})[sc] != null ? BGM.levels[sc] : BGM.volume != null ? BGM.volume : 0.12) * mult());
-    // 정해진 시간(ms) 동안 고르게 음량을 바꿔요 (음량이 작아도 페이드 길이는 똑같이)
-    function fadeTo(vol, ms, done) {
-      clearInterval(fade);
-      const from = music.volume, t0 = Date.now(), dur = Math.max(50, ms || FADE_IN);
-      fade = setInterval(() => {
+    // 정해진 시간(ms) 동안 고르게 음량을 바꿔요 (플레이어마다 따로)
+    function fadeTo(p, vol, ms, done) {
+      clearInterval(p._fade);
+      const from = p.volume, t0 = Date.now(), dur = Math.max(50, ms || FADE_IN);
+      p._fade = setInterval(() => {
         const k = Math.min(1, (Date.now() - t0) / dur);
-        music.volume = Math.max(0, Math.min(1, from + (vol - from) * k));
-        if (k >= 1) { clearInterval(fade); if (done) done(); }
+        p.volume = Math.max(0, Math.min(1, from + (vol - from) * k));
+        if (k >= 1) { clearInterval(p._fade); if (done) done(); }
       }, 40);
     }
-    // 곡이 끝나 갈 때: 2초 동안 서서히 작아지고 → 처음부터 서서히 커지며 다시
-    music.addEventListener('timeupdate', () => {
-      if (looping || music.paused || !music.duration || !target()) return;
-      if (music.duration - music.currentTime <= LOOP_FADE / 1000) { looping = true; fadeTo(0, LOOP_FADE); }
-    });
-    music.addEventListener('ended', () => {
-      looping = false;
-      if (!target()) return;
-      music.currentTime = 0;
-      music.volume = 0;
-      music.play().then(() => fadeTo(levelOf(scene), FADE_IN)).catch(() => {});
+    const playing = () => players.filter((p) => !p.paused);
+    // 🔁 반복 이음새: 끝나기 3초 전, 다른 플레이어로 같은 곡을 처음부터 시작해 서서히 키우고 지금 것은 서서히 줄여요
+    players.forEach((p) => {
+      p.addEventListener('timeupdate', () => {
+        if (p !== music || p._xf || p.paused || !p.duration || !target()) return;
+        if (p.duration - p.currentTime > XFADE / 1000) return;
+        p._xf = true;
+        const next = players.find((x) => x !== p);
+        const src = p.getAttribute('data-src');
+        if (next.getAttribute('data-src') !== src) { next.setAttribute('data-src', src); next.src = src; }
+        next._xf = false;
+        next.currentTime = 0;
+        next.volume = 0;
+        music = next;
+        next.play().then(() => fadeTo(next, levelOf(scene), XFADE)).catch(() => {});
+        fadeTo(p, 0, XFADE, () => { p.pause(); p._xf = false; });
+      });
+      // 혹시 이음새를 놓치고 곡이 그냥 끝나면, 바로 처음부터 다시
+      p.addEventListener('ended', () => {
+        p._xf = false;
+        if (p !== music || !target()) return;
+        p.currentTime = 0;
+        p.play().then(() => fadeTo(p, levelOf(scene), FADE_IN)).catch(() => {});
+      });
     });
     function apply() {
       const src = target();
       const vol = levelOf(scene);
-      if (!src) { if (!music.paused) fadeTo(0, FADE_OUT, () => music.pause()); return; }
+      if (!src) { wantPause = true; playing().forEach((p) => fadeTo(p, 0, FADE_OUT, () => p.pause())); return; }
+      wantPause = false;
       const same = music.getAttribute('data-src') === src;
-      if (same && !music.paused) { if (!looping) fadeTo(vol, FADE_IN); return; }
+      if (same && !music.paused) { if (!music._xf) fadeTo(music, vol, FADE_IN); return; }
       const start = () => {
-        looping = false;
         if (!same) { music.setAttribute('data-src', src); music.src = src; }
+        music._xf = false;
         music.volume = 0;
-        music.play().then(() => fadeTo(vol, FADE_IN)).catch(() => { /* 아직 화면을 누르기 전 — 누르면 다시 시도 */ });
+        music.play().then(() => fadeTo(music, vol, FADE_IN)).catch(() => { /* 아직 화면을 누르기 전 — 누르면 다시 시도 */ });
       };
       // 다른 곡으로 바뀔 때는 지금 곡을 1.5초 동안 서서히 줄인 뒤에 다음 곡을 서서히 키워요
-      if (!music.paused) fadeTo(0, FADE_OUT, () => { music.pause(); start(); }); else start();
+      const now = playing();
+      if (now.length) {
+        let left = now.length;
+        now.forEach((p) => fadeTo(p, 0, FADE_OUT, () => { p.pause(); p._xf = false; if (--left === 0) start(); }));
+      } else start();
     }
     function bgm(next) { if (next === scene) { if (music.paused && target()) apply(); return; } scene = next; apply(); }
     // 브라우저는 화면을 한 번 누른 뒤에야 소리를 내요
-    document.addEventListener('pointerdown', () => { if (isOn()) { ctx(); if (music.paused && target()) apply(); } }, { passive: true });
+    document.addEventListener('pointerdown', () => { if (isOn()) { ctx(); if (!playing().length && target()) apply(); } }, { passive: true });
+    // 🛟 지킴이: 그 장면의 음악이 어떤 이유로든 멈춰 있으면 2초마다 살펴서 다시 틀어요 (영상 볼 때·소리 끔은 제외)
+    setInterval(() => {
+      if (wantPause || !target() || playing().length || document.hidden) return;
+      if (music.readyState >= 2 || music.src) apply();
+    }, 2000);
     function toggle() {
       store.sound = !isOn();
       save();
-      if (isOn()) { ctx(); apply(); sfx('buoy'); } else { clearInterval(fade); music.pause(); }
+      if (isOn()) { ctx(); apply(); sfx('buoy'); } else { players.forEach((p) => { clearInterval(p._fade); p.pause(); p._xf = false; }); }
       renderSoundBtn();
     }
     // 🎚️ 소리 크기 바꾸기 (0~1.5) — 배경음악·효과음 함께, 유튜브 영상 소리는 그대로
@@ -1721,7 +1789,7 @@
       store.vol = Math.max(0, Math.min(1.5, v));
       save();
       if (master) master.gain.value = 0.18 * store.vol;
-      if (!music.paused && !looping) { clearInterval(fade); music.volume = levelOf(scene); }
+      if (!music.paused && !music._xf) { clearInterval(music._fade); music.volume = levelOf(scene); }
     }
     return { sfx, bgm, toggle, isOn, setVolume, getVolume: mult };
   })();
@@ -3252,8 +3320,9 @@
     if (!cur || cur.steps[cur.step].type !== 'video') return;
     $('nextBtn').disabled = false;
     const gate = $('watchGate');
-    if (gate) { gate.classList.add('ok'); gate.innerHTML = `✅ ${esc(why === 'watched' ? T('watchDone') : T('watchSkip'))}`; }
-    say(why === 'watched' ? T('gWatchDone') : T('watchSkip'));
+    const okMsg = why === 'watched' ? T('watchDone') : why === 'teacher' ? T('watchTeacher') : T('watchSkip');
+    if (gate) { gate.classList.add('ok'); gate.innerHTML = `✅ ${esc(okMsg)}`; }
+    say(why === 'watched' ? T('gWatchDone') : okMsg);
   }
   function trackWatch(v, frame) {
     stopWatch();
@@ -3290,11 +3359,14 @@
           //  → 2배속·건너뛰기로는 빨리 못 채워요. 전체화면에서 재생 상태를 못 읽는 기기도 영상이 앞으로 가면 세요.
           // 영상의 '몇 번째 초'를 봤는지 하나하나 기록해요 → 같은 부분을 두 번 봐도 한 번만, 건너뛴 부분은 안 셈
           //  (보통 속도로 재생될 때만: 영상이 흐른 시간이 실제로 흐른 시간보다 많이 앞서면 = 건너뛰기·배속 → 안 셈)
+          // 1.25·1.5·2배속 등 1배보다 빠르게 재생 중인 동안은 하나도 안 세요 (느리게 보는 건 괜찮아요)
+          //  (플레이어가 아직 속도를 못 알려 주면 1배로 봐요 — 처음 몇 초가 빠지지 않게)
+          const r0 = p.getPlaybackRate ? p.getPlaybackRate() : 1;
+          const rate = typeof r0 === 'number' && r0 > 0 ? r0 : 1;
           if (w.last != null && w.lastAt) {
             const dt = t - w.last, real = (now - w.lastAt) / 1000;
-            // 1.25·1.5·2배속 등 1배보다 빠르게 재생 중인 동안은 하나도 안 세요 (느리게 보는 건 괜찮아요)
-            const rate = p.getPlaybackRate ? p.getPlaybackRate() : 1;
-            if (dt > 0 && rate <= 1 && dt <= real + 0.6) {
+            // 학교 인터넷이 느려 영상이 멈칫했다가 따라잡을 때 생기는 작은 점프(1.6초 이내)는 봐줘요. 큰 점프는 건너뛰기라 안 셈
+            if (dt > 0 && rate <= 1 && dt <= real + 1.6) {
               const end = cut.to || Infinity;
               for (let k = Math.floor(w.last); k <= Math.floor(t); k++) if (k >= cut.from && k < end && !w.seen.has(k)) { w.seen.add(k); w.dirty = true; }
               w.sec = w.seen.size;
@@ -3302,15 +3374,54 @@
           }
           w.last = t; w.lastAt = now;
           if (++w.ticks % 5 === 0) keepWatch(w); // 5초마다 저장
-          if (p.getPlaybackRate && p.getPlaybackRate() > 1) { try { p.setPlaybackRate(1); } catch (err) { /* 무시 */ } }
+          if (rate > 1) { try { p.setPlaybackRate(1); } catch (err) { /* 무시 */ } }
           const fill = $('watchFill'), time = $('watchTime');
           if (fill && w.dur) fill.style.width = `${Math.min(100, (w.sec / w.dur) * 100)}%`;
           if (time && w.dur) time.textContent = `${fmtSec(w.sec)} / ${fmtSec(w.dur)}`;
-          // 끝까지 봤는지: 영상의 97% 이상(맨 끝 1~2초 여유)을 보통 속도로 실제로 봤을 때
-          if (w.dur && w.sec >= Math.min(w.dur * 0.97, w.dur - 1)) watchDone(v, 'watched');
+          // 끝까지 봤는지: 영상의 95% 이상(맨 끝 2초쯤 여유)을 보통 속도로 실제로 봤을 때
+          const need = Math.max(1, Math.min(w.dur * 0.95, w.dur - 2));
+          if (w.dur && w.sec >= need) { keepWatch(w); watchDone(v, 'watched'); return; }
+          explainWatch(w, p, st, rate, cut, need);
         } catch (e) { /* 플레이어 준비 중 */ }
       }, 1000);
+      // 🔑 그래도 안 열리면: 선생님 비밀번호로 열기
+      const pwBtn = $('watchPwBtn');
+      if (pwBtn) pwBtn.addEventListener('click', () => {
+        if (teacherHash(($('watchPw').value || '').trim()) === String(CONFIG.teacherPasswordHash)) { keepWatch(w); watchDone(v, 'teacher'); }
+        else { $('watchPwMsg').textContent = T('watchPwWrong'); }
+      });
     }).catch(() => watchDone(v, 'blocked')); // 학교망에서 유튜브가 막힌 경우
+  }
+  // 🔎 왜 아직 [다음]이 안 열리는지 영상 아래에 알려 줘요 (멈춤·불러오는 중·배속·못 본 구간)
+  function explainWatch(w, p, st, rate, cut, need) {
+    const why = $('watchWhy'), gaps = $('watchGaps');
+    if (!why) return;
+    const left = Math.max(0, Math.ceil(need - w.sec));
+    // 아직 못 본 구간 (연속된 초끼리 묶어서)
+    const endK = Math.floor(cut.from + w.dur);
+    const miss = [];
+    for (let k = cut.from; k < endK; k++) {
+      if (w.seen.has(k)) continue;
+      const lastR = miss[miss.length - 1];
+      if (lastR && lastR[1] === k - 1) lastR[1] = k; else miss.push([k, k]);
+    }
+    let msg;
+    if (rate > 1) msg = T('whyRate');
+    else if (st === 3) msg = T('whyBuffer');
+    else if (st === -1 || st === 5) msg = T('whyStart');
+    else if (st === 2) msg = T('whyPaused', fmtSec(left));
+    else if (st === 0) msg = T('whyEnded', fmtSec(left));
+    else msg = T('whyPlaying', fmtSec(left));
+    why.textContent = msg;
+    // 영상이 끝났거나 멈췄는데 못 본 구간이 있으면, 그 구간으로 바로 가는 버튼
+    const showGaps = (st === 0 || st === 2) && miss.length && w.sec > 0;
+    const sig = showGaps ? miss.slice(0, 3).map((r) => r.join('-')).join(',') : '';
+    if (gaps.dataset.sig === sig) return;
+    gaps.dataset.sig = sig;
+    gaps.innerHTML = showGaps ? `<span>${esc(T('whyGaps'))}</span>${miss.slice(0, 3).map(([a, b]) => `<button type="button" class="btn btn-sm btn-blue" data-seek="${a}">▶ ${fmtSec(a)}~${fmtSec(b + 1)}</button>`).join('')}${miss.length > 3 ? `<small>${esc(T('whyMore', miss.length - 3))}</small>` : ''}` : '';
+    gaps.querySelectorAll('[data-seek]').forEach((b) => b.addEventListener('click', () => {
+      try { p.seekTo(Math.max(cut.from, +b.dataset.seek - 1), true); p.playVideo(); } catch (e) { /* 무시 */ }
+    }));
   }
 
   function buildSteps(s) {
@@ -3459,7 +3570,14 @@
     // 🔒 꼭 볼 영상 안내: 지금 보는 영상이 그 영상이면 진행 막대, 아니면 그 영상으로 가는 버튼
     const gate = !must ? '' : must.yt === v.yt
       ? `<div class="watch-gate" id="watchGate" role="status">🔒 ${esc(T('watchNeed'))}
-          <span class="watch-bar"><i id="watchFill" style="width:${Math.min(100, (savedSeen(v.yt).size / Math.max(1, clipLen(v))) * 100)}%"></i></span><b id="watchTime">${esc(fmtSec(savedSeen(v.yt).size))} / ${esc(fmtSec(clipLen(v)))}</b></div>`
+          <span class="watch-bar"><i id="watchFill" style="width:${Math.min(100, (savedSeen(v.yt).size / Math.max(1, clipLen(v))) * 100)}%"></i></span><b id="watchTime">${esc(fmtSec(savedSeen(v.yt).size))} / ${esc(fmtSec(clipLen(v)))}</b>
+          <p class="watch-why" id="watchWhy" role="status">${esc(T('whyStart'))}</p>
+          <div class="watch-gaps" id="watchGaps"></div>
+          <details class="watch-help"><summary>${esc(T('watchHelpQ'))}</summary>
+            <p>${esc(T('watchHelpText'))}</p>
+            <div class="watch-pw"><input type="password" id="watchPw" autocomplete="off" placeholder="${esc(T('watchPwPh'))}"><button type="button" class="btn btn-sm btn-ghost" id="watchPwBtn">${esc(T('watchPwBtn'))}</button></div>
+            <small id="watchPwMsg" role="alert"></small>
+          </details></div>`
       : `<div class="watch-gate" id="watchGate" role="status">🔒 ${esc(T('watchOther', L(must.title)))}
           <button type="button" class="btn btn-sm btn-blue" id="watchGo">${esc(T('watchGo'))}</button></div>`;
     // 🔗 링크 모드: 유튜브를 새 탭으로 열고, 영상 길이만큼 시간이 지나면 [다 봤어요]가 눌려요
