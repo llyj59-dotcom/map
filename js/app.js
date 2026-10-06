@@ -1595,29 +1595,47 @@
     // 🎵 배경음악 (장면마다: start · mission · voyage · battle · ending)
     const BGM = CONFIG.bgm || {};
     const music = new Audio();
-    music.loop = true; music.preload = 'none';
-    let scene = null, fade = 0;
+    music.loop = false; music.preload = 'none'; // 반복은 직접: 끝나기 전에 서서히 작아졌다가 처음부터 서서히 커지게
+    let scene = null, fade = 0, looping = false;
+    const FADE_OUT = 1500, FADE_IN = 2500, LOOP_FADE = 2000; // 밀리초 — 음악이 뚝 끊기지 않게
     const target = () => (isOn() && scene && BGM[scene] ? BGM[scene] : '');
-    function fadeTo(vol, done) {
+    const levelOf = (sc) => ((BGM.levels || {})[sc] != null ? BGM.levels[sc] : BGM.volume != null ? BGM.volume : 0.12);
+    // 정해진 시간(ms) 동안 고르게 음량을 바꿔요 (음량이 작아도 페이드 길이는 똑같이)
+    function fadeTo(vol, ms, done) {
       clearInterval(fade);
+      const from = music.volume, t0 = Date.now(), dur = Math.max(50, ms || FADE_IN);
       fade = setInterval(() => {
-        const v = music.volume + (vol > music.volume ? 0.05 : -0.05);
-        if (Math.abs(vol - music.volume) <= 0.05) { music.volume = Math.max(0, Math.min(1, vol)); clearInterval(fade); if (done) done(); }
-        else music.volume = Math.max(0, Math.min(1, v));
-      }, 60);
+        const k = Math.min(1, (Date.now() - t0) / dur);
+        music.volume = Math.max(0, Math.min(1, from + (vol - from) * k));
+        if (k >= 1) { clearInterval(fade); if (done) done(); }
+      }, 40);
     }
+    // 곡이 끝나 갈 때: 2초 동안 서서히 작아지고 → 처음부터 서서히 커지며 다시
+    music.addEventListener('timeupdate', () => {
+      if (looping || music.paused || !music.duration || !target()) return;
+      if (music.duration - music.currentTime <= LOOP_FADE / 1000) { looping = true; fadeTo(0, LOOP_FADE); }
+    });
+    music.addEventListener('ended', () => {
+      looping = false;
+      if (!target()) return;
+      music.currentTime = 0;
+      music.volume = 0;
+      music.play().then(() => fadeTo(levelOf(scene), FADE_IN)).catch(() => {});
+    });
     function apply() {
       const src = target();
-      const vol = (BGM.levels || {})[scene] != null ? BGM.levels[scene] : BGM.volume != null ? BGM.volume : 0.12;
-      if (!src) { if (!music.paused) fadeTo(0, () => music.pause()); return; }
+      const vol = levelOf(scene);
+      if (!src) { if (!music.paused) fadeTo(0, FADE_OUT, () => music.pause()); return; }
       const same = music.getAttribute('data-src') === src;
-      if (same && !music.paused) { fadeTo(vol); return; }
+      if (same && !music.paused) { if (!looping) fadeTo(vol, FADE_IN); return; }
       const start = () => {
+        looping = false;
         if (!same) { music.setAttribute('data-src', src); music.src = src; }
         music.volume = 0;
-        music.play().then(() => fadeTo(vol)).catch(() => { /* 아직 화면을 누르기 전 — 누르면 다시 시도 */ });
+        music.play().then(() => fadeTo(vol, FADE_IN)).catch(() => { /* 아직 화면을 누르기 전 — 누르면 다시 시도 */ });
       };
-      if (!music.paused) fadeTo(0, () => { music.pause(); start(); }); else start();
+      // 다른 곡으로 바뀔 때는 지금 곡을 1.5초 동안 서서히 줄인 뒤에 다음 곡을 서서히 키워요
+      if (!music.paused) fadeTo(0, FADE_OUT, () => { music.pause(); start(); }); else start();
     }
     function bgm(next) { if (next === scene) { if (music.paused && target()) apply(); return; } scene = next; apply(); }
     // 브라우저는 화면을 한 번 누른 뒤에야 소리를 내요
