@@ -7,6 +7,8 @@
   const STATIONS = window.STATIONS;
   const QUESTIONS = window.QUESTIONS;
   const CONFIG = window.MAP_CONFIG;
+  // 🧒 3·4학년용 링크: 주소 끝에 ?grade=34 를 붙이면 소감 설문 없이 '더 해 보기 → 인증서 → 끝'
+  const NO_SURVEY = (() => { try { const p = new URLSearchParams(location.search); return p.get('grade') === '34' || p.get('survey') === 'off'; } catch (e) { return false; } })();
   const STORE_KEY = 'mapTomorrow.v2';
   const ROSTER_KEY = 'mapTomorrow.roster.v1';
   const N = STATIONS.length;
@@ -461,6 +463,7 @@
       extraMissing: '아직:',
       extraRetry: '🔁 다시 도전',
       extraFinish: '✅ 끝내기 (소감 쓰러 가기) ▶',
+      extraFinishCert: '✅ 끝내기 (인증서 만들러 가기) ▶',
       extraHint: '다시 도전한 곳을 마치면 지도에서 [🎯 더 해 보기로 돌아가기]를 눌러 이 화면으로 돌아와요.',
       backToExtra: '🎯 더 해 보기로 돌아가기 ▶',
       gapQuiz: '퀴즈 한 번에 맞히기',
@@ -954,6 +957,7 @@
       extraMissing: 'Falta:',
       extraRetry: '🔁 Volver a intentar',
       extraFinish: '✅ Terminar (ir a la encuesta) ▶',
+      extraFinishCert: '✅ Terminar (crear mi certificado) ▶',
       extraHint: 'Cuando termines la parada, pulsa [🎯 Volver a Sigue jugando] en el mapa para regresar aquí.',
       backToExtra: '🎯 Volver a Sigue jugando ▶',
       gapQuiz: 'acertar el quiz al primer intento',
@@ -1447,6 +1451,7 @@
       extraMissing: 'Missing:',
       extraRetry: '🔁 Try again',
       extraFinish: '✅ Finish (go to the survey) ▶',
+      extraFinishCert: '✅ Finish (make my certificate) ▶',
       extraHint: 'When you finish that stop, tap [🎯 Back to Keep exploring] on the map to come back here.',
       backToExtra: '🎯 Back to Keep exploring ▶',
       gapQuiz: 'quiz right on the first try',
@@ -4309,7 +4314,7 @@
   // 엔딩: 시작 → 질문 5개(진짜 답) → 더 알아보기 → 인증서 → 📝 소감 설문 (게임의 맨 마지막)
   // 순서: 진짜 답 → 더 알아보기 → 소감 설문 → 인증서(패들렛에 올리기) → 🏁 여정 완료
   // (소감을 먼저 쓰고, 제출하면 저절로 인증서로 — 인증서를 빼먹지 않게)
-  const END_STEPS = ['intro', ...QIDS, 'more', 'extra', ...(CONFIG.feedbackForms ? ['survey'] : []), 'finish', 'done'];
+  const END_STEPS = ['intro', ...QIDS, 'more', 'extra', ...(CONFIG.feedbackForms && !NO_SURVEY ? ['survey'] : []), 'finish', 'done'];
   let endDir = 1; // 마지막으로 움직인 방향 (다 모은 아이는 '더 해 보기'를 건너뛸 때 씀)
 
   /* 🎯 더 해 보기: 작전 지점마다 아직 못 받은 별·영웅 카드 (전부 모았으면 빈 목록 → 화면을 건너뜀) */
@@ -5069,7 +5074,7 @@
       // 🏁 여정 완료: 무엇을 해냈는지 한눈에 + 여정 코드·지도·처음으로
       const checks = [
         [doneCount(player) === N, T('doneCheckMap', N)],
-        [!!player.surveyDone, T('doneCheckSurvey')],
+        ...(NO_SURVEY ? [] : [[!!player.surveyDone, T('doneCheckSurvey')]]),
         [!!(player.certUploaded || player.certCaptured), T('doneCheckCert')]
       ];
       html = `<div class="end-hero journey-done">
@@ -5127,7 +5132,7 @@
 
     $('endDots').innerHTML = END_STEPS.map((x, k) => `<i class="${k === endStep ? 'on' : ''}${QUESTIONS[x] ? ' q' : ''}"></i>`).join('');
     $('endPrev').textContent = endStep === 0 ? T('toMapBtn') : T('prev');
-    $('endNext').textContent = step === 'intro' ? T('endStart') : step === 'extra' ? T('extraFinish') : step === 'survey' ? T('toCertBtn') : step === 'finish' ? T('endFinishBtn') : T('next');
+    $('endNext').textContent = step === 'intro' ? T('endStart') : step === 'extra' ? T(NO_SURVEY ? 'extraFinishCert' : 'extraFinish') : step === 'survey' ? T('toCertBtn') : step === 'finish' ? T('endFinishBtn') : T('next');
     $('endNext').hidden = endStep === END_STEPS.length - 1; // 맨 마지막 화면에서는 [다음]이 없어요
   }
 
