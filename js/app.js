@@ -28,9 +28,28 @@
         ['P', 'Peace · 평화', '우리 손으로 평화의 지도를 그려요']
       ],
       mapTo: '→ to Tomorrow: 그 지도로 함께 평화로운 내일을 그려요',
+      project: {
+        badge: '국가보훈부 · 2026 유엔참전국 글로벌 아카데미',
+        title: '인천신검단초등학교 6학년 8반이 만든 평화의 지도',
+        lines: [
+          'M.A.P. to Tomorrow는 국가보훈부의 「2026 유엔참전국 글로벌 아카데미」 사업으로 인천신검단초등학교 6학년 8반 학생들이 직접 만든 웹앱이에요.',
+          '6·25 전쟁 때 라틴아메리카에서 유일하게 전투 부대를 보낸 콜롬비아. 우리는 발레두파르의 La Esperanza 기술교육학교 친구들과 패들렛과 영상으로 질문과 답을 주고받고, 콜롬비아 참전용사님들께 직접 질문을 보내 답을 들으며 이 지도를 함께 채웠어요.',
+          '참전용사의 희생을 기억하고(Memory), 국경과 세대를 넘어 연결하며(Across), 평화의 가치를 내일로 이어 가는(Peace) 것이 우리의 목표예요. 6학년이 만든 이 지도는 4학년 동생들과 콜롬비아 친구들에게도 전해져요.'
+        ],
+        meta: [
+          ['만든 사람', '인천신검단초등학교 6학년 8반'],
+          ['함께한 학교', 'Institución Educativa Técnica La Esperanza (콜롬비아 발레두파르)'],
+          ['사업', '국가보훈부 2026 유엔참전국 글로벌 아카데미 (2026. 3.~11.)']
+        ]
+      },
+      soundTitle: '🔊 게임 소리',
+      soundMute: '소리 끄기',
+      soundUnmute: '소리 켜기',
+      soundVol: '소리 크기',
+      soundHelp: '배경음악과 효과음만 바뀌어요. 유튜브 영상 소리는 영상 아래 볼륨으로 조절해요.',
       aboutTitle: '💡 이 게임은 왜 만들었을까요?',
       about: [
-        '이 게임은 인천신검단초등학교 6학년 친구들이 직접 조사한 이야기로 만든 평화의 지도예요.',
+        '이 게임은 인천신검단초등학교 6학년 8반 친구들이 직접 조사한 이야기로 만든 평화의 지도예요.',
         '우리 학교는 인천 서구에 있어요. 같은 서구의 경명공원에는 콜롬비아 참전기념비가 서 있어요. 콜롬비아는 6·25 전쟁 때 라틴아메리카에서 유일하게 전투 부대를 보낸 나라예요. 기념비에는 콜롬비아 용사들이 싸운 흑운토령·금성 전투가 새겨져 있지요.',
         '인천상륙작전(1950)은 콜롬비아대대가 오기 전의 일이에요. 그래도 우리 고장 인천에서 시작된 이 작전이 전쟁의 흐름을 바꾸었고, 그 뒤 지구 반대편에서 온 콜롬비아 용사들이 고지에서 싸우고, 콜롬비아 해군이 서해를 지켰어요. 그 이야기를 인천에서 시작해 인천으로 돌아오는 한 장의 지도로 이었어요.'
       ],
@@ -480,9 +499,28 @@
         ['P', 'Peace · Paz', 'Dibujamos juntos un mapa de la paz']
       ],
       mapTo: '→ to Tomorrow: con ese mapa dibujamos juntos un mañana en paz',
+      project: {
+        badge: 'Ministerio de Asuntos de Patriotas y Veteranos de Corea · Academia Global 2026 de los Países Aliados de la ONU',
+        title: 'Un mapa de la paz hecho por el grupo 8 de 6.º de primaria de la Escuela Primaria Singeomdan (Incheon)',
+        lines: [
+          'M.A.P. to Tomorrow es una aplicación web creada por los estudiantes del grupo 8 de 6.º de primaria de la Escuela Primaria Singeomdan de Incheon, dentro del programa «Academia Global 2026 de los Países Aliados de la ONU» del Ministerio de Asuntos de Patriotas y Veteranos de Corea.',
+          'Colombia fue el único país de América Latina que envió tropas de combate a la Guerra de Corea. Junto con los estudiantes de la Institución Educativa Técnica La Esperanza de Valledupar intercambiamos preguntas y respuestas por Padlet y en video, y enviamos preguntas a los veteranos colombianos para escuchar sus respuestas.',
+          'Nuestro objetivo: recordar el sacrificio de los veteranos (Memory), conectarnos más allá de fronteras y generaciones (Across) y llevar el valor de la paz hacia el mañana (Peace).'
+        ],
+        meta: [
+          ['Creado por', 'Grupo 8 de 6.º de primaria, Escuela Primaria Singeomdan (Incheon, Corea)'],
+          ['Colegio aliado', 'Institución Educativa Técnica La Esperanza (Valledupar, Colombia)'],
+          ['Programa', 'Academia Global 2026 de los Países Aliados de la ONU (marzo–noviembre de 2026)']
+        ]
+      },
+      soundTitle: '🔊 Sonido del juego',
+      soundMute: 'Silenciar',
+      soundUnmute: 'Activar sonido',
+      soundVol: 'Volumen',
+      soundHelp: 'Solo cambia la música y los efectos. El volumen de los videos de YouTube se ajusta debajo de cada video.',
       aboutTitle: '💡 ¿Por qué hicimos este juego?',
       about: [
-        'Este mapa de la paz nace de las investigaciones de los estudiantes de 6.º de primaria (11-12 años) de la Escuela Primaria Singeomdan, en Incheon (Corea del Sur), y está pensado para compartirlo con nuestros amigos de Colombia.',
+        'Este mapa de la paz nace de las investigaciones de los estudiantes del grupo 8 de 6.º de primaria (11-12 años) de la Escuela Primaria Singeomdan, en Incheon (Corea del Sur), y está pensado para compartirlo con nuestros amigos de Colombia.',
         'Nuestra escuela está en el distrito de Seo-gu, en Incheon. En ese mismo distrito, en el parque Gyeongmyeong, se levanta el monumento a los soldados colombianos. Colombia fue el único país de América Latina que envió tropas de combate a la Guerra de Corea, y en el monumento están grabadas las batallas de Heukuntoryeong y Kumsong.',
         'El Desembarco de Incheon (1950) ocurrió antes de que llegara el Batallón Colombia. Pero esa operación, que empezó en nuestra ciudad, cambió el rumbo de la guerra; después, los soldados colombianos llegaron desde el otro lado del mundo para luchar en las colinas, y la Armada colombiana protegió el Mar Amarillo. Unimos toda esa historia en un solo mapa que empieza y termina en Incheon.'
       ],
@@ -929,9 +967,28 @@
         ['P', 'Peace', 'Draw a map of peace with our own hands']
       ],
       mapTo: '→ to Tomorrow: with that map, we draw a peaceful tomorrow together',
+      project: {
+        badge: 'Ministry of Patriots and Veterans Affairs · 2026 UN Participating Countries Global Academy',
+        title: 'A map of peace made by Class 6-8 of Singeomdan Elementary School, Incheon',
+        lines: [
+          'M.A.P. to Tomorrow is a web app made by the students of Class 6-8 (6th grade, Class 8) at Singeomdan Elementary School in Incheon, Korea, as part of the 2026 UN Participating Countries Global Academy run by the Korean Ministry of Patriots and Veterans Affairs.',
+          'Colombia was the only Latin American country to send combat troops to the Korean War. With our friends at La Esperanza Technical Educational Institution in Valledupar, we exchanged questions and answers on Padlet and by video, and sent questions to Colombian veterans to hear their answers.',
+          'Our goal: remember the sacrifice of the veterans (Memory), connect across borders and generations (Across), and carry the value of peace into tomorrow (Peace).'
+        ],
+        meta: [
+          ['Made by', 'Class 6-8, Singeomdan Elementary School (Incheon, Korea)'],
+          ['Partner school', 'La Esperanza Technical Educational Institution (Valledupar, Colombia)'],
+          ['Program', '2026 UN Participating Countries Global Academy (Mar–Nov 2026)']
+        ]
+      },
+      soundTitle: '🔊 Game sound',
+      soundMute: 'Mute',
+      soundUnmute: 'Turn sound on',
+      soundVol: 'Volume',
+      soundHelp: 'This only changes the music and sound effects. Use the volume under each YouTube video for video sound.',
       aboutTitle: '💡 Why did we make this game?',
       about: [
-        'This map of peace was made from the research of 6th graders at Singeomdan Elementary School in Incheon, Korea, to share with our friends in Colombia.',
+        'This map of peace was made from the research of Class 6-8 (6th grade) at Singeomdan Elementary School in Incheon, Korea, to share with our friends in Colombia.',
         'Our school is in Seo-gu, a district of Incheon. In the same district, in Gyeongmyeong Park, stands the memorial to the Colombian soldiers. Colombia was the only Latin American country to send combat troops to the Korean War, and the battles of Heukuntoryeong and Kumsong are carved on the memorial.',
         'The Incheon Landing (1950) happened before the Colombia Battalion arrived. But that operation, which began in our city, turned the tide of the war; afterwards, Colombian soldiers came from the other side of the world to fight on the hills, and the Colombian Navy guarded the Yellow Sea. We joined all of this into one map that starts and ends in Incheon.'
       ],
@@ -1503,6 +1560,17 @@
     $('mapLetters').innerHTML = T('mapLetters').map(([k, name, text]) => `
       <div class="ml" style="--c:${mlColor[k]}"><b>${k}</b><strong>${esc(name)}</strong><span>${esc(text)}</span></div>`).join('')
       + `<div class="ml-to">${esc(T('mapTo'))}</div>`;
+    // 🏫 프로젝트 소개 카드 (국가보훈부 2026 유엔참전국 글로벌 아카데미 · 인천신검단초 6학년 8반) — 시작 화면 제목 아래
+    let pc = $('projectCard');
+    if (!pc) {
+      pc = document.createElement('section');
+      pc.id = 'projectCard'; pc.className = 'project-card';
+      const lead = document.querySelector('#startScreen .start-lead');
+      if (lead) lead.parentNode.insertBefore(pc, lead);
+    }
+    const P = T('project');
+    pc.innerHTML = `<p class="pc-badge">${flagHtml('kr')} ${esc(P.badge)} ${flagHtml('co')}</p><h2 class="pc-title">${esc(P.title)}</h2>${P.lines.map((x) => `<p>${esc(x)}</p>`).join('')}
+      <dl class="pc-meta">${P.meta.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>`;
     $('aboutBody').innerHTML = `<div class="about-body">${T('about').map((p) => `<p>${esc(p)}</p>`).join('')}
       <p><b>${esc(T('aboutGoalsTitle'))}</b></p><ul>${T('aboutGoals').map((g) => `<li>${esc(g)}</li>`).join('')}</ul></div>`;
     $('atlasBtn').textContent = T(typeof atlasOn !== 'undefined' && atlasOn ? 'atlasClose' : 'atlasOpen');
@@ -1543,7 +1611,7 @@
         const C = window.AudioContext || window.webkitAudioContext;
         if (!C) return null;
         ac = new C();
-        master = ac.createGain(); master.gain.value = 0.18; // 헤드셋에서도 부드럽게 master.connect(ac.destination);
+        master = ac.createGain(); master.gain.value = 0.18 * (typeof store.vol === 'number' ? store.vol : 1); // 헤드셋에서도 부드럽게 (× 소리 크기) master.connect(ac.destination);
       }
       if (ac.state === 'suspended') ac.resume().catch(() => {});
       return ac;
@@ -1599,7 +1667,9 @@
     let scene = null, fade = 0, looping = false;
     const FADE_OUT = 1500, FADE_IN = 2500, LOOP_FADE = 2000; // 밀리초 — 음악이 뚝 끊기지 않게
     const target = () => (isOn() && scene && BGM[scene] ? BGM[scene] : '');
-    const levelOf = (sc) => ((BGM.levels || {})[sc] != null ? BGM.levels[sc] : BGM.volume != null ? BGM.volume : 0.12);
+    // 🎚️ 소리 크기 (아이가 고르는 배율, 0~150%) — 곡마다 맞춘 크기 × 배율
+    const mult = () => (typeof store.vol === 'number' ? store.vol : 1);
+    const levelOf = (sc) => Math.min(1, ((BGM.levels || {})[sc] != null ? BGM.levels[sc] : BGM.volume != null ? BGM.volume : 0.12) * mult());
     // 정해진 시간(ms) 동안 고르게 음량을 바꿔요 (음량이 작아도 페이드 길이는 똑같이)
     function fadeTo(vol, ms, done) {
       clearInterval(fade);
@@ -1646,7 +1716,14 @@
       if (isOn()) { ctx(); apply(); sfx('buoy'); } else { clearInterval(fade); music.pause(); }
       renderSoundBtn();
     }
-    return { sfx, bgm, toggle, isOn };
+    // 🎚️ 소리 크기 바꾸기 (0~1.5) — 배경음악·효과음 함께, 유튜브 영상 소리는 그대로
+    function setVolume(v) {
+      store.vol = Math.max(0, Math.min(1.5, v));
+      save();
+      if (master) master.gain.value = 0.18 * store.vol;
+      if (!music.paused && !looping) { clearInterval(fade); music.volume = levelOf(scene); }
+    }
+    return { sfx, bgm, toggle, isOn, setVolume, getVolume: mult };
   })();
   const sfx = (name) => Sound.sfx(name);
   // 장면에 맞는 배경음악: 작전 지점마다 data.js 의 MAP_CONFIG.bgmStations 로 정해요
@@ -1663,20 +1740,44 @@
     }
     Sound.bgm(player && player.keyDone ? 'ending' : 'start');
   }
+  // 🔊 버튼: 누르면 작은 창이 열려요 → [소리 끄기/켜기] + 소리 크기 막대 (휴대폰·태블릿에서도 게임 소리만 따로)
   function renderSoundBtn() {
     let b = $('soundBtn');
     if (!b) {
+      const box = document.createElement('div');
+      box.className = 'sound-wrap';
       b = document.createElement('button');
       b.id = 'soundBtn'; b.type = 'button'; b.className = 'sound-btn';
-      b.addEventListener('click', () => Sound.toggle());
+      b.setAttribute('aria-haspopup', 'true');
+      const panel = document.createElement('div');
+      panel.id = 'soundPanel'; panel.className = 'sound-panel'; panel.hidden = true;
+      box.append(b, panel);
       const wrap = document.querySelector('.topbar-right .lang-wrap');
-      wrap.parentNode.insertBefore(b, wrap);
+      wrap.parentNode.insertBefore(box, wrap);
+      b.addEventListener('click', (e) => { e.stopPropagation(); panel.hidden = !panel.hidden; if (!panel.hidden) renderSoundPanel(); });
+      panel.addEventListener('click', (e) => e.stopPropagation());
+      document.addEventListener('click', () => { panel.hidden = true; });
     }
     const on = Sound.isOn();
     b.textContent = on ? '🔊' : '🔇';
     b.setAttribute('aria-pressed', String(on));
     b.setAttribute('aria-label', T(on ? 'soundOn' : 'soundOff'));
     b.title = T(on ? 'soundOn' : 'soundOff');
+    if ($('soundPanel') && !$('soundPanel').hidden) renderSoundPanel();
+  }
+  function renderSoundPanel() {
+    const p = $('soundPanel');
+    const on = Sound.isOn();
+    const pct = Math.round(Sound.getVolume() * 100);
+    p.innerHTML = `<b class="sp-title">${esc(T('soundTitle'))}</b>
+      <button type="button" class="btn btn-sm ${on ? 'btn-ghost' : 'btn-go'}" id="soundToggle">${on ? '🔇 ' + esc(T('soundMute')) : '🔊 ' + esc(T('soundUnmute'))}</button>
+      <label class="sp-vol" for="soundVol">${esc(T('soundVol'))} <output id="soundVolOut">${pct}%</output></label>
+      <input id="soundVol" type="range" min="0" max="150" step="10" value="${pct}"${on ? '' : ' disabled'}>
+      <small class="sp-help">${esc(T('soundHelp'))}</small>`;
+    $('soundToggle').addEventListener('click', () => Sound.toggle());
+    const r = $('soundVol');
+    r.addEventListener('input', () => { $('soundVolOut').textContent = `${r.value}%`; Sound.setVolume(+r.value / 100); });
+    r.addEventListener('change', () => sfx('buoy')); // 놓았을 때 '딩' 한 번 들려줘서 크기를 알 수 있게
   }
 
   /* =====================================================================

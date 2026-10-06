@@ -61,14 +61,14 @@ window.MAP_CONFIG = {
   // 🎵 배경음악 — 우리 반 모둠이 만든 mp3를 audio 폴더에 넣고 파일 이름을 적어요 (비워 두면 배경음악 없이, 효과음만)
   //    영상이 나올 때는 저절로 멈추고, 오른쪽 위 🔊 버튼으로 끌 수 있어요
   bgm: {
-    start: '',     // 1모둠: 시작 화면·지도·① 6·25 전쟁·② 인천 (예: 'audio/1_start.mp3')
+    start: 'audio/1_start.mp3',     // 1모둠: 시작 화면·지도·① 6·25 전쟁·② 인천 (A dignified swell)
     mission: 'audio/2_mission.mp3', // 2모둠: 팔미도 등대 미션 (Midnight Sea Mission)
     voyage: 'audio/3_voyage.mp3',   // 3모둠: ③ 콜롬비아 → ④ 부산 항해 (Marcha hacia Busan)
-    battle: '',    // 4모둠: ⑤ 흑운토령 ~ ⑩ 판문점 (고지의 기억)
+    battle: 'audio/4_battle.mp3',   // 4모둠: ⑤ 흑운토령 ~ ⑩ 판문점 (전장의 숨결)
     ending: 'audio/5_ending.mp3',   // 5모둠: ⑪ 서해 · ⑫ 기념비 · 내일의 문 · 엔딩
     volume: 0.12,  // 배경음악 기본 크기 (0~1) — 헤드셋으로 들어도 귀가 아프지 않게 아주 작게
     // 곡마다 원래 크기가 달라서 따로 맞춰요 (큰 부분이 약 -32dB 가 되도록 측정해서 정한 값)
-    levels: { mission: 0.11, voyage: 0.12, ending: 0.13 }
+    levels: { start: 0.13, mission: 0.11, voyage: 0.12, battle: 0.13, ending: 0.13 }
   },
   // 작전 지점마다 어떤 배경음악을 틀지 (적지 않은 곳은 start)
   bgmStations: {

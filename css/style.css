@@ -1167,3 +1167,22 @@ button.hcard:hover { transform: translateY(-3px) rotate(-1deg); box-shadow: 0 8p
 .extra-list small { color: #55607e; font-size: 13.5px; line-height: 1.45; }
 .extra-list .btn { flex: none; }
 @media (max-width: 480px) { .extra-list li { flex-direction: column; align-items: stretch; } }
+/* 🏫 시작 화면: 프로젝트 소개 카드 (국가보훈부 2026 유엔참전국 글로벌 아카데미) */
+.project-card { margin: 14px auto 6px; max-width: 640px; padding: 16px 18px; border-radius: 18px; background: #fff; border: 2px solid #d6deec; box-shadow: 0 6px 18px rgba(20,34,75,.08); text-align: left; color: #14224b; }
+.project-card .pc-badge { margin: 0 0 6px; display: inline-block; padding: 4px 12px; border-radius: 999px; background: #e8f0ff; color: #003893; font-size: 13px; font-weight: 700; line-height: 1.4; }
+.project-card .pc-title { margin: 4px 0 8px; font-family: var(--display); font-size: 21px; line-height: 1.35; font-weight: 400; text-wrap: balance; }
+.project-card p { margin: 0 0 8px; font-size: 15px; line-height: 1.65; }
+.project-card .pc-meta { margin: 10px 0 0; padding-top: 10px; border-top: 1px dashed #d6deec; display: grid; gap: 4px; }
+.project-card .pc-meta div { display: grid; grid-template-columns: 88px 1fr; gap: 8px; font-size: 13.5px; }
+.project-card .pc-meta dt { color: #55607e; font-weight: 700; }
+.project-card .pc-meta dd { margin: 0; }
+@media (max-width: 480px) { .project-card .pc-meta div { grid-template-columns: 1fr; gap: 0; } }
+
+/* 🔊 소리 창: 끄기/켜기 + 소리 크기 막대 */
+.sound-wrap { position: relative; flex: none; }
+.sound-panel { position: absolute; right: 0; top: calc(100% + 6px); z-index: 70; width: 240px; padding: 12px 14px; border-radius: 14px; background: #fff; color: #14224b; box-shadow: 0 10px 30px rgba(20,34,75,.25); display: grid; gap: 8px; text-align: left; }
+.sound-panel[hidden] { display: none; }
+.sound-panel .sp-title { font-size: 15px; }
+.sound-panel .sp-vol { display: flex; justify-content: space-between; font-weight: 700; font-size: 14px; }
+.sound-panel input[type=range] { width: 100%; accent-color: #003893; }
+.sound-panel .sp-help { color: #55607e; font-size: 12px; line-height: 1.45; }
