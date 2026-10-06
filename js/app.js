@@ -8,6 +8,7 @@
   const QUESTIONS = window.QUESTIONS;
   const CONFIG = window.MAP_CONFIG;
   // 🧒 3·4학년용 링크: 주소 끝에 ?grade=34 를 붙이면 소감 설문 없이 '더 해 보기 → 인증서 → 끝'
+  const JUNIOR = (() => { try { return new URLSearchParams(location.search).get('grade') === '34'; } catch (e) { return false; } })();
   const NO_SURVEY = (() => { try { const p = new URLSearchParams(location.search); return p.get('grade') === '34' || p.get('survey') === 'off'; } catch (e) { return false; } })();
   const STORE_KEY = 'mapTomorrow.v2';
   const ROSTER_KEY = 'mapTomorrow.roster.v1';
@@ -3805,7 +3806,7 @@
       const [x, y] = IP(...b.c);
       const bg = svgEl('g', { class: 'm-buoy', transform: `translate(${x} ${y})`, role: 'button', tabindex: 0 }, buoyG);
       if (b.ok) bg.dataset.i = b.i;
-      svgEl('circle', { r: 22, class: 'm-buoy-ring' }, bg);
+      svgEl('circle', { r: JUNIOR ? 28 : 22, class: 'm-buoy-ring' }, bg);
       svgEl('circle', { r: 11, class: 'm-buoy-dot' }, bg);
       b.el = bg; b.x = x; b.y = y;
       bg.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tapBuoy(b, bg); } });
@@ -3819,11 +3820,13 @@
       if (!ctm) return;
       const pt = svg.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY;
       const p = pt.matrixTransform(ctm.inverse());
-      const reach = 36 / ctm.a; // 화면 36px → 지도 단위
+      const reach = (JUNIOR ? 60 : 36) / ctm.a; // 화면 36px(3·4학년 링크는 60px) → 지도 단위
       if (!m.lit) { if (Math.hypot(p.x - lx, p.y - ly) <= Math.max(reach, 30)) light(); return; }
-      const near = all.filter((b) => !b.el.classList.contains('done'))
+      const inReach = all.filter((b) => !b.el.classList.contains('done'))
         .map((b) => ({ b, d: Math.hypot(p.x - b.x, p.y - b.y) }))
-        .filter((o) => o.d <= reach).sort((a, b2) => a.d - b2.d)[0];
+        .filter((o) => o.d <= reach).sort((a, b2) => a.d - b2.d);
+      // 3·4학년 링크: 손가락 범위 안에 '다음 차례' 부표가 있으면 그걸 골라요 (작은 화면에서 옆 부표가 대신 눌리지 않게)
+      const near = (JUNIOR && inReach.find((o) => o.b.ok && o.b.i === m.next)) || inReach[0];
       if (near) tapBuoy(near.b, near.b.el);
     };
     svg.addEventListener('click', onTap);
