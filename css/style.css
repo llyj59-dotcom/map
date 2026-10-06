@@ -1197,3 +1197,21 @@ button.hcard:hover { transform: translateY(-3px) rotate(-1deg); box-shadow: 0 8p
 .watch-pw { display: flex; flex-wrap: wrap; gap: 6px; }
 .watch-pw input { flex: 1 1 140px; min-width: 0; padding: 8px 10px; border-radius: 10px; border: 2px solid #d6deec; font: inherit; }
 #watchPwMsg { color: #cd2e3a; font-weight: 700; }
+
+/* ✂️ 잘라 본 영상 안내 */
+.clip-note { margin: 6px 0 4px; font-size: .88em; line-height: 1.45; color: inherit; opacity: .9; }
+
+/* ✕ 저희 나라 → ○ 우리나라: 설문을 쓰는 동안 화면 위에 계속 붙어 있어요 */
+.jeohui-bar { position: sticky; top: 0; z-index: 5; margin: 0 auto 12px; max-width: 640px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 12px; padding: 10px 14px; border-radius: 14px; background: #fff7d6; border: 3px solid #cd2e3a; box-shadow: 0 4px 12px rgba(20,34,75,.18); color: #14224b; font-weight: 800; font-size: 20px; }
+.jeohui-bar .jh-no { color: #cd2e3a; text-decoration: line-through; text-decoration-thickness: 3px; }
+.jeohui-bar .jh-yes { color: #0f7a3d; }
+.jeohui-bar .jh-arrow { color: #14224b; }
+.jeohui-bar small { flex-basis: 100%; text-align: center; font-size: 14px; font-weight: 700; }
+
+/* 📱 태블릿 인증서 저장 안내: 크고 짧은 번호 단계 */
+.pad-steps { list-style: none; margin: 8px 0; padding: 0; display: grid; gap: 8px; }
+.pad-steps li { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 12px; background: #fff7d6; border: 2px solid #f2c94c; color: #14224b; font-size: 18px; font-weight: 800; line-height: 1.4; }
+.pad-steps .ps-n { flex: 0 0 auto; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: #14224b; color: #fff; font-size: 17px; }
+.pad-share { margin: 6px 0; font-size: 14px; text-align: center; }
+.pad-go { text-align: center; margin: 10px 0 4px; }
+.pad-go .btn { font-size: 18px; padding: 12px 22px; }

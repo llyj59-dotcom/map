@@ -107,7 +107,7 @@ window.STATIONS = [
     //   target: [경도, 위도] + tol(허용 거리, 지도 단위) 또는 lat: 위도(그 위도 선 근처면 정답)
     //   hide: 미션 동안 숨길 힌트 ('line38' 38도선, 'dmz' 휴전선)
     find: {
-      lat: 38, tol: 30, hide: ['line38', 'dmz'],
+      lat: 38, tol: 30, tries: 3, hide: ['line38', 'dmz'], // 처음 나오는 지도 미션이라 기회 3번
       q: { ko: '북한군이 넘어온 38도선은 어디일까요? 지도에서 그 선이 지나가는 곳을 눌러 보세요!', es: '¿Por dónde pasa el paralelo 38, la línea que cruzó el ejército norcoreano? Ubícala y marca ese punto en el mapa.' },
       hint: { ko: '힌트: 한반도의 허리쯤, 서울보다 조금 위예요.', es: 'Pista: atraviesa la península más o menos por la mitad, un poco al norte de Seúl.' },
       explain: { ko: '38도선은 1945년 광복 뒤 한반도를 남과 북으로 나눈 선이에요. 1950년 6월 25일 새벽, 북한군이 이 선을 넘어 쳐들어왔어요.', es: 'Tras la liberación del dominio japonés en 1945, el paralelo 38 dividió la península en norte y sur. En la madrugada del 25 de junio de 1950, el ejército norcoreano lo cruzó.' }

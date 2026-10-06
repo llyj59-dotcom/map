@@ -237,6 +237,10 @@
       watchNeed: '▶를 눌러 이 영상을 끝까지 봐야 [다음]으로 넘어갈 수 있어요. (빨리 감기·배속으로 본 부분은 본 시간에 들어가지 않아요)',
       watchRate: '영상은 보통 속도(1배)로만 볼 수 있어요. 배속은 본 시간에 들어가지 않아요.',
       watchResume: (s) => `전에 본 곳(${s})에 이어서 볼게요.`,
+      workHint: '모둠 작품을 눌러 보고 오면 [다음]이 열려요.',
+      workSeen: '작품을 봤어요! 이제 [다음]으로 넘어가요.',
+      clipNote: (a, b, all, n) => `이 영상은 중요한 부분(${a}~${b})만 봐요. 유튜브에는 전체 길이(${all})가 보이지만, ${b}가 되면 저절로 멈춰요. 약 ${n}만 보면 돼요!`,
+      volTip: '🔊 음악 소리가 작거나 크면, 오른쪽 위 🔊 버튼에서 크기를 바꿀 수 있어요.',
       watchTeacher: '선생님 확인으로 열었어요. 이제 [다음]으로 넘어가요.',
       whyRate: '⏩ 지금 배속으로 재생 중이라 본 시간에 들어가지 않아요. 보통 속도(1배)로 돌려 주세요.',
       whyBuffer: '⏳ 영상을 불러오는 중이에요. 인터넷이 느리면 잠깐 기다려 주세요.',
@@ -304,6 +308,13 @@
       certUp3: '패들렛 화면을 한 번 누르고 Ctrl + V 를 눌러요. 인증서 그림이 붙으면 [게시]를 눌러 올려요!',
       certUp3Save: '패들렛에서 ＋ → 이미지(파일) 올리기로 저장한 그림을 골라 [게시]를 눌러요.',
       certUpTablet: '태블릿·휴대폰은 Ctrl+V가 없어요. 아래 [인증서 그림으로 저장]이나 [공유]로 사진에 저장한 뒤, 패들렛의 ＋ → 이미지 올리기로 올려요.',
+      certSavePad: '인증서 사진으로 저장하기',
+      certUp1Pad: '[📸 인증서 사진으로 저장하기]를 눌러요. 그림이 크게 나오면 손가락으로 꾹 눌러 저장해요.',
+      certUp3Pad: '패들렛에서 ＋ 누르기 → 🖼️ 사진 누르기 → 내 인증서 고르기 → [게시] 누르기',
+      certPadSteps: ['인증서 그림을 손가락으로 꾹~ (1초) 눌러요.', '"사진 앱에 저장" 또는 "이미지 저장"을 눌러요.', '저장했으면 아래 [패들렛 열기]를 눌러요.', '패들렛에서 ＋ → 🖼️ 사진 → 내 인증서 고르기 → [게시]!'],
+      certPadShareQ: '꾹 눌러도 안 되나요?',
+      certPadGo: '저장했어요! 패들렛 열기',
+      certPadShare: '공유 → 이미지 저장',
       certAskTitle: '잠깐! 인증서를 패들렛에 올렸나요?',
       certAskText: '내 인증서가 우리 반 패들렛 "기억의 벽"에 모여야 평화의 지도가 완성돼요. 아직이라면 이렇게 올려요.',
       certAskNo: '아직이요, 지금 올릴게요',
@@ -383,7 +394,7 @@
       padletPopup: '패들렛이 새 창으로 열렸어요. ＋를 누르고 붙여 넣으세요.',
       popupBlocked: '새 창이 막혔어요. 아래 주소를 눌러 열어 주세요.',
       openWork: '모둠 작품 보러 가기 ↗',
-      quizHint: '몰라도 괜찮아요! 골라 보고 정답을 확인해 봐요. (안 풀고 넘어가도 돼요)',
+      quizHint: '몰라도 괜찮아요! 하나 골라 보고 정답을 확인해 봐요. 답을 골라야 [다음]이 열려요.',
       right: '정답이에요!',
       wrong: '아쉬워요! 정답은…',
       stamp: '통과!',
@@ -439,6 +450,7 @@
       surveyTitle: '게임 소감 남기기',
       surveyLead: '평화의 지도 여행은 어땠나요? 솔직한 소감을 남겨 주면 더 좋은 게임을 만드는 데 쓸게요. (약 3분)',
       surveyAutoNote: '설문 맨 아래 [제출]을 누르면 저절로 마지막 단계인 인증서 화면으로 넘어가요.',
+      textJeohui: '✋ "저희 나라"는 틀린 말이에요. "우리나라"로 고쳐 써요! (나라는 낮추어 말하지 않아요)',
       surveyTip: ['✍️ 쓰기 전에 잠깐!', '"저희 나라"(✕) → "우리나라"(○): 나라는 낮추어 말하지 않아요. 참전용사님께 쓰는 글에도 "우리나라"라고 써요. (우리나라는 붙여 써요)', '본명과 반을 정확히 쓰고, 참전용사님께 드리는 말은 예의 바르게 정성껏 써요.'],
       surveyAuto: '소감을 보내 줘서 고마워요! 이제 마지막으로 평화의 지도 인증서를 만들어 패들렛에 올려요.',
       toCertBtn: '🗺️ 인증서 만들기 ▶',
@@ -719,6 +731,10 @@
       watchNeed: 'Mira este video hasta el final para pasar a [Siguiente]. (Adelantar o acelerar no cuenta)',
       watchRate: 'El video solo cuenta a velocidad normal (1x).',
       watchResume: (s) => `Seguimos desde donde ibas (${s} vistos).`,
+      workHint: 'Abre el trabajo del grupo y al volver se activará [Siguiente].',
+      workSeen: '¡Ya lo viste! Ahora puedes pasar a [Siguiente].',
+      clipNote: (a, b, all, n) => `De este video solo vemos la parte importante (${a}–${b}). YouTube muestra la duración completa (${all}), pero se detiene solo en ${b}. ¡Son unos ${n}!`,
+      volTip: '🔊 Si la música suena muy baja o muy alta, cámbiala con el botón 🔊 de arriba a la derecha.',
       watchTeacher: 'Desbloqueado con la confirmación del docente. Ya puedes pasar a [Siguiente].',
       whyRate: '⏩ El video está acelerado y no cuenta. Ponlo a velocidad normal (1x).',
       whyBuffer: '⏳ El video está cargando. Si la conexión es lenta, espera un momento.',
@@ -786,6 +802,13 @@
       certUp3: 'Haz clic una vez en el Padlet y pulsa Ctrl + V. Cuando aparezca el certificado, pulsa [Publicar].',
       certUp3Save: 'En el Padlet, pulsa ＋ → subir imagen, elige el certificado guardado y pulsa [Publicar].',
       certUpTablet: 'En tableta o celular no hay Ctrl+V: guarda la imagen con [Guardar] o [Compartir] y súbela en el Padlet con ＋ → imagen.',
+      certSavePad: 'Guardar el certificado en Fotos',
+      certUp1Pad: 'Pulsa [📸 Guardar el certificado en Fotos]. Cuando salga grande, mantén el dedo sobre la imagen para guardarla.',
+      certUp3Pad: 'En el Padlet: ＋ → 🖼️ foto → elige tu certificado → [Publicar]',
+      certPadSteps: ['Mantén el dedo sobre el certificado (1 segundo).', 'Elige "Guardar en Fotos" o "Guardar imagen".', 'Cuando esté guardado, pulsa [Abrir Padlet] abajo.', 'En el Padlet: ＋ → 🖼️ foto → elige tu certificado → [Publicar].'],
+      certPadShareQ: '¿No funciona al mantener pulsado?',
+      certPadGo: '¡Ya lo guardé! Abrir Padlet',
+      certPadShare: 'Compartir → Guardar imagen',
       certAskTitle: '¡Un momento! ¿Ya subiste tu certificado al Padlet?',
       certAskText: 'Tu certificado completa el Muro de la Memoria que compartimos con Corea. Si aún no lo subiste, hazlo así:',
       certAskNo: 'Todavía no, lo subo ahora',
@@ -865,7 +888,7 @@
       padletPopup: 'Padlet se abrió en otra ventana. Pulsa ＋ y pega.',
       popupBlocked: 'La ventana nueva fue bloqueada. Abre el enlace de abajo.',
       openWork: 'Ver el trabajo del grupo ↗',
-      quizHint: 'Si no lo sabes, no pasa nada: elige una opción y descubre la respuesta. (También puedes seguir sin responder)',
+      quizHint: 'Si no lo sabes, no pasa nada: elige una opción y descubre la respuesta. [Siguiente] se activa cuando respondas.',
       right: '¡Correcto!',
       wrong: 'Casi. La respuesta es…',
       stamp: 'Superado',
@@ -1201,6 +1224,10 @@
       watchNeed: 'Watch this video to the end to unlock [Next]. (Skipping ahead or speeding up does not count.)',
       watchRate: 'Videos only count at normal speed (1x).',
       watchResume: (s) => `Picking up where you left off (${s} watched).`,
+      workHint: 'Open the group\'s project, then come back and [Next] will unlock.',
+      workSeen: 'You saw it! Now go to [Next].',
+      clipNote: (a, b, all, n) => `We only watch the important part of this video (${a}–${b}). YouTube shows the full length (${all}), but it stops by itself at ${b}. Only about ${n}!`,
+      volTip: '🔊 If the music is too quiet or too loud, change it with the 🔊 button at the top right.',
       watchTeacher: 'Unlocked by your teacher. You can go to [Next] now.',
       whyRate: '⏩ The video is sped up, so it does not count. Please set it to normal speed (1x).',
       whyBuffer: '⏳ The video is loading. If the internet is slow, please wait a moment.',
@@ -1268,6 +1295,13 @@
       certUp3: 'Click once on the Padlet and press Ctrl + V. When your certificate appears, click [Publish]!',
       certUp3Save: 'On the Padlet, tap ＋ → upload image, choose your saved certificate and tap [Publish].',
       certUpTablet: 'Tablets and phones have no Ctrl+V: save the picture with [Save] or [Share], then on the Padlet tap ＋ → image.',
+      certSavePad: 'Save certificate to Photos',
+      certUp1Pad: 'Tap [📸 Save certificate to Photos]. When it appears big, press and hold the picture to save it.',
+      certUp3Pad: 'On the Padlet: ＋ → 🖼️ photo → pick your certificate → [Publish]',
+      certPadSteps: ['Press and hold the certificate (1 second).', 'Tap "Save to Photos" or "Save image".', 'When it is saved, tap [Open Padlet] below.', 'On the Padlet: ＋ → 🖼️ photo → pick your certificate → [Publish]!'],
+      certPadShareQ: 'Press-and-hold not working?',
+      certPadGo: 'Saved it! Open Padlet',
+      certPadShare: 'Share → Save image',
       certAskTitle: 'Wait! Did you post your certificate on the Padlet?',
       certAskText: 'Our Wall of Memory is complete when everyone\'s certificate is on it. If you have not posted yet, here is how:',
       certAskNo: 'Not yet, I\'ll post it now',
@@ -1347,7 +1381,7 @@
       padletPopup: 'Padlet opened in a new window. Press ＋ and paste.',
       popupBlocked: 'The new window was blocked. Tap the link below to open it.',
       openWork: "See the group's project ↗",
-      quizHint: "It's okay if you don't know! Pick one and check the answer. (You can also skip it.)",
+      quizHint: "It's okay if you don't know! Pick one and check the answer. [Next] unlocks after you answer.",
       right: 'Correct!',
       wrong: 'So close! The answer is…',
       stamp: 'Cleared!',
@@ -1739,7 +1773,7 @@
         next.currentTime = 0;
         next.volume = 0;
         music = next;
-        next.play().then(() => fadeTo(next, levelOf(scene), XFADE)).catch(() => {});
+        next.play().then(() => { if (music === next && target() === src) fadeTo(next, levelOf(scene), XFADE); else fadeTo(next, 0, 300, () => next.pause()); }).catch(() => {});
         fadeTo(p, 0, XFADE, () => { p.pause(); p._xf = false; });
       });
       // 혹시 이음새를 놓치고 곡이 그냥 끝나면, 바로 처음부터 다시
@@ -1747,7 +1781,7 @@
         p._xf = false;
         if (p !== music || !target()) return;
         p.currentTime = 0;
-        p.play().then(() => fadeTo(p, levelOf(scene), FADE_IN)).catch(() => {});
+        const src0 = target(); p.play().then(() => { if (music === p && target() === src0) fadeTo(p, levelOf(scene), FADE_IN); else p.pause(); }).catch(() => {});
       });
     });
     function apply() {
@@ -1761,7 +1795,7 @@
         if (!same) { music.setAttribute('data-src', src); music.src = src; }
         music._xf = false;
         music.volume = 0;
-        music.play().then(() => fadeTo(music, vol, FADE_IN)).catch(() => { /* 아직 화면을 누르기 전 — 누르면 다시 시도 */ });
+        const p = music; p.play().then(() => { if (music === p && target() === src) fadeTo(p, levelOf(scene), FADE_IN); else p.pause(); }).catch(() => { /* 아직 화면을 누르기 전 — 누르면 다시 시도 */ });
       };
       // 다른 곡으로 바뀔 때는 지금 곡을 1.5초 동안 서서히 줄인 뒤에 다음 곡을 서서히 키워요
       const now = playing();
@@ -1770,7 +1804,9 @@
         now.forEach((p) => fadeTo(p, 0, FADE_OUT, () => { p.pause(); p._xf = false; if (--left === 0) start(); }));
       } else start();
     }
-    function bgm(next) { if (next === scene) { if (music.paused && target()) apply(); return; } scene = next; apply(); }
+    let volTipShown = false;
+    function bgm(next) {
+      if (next && !volTipShown && isOn() && !previewMode) { volTipShown = true; setTimeout(() => { if (scene) toast(T('volTip')); }, 2500); } if (next === scene) { if (music.paused && target()) apply(); return; } scene = next; apply(); }
     // 브라우저는 화면을 한 번 누른 뒤에야 소리를 내요
     document.addEventListener('pointerdown', () => { if (isOn()) { ctx(); if (!playing().length && target()) apply(); } }, { passive: true });
     // 🛟 지킴이: 그 장면의 음악이 어떤 이유로든 멈춰 있으면 2초마다 살펴서 다시 틀어요 (영상 볼 때·소리 끔은 제외)
@@ -2414,6 +2450,7 @@
   }
   // 문장(평화 다짐·이름·학교·방명록 글)용: 욕설·비하·장난 표현만 걸러요
   const textProblem = (text) => {
+    if (lang === 'ko' && /저희\s*나라/.test(text || '')) return T('textJeohui');
     const why = window.WordFilter ? window.WordFilter.check(text, 'text') : '';
     return why ? T(why === 'repeat' ? 'textRepeat' : 'textBad') : '';
   };
@@ -3384,12 +3421,6 @@
           explainWatch(w, p, st, rate, cut, need);
         } catch (e) { /* 플레이어 준비 중 */ }
       }, 1000);
-      // 🔑 그래도 안 열리면: 선생님 비밀번호로 열기
-      const pwBtn = $('watchPwBtn');
-      if (pwBtn) pwBtn.addEventListener('click', () => {
-        if (teacherHash(($('watchPw').value || '').trim()) === String(CONFIG.teacherPasswordHash)) { keepWatch(w); watchDone(v, 'teacher'); }
-        else { $('watchPwMsg').textContent = T('watchPwWrong'); }
-      });
     }).catch(() => watchDone(v, 'blocked')); // 학교망에서 유튜브가 막힌 경우
   }
   // 🔎 왜 아직 [다음]이 안 열리는지 영상 아래에 알려 줘요 (멈춤·불러오는 중·배속·못 본 구간)
@@ -3569,7 +3600,7 @@
     const must = mustWatch(s);
     // 🔒 꼭 볼 영상 안내: 지금 보는 영상이 그 영상이면 진행 막대, 아니면 그 영상으로 가는 버튼
     const gate = !must ? '' : must.yt === v.yt
-      ? `<div class="watch-gate" id="watchGate" role="status">🔒 ${esc(T('watchNeed'))}
+      ? `<div class="watch-gate" id="watchGate" role="status">🔒 ${esc(T('watchNeed'))}${v.from || v.to ? `<p class="clip-note">✂️ ${esc(T('clipNote', v.from || '0:00', v.to || v.len, v.len, fmtSec(clipLen(v))))}</p>` : ''}
           <span class="watch-bar"><i id="watchFill" style="width:${Math.min(100, (savedSeen(v.yt).size / Math.max(1, clipLen(v))) * 100)}%"></i></span><b id="watchTime">${esc(fmtSec(savedSeen(v.yt).size))} / ${esc(fmtSec(clipLen(v)))}</b>
           <p class="watch-why" id="watchWhy" role="status">${esc(T('whyStart'))}</p>
           <div class="watch-gaps" id="watchGaps"></div>
@@ -3613,6 +3644,15 @@
   }
   function bindVideo() {
     if (SANDBOX) { bindVideoLink(); return; }
+    // 🔑 그래도 안 열리면: 선생님 비밀번호로 열기 (유튜브가 늦게 뜨거나 안 떠도 바로 돼요)
+    const pwBtn = $('watchPwBtn');
+    if (pwBtn) pwBtn.addEventListener('click', () => {
+      const must = mustWatch(cur.s);
+      if (!must) return;
+      if (teacherHash(($('watchPw').value || '').trim()) === String(CONFIG.teacherPasswordHash)) { if (cur.watch) keepWatch(cur.watch); watchDone(must, 'teacher'); }
+      else { $('watchPwMsg').textContent = T('watchPwWrong'); }
+    });
+    if ($('watchPw')) $('watchPw').addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); pwBtn.click(); } });
     $('ytPlay').addEventListener('click', () => {
       const box = $('ytBox');
       box.classList.remove('yt-thumb');
@@ -3667,13 +3707,13 @@
   function startFind(s) {
     const svg = $('map');
     const f = s.find;
-    cur.finding = { tries: 0, done: false, f, sid: s.id };
+    cur.finding = { tries: 0, done: false, f, sid: s.id, max: f.tries || 2 };
     svg.classList.add('finding');
     (f.hide || []).forEach((h) => svg.classList.add(`hide-${h}`));
     const old = $('findLayer'); if (old) old.remove();
     svgEl('g', { id: 'findLayer' }, svg);
     flyTo(FULL.slice());
-    $('findLeft').textContent = T('findLeft', 2);
+    $('findLeft').textContent = T('findLeft', cur.finding.max);
     say(T('gFind'));
   }
   function endFind() {
@@ -3714,7 +3754,7 @@
       svgEl('circle', { cx: p.x, cy: p.y, r: 14, class: 'find-tap ok' }, layer);
       reveal();
       const full = RULES.find[fd.sid] || 0; // 38도선 38 · 부산 15 · 판문점 27 (두 번째에 찾으면 절반)
-      giveStars(`find:${fd.sid}`, fd.tries === 0 ? full : Math.round(full / 2), fb);
+      giveStars(`find:${fd.sid}`, Math.round(full / (fd.tries + 1)), fb); // 첫 번째 다 · 두 번째 절반 · 세 번째 1/3
       fb.innerHTML = `<div class="feedback good"><b>🎯 ${esc(T('gFindRight'))}</b>${esc(L(f.explain))}</div>`;
       say(T('gFindRight'));
     } else {
@@ -3722,7 +3762,7 @@
       sfx('wrong');
       const m = svgEl('g', { class: 'find-tap no', transform: `translate(${p.x} ${p.y})` }, layer);
       svgEl('path', { d: 'M-10 -10 L10 10 M10 -10 L-10 10' }, m);
-      if (fd.tries >= 2) {
+      if (fd.tries >= fd.max) {
         fd.done = true;
         reveal();
         fb.innerHTML = `<div class="feedback bad"><b>${esc(T('gFindReveal'))}</b>${esc(L(f.explain))}</div>`;
@@ -3733,8 +3773,9 @@
         say(T('gFindWrong', d));
       }
     }
-    $('findLeft').textContent = fd.done ? '' : T('findLeft', 2 - fd.tries);
+    $('findLeft').textContent = fd.done ? '' : T('findLeft', fd.max - fd.tries);
     annotate($('sheetBody'));
+    if (fd.done) unlockNext();
   });
 
   /* ---------------- 🔦 미니게임: 팔미도 등대를 켜고 함대를 월미도까지 ---------------- */
@@ -3918,7 +3959,7 @@
           <h3>${esc(L(h.name))}</h3>
           <div class="role">${esc(L(h.role))}</div>
           <p>${esc(L(h.body))}</p>
-          ${h.link ? `<a class="btn btn-blue" href="${esc(h.link)}" target="_blank" rel="noopener">${esc(T('openWork'))}</a>` : ''}
+          ${h.link ? `<a class="btn btn-blue" id="workLink" href="${esc(h.link)}" target="_blank" rel="noopener">${esc(T('openWork'))}</a>${stepLocked(s, st) ? `<p class="skip-hint" id="workHint">👀 ${esc(T('workHint'))}</p>` : ''}` : ''}
         </article>`;
     } else if (st.type === 'quiz') {
       html = renderQuiz(s);
@@ -3951,6 +3992,14 @@
     if (st.type === 'ops') bindOps();
     else if (s.inset === 'incheon') showOpFx(null);
     if (st.type === 'hero' && st.cid) unlockCard(st.cid);
+    if (st.type === 'hero' && st.h.link && $('workLink')) $('workLink').addEventListener('click', () => {
+      if (previewMode || !player) return;
+      player.works = player.works || {};
+      player.works[st.h.link] = Date.now();
+      save();
+      // 새 탭으로 넘어간 뒤 돌아오면 [다음]이 열려 있어요
+      setTimeout(() => { if ($('workHint')) $('workHint').textContent = '✓ ' + T('workSeen'); unlockNext(); }, 1500);
+    });
     if (st.type === 'story') (s.cards || []).forEach(unlockCard);
     if (st.type === 'quiz') bindQuiz(s);
     if (st.type === 'question') bindQuestion(st.qid);
@@ -3961,10 +4010,27 @@
     $('prevBtn').disabled = step === 0;
     $('nextBtn').textContent = st.type === 'done' ? T('toMap') : T('next');
     // 🎬 꼭 볼 영상을 끝까지 봐야 [다음]이 열려요
-    $('nextBtn').disabled = st.type === 'video' && !!mustWatch(s);
+    $('nextBtn').disabled = stepLocked(s, st);
     bgmSync();
     if (step === 0 && s.id === 'busan') sfx('horn'); // 부산항 도착 뱃고동
   }
+
+  // 이미 끝낸 작전 지점(다시 보기)·선생님 미리 보기에서는 잠그지 않아요
+  const isTouchPad = () => {
+    try { return navigator.maxTouchPoints > 0 && window.matchMedia('(pointer: coarse)').matches && !window.matchMedia('(any-pointer: fine)').matches; } catch (e) { return false; }
+  };
+  // 그림 자동 복사(Ctrl+V)는 키보드 있는 컴퓨터에서만 안내해요
+  const certCanCopy = () => !isTouchPad() && !!(navigator.clipboard && navigator.clipboard.write && window.ClipboardItem);
+
+  function stepLocked(s, st) {
+    if (st.type === 'video') return !!mustWatch(s);
+    if (previewMode || !player || isDone(s.id)) return false;
+    if (st.type === 'quiz') return quizStore()[s.id] === undefined;
+    if (st.type === 'find') return !(cur.finding && cur.finding.done);
+    if (st.type === 'hero' && st.h.link) return !(player.works && player.works[st.h.link]);
+    return false;
+  }
+  function unlockNext() { if (cur) $('nextBtn').disabled = stepLocked(cur.s, cur.steps[cur.step]); }
 
   function markDone(id) {
     if (previewMode || player.done.includes(id)) return;
@@ -4010,6 +4076,7 @@
       const hint = box.querySelector('.skip-hint');
       if (hint) hint.remove();
       annotate($('sheetBody'));
+      unlockNext();
     };
     // 고르기 퀴즈는 한 번 틀리면 한 번 더 기회! (처음에 맞히면 ⭐35, 두 번째에 맞히면 ⭐15 — RULES.quiz)
     // O/X 퀴즈는 답이 둘뿐이라 두 번째 기회 없이 바로 정답을 보여 줘요
@@ -4698,7 +4765,8 @@
     // 학교 버튼을 누르면 그 학교의 국적이 함께 채워져요.
     if (!player.nation && lang === 'ko') player.nation = 'kr';
     const canShare = !SANDBOX && !!(navigator.canShare && window.File); // 링크 모드에서는 공유 창이 막혀 있어요
-    const canCopy = !!(navigator.clipboard && navigator.clipboard.write && window.ClipboardItem);
+    const canCopy = certCanCopy();
+    const pad = isTouchPad();
     const ex = schoolEx();
     return `<div class="cert-map">
         <h2 class="end-h2">🗺️ ${esc(T('certTitle'))}</h2>
@@ -4734,14 +4802,14 @@
         <section class="cert-upload" aria-labelledby="certUpH">
           <h3 id="certUpH">📌 ${esc(T('certUpTitle'))}</h3>
           <ol class="cert-up-steps">
-            <li id="cu1"><span class="cu-n">1</span><div><p>${esc(T(canCopy ? 'certUp1' : 'certUp1Save'))}</p>
+            <li id="cu1"><span class="cu-n">1</span><div><p>${esc(T(canCopy ? 'certUp1' : pad ? 'certUp1Pad' : 'certUp1Save'))}</p>
               ${canCopy ? `<button id="certCopy" class="btn btn-go cert-need" type="button">📸 ${esc(T('certCopy'))}</button>`
-                : `<button id="certSave" class="btn btn-go cert-need" type="button">📸 ${esc(T('certSave'))}</button>`}</div></li>
+                : `<button id="certSave" class="btn btn-go cert-need" type="button">📸 ${esc(T(pad ? 'certSavePad' : 'certSave'))}</button>`}</div></li>
             ${CONFIG.padletUrl ? `<li id="cu2"><span class="cu-n">2</span><div><p>${esc(T('certUp2'))}</p>
               <button id="certPadlet" class="btn btn-blue cert-need" type="button">🗂️ ${esc(T('certUpOpen'))}</button></div></li>` : ''}
-            <li id="cu3"><span class="cu-n">${CONFIG.padletUrl ? 3 : 2}</span><div><p>${esc(T(canCopy ? 'certUp3' : 'certUp3Save'))}</p></div></li>
+            <li id="cu3"><span class="cu-n">${CONFIG.padletUrl ? 3 : 2}</span><div><p>${esc(T(canCopy ? 'certUp3' : pad ? 'certUp3Pad' : 'certUp3Save'))}</p></div></li>
           </ol>
-          <p class="t-help">📱 ${esc(T('certUpTablet'))}</p>
+          ${pad ? '' : `<p class="t-help">📱 ${esc(T('certUpTablet'))}</p>`}
           <div class="cert-actions">
             ${canCopy ? `<button id="certSave" class="btn btn-ghost btn-sm cert-need" type="button">💾 ${esc(T('certSave'))}</button>` : ''}
             ${canShare ? `<button id="certShare" class="btn btn-ghost btn-sm cert-need" type="button" hidden>📤 ${esc(T('certShare'))}</button>` : ''}
@@ -4829,6 +4897,24 @@
       flush();
       const blob = await certBlob();
       if (!blob) { toast(T('copyFail')); return; }
+      if (isTouchPad()) {
+        // 꾹 누르기 저장은 data: 그림이 가장 잘 돼요 (아이패드 '사진에 저장', 갤럭시탭 '이미지 저장')
+        const url = await new Promise((res) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = () => res(URL.createObjectURL(blob)); r.readAsDataURL(blob); });
+        const file = new File([blob], certFileName(), { type: 'image/png' });
+        const share = !SANDBOX && navigator.canShare && navigator.canShare({ files: [file] });
+        const ps = T('certPadSteps');
+        const li = (k) => `<li><span class="ps-n">${k + 1}</span><span>${esc(ps[k])}</span></li>`;
+        openInfo('📸', T('certTitle'), `<ol class="pad-steps">${li(0)}${li(1)}</ol>
+          <img class="cert-full" src="${url}" alt="${esc(T('certTitle'))}">
+          ${share ? `<p class="pad-share">${esc(T('certPadShareQ'))} <button id="certPadShare" class="btn btn-ghost btn-sm" type="button">📤 ${esc(T('certPadShare'))}</button></p>` : ''}
+          <ol class="pad-steps">${li(2)}${li(3)}</ol>
+          ${CONFIG.padletUrl ? `<p class="pad-go"><button id="certPadGo" class="btn btn-go" type="button">🗂️ ${esc(T('certPadGo'))}</button></p>` : ''}`);
+        if ($('certPadGo')) $('certPadGo').addEventListener('click', () => { openPadlet(); certStep('cu2'); });
+        if ($('certPadShare')) $('certPadShare').addEventListener('click', async () => { try { await navigator.share({ files: [file], title: T('certTitle') }); } catch (e) { /* 취소 */ } });
+        certStep('cu1');
+        reportProgress('certificate');
+        return;
+      }
       if (SANDBOX) {
         const dl = window.claude && window.claude.use ? await window.claude.use('downloads').catch(() => null) : null;
         if (dl) {
@@ -4958,6 +5044,7 @@
       html = `<div class="survey">
           <h2 class="end-h2">📝 ${esc(T('surveyTitle'))}</h2>
           <p class="end-lead">${esc(T('surveyLead'))}</p>
+          ${lang === 'ko' ? `<div class="jeohui-bar" role="note"><span class="jh-no">✕ 저희 나라</span><span class="jh-arrow">→</span><span class="jh-yes">○ 우리나라</span><small>참전용사님께 쓰는 글에도 꼭 "우리나라"!</small></div>` : ''}
           ${(T('surveyTip') || []).length ? `<aside class="survey-tip"><b>${esc(T('surveyTip')[0])}</b><ul>${T('surveyTip').slice(1).map((x) => `<li>${esc(x)}</li>`).join('')}</ul></aside>` : ''}
           ${SANDBOX
             ? `<a class="btn btn-go feedback-btn" href="${esc(fb)}" target="_blank" rel="noopener">📝 ${esc(T('feedbackBtn'))} ↗</a>`
@@ -5054,7 +5141,7 @@
   function askCertUploaded() {
     openInfo('📌', T('certAskTitle'), `<div class="cert-ask">
         <p>${esc(T('certAskText'))}</p>
-        <ol class="cert-ask-steps">${(navigator.clipboard && navigator.clipboard.write && window.ClipboardItem ? ['certUp1', 'certUp2', 'certUp3'] : ['certUp1Save', 'certUp2', 'certUp3Save']).map((k) => `<li>${esc(T(k))}</li>`).join('')}</ol>
+        <ol class="cert-ask-steps">${(certCanCopy() ? ['certUp1', 'certUp2', 'certUp3'] : isTouchPad() ? ['certUp1Pad', 'certUp2', 'certUp3Pad'] : ['certUp1Save', 'certUp2', 'certUp3Save']).map((k) => `<li>${esc(T(k))}</li>`).join('')}</ol>
         <div class="t-buttons">
           <button type="button" class="btn btn-go" id="certAskNo">${esc(T('certAskNo'))}</button>
           <button type="button" class="btn btn-ghost" id="certAskYes">${esc(T('certAskYes'))}</button>
