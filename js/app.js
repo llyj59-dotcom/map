@@ -1543,7 +1543,7 @@
         const C = window.AudioContext || window.webkitAudioContext;
         if (!C) return null;
         ac = new C();
-        master = ac.createGain(); master.gain.value = 0.3; master.connect(ac.destination);
+        master = ac.createGain(); master.gain.value = 0.18; // 헤드셋에서도 부드럽게 master.connect(ac.destination);
       }
       if (ac.state === 'suspended') ac.resume().catch(() => {});
       return ac;
@@ -1608,7 +1608,7 @@
     }
     function apply() {
       const src = target();
-      const vol = BGM.volume != null ? BGM.volume : 0.35;
+      const vol = (BGM.levels || {})[scene] != null ? BGM.levels[scene] : BGM.volume != null ? BGM.volume : 0.12;
       if (!src) { if (!music.paused) fadeTo(0, () => music.pause()); return; }
       const same = music.getAttribute('data-src') === src;
       if (same && !music.paused) { fadeTo(vol); return; }
