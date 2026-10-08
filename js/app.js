@@ -33,14 +33,14 @@
       mapTo: '→ to Tomorrow: 그 지도로 함께 평화로운 내일을 그려요',
       project: {
         badge: '국가보훈부 · 2026 유엔참전국 글로벌 아카데미',
-        title: '인천신검단초등학교 6학년 8반이 만든 평화의 지도',
+        title: '인천신검단초등학교 6학년 8반이 함께 만든 평화의 지도',
         lines: [
-          'M.A.P. to Tomorrow는 국가보훈부의 「2026 유엔참전국 글로벌 아카데미」 사업으로 인천신검단초등학교 6학년 8반 학생들이 직접 만든 웹앱이에요.',
+          'M.A.P. to Tomorrow는 국가보훈부의 「2026 유엔참전국 글로벌 아카데미」 사업으로 인천신검단초등학교 6학년 8반 학생들과 담임 선생님이 함께 만든 웹앱이에요.',
           '6·25 전쟁 때 라틴아메리카에서 유일하게 전투 부대를 보낸 콜롬비아. 우리는 발레두파르의 La Esperanza 기술교육학교 친구들과 패들렛과 영상으로 질문과 답을 주고받고, 콜롬비아 참전용사님들께 직접 질문을 보내 답을 들으며 이 지도를 함께 채웠어요.',
           '참전용사의 희생을 기억하고(Memory), 국경과 세대를 넘어 연결하며(Across), 평화의 가치를 내일로 이어 가는(Peace) 것이 우리의 목표예요. 6학년이 만든 이 지도는 4학년 동생들과 콜롬비아 친구들에게도 전해져요.'
         ],
         meta: [
-          ['만든 사람', '인천신검단초등학교 6학년 8반'],
+          ['만든 사람', '인천신검단초등학교 6학년 8반 학생들 · 담임 선생님'],
           ['함께한 학교', 'Institución Educativa Técnica La Esperanza (콜롬비아 발레두파르)'],
           ['사업', '국가보훈부 2026 유엔참전국 글로벌 아카데미 (2026. 3.~11.)']
         ]
@@ -465,6 +465,30 @@
       extraRetry: '🔁 다시 도전',
       extraFinish: '✅ 끝내기 (소감 쓰러 가기) ▶',
       extraFinishCert: '✅ 끝내기 (인증서 만들러 가기) ▶',
+      creditsBtn: '만든 사람들',
+      creditsSkip: '건너뛰기',
+      creditsClose: '닫기',
+      crTeacher: '함께 만든 선생님',
+      crTeacherLine: (n) => `6학년 8반 담임 ${n} 선생님`,
+      crMakers: '함께 만든 친구들 · 인천신검단초등학교 6학년 8반',
+      crGroup: (n) => `${n}모둠`,
+      crClassAll: '6학년 8반 친구들 모두',
+      crWorks: '모둠 조사 작품',
+      crMusic: '배경음악',
+      crMusicBy: '6학년 8반 1~5모둠이 직접 만든 노래',
+      crSfx: '효과음',
+      crSfxBy: '게임 안에서 직접 만든 소리',
+      crPartner: '함께한 학교',
+      crPartnerName: 'Institución Educativa Técnica La Esperanza (콜롬비아 발레두파르)',
+      crVets: '우리의 질문에 답해 주신 콜롬비아 참전용사님',
+      crTesters: '먼저 해 보고 의견을 준 친구들',
+      crTestersBy: '인천신검단초등학교 6학년 2반 · 6반 · 8반',
+      crVideos: '영상 자료',
+      crProgram: '함께한 사업',
+      crProgramName: '국가보훈부 · 2026 유엔참전국 글로벌 아카데미',
+      crThanks: '그리고 이 지도를 끝까지 걸어 준 당신, 고마워요!',
+      crDedTo: '콜롬비아 참전용사님들께 이 지도를 바칩니다',
+      crDed: ['참전용사님들의 희생을 기억하고,', '바다와 세대를 건너 손을 맞잡아,', '지켜 주신 평화를 내일로 이어 가겠습니다.'],
       extraHint: '다시 도전한 곳을 마치면 지도에서 [🎯 더 해 보기로 돌아가기]를 눌러 이 화면으로 돌아와요.',
       backToExtra: '🎯 더 해 보기로 돌아가기 ▶',
       gapQuiz: '퀴즈 한 번에 맞히기',
@@ -533,12 +557,12 @@
         badge: 'Ministerio de Asuntos de Patriotas y Veteranos de Corea · Academia Global 2026 de los Países Aliados de la ONU',
         title: 'Un mapa de la paz hecho por el grupo 8 de 6.º de primaria de la Escuela Primaria Singeomdan (Incheon)',
         lines: [
-          'M.A.P. to Tomorrow es una aplicación web creada por los estudiantes del grupo 8 de 6.º de primaria de la Escuela Primaria Singeomdan de Incheon, dentro del programa «Academia Global 2026 de los Países Aliados de la ONU» del Ministerio de Asuntos de Patriotas y Veteranos de Corea.',
+          'M.A.P. to Tomorrow es una aplicación web creada por los estudiantes del grupo 8 de 6.º de primaria de la Escuela Primaria Singeomdan de Incheon junto con su docente, dentro del programa «Academia Global 2026 de los Países Aliados de la ONU» del Ministerio de Asuntos de Patriotas y Veteranos de Corea.',
           'Colombia fue el único país de América Latina que envió tropas de combate a la Guerra de Corea. Junto con los estudiantes de la Institución Educativa Técnica La Esperanza de Valledupar intercambiamos preguntas y respuestas por Padlet y en video, y enviamos preguntas a los veteranos colombianos para escuchar sus respuestas.',
           'Nuestro objetivo: recordar el sacrificio de los veteranos (Memory), conectarnos más allá de fronteras y generaciones (Across) y llevar el valor de la paz hacia el mañana (Peace).'
         ],
         meta: [
-          ['Creado por', 'Grupo 8 de 6.º de primaria, Escuela Primaria Singeomdan (Incheon, Corea)'],
+          ['Creado por', 'Estudiantes y docente del grupo 8 de 6.º, Escuela Primaria Singeomdan (Incheon, Corea)'],
           ['Colegio aliado', 'Institución Educativa Técnica La Esperanza (Valledupar, Colombia)'],
           ['Programa', 'Academia Global 2026 de los Países Aliados de la ONU (marzo–noviembre de 2026)']
         ]
@@ -959,6 +983,30 @@
       extraRetry: '🔁 Volver a intentar',
       extraFinish: '✅ Terminar (ir a la encuesta) ▶',
       extraFinishCert: '✅ Terminar (crear mi certificado) ▶',
+      creditsBtn: 'Créditos',
+      creditsSkip: 'Saltar',
+      creditsClose: 'Cerrar',
+      crTeacher: 'Docente',
+      crTeacherLine: (n) => `${n} · docente del grupo 8 de 6.º`,
+      crMakers: 'Estudiantes · Grupo 8 de 6.º, Escuela Primaria Singeomdan (Incheon)',
+      crGroup: (n) => `Grupo ${n}`,
+      crClassAll: 'Todo el grupo 8 de 6.º',
+      crWorks: 'Investigaciones de los grupos',
+      crMusic: 'Música',
+      crMusicBy: 'Canciones creadas por los grupos 1 a 5 del grupo 8 de 6.º',
+      crSfx: 'Efectos de sonido',
+      crSfxBy: 'Sonidos creados dentro del juego',
+      crPartner: 'Colegio aliado',
+      crPartnerName: 'Institución Educativa Técnica La Esperanza (Valledupar, Colombia)',
+      crVets: 'Veteranos colombianos que respondieron nuestras preguntas',
+      crTesters: 'Primeros jugadores que nos dieron su opinión',
+      crTestersBy: 'Grupos 2, 6 y 8 de 6.º, Escuela Primaria Singeomdan',
+      crVideos: 'Videos',
+      crProgram: 'Programa',
+      crProgramName: 'Ministerio de Asuntos de Patriotas y Veteranos de Corea · Academia Global 2026 de los Países Aliados de la ONU',
+      crThanks: 'Y a ti, que recorriste este mapa hasta el final: ¡gracias!',
+      crDedTo: 'Dedicamos este mapa a los veteranos colombianos',
+      crDed: ['Recordaremos su sacrificio,', 'nos daremos la mano más allá del mar y de las generaciones,', 'y llevaremos hacia el mañana la paz que ustedes defendieron.'],
       extraHint: 'Cuando termines la parada, pulsa [🎯 Volver a Sigue jugando] en el mapa para regresar aquí.',
       backToExtra: '🎯 Volver a Sigue jugando ▶',
       gapQuiz: 'acertar el quiz al primer intento',
@@ -1027,12 +1075,12 @@
         badge: 'Ministry of Patriots and Veterans Affairs · 2026 UN Participating Countries Global Academy',
         title: 'A map of peace made by Class 6-8 of Singeomdan Elementary School, Incheon',
         lines: [
-          'M.A.P. to Tomorrow is a web app made by the students of Class 6-8 (6th grade, Class 8) at Singeomdan Elementary School in Incheon, Korea, as part of the 2026 UN Participating Countries Global Academy run by the Korean Ministry of Patriots and Veterans Affairs.',
+          'M.A.P. to Tomorrow is a web app made by the students of Class 6-8 (6th grade, Class 8) at Singeomdan Elementary School in Incheon, Korea, together with their homeroom teacher, as part of the 2026 UN Participating Countries Global Academy run by the Korean Ministry of Patriots and Veterans Affairs.',
           'Colombia was the only Latin American country to send combat troops to the Korean War. With our friends at La Esperanza Technical Educational Institution in Valledupar, we exchanged questions and answers on Padlet and by video, and sent questions to Colombian veterans to hear their answers.',
           'Our goal: remember the sacrifice of the veterans (Memory), connect across borders and generations (Across), and carry the value of peace into tomorrow (Peace).'
         ],
         meta: [
-          ['Made by', 'Class 6-8, Singeomdan Elementary School (Incheon, Korea)'],
+          ['Made by', 'Students and homeroom teacher of Class 6-8, Singeomdan Elementary School (Incheon, Korea)'],
           ['Partner school', 'La Esperanza Technical Educational Institution (Valledupar, Colombia)'],
           ['Program', '2026 UN Participating Countries Global Academy (Mar–Nov 2026)']
         ]
@@ -1453,6 +1501,30 @@
       extraRetry: '🔁 Try again',
       extraFinish: '✅ Finish (go to the survey) ▶',
       extraFinishCert: '✅ Finish (make my certificate) ▶',
+      creditsBtn: 'Credits',
+      creditsSkip: 'Skip',
+      creditsClose: 'Close',
+      crTeacher: 'Teacher',
+      crTeacherLine: (n) => `${n} · Class 6-8 homeroom teacher`,
+      crMakers: 'Students · Class 6-8, Singeomdan Elementary School (Incheon)',
+      crGroup: (n) => `Group ${n}`,
+      crClassAll: 'Everyone in Class 6-8',
+      crWorks: 'Group research projects',
+      crMusic: 'Background music',
+      crMusicBy: 'Songs made by Groups 1–5 of Class 6-8',
+      crSfx: 'Sound effects',
+      crSfxBy: 'Sounds made inside the game',
+      crPartner: 'Partner school',
+      crPartnerName: 'La Esperanza Technical Educational Institution (Valledupar, Colombia)',
+      crVets: 'Colombian veterans who answered our questions',
+      crTesters: 'First players who gave us feedback',
+      crTestersBy: 'Classes 6-2, 6-6 and 6-8, Singeomdan Elementary School',
+      crVideos: 'Videos',
+      crProgram: 'Program',
+      crProgramName: 'Ministry of Patriots and Veterans Affairs · 2026 UN Participating Countries Global Academy',
+      crThanks: 'And to you, who walked this map to the end: thank you!',
+      crDedTo: 'We dedicate this map to the Colombian veterans',
+      crDed: ['We will remember your sacrifice,', 'join hands across the sea and the generations,', 'and carry the peace you defended into tomorrow.'],
       extraHint: 'When you finish that stop, tap [🎯 Back to Keep exploring] on the map to come back here.',
       backToExtra: '🎯 Back to Keep exploring ▶',
       gapQuiz: 'quiz right on the first try',
@@ -4973,6 +5045,63 @@
     });
   }
 
+  /* ---------------- 🎬 엔딩 크레딧 (영화처럼 아래에서 위로) ---------------- */
+  function creditsHtml() {
+    const C = window.CREDITS || {};
+    const sec = (title, lines) => (lines && lines.length ? `<section class="cr-sec"><h3>${esc(title)}</h3>${lines.map((x) => `<p>${x}</p>`).join('')}</section>` : '');
+    // 모둠별 이름 (성 없이) — 아직 안 적었으면 '6학년 8반 친구들 모두'
+    const groups = (C.groups || []).filter((g) => g.names && g.names.length);
+    const makers = groups.length
+      ? groups.map((g) => `<b class="cr-grp">${esc(T('crGroup', g.n))}</b><span class="cr-names">${g.names.map(esc).join(' · ')}</span>`)
+      : [esc(T('crClassAll'))];
+    // 영상 자료: 이 게임에 나오는 영상의 채널 (화면 언어에 맞게)
+    const vids = [];
+    STATIONS.forEach((s) => videosOf(s).forEach((v) => vids.push(v)));
+    const chans = [...new Set(vids.map((v) => (lang === 'ko' ? v.by : (CHANNEL_NAMES[v.by] || v.by))).filter(Boolean))];
+    return `<div class="cr-head">
+        <p class="cr-logo">M.A.P. to Tomorrow</p>
+        <p class="cr-sub">${esc(T('subtitle'))}</p>
+      </div>
+      ${sec(T('crTeacher'), [`<b class="cr-big">${esc(T('crTeacherLine', C.teacher || ''))}</b>`])}
+      ${sec(T('crMakers'), makers)}
+      ${sec(T('crWorks'), (window.GROUP_WORKS || []).map((w) => esc(L(w.name))))}
+      ${sec(T('crMusic'), [esc(T('crMusicBy'))])}
+      ${sec(T('crSfx'), [esc(T('crSfxBy'))])}
+      ${sec(T('crPartner'), [esc(T('crPartnerName'))])}
+      ${sec(T('crTesters'), [esc(T('crTestersBy'))])}
+      ${sec(T('crVideos'), [`<span class="cr-small">${chans.map(esc).join(' · ')}</span>`])}
+      ${sec(T('crProgram'), [esc(T('crProgramName'))])}
+      <p class="cr-quote">${esc(T('finishQuote'))}</p>
+      <p class="cr-thanks">${esc(T('crThanks'))}</p>
+      <section class="cr-ded">
+        <h3>${esc(T('crDedTo'))}</h3>
+        ${T('crDed').map((line, k) => `<p><b class="cr-letter">${'MAP'[k]}</b><span class="cr-word">${['emory', 'cross', 'eace'][k]}</span><span class="cr-line">${esc(line)}</span></p>`).join('')}
+        <p class="cr-logo cr-logo-end">M.A.P. to Tomorrow</p>
+      </section>
+      <p class="cr-copy">© 2026 ${esc(C.copyright || '찐찐쌤')} · jincerely.tistory.com</p>`;
+  }
+  function showCredits() {
+    closeCredits();
+    const ov = document.createElement('div');
+    ov.className = 'credits-ov';
+    ov.id = 'creditsOv';
+    ov.setAttribute('role', 'dialog');
+    ov.setAttribute('aria-modal', 'true');
+    ov.setAttribute('aria-label', T('creditsBtn'));
+    ov.innerHTML = `<button type="button" class="credits-skip" id="creditsSkip">${esc(T('creditsSkip'))} ⏭</button>
+      <div class="credits-roll" id="creditsRoll">${creditsHtml()}</div>`;
+    document.body.appendChild(ov);
+    const roll = $('creditsRoll');
+    // 글 길이에 맞춰 천천히 (1초에 약 45px)
+    const dist = roll.offsetHeight + ov.clientHeight;
+    roll.style.animationDuration = `${Math.max(25, Math.round(dist / 45))}s`;
+    roll.addEventListener('animationend', () => { const b = $('creditsSkip'); if (b) { b.textContent = T('creditsClose') + ' ✕'; b.classList.add('end'); } });
+    $('creditsSkip').addEventListener('click', closeCredits);
+    ov.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeCredits(); });
+    $('creditsSkip').focus();
+  }
+  function closeCredits() { const ov = $('creditsOv'); if (ov) ov.remove(); }
+
   function renderEnding() {
     const step = END_STEPS[endStep];
     const body = $('endingBody');
@@ -5045,7 +5174,7 @@
           <ul class="works">${window.GROUP_WORKS.map((w) => `<li><a href="${esc(w.url)}" target="_blank" rel="noopener">${esc(L(w.name))} ↗</a></li>`).join('')}</ul>` : ''}
         ${CONFIG.padletUrl ? `<a class="btn btn-ghost" href="${esc(CONFIG.padletUrl)}" target="_blank" rel="noopener">${esc(T('padletTitle'))} ↗</a>` : ''}`;
     } else if (step === 'finish') {
-      html = certHtml();
+      html = certHtml() + `<p class="credits-row"><button id="endCredits" class="btn btn-ghost btn-sm" type="button">🎬 ${esc(T('creditsBtn'))}</button></p>`;
     } else if (step === 'survey') {
       // 📝 마지막 한 걸음: 게임 안에서 바로 쓰는 소감 설문 (화면 언어에 맞는 설문지)
       const fb = (CONFIG.feedbackForms || {})[lang] || (CONFIG.feedbackForms || {}).ko;
@@ -5093,7 +5222,9 @@
           ${previewMode ? '' : `<button id="endCode" class="btn btn-blue" type="button">${esc(T('showCodeBtn'))}</button>`}
           <button id="endMap" class="btn btn-ghost" type="button">${esc(T('toMapBtn'))}</button>
           <button id="endHome" class="btn btn-ghost" type="button">${esc(T('toStartBtn'))}</button>
-        </div>`;
+        </div>
+        <p class="credits-row"><button id="endCredits" class="btn btn-blue" type="button">🎬 ${esc(T('creditsBtn'))}</button></p>
+        <footer class="site-credit">© 2026 찐찐쌤 · <a href="https://jincerely.tistory.com" target="_blank" rel="noopener">jincerely.tistory.com</a></footer>`;
     }
 
     body.innerHTML = html;
@@ -5115,6 +5246,15 @@
     if ($('endCode')) $('endCode').addEventListener('click', showCode);
     if ($('endMap')) $('endMap').addEventListener('click', () => (previewMode ? showTeacher() : enterGame()));
     if ($('endHome')) $('endHome').addEventListener('click', () => (previewMode ? showTeacher() : showStart()));
+    if ($('endCredits')) $('endCredits').addEventListener('click', showCredits);
+    // 🎬 여정 완료 화면에 처음 오면 크레딧이 저절로 한 번 올라가요 (실제로 띄웠을 때만 '봤음'으로 기록)
+    if (step === 'done' && !previewMode && player && !player.creditsSeen) {
+      setTimeout(() => {
+        if (END_STEPS[endStep] !== 'done' || $('endingScreen').hidden || $('creditsOv') || player.creditsSeen) return;
+        player.creditsSeen = Date.now(); save();
+        showCredits();
+      }, 1200);
+    }
     // 📝 소감 설문을 '제출'하면 구글 설문이 '응답이 기록되었습니다' 화면으로 바뀌어요(= 틀이 한 번 더 읽힘)
     //    → 그걸 알아채고 잠시 뒤 저절로 인증서 화면으로
     const sf = $('surveyFrame');

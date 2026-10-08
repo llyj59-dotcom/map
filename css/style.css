@@ -1215,3 +1215,40 @@ button.hcard:hover { transform: translateY(-3px) rotate(-1deg); box-shadow: 0 8p
 .pad-share { margin: 6px 0; font-size: 14px; text-align: center; }
 .pad-go { text-align: center; margin: 10px 0 4px; }
 .pad-go .btn { font-size: 18px; padding: 12px 22px; }
+
+/* © 만든 사람 (첫 화면·여정 완료 화면 맨 아래) */
+.site-credit { margin: 28px auto 8px; text-align: center; font-size: 13px; color: #5b6785; letter-spacing: .02em; }
+.site-credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+
+
+/* 🎬 엔딩 크레딧 */
+.credits-row { text-align: center; margin: 16px 0 0; }
+.credits-ov { position: fixed; inset: 0; z-index: 9999; overflow: hidden; background: radial-gradient(ellipse at 50% 120%, #1d3270 0%, #0b1430 60%); color: #f4f6ff; font-family: 'Jua', 'Noto Sans KR', system-ui, sans-serif; }
+.credits-roll { position: absolute; left: 0; right: 0; top: 100%; padding: 0 20px 40px; text-align: center; animation: credits-roll 60s linear forwards; }
+@keyframes credits-roll { to { transform: translateY(calc(-100% - 100vh)); } }
+.credits-ov:active .credits-roll { animation-play-state: paused; }
+.credits-skip { position: absolute; top: calc(12px + env(safe-area-inset-top, 0px)); right: 14px; z-index: 2; padding: 8px 16px; border-radius: 999px; border: 2px solid rgba(255,255,255,.6); background: rgba(11,20,48,.7); color: #fff; font: inherit; font-size: 16px; cursor: pointer; }
+.credits-skip.end { background: #ffd23f; color: #14224b; border-color: #ffd23f; }
+.cr-head { margin: 0 0 56px; }
+.cr-logo { margin: 0; font-family: 'Baloo 2', 'Jua', sans-serif; font-weight: 800; font-size: clamp(32px, 7vw, 52px); color: #ffd23f; }
+.cr-sub { margin: 6px 0 0; font-size: 17px; opacity: .85; }
+.cr-sec { margin: 0 auto 44px; max-width: 560px; }
+.cr-sec h3 { margin: 0 0 10px; font-size: 15px; font-weight: 400; letter-spacing: .12em; color: #9fb4ff; }
+.cr-sec p { margin: 4px 0; font-size: 20px; line-height: 1.5; }
+.cr-big { font-size: 30px; color: #fff; }
+.cr-grp { display: block; margin-top: 12px; font-size: 16px; color: #ffd23f; }
+.cr-names { display: block; font-size: 21px; }
+.cr-small { font-size: 15px; opacity: .85; }
+.cr-quote { margin: 70px auto 16px; max-width: 560px; font-size: 24px; color: #ffd23f; }
+.cr-thanks { margin: 0 auto 30px; font-size: 20px; }
+.cr-copy { margin: 40px 0 0; font-size: 14px; opacity: .7; }
+@media (prefers-reduced-motion: reduce) { .credits-ov { overflow-y: auto; } .credits-roll { position: static; animation: none; padding-top: 70px; } }
+
+/* 🎬 크레딧 맨 끝: 콜롬비아 참전용사님들께 바치는 M.A.P. 헌사 */
+.cr-ded { margin: 90px auto 0; max-width: 600px; }
+.cr-ded h3 { margin: 0 0 22px; font-size: 18px; font-weight: 400; color: #9fb4ff; letter-spacing: .06em; }
+.cr-ded p { margin: 0 0 16px; font-size: 22px; line-height: 1.5; }
+.cr-letter { font-family: 'Baloo 2', 'Jua', sans-serif; font-size: 34px; color: #ffd23f; }
+.cr-word { font-family: 'Baloo 2', 'Jua', sans-serif; font-size: 18px; color: #ffd23f; margin-right: 10px; }
+.cr-line { display: block; }
+.cr-logo-end { margin-top: 36px; font-size: clamp(26px, 6vw, 40px); }

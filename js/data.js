@@ -1130,3 +1130,18 @@ window.GROUP_WORKS = [
   { name: { ko: '4모둠', es: 'Grupo 4' }, url: 'https://lldfg.my.canva.site/4' },
   { name: { ko: '5모둠 · 기억해야 할 그날, 6·25 전쟁 속 인천', es: 'Grupo 5 · Un día para recordar: Incheon en la Guerra de Corea' }, url: 'https://lldfg.my.canva.site/5' }
 ];
+
+/* 🎬 엔딩 크레딧 — 아이들 이름은 성 없이 이름만 (개인정보 이용 동의 받음, 2026. 10.)
+   names 가 비어 있는 모둠은 크레딧에 안 나오고, 모두 비어 있으면 '6학년 8반 친구들 모두'로 나와요 */
+window.CREDITS = {
+  teacher: '예진',        // 크레딧: '6학년 8반 담임 예진 선생님'
+  copyright: '찐찐쌤',    // 맨 아래 © 표시
+  // 위인전 책 『M.A.P. to TOMORROW』 목차의 모둠 (같은 이름 '서율'이 둘이라 괄호로 구분)
+  groups: [
+    { n: 1, names: ['서율(원)', '주호', '지훈', '서율(최)'] },
+    { n: 2, names: ['유건', '도연', '예은', '수진'] },
+    { n: 3, names: ['예림', '채경', '주환', '하빈'] },
+    { n: 4, names: ['다빈', '나연', '지후', '정근'] },
+    { n: 5, names: ['응민', '지유', '연우', '이준', '민지'] }
+  ]
+};
