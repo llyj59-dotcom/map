@@ -1276,3 +1276,17 @@ button.hcard:hover { transform: translateY(-3px) rotate(-1deg); box-shadow: 0 8p
 .btn-sm.btn-go, .btn-sm.btn-blue { padding-top: 9px; padding-bottom: 3px; }
 /* O·X 글자도 세로 가운데로 (Baloo 2 글꼴은 살짝 위로 떠요) */
 .ox button { padding-top: .08em; }
+
+/* 🪟 첫 화면 시작 창 (이어서 할까요? / 닉네임) */
+.start-modal { position: fixed; inset: 0; z-index: 900; display: grid; place-items: center; padding: 16px; background: rgba(11,20,48,.55); }
+.start-modal-card { position: relative; width: min(520px, 100%); max-height: calc(100vh - 32px); overflow-y: auto; background: var(--paper, #fff); border-radius: 22px; padding: 26px 22px 18px; box-shadow: 0 18px 50px rgba(11,20,48,.35); }
+.start-modal-card .saved-box, .start-modal-card .start-form { margin: 0; box-shadow: none; border: 0; padding: 0; }
+.start-modal-x { position: absolute; top: 10px; right: 10px; }
+.start-modal-card #showNew { margin-top: 12px; width: 100%; }
+.start-modal-link { display: block; margin: 16px auto 0; font-size: 14px; }
+body.modal-open { overflow: hidden; }
+.scroll-hint { margin: 10px 0 0; font-size: 15px; color: var(--ink-soft); animation: hint-bob 1.6s ease-in-out infinite; }
+@keyframes hint-bob { 50% { transform: translateY(4px); } }
+.start-cta { margin: 22px auto 10px; padding: 22px 18px; max-width: 640px; text-align: center; border-radius: 20px; background: #fff7d6; border: 2px solid var(--co-yellow, #ffcd00); }
+.start-cta-text { margin: 0 0 14px; font-family: var(--display); font-size: 20px; line-height: 1.4; text-wrap: balance; }
+@media (prefers-reduced-motion: reduce) { .scroll-hint { animation: none; } }

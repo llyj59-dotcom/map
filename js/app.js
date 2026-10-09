@@ -21,7 +21,7 @@
   /* ---------------- 화면 글자 (한/스) ---------------- */
   const UI = {
     ko: {
-      subtitle: '기억·연결·평화의 지도',
+      subtitle: '기억(M) · 연결(A) · 평화(P)의 지도',
       narration: ['1950년, 한반도에 전쟁이 일어났어요.', '지구 반대편 콜롬비아에서, 한 젊은이가 배에 올랐어요.', '그날의 기억 속으로 들어가 봅시다.'],
       startTagline: '기억(M)·연결(A)·평화(P)의 지도로 그리는 평화의 내일',
       startLead: '인천상륙작전에서 콜롬비아대대의 전투, 서해를 지킨 콜롬비아 해군, 인천의 참전기념비까지! 지도 위 작전 지점 12곳을 하나씩 지나며 평화의 지도를 완성해 보세요.',
@@ -63,6 +63,11 @@
       ],
       aboutGoalsTitle: '이 게임으로 우리는',
       savedTitle: '이 기기에 저장된 여정',
+      resumeAsk: '하던 여정이 있어요! 이어서 할까요?',
+      newStartBtn: '＋ 새로 시작하기',
+      otherDeviceLink: '다른 기기에서 하던 여정이 있나요? 여정 코드로 이어 하기 →',
+      ctaText: '소개를 다 읽었나요? 이제 닉네임을 정하고 평화의 지도 여정을 시작해요!',
+      scrollHint: '▼ 아래 소개를 끝까지 읽으면 여정을 시작할 수 있어요',
       continue: '이어하기 ▶',
       newTitle: '새로 시작하기',
       nickLabel: '닉네임',
@@ -547,7 +552,7 @@
       pyongyang: '평양'
     },
     es: {
-      subtitle: 'El mapa de la memoria, la conexión y la paz',
+      subtitle: 'Memory · Across · Peace — memoria, conexión y paz',
       narration: ['En 1950 estalló una guerra en la península de Corea.', 'Al otro lado del mundo, en Colombia, un joven subió a un barco.', 'Entremos en los recuerdos de aquel día.'],
       startTagline: 'Memoria · Conexión · Paz: un mapa para dibujar un mañana en paz',
       startLead: 'Del Desembarco de Incheon a las batallas del Batallón Colombia, la Armada colombiana en el Mar Amarillo y el monumento de Incheon: recorre los 12 puntos de misión y completa el mapa de la paz.',
@@ -589,6 +594,11 @@
       ],
       aboutGoalsTitle: 'Con este juego queremos',
       savedTitle: 'Viajes guardados en este dispositivo',
+      resumeAsk: 'Tienes un viaje guardado. ¿Quieres continuarlo?',
+      newStartBtn: '＋ Empezar de nuevo',
+      otherDeviceLink: '¿Empezaste en otro dispositivo? Continúa con tu código de viaje →',
+      ctaText: '¿Ya leíste la presentación? Elige un apodo y empieza el viaje por el mapa de la paz.',
+      scrollHint: '▼ Lee la presentación hasta el final para empezar el viaje',
       continue: 'Continuar ▶',
       newTitle: 'Empezar de nuevo',
       nickLabel: 'Apodo',
@@ -1069,7 +1079,7 @@
       pyongyang: 'Pionyang'
     },
     en: {
-      subtitle: 'A map of memory, connection and peace',
+      subtitle: 'Memory · Across · Peace — a map to tomorrow',
       narration: ['In 1950, a war broke out on the Korean Peninsula.', 'On the other side of the world, in Colombia, a young man boarded a ship.', "Let's step into the memories of that day."],
       startTagline: 'A peaceful tomorrow, drawn with a map of Memory, Across and Peace',
       startLead: 'Start with the Incheon Landing. Then follow the Colombia Battalion’s battles, the Colombian Navy in the Yellow Sea and the memorial in Incheon. Pass all 12 mission points and complete the map of peace!',
@@ -1111,6 +1121,11 @@
       ],
       aboutGoalsTitle: 'With this game, we want to',
       savedTitle: 'Journeys saved on this device',
+      resumeAsk: 'You have a saved journey. Continue?',
+      newStartBtn: '＋ Start a new journey',
+      otherDeviceLink: 'Started on another device? Continue with your journey code →',
+      ctaText: 'Finished reading? Choose a nickname and start your journey on the map of peace!',
+      scrollHint: '▼ Read the introduction to the end to start your journey',
       continue: 'Continue ▶',
       newTitle: 'Start a new journey',
       nickLabel: 'Nickname',
@@ -2555,6 +2570,42 @@
     showScreen('startScreen');
     $('narration').innerHTML = T('narration').map((line, i) => `<span style="animation-delay:${0.3 + i * 1.1}s">${esc(line)}</span>`).join('\n');
     renderSaved();
+    closeStartModal();
+    startAutoOpened = false;
+    if (Object.keys(store.games).length) setTimeout(() => { if (!$('startScreen').hidden) openStartModal('resume'); }, 600);
+  }
+
+  // 🪟 시작 창 ('resume' = 이어서 할까요? / 'new' = 닉네임 정하고 새로 시작)
+  let startAutoOpened = false;
+  function openStartModal(mode) {
+    const has = Object.keys(store.games).length > 0;
+    const resume = mode === 'resume' && has;
+    $('savedBox').hidden = !resume;
+    $('startForm').hidden = resume;
+    $('startModal').hidden = false;
+    document.body.classList.add('modal-open');
+    if (!resume) setTimeout(() => $('nickInput').focus(), 50);
+  }
+  function closeStartModal() { $('startModal').hidden = true; document.body.classList.remove('modal-open'); }
+  $('openStart').addEventListener('click', () => openStartModal('new'));
+  $('showNew').addEventListener('click', () => openStartModal('new'));
+  $('startModalClose').addEventListener('click', closeStartModal);
+  $('startModal').addEventListener('click', (e) => { if (e.target === $('startModal')) closeStartModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !$('startModal').hidden) closeStartModal(); });
+  $('toResumeCode').addEventListener('click', () => {
+    closeStartModal();
+    $('resumeFold').open = true;
+    $('resumeFold').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTimeout(() => $('resumeNick').focus(), 400);
+  });
+  // 📜 소개를 끝까지 내려 [여정 시작하기]가 보이면 닉네임 창이 저절로 한 번 열려요
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver((ents) => {
+      if (ents.some((x) => x.isIntersecting) && !startAutoOpened && !$('startScreen').hidden && $('startModal').hidden) {
+        startAutoOpened = true;
+        openStartModal(Object.keys(store.games).length ? 'resume' : 'new');
+      }
+    }, { threshold: 0.9 }).observe($('startCta'));
   }
 
   function renderSaved() {
@@ -2563,13 +2614,14 @@
     $('savedList').innerHTML = games.map((g) => `
       <li>
         <span class="saved-nick">${esc(g.nick)}</span>
-        <span class="saved-meta">${doneCount(g)} / ${N} · ${esc(fmtDate(g.updated))}</span>
+        <span class="saved-meta">${doneCount(g)} / ${N} · ${esc(fmtDate(g.updated))} · 🔑 ${esc(makeCode(g))}</span>
         <button class="btn btn-blue btn-sm" type="button" data-id="${esc(g.id)}">${esc(T('continue'))}</button>
       </li>`).join('');
     $('savedList').querySelectorAll('button').forEach((b) => b.addEventListener('click', () => startGame(store.games[b.dataset.id])));
   }
 
   function startGame(g) {
+    closeStartModal();
     player = g;
     store.last = g.id;
     save();
