@@ -36,7 +36,7 @@
         title: '인천신검단초등학교 6학년 8반이 함께 만든 평화의 지도',
         lines: [
           'M.A.P. to Tomorrow는 국가보훈부의 「2026 유엔참전국 글로벌 아카데미」 사업으로 인천신검단초등학교 6학년 8반 학생들과 담임 선생님이 함께 만든 웹앱이에요.',
-          '6·25 전쟁 때 라틴아메리카에서 유일하게 전투 부대를 보낸 콜롬비아. 우리는 발레두파르의 La Esperanza 기술교육학교 친구들과 패들렛과 영상으로 질문과 답을 주고받고, 콜롬비아 참전용사님들께 직접 질문을 보내 답을 들으며 이 지도를 함께 채웠어요.',
+          '콜롬비아는 6·25 전쟁 때 라틴아메리카에서 유일하게 전투 부대를 보낸 나라예요. 우리는 발레두파르의 La Esperanza 기술교육학교 친구들과 패들렛과 영상으로 질문과 답을 주고받았고, 콜롬비아 참전용사님들께 직접 질문을 보내 답을 들으며 이 지도를 함께 채웠어요.',
           '참전용사의 희생을 기억하고(Memory), 국경과 세대를 넘어 연결하며(Across), 평화의 가치를 내일로 이어 가는(Peace) 것이 우리의 목표예요. 6학년이 만든 이 지도는 4학년 동생들과 콜롬비아 친구들에게도 전해져요.'
         ],
         meta: [
@@ -137,7 +137,7 @@
         '흑운토령과 금성 — 콜롬비아대대는 전쟁의 한가운데에서 싸웠어요.',
         '고지 위에서 콜롬비아 용사들과 유엔군은 서로의 목숨을 지켜 준 형제였어요.',
         '불모고지의 큰 희생 뒤, 1953년 7월 27일 정전협정으로 총소리가 멈췄어요. 그 기억 속 이름들을 우리가 기억해요.',
-        '서해를 지킨 콜롬비아 해군, 그리고 인천에 서 있는 참전기념비. 기억은 오늘도 우리 곁에 있어요.'
+        '서해를 지킨 콜롬비아 해군과 인천에 서 있는 참전기념비처럼, 그날의 기억은 오늘도 우리 곁에 있어요.'
       ],
       keyLabel: '🔑 열쇠 낱말',
       keyWords: ['전쟁', '속의', '형제,', '평화', '속의', '형제'],
@@ -479,7 +479,7 @@
       crSfx: '효과음',
       crSfxBy: '게임 안에서 직접 만든 소리',
       crPartner: '함께한 학교',
-      crPartnerName: 'Institución Educativa Técnica La Esperanza (콜롬비아 발레두파르)',
+      crPartnerName: 'Institución Educativa Técnica La Esperanza\n(콜롬비아 발레두파르)',
       crVets: '우리의 질문에 답해 주신 콜롬비아 참전용사님',
       crTesters: '먼저 해 보고 의견을 준 친구들',
       crTestersBy: '인천신검단초등학교 6학년 2반 · 6반 · 8반 · 10반',
@@ -1001,7 +1001,7 @@
       crSfx: 'Efectos de sonido',
       crSfxBy: 'Sonidos creados dentro del juego',
       crPartner: 'Colegio aliado',
-      crPartnerName: 'Institución Educativa Técnica La Esperanza (Valledupar, Colombia)',
+      crPartnerName: 'Institución Educativa Técnica La Esperanza\n(Valledupar, Colombia)',
       crVets: 'Veteranos colombianos que respondieron nuestras preguntas',
       crTesters: 'Primeros jugadores que nos dieron su opinión',
       crTestersBy: 'Grupos 2, 6, 8 y 10 de 6.º\nEscuela Primaria Singeomdan',
@@ -1523,7 +1523,7 @@
       crSfx: 'Sound effects',
       crSfxBy: 'Sounds made inside the game',
       crPartner: 'Partner school',
-      crPartnerName: 'La Esperanza Technical Educational Institution (Valledupar, Colombia)',
+      crPartnerName: 'La Esperanza Technical Educational Institution\n(Valledupar, Colombia)',
       crVets: 'Colombian veterans who answered our questions',
       crTesters: 'First players who gave us feedback',
       crTestersBy: 'Classes 6-2, 6-6, 6-8 and 6-10\nSingeomdan Elementary School',
@@ -5064,7 +5064,7 @@
     // 모둠별 이름 (성 없이) — 아직 안 적었으면 '6학년 8반 친구들 모두'
     const groups = (C.groups || []).filter((g) => g.names && g.names.length);
     const makers = groups.length
-      ? groups.map((g) => `<b class="cr-grp">${esc(T('crGroup', g.n))}</b><span class="cr-names">${g.names.map((nm, k) => esc(lang !== 'ko' && g.roman && g.roman[k] ? `${g.roman[k]} (${nm.replace(/ [A-Z]$/, '')})` : nm)).join(' · ')}</span>`)
+      ? groups.map((g) => `<b class="cr-grp">${esc(T('crGroup', g.n))}</b><span class="cr-names">${g.names.map((nm, k) => `<span class="cr-nm">${esc(lang !== 'ko' && g.roman && g.roman[k] ? `${g.roman[k]} (${nm.replace(/ [A-Z]$/, '')})` : nm)}</span>`).join(' · ')}</span>`)
       : [esc(T('crClassAll'))];
     // 영상 자료: 이 게임에 나오는 영상의 채널 (화면 언어에 맞게)
     const vids = [];
@@ -5078,7 +5078,7 @@
       ${sec(T('crMakers'), makers)}
       ${sec(T('crWorks'), (window.GROUP_WORKS || []).map((w) => esc(L(w.name)))).replace('cr-sec', 'cr-sec cr-works')}
       ${sec(T('crMusic'), [esc(T('crMusicBy'))])}
-      ${sec(T('crPartner'), [esc(T('crPartnerName')), ...(C.partnerTeacher ? [esc(T('crPartnerTeacher', C.partnerTeacher))] : [])])}
+      ${sec(T('crPartner'), [...T('crPartnerName').split('\n').map(esc), ...(C.partnerTeacher ? [esc(T('crPartnerTeacher', C.partnerTeacher))] : [])])}
       ${sec(T('crSpecial'), [`<span class="cr-small">${esc(T('crSpecialSub'))}</span>`, ...Object.values(window.VETERANS || {}).map((v) => `<b class="cr-big">${esc(T('crVetName', L(v.name)))}</b>`)])}
       ${sec(T('crTesters'), T('crTestersBy').split('\n').map(esc))}
       ${sec(T('crVideos'), [`<span class="cr-small">${chans.map(esc).join(' · ')}</span>`])}

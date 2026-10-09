@@ -1264,3 +1264,15 @@ button.hcard:hover { transform: translateY(-3px) rotate(-1deg); box-shadow: 0 8p
 /* 모둠 작품 제목은 한 줄씩 (넓은 화면) */
 .cr-sec.cr-works { max-width: 980px; }
 @media (min-width: 760px) { .cr-works p { white-space: nowrap; font-size: 18px; } }
+
+/* 크레딧 이름은 한 덩어리로 (로마자와 한글 사이에서 줄이 바뀌지 않게) */
+.cr-nm { white-space: nowrap; }
+.cr-sec { max-width: 760px; }
+
+/* 버튼 글자 세로 가운데 맞춤: Jua 글꼴은 한글이 1~2px 위로 떠 보여요 → 위 여백을 조금 더 (아래 그림자 있는 버튼은 조금 더) */
+.btn { padding-top: 12px; padding-bottom: 8px; }
+.btn-go, .btn-blue { padding-top: 13px; padding-bottom: 7px; }
+.btn-sm { padding-top: 8px; padding-bottom: 4px; }
+.btn-sm.btn-go, .btn-sm.btn-blue { padding-top: 9px; padding-bottom: 3px; }
+/* O·X 글자도 세로 가운데로 (Baloo 2 글꼴은 살짝 위로 떠요) */
+.ox button { padding-top: .08em; }
