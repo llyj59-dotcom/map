@@ -483,6 +483,10 @@
       crVets: '우리의 질문에 답해 주신 콜롬비아 참전용사님',
       crTesters: '먼저 해 보고 의견을 준 친구들',
       crTestersBy: '인천신검단초등학교 6학년 2반 · 6반 · 8반 · 10반',
+      crPartnerTeacher: (n) => `담당 ${n} 선생님`,
+      crSpecial: '특별 출연',
+      crSpecialSub: '우리의 질문에 영상으로 답해 주신 콜롬비아 참전용사님',
+      crVetName: (n) => `${n} 님`,
       crVideos: '영상 자료',
       crProgram: '함께한 사업',
       crProgramName: '국가보훈부 · 2026 유엔참전국 글로벌 아카데미',
@@ -1001,6 +1005,10 @@
       crVets: 'Veteranos colombianos que respondieron nuestras preguntas',
       crTesters: 'Primeros jugadores que nos dieron su opinión',
       crTestersBy: 'Grupos 2, 6, 8 y 10 de 6.º, Escuela Primaria Singeomdan',
+      crPartnerTeacher: (n) => `Docente a cargo: ${n}`,
+      crSpecial: 'Participación especial',
+      crSpecialSub: 'Veteranos colombianos que respondieron nuestras preguntas en video',
+      crVetName: (n) => `Sr. ${n}`,
       crVideos: 'Videos',
       crProgram: 'Programa',
       crProgramName: 'Ministerio de Asuntos de Patriotas y Veteranos de Corea · Academia Global 2026 de los Países Aliados de la ONU',
@@ -1519,6 +1527,10 @@
       crVets: 'Colombian veterans who answered our questions',
       crTesters: 'First players who gave us feedback',
       crTestersBy: 'Classes 6-2, 6-6, 6-8 and 6-10, Singeomdan Elementary School',
+      crPartnerTeacher: (n) => `Teacher in charge: ${n}`,
+      crSpecial: 'Special appearance',
+      crSpecialSub: 'Colombian veterans who answered our questions on video',
+      crVetName: (n) => `Mr. ${n}`,
       crVideos: 'Videos',
       crProgram: 'Program',
       crProgramName: 'Ministry of Patriots and Veterans Affairs · 2026 UN Participating Countries Global Academy',
@@ -2774,7 +2786,7 @@
       }
       if (state === 'next') {
         const pos = { right: [28, 6, 'start'], left: [-28, 6, 'end'], top: [0, -70, 'middle'], /* 말(핀) 위로 */ bottom: [0, 42, 'middle'] }[s.label || 'right'];
-        svgEl('text', { x: s.map.x + pos[0], y: s.map.y + pos[1], 'text-anchor': pos[2], class: 'm-label' }, svg).textContent = L(s.name);
+        svgEl('text', { x: s.map.x + pos[0], y: s.map.y + pos[1], 'text-anchor': pos[2], class: 'm-label m-next-label' }, svg).textContent = L(s.name);
       }
     });
 
@@ -4202,7 +4214,7 @@
       <article class="q-card">
         <div class="q-from">✉️ ${esc(T('askedBy', maskName(q.asker, q.askerRoman)))}</div>
         <p class="q-text">“${esc(L(q.text))}”</p>
-        ${lang === 'en' ? '' : `<details class="q-en"><summary>${esc(T('showEn'))}</summary><p lang="en">${esc(q.en)}</p></details>`}
+        ${lang === 'en' ? `<p class="q-also" lang="ko">“${esc(q.text.ko)}”</p>` : `<p class="q-also" lang="en">“${esc(q.en)}”</p>`}
       </article>
       <p class="q-intro">${esc(T('qIntro'))}</p>
       <label class="guess-label" for="guess">${esc(T('myGuessLabel'))}</label>
@@ -5052,7 +5064,7 @@
     // 모둠별 이름 (성 없이) — 아직 안 적었으면 '6학년 8반 친구들 모두'
     const groups = (C.groups || []).filter((g) => g.names && g.names.length);
     const makers = groups.length
-      ? groups.map((g) => `<b class="cr-grp">${esc(T('crGroup', g.n))}</b><span class="cr-names">${g.names.map(esc).join(' · ')}</span>`)
+      ? groups.map((g) => `<b class="cr-grp">${esc(T('crGroup', g.n))}</b><span class="cr-names">${g.names.map((nm, k) => esc(lang !== 'ko' && g.roman && g.roman[k] ? `${g.roman[k]} (${nm.replace(/ [A-Z]$/, '')})` : nm)).join(' · ')}</span>`)
       : [esc(T('crClassAll'))];
     // 영상 자료: 이 게임에 나오는 영상의 채널 (화면 언어에 맞게)
     const vids = [];
@@ -5062,11 +5074,12 @@
         <p class="cr-logo">M.A.P. to Tomorrow</p>
         <p class="cr-sub">${esc(T('subtitle'))}</p>
       </div>
-      ${sec(T('crTeacher'), [`<b class="cr-big">${esc(T('crTeacherLine', C.teacher || ''))}</b>`])}
+      ${sec(T('crTeacher'), [`<b class="cr-big">${esc(T('crTeacherLine', lang !== 'ko' && C.teacherRoman ? `${C.teacherRoman} (${C.teacher})` : (C.teacher || '')))}</b>`])}
       ${sec(T('crMakers'), makers)}
       ${sec(T('crWorks'), (window.GROUP_WORKS || []).map((w) => esc(L(w.name))))}
       ${sec(T('crMusic'), [esc(T('crMusicBy'))])}
-      ${sec(T('crPartner'), [esc(T('crPartnerName'))])}
+      ${sec(T('crPartner'), [esc(T('crPartnerName')), ...(C.partnerTeacher ? [esc(T('crPartnerTeacher', C.partnerTeacher))] : [])])}
+      ${sec(T('crSpecial'), [`<span class="cr-small">${esc(T('crSpecialSub'))}</span>`, ...Object.values(window.VETERANS || {}).map((v) => `<b class="cr-big">${esc(T('crVetName', L(v.name)))}</b>`)])}
       ${sec(T('crTesters'), [esc(T('crTestersBy'))])}
       ${sec(T('crVideos'), [`<span class="cr-small">${chans.map(esc).join(' · ')}</span>`])}
       ${sec(T('crProgram'), [esc(T('crProgramName'))])}
@@ -5130,6 +5143,7 @@
       html = `<header class="end-q-head">
           <span class="eyebrow">${esc(T('qLabel', n, QIDS.length))}</span>
           <h2>“${esc(L(q.text))}”</h2>
+          ${lang === 'en' ? `<p class="q-also" lang="ko">“${esc(q.text.ko)}”</p>` : `<p class="q-also" lang="en">“${esc(q.en)}”</p>`}
           <div class="q-from">✉️ ${esc(T('askedBy', maskName(q.asker, q.askerRoman)))}</div>
         </header>
         <div class="compare">

@@ -1254,3 +1254,9 @@ button.hcard:hover { transform: translateY(-3px) rotate(-1deg); box-shadow: 0 8p
 .cr-logo-end { margin-top: 36px; font-size: clamp(26px, 6vw, 40px); }
 
 .cr-names-all { max-width: 520px; margin: 0 auto; line-height: 1.9; }
+
+/* 엔딩 질문: 한국어·영어 함께 */
+.q-also { margin: 6px 0 0; font-size: .95em; line-height: 1.5; color: #4a5a85; font-style: italic; }
+
+/* 작전 지점을 연 동안에는 현재 위치 이름표만 (두 이름표가 겹쳐 보이지 않게) */
+#map:has(#focusLayer .m-focus-label) .m-next-label { display: none; }

@@ -992,7 +992,7 @@ window.QUESTIONS = {
     answers: [
       {
         veteran: 'jaime',
-        video: { type: 'mp4', src: '' }, // 원본: Answer Jaime Álvarez to Min doyeon_내보내기.mp4
+        video: { type: 'mp4', src: 'videos/jaime_q1.mp4' }, // 원본: Answer Jaime Álvarez to Min doyeon_내보내기.mp4 (한국어 자막, 학생 이름 인사는 잘라냄)
         summary: {
           ko: '저는 민주주의를 "누가 억지로 시키지 않아도 스스로 선택할 수 있는 자유"라고 생각해요. 어떤 나라가 한국을 침략해 자기 생각을 강요하려 한다는 걸 알았고, 그 자유를 지키고 싶었어요. 그 생각이 말도 풍습도 다른 먼 나라로 갈 용기를 주었어요.',
           es: 'Para mí la democracia es la libertad de decidir por uno mismo, sin que nadie te obligue. Sabía que un país pretendía invadir Corea e imponerle sus ideas, y quise defender esa libertad. Esa convicción me dio el valor para ir a un país lejano, con otro idioma y otras costumbres.'
@@ -1000,7 +1000,7 @@ window.QUESTIONS = {
       },
       {
         veteran: 'jorge',
-        video: { type: 'mp4', src: '' }, // 원본: Answer Jorge Suarez to Min doyeon_내보내기.mp4
+        video: { type: 'mp4', src: 'videos/jorge_q1.mp4' }, // 원본: Answer Jorge Suarez to Min doyeon_내보내기.mp4 (한국어 자막, 학생 이름 인사는 잘라냄)
         summary: {
           ko: '제 경우에는 다른 나라를 알고 싶다는 마음이 컸어요. 우리는 군인이었고, 늘 이야기로만 듣던 전쟁이 무엇인지, 다른 세상은 어떤 곳인지 알고 싶었어요.',
           es: 'En mi caso, me movía el deseo de conocer otras tierras. Éramos militares y queríamos saber qué era realmente la guerra, de la que siempre oíamos hablar, y descubrir otros mundos.'
@@ -1015,7 +1015,7 @@ window.QUESTIONS = {
     answers: [
       {
         veteran: 'jorge',
-        video: { type: 'mp4', src: '' }, // 원본: Answer Jorge Suarez to Won seoyul_내보내기.mp4
+        video: { type: 'mp4', src: 'videos/jorge_q2.mp4' }, // 원본: Answer Jorge Suarez to Won seoyul_내보내기.mp4 (한국어 자막, 학생 이름 인사는 잘라냄)
         summary: {
           ko: '가장 힘들었던 건 전우들이 쓰러지는 모습을 보는 것이었어요. 다친 동료를 보면 마치 나에게 일어난 일 같았어요. 떠나간 동료도 있었지만, 살아남은 우리는 계속 앞으로 나아가야 했어요.',
           es: 'Lo más difícil fue ver caer a los compañeros. Ver a un compañero herido o muerto era como si le pasara a uno mismo. Algunos se quedaron en el camino, pero los que sobrevivimos teníamos que seguir adelante.'
@@ -1030,7 +1030,7 @@ window.QUESTIONS = {
     answers: [
       {
         veteran: 'jaime',
-        video: { type: 'mp4', src: '' }, // 원본: Answer Jaime Alvarez to Choi yijun_내보내기.mp4
+        video: { type: 'mp4', src: 'videos/jaime_q3.mp4' }, // 원본: Answer Jaime Alvarez to Choi yijun_내보내기.mp4 (한국어 자막, 학생 이름 인사는 잘라냄)
         summary: {
           ko: '한국을 위해 힘을 보탰다는 것은 언제나 제 자랑이에요. 지금 한국이 이룬 모습을 보며 한국과 한국 사람들을 진심으로 사랑하게 되었어요. 유명한 말처럼, 우리는 전쟁 속의 형제였고 평화 속에서도 형제예요.',
           es: 'Haber contribuido a la causa de Corea siempre ha sido motivo de orgullo para mí. Al ver lo que Corea es hoy, llegué a querer de verdad a ese país y a su gente. Como dice la conocida frase: hermanos en la guerra, hermanos en la paz.'
@@ -1038,7 +1038,7 @@ window.QUESTIONS = {
       },
       {
         veteran: 'jorge',
-        video: { type: 'mp4', src: '' }, // 원본: Answer Jorge Suárez to Choi yijun_내보내기.mp4
+        video: { type: 'mp4', src: 'videos/jorge_q3.mp4' }, // 원본: Answer Jorge Suárez to Choi yijun_내보내기.mp4 (한국어 자막, 학생 이름 인사는 잘라냄)
         summary: {
           ko: '전쟁 뒤 우리와 여러분은 아주 가까웠어요. 오랜 시간이 지나도 여러분이 우리를 기억해 주어 고마워요. 여러분의 자유를 위해 작은 모래 한 알을 보탤 수 있었던 것이 자랑스러워요.',
           es: 'Después de la guerra, la relación entre ustedes y nosotros ha sido muy cercana. Gracias por recordarnos después de tantos años. Nos alegra haber puesto un pequeño grano de arena por su libertad.'
@@ -1053,7 +1053,7 @@ window.QUESTIONS = {
     answers: [
       {
         veteran: 'jaime',
-        video: { type: 'mp4', src: '' }, // 원본: Answer Jaime Alvarez to Minji Kim_내보내기.mp4
+        video: { type: 'mp4', src: 'videos/jaime_q4.mp4' }, // 원본: Answer Jaime Alvarez to Minji Kim_내보내기.mp4 (한국어 자막, 학생 이름 인사는 잘라냄)
         summary: {
           ko: '한국을 지키기 위해 참전을 결심했던 것이 정말 자랑스러워요. 전쟁 이후 한국이 이룬 성공과 발전이 마치 제 일처럼 느껴져요. 여러분 나라의 성공을 보며 큰 기쁨을 느껴요.',
           es: 'Me enorgullece profundamente haber decidido ir a defender Corea. Siento el éxito y el desarrollo que Corea alcanzó después de la guerra casi como propios. Ver prosperar a su país me llena de alegría.'
@@ -1061,7 +1061,7 @@ window.QUESTIONS = {
       },
       {
         veteran: 'jorge',
-        video: { type: 'mp4', src: '' }, // 원본: Answer Jorge Suarez to Minji Kim_내보내기.mp4
+        video: { type: 'mp4', src: 'videos/jorge_q4.mp4' }, // 원본: Answer Jorge Suarez to Minji Kim_내보내기.mp4 (한국어 자막, 학생 이름 인사는 잘라냄)
         summary: {
           ko: '전쟁 이후 한국에 다시 가 보지는 못했지만, 한국이 경제·과학 등 모든 면에서 얼마나 발전했는지 알고 있어요. 정말 놀라워요. 우리 콜롬비아 사람들도 무척 기뻐요.',
           es: 'No he vuelto a Corea desde la guerra, pero sé cuánto ha avanzado en todos los campos: la economía, la ciencia… Es admirable, y a los colombianos nos llena de alegría.'
@@ -1076,7 +1076,7 @@ window.QUESTIONS = {
     answers: [
       {
         veteran: 'jaime',
-        video: { type: 'mp4', src: '' }, // 원본: Answer Jaime Alvarez to Juhwan Kim_내보내기.mp4
+        video: { type: 'mp4', src: 'videos/jaime_q5.mp4' }, // 원본: Answer Jaime Alvarez to Juhwan Kim_내보내기.mp4 (한국어 자막, 학생 이름 인사는 잘라냄)
         summary: {
           ko: '평화의 메시지는 미움을 내려놓는 거예요. 옷차림이나 생각이 다르다고 미워하면 안 돼요. 가족의 다름을 받아들이듯 다른 사람도 받아들이세요. 제게 가장 중요한 말은 "관용"이에요. 관용이 있을 때 평화가 찾아와요.',
           es: 'El mensaje de paz es dejar atrás el odio. No debemos odiar a nadie porque se vista, actúe o piense diferente. Acepten a los demás como aceptan las diferencias dentro de su propia familia. Para mí la palabra clave es "tolerancia": con tolerancia llegará la paz.'
@@ -1084,7 +1084,7 @@ window.QUESTIONS = {
       },
       {
         veteran: 'jorge',
-        video: { type: 'mp4', src: '' }, // 원본: Answer Jorge Suarez to Juhwan Kim_내보내기.mp4
+        video: { type: 'mp4', src: 'videos/jorge_q5.mp4' }, // 원본: Answer Jorge Suarez to Juhwan Kim_내보내기.mp4 (한국어 자막, 학생 이름 인사는 잘라냄)
         summary: {
           ko: '지금 가진 평화를 잘 지키세요. 다시는 전쟁의 순간으로 돌아가지 않도록요. 여러분은 미래의 지도자로서 나라를 평화롭게 지킬 책임이 있어요. 전쟁이 가르쳐 준 것을 기억하세요.',
           es: 'Procuren conservar la paz que tienen, para no volver nunca a los tiempos de guerra. Ustedes, como futuros líderes, tendrán la responsabilidad de que su país viva en paz. No olviden lo que nos enseña la guerra.'
@@ -1135,13 +1135,16 @@ window.GROUP_WORKS = [
    names 가 비어 있는 모둠은 크레딧에 안 나오고, 모두 비어 있으면 '6학년 8반 친구들 모두'로 나와요 */
 window.CREDITS = {
   teacher: '예진',        // 크레딧: '6학년 8반 담임 예진 선생님'
+  teacherRoman: 'Yejin',  // 스페인어·영어 화면: 'Yejin (예진)'
+  partnerTeacher: 'Cristian', // 콜롬비아 La Esperanza 담당 선생님 (성 없이 이름만)
   copyright: '찐찐쌤',    // 맨 아래 © 표시
   // 위인전 책 『M.A.P. to TOMORROW』 목차 기준 (같은 이름 '서율'이 둘이라 성의 영어 머리글자로 구분: 원 W, 최 C)
+  // roman: 스페인어·영어 화면에서 '로마자 (한글)'로 나와요
   groups: [
-    { n: 1, names: ['서율 W', '주호', '지훈', '서율 C'] },
-    { n: 2, names: ['유건', '도연', '예은', '수진'] },
-    { n: 3, names: ['예림', '채경', '주환', '하빈'] },
-    { n: 4, names: ['다빈', '나연', '지후', '정근'] },
-    { n: 5, names: ['응민', '지유', '연우', '이준', '민지'] }
+    { n: 1, names: ['서율 W', '주호', '지훈', '서율 C'], roman: ['Seoyul W', 'Juho', 'Jihun', 'Seoyul C'] },
+    { n: 2, names: ['유건', '도연', '예은', '수진'], roman: ['Yugeon', 'Doyeon', 'Yeeun', 'Sujin'] },
+    { n: 3, names: ['예림', '채경', '주환', '하빈'], roman: ['Yerim', 'Chaekyung', 'Juhwan', 'Habin'] },
+    { n: 4, names: ['다빈', '나연', '지후', '정근'], roman: ['Dabin', 'Nayeon', 'Jihu', 'Jeonggeun'] },
+    { n: 5, names: ['응민', '지유', '연우', '이준', '민지'], roman: ['Eungmin', 'Jiyu', 'Yeonwoo', 'Yijun', 'Minji'] }
   ]
 };
