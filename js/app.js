@@ -1684,6 +1684,10 @@
   }
   const fmtDate = (t) => { const d = new Date(t); return `${d.getMonth() + 1}/${d.getDate()} ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`; };
 
+  // 질문한 학생 이름: 엔딩 크레딧과 같게 — 한국어 '서율 W', 스페인어·영어 'Seoyul W (서율)'
+  const askerLabel = (q) => (q.askerGiven
+    ? (lang === 'ko' ? q.askerGiven : `${q.askerGivenRoman || q.askerGiven} (${q.askerGiven.replace(/ [A-Z]$/, '')})`)
+    : maskName(q.asker, q.askerRoman));
   // 질문을 보낸 학생 이름 가리기 (민도연 → 민○연)
   function maskName(name, roman) {
     // 스페인어·영어 화면: 로마자로 (가릴 때는 성 + 이름 첫 글자: Min D.)
@@ -4212,7 +4216,7 @@
     const mine = !previewMode && player.answers[qid] ? player.answers[qid].text : '';
     return `<div class="kicker">${esc(T('kQuestion'))}</div>
       <article class="q-card">
-        <div class="q-from">✉️ ${esc(T('askedBy', maskName(q.asker, q.askerRoman)))}</div>
+        <div class="q-from">✉️ ${esc(T('askedBy', askerLabel(q)))}</div>
         <p class="q-text">“${esc(L(q.text))}”</p>
         ${lang === 'en' ? `<p class="q-also" lang="ko">“${esc(q.text.ko)}”</p>` : `<p class="q-also" lang="en">“${esc(q.en)}”</p>`}
       </article>
@@ -5144,7 +5148,7 @@
           <span class="eyebrow">${esc(T('qLabel', n, QIDS.length))}</span>
           <h2>“${esc(L(q.text))}”</h2>
           ${lang === 'en' ? `<p class="q-also" lang="ko">“${esc(q.text.ko)}”</p>` : `<p class="q-also" lang="en">“${esc(q.en)}”</p>`}
-          <div class="q-from">✉️ ${esc(T('askedBy', maskName(q.asker, q.askerRoman)))}</div>
+          <div class="q-from">✉️ ${esc(T('askedBy', askerLabel(q)))}</div>
         </header>
         <div class="compare">
           <section class="cmp cmp-mine">

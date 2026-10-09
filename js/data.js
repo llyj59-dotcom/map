@@ -986,7 +986,7 @@ window.STAR_RULES = {
    --------------------------------------------------------------------- */
 window.QUESTIONS = {
   q1: {
-    asker: '민○연', askerRoman: 'Min D.',
+    asker: '민○연', askerRoman: 'Min D.', askerGiven: '도연', askerGivenRoman: 'Doyeon', // 크레딧과 같은 이름 표기
     en: 'Why did Colombian soldiers decide to come all the way to Korea to fight? What gave them the courage to come to a country so far from home?',
     text: { ko: '콜롬비아 군인들은 왜 그렇게 먼 한국까지 와서 싸우기로 결심하셨나요? 고향에서 그렇게 먼 나라로 올 수 있었던 용기는 어디에서 나왔나요?', es: '¿Por qué los soldados colombianos decidieron venir a combatir a un lugar tan lejano como Corea? ¿De dónde sacaron el valor para ir a un país tan distante de su hogar?' },
     answers: [
@@ -1009,7 +1009,7 @@ window.QUESTIONS = {
     ]
   },
   q2: {
-    asker: '원○율', askerRoman: 'Won S.',
+    asker: '원○율', askerRoman: 'Won S.', askerGiven: '서율 W', askerGivenRoman: 'Seoyul W',
     en: 'What was the most difficult or painful moment you experienced during the Korean War? How did you keep going?',
     text: { ko: '6·25 전쟁 중에 겪은 가장 힘들거나 아팠던 순간은 언제였나요? 어떻게 계속 버틸 수 있었나요?', es: '¿Cuál fue el momento más difícil o doloroso que vivió en la Guerra de Corea? ¿Cómo pudo seguir adelante?' },
     answers: [
@@ -1037,7 +1037,7 @@ window.QUESTIONS = {
     ]
   },
   q3: {
-    asker: '최○준', askerRoman: 'Choi Y.',
+    asker: '최○준', askerRoman: 'Choi Y.', askerGiven: '이준', askerGivenRoman: 'Ijun',
     en: 'After fighting together in Korea, do you feel a special friendship between Korea and Colombia? What does that friendship mean to you?',
     text: { ko: '한국에서 함께 싸운 뒤, 한국과 콜롬비아 사이에 특별한 우정을 느끼시나요? 그 우정은 어떤 의미인가요?', es: 'Después de luchar juntos en Corea, ¿siente una amistad especial entre Corea y Colombia? ¿Qué significa para usted esa amistad?' },
     answers: [
@@ -1060,7 +1060,7 @@ window.QUESTIONS = {
     ]
   },
   q4: {
-    asker: '김○지', askerRoman: 'Kim M.',
+    asker: '김○지', askerRoman: 'Kim M.', askerGiven: '민지', askerGivenRoman: 'Minji',
     en: 'When you see how much Korea has grown and changed since the war, how do you feel? Are you proud?',
     text: { ko: '전쟁 이후 한국이 이렇게 많이 자라고 변한 모습을 보면 어떤 기분이 드세요? 자랑스러우신가요?', es: 'Cuando ve cuánto ha crecido y cambiado Corea desde la guerra, ¿cómo se siente? ¿Está orgulloso?' },
     answers: [
@@ -1083,7 +1083,7 @@ window.QUESTIONS = {
     ]
   },
   q5: {
-    asker: '김○환', askerRoman: 'Kim J.',
+    asker: '김○환', askerRoman: 'Kim J.', askerGiven: '주환', askerGivenRoman: 'Juhwan',
     en: 'What message of peace do you want to give to young students like us? What can we do to keep your sacrifice and memory alive?',
     text: { ko: '저희 같은 어린 학생들에게 어떤 평화의 메시지를 전하고 싶으세요? 참전용사님의 희생과 기억을 이어 가려면 저희가 무엇을 할 수 있을까요?', es: '¿Qué mensaje de paz quiere dar a estudiantes jóvenes como nosotros? ¿Qué podemos hacer para mantener vivos su sacrificio y su memoria?' },
     answers: [
