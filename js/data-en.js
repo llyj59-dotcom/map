@@ -395,7 +395,8 @@
         'In my case, I wanted to get to know other lands. We were soldiers, and we wanted to know what war was, which we had only heard about, and to see other worlds.'
       ],
       q2: [
-        'The hardest thing was seeing my comrades fall. When I saw a friend wounded or killed, it felt as if it had happened to me. Some of our friends were gone, but those of us who survived had to keep going.'
+        'The hardest thing was seeing my comrades fall. When I saw a friend wounded or killed, it felt as if it had happened to me. Some of our friends were gone, but those of us who survived had to keep going.',
+        'Mr. Jaime Álvarez told us he did not have any especially painful moment during the war, so he did not send a video answer to this question.'
       ],
       q3: [
         'Having helped Korea has always been my pride. Seeing what Korea is today, I have come to truly love Korea and its people. As the famous saying goes: brothers in war, brothers in peace.',

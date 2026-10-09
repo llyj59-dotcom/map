@@ -1020,6 +1020,19 @@ window.QUESTIONS = {
           ko: '가장 힘들었던 건 전우들이 쓰러지는 모습을 보는 것이었어요. 다친 동료를 보면 마치 나에게 일어난 일 같았어요. 떠나간 동료도 있었지만, 살아남은 우리는 계속 앞으로 나아가야 했어요.',
           es: 'Lo más difícil fue ver caer a los compañeros. Ver a un compañero herido o muerto era como si le pasara a uno mismo. Algunos se quedaron en el camino, pero los que sobrevivimos teníamos que seguir adelante.'
         }
+      },
+      {
+        // 영상 답변 없음: 패들렛에서 Cristian 선생님이 "고통스러웠던 순간이 없다고 하셔서 답변을 올리지 않았다"고 알려 주셨어요
+        veteran: 'jaime',
+        summary: {
+          ko: '하이메 알바레스 님은 전쟁 중에 특별히 고통스러웠던 순간은 없었다고 하셔서, 이 질문에는 영상 답변을 보내지 않으셨어요.',
+          es: 'El veterano Jaime Álvarez nos contó que no tuvo ningún momento especialmente doloroso durante la guerra, por eso no envió una respuesta en video a esta pregunta.'
+        },
+        note: {
+          ko: '콜롬비아 La Esperanza 학교 Cristian 선생님이 패들렛에 남겨 주신 이야기예요.',
+          es: 'Lo compartió en el Padlet el docente Cristian, del colegio La Esperanza (Colombia).',
+          en: 'Shared on the Padlet by Cristian, a teacher at La Esperanza school in Colombia.'
+        }
       }
     ]
   },

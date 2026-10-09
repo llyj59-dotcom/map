@@ -5166,7 +5166,7 @@
             <div class="summary">
               <span class="summary-label">${esc(T('summaryLabel'))}</span>
               <p>${esc(L(a.summary))}</p>
-              <small>${esc(T('summaryNote'))}</small>
+              <small>${esc(a.note ? L(a.note) : T('summaryNote'))}</small>
             </div>
           </section>
         </div>
