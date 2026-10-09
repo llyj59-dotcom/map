@@ -1290,3 +1290,6 @@ body.modal-open { overflow: hidden; }
 .start-cta { margin: 22px auto 10px; padding: 22px 18px; max-width: 640px; text-align: center; border-radius: 20px; background: #fff7d6; border: 2px solid var(--co-yellow, #ffcd00); }
 .start-cta-text { margin: 0 0 14px; font-family: var(--display); font-size: 20px; line-height: 1.4; text-wrap: balance; }
 @media (prefers-reduced-motion: reduce) { .scroll-hint { animation: none; } }
+
+/* 소개 끝 닉네임 칸 */
+.start-cta .start-form { margin: 0 auto; max-width: 460px; text-align: left; background: var(--paper, #fff); border-radius: 16px; padding: 18px; box-shadow: none; }

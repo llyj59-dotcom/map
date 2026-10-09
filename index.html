@@ -56,10 +56,19 @@
           <div class="fold-body" id="aboutBody"></div>
         </details>
 
-        <!-- 소개를 다 읽으면: 여정 시작 (여기까지 내려오면 닉네임 창이 저절로 열려요) -->
+        <!-- 소개를 다 읽으면: 닉네임 정하고 여정 시작 -->
         <div class="start-cta" id="startCta">
           <p class="start-cta-text" data-i18n="ctaText"></p>
-          <button id="openStart" class="btn btn-go" type="button" data-i18n="startBtn"></button>
+        <form id="startForm" class="start-form" autocomplete="off" novalidate>
+          <h2 class="box-title" data-i18n="newTitle"></h2>
+          <label for="nickInput" data-i18n="nickLabel"></label>
+          <input id="nickInput" name="nickname" type="text" autocomplete="off" spellcheck="false">
+          <p class="nick-guide" data-i18n="nickGuide"></p>
+          <p class="nick-guide report-note" id="reportNote" data-i18n="reportNote" hidden></p>
+          <button id="startBtn" class="btn btn-go" type="submit" data-i18n="startBtn"></button>
+          <p id="startError" class="form-error" role="alert"></p>
+        </form>
+          <button class="text-link start-modal-link" type="button" data-i18n="otherDeviceLink" data-to-resume></button>
         </div>
 
         <!-- 코드로 이어 하기 -->
@@ -97,16 +106,7 @@
               <ul id="savedList" class="saved-list"></ul>
               <button id="showNew" class="btn btn-ghost btn-sm" type="button" data-i18n="newStartBtn"></button>
             </div>
-            <form id="startForm" class="start-form" autocomplete="off" novalidate>
-              <h2 class="box-title" data-i18n="newTitle"></h2>
-              <label for="nickInput" data-i18n="nickLabel"></label>
-              <input id="nickInput" name="nickname" type="text" autocomplete="off" spellcheck="false">
-              <p class="nick-guide" data-i18n="nickGuide"></p>
-              <p class="nick-guide report-note" id="reportNote" data-i18n="reportNote" hidden></p>
-              <button id="startBtn" class="btn btn-go" type="submit" data-i18n="startBtn"></button>
-              <p id="startError" class="form-error" role="alert"></p>
-            </form>
-            <button id="toResumeCode" class="text-link start-modal-link" type="button" data-i18n="otherDeviceLink"></button>
+            <button id="toResumeCode" class="text-link start-modal-link" type="button" data-i18n="otherDeviceLink" data-to-resume></button>
           </div>
         </div>
 

@@ -37,7 +37,7 @@
         lines: [
           'M.A.P. to Tomorrow는 국가보훈부의 「2026 유엔참전국 글로벌 아카데미」 사업으로 인천신검단초등학교 6학년 8반 학생들과 담임 선생님이 함께 만든 웹앱이에요.',
           '콜롬비아는 6·25 전쟁 때 라틴아메리카에서 유일하게 전투 부대를 보낸 나라예요. 우리는 발레두파르의 La Esperanza 기술교육학교 친구들과 패들렛과 영상으로 질문과 답을 주고받았고, 콜롬비아 참전용사님들께 직접 질문을 보내 답을 들으며 이 지도를 함께 채웠어요.',
-          '참전용사의 희생을 기억하고(Memory), 국경과 세대를 넘어 연결하며(Across), 평화의 가치를 내일로 이어 가는(Peace) 것이 우리의 목표예요. 6학년이 만든 이 지도는 4학년 동생들과 콜롬비아 친구들에게도 전해져요.'
+          '참전용사의 희생을 기억하고(Memory), 국경과 세대를 넘어 연결하며(Across), 평화의 가치를 내일로 이어 가는(Peace) 것이 우리의 목표예요.'
         ],
         meta: [
           ['만든 사람', '인천신검단초등학교 6학년 8반 학생들 · 담임 선생님'],
@@ -2571,42 +2571,33 @@
     $('narration').innerHTML = T('narration').map((line, i) => `<span style="animation-delay:${0.3 + i * 1.1}s">${esc(line)}</span>`).join('\n');
     renderSaved();
     closeStartModal();
-    startAutoOpened = false;
     if (Object.keys(store.games).length) setTimeout(() => { if (!$('startScreen').hidden) openStartModal('resume'); }, 600);
   }
 
   // 🪟 시작 창 ('resume' = 이어서 할까요? / 'new' = 닉네임 정하고 새로 시작)
-  let startAutoOpened = false;
   function openStartModal(mode) {
-    const has = Object.keys(store.games).length > 0;
-    const resume = mode === 'resume' && has;
-    $('savedBox').hidden = !resume;
-    $('startForm').hidden = resume;
+    if (mode !== 'resume' || !Object.keys(store.games).length) { goNewStart(); return; }
+    $('savedBox').hidden = false;
     $('startModal').hidden = false;
     document.body.classList.add('modal-open');
-    if (!resume) setTimeout(() => $('nickInput').focus(), 50);
+  }
+  // 새로 시작: 창을 닫고 소개 끝의 닉네임 칸으로
+  function goNewStart() {
+    closeStartModal();
+    // 창을 닫은 바로 다음 순간에 소개 끝 닉네임 칸으로 (부드러운 스크롤은 창 닫힘과 겹치면 멈출 때가 있어서 바로 이동)
+    requestAnimationFrame(() => { $('startCta').scrollIntoView({ block: 'start' }); $('nickInput').focus({ preventScroll: true }); });
   }
   function closeStartModal() { $('startModal').hidden = true; document.body.classList.remove('modal-open'); }
-  $('openStart').addEventListener('click', () => openStartModal('new'));
-  $('showNew').addEventListener('click', () => openStartModal('new'));
+  $('showNew').addEventListener('click', goNewStart);
   $('startModalClose').addEventListener('click', closeStartModal);
   $('startModal').addEventListener('click', (e) => { if (e.target === $('startModal')) closeStartModal(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !$('startModal').hidden) closeStartModal(); });
-  $('toResumeCode').addEventListener('click', () => {
+  document.querySelectorAll('[data-to-resume]').forEach((b) => b.addEventListener('click', () => {
     closeStartModal();
     $('resumeFold').open = true;
     $('resumeFold').scrollIntoView({ behavior: 'smooth', block: 'center' });
-    setTimeout(() => $('resumeNick').focus(), 400);
-  });
-  // 📜 소개를 끝까지 내려 [여정 시작하기]가 보이면 닉네임 창이 저절로 한 번 열려요
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver((ents) => {
-      if (ents.some((x) => x.isIntersecting) && !startAutoOpened && !$('startScreen').hidden && $('startModal').hidden) {
-        startAutoOpened = true;
-        openStartModal(Object.keys(store.games).length ? 'resume' : 'new');
-      }
-    }, { threshold: 0.9 }).observe($('startCta'));
-  }
+    setTimeout(() => $('resumeNick').focus({ preventScroll: true }), 500);
+  }));
 
   function renderSaved() {
     const games = Object.values(store.games).sort((a, b) => b.updated - a.updated);
