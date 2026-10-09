@@ -93,23 +93,23 @@
         }
       },
       heukun: {
-        short: 'Heukuntoryeong',
-        name: 'Battle of Heukuntoryeong',
+        short: 'Heuguntoryeong',
+        name: 'Battle of Heuguntoryeong',
         date: 'Aug 6, 1951',
-        place: 'Central front, Gangwon (south of Kumsong, Hill 851)',
+        place: 'Central front, Gangwon (south of Geumseong, Hill 851)',
         story: 'On August 6, 1951, the Colombia Battalion fought its first battle. In tall mountains and strange weather, the Colombian soldiers bravely climbed toward Hill 851, which the enemy held.',
         videos: ['"We will always remember our Colombian allies" (Defense News)'],
         quiz: {
-          q: 'The Battle of Heukuntoryeong was the Colombia Battalion\'s first battle in Korea.',
+          q: 'The Battle of Heuguntoryeong was the Colombia Battalion\'s first battle in Korea.',
           explain: 'True! It was their first battle, on August 6, 1951, less than two months after arriving in Busan.'
         }
       },
       geumseong: {
-        short: 'Kumsong',
-        name: 'Kumsong Offensive',
+        short: 'Geumseong',
+        name: 'Geumseong Offensive',
         date: 'Oct 1951',
-        place: 'Kumsong area, Gangwon (now north of the armistice line)',
-        story: 'In October 1951, the Colombia Battalion joined the US 24th Infantry Division in "Operation Nomad". It pushed north toward Kumsong and captured enemy hills such as Hill 570.',
+        place: 'Geumseong area, Gangwon (now north of the armistice line)',
+        story: 'In October 1951, the Colombia Battalion joined the US 24th Infantry Division in "Operation Nomad". It pushed north toward Geumseong and captured enemy hills such as Hill 570.',
         quiz: {
           q: 'Which country\'s troops did the Colombia Battalion mainly fight alongside?',
           options: ['United Kingdom', 'France', 'Türkiye', 'United States'],
@@ -136,7 +136,7 @@
         quiz: {
           q: 'What was the name of the operation in which the Colombia Battalion raided Hill 180?',
           options: ['Operation Bárbula', 'Operation Nomad', 'Operation X-RAY', 'Operation Chromite'],
-          explain: 'Operation Bárbula! Nomad was the Kumsong offensive, X-RAY was the spy mission on Yeongheungdo, and Chromite was the Incheon Landing.'
+          explain: 'Operation Bárbula! Nomad was the Geumseong offensive, X-RAY was the spy mission on Yeongheungdo, and Chromite was the Incheon Landing.'
         }
       },
       oldbaldy: {
@@ -246,7 +246,7 @@
         deeds: [
           'The infantry unit of Colombia, the only Latin American country that sent combat troops.',
           'It fought on the central front as part of the US 24th and later the US 7th Infantry Division.',
-          'It fought bravely at Heukuntoryeong (Aug 1951), Kumsong (Oct 1951), Hill 400 (Jun 1952), and Hill 180 and Old Baldy (Mar 1953).',
+          'It fought bravely at Heuguntoryeong (Aug 1951), Geumseong (Oct 1951), Hill 400 (Jun 1952), and Hill 180 and Old Baldy (Mar 1953).',
           'About 5,100 Colombian soldiers and sailors came during the war, and many of them were wounded or killed.'
         ]
       },
@@ -255,7 +255,7 @@
         deeds: [
           'On May 21, 1951, he left the port of Buenaventura, Colombia, leading 1,083 soldiers.',
           'He arrived in Busan on June 15 and advanced to the central front with the US 24th Infantry Division.',
-          'He led the battalion in its first battle at Heukuntoryeong and in the Kumsong offensive (Operation Nomad).'
+          'He led the battalion in its first battle at Heuguntoryeong and in the Geumseong offensive (Operation Nomad).'
         ]
       },
       padilla: {

@@ -279,12 +279,12 @@ window.STATIONS = [
 
   {
     id: 'heukun', chapter: 'journey',
-    short: { ko: '흑운토령', es: 'Heukuntoryeong' },
+    short: { ko: '흑운토령', es: 'Heuguntoryeong' },
     cards: ['battalion'], // 이 작전 지점에 들어오면 받는 영웅 카드 (첫 전투 → 콜롬비아대대 카드)
     map: { x: 345, y: 448 }, label: 'right',
-    name: { ko: '흑운토령 전투', es: 'Batalla de Heukuntoryeong' },
+    name: { ko: '흑운토령 전투', es: 'Batalla de Heuguntoryeong' },
     date: { ko: '1951. 8. 6.', es: '6 ago. 1951' },
-    place: { ko: '강원도 중부 전선 (금성 남쪽, 851고지)', es: 'Frente central, Gangwon (al sur de Kumsong, colina 851)' }, // 국가보훈부: Hill 851, 첫 전투. 정확한 군·면 위치는 확인 못 함
+    place: { ko: '강원도 중부 전선 (금성 남쪽, 851고지)', es: 'Frente central, Gangwon (al sur de Geumseong, colina 851)' }, // 국가보훈부: Hill 851, 첫 전투. 정확한 군·면 위치는 확인 못 함
     story: {
       ko: '1951년 8월 6일, 콜롬비아대대의 첫 전투가 벌어졌어요. 처음 보는 높은 산과 낯선 날씨 속에서, 콜롬비아 군인들은 적이 차지한 851고지를 향해 용감하게 올라갔어요.',
       es: 'El 6 de agosto de 1951, el Batallón Colombia recibió su bautismo de fuego. En un terreno de montañas escarpadas y bajo un clima que no conocían, los soldados avanzaron con determinación hacia la colina 851, en poder del enemigo.'
@@ -295,7 +295,7 @@ window.STATIONS = [
     heroes: [],
     quiz: {
       type: 'ox',
-      q: { ko: '흑운토령 전투는 콜롬비아대대가 한국에서 치른 첫 전투였다.', es: 'Heukuntoryeong fue el primer combate del Batallón Colombia en Corea.' },
+      q: { ko: '흑운토령 전투는 콜롬비아대대가 한국에서 치른 첫 전투였다.', es: 'Heuguntoryeong fue el primer combate del Batallón Colombia en Corea.' },
       answer: true,
       explain: { ko: 'O, 사실이에요! 1951년 8월 6일, 부산에 도착한 지 두 달도 안 되어 치른 첫 전투였어요.', es: 'Verdadero. Fue su primer combate, el 6 de agosto de 1951, menos de dos meses después de su llegada a Busan.' }
     },
@@ -304,14 +304,14 @@ window.STATIONS = [
 
   {
     id: 'geumseong', chapter: 'journey',
-    short: { ko: '금성', es: 'Kumsong' },
+    short: { ko: '금성', es: 'Geumseong' },
     map: { x: 290, y: 430 }, label: 'top',
-    name: { ko: '금성 진격전', es: 'Ofensiva de Kumsong' },
+    name: { ko: '금성 진격전', es: 'Ofensiva de Geumseong' },
     date: { ko: '1951. 10.', es: 'oct. 1951' },
-    place: { ko: '강원도 금성 일대 (지금은 휴전선 북쪽)', es: 'Zona de Kumsong (hoy al norte de la línea de demarcación)' },
+    place: { ko: '강원도 금성 일대 (지금은 휴전선 북쪽)', es: 'Zona de Geumseong (hoy al norte de la línea de demarcación)' },
     story: {
       ko: '1951년 10월, 콜롬비아대대는 미군 부대와 함께 "노매드 작전"에 나섰어요. 금성 쪽으로 한 걸음씩 나아가며, 적이 차지하고 있던 높은 산(570고지 등)을 빼앗아 큰 공을 세웠어요.',
-      es: 'En octubre de 1951, el Batallón Colombia participó junto a la 24.ª División de Infantería de EE. UU. en la Operación Nomad. Avanzó hacia Kumsong y conquistó posiciones enemigas como la colina 570, una acción muy destacada.'
+      es: 'En octubre de 1951, el Batallón Colombia participó junto a la 24.ª División de Infantería de EE. UU. en la Operación Nomad. Avanzó hacia Geumseong y conquistó posiciones enemigas como la colina 570, una acción muy destacada.'
     },
     // 출처: 국가보훈부 영문 누리집 — Hill 570 (1951.10.13.), Operation Nomad
     heroes: [],
@@ -375,7 +375,7 @@ window.STATIONS = [
         { ko: '크로마이트 작전', es: 'Operación Chromite' }
       ],
       answer: 0,
-      explain: { ko: '바르불라 작전! 노매드 작전은 금성 진격전, X-RAY는 영흥도 첩보 작전, 크로마이트는 인천상륙작전의 작전 이름이에요.', es: 'Operación Bárbula. Nomad fue la ofensiva hacia Kumsong; X-RAY, la misión de inteligencia en Yeongheungdo, y Chromite, el nombre en clave del Desembarco de Incheon.' }
+      explain: { ko: '바르불라 작전! 노매드 작전은 금성 진격전, X-RAY는 영흥도 첩보 작전, 크로마이트는 인천상륙작전의 작전 이름이에요.', es: 'Operación Bárbula. Nomad fue la ofensiva hacia Geumseong; X-RAY, la misión de inteligencia en Yeongheungdo, y Chromite, el nombre en clave del Desembarco de Incheon.' }
     },
     questions: []
   },
@@ -691,7 +691,7 @@ window.HERO_CARDS = [
     deeds: [
       { ko: '라틴아메리카에서 유일하게 싸우는 군대를 보낸 나라, 콜롬비아의 보병 부대예요.', es: 'Batallón de infantería de Colombia, el único país latinoamericano que envió tropas de combate.' },
       { ko: '미군 제24사단, 뒤에는 미군 제7사단에 속해 중부 전선에서 싸웠어요.', es: 'Combatió en el frente central, adscrito primero a la 24.ª y luego a la 7.ª División de Infantería de EE. UU.' },
-      { ko: '흑운토령(1951.8.), 금성(1951.10.), 400고지(1952.6.), 180고지·불모고지(1953.3.)에서 용감하게 싸웠어요.', es: 'Se distinguió en Heukuntoryeong (ago. 1951), Kumsong (oct. 1951), la colina 400 (jun. 1952), la colina 180 y Old Baldy (mar. 1953).' },
+      { ko: '흑운토령(1951.8.), 금성(1951.10.), 400고지(1952.6.), 180고지·불모고지(1953.3.)에서 용감하게 싸웠어요.', es: 'Se distinguió en Heuguntoryeong (ago. 1951), Geumseong (oct. 1951), la colina 400 (jun. 1952), la colina 180 y Old Baldy (mar. 1953).' },
       { ko: '전쟁 동안 육군과 해군 약 5,100명이 왔고, 그중 많은 용사가 다치거나 목숨을 잃었어요.', es: 'En total sirvieron unos 5.100 efectivos del Ejército y la Armada; muchos resultaron heridos o perdieron la vida.' }
     ],
     // 출처: 국가보훈부(참전 5,100명 · 전사 213 · 부상 448 · 포로 28, 주요 전투), 전쟁기념관
@@ -706,7 +706,7 @@ window.HERO_CARDS = [
     deeds: [
       { ko: '1951년 5월 21일, 대대원 1,083명을 이끌고 콜롬비아 부에나벤투라 항구를 떠났어요.', es: 'El 21 de mayo de 1951 zarpó de Buenaventura al mando de los 1.083 hombres del batallón.' },
       { ko: '6월 15일 부산에 도착해 미군 제24사단과 함께 중부 전선으로 나아갔어요.', es: 'Desembarcó en Busan el 15 de junio y marchó al frente central con la 24.ª División de Infantería de EE. UU.' },
-      { ko: '첫 전투인 흑운토령 전투와 금성 진격전(노매드 작전)에서 대대를 이끌었어요.', es: 'Comandó el batallón en su primer combate, Heukuntoryeong, y en la ofensiva de Kumsong (Operación Nomad).' }
+      { ko: '첫 전투인 흑운토령 전투와 금성 진격전(노매드 작전)에서 대대를 이끌었어요.', es: 'Comandó el batallón en su primer combate, Heuguntoryeong, y en la ofensiva de Geumseong (Operación Nomad).' }
     ],
     // 출처: 국가보훈부(중령 하이메 폴라니아 푸요, 노매드 작전 지휘)
     groups: [1]
@@ -930,7 +930,7 @@ window.GLOSSARY = {
     ['Operación Chromite', 'Nombre en clave del Desembarco de Incheon (septiembre de 1950).'],
     ['operación anfibia', 'Ataque en el que tropas transportadas por mar desembarcan en una costa controlada por el enemigo.'],
     ['nombre en clave', 'Nombre secreto que se asigna a una operación militar para no revelar su objetivo.'],
-    ['Operación Nomad', 'Ofensiva de la ONU de octubre de 1951 para avanzar hacia Kumsong.'],
+    ['Operación Nomad', 'Ofensiva de la ONU de octubre de 1951 para avanzar hacia Geumseong.'],
     ['inteligencia', 'En el ámbito militar, obtención y análisis de información sobre el enemigo.'],
     ['KLO', 'Unidad de inteligencia integrada por coreanos que operaba tras las líneas enemigas.'],
     ['bautismo de fuego', 'Primer combate en el que participa un soldado o una unidad.'],
@@ -1143,8 +1143,8 @@ window.CREDITS = {
   groups: [
     { n: 1, names: ['서율 W', '주호', '지훈', '서율 C'], roman: ['Seoyul W', 'Juho', 'Jihun', 'Seoyul C'] },
     { n: 2, names: ['유건', '도연', '예은', '수진'], roman: ['Yugeon', 'Doyeon', 'Yeeun', 'Sujin'] },
-    { n: 3, names: ['예림', '채경', '주환', '하빈'], roman: ['Yerim', 'Chaekyung', 'Juhwan', 'Habin'] },
+    { n: 3, names: ['예림', '채경', '주환', '하빈'], roman: ['Yerim', 'Chaegyeong', 'Juhwan', 'Habin'] },
     { n: 4, names: ['다빈', '나연', '지후', '정근'], roman: ['Dabin', 'Nayeon', 'Jihu', 'Jeonggeun'] },
-    { n: 5, names: ['응민', '지유', '연우', '이준', '민지'], roman: ['Eungmin', 'Jiyu', 'Yeonwoo', 'Yijun', 'Minji'] }
+    { n: 5, names: ['응민', '지유', '연우', '이준', '민지'], roman: ['Eungmin', 'Jiyu', 'Yeonu', 'Ijun', 'Minji'] }
   ]
 };

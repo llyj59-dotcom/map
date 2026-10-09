@@ -579,7 +579,7 @@
       aboutTitle: '💡 ¿Por qué hicimos este juego?',
       about: [
         'Este mapa de la paz nace de las investigaciones de los estudiantes del grupo 8 de 6.º de primaria (11-12 años) de la Escuela Primaria Singeomdan, en Incheon (Corea del Sur), y está pensado para compartirlo con nuestros amigos de Colombia.',
-        'Nuestra escuela está en el distrito de Seo-gu, en Incheon. En ese mismo distrito, en el parque Gyeongmyeong, se levanta el monumento a los soldados colombianos. Colombia fue el único país de América Latina que envió tropas de combate a la Guerra de Corea, y en el monumento están grabadas las batallas de Heukuntoryeong y Kumsong.',
+        'Nuestra escuela está en el distrito de Seo-gu, en Incheon. En ese mismo distrito, en el parque Gyeongmyeong, se levanta el monumento a los soldados colombianos. Colombia fue el único país de América Latina que envió tropas de combate a la Guerra de Corea, y en el monumento están grabadas las batallas de Heuguntoryeong y Geumseong.',
         'El Desembarco de Incheon (1950) ocurrió antes de que llegara el Batallón Colombia. Pero esa operación, que empezó en nuestra ciudad, cambió el rumbo de la guerra; después, los soldados colombianos llegaron desde el otro lado del mundo para luchar en las colinas, y la Armada colombiana protegió el Mar Amarillo. Unimos toda esa historia en un solo mapa que empieza y termina en Incheon.'
       ],
       aboutGoals: [
@@ -657,7 +657,7 @@
       keyMemo: [
         'Veintidós países acudieron en ayuda de Corea del Sur en una guerra que dejó a innumerables personas sin hogar. En Incheon, soldados de varias naciones lucharon juntos.',
         'Los soldados colombianos cruzaron el Pacífico para defender a un país que nunca habían visto. Quien arriesga la vida por otro pueblo se gana el nombre de hermano.',
-        'Heukuntoryeong y Kumsong: en sus primeros combates, los colombianos y las demás tropas de la ONU lucharon hombro a hombro, como hermanos.',
+        'Heuguntoryeong y Geumseong: en sus primeros combates, los colombianos y las demás tropas de la ONU lucharon hombro a hombro, como hermanos.',
         'En las colinas 400 y 180, cada posición conquistada acercaba un poco más la paz, pagada con la vida de muchos jóvenes.',
         'Tras el gran sacrificio de Old Baldy, el armisticio del 27 de julio de 1953 silenció las armas. Nos toca guardar sus nombres en la memoria.',
         'La Armada colombiana en el Mar Amarillo y el monumento de Incheon: su historia sigue viva en la memoria de dos países.'
@@ -1004,14 +1004,14 @@
       crPartnerName: 'Institución Educativa Técnica La Esperanza (Valledupar, Colombia)',
       crVets: 'Veteranos colombianos que respondieron nuestras preguntas',
       crTesters: 'Primeros jugadores que nos dieron su opinión',
-      crTestersBy: 'Grupos 2, 6, 8 y 10 de 6.º, Escuela Primaria Singeomdan',
+      crTestersBy: 'Grupos 2, 6, 8 y 10 de 6.º\nEscuela Primaria Singeomdan',
       crPartnerTeacher: (n) => `Docente a cargo: ${n}`,
       crSpecial: 'Participación especial',
       crSpecialSub: 'Veteranos colombianos que respondieron nuestras preguntas en video',
       crVetName: (n) => `Sr. ${n}`,
       crVideos: 'Videos',
       crProgram: 'Programa',
-      crProgramName: 'Ministerio de Asuntos de Patriotas y Veteranos de Corea · Academia Global 2026 de los Países Aliados de la ONU',
+      crProgramName: 'Ministerio de Asuntos de Patriotas y Veteranos de Corea\nAcademia Global 2026 de los Países Aliados de la ONU',
       crThanks: 'Y a ti, que recorriste este mapa hasta el final: ¡gracias!',
       crDedTo: 'Dedicamos este mapa a los veteranos colombianos',
       crDed: ['Recordaremos su sacrificio,', 'nos daremos la mano más allá del mar y de las generaciones,', 'y llevaremos hacia el mañana la paz que ustedes defendieron.'],
@@ -1066,7 +1066,7 @@
       worldAria: 'Mapa del mundo', incheonAria: 'Mapa de Incheon', playAria: 'Reproducir',
       seaW: 'Mar Amarillo', seaE: 'Mar del Este', seaS: 'Mar del Sur',
       line38: 'Paralelo 38', dmz: 'Línea de demarcación', fromCol: 'Desde Colombia, al otro lado del mundo',
-      pyongyang: 'Pyongyang'
+      pyongyang: 'Pionyang'
     },
     en: {
       subtitle: 'A map of memory, connection and peace',
@@ -1101,7 +1101,7 @@
       aboutTitle: '💡 Why did we make this game?',
       about: [
         'This map of peace was made from the research of Class 6-8 (6th grade) at Singeomdan Elementary School in Incheon, Korea, to share with our friends in Colombia.',
-        'Our school is in Seo-gu, a district of Incheon. In the same district, in Gyeongmyeong Park, stands the memorial to the Colombian soldiers. Colombia was the only Latin American country to send combat troops to the Korean War, and the battles of Heukuntoryeong and Kumsong are carved on the memorial.',
+        'Our school is in Seo-gu, a district of Incheon. In the same district, in Gyeongmyeong Park, stands the memorial to the Colombian soldiers. Colombia was the only Latin American country to send combat troops to the Korean War, and the battles of Heuguntoryeong and Geumseong are carved on the memorial.',
         'The Incheon Landing (1950) happened before the Colombia Battalion arrived. But that operation, which began in our city, turned the tide of the war; afterwards, Colombian soldiers came from the other side of the world to fight on the hills, and the Colombian Navy guarded the Yellow Sea. We joined all of this into one map that starts and ends in Incheon.'
       ],
       aboutGoals: [
@@ -1179,7 +1179,7 @@
       keyMemo: [
         '22 countries came to help South Korea in the war. Many people lost their homes. In Incheon, soldiers from many countries fought together.',
         'The Colombian soldiers crossed the Pacific to help a country they had never seen. When you risk your life for other people, you become their brother.',
-        'Heukuntoryeong and Kumsong were their first battles. The Colombians and the other UN soldiers fought side by side, like brothers.',
+        'Heuguntoryeong and Geumseong were their first battles. The Colombians and the other UN soldiers fought side by side, like brothers.',
         'On Hill 400 and Hill 180, every hill they took brought peace a little closer. Many young soldiers gave their lives for it.',
         'After the big sacrifice at Old Baldy, the armistice on July 27, 1953 stopped the fighting. Now we must keep their names in our memory.',
         'The Colombian Navy in the Yellow Sea and the memorial in Incheon: their story still lives in the memory of two countries.'
@@ -1526,14 +1526,14 @@
       crPartnerName: 'La Esperanza Technical Educational Institution (Valledupar, Colombia)',
       crVets: 'Colombian veterans who answered our questions',
       crTesters: 'First players who gave us feedback',
-      crTestersBy: 'Classes 6-2, 6-6, 6-8 and 6-10, Singeomdan Elementary School',
+      crTestersBy: 'Classes 6-2, 6-6, 6-8 and 6-10\nSingeomdan Elementary School',
       crPartnerTeacher: (n) => `Teacher in charge: ${n}`,
       crSpecial: 'Special appearance',
       crSpecialSub: 'Colombian veterans who answered our questions on video',
       crVetName: (n) => `Mr. ${n}`,
       crVideos: 'Videos',
       crProgram: 'Program',
-      crProgramName: 'Ministry of Patriots and Veterans Affairs · 2026 UN Participating Countries Global Academy',
+      crProgramName: 'Ministry of Patriots and Veterans Affairs\n2026 UN Participating Countries Global Academy',
       crThanks: 'And to you, who walked this map to the end: thank you!',
       crDedTo: 'We dedicate this map to the Colombian veterans',
       crDed: ['We will remember your sacrifice,', 'join hands across the sea and the generations,', 'and carry the peace you defended into tomorrow.'],
@@ -5076,13 +5076,13 @@
       </div>
       ${sec(T('crTeacher'), [`<b class="cr-big">${esc(T('crTeacherLine', lang !== 'ko' && C.teacherRoman ? `${C.teacherRoman} (${C.teacher})` : (C.teacher || '')))}</b>`])}
       ${sec(T('crMakers'), makers)}
-      ${sec(T('crWorks'), (window.GROUP_WORKS || []).map((w) => esc(L(w.name))))}
+      ${sec(T('crWorks'), (window.GROUP_WORKS || []).map((w) => esc(L(w.name)))).replace('cr-sec', 'cr-sec cr-works')}
       ${sec(T('crMusic'), [esc(T('crMusicBy'))])}
       ${sec(T('crPartner'), [esc(T('crPartnerName')), ...(C.partnerTeacher ? [esc(T('crPartnerTeacher', C.partnerTeacher))] : [])])}
       ${sec(T('crSpecial'), [`<span class="cr-small">${esc(T('crSpecialSub'))}</span>`, ...Object.values(window.VETERANS || {}).map((v) => `<b class="cr-big">${esc(T('crVetName', L(v.name)))}</b>`)])}
-      ${sec(T('crTesters'), [esc(T('crTestersBy'))])}
+      ${sec(T('crTesters'), T('crTestersBy').split('\n').map(esc))}
       ${sec(T('crVideos'), [`<span class="cr-small">${chans.map(esc).join(' · ')}</span>`])}
-      ${sec(T('crProgram'), [esc(T('crProgramName'))])}
+      ${sec(T('crProgram'), T('crProgramName').split('\n').map(esc))}
       <p class="cr-quote">${esc(T('finishQuote'))}</p>
       <p class="cr-thanks">${esc(T('crThanks'))}</p>
       <section class="cr-ded">

@@ -1260,3 +1260,7 @@ button.hcard:hover { transform: translateY(-3px) rotate(-1deg); box-shadow: 0 8p
 
 /* 작전 지점을 연 동안에는 현재 위치 이름표만 (두 이름표가 겹쳐 보이지 않게) */
 #map:has(#focusLayer .m-focus-label) .m-next-label { display: none; }
+
+/* 모둠 작품 제목은 한 줄씩 (넓은 화면) */
+.cr-sec.cr-works { max-width: 980px; }
+@media (min-width: 760px) { .cr-works p { white-space: nowrap; font-size: 18px; } }
