@@ -1126,8 +1126,8 @@ window.LINKS = [
 window.GROUP_WORKS = [
   { name: { ko: '1모둠 · 인천 6·25 전쟁 5대 전투 & 잊지 말아야 할 영웅들', es: 'Grupo 1 · Las cinco grandes batallas de Incheon y los héroes que no debemos olvidar' }, url: 'https://lldfg.my.canva.site/1' },
   { name: { ko: '2모둠 · 6·25 전쟁 때 콜롬비아가 참전한 전투', es: 'Grupo 2 · Las batallas en las que participó Colombia' }, url: 'https://lldfg.my.canva.site/2' },
-  { name: { ko: '3모둠 · 콜롬비아', es: 'Grupo 3 · Colombia' }, url: 'https://lldfg.my.canva.site/3' },
-  { name: { ko: '4모둠', es: 'Grupo 4' }, url: 'https://lldfg.my.canva.site/4' },
+  { name: { ko: '3모둠 · 콜롬비아 군대가 참전한 한국 전쟁들', es: 'Grupo 3 · Las batallas de Corea en las que luchó el ejército colombiano' }, url: 'https://lldfg.my.canva.site/3' },
+  { name: { ko: '4모둠 · 6·25 전쟁 참전국가, 콜롬비아', es: 'Grupo 4 · Colombia, país participante en la Guerra de Corea' }, url: 'https://lldfg.my.canva.site/4' },
   { name: { ko: '5모둠 · 기억해야 할 그날, 6·25 전쟁 속 인천', es: 'Grupo 5 · Un día para recordar: Incheon en la Guerra de Corea' }, url: 'https://lldfg.my.canva.site/5' }
 ];
 
@@ -1136,9 +1136,9 @@ window.GROUP_WORKS = [
 window.CREDITS = {
   teacher: '예진',        // 크레딧: '6학년 8반 담임 예진 선생님'
   copyright: '찐찐쌤',    // 맨 아래 © 표시
-  // 위인전 책 『M.A.P. to TOMORROW』 목차의 모둠 (같은 이름 '서율'이 둘이라 괄호로 구분)
+  // 위인전 책 『M.A.P. to TOMORROW』 목차 기준 (같은 이름 '서율'이 둘이라 성의 영어 머리글자로 구분: 원 W, 최 C)
   groups: [
-    { n: 1, names: ['서율(원)', '주호', '지훈', '서율(최)'] },
+    { n: 1, names: ['서율 W', '주호', '지훈', '서율 C'] },
     { n: 2, names: ['유건', '도연', '예은', '수진'] },
     { n: 3, names: ['예림', '채경', '주환', '하빈'] },
     { n: 4, names: ['다빈', '나연', '지후', '정근'] },

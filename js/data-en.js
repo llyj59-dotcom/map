@@ -423,8 +423,8 @@
     works: [
       'Group 1 · Five battles of Incheon and the heroes we must remember',
       'Group 2 · Battles Colombia fought in the Korean War',
-      'Group 3 · Colombia',
-      'Group 4',
+      'Group 3 · The Korean War battles the Colombian army fought in',
+      'Group 4 · Colombia, a country that joined the Korean War',
       'Group 5 · Incheon in the Korean War: a day to remember'
     ]
   };

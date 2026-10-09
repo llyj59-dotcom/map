@@ -482,7 +482,7 @@
       crPartnerName: 'Institución Educativa Técnica La Esperanza (콜롬비아 발레두파르)',
       crVets: '우리의 질문에 답해 주신 콜롬비아 참전용사님',
       crTesters: '먼저 해 보고 의견을 준 친구들',
-      crTestersBy: '인천신검단초등학교 6학년 2반 · 6반 · 8반',
+      crTestersBy: '인천신검단초등학교 6학년 2반 · 6반 · 8반 · 10반',
       crVideos: '영상 자료',
       crProgram: '함께한 사업',
       crProgramName: '국가보훈부 · 2026 유엔참전국 글로벌 아카데미',
@@ -1000,7 +1000,7 @@
       crPartnerName: 'Institución Educativa Técnica La Esperanza (Valledupar, Colombia)',
       crVets: 'Veteranos colombianos que respondieron nuestras preguntas',
       crTesters: 'Primeros jugadores que nos dieron su opinión',
-      crTestersBy: 'Grupos 2, 6 y 8 de 6.º, Escuela Primaria Singeomdan',
+      crTestersBy: 'Grupos 2, 6, 8 y 10 de 6.º, Escuela Primaria Singeomdan',
       crVideos: 'Videos',
       crProgram: 'Programa',
       crProgramName: 'Ministerio de Asuntos de Patriotas y Veteranos de Corea · Academia Global 2026 de los Países Aliados de la ONU',
@@ -1518,7 +1518,7 @@
       crPartnerName: 'La Esperanza Technical Educational Institution (Valledupar, Colombia)',
       crVets: 'Colombian veterans who answered our questions',
       crTesters: 'First players who gave us feedback',
-      crTestersBy: 'Classes 6-2, 6-6 and 6-8, Singeomdan Elementary School',
+      crTestersBy: 'Classes 6-2, 6-6, 6-8 and 6-10, Singeomdan Elementary School',
       crVideos: 'Videos',
       crProgram: 'Program',
       crProgramName: 'Ministry of Patriots and Veterans Affairs · 2026 UN Participating Countries Global Academy',
@@ -5066,7 +5066,6 @@
       ${sec(T('crMakers'), makers)}
       ${sec(T('crWorks'), (window.GROUP_WORKS || []).map((w) => esc(L(w.name))))}
       ${sec(T('crMusic'), [esc(T('crMusicBy'))])}
-      ${sec(T('crSfx'), [esc(T('crSfxBy'))])}
       ${sec(T('crPartner'), [esc(T('crPartnerName'))])}
       ${sec(T('crTesters'), [esc(T('crTestersBy'))])}
       ${sec(T('crVideos'), [`<span class="cr-small">${chans.map(esc).join(' · ')}</span>`])}

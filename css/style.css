@@ -1252,3 +1252,5 @@ button.hcard:hover { transform: translateY(-3px) rotate(-1deg); box-shadow: 0 8p
 .cr-word { font-family: 'Baloo 2', 'Jua', sans-serif; font-size: 18px; color: #ffd23f; margin-right: 10px; }
 .cr-line { display: block; }
 .cr-logo-end { margin-top: 36px; font-size: clamp(26px, 6vw, 40px); }
+
+.cr-names-all { max-width: 520px; margin: 0 auto; line-height: 1.9; }
