@@ -2573,6 +2573,71 @@
     return why ? T(why === 'repeat' ? 'textRepeat' : 'textBad') : '';
   };
 
+  /* ---------- ✂️ 안내 문구는 문장마다 줄을 나눠요 (읽기 쉽게) ----------
+     이야기 본문(스토리·지도 설명)은 그대로 이어서 읽고, 도움말·힌트·안내만 문장 단위로 끊어요 */
+  const GUIDE_SEL = [
+    '.t-help', '.end-lead', '.skip-hint', '.q-intro', '.tl-hint', '.fold-help', '.watch-why', '.watch-help p',
+    '.survey-tip li', '.survey-next-note', '.start-lead', '.sp-help', '.nick-guide', '.gold-note', '.extra-act-lead',
+    '.door-hint', '.clip-note', '.cert-privacy', '.cert-lock', '.cert-fallback', '.atlas-hint', '.guide-bubble',
+    '.start-cta-text', '.scroll-hint', '.toast', '.cert-up-steps p', '.mission-steps li', '.mission-status',
+    '.summary small', '.ea-body span', '.ea-body em', '.feedback', '.break-box p', '.form-error'
+  ].join(',');
+  // 문장 끝: 한글·소문자·숫자·닫는 따옴표 뒤의 . ! ? … (M.A.P. 같은 대문자 약자, 6.º, Mr. 같은 줄임말은 빼요)
+  const SENT_END = /([가-힣a-záéíóúñü0-9)\]”"'’»%~])([.!?…]+)(["”’»)]*)(\s+)(?=\S)/g;
+  const NO_BREAK_AFTER = /(?:^|\s)(?:Mr|Mrs|Ms|Dr|Sr|Sra|Srta|St|etc|vs|No|p|pp|aprox)$/i;
+  function splitSentences(el) {
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, {
+      acceptNode: (n) => (n.parentElement && n.parentElement.closest('input,textarea,select,button,a,.sb-skip') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT)
+    });
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach((n) => {
+      const s = n.nodeValue;
+      if (!/[.!?…]["”’»)]*\s+\S/.test(s)) return;
+      const parts = [];
+      let last = 0;
+      s.replace(SENT_END, (m, ch, p, q, sp, idx) => {
+        const end = idx + ch.length + p.length + q.length;
+        if (NO_BREAK_AFTER.test(s.slice(Math.max(0, idx - 6), idx + ch.length))) return m;
+        parts.push(s.slice(last, end));
+        last = end + sp.length;
+        return m;
+      });
+      if (!parts.length) return;
+      parts.push(s.slice(last));
+      const frag = document.createDocumentFragment();
+      parts.forEach((txt, i) => {
+        if (i) { const br = document.createElement('br'); br.className = 'sb'; frag.appendChild(br); }
+        frag.appendChild(document.createTextNode(txt));
+      });
+      n.parentNode.replaceChild(frag, n);
+    });
+  }
+  function splitAllGuides(root) {
+    if (!root || root.nodeType !== 1) return;
+    if (root.matches && root.matches(GUIDE_SEL)) splitSentences(root);
+    root.querySelectorAll && root.querySelectorAll(GUIDE_SEL).forEach(splitSentences);
+  }
+  const sbPending = new Set();
+  let sbTimer = 0;
+  const sbObserver = new MutationObserver((muts) => {
+    muts.forEach((m) => {
+      const t = m.target.nodeType === 1 ? m.target : m.target.parentElement;
+      if (!t) return;
+      const g = t.closest && t.closest(GUIDE_SEL);
+      sbPending.add(g || t);
+    });
+    if (sbTimer) return;
+    sbTimer = setTimeout(() => {
+      sbTimer = 0;
+      const roots = [...sbPending];
+      sbPending.clear();
+      roots.forEach((r) => { if (r.isConnected) splitAllGuides(r); });
+    }, 30);
+  });
+  sbObserver.observe(document.body, { childList: true, subtree: true, characterData: true });
+  splitAllGuides(document.body);
+
   function showStart() {
     previewMode = false;
     player = null;

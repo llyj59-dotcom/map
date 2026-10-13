@@ -38,7 +38,7 @@ body {
   font-size: 18px;
   line-height: 1.6;
   word-break: keep-all;          /* 한국어 단어 중간에서 줄이 바뀌지 않게 */
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;     /* 한 단어가 칸보다 길 때(긴 주소 등)만 끊어요 */
   -webkit-tap-highlight-color: transparent;
 }
 [hidden] { display: none !important; }
@@ -1308,3 +1308,6 @@ body.modal-open { overflow: hidden; }
 .ea-body em { font-style: normal; font-size: 14px; color: #8a5a00; background: #fff4cf; border-radius: 8px; padding: 4px 8px; justify-self: start; }
 .ea-go { flex: none; align-self: center; font-family: var(--display); font-size: 16px; color: var(--co-blue, #003893); white-space: nowrap; }
 @media (max-width: 520px) { .extra-act-card { flex-wrap: wrap; } .ea-go { align-self: flex-end; margin-left: auto; } }
+
+/* 단어 단위 줄바꿈: 앱 전체 (버튼·입력칸·표·팝업까지) */
+*, *::before, *::after { word-break: keep-all; }
