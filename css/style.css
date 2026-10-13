@@ -1311,3 +1311,7 @@ body.modal-open { overflow: hidden; }
 
 /* 단어 단위 줄바꿈: 앱 전체 (버튼·입력칸·표·팝업까지) */
 *, *::before, *::after { word-break: keep-all; }
+
+/* 의미 단위 줄바꿈: 묶음(.mu)은 가능하면 한 줄에 함께, 너무 길면 그 안에서 낱말 단위로 */
+.mu { display: inline-block; max-width: 100%; text-indent: 0; }
+.mu-box { text-wrap: pretty; }

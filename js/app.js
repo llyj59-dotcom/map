@@ -2573,8 +2573,10 @@
     return why ? T(why === 'repeat' ? 'textRepeat' : 'textBad') : '';
   };
 
-  /* ---------- ✂️ 안내 문구는 문장마다 줄을 나눠요 (읽기 쉽게) ----------
-     이야기 본문(스토리·지도 설명)은 그대로 이어서 읽고, 도움말·힌트·안내만 문장 단위로 끊어요 */
+  /* ---------- ✂️ 읽기 쉬운 줄바꿈 ----------
+     ① 안내 문구(도움말·힌트·안내): 문장마다 줄을 나눠요
+     ② 안내 문구와 설명문(이야기·미션·퀴즈 해설·영웅 카드·답변 요약 등): 문장이 길어 줄이 넘어가면
+        아무 데서나 끊지 않고 의미 단위(쉼표, '~고 ~며 ~면 ~서 ~지만 ~는데' 같은 연결 어미 뒤)에서만 줄을 바꿔요 */
   const GUIDE_SEL = [
     '.t-help', '.end-lead', '.skip-hint', '.q-intro', '.tl-hint', '.fold-help', '.watch-why', '.watch-help p',
     '.survey-tip li', '.survey-next-note', '.start-lead', '.sp-help', '.nick-guide', '.gold-note', '.extra-act-lead',
@@ -2582,16 +2584,28 @@
     '.start-cta-text', '.scroll-hint', '.toast', '.cert-up-steps p', '.mission-steps li', '.mission-status',
     '.summary small', '.ea-body span', '.ea-body em', '.feedback', '.break-box p', '.form-error'
   ].join(',');
+  const DESC_SEL = [
+    '.story-text', '.mission-story', '.door-story', '.hero-card p', '.summary p', '.q-text', '.op-card p',
+    '.map-caption', '.about-body p', '.about-body li', '.project-card p', '.end-hero p', '.done-card p',
+    '.card-detail p', '.timeline p', '.link-card span', '.start-tagline', '.mine-text'
+  ].join(',');
+  const WRAP_SEL = GUIDE_SEL + ',' + DESC_SEL;
   // 문장 끝: 한글·소문자·숫자·닫는 따옴표 뒤의 . ! ? … (M.A.P. 같은 대문자 약자, 6.º, Mr. 같은 줄임말은 빼요)
   const SENT_END = /([가-힣a-záéíóúñü0-9)\]”"'’»%~])([.!?…]+)(["”’»)]*)(\s+)(?=\S)/g;
   const NO_BREAK_AFTER = /(?:^|\s)(?:Mr|Mrs|Ms|Dr|Sr|Sra|Srta|St|etc|vs|No|p|pp|aprox)$/i;
-  function splitSentences(el) {
+  // 의미 단위가 끝나는 낱말: 쉼표·쌍점·쌍반점·줄표로 끝나거나, 한국어 연결 어미로 끝나는 낱말
+  const KO_JOIN = /(?:[,，:;—–]|(?:고|며|면|지만|는데|은데|인데|니까|으니|도록|면서|거나|든지|어서|아서|해서|라서|려고|듯이|다가|자마자))$/;
+  const LAT_JOIN = /[,:;—–]$/;
+  const textNodesOf = (el) => {
     const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, {
-      acceptNode: (n) => (n.parentElement && n.parentElement.closest('input,textarea,select,button,a,.sb-skip') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT)
+      acceptNode: (n) => (n.parentElement && n.parentElement.closest('input,textarea,select,button,a,.sb-skip,.mu') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT)
     });
     const nodes = [];
     while (walker.nextNode()) nodes.push(walker.currentNode);
-    nodes.forEach((n) => {
+    return nodes;
+  };
+  function splitSentences(el) {
+    textNodesOf(el).forEach((n) => {
       const s = n.nodeValue;
       if (!/[.!?…]["”’»)]*\s+\S/.test(s)) return;
       const parts = [];
@@ -2613,10 +2627,48 @@
       n.parentNode.replaceChild(frag, n);
     });
   }
+  // 글 덩어리를 의미 단위로 묶어요: 묶음 하나는 가능하면 한 줄에 같이 있고, 줄은 묶음 사이에서 바뀌어요
+  function wrapMeaning(el) {
+    textNodesOf(el).forEach((n) => {
+      const s = n.nodeValue.replace(/([)\]」』”’])(?=[가-힣])/g, "$1\u2060").replace(/([가-힣])(?=[(\[「『“‘])/g, "$1\u2060");
+      // 짧은 괄호 묶음(16글자 이하)은 한 덩어리로: 안쪽 띄어쓰기·가운뎃점에서 줄이 바뀌지 않게
+      const s2 = s.replace(/[(][^()]{1,16}[)]/g, (m) => m.replace(/ /g, "\u00a0").replace(/·/g, "\u2060·\u2060"));
+      if (s2 !== n.nodeValue) n.nodeValue = s2;
+      if (!s2.trim() || s2.trim().length < 18) return; // 짧은 글은 그대로
+      const words = s2.split(/(\s+)/); // 낱말과 띄어쓰기를 번갈아
+      const units = [];
+      let cur = '';
+      for (let i = 0; i < words.length; i++) {
+        const w = words[i];
+        if (/^\s+$/.test(w)) { cur += w; continue; }
+        cur += w;
+        const join = /[가-힣]/.test(w) ? KO_JOIN : LAT_JOIN;
+        const rest = words.slice(i + 1).join('').trim();
+        if (join.test(w) && cur.trim().length >= 6 && rest.length >= 6) { units.push(cur); cur = ''; }
+      }
+      if (cur) units.push(cur);
+      if (units.length < 2) return;
+      const frag = document.createDocumentFragment();
+      units.forEach((u) => {
+        const lead = (u.match(/^\s+/) || [''])[0];
+        const tail = (u.match(/\s+$/) || [''])[0];
+        const core = u.slice(lead.length, u.length - tail.length);
+        if (lead) frag.appendChild(document.createTextNode(lead));
+        if (core) { const sp = document.createElement('span'); sp.className = 'mu'; sp.textContent = core; frag.appendChild(sp); }
+        if (tail) frag.appendChild(document.createTextNode(tail));
+      });
+      n.parentNode.replaceChild(frag, n);
+    });
+    el.classList.add('mu-box');
+  }
+  function processWrap(el) {
+    if (el.matches(GUIDE_SEL)) splitSentences(el);
+    wrapMeaning(el);
+  }
   function splitAllGuides(root) {
     if (!root || root.nodeType !== 1) return;
-    if (root.matches && root.matches(GUIDE_SEL)) splitSentences(root);
-    root.querySelectorAll && root.querySelectorAll(GUIDE_SEL).forEach(splitSentences);
+    if (root.matches && root.matches(WRAP_SEL)) processWrap(root);
+    root.querySelectorAll && root.querySelectorAll(WRAP_SEL).forEach(processWrap);
   }
   const sbPending = new Set();
   let sbTimer = 0;
@@ -2624,7 +2676,7 @@
     muts.forEach((m) => {
       const t = m.target.nodeType === 1 ? m.target : m.target.parentElement;
       if (!t) return;
-      const g = t.closest && t.closest(GUIDE_SEL);
+      const g = t.closest && t.closest(WRAP_SEL);
       sbPending.add(g || t);
     });
     if (sbTimer) return;
