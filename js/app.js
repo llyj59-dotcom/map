@@ -2654,7 +2654,10 @@
         const tail = (u.match(/\s+$/) || [''])[0];
         const core = u.slice(lead.length, u.length - tail.length);
         if (lead) frag.appendChild(document.createTextNode(lead));
-        if (core) { const sp = document.createElement('span'); sp.className = 'mu'; sp.textContent = core; frag.appendChild(sp); }
+        // 짧은 묶음만 한 덩어리로 (긴 묶음을 덩어리로 만들면 통째로 다음 줄로 넘어가 앞줄에 빈자리가 생겨요)
+        const lim = /[가-힣]/.test(core) ? 26 : 42;
+        if (core && core.length <= lim) { const sp = document.createElement('span'); sp.className = 'mu'; sp.textContent = core; frag.appendChild(sp); }
+        else if (core) frag.appendChild(document.createTextNode(core));
         if (tail) frag.appendChild(document.createTextNode(tail));
       });
       n.parentNode.replaceChild(frag, n);
