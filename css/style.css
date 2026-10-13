@@ -1293,3 +1293,18 @@ body.modal-open { overflow: hidden; }
 
 /* 소개 끝 닉네임 칸 */
 .start-cta .start-form { margin: 0 auto; max-width: 460px; text-align: left; background: var(--paper, #fff); border-radius: 16px; padding: 18px; box-shadow: none; }
+
+/* ⏰ 추가 활동 (여정 완료 화면) */
+.extra-act { margin: 26px auto 0; max-width: 720px; text-align: left; padding: 18px; border-radius: 20px; background: #f4f7ff; border: 2px dashed #b9c6e8; }
+.extra-act h3 { margin: 0 0 6px; font-family: var(--display); font-weight: 400; font-size: 22px; color: var(--co-blue, #003893); }
+.extra-act-lead { margin: 0 0 12px; color: var(--ink-soft); }
+.extra-act-list { display: grid; gap: 12px; }
+.extra-act-card { display: flex; align-items: flex-start; gap: 12px; padding: 14px; border-radius: 16px; background: #fff; border: 2px solid var(--line, #d6deec); color: inherit; text-decoration: none; transition: border-color .15s, transform .15s; }
+.extra-act-card:hover { border-color: var(--co-blue, #003893); transform: translateY(-1px); }
+.ea-icon { font-size: 28px; line-height: 1; flex: none; }
+.ea-body { flex: 1; min-width: 0; display: grid; gap: 3px; }
+.ea-body b { font-size: 17px; }
+.ea-body small { color: var(--ink-soft); font-size: 13px; }
+.ea-body em { font-style: normal; font-size: 14px; color: #8a5a00; background: #fff4cf; border-radius: 8px; padding: 4px 8px; justify-self: start; }
+.ea-go { flex: none; align-self: center; font-family: var(--display); font-size: 16px; color: var(--co-blue, #003893); white-space: nowrap; }
+@media (max-width: 520px) { .extra-act-card { flex-wrap: wrap; } .ea-go { align-self: flex-end; margin-left: auto; } }

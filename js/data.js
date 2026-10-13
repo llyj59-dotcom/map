@@ -1161,3 +1161,39 @@ window.CREDITS = {
     { n: 5, names: ['응민', '지유', '연우', '이준', '민지'], roman: ['Eungmin', 'Jiyu', 'Yeonu', 'Ijun', 'Minji'] }
   ]
 };
+
+/* ⏰ 추가 활동 — 여정 완료 화면 (인증서까지 올리고 시간이 남은 학생용) */
+window.EXTRA_ACTIVITIES = [
+  {
+    icon: '🗂️',
+    url: 'https://unarchives.mpva.go.kr/main.do',
+    name: { ko: '유엔참전용사 디지털 아카이브', es: 'Archivo digital de veteranos de la ONU', en: 'UN Veterans Digital Archive' },
+    by: { ko: '국가보훈부', es: 'Ministerio de Asuntos de Patriotas y Veteranos de Corea', en: 'Ministry of Patriots and Veterans Affairs (Korea)' },
+    desc: {
+      ko: '6·25 전쟁 유엔 참전용사들이 직접 들려주는 구술 인터뷰와 참전 기록을 모아 둔 곳이에요.',
+      es: 'Reúne entrevistas y registros en los que los veteranos de la ONU cuentan su propia experiencia en la Guerra de Corea.',
+      en: 'A collection of interviews and records in which UN veterans of the Korean War tell their own stories.'
+    },
+    task: {
+      ko: '해 보기: 「유엔군 참전규모」에서 콜롬비아가 몇 명을 보냈는지 찾아봐요.',
+      es: 'Prueba: en «Participación de las fuerzas de la ONU», busca cuántas personas envió Colombia.',
+      en: 'Try it: in the UN forces section, find how many people Colombia sent.'
+    }
+  },
+  {
+    icon: '🎥',
+    url: 'https://koreanwarlegacy.org/',
+    name: { ko: 'Korean War Legacy', es: 'Korean War Legacy', en: 'Korean War Legacy' },
+    by: { ko: '한국전쟁유업재단 (영어 사이트)', es: 'Korean War Legacy Foundation (sitio en inglés)', en: 'Korean War Legacy Foundation' },
+    desc: {
+      ko: '세계 여러 나라 참전용사의 인터뷰 영상과 6·25 전쟁 이야기를 모아 둔 곳이에요.',
+      es: 'Reúne videos de entrevistas a veteranos de muchos países e historias sobre la Guerra de Corea.',
+      en: 'Interview videos with veterans from many countries, plus stories about the Korean War.'
+    },
+    task: {
+      ko: '해 보기: 「Interview Archive」에서 참전용사 인터뷰 영상을 하나 골라 봐요.',
+      es: 'Prueba: en «Interview Archive», elige y mira la entrevista de un veterano.',
+      en: 'Try it: open the Interview Archive and watch one veteran interview.'
+    }
+  }
+];

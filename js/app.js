@@ -471,6 +471,9 @@
       extraFinish: '✅ 끝내기 (소감 쓰러 가기) ▶',
       extraFinishCert: '✅ 끝내기 (인증서 만들러 가기) ▶',
       creditsBtn: '만든 사람들',
+      extraActTitle: '시간이 남았나요? 추가 활동',
+      extraActLead: '인증서까지 다 올렸다면, 아래 사이트에서 참전용사님들의 이야기를 더 찾아봐요.',
+      extraActOpen: '둘러보기',
       creditsSkip: '건너뛰기',
       creditsClose: '닫기',
       crTeacher: '함께 만든 선생님',
@@ -998,6 +1001,9 @@
       extraFinish: '✅ Terminar (ir a la encuesta) ▶',
       extraFinishCert: '✅ Terminar (crear mi certificado) ▶',
       creditsBtn: 'Créditos',
+      extraActTitle: '¿Te sobra tiempo? Actividades extra',
+      extraActLead: 'Si ya subiste tu certificado, busca más historias de los veteranos en estos sitios.',
+      extraActOpen: 'Visitar',
       creditsSkip: 'Saltar',
       creditsClose: 'Cerrar',
       crTeacher: 'Docente',
@@ -1525,6 +1531,9 @@
       extraFinish: '✅ Finish (go to the survey) ▶',
       extraFinishCert: '✅ Finish (make my certificate) ▶',
       creditsBtn: 'Credits',
+      extraActTitle: 'Got some time left? Extra activities',
+      extraActLead: 'If you have already posted your certificate, explore more veterans\' stories on these sites.',
+      extraActOpen: 'Explore',
       creditsSkip: 'Skip',
       creditsClose: 'Close',
       crTeacher: 'Teacher',
@@ -5283,6 +5292,14 @@
           <button id="endMap" class="btn btn-ghost" type="button">${esc(T('toMapBtn'))}</button>
           <button id="endHome" class="btn btn-ghost" type="button">${esc(T('toStartBtn'))}</button>
         </div>
+        ${(window.EXTRA_ACTIVITIES || []).length ? `<section class="extra-act" aria-labelledby="extraActH">
+          <h3 id="extraActH">⏰ ${esc(T('extraActTitle'))}</h3>
+          <p class="extra-act-lead">${esc(T('extraActLead'))}</p>
+          <div class="extra-act-list">${window.EXTRA_ACTIVITIES.map((x) => `<a class="extra-act-card" href="${esc(x.url)}" target="_blank" rel="noopener">
+            <span class="ea-icon" aria-hidden="true">${esc(x.icon || '🔗')}</span>
+            <span class="ea-body"><b>${esc(L(x.name))}</b><small>${esc(L(x.by))}</small><span>${esc(L(x.desc))}</span><em>${esc(L(x.task))}</em></span>
+            <span class="ea-go">${esc(T('extraActOpen'))} ↗</span></a>`).join('')}</div>
+        </section>` : ''}
         <p class="credits-row"><button id="endCredits" class="btn btn-blue" type="button">🎬 ${esc(T('creditsBtn'))}</button></p>
         <footer class="site-credit">© 2026 찐찐쌤 · <a href="https://jincerely.tistory.com" target="_blank" rel="noopener">jincerely.tistory.com</a></footer>`;
     }
