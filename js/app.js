@@ -197,7 +197,7 @@
       rankLine: (n, t, r) => `⭐ ${n.toLocaleString()} / ${t.toLocaleString()} · 칭호 「${r}」`,
       gHelloStars: '별 1,083개를 모아 봐! 1951년 태평양을 건너온 콜롬비아 용사 1,083명을 한 분씩 기억하는 별이야.',
       starInfoTitle: '평화의 별 1,083개',
-      starInfoLead: '1951년, 콜롬비아대대 용사 1,083명이 태평양을 건너 한국에 왔어요. 별 하나하나가 그 용사 한 분을 기억하는 마음이에요. 미션마다 받는 별의 숫자에도 역사가 숨어 있어요!',
+      starInfoLead: '1951년, 콜롬비아대대 용사 1,083명이 태평양을 건너 한국에 왔어요. 별 하나하나가 그 용사 한 분을 기억하는 마음이에요. 미션마다 받는 별의 숫자에도 역사가 숨어 있어요! (1,083명은 처음 배를 타고 온 군인 수예요. 전쟁에서 돌아가신 콜롬비아 군인은 213명이에요.)',
       starMine: (n, t) => `지금까지 ${n.toLocaleString()}개 / ${t.toLocaleString()}개`,
       starRows: [
         ['mission', '🔦 팔미도 등대 미션', '안내한 함대 261척'],
@@ -373,6 +373,7 @@
       videoLong: '긴 영상이에요. 앞부분만 보거나 집에서 보세요.',
       videoPick: '다른 영상',
       videoOptional: '영상은 골라서 봐도 돼요.',
+      videoOptionalReq: "'꼭 보기' 영상 하나만 끝까지 보면 되고, 나머지 영상은 골라서 봐도 돼요.",
       onYoutube: 'YouTube에서 보기 ↗',
       tlHint: '하나씩 눌러 보세요. 지도 위 전선이 움직여요!',
       tlPlay: '▶ 차례로 보기',
@@ -728,7 +729,7 @@
       rankLine: (n, t, r) => `⭐ ${n.toLocaleString('es')} / ${t.toLocaleString('es')} · Título «${r}»`,
       gHelloStars: 'Tu objetivo: reunir 1.083 estrellas, una por cada uno de los 1.083 soldados colombianos que cruzaron el Pacífico en 1951.',
       starInfoTitle: '1.083 estrellas de la paz',
-      starInfoLead: 'En 1951, 1.083 soldados del Batallón Colombia cruzaron el Pacífico hasta Corea. Cada estrella recuerda a uno de ellos, y las cifras de cada misión también esconden un dato histórico.',
+      starInfoLead: 'En 1951, 1.083 soldados del Batallón Colombia cruzaron el Pacífico hasta Corea. Cada estrella recuerda a uno de ellos, y las cifras de cada misión también esconden un dato histórico. (1.083 es el número de soldados que llegaron en el primer barco; en la guerra murieron 213 soldados colombianos).',
       starMine: (n, t) => `Llevas ${n.toLocaleString('es')} de ${t.toLocaleString('es')}`,
       starRows: [
         ['mission', '🔦 Misión del faro de Palmido', '261 barcos guiados'],
@@ -904,6 +905,7 @@
       videoLong: 'Es un video largo. Mira el comienzo o termínalo en casa.',
       videoPick: 'Otros videos',
       videoOptional: 'Puedes elegir qué videos ver.',
+      videoOptionalReq: "Solo tienes que ver completo el video 'Obligatorio'; los demás puedes elegirlos.",
       onYoutube: 'Ver en YouTube ↗',
       tlHint: 'Toca cada momento y observa cómo se desplaza el frente en el mapa.',
       tlPlay: '▶ Ver en orden',
@@ -1258,7 +1260,7 @@
       rankLine: (n, t, r) => `⭐ ${n.toLocaleString('en')} / ${t.toLocaleString('en')} · Title "${r}"`,
       gHelloStars: 'Collect 1,083 stars! Each star remembers one of the 1,083 Colombian soldiers who crossed the Pacific in 1951.',
       starInfoTitle: '1,083 stars of peace',
-      starInfoLead: 'In 1951, 1,083 soldiers of the Colombia Battalion crossed the Pacific to Korea. Each star is a way of remembering one of them. The number of stars for each mission hides a piece of history, too!',
+      starInfoLead: 'In 1951, 1,083 soldiers of the Colombia Battalion crossed the Pacific to Korea. Each star is a way of remembering one of them. The number of stars for each mission hides a piece of history, too! (1,083 is how many soldiers came on the first ship; 213 Colombian soldiers died in the war.)',
       starMine: (n, t) => `So far: ${n.toLocaleString('en')} / ${t.toLocaleString('en')}`,
       starRows: [
         ['mission', '🔦 Palmido lighthouse mission', '261 ships guided'],
@@ -1434,6 +1436,7 @@
       videoLong: "It's a long video. Watch the beginning, or finish it at home.",
       videoPick: 'Other videos',
       videoOptional: 'You can choose which videos to watch.',
+      videoOptionalReq: "Only the 'Must see' video has to be watched to the end; the others are up to you.",
       onYoutube: 'Watch on YouTube ↗',
       tlHint: 'Tap each one. The front line moves on the map!',
       tlPlay: '▶ Play in order',
@@ -1861,9 +1864,9 @@
     const players = [new Audio(), new Audio()];
     players.forEach((p) => { p.loop = false; p.preload = 'auto'; p._fade = 0; });
     let music = players[0];   // 지금 주로 들리는 플레이어
-    let scene = null, wantPause = false;
+    let scene = null, wantPause = false, videoOn = false;
     const FADE_OUT = 1500, FADE_IN = 2500, XFADE = 3000; // 밀리초 — 장면 바뀔 때 / 처음 시작 / 반복 이음새
-    const target = () => (isOn() && scene && BGM[scene] ? BGM[scene] : '');
+    const target = () => (isOn() && scene && !videoOn && BGM[scene] ? BGM[scene] : '');
     // 🎚️ 소리 크기 (아이가 고르는 배율, 0~150%) — 곡마다 맞춘 크기 × 배율
     const mult = () => (typeof store.vol === 'number' ? store.vol : 1);
     const levelOf = (sc) => Math.min(1, ((BGM.levels || {})[sc] != null ? BGM.levels[sc] : BGM.volume != null ? BGM.volume : 0.12) * mult());
@@ -1922,6 +1925,9 @@
         now.forEach((p) => fadeTo(p, 0, FADE_OUT, () => { p.pause(); p._xf = false; if (--left === 0) start(); }));
       } else start();
     }
+    // 🎬 엔딩의 참전용사 답변 영상처럼 화면 속 영상이 재생되면 배경음악을 멈추고, 멈추거나 끝나면 다시 틀어요
+    const videoSync = () => { const on = [...document.querySelectorAll('video')].some((v) => !v.paused && !v.ended); if (on !== videoOn) { videoOn = on; apply(); } };
+    ['play', 'playing', 'pause', 'ended', 'emptied'].forEach((ev) => document.addEventListener(ev, (e) => { if (e.target && e.target.tagName === 'VIDEO') videoSync(); }, true));
     let volTipShown = false;
     function bgm(next) {
       if (next && !volTipShown && isOn() && !previewMode) { volTipShown = true; setTimeout(() => { if (scene) toast(T('volTip')); }, 2500); } if (next === scene) { if (music.paused && target()) apply(); return; } scene = next; apply(); }
@@ -3901,7 +3907,7 @@
         ${credit}
         ${v.long ? `<small class="v-long">⏱ ${esc(T('videoLong'))}</small>` : ''}
       </div>
-      ${list.length > 1 ? `<h4 class="others-title">${esc(T('videoPick'))} · ${esc(T('videoOptional'))}</h4>
+      ${list.length > 1 ? `<h4 class="others-title">${esc(T('videoPick'))} · ${esc(T(list.some((x) => x.req) && CONFIG.requireVideos !== false ? 'videoOptionalReq' : 'videoOptional'))}</h4>
         <div class="v-list">${list.map((x, k) => `
           <button type="button" data-k="${k}" aria-pressed="${k === cur.video}">
             ${SANDBOX ? '<i class="v-ico" aria-hidden="true">▶</i>' : `<img src="https://i.ytimg.com/vi/${esc(x.yt)}/mqdefault.jpg" alt="" loading="lazy">`}
