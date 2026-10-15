@@ -245,7 +245,7 @@
       watchNeed: '▶를 눌러 이 영상을 끝까지 봐야 [다음]으로 넘어갈 수 있어요. (빨리 감기·배속으로 본 부분은 본 시간에 들어가지 않아요)',
       watchRate: '영상은 보통 속도(1배)로만 볼 수 있어요. 배속은 본 시간에 들어가지 않아요.',
       watchResume: (s) => `전에 본 곳(${s})에 이어서 볼게요.`,
-      workHint: '모둠 작품을 눌러 보고 오면 [다음]이 열려요.',
+      workHint: '모둠 작품을 눌러 끝까지 내려 보며 1분 넘게 보고 오면 [다음]이 열려요.',
       workSeen: '작품을 봤어요! 이제 [다음]으로 넘어가요.',
       clipNote: (a, b, all, n) => `이 영상은 중요한 부분(${a}~${b})만 봐요. 유튜브에는 전체 길이(${all})가 보이지만, ${b}가 되면 저절로 멈춰요. 약 ${n}만 보면 돼요!`,
       volTip: '🔊 음악 소리가 작거나 크면, 오른쪽 위 🔊 버튼에서 크기를 바꿀 수 있어요.',
@@ -277,7 +277,7 @@
       watchDone: '다 봤어요! 이제 [다음]으로 넘어가요.',
       watchSkip: '영상을 불러올 수 없어서 이번엔 그냥 넘어가요.',
       gWatchDone: '끝까지 봤구나! 다음으로 가 보자.',
-      longTitle: '집에서 볼 긴 영상 (10분 넘음)',
+      longTitle: '더 보고 싶은 친구를 위한 긴 영상 (10분 넘음)',
       certTitle: '평화의 지도 완성 인증서',
       certLead: (n) => `${n} 님, 평화의 지도를 완성했어요! 아래 칸을 모두 채우면 인증서가 만들어져요. 마지막 칸에는 나의 평화 다짐을 한 줄 적어요.`,
       certNeedPledge: '이름·학교·국적·평화 다짐을 모두 적으면 인증서를 저장할 수 있어요.',
@@ -374,6 +374,33 @@
       videoPick: '다른 영상',
       videoOptional: '영상은 골라서 봐도 돼요.',
       resumeAt: '보던 곳부터 이어서 할게요.',
+      workWait: (s) => `아직 다 못 본 것 같아요. 모둠 작품을 끝까지 내려 보고 와요. (${s}초 남았어요)`,
+      workOpened: (s) => `⏳ 모둠 작품을 끝까지 보는 중… ${s}초 뒤에 [다음]이 열려요.`,
+      endNeedGuess: '참전용사님의 진짜 답을 보기 전에, 내 생각을 한 줄 적고 [적어 두기]를 눌러요.',
+      endNeedVideo: (n) => `${n} 님의 답변 영상을 끝까지 봐야 다음으로 넘어갈 수 있어요.`,
+      vetWatchHint: '▶ 답변 영상을 끝까지 보면 다음으로 넘어갈 수 있어요.',
+      vetWatched: '✓ 영상을 끝까지 봤어요!',
+      guessShort: (n) => `내 생각을 ${n}글자 이상, 한 문장으로 적어 주세요.`,
+      guessOdd: '같은 말을 되풀이하거나 뜻 없는 글은 안 돼요. 내 생각을 문장으로 적어 주세요.',
+      guessFix: '이 생각은 너무 짧거나 같은 말이 반복돼요. 진짜 답을 보기 전에 조금 더 자세히 고쳐 적어요.',
+      portfolioPadBtn: '📷 내 기록 사진으로 저장하기',
+      portfolioPadHelp: '누르면 내 기록이 그림 한 장으로 갤러리(사진) 앱에 저장돼요.',
+      portfolioPadIos: '나온 그림을 손가락으로 꾹 눌러 "사진 앱에 저장"을 눌러요.',
+      portfolioSaved: '내 기록이 그림으로 저장됐어요! 갤러리(사진) 앱의 다운로드 폴더를 보세요.',
+      nameOdd: '이름을 바르게 적어 주세요. 자음·모음만 쓰거나, 같은 글자를 반복하거나, 장난 말은 안 돼요.',
+      pledgeShort: '평화 다짐을 한 문장으로 조금 더 적어 주세요. (5글자 이상)',
+      pledgeOdd: '자음·모음만 쓰거나 같은 글자를 반복한 다짐은 안 돼요. 나의 진짜 다짐을 적어 주세요.',
+      portfolioBtn: '📄 내 기록 저장하기 (인쇄·PDF)',
+      portfolioHelp: '인쇄 창이 열리면 프린터 대신 "PDF로 저장"을 고르면 파일로 저장돼요.',
+      portfolioTitle: '나의 M.A.P. to Tomorrow 여정 기록',
+      pfJourney: '여정',
+      pfQuestions: '참전용사님께 보낸 질문과 내 생각',
+      pfMine: '내 예상',
+      pfReal: '참전용사님의 답',
+      pfPledge: '나의 평화 다짐',
+      pfNone: '(적지 않았어요)',
+      longPlay: '▶ 여기서 보기',
+      appIosOnly: '아이폰·아이패드 앱이에요. (안드로이드·갤럭시탭에는 아직 없어요)',
       modeLabel: '어떤 기기로 하나요?',
       modePc: '컴퓨터·노트북',
       modePad: '태블릿',
@@ -446,11 +473,12 @@
       showEn: '영어 원문 보기',
       myGuessLabel: '참전용사님은 이렇게 답하실 것 같아요',
       guessPh: '내가 참전용사라면… (예: "나는 ○○ 때문에 용기를 냈어요.")',
-      saveGuess: '방명록에 남기기',
+      saveGuess: '내 생각 저장하기',
       editGuess: '고쳐서 다시 남기기',
-      saved: '방명록에 남겼어요!',
+      saved: '저장했어요!',
       emptyGuess: '한 줄이라도 적어 볼까요?',
-      skipGuess: '생각이 안 나면 그냥 넘어가도 돼요. 방명록에서 친구들 생각을 먼저 봐도 좋아요.',
+      skipGuess: '생각이 안 나면 지금은 넘어가도 돼요. 마지막에 참전용사님의 진짜 답을 볼 때 한 줄 적어요.',
+      skipGuessJr: '생각이 안 나면 그냥 넘어가도 돼요.',
       othersTitle: '이 기기에서 친구들이 남긴 생각',
       noOthers: '아직 아무도 남기지 않았어요. 첫 번째 주인공이 되어 볼까요?',
 
@@ -806,7 +834,7 @@
       watchNeed: 'Mira este video hasta el final para pasar a [Siguiente]. (Adelantar o acelerar no cuenta)',
       watchRate: 'El video solo cuenta a velocidad normal (1x).',
       watchResume: (s) => `Seguimos desde donde ibas (${s} vistos).`,
-      workHint: 'Abre el trabajo del grupo y al volver se activará [Siguiente].',
+      workHint: 'Abre el trabajo del grupo, míralo hasta el final (más de 1 minuto) y al volver se activará [Siguiente].',
       workSeen: '¡Ya lo viste! Ahora puedes pasar a [Siguiente].',
       clipNote: (a, b, all, n) => `De este video solo vemos la parte importante (${a}–${b}). YouTube muestra la duración completa (${all}), pero se detiene solo en ${b}. ¡Son unos ${n}!`,
       volTip: '🔊 Si la música suena muy baja o muy alta, cámbiala con el botón 🔊 de arriba a la derecha.',
@@ -935,6 +963,33 @@
       videoPick: 'Otros videos',
       videoOptional: 'Puedes elegir qué videos ver.',
       resumeAt: 'Seguimos donde lo dejaste.',
+      workWait: (s) => `Parece que aún no lo terminaste. Míralo hasta el final (faltan ${s} s).`,
+      workOpened: (s) => `⏳ Viendo el trabajo del grupo… [Siguiente] se activa en ${s} s.`,
+      endNeedGuess: 'Antes de ver la respuesta real, escribe una línea con tu idea y pulsa [Guardar].',
+      endNeedVideo: (n) => `Mira hasta el final el video de ${n} para continuar.`,
+      vetWatchHint: '▶ Mira el video hasta el final para continuar.',
+      vetWatched: '✓ ¡Viste el video completo!',
+      guessShort: (n) => `Escribe tu idea en una frase de al menos ${n} letras.`,
+      guessOdd: 'No repitas las mismas palabras ni escribas algo sin sentido. Escribe tu idea en una frase.',
+      guessFix: 'Tu idea es muy corta o repite palabras. Antes de ver la respuesta real, escríbela con más detalle.',
+      portfolioPadBtn: '📷 Guardar mi registro como foto',
+      portfolioPadHelp: 'Tu registro se guarda como una imagen en la galería.',
+      portfolioPadIos: 'Mantén el dedo sobre la imagen y elige "Guardar en Fotos".',
+      portfolioSaved: '¡Registro guardado como imagen! Míralo en la carpeta Descargas de la galería.',
+      nameOdd: 'Escribe bien tu nombre (sin letras sueltas, repeticiones ni bromas).',
+      pledgeShort: 'Escribe tu compromiso de paz en una frase un poco más larga (5 letras o más).',
+      pledgeOdd: 'El compromiso no puede ser solo letras sueltas o repetidas. Escribe tu compromiso de verdad.',
+      portfolioBtn: '📄 Guardar mi registro (imprimir/PDF)',
+      portfolioHelp: 'En la ventana de impresión elige "Guardar como PDF" para guardarlo como archivo.',
+      portfolioTitle: 'Mi viaje en M.A.P. to Tomorrow',
+      pfJourney: 'Viaje',
+      pfQuestions: 'Preguntas a los veteranos y mis ideas',
+      pfMine: 'Mi idea',
+      pfReal: 'Respuesta del veterano',
+      pfPledge: 'Mi compromiso de paz',
+      pfNone: '(sin escribir)',
+      longPlay: '▶ Ver aquí',
+      appIosOnly: 'App para iPhone y iPad (aún no hay versión para Android).',
       modeLabel: '¿Con qué dispositivo juegas?',
       modePc: 'Computador',
       modePad: 'Tableta',
@@ -1007,11 +1062,12 @@
       showEn: 'Ver el original en inglés',
       myGuessLabel: 'Creo que el veterano respondería así',
       guessPh: 'Si yo fuera el veterano…',
-      saveGuess: 'Dejar en el libro de visitas',
+      saveGuess: 'Guardar mi idea',
       editGuess: 'Corregir y guardar',
-      saved: 'Guardado en el libro de visitas.',
+      saved: '¡Guardado!',
       emptyGuess: 'Escribe al menos una línea.',
-      skipGuess: 'Si no se te ocurre nada, puedes seguir. También puedes leer primero lo que pensaron tus compañeros.',
+      skipGuess: 'Si no se te ocurre nada, puedes seguir. Al final, antes de ver la respuesta real, escribirás una línea.',
+      skipGuessJr: 'Si no se te ocurre nada, puedes seguir.',
       othersTitle: 'Lo que dejaron tus compañeros en este dispositivo',
       noOthers: 'Nadie ha escrito todavía. ¿Te animas a empezar?',
 
@@ -1366,7 +1422,7 @@
       watchNeed: 'Watch this video to the end to unlock [Next]. (Skipping ahead or speeding up does not count.)',
       watchRate: 'Videos only count at normal speed (1x).',
       watchResume: (s) => `Picking up where you left off (${s} watched).`,
-      workHint: 'Open the group\'s project, then come back and [Next] will unlock.',
+      workHint: 'Open the group\'s project, scroll to the end (over 1 minute), then come back and [Next] will unlock.',
       workSeen: 'You saw it! Now go to [Next].',
       clipNote: (a, b, all, n) => `We only watch the important part of this video (${a}–${b}). YouTube shows the full length (${all}), but it stops by itself at ${b}. Only about ${n}!`,
       volTip: '🔊 If the music is too quiet or too loud, change it with the 🔊 button at the top right.',
@@ -1495,6 +1551,33 @@
       videoPick: 'Other videos',
       videoOptional: 'You can choose which videos to watch.',
       resumeAt: 'Picking up where you left off.',
+      workWait: (s) => `Looks like you have not finished it yet. Scroll to the end of the project (${s} s left).`,
+      workOpened: (s) => `⏳ Viewing the group project… [Next] unlocks in ${s} s.`,
+      endNeedGuess: 'Before you see the real answer, write one line with your idea and tap [Save].',
+      endNeedVideo: (n) => `Watch ${n}'s answer video to the end to continue.`,
+      vetWatchHint: '▶ Watch the answer video to the end to continue.',
+      vetWatched: '✓ You watched the whole video!',
+      guessShort: (n) => `Write your idea as a sentence of at least ${n} letters.`,
+      guessOdd: 'Do not repeat the same words or write nonsense. Write your idea as a sentence.',
+      guessFix: 'This idea is too short or repeats words. Before the real answer, write it in more detail.',
+      portfolioPadBtn: '📷 Save my record as a photo',
+      portfolioPadHelp: 'Your record is saved as one picture in your gallery.',
+      portfolioPadIos: 'Press and hold the picture and choose "Save to Photos".',
+      portfolioSaved: 'Record saved as a picture! Check the Download folder in your gallery.',
+      nameOdd: 'Please write your name properly (no single letters, repeats or jokes).',
+      pledgeShort: 'Please write your peace pledge as a slightly longer sentence (5+ letters).',
+      pledgeOdd: 'A pledge cannot be only single letters or repeats. Write your real pledge.',
+      portfolioBtn: '📄 Save my record (print/PDF)',
+      portfolioHelp: 'In the print window choose "Save as PDF" to keep it as a file.',
+      portfolioTitle: 'My M.A.P. to Tomorrow journey',
+      pfJourney: 'Journey',
+      pfQuestions: 'Questions to the veterans and my ideas',
+      pfMine: 'My guess',
+      pfReal: "Veteran's answer",
+      pfPledge: 'My peace pledge',
+      pfNone: '(not written)',
+      longPlay: '▶ Watch here',
+      appIosOnly: 'iPhone & iPad app (not available for Android yet).',
       modeLabel: 'Which device are you using?',
       modePc: 'Computer',
       modePad: 'Tablet',
@@ -1567,11 +1650,12 @@
       showEn: 'See the original English',
       myGuessLabel: 'I think the veteran would answer like this',
       guessPh: 'If I were the veteran…',
-      saveGuess: 'Leave it in the guestbook',
+      saveGuess: 'Save my idea',
       editGuess: 'Edit and save again',
-      saved: 'Saved in the guestbook!',
+      saved: 'Saved!',
       emptyGuess: 'How about writing just one line?',
-      skipGuess: "If nothing comes to mind, you can move on. You can also read your classmates' ideas in the guestbook first.",
+      skipGuess: 'If nothing comes to mind, you can move on. At the end, before the real answer, you will write one line.',
+      skipGuessJr: 'If nothing comes to mind, you can move on.',
       othersTitle: 'Ideas classmates left on this device',
       noOthers: 'Nobody has written yet. Want to be the first?',
 
@@ -2492,8 +2576,10 @@
     const tiles = words.map((w, i) => ({ w, i })).sort((a, b) => ((a.i * 7 + 3) % KEY_N) - ((b.i * 7 + 3) % KEY_N));
     // 문 위에서는 대문자·문장부호를 빼고 보여 줘요 (첫 낱말·끝 낱말 자리가 드러나지 않도록)
     const shown = (w) => String(w).toLocaleLowerCase(lang).replace(/[.,!?¡¿"“”]/g, '');
-    let picked = [];
-    let tries = 0;
+    // 칸마다 놓인 낱말 (빈칸은 null) — 낱말을 빼도 다른 낱말이 앞으로 당겨지지 않아요 (태블릿에서 순서가 헷갈리지 않게)
+    let picked = Array(KEY_N).fill(null);
+    let tries = 0, busy = false;
+    const filled = () => picked.filter((x) => x != null).length;
     openInfo('🚪', T('doorTitle'), `<div class="door" id="doorBox">
         <p class="door-story">${esc(T('doorStory'))}</p>
         <p class="door-hint" id="doorHint">💡 ${esc(T('doorHint1'))}</p>
@@ -2508,9 +2594,11 @@
         : `<span class="ds">${k + 1}</span>`).join('');
       document.querySelectorAll('#doorTiles .door-tile').forEach((b) => { b.disabled = picked.includes(+b.dataset.i); });
       // 놓은 낱말을 누르면 다시 빼요
-      document.querySelectorAll('#doorSlots .ds.filled').forEach((b) => b.addEventListener('click', () => { picked.splice(+b.dataset.k, 1); draw(); }));
+      document.querySelectorAll('#doorSlots .ds.filled').forEach((b) => b.addEventListener('click', () => { if (busy) return; picked[+b.dataset.k] = null; draw(); }));
     };
     const check = () => {
+      busy = false;
+      if (filled() !== KEY_N) return;
       const ok = picked.map((i) => normWord(words[i])).join('|') === T('keyWords').map(normWord).join('|');
       if (ok) {
         player.keyDone = Date.now();
@@ -2533,16 +2621,17 @@
       $('doorMsg').textContent = T('doorWrong');
       $('doorBox').classList.remove('shake'); void $('doorBox').offsetWidth; $('doorBox').classList.add('shake');
       if (tries >= 1) $('doorHint').textContent = `💡 ${T('doorHint1')} ${T('doorHint2')}`;
-      setTimeout(() => { picked = []; draw(); }, 900);
+      busy = true;
+      setTimeout(() => { picked = Array(KEY_N).fill(null); busy = false; draw(); }, 900);
     };
     document.querySelectorAll('#doorTiles .door-tile').forEach((b) => b.addEventListener('click', () => {
-      if (picked.length >= KEY_N) return;
-      picked.push(+b.dataset.i);
+      if (busy || filled() >= KEY_N || picked.includes(+b.dataset.i)) return;
+      picked[picked.indexOf(null)] = +b.dataset.i; // 맨 앞의 빈칸에
       $('doorMsg').textContent = '';
       draw();
-      if (picked.length === KEY_N) setTimeout(check, 250);
+      if (filled() === KEY_N) { busy = true; setTimeout(check, 400); }
     }));
-    $('doorReset').addEventListener('click', () => { picked = []; $('doorMsg').textContent = ''; draw(); });
+    $('doorReset').addEventListener('click', () => { if (busy) return; picked = Array(KEY_N).fill(null); $('doorMsg').textContent = ''; draw(); });
     draw();
   }
 
@@ -2672,6 +2761,38 @@
     const why = window.WordFilter ? window.WordFilter.check(nick, 'nick') : '';
     return why ? T({ short: 'nickShort', chars: 'nickChars', jamo: 'nickJamo', repeat: 'nickRepeat', bad: 'banned' }[why]) : '';
   }
+  // ✎ 엔딩의 '내 생각' (5·6학년): 15글자 이상 한 문장 · 같은 낱말 되풀이(속의 속의)·같은 글자 반복·자음만은 다시
+  const GUESS_MIN = 15;
+  const guessProblem = (text) => {
+    const t = String(text || '').trim();
+    const bad = textProblem(t);
+    if (bad) return bad;
+    const c = t.replace(/[\s.,!?~'"“”‘’·()-]/g, '');
+    if (/[ㄱ-ㆎ]/.test(c) || /(.)\1\1/u.test(c) || /(..)\1\1/u.test(c)) return T('guessOdd');
+    if (Array.from(c).length < GUESS_MIN) return T('guessShort', GUESS_MIN);
+    const words = t.split(/\s+/).filter(Boolean);
+    if (words.length >= 2 && new Set(words).size <= Math.ceil(words.length / 2)) return T('guessOdd');
+    if (new Set(Array.from(c)).size < 7) return T('guessOdd');
+    return '';
+  };
+  const guessOk = (text) => !!text && (JUNIOR || !guessProblem(text));
+  // 🙋 인증서 이름: 닉네임처럼 자음·모음만, 같은 글자 반복, 장난 말은 안 돼요
+  const nameProblem = (text) => {
+    const t = String(text || '').trim();
+    if (!t) return '';
+    const why = window.WordFilter ? window.WordFilter.check(t, 'nick') : '';
+    return why ? T(why === 'bad' ? 'banned' : 'nameOdd') : '';
+  };
+  // 🕊️ 평화 다짐: 한 문장 (5글자 이상) · 자음·모음만 / 같은 글자·두 글자 반복은 다시
+  const pledgeProblem = (text) => {
+    const t = String(text || '').trim();
+    if (!t) return '';
+    const c = t.replace(/[\s.,!?~'"“”‘’·-]/g, '');
+    if (/[ㄱ-ㆎ]/.test(c) || /(.)\1\1/u.test(c) || /(..)\1\1/u.test(c)) return T('pledgeOdd');
+    if (Array.from(c.replace(/[^\p{L}]/gu, '')).length < 5) return T('pledgeShort');
+    if (new Set(Array.from(c)).size < 3) return T('pledgeOdd');
+    return '';
+  };
   // 문장(평화 다짐·이름·학교·방명록 글)용: 욕설·비하·장난 표현만 걸러요
   const textProblem = (text) => {
     if (lang === 'ko' && /저희\s*나라/.test(text || '')) return T('textJeohui');
@@ -3636,6 +3757,7 @@
     drawMap();
     renderPanel();
     $('guide').hidden = previewMode;
+    if ($('guestbookBtn')) $('guestbookBtn').hidden = !previewMode;
     sayNext();
     // 처음 들어오면 임무 안내부터 (이미 하던 여정이라도 안내를 못 봤으면 한 번)
     if (player && !previewMode && !player.briefed) setTimeout(openBriefing, 500);
@@ -4395,14 +4517,38 @@
     if (st.type === 'ops') bindOps();
     else if (s.inset === 'incheon') showOpFx(null);
     if (st.type === 'hero' && st.cid) unlockCard(st.cid);
-    if (st.type === 'hero' && st.h.link && $('workLink')) $('workLink').addEventListener('click', () => {
-      if (previewMode || !player) return;
-      player.works = player.works || {};
-      player.works[st.h.link] = Date.now();
-      save();
-      // 새 탭으로 넘어간 뒤 돌아오면 [다음]이 열려 있어요
-      setTimeout(() => { if ($('workHint')) $('workHint').textContent = '✓ ' + T('workSeen'); unlockNext(); }, 1500);
-    });
+    if (st.type === 'hero' && st.h.link && $('workLink')) {
+      // 🎨 모둠 작품(캔바 사이트)은 다른 사이트라 스크롤을 읽을 수 없어요 → 연 뒤 1분(WORK_MIN) 넘게 보고 와야 [다음]이 열려요
+      const link = st.h.link;
+      const WORK_MIN = 60;
+      const tick = () => {
+        if (!cur || cur.steps[cur.step] !== st || !$('workHint')) { clearInterval(cur && cur.workTimer); return; }
+        if (player.works && player.works[link]) return;
+        const t0 = (player.workOpen || {})[link];
+        if (!t0) return;
+        const left = Math.ceil(WORK_MIN - (Date.now() - t0) / 1000);
+        if (left <= 0) {
+          player.works = player.works || {};
+          player.works[link] = Date.now();
+          save();
+          $('workHint').textContent = '✓ ' + T('workSeen');
+          unlockNext();
+          clearInterval(cur.workTimer);
+        } else $('workHint').textContent = document.hidden ? T('workOpened', left) : T(cur.workBack ? 'workWait' : 'workOpened', left);
+      };
+      $('workLink').addEventListener('click', () => {
+        if (previewMode || !player) return;
+        player.workOpen = player.workOpen || {};
+        if (!player.workOpen[link]) { player.workOpen[link] = Date.now(); save(); }
+        cur.workBack = false;
+      });
+      clearInterval(cur.workTimer);
+      cur.workTimer = setInterval(tick, 1000);
+      const back = () => { if (!document.hidden && cur && cur.steps[cur.step] === st) { cur.workBack = true; tick(); } };
+      document.addEventListener('visibilitychange', back);
+      window.addEventListener('focus', back);
+      tick();
+    }
     if (st.type === 'story') (s.cards || []).forEach(unlockCard);
     if (st.type === 'quiz') bindQuiz(s);
     if (st.type === 'question') bindQuestion(st.qid);
@@ -4537,15 +4683,13 @@
       <textarea id="guess" class="guess" maxlength="400" rows="4" placeholder="${esc(T('guessPh'))}">${esc(mine)}</textarea>
       <div class="guess-row">
         <button id="saveGuess" class="btn btn-blue" type="button">${esc(T(mine ? 'editGuess' : 'saveGuess'))}</button>
-        ${CONFIG.padletUrl ? `<button id="toPadlet" class="btn btn-go" type="button">${esc(T('openPadlet'))}</button>` : ''}
         <span id="guessMsg" class="guess-msg" role="status"></span>
       </div>
-      <p class="skip-hint">${esc(T('skipGuess'))}</p>
-      <h4 class="others-title">${esc(T('othersTitle'))}</h4>
-      <ul id="others" class="others"></ul>`;
+      <p class="skip-hint">${esc(T(JUNIOR ? 'skipGuessJr' : 'skipGuess'))}</p>`;
   }
 
   function renderOthers(qid) {
+    if (!$('others')) return; // 이 기기 방명록 목록은 이제 안 보여요 (대부분 자기 글뿐이라)
     const list = allAnswers(qid);
     $('others').innerHTML = list.length
       ? list.map((a) => `<li class="${a.mine ? 'mine' : ''}"><b>${esc(a.nick)}${a.mine ? ` <small>(${esc(T('you'))})</small>` : ''}</b><p>${esc(a.text)}</p></li>`).join('')
@@ -4640,7 +4784,7 @@
     $('infoSheet').hidden = false;
     $('infoClose').focus();
   }
-  $('infoClose').addEventListener('click', () => { $('infoSheet').hidden = true; });
+  $('infoClose').addEventListener('click', () => { const hadVideo = !!$('infoBody').querySelector('iframe'); $('infoSheet').hidden = true; if (hadVideo) { $('infoBody').innerHTML = ''; bgmSync(); } });
   // 📱 태블릿·휴대폰의 [뒤로] 버튼(뒤로 가기 몸짓)을 눌러도 웹앱 밖으로 나가지 않고, 열려 있는 창부터 하나씩 닫아요
   //    (영상 전체 화면은 전체 화면부터 닫아요) — 열린 창이 없으면 한 번 알려 주고, 바로 한 번 더 누르면 그때 나가요
   //    브라우저는 화면을 누른 뒤에 만든 기록만 '뒤로'에서 멈춰 주기 때문에, 화면을 누를 때마다 지킴이 기록을 하나 준비해 둬요
@@ -4819,14 +4963,14 @@
     return `<div class="video-box"><video src="${esc(src)}" controls preload="metadata" playsinline></video></div>`;
   }
 
-  function saveEndGuess() {
+  function saveEndGuess(loud) {
     const box = $('endGuess');
     const qid = END_STEPS[endStep];
     if (!box || !QUESTIONS[qid]) return false;
     const text = box.value.trim();
     if (!text) return false;
-    const bad = textProblem(text);
-    if (bad) { toast(bad); box.classList.add('is-error'); return false; }
+    const bad = JUNIOR ? textProblem(text) : guessProblem(text);
+    if (bad) { if (loud) toast(bad); box.classList.add('is-error'); return false; }
     player.answers[qid] = { text, time: Date.now() };
     save();
     return true;
@@ -5286,7 +5430,7 @@
     const lockCert = () => {
       read();
       // 🧹 인증서는 패들렛에 올라가요: 욕설·비하·ㅋㅋ 같은 말이 있으면 저장이 잠겨요
-      const bad = ['certName', 'certSchool', 'certNationOther', 'certPledge'].map((id) => [id, textProblem($(id).value)]).filter(([, p]) => p);
+      const bad = ['certName', 'certSchool', 'certNationOther', 'certPledge'].map((id) => [id, textProblem($(id).value) || (id === 'certName' ? nameProblem($(id).value) : id === 'certPledge' ? pledgeProblem($(id).value) : '')]).filter(([, p]) => p);
       ['certName', 'certSchool', 'certNationOther', 'certPledge'].forEach((id) => $(id).classList.toggle('is-error', bad.some(([b]) => b === id)));
       const ok = certInfoOk(player) && !bad.length;
       // 칸을 다 채워 인증서가 완성되는 순간 '쾅' 도장 소리 (다시 잠겼다 풀릴 때만)
@@ -5465,6 +5609,7 @@
     ov.innerHTML = `<button type="button" class="credits-skip" id="creditsSkip">${esc(T('creditsSkip'))} ⏭</button>
       <div class="credits-roll" id="creditsRoll">${creditsHtml()}</div>`;
     document.body.appendChild(ov);
+    Sound.bgm('credits'); // 🎵 크레딧 음악 (1모둠의 시작 곡을 다시)
     const roll = $('creditsRoll');
     // 글 길이에 맞춰 천천히 (1초에 약 45px)
     const dist = roll.offsetHeight + ov.clientHeight;
@@ -5474,7 +5619,104 @@
     ov.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeCredits(); });
     $('creditsSkip').focus();
   }
-  function closeCredits() { const ov = $('creditsOv'); if (ov) ov.remove(); }
+  // 📄 내 기록만 모아 인쇄하거나 PDF로 저장 (포트폴리오)
+  // 📷 태블릿: 내 기록을 그림 한 장(PNG)으로 → 갤럭시탭은 바로 갤러리, 아이패드는 꾹 눌러 사진 앱에
+  async function portfolioImage() {
+    const W = 1080, P = 64, MW = W - P * 2;
+    const c = document.createElement('canvas');
+    const ctx = c.getContext('2d');
+    const FONT = '"Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif';
+    const certB = await certBlob();
+    const certImg = certB ? await new Promise((res) => { const im = new Image(); im.onload = () => res(im); im.onerror = () => res(null); im.src = URL.createObjectURL(certB); }) : null;
+    const blocks = [];
+    const add = (text, size, weight, color, gap) => blocks.push({ text: String(text || ''), size, weight, color, gap: gap || 0 });
+    const d = new Date();
+    add(T('portfolioTitle'), 52, 800, '#0b2a6b', 0);
+    add(`${[player.realName, player.school, player.nick].filter(Boolean).join(' · ')} · ${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}`, 28, 400, '#444', 14);
+    add(`${T('pfJourney')}: ${doneCount(player)}/${N} · ⭐ ${starTotal(player).toLocaleString(lang)} · 🎴 ${cardCount()}/${allCards().length}`, 28, 400, '#444', 8);
+    if (player.pledge) { add(`🕊️ ${T('pfPledge')}`, 34, 800, '#0b2a6b', 40); add(`“${player.pledge}”`, 32, 700, '#222', 10); }
+    add(`✉️ ${T('pfQuestions')}`, 34, 800, '#0b2a6b', 40);
+    QIDS.forEach((qid, k) => {
+      const q = QUESTIONS[qid];
+      const mine = player.answers[qid] && player.answers[qid].text;
+      add(`${k + 1}. “${L(q.text)}”`, 28, 700, '#222', 26);
+      add(`✎ ${T('pfMine')}: ${mine || T('pfNone')}`, 26, 400, '#1b4fa0', 8);
+      q.answers.forEach((a) => { const v = window.VETERANS[a.veteran]; add(`🎖️ ${v ? L(v.name) : a.veteran}: ${L(a.summary)}`, 24, 400, '#333', 6); });
+    });
+    // 낱말 단위로 줄바꿈 (너무 긴 낱말은 글자 단위)
+    const wrap = (b) => {
+      ctx.font = `${b.weight} ${b.size}px ${FONT}`;
+      const lines = [];
+      let line = '';
+      b.text.split(/(\s+)/).forEach((tok) => {
+        const test = line + tok;
+        if (ctx.measureText(test).width <= MW) { line = test; return; }
+        if (line.trim()) lines.push(line.trim());
+        line = '';
+        Array.from(tok.trimStart()).forEach((ch) => { if (ctx.measureText(line + ch).width > MW) { lines.push(line); line = ch; } else line += ch; });
+      });
+      if (line.trim()) lines.push(line.trim());
+      return lines;
+    };
+    const laid = blocks.map((b) => ({ b, lines: wrap(b) }));
+    const certH = certImg ? Math.round(MW * certImg.height / certImg.width) : 0;
+    let H = P;
+    laid.forEach(({ b, lines }) => { H += b.gap + lines.length * Math.round(b.size * 1.45); });
+    H += certImg ? 50 + certH : 0;
+    H += 70 + P;
+    c.width = W; c.height = H;
+    ctx.fillStyle = '#fffdf6'; ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = '#ffcd00'; ctx.fillRect(0, 0, W, 14); ctx.fillStyle = '#003893'; ctx.fillRect(0, 14, W, 8); ctx.fillStyle = '#ce1126'; ctx.fillRect(0, 22, W, 8);
+    let y = P;
+    ctx.textBaseline = 'top';
+    laid.forEach(({ b, lines }) => {
+      y += b.gap;
+      ctx.font = `${b.weight} ${b.size}px ${FONT}`;
+      ctx.fillStyle = b.color;
+      lines.forEach((ln) => { ctx.fillText(ln, P, y); y += Math.round(b.size * 1.45); });
+    });
+    if (certImg) { y += 50; ctx.drawImage(certImg, P, y, MW, certH); y += certH; }
+    ctx.font = `400 22px ${FONT}`; ctx.fillStyle = '#777';
+    ctx.fillText('M.A.P. to Tomorrow · © 2026 찐찐쌤', P, y + 30);
+    return new Promise((res) => c.toBlob(res, 'image/png'));
+  }
+  async function printPortfolio() {
+    if (!player) return;
+    if (padMode() && !SANDBOX) {
+      const pb = await portfolioImage();
+      if (!pb) { toast(T('copyFail')); return; }
+      const name = certFileName().replace('_peace-map.png', '_my-journey.png');
+      if (isIOS()) {
+        const url = await new Promise((res) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = () => res(URL.createObjectURL(pb)); r.readAsDataURL(pb); });
+        openInfo('📷', T('portfolioTitle'), `<p class="t-help">${esc(T('portfolioPadIos'))}</p><img class="cert-full" src="${url}" alt="${esc(T('portfolioTitle'))}">`);
+      } else { downloadBlob(pb, name); toast(T('portfolioSaved')); }
+      return;
+    }
+    const blob = await certBlob();
+    const img = blob ? await new Promise((res) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = () => res(''); r.readAsDataURL(blob); }) : '';
+    const qs = QIDS.map((qid, k) => {
+      const q = QUESTIONS[qid];
+      const mine = player.answers[qid] && player.answers[qid].text;
+      return `<section class="pf-q"><h3>${k + 1}. “${esc(L(q.text))}”</h3>
+        <p><b>${esc(T('pfMine'))}</b> ${mine ? esc(mine) : esc(T('pfNone'))}</p>
+        ${q.answers.map((a) => { const v = window.VETERANS[a.veteran]; return `<p><b>${esc(T('pfReal'))} · ${esc(v ? L(v.name) : a.veteran)}</b> ${esc(L(a.summary))}</p>`; }).join('')}</section>`;
+    }).join('');
+    let pa = $('printArea');
+    if (!pa) { pa = document.createElement('div'); pa.id = 'printArea'; document.body.appendChild(pa); }
+    const d = new Date();
+    pa.innerHTML = `<h1>${esc(T('portfolioTitle'))}</h1>
+      <p class="pf-meta">${esc([player.realName, player.school, player.nick].filter(Boolean).join(' · '))} · ${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}</p>
+      <p class="pf-meta">${esc(T('pfJourney'))}: ${doneCount(player)}/${N} · ⭐ ${starTotal(player).toLocaleString(lang)} · 🎴 ${cardCount()}/${allCards().length}</p>
+      ${player.pledge ? `<h2>🕊️ ${esc(T('pfPledge'))}</h2><p class="pf-pledge">“${esc(player.pledge)}”</p>` : ''}
+      <h2>✉️ ${esc(T('pfQuestions'))}</h2>${qs}
+      ${img ? `<div class="pf-cert"><img src="${img}" alt=""></div>` : ''}
+      <p class="pf-foot">M.A.P. to Tomorrow · © 2026 찐찐쌤</p>`;
+    document.body.classList.add('printing');
+    const done = () => { document.body.classList.remove('printing'); window.removeEventListener('afterprint', done); };
+    window.addEventListener('afterprint', done);
+    setTimeout(() => { try { window.print(); } catch (e) { /* 무시 */ } setTimeout(done, 60000); }, 300);
+  }
+  function closeCredits() { const ov = $('creditsOv'); if (ov) { ov.remove(); bgmSync(); } }
 
   function renderEnding() {
     const step = END_STEPS[endStep];
@@ -5497,7 +5739,8 @@
     } else if (QUESTIONS[step]) {
       const q = QUESTIONS[step];
       const n = QIDS.indexOf(step) + 1;
-      const mine = player.answers[step] && player.answers[step].text;
+      const mine0 = player.answers[step] && player.answers[step].text;
+      const mine = guessOk(mine0) ? mine0 : '';
       const vi = Math.min(endVet[step] || 0, q.answers.length - 1);
       const a = q.answers[vi];
       const vet = window.VETERANS[a.veteran] || { name: a.veteran, role: '' };
@@ -5513,15 +5756,15 @@
             <h3>✎ ${esc(T('myGuessTitle'))}</h3>
             ${mine
               ? `<p class="mine-text">${esc(mine)}</p><p class="mine-by">— ${esc(player.nick)}</p>`
-              : `<p class="t-help">${esc(T('noGuessYet'))}</p>
-                 <textarea id="endGuess" class="guess" rows="3" maxlength="400" placeholder="${esc(T('guessPh'))}"></textarea>
+              : `<p class="t-help">${esc(T(mine0 ? 'guessFix' : 'noGuessYet'))}</p>
+                 <textarea id="endGuess" class="guess" rows="3" maxlength="400" placeholder="${esc(T('guessPh'))}">${esc(mine0 || '')}</textarea>
                  <button id="endSave" class="btn btn-blue btn-sm" type="button">${esc(T('saveHere'))}</button>`}
           </section>
           <section class="cmp cmp-real">
             <h3>🎖️ ${esc(T('realTitle'))}</h3>
             ${q.answers.length > 1 ? `<div class="vet-tabs" role="tablist">${q.answers.map((x, k) => {
               const v = window.VETERANS[x.veteran];
-              return `<button type="button" role="tab" aria-selected="${k === vi}" data-k="${k}">${esc(v ? L(v.name) : x.veteran)}</button>`;
+              return `<button type="button" role="tab" aria-selected="${k === vi}" data-k="${k}" class="${L(x.video && x.video.src) && player.vetSeen && player.vetSeen[L(x.video.src)] ? 'seen' : ''}">${esc(v ? L(v.name) : x.veteran)}</button>`;
             }).join('')}</div>` : ''}
             <div class="vet-line"><b>${esc(L(vet.name))}</b> <span>${esc(L(vet.role))}</span></div>
             ${L(a.video && a.video.src) ? videoHtml(a.video) : ''}
@@ -5541,13 +5784,12 @@
         <p class="end-lead">${esc(T('moreLead'))}</p>
         <div class="link-cards">${(window.LINKS || []).map((l) => `
           <a class="link-card" href="${esc(l.url)}" target="_blank" rel="noopener">
-            <b>${esc(L(l.name))} ↗</b><span>${esc(L(l.desc))}</span>
+            <b>${esc(L(l.name))} ↗</b><span>${esc(L(l.desc))}</span>${l.iosOnly ? `<small class="link-note">📱 ${esc(T('appIosOnly'))}</small>` : ''}
           </a>`).join('')}</div>
         ${longVideos().length ? `<h3 class="end-h3">🎬 ${esc(T('longTitle'))}</h3>
-          <ul class="works">${longVideos().map((v) => `<li><a href="https://www.youtube.com/watch?v=${esc(v.yt)}" target="_blank" rel="noopener">${esc(L(v.title))} ↗</a> <small>${esc(v.len || '')}</small></li>`).join('')}</ul>` : ''}
+          <ul class="works">${longVideos().map((v) => `<li><button type="button" class="btn btn-sm btn-blue" data-long="${esc(v.yt)}">${esc(T('longPlay'))}</button> ${esc(L(v.title))} <small>${esc(v.len || '')}</small></li>`).join('')}</ul>` : ''}
         ${(window.GROUP_WORKS || []).length ? `<h3 class="end-h3">${esc(T('worksTitle'))}</h3>
-          <ul class="works">${window.GROUP_WORKS.map((w) => `<li><a href="${esc(w.url)}" target="_blank" rel="noopener">${esc(L(w.name))} ↗</a></li>`).join('')}</ul>` : ''}
-        ${CONFIG.padletUrl ? `<a class="btn btn-ghost" href="${esc(CONFIG.padletUrl)}" target="_blank" rel="noopener">${esc(T('padletTitle'))} ↗</a>` : ''}`;
+          <ul class="works">${window.GROUP_WORKS.map((w) => `<li><a href="${esc(w.url)}" target="_blank" rel="noopener">${esc(L(w.name))} ↗</a></li>`).join('')}</ul>` : ''}`;
     } else if (step === 'finish') {
       html = certHtml() + `<p class="credits-row"><button id="endCredits" class="btn btn-ghost btn-sm" type="button">🎬 ${esc(T('creditsBtn'))}</button></p>`;
     } else if (step === 'survey') {
@@ -5610,6 +5852,10 @@
             <span class="ea-body"><b>${esc(L(x.name))}</b><small>${esc(L(x.by))}</small><span>${esc(L(x.desc))}</span><em>${esc(L(x.task))}</em></span>
             <span class="ea-go">${esc(T('extraActOpen'))} ↗</span></a>`).join('')}</div>
         </section>` : ''}
+        <section class="portfolio-box">
+          <button id="endPortfolio" class="btn btn-go" type="button">${esc(T(padMode() ? 'portfolioPadBtn' : 'portfolioBtn'))}</button>
+          <p class="t-help">${esc(T(padMode() ? 'portfolioPadHelp' : 'portfolioHelp'))}</p>
+        </section>
         <p class="credits-row"><button id="endCredits" class="btn btn-blue" type="button">🎬 ${esc(T('creditsBtn'))}</button></p>
         <footer class="site-credit">© 2026 찐찐쌤 · <a href="https://jincerely.tistory.com" target="_blank" rel="noopener">jincerely.tistory.com</a></footer>`;
     }
@@ -5628,12 +5874,19 @@
       save();
       body.querySelectorAll('.reacts button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
     }));
-    if ($('endSave')) $('endSave').addEventListener('click', () => { if (saveEndGuess()) { toast(T('saved')); renderEnding(); } else $('endGuess').focus(); });
+    if ($('endSave')) $('endSave').addEventListener('click', () => { if (saveEndGuess(true)) { toast(T('saved')); renderEnding(); } else $('endGuess').focus(); });
     if ($('certCanvas')) bindCert();
     if ($('endCode')) $('endCode').addEventListener('click', showCode);
     if ($('endMap')) $('endMap').addEventListener('click', () => (previewMode ? showTeacher() : enterGame()));
     if ($('endHome')) $('endHome').addEventListener('click', () => (previewMode ? showTeacher() : showStart()));
     if ($('endCredits')) $('endCredits').addEventListener('click', showCredits);
+    // 긴 영상은 유튜브 앱으로 넘어가지 않게 웹앱 안의 창에서 틀어요 (✕를 누르면 그대로 웹앱)
+    body.querySelectorAll('[data-long]').forEach((b) => b.addEventListener('click', () => {
+      const v = longVideos().find((x) => x.yt === b.dataset.long) || {};
+      openInfo('🎬', L(v.title) || T('longTitle'), `<div class="video-box"><iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(b.dataset.long)}?autoplay=1&rel=0&playsinline=1&hl=${lang}" title="video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>`);
+      Sound.bgm(null);
+    }));
+    if ($('endPortfolio')) $('endPortfolio').addEventListener('click', printPortfolio);
     // 🎬 여정 완료 화면에 처음 오면 크레딧이 저절로 한 번 올라가요 (실제로 띄웠을 때만 '봤음'으로 기록)
     if (step === 'done' && !previewMode && player && !player.creditsSeen) {
       setTimeout(() => {
@@ -5659,6 +5912,7 @@
     }
     if (step === 'done') sfx('fanfare');
     if (step === 'jsurvey') bindJSurvey();
+    if (QUESTIONS[step]) trackVetVideo();
     body.querySelectorAll('[data-retry]').forEach((b) => b.addEventListener('click', () => retryFromEnding(+b.dataset.retry)));
 
     $('endDots').innerHTML = END_STEPS.map((x, k) => `<i class="${k === endStep ? 'on' : ''}${QUESTIONS[x] ? ' q' : ''}"></i>`).join('');
@@ -5672,6 +5926,8 @@
     saveEndGuess();
     // 인증서 화면에서 소감으로 넘어가기 전에 "패들렛에 올렸나요?" 한 번 물어봐요
     if (END_STEPS[endStep] === 'finish' && !previewMode && CONFIG.padletUrl && !certPadOnly() && !player.certUploaded) { askCertUploaded(); return; }
+    // 참전용사님의 진짜 답: 답변 영상은 모두 끝까지 + (5·6학년) 내 생각 한 줄
+    if (QUESTIONS[END_STEPS[endStep]] && !previewMode && player && !endQuestionReady()) return;
     // 3·4학년 설문: 다 골라서 보내야 인증서로 넘어가요
     if (END_STEPS[endStep] === 'jsurvey' && !previewMode && player && !player.jsurveyDone) { submitJSurvey(); return; }
     endDir = 1;
@@ -5681,7 +5937,9 @@
      객관식은 모두 꼭, 주관식은 컴퓨터 모드에서 pcRequired 인 것만 꼭 (태블릿은 글자 치기가 힘들어서 모두 '하고 싶으면')
      답은 고를 때마다 이 기기에 저장 → 보내면 학교 구글 설문지(JUNIOR_SURVEY.action)로 전해져요 */
   const jsAns = () => { player.jsurvey = player.jsurvey || {}; return player.jsurvey; };
-  const jsRequired = (q) => q.type !== 'text' || (!!q.pcRequired && !padMode());
+  // 글쓰기: 4학년이거나 컴퓨터 모드면 모두 꼭, 3학년 태블릿은 모두 '하고 싶으면'
+  const jsRequired = (q) => q.type !== 'text' || !padMode() || jsAns().grade === '4학년';
+  const jsRefreshTags = () => JS.questions.forEach((q) => { const tag = document.querySelector(`#jsq-${q.id} .js-tag`); if (!tag) return; const req = jsRequired(q); tag.className = `js-tag ${req ? 'need' : 'opt'}`; tag.textContent = T(req ? 'jsNeed' : 'jsOpt'); });
   const jsFilled = (q) => { const v = jsAns()[q.id]; return Array.isArray(v) ? v.length > 0 : v != null && String(v).trim() !== ''; };
   function jsurveyHtml() {
     const a = jsAns();
@@ -5729,6 +5987,7 @@
         const on = q.type === 'many' ? a[q.id].includes(x.dataset.v) : a[q.id] === x.dataset.v;
         x.classList.toggle('on', on); x.setAttribute('aria-pressed', String(on));
       });
+      if (q.id === 'grade') jsRefreshTags();
       sfx('buoy');
     }));
     document.querySelectorAll('#endingScreen .js-text').forEach((ta) => ta.addEventListener('input', () => {
@@ -5767,6 +6026,64 @@
     renderEnding();
     endDir = 1;
     setTimeout(() => { if (END_STEPS[endStep] === 'jsurvey') { endStep++; renderEnding(); } }, 1400);
+  }
+  // 🎖️ 엔딩 질문 화면에서 [다음] 전에 확인해요
+  const vetVideoSrcs = (q) => q.answers.map((a, k) => ({ k, a, src: L(a.video && a.video.src) })).filter((x) => x.src);
+  const vetSeen = (src) => !!(player.vetSeen && player.vetSeen[src]);
+  function endQuestionReady() {
+    const qid = END_STEPS[endStep];
+    const q = QUESTIONS[qid];
+    // ① 내 생각 한 줄 (3·4학년 링크는 그냥 넘어가도 돼요)
+    if (!JUNIOR && !guessOk(player.answers[qid] && player.answers[qid].text)) {
+      const box = $('endGuess');
+      const text = box ? box.value.trim() : '';
+      const why = text ? guessProblem(text) : '';
+      if (why) { toast(why); box.classList.add('is-error'); box.focus(); return false; }
+      if (!text || !saveEndGuess()) {
+        toast(T('endNeedGuess'));
+        if (box) { box.classList.add('is-error'); box.focus(); box.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+        return false;
+      }
+    }
+    // ② 답변 영상은 모두 끝까지 (참전용사가 두 분이면 두 영상 다)
+    const miss = vetVideoSrcs(q).find((x) => !vetSeen(x.src));
+    if (miss) {
+      const vet = window.VETERANS[miss.a.veteran];
+      toast(T('endNeedVideo', vet ? L(vet.name) : miss.a.veteran));
+      if ((endVet[qid] || 0) !== miss.k) { endVet[qid] = miss.k; renderEnding(); }
+      const v = document.querySelector('.cmp-real video');
+      if (v) v.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return false;
+    }
+    return true;
+  }
+  // 영상에서 실제로 재생된 부분이 85% 넘으면 '다 봤어요' (건너뛴 부분은 안 셈)
+  function trackVetVideo() {
+    const v = document.querySelector('.cmp-real video');
+    if (!v || previewMode || !player) return;
+    const src = v.getAttribute('src');
+    const hint = document.createElement('p');
+    hint.className = 'vet-watch' + (vetSeen(src) ? ' ok' : '');
+    hint.textContent = T(vetSeen(src) ? 'vetWatched' : 'vetWatchHint');
+    v.closest('.video-box').after(hint);
+    if (vetSeen(src)) return;
+    const check = () => {
+      if (vetSeen(src) || !v.duration) return;
+      let played = 0;
+      for (let i = 0; i < v.played.length; i++) played += v.played.end(i) - v.played.start(i);
+      if (played >= v.duration * 0.85 || (v.ended && played >= v.duration * 0.8)) {
+        player.vetSeen = player.vetSeen || {};
+        player.vetSeen[src] = Date.now();
+        save();
+        hint.textContent = T('vetWatched');
+        hint.classList.add('ok');
+        document.querySelectorAll('.vet-tabs button').forEach((b) => { const x = QUESTIONS[END_STEPS[endStep]].answers[+b.dataset.k]; if (x && L(x.video && x.video.src) === src) b.classList.add('seen'); });
+      }
+    };
+    v.addEventListener('timeupdate', check);
+    v.addEventListener('ended', check);
+    // ⏩ 배속은 막아요 (보통 속도로만)
+    v.addEventListener('ratechange', () => { if (v.playbackRate > 1 && !vetSeen(src)) { v.playbackRate = 1; toast(T('watchRate')); } });
   }
   function askCertUploaded() {
     openInfo('📌', T('certAskTitle'), `<div class="cert-ask">

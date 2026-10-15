@@ -66,9 +66,10 @@ window.MAP_CONFIG = {
     voyage: 'audio/3_voyage.mp3',   // 3모둠: ③ 콜롬비아 → ④ 부산 항해 (Marcha hacia Busan)
     battle: 'audio/4_battle.mp3',   // 4모둠: ⑤ 흑운토령 ~ ⑩ 판문점 (전장의 숨결)
     ending: 'audio/5_ending.mp3',   // 5모둠: ⑪ 서해 · ⑫ 기념비 · 내일의 문 · 엔딩
+    credits: 'audio/1_start.mp3',   // 🎬 엔딩 크레딧: 1모둠의 시작 곡을 다시 (여정의 처음과 끝이 이어지게)
     volume: 0.12,  // 배경음악 기본 크기 (0~1) — 헤드셋으로 들어도 귀가 아프지 않게 아주 작게
     // 곡마다 원래 크기가 달라서 따로 맞춰요 (큰 부분이 약 -32dB 가 되도록 측정해서 정한 값)
-    levels: { start: 0.13, mission: 0.11, voyage: 0.12, battle: 0.13, ending: 0.13 }
+    levels: { start: 0.13, mission: 0.11, voyage: 0.12, battle: 0.13, ending: 0.13, credits: 0.13 }
   },
   // 작전 지점마다 어떤 배경음악을 틀지 (적지 않은 곳은 start)
   bgmStations: {
@@ -1118,9 +1119,10 @@ window.VETERANS = {
 window.LINKS = [
   {
     name: { ko: 'Finding Heroes (추모의 벽) 앱', es: 'App Finding Heroes (Muro del Recuerdo)' },
-    desc: { ko: '6·25 전쟁 참전용사의 이름과 이야기를 찾아볼 수 있어요.', es: 'Consulta los nombres y las historias de los veteranos de la Guerra de Corea.' },
-    // ★TODO 보훈부가 안내한 정확한 앱 설치 주소로 바꿔 주세요
-    url: 'https://play.google.com/store/search?q=Finding%20Heroes&c=apps'
+    desc: { ko: '미국 워싱턴 D.C.의 한국전쟁 참전용사 기념공원(추모의 벽)을 가상으로 둘러볼 수 있어요.', es: 'Recorrido virtual por el Monumento a los Veteranos de la Guerra de Corea (Muro del Recuerdo) en Washington D. C.' },
+    // App Store: Finding Heroes (Giantstep) — 안드로이드(구글 플레이) 버전은 없어요 (2026.10 확인)
+    url: 'https://apps.apple.com/kr/app/finding-heroes/id6503274487',
+    iosOnly: true
   },
   {
     name: { ko: '유엔참전용사 디지털 아카이브', es: 'Archivo digital de veteranos de la ONU' },
@@ -1166,7 +1168,7 @@ window.CREDITS = {
 // 📝 3·4학년 체험 설문 — ?grade=34 링크에서만, 인증서 바로 앞에 나와요 (다 해야 인증서를 받아요)
 //   부스 체험(콜롬비아 체험 부스 4곳 + 마지막 부스) + 교실에서 한 웹앱 게임의 만족도 → 내년 계획에 반영
 //   type: one(하나 고르기) · many(여러 개 고르기) · scale(1~5단계, faces: false 면 얼굴 없이 숫자만 · mid: 가운데 3의 뜻) · text(글쓰기)
-//   객관식은 모두 꼭 답해야 해요. 글쓰기는 pcRequired: true 인 것만 컴퓨터 모드에서 꼭 (태블릿 모드는 모두 선택)
+//   객관식은 모두 꼭 답해야 해요. 글쓰기는 4학년이거나 컴퓨터 모드면 모두 꼭, 3학년 태블릿 모드는 모두 선택
 //   action/entries: 응답이 모이는 구글 설문지 "M.A.P. to Tomorrow 3·4학년 체험 설문" (학교 드라이브 dolce52@icedu.kr)
 //   ⚠️ 보기 글자는 바꿔도 괜찮지만, 질문을 더하거나 빼면 구글 설문지에도 같은 질문을 더해 entry 번호를 적어 주세요
 const BOOTH_OPTS = [
