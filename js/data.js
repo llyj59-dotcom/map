@@ -1163,6 +1163,45 @@ window.CREDITS = {
 };
 
 /* ⏰ 추가 활동 — 여정 완료 화면 (인증서까지 올리고 시간이 남은 학생용) */
+// 📝 3·4학년 체험 설문 — ?grade=34 링크에서만, 인증서 바로 앞에 나와요 (다 해야 인증서를 받아요)
+//   부스 체험(콜롬비아 체험 부스 4곳 + 마지막 부스) + 교실에서 한 웹앱 게임의 만족도 → 내년 계획에 반영
+//   type: one(하나 고르기) · many(여러 개 고르기) · scale(1~5단계, faces: false 면 얼굴 없이 숫자만 · mid: 가운데 3의 뜻) · text(글쓰기)
+//   객관식은 모두 꼭 답해야 해요. 글쓰기는 pcRequired: true 인 것만 컴퓨터 모드에서 꼭 (태블릿 모드는 모두 선택)
+//   action/entries: 응답이 모이는 구글 설문지 "M.A.P. to Tomorrow 3·4학년 체험 설문" (학교 드라이브 dolce52@icedu.kr)
+//   ⚠️ 보기 글자는 바꿔도 괜찮지만, 질문을 더하거나 빼면 구글 설문지에도 같은 질문을 더해 entry 번호를 적어 주세요
+const BOOTH_OPTS = [
+  '1번 부스 Memory: 언니·오빠들이 만든 캔바 웹사이트로 설명 듣기',
+  '2번 부스 Across: 위인전 읽고 이젤패드에 붙이기',
+  '3번 부스 Peace: 콜롬비아 이야기 듣고 색칠하기',
+  '4번 부스 Tomorrow: 콜롬비아 손님과 인사하기',
+  '마지막 부스: 방명록 쓰기 · 간식 · 도장',
+  '교실에서 한 웹앱 게임 「M.A.P. to Tomorrow」'
+];
+window.JUNIOR_SURVEY = {
+  action: 'https://docs.google.com/forms/d/e/1FAIpQLScktQzY3uzOhk_S9axAqeycgy7wgFvJ_yzkO9kRspovQnEXsQ/formResponse',
+  entries: {
+    nick: 'entry.475826209', mode: 'entry.2018806525', grade: 'entry.287545027', klass: 'entry.1303132364',
+    fun: 'entry.2048636378', best: 'entry.1659841313', overall: 'entry.858740604', game: 'entry.701440636',
+    learned: 'entry.832423406', level: 'entry.612375507', again: 'entry.451536870', wish: 'entry.67783124',
+    memorable: 'entry.1611748280', improve: 'entry.2092534403', message: 'entry.2142614669'
+  },
+  questions: [
+    { id: 'grade', type: 'one', q: '몇 학년인가요?', opts: ['3학년', '4학년'] },
+    { id: 'klass', type: 'one', q: '몇 반인가요?', opts: ['1반', '2반', '3반', '4반', '5반', '6반', '7반', '8반', '9반', '10반', '11반', '12반'] },
+    { id: 'fun', type: 'many', q: '오늘 한 활동 중 재미있었던 것을 모두 골라요.', opts: BOOTH_OPTS },
+    { id: 'best', type: 'one', q: '그중에서 가장 재미있었던 것 하나만 골라요.', opts: BOOTH_OPTS },
+    { id: 'overall', type: 'scale', q: '오늘 콜롬비아 체험 활동은 전체적으로 어땠나요?', low: '별로였어요', high: '최고였어요' },
+    { id: 'game', type: 'scale', q: '웹앱 게임 「M.A.P. to Tomorrow」는 얼마나 재미있었나요?', low: '별로였어요', high: '아주 재미있었어요' },
+    { id: 'learned', type: 'scale', q: '6·25 전쟁과 콜롬비아에 대해 새로 알게 된 것이 많았나요?', low: '거의 없어요', high: '아주 많아요' },
+    { id: 'level', type: 'scale', faces: false, q: '웹앱 게임은 얼마나 어려웠나요?', low: '너무 쉬웠어요', mid: '딱 알맞았어요', high: '너무 어려웠어요' },
+    { id: 'again', type: 'scale', q: '내년에도 이런 콜롬비아 체험을 하고 싶나요?', low: '하고 싶지 않아요', mid: '보통이에요', high: '꼭 하고 싶어요' },
+    { id: 'wish', type: 'many', q: '내년에 더 해 보고 싶은 활동을 모두 골라요.', opts: ['간단한 스페인어 배우기', '콜롬비아 음식 맛보기', '콜롬비아 춤·노래·놀이', '콜롬비아 친구와 영상 편지 주고받기', '참전용사님께 편지·그림 보내기', '웹앱 게임 더 하기', '만들기·꾸미기 활동', '잘 모르겠어요'] },
+    { id: 'memorable', type: 'text', q: '오늘 가장 기억에 남는 것은 무엇인가요?', pcRequired: true },
+    { id: 'improve', type: 'text', q: '아쉬웠던 점이나 바꾸면 좋을 점이 있나요?' },
+    { id: 'message', type: 'text', q: '콜롬비아 친구들이나 참전용사님께 하고 싶은 말을 적어 주세요.', pcRequired: true }
+  ]
+};
+
 window.EXTRA_ACTIVITIES = [
   {
     icon: '🗂️',

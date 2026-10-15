@@ -1315,3 +1315,34 @@ body.modal-open { overflow: hidden; }
 /* 의미 단위 줄바꿈: 묶음(.mu)은 가능하면 한 줄에 함께, 너무 길면 그 안에서 낱말 단위로 */
 .mu { display: inline-block; max-width: 100%; text-indent: 0; }
 .mu-box { text-wrap: pretty; }
+
+/* 💻/📱 시작 화면 기기 고르기 */
+.mode-pick { margin: 4px 0 14px; }
+.mode-label { display: block; font-weight: 700; margin-bottom: 6px; }
+.mode-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.mode-btns button { min-height: 46px; border-radius: 12px; border: 2px solid #d7dcef; background: #fff; font: inherit; font-weight: 700; cursor: pointer; color: inherit; display: flex; align-items: center; justify-content: center; gap: 6px; }
+.mode-btns button.on { border-color: var(--co-blue, #003893); background: #eaf0ff; color: var(--co-blue, #003893); }
+.mode-help { display: block; margin-top: 6px; color: #5b6275; font-size: 13px; }
+/* 📝 3·4학년 체험 설문 */
+.js-wrap { max-width: 720px; margin: 0 auto; }
+.js-q { border: 2px solid #e3e7f3; border-radius: 16px; padding: 14px 14px 16px; margin: 0 0 14px; background: #fff; min-width: 0; }
+.js-q.miss { border-color: #d62839; background: #fff5f6; }
+.js-q legend { font-weight: 800; font-size: 17px; line-height: 1.45; padding: 0 6px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.js-n { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--co-blue, #003893); color: #fff; font-size: 14px; }
+.js-tag { font-style: normal; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 2px 8px; }
+.js-tag.need { background: #ffe1e5; color: #b0182b; }
+.js-tag.opt { background: #eef1f7; color: #5b6275; }
+.js-many { display: block; color: #5b6275; margin: 2px 0 8px; }
+.js-opts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.js-opts.js-col { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
+.js-opt { min-height: 48px; padding: 10px 14px; border-radius: 12px; border: 2px solid #d7dcef; background: #f8f9fd; font: inherit; font-size: 16px; text-align: left; cursor: pointer; color: inherit; line-height: 1.35; }
+.js-opt.on { border-color: var(--co-blue, #003893); background: #e3ebff; font-weight: 700; }
+.js-opt.on::before { content: '✔ '; color: var(--co-blue, #003893); }
+.js-opt:disabled { cursor: default; opacity: .85; }
+.js-scale { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 8px; }
+.js-face { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 8px 4px; }
+.js-face span { font-size: 30px; line-height: 1.1; }
+.js-face.on::before { content: none; }
+.js-scale-ends { display: flex; justify-content: space-between; gap: 8px; margin-top: 6px; color: #5b6275; }
+.js-text { width: 100%; box-sizing: border-box; border: 2px solid #d7dcef; border-radius: 12px; padding: 10px 12px; font: inherit; font-size: 16px; margin-top: 6px; resize: vertical; }
+.js-done { background: #e6f6ea; border: 2px solid #3a9b55; border-radius: 12px; padding: 10px 14px; font-weight: 700; }

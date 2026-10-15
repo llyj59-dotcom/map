@@ -373,6 +373,35 @@
       videoLong: '긴 영상이에요. 앞부분만 보거나 집에서 보세요.',
       videoPick: '다른 영상',
       videoOptional: '영상은 골라서 봐도 돼요.',
+      resumeAt: '보던 곳부터 이어서 할게요.',
+      modeLabel: '어떤 기기로 하나요?',
+      modePc: '컴퓨터·노트북',
+      modePad: '태블릿',
+      modeHelpAuto: '기기를 보고 자동으로 골라 두었어요. 다르면 눌러서 바꿔요.',
+      modeHelpSet: '고른 모드로 할게요. (태블릿 모드: 인증서를 사진으로 저장해요)',
+      certOnlyLeadPc: '패들렛에 올리지 않아도 돼요. 아래 버튼만 누르면 끝!',
+      certOnlyPc: '[📸 인증서 그림으로 저장]을 누르면 컴퓨터의 다운로드 폴더에 저장돼요.',
+      certOnlySavedPc: '인증서 그림이 저장됐어요! 다운로드 폴더에서 볼 수 있어요.',
+      jsTitle: '오늘 활동 설문',
+      jsLead: '오늘 한 부스 체험과 웹앱 게임은 어땠나요? 솔직하게 골라 주세요. 다 하면 인증서를 받을 수 있어요!',
+      jsNeed: '꼭',
+      jsOpt: '하고 싶으면',
+      jsMany: '여러 개 골라도 돼요',
+      jsTextPh: '여기에 적어요',
+      jsSubmit: '📨 설문 보내고 인증서 받기 ▶',
+      jsMissing: (n) => `아직 안 고른 질문이 ${n}개 있어요. 빨간 표시가 있는 질문을 확인해요.`,
+      jsThanks: '고마워요! 설문이 전해졌어요. 이제 인증서를 만들어요.',
+      jsDone: '✅ 설문을 보냈어요. 고마워요!',
+      extraFinishJs: '✅ 끝내기 (마지막 설문하러 가기) ▶',
+      doneCheckJs: '오늘 활동 설문 보내기',
+      certOnlyTitle: '인증서를 사진으로 저장해요',
+      certOnlyLead: '태블릿에서는 패들렛에 올리지 않아도 돼요. 아래 버튼만 누르면 끝!',
+      certOnlyAnd: '[📸 인증서 사진으로 저장하기]를 누르면 갤러리(사진) 앱에 저장돼요.',
+      certOnlyIos: '[📸 인증서 사진으로 저장하기]를 누른 뒤, 나온 그림을 손가락으로 꾹 눌러 "사진 앱에 저장"을 눌러요.',
+      certOnlySaved: '인증서 사진이 저장됐어요! 갤러리(사진) 앱의 다운로드(Download) 폴더에서 볼 수 있어요.',
+      certOnlyIosSteps: ['인증서 그림을 손가락으로 꾹~ (1초) 눌러요.', '"사진 앱에 저장"을 누르면 끝!'],
+      doneCheckCertSave: '인증서를 사진으로 저장하기',
+      backAgain: '한 번 더 누르면 웹앱에서 나가요.',
       videoOptionalReq: "'꼭 보기' 영상 하나만 끝까지 보면 되고, 나머지 영상은 골라서 봐도 돼요.",
       onYoutube: 'YouTube에서 보기 ↗',
       tlHint: '하나씩 눌러 보세요. 지도 위 전선이 움직여요!',
@@ -905,6 +934,35 @@
       videoLong: 'Es un video largo. Mira el comienzo o termínalo en casa.',
       videoPick: 'Otros videos',
       videoOptional: 'Puedes elegir qué videos ver.',
+      resumeAt: 'Seguimos donde lo dejaste.',
+      modeLabel: '¿Con qué dispositivo juegas?',
+      modePc: 'Computador',
+      modePad: 'Tableta',
+      modeHelpAuto: 'Lo elegimos según tu dispositivo. Si no es correcto, cámbialo.',
+      modeHelpSet: 'Usaremos el modo elegido. (Tableta: el certificado se guarda como foto)',
+      certOnlyLeadPc: 'No hace falta subirlo al Padlet. ¡Solo pulsa el botón!',
+      certOnlyPc: 'Pulsa [📸 Guardar el certificado como imagen] y se guardará en Descargas.',
+      certOnlySavedPc: '¡Certificado guardado en la carpeta Descargas!',
+      jsTitle: 'Encuesta de hoy',
+      jsLead: '¿Qué te parecieron los stands y el juego? Al terminar recibirás tu certificado.',
+      jsNeed: 'Obligatoria',
+      jsOpt: 'Opcional',
+      jsMany: 'Puedes elegir varias',
+      jsTextPh: 'Escribe aquí',
+      jsSubmit: '📨 Enviar y recibir mi certificado ▶',
+      jsMissing: (n) => `Faltan ${n} preguntas. Revisa las marcadas en rojo.`,
+      jsThanks: '¡Gracias! Encuesta enviada. Ahora crea tu certificado.',
+      jsDone: '✅ Encuesta enviada. ¡Gracias!',
+      extraFinishJs: '✅ Terminar (ir a la última encuesta) ▶',
+      doneCheckJs: 'Enviar la encuesta de hoy',
+      certOnlyTitle: 'Guarda tu certificado como foto',
+      certOnlyLead: 'En la tableta no hace falta subirlo al Padlet. ¡Solo pulsa el botón de abajo!',
+      certOnlyAnd: 'Pulsa [📸 Guardar el certificado en Fotos] y se guardará en la galería.',
+      certOnlyIos: 'Pulsa [📸 Guardar el certificado en Fotos], mantén el dedo sobre la imagen y elige "Guardar en Fotos".',
+      certOnlySaved: '¡Certificado guardado! Lo encuentras en la galería, en la carpeta Descargas (Download).',
+      certOnlyIosSteps: ['Mantén el dedo sobre el certificado (1 segundo).', 'Elige "Guardar en Fotos". ¡Listo!'],
+      doneCheckCertSave: 'Guardar el certificado como foto',
+      backAgain: 'Pulsa otra vez para salir de la app.',
       videoOptionalReq: "Solo tienes que ver completo el video 'Obligatorio'; los demás puedes elegirlos.",
       onYoutube: 'Ver en YouTube ↗',
       tlHint: 'Toca cada momento y observa cómo se desplaza el frente en el mapa.',
@@ -1436,6 +1494,35 @@
       videoLong: "It's a long video. Watch the beginning, or finish it at home.",
       videoPick: 'Other videos',
       videoOptional: 'You can choose which videos to watch.',
+      resumeAt: 'Picking up where you left off.',
+      modeLabel: 'Which device are you using?',
+      modePc: 'Computer',
+      modePad: 'Tablet',
+      modeHelpAuto: 'We picked this from your device. Tap to change it if it is wrong.',
+      modeHelpSet: 'We will use this mode. (Tablet: the certificate is saved as a photo)',
+      certOnlyLeadPc: 'No need to post it on the Padlet. Just press the button!',
+      certOnlyPc: 'Press [📸 Save certificate as a picture] and it goes to your Downloads folder.',
+      certOnlySavedPc: 'Certificate saved to your Downloads folder!',
+      jsTitle: "Today's survey",
+      jsLead: 'How were the booths and the game today? Finish this to get your certificate!',
+      jsNeed: 'Required',
+      jsOpt: 'Optional',
+      jsMany: 'You can choose more than one',
+      jsTextPh: 'Write here',
+      jsSubmit: '📨 Send and get my certificate ▶',
+      jsMissing: (n) => `${n} questions are still empty. Check the ones marked in red.`,
+      jsThanks: 'Thank you! Survey sent. Now make your certificate.',
+      jsDone: '✅ Survey sent. Thank you!',
+      extraFinishJs: '✅ Finish (go to the last survey) ▶',
+      doneCheckJs: "Send today's survey",
+      certOnlyTitle: 'Save your certificate as a photo',
+      certOnlyLead: 'On a tablet you do not need to post it on the Padlet. Just tap the button below!',
+      certOnlyAnd: 'Tap [📸 Save certificate to Photos] and it is saved to your gallery.',
+      certOnlyIos: 'Tap [📸 Save certificate to Photos], then press and hold the picture and choose "Save to Photos".',
+      certOnlySaved: 'Certificate saved! You can find it in the gallery, in the Download folder.',
+      certOnlyIosSteps: ['Press and hold the certificate (1 second).', 'Tap "Save to Photos". Done!'],
+      doneCheckCertSave: 'Save your certificate as a photo',
+      backAgain: 'Press back again to leave the app.',
       videoOptionalReq: "Only the 'Must see' video has to be watched to the end; the others are up to you.",
       onYoutube: 'Watch on YouTube ↗',
       tlHint: 'Tap each one. The front line moves on the map!',
@@ -1748,7 +1835,20 @@
     }
   }
 
+  // 시작 화면의 기기 고르기 (💻 컴퓨터·노트북 / 📱 태블릿)
+  function renderModePick() {
+    const form = $('startForm');
+    if (!form) return;
+    let box = $('modePick');
+    if (!box) { box = document.createElement('div'); box.id = 'modePick'; box.className = 'mode-pick'; form.insertBefore(box, $('startBtn')); }
+    const on = padMode() ? 'pad' : 'pc';
+    box.innerHTML = `<span class="mode-label">${esc(T('modeLabel'))}</span>
+      <div class="mode-btns" role="radiogroup" aria-label="${esc(T('modeLabel'))}">${[['pc', '💻', T('modePc')], ['pad', '📱', T('modePad')]].map(([v, ic, tx]) => `<button type="button" role="radio" aria-checked="${on === v}" data-mode="${v}" class="${on === v ? 'on' : ''}">${ic} ${esc(tx)}</button>`).join('')}</div>
+      <small class="mode-help">${esc(T(store.mode ? 'modeHelpSet' : 'modeHelpAuto'))}</small>`;
+    box.querySelectorAll('[data-mode]').forEach((b) => b.addEventListener('click', () => { store.mode = b.dataset.mode; save(); renderModePick(); }));
+  }
   function applyStaticText() {
+    try { renderModePick(); } catch (e) { /* 아직 준비 전 */ }
     document.documentElement.lang = lang;
     document.querySelectorAll('[data-i18n]').forEach((el) => { el.textContent = T(el.dataset.i18n); });
     $('reportNote').hidden = !reportOn(); // 진행 상황을 선생님께 보낼 때만 알려 줘요
@@ -2703,6 +2803,7 @@
     previewMode = false;
     player = null;
     showScreen('startScreen');
+    renderModePick();
     $('narration').innerHTML = T('narration').map((line, i) => `<span style="animation-delay:${0.3 + i * 1.1}s">${esc(line)}</span>`).join('\n');
     renderSaved();
     closeStartModal();
@@ -2752,6 +2853,8 @@
     store.last = g.id;
     save();
     enterGame();
+    // 엔딩(설문·인증서)을 하다가 페이지가 닫혔으면 그 화면으로 바로
+    if (g.keyDone && g.endAt && g.endAt !== 'intro' && END_STEPS.includes(g.endAt)) setTimeout(() => { if (player === g && !$('gameScreen').hidden) openEnding(); }, 400);
   }
 
   $('startForm').addEventListener('submit', (e) => {
@@ -3536,6 +3639,26 @@
     sayNext();
     // 처음 들어오면 임무 안내부터 (이미 하던 여정이라도 안내를 못 봤으면 한 번)
     if (player && !previewMode && !player.briefed) setTimeout(openBriefing, 500);
+    // 작전 지점을 하다가 페이지가 닫혔으면, 그 지점의 그 단계부터 바로 이어서
+    else if (player && !previewMode && player.at) {
+      const at = player.at;
+      const i = STATIONS.findIndex((x) => x.id === at.id);
+      if (i >= 0 && !isDone(at.id) && isUnlocked(i)) setTimeout(() => resumeStation(i, at), 500);
+      else { player.at = null; save(); }
+    }
+  }
+  function resumeStation(i, at) {
+    if (cur || !player || $('gameScreen').hidden) return;
+    openStation(i);
+    if (!cur) return;
+    const k = Math.min(at.step || 0, cur.steps.length - 1);
+    if (k > 0) {
+      cur.cleared = new Set(Array.from({ length: k }, (_, n) => n)); // 이미 지나온 단계(지도 찾기 등)는 다시 잠그지 않아요
+      cur.step = k;
+      cur.video = at.video || 0;
+      renderStep();
+      toast(T('resumeAt'));
+    }
   }
 
   // 작전 지점 카드·세계 지도·전선 표시를 모두 닫은 상태로
@@ -3777,6 +3900,7 @@
     setWarPhase(null);
     const wasDone = cur && cur.completed;
     cur = null;
+    if (player && player.at) { player.at = null; save(); }
     bgmSync();
     refreshGame(wasDone);
     requestAnimationFrame(() => flyTo(FULL.slice()));
@@ -4184,6 +4308,11 @@
   function renderStep() {
     stopWatch();
     const { s, steps, step } = cur;
+    // 📌 작전 지점 안에서 몇 번째 단계를 보고 있는지 기억해요 → 페이지가 새로 열려도(태블릿에서 영상·유튜브 앱을 오가다가 등) 그 단계부터
+    if (player && !previewMode && !cur.retryQuiz && !isDone(s.id) && (!player.at || player.at.id !== s.id || player.at.step !== step || player.at.video !== cur.video)) {
+      player.at = { id: s.id, step, video: cur.video };
+      save();
+    }
     const st = steps[step];
     const body = $('sheetBody');
     body.scrollTop = 0;
@@ -4294,13 +4423,18 @@
     try { return navigator.maxTouchPoints > 0 && window.matchMedia('(pointer: coarse)').matches && !window.matchMedia('(any-pointer: fine)').matches; } catch (e) { return false; }
   };
   // 그림 자동 복사(Ctrl+V)는 키보드 있는 컴퓨터에서만 안내해요
-  const certCanCopy = () => !isTouchPad() && !!(navigator.clipboard && navigator.clipboard.write && window.ClipboardItem);
+  // 📱 태블릿 모드(터치 태블릿, 또는 3·4학년 링크): 인증서는 사진으로 저장만 하고 패들렛 올리기는 하지 않아요
+  // 💻/📱 기기 모드: 처음에는 기기를 보고 자동으로(터치 태블릿 → 태블릿), 시작 화면에서 직접 바꿀 수도 있어요 (이 기기에 기억)
+  const padMode = () => (store.mode === 'pad' ? true : store.mode === 'pc' ? false : isTouchPad());
+  const certPadOnly = () => padMode(); // 3·4학년 링크도 컴퓨터 모드(4학년)는 패들렛에 올려요
+  const isIOS = () => /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const certCanCopy = () => !padMode() && !!(navigator.clipboard && navigator.clipboard.write && window.ClipboardItem);
 
   function stepLocked(s, st) {
     if (st.type === 'video') return !!mustWatch(s);
     if (previewMode || !player || isDone(s.id)) return false;
     if (st.type === 'quiz') return quizStore()[s.id] === undefined;
-    if (st.type === 'find') return !(cur.finding && cur.finding.done);
+    if (st.type === 'find') return !(cur.finding && cur.finding.done) && !(cur.cleared && cur.cleared.has(cur.step));
     if (st.type === 'hero' && st.h.link) return !(player.works && player.works[st.h.link]);
     return false;
   }
@@ -4507,6 +4641,27 @@
     $('infoClose').focus();
   }
   $('infoClose').addEventListener('click', () => { $('infoSheet').hidden = true; });
+  // 📱 태블릿·휴대폰의 [뒤로] 버튼(뒤로 가기 몸짓)을 눌러도 웹앱 밖으로 나가지 않고, 열려 있는 창부터 하나씩 닫아요
+  //    (영상 전체 화면은 전체 화면부터 닫아요) — 열린 창이 없으면 한 번 알려 주고, 바로 한 번 더 누르면 그때 나가요
+  //    브라우저는 화면을 누른 뒤에 만든 기록만 '뒤로'에서 멈춰 주기 때문에, 화면을 누를 때마다 지킴이 기록을 하나 준비해 둬요
+  let backArmed = false, backWarned = false;
+  document.addEventListener('pointerdown', () => {
+    backWarned = false;
+    if (backArmed) return;
+    try { history.pushState({ mapGuard: 1 }, ''); backArmed = true; } catch (e) { /* 무시 */ }
+  }, { passive: true, capture: true });
+  window.addEventListener('popstate', () => {
+    backArmed = false;
+    const fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+    if (fsEl) { try { (document.exitFullscreen || document.webkitExitFullscreen).call(document); } catch (e) { /* 무시 */ } return; }
+    // 창을 하나 닫았으면 다음 [뒤로]도 웹앱 안에서 멈추도록 기록을 하나 더 (화면을 누르면 또 준비돼요)
+    const closed = () => { try { history.pushState({ mapGuard: 2 }, ''); } catch (e) { /* 무시 */ } };
+    if ($('creditsOv')) { closeCredits(); closed(); return; }
+    if (!$('startModal').hidden) { closeStartModal(); closed(); return; }
+    if (!$('infoSheet').hidden) { $('infoClose').click(); closed(); return; }
+    if (!$('stationSheet').hidden) { $('sheetClose').click(); closed(); return; }
+    if (!backWarned) { backWarned = true; toast(T('backAgain')); }
+  });
 
   function showCode() {
     if (!player) return;
@@ -4583,7 +4738,8 @@
   // 엔딩: 시작 → 질문 5개(진짜 답) → 더 알아보기 → 인증서 → 📝 소감 설문 (게임의 맨 마지막)
   // 순서: 진짜 답 → 더 알아보기 → 소감 설문 → 인증서(패들렛에 올리기) → 🏁 여정 완료
   // (소감을 먼저 쓰고, 제출하면 저절로 인증서로 — 인증서를 빼먹지 않게)
-  const END_STEPS = ['intro', ...QIDS, 'more', 'extra', ...(CONFIG.feedbackForms && !NO_SURVEY ? ['survey'] : []), 'finish', 'done'];
+  const JS = window.JUNIOR_SURVEY;
+  const END_STEPS = ['intro', ...QIDS, 'more', 'extra', ...(CONFIG.feedbackForms && !NO_SURVEY ? ['survey'] : []), ...(JUNIOR && JS ? ['jsurvey'] : []), 'finish', 'done'];
   let endDir = 1; // 마지막으로 움직인 방향 (다 모은 아이는 '더 해 보기'를 건너뛸 때 씀)
 
   /* 🎯 더 해 보기: 작전 지점마다 아직 못 받은 별·영웅 카드 (전부 모았으면 빈 목록 → 화면을 건너뜀) */
@@ -4635,7 +4791,8 @@
     // 지도는 다 모았는데 아직 문을 안 열었으면 문부터 (선생님 미리 보기는 바로)
     if (!previewMode && player && doneCount(player) === N && !player.keyDone) { openDoor(); return; }
     // 다시 도전하고 돌아온 거면 '더 해 보기' 화면부터
-    endStep = player && player.endResume ? Math.max(0, END_STEPS.indexOf(player.endResume)) : 0;
+    // 페이지가 새로 열렸으면 보던 엔딩 화면(설문·인증서 등)부터 이어서
+    endStep = player && player.endResume ? Math.max(0, END_STEPS.indexOf(player.endResume)) : player && player.endAt ? Math.max(0, END_STEPS.indexOf(player.endAt)) : 0;
     endDir = 1;
     if (player && player.endResume) { delete player.endResume; save(); }
     resetStationUI();
@@ -5040,7 +5197,7 @@
     if (!player.nation && lang === 'ko') player.nation = 'kr';
     const canShare = !SANDBOX && !!(navigator.canShare && window.File); // 링크 모드에서는 공유 창이 막혀 있어요
     const canCopy = certCanCopy();
-    const pad = isTouchPad();
+    const pad = padMode();
     const ex = schoolEx();
     return `<div class="cert-map">
         <h2 class="end-h2">🗺️ ${esc(T('certTitle'))}</h2>
@@ -5073,7 +5230,14 @@
         </div>
         <p class="cert-lock" id="certLock" role="status">✍️ ${esc(T('certNeedPledge'))}</p>
         <!-- 📌 패들렛에 올리기: 세 걸음을 큰 글씨로 (2·6반은 이 안내를 못 보고 소감으로 넘어갔어요) -->
-        <section class="cert-upload" aria-labelledby="certUpH">
+        ${certPadOnly() ? `<section class="cert-upload" aria-labelledby="certUpH">
+          <h3 id="certUpH">📸 ${esc(T('certOnlyTitle'))}</h3>
+          <p class="t-help">${esc(T(pad ? 'certOnlyLead' : 'certOnlyLeadPc'))}</p>
+          <ol class="cert-up-steps">
+            <li id="cu1"><span class="cu-n">1</span><div><p>${esc(T(!pad ? 'certOnlyPc' : isIOS() ? 'certOnlyIos' : 'certOnlyAnd'))}</p>
+              <button id="certSave" class="btn btn-go cert-need" type="button">📸 ${esc(T(pad ? 'certSavePad' : 'certSave'))}</button></div></li>
+          </ol>
+        </section>` : `<section class="cert-upload" aria-labelledby="certUpH">
           <h3 id="certUpH">📌 ${esc(T('certUpTitle'))}</h3>
           <ol class="cert-up-steps">
             <li id="cu1"><span class="cu-n">1</span><div><p>${esc(T(canCopy ? 'certUp1' : pad ? 'certUp1Pad' : 'certUp1Save'))}</p>
@@ -5088,7 +5252,7 @@
             ${canCopy ? `<button id="certSave" class="btn btn-ghost btn-sm cert-need" type="button">💾 ${esc(T('certSave'))}</button>` : ''}
             ${canShare ? `<button id="certShare" class="btn btn-ghost btn-sm cert-need" type="button" hidden>📤 ${esc(T('certShare'))}</button>` : ''}
           </div>
-        </section>
+        </section>`}
         <div class="cert-titleline">
           <span>${esc(T('certPadletTitle'))}</span>
           <b id="certTitleLine"></b>
@@ -5171,7 +5335,23 @@
       flush();
       const blob = await certBlob();
       if (!blob) { toast(T('copyFail')); return; }
-      if (isTouchPad()) {
+      if (certPadOnly() && !SANDBOX) {
+        if (padMode() && isIOS()) {
+          // 아이패드: 그림을 크게 띄워 꾹 눌러 '사진 앱에 저장' (사진 앱으로 바로 저장하는 길은 이것뿐이에요)
+          const url = await new Promise((res) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = () => res(URL.createObjectURL(blob)); r.readAsDataURL(blob); });
+          const ps = T('certOnlyIosSteps');
+          openInfo('📸', T('certTitle'), `<ol class="pad-steps">${ps.map((x, k) => `<li><span class="ps-n">${k + 1}</span><span>${esc(x)}</span></li>`).join('')}</ol>
+            <img class="cert-full" src="${url}" alt="${esc(T('certTitle'))}">`);
+        } else {
+          // 갤럭시탭 등: 누르면 바로 파일로 저장돼 갤러리의 다운로드 폴더에 들어가요
+          downloadBlob(blob, certFileName());
+          toast(T(padMode() ? 'certOnlySaved' : 'certOnlySavedPc'));
+        }
+        certStep('cu1');
+        reportProgress('certificate');
+        return;
+      }
+      if (padMode()) {
         // 꾹 누르기 저장은 data: 그림이 가장 잘 돼요 (아이패드 '사진에 저장', 갤럭시탭 '이미지 저장')
         const url = await new Promise((res) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = () => res(URL.createObjectURL(blob)); r.readAsDataURL(blob); });
         const file = new File([blob], certFileName(), { type: 'image/png' });
@@ -5384,6 +5564,9 @@
                <p class="t-help">${esc(T('surveyHelp'))} <a href="${esc(fb)}" target="_blank" rel="noopener">${esc(T('surveyOpen'))} ↗</a></p>`}
           <p class="survey-next-note">➡️ ${esc(T('surveyAutoNote'))}</p>
         </div>`;
+    } else if (step === 'jsurvey') {
+      if (previewMode) { endStep = Math.max(0, Math.min(END_STEPS.length - 1, endStep + endDir)); renderEnding(); return; }
+      html = jsurveyHtml();
     } else if (step === 'extra') {
       const gaps = allGaps();
       // 별·영웅 카드를 전부 모았으면 이 화면은 건너뛰어요 (다시 도전이 필요 없으니까)
@@ -5402,7 +5585,8 @@
       const checks = [
         [doneCount(player) === N, T('doneCheckMap', N)],
         ...(NO_SURVEY ? [] : [[!!player.surveyDone, T('doneCheckSurvey')]]),
-        [!!(player.certUploaded || player.certCaptured), T('doneCheckCert')]
+        ...(JUNIOR && JS ? [[!!player.jsurveyDone, T('doneCheckJs')]] : []),
+        [!!(player.certUploaded || player.certCaptured), T(certPadOnly() ? 'doneCheckCertSave' : 'doneCheckCert')]
       ];
       html = `<div class="end-hero journey-done">
           <span class="end-flags" aria-hidden="true"><i class="f-y"></i><i class="f-b"></i><i class="f-r"></i></span>
@@ -5474,25 +5658,120 @@
       });
     }
     if (step === 'done') sfx('fanfare');
+    if (step === 'jsurvey') bindJSurvey();
     body.querySelectorAll('[data-retry]').forEach((b) => b.addEventListener('click', () => retryFromEnding(+b.dataset.retry)));
 
     $('endDots').innerHTML = END_STEPS.map((x, k) => `<i class="${k === endStep ? 'on' : ''}${QUESTIONS[x] ? ' q' : ''}"></i>`).join('');
+    if (player && !previewMode && player.endAt !== step) { player.endAt = step; save(); } // 📌 엔딩 어디까지 봤는지 기억
     $('endPrev').textContent = endStep === 0 ? T('toMapBtn') : T('prev');
-    $('endNext').textContent = step === 'intro' ? T('endStart') : step === 'extra' ? T(NO_SURVEY ? 'extraFinishCert' : 'extraFinish') : step === 'survey' ? T('toCertBtn') : step === 'finish' ? T('endFinishBtn') : T('next');
+    $('endNext').textContent = step === 'intro' ? T('endStart') : step === 'extra' ? T(JUNIOR && JS ? 'extraFinishJs' : NO_SURVEY ? 'extraFinishCert' : 'extraFinish') : step === 'jsurvey' ? T(player && player.jsurveyDone ? 'next' : 'jsSubmit') : step === 'survey' ? T('toCertBtn') : step === 'finish' ? T('endFinishBtn') : T('next');
     $('endNext').hidden = endStep === END_STEPS.length - 1; // 맨 마지막 화면에서는 [다음]이 없어요
   }
 
   $('endNext').addEventListener('click', () => {
     saveEndGuess();
     // 인증서 화면에서 소감으로 넘어가기 전에 "패들렛에 올렸나요?" 한 번 물어봐요
-    if (END_STEPS[endStep] === 'finish' && !previewMode && CONFIG.padletUrl && !player.certUploaded) { askCertUploaded(); return; }
+    if (END_STEPS[endStep] === 'finish' && !previewMode && CONFIG.padletUrl && !certPadOnly() && !player.certUploaded) { askCertUploaded(); return; }
+    // 3·4학년 설문: 다 골라서 보내야 인증서로 넘어가요
+    if (END_STEPS[endStep] === 'jsurvey' && !previewMode && player && !player.jsurveyDone) { submitJSurvey(); return; }
     endDir = 1;
     if (endStep < END_STEPS.length - 1) { endStep++; renderEnding(); }
   });
+  /* ---------------- 📝 3·4학년 체험 설문 (부스 체험 + 웹앱) ----------------
+     객관식은 모두 꼭, 주관식은 컴퓨터 모드에서 pcRequired 인 것만 꼭 (태블릿은 글자 치기가 힘들어서 모두 '하고 싶으면')
+     답은 고를 때마다 이 기기에 저장 → 보내면 학교 구글 설문지(JUNIOR_SURVEY.action)로 전해져요 */
+  const jsAns = () => { player.jsurvey = player.jsurvey || {}; return player.jsurvey; };
+  const jsRequired = (q) => q.type !== 'text' || (!!q.pcRequired && !padMode());
+  const jsFilled = (q) => { const v = jsAns()[q.id]; return Array.isArray(v) ? v.length > 0 : v != null && String(v).trim() !== ''; };
+  function jsurveyHtml() {
+    const a = jsAns();
+    const done = !!player.jsurveyDone;
+    const faces = ['😞', '🙁', '😐', '🙂', '😄'];
+    const qHtml = (q, k) => {
+      const v = a[q.id];
+      const req = jsRequired(q);
+      const tag = `<em class="js-tag ${req ? 'need' : 'opt'}">${esc(T(req ? 'jsNeed' : 'jsOpt'))}</em>`;
+      let body = '';
+      if (q.type === 'one' || q.type === 'many') {
+        body = `${q.type === 'many' ? `<small class="js-many">✔ ${esc(T('jsMany'))}</small>` : ''}<div class="js-opts${q.opts.some((o) => L(o).length > 10) ? ' js-col' : ''}">${q.opts.map((o) => {
+          const on = q.type === 'many' ? (v || []).includes(L(o)) : v === L(o);
+          return `<button type="button" class="js-opt${on ? ' on' : ''}" aria-pressed="${on}" data-q="${esc(q.id)}" data-v="${esc(L(o))}"${done ? ' disabled' : ''}>${esc(L(o))}</button>`;
+        }).join('')}</div>`;
+      } else if (q.type === 'scale') {
+        body = `<div class="js-scale">${faces.map((f, n) => `<button type="button" class="js-opt js-face${String(v) === String(n + 1) ? ' on' : ''}" aria-pressed="${String(v) === String(n + 1)}" data-q="${esc(q.id)}" data-v="${n + 1}"${done ? ' disabled' : ''}>${q.faces === false ? '' : `<span aria-hidden="true">${f}</span>`}<b>${n + 1}</b></button>`).join('')}</div>
+          <div class="js-scale-ends"><small>1 = ${esc(L(q.low))}</small>${q.mid ? `<small>3 = ${esc(L(q.mid))}</small>` : ''}<small>5 = ${esc(L(q.high))}</small></div>`;
+      } else {
+        body = `<textarea class="js-text" data-q="${esc(q.id)}" rows="3" maxlength="400" placeholder="${esc(T('jsTextPh'))}"${done ? ' disabled' : ''}>${esc(v || '')}</textarea>`;
+      }
+      return `<fieldset class="js-q" id="jsq-${esc(q.id)}"><legend><span class="js-n">${k + 1}</span> ${esc(L(q.q))} ${tag}</legend>${body}</fieldset>`;
+    };
+    return `<div class="js-wrap">
+        <h2 class="end-h2">📝 ${esc(T('jsTitle'))}</h2>
+        <p class="end-lead">${esc(T('jsLead'))}</p>
+        ${done ? `<p class="js-done" role="status">${esc(T('jsDone'))}</p>` : ''}
+        ${JS.questions.map(qHtml).join('')}
+      </div>`;
+  }
+  function bindJSurvey() {
+    document.querySelectorAll('#endingScreen .js-opt').forEach((b) => b.addEventListener('click', () => {
+      const q = JS.questions.find((x) => x.id === b.dataset.q);
+      if (!q || player.jsurveyDone) return;
+      const a = jsAns();
+      if (q.type === 'many') {
+        const set = new Set(a[q.id] || []);
+        if (set.has(b.dataset.v)) set.delete(b.dataset.v); else set.add(b.dataset.v);
+        a[q.id] = q.opts.map(L).filter((o) => set.has(o)); // 보기 순서대로
+      } else a[q.id] = b.dataset.v;
+      save();
+      const box = $(`jsq-${q.id}`);
+      box.classList.remove('miss');
+      box.querySelectorAll('.js-opt').forEach((x) => {
+        const on = q.type === 'many' ? a[q.id].includes(x.dataset.v) : a[q.id] === x.dataset.v;
+        x.classList.toggle('on', on); x.setAttribute('aria-pressed', String(on));
+      });
+      sfx('buoy');
+    }));
+    document.querySelectorAll('#endingScreen .js-text').forEach((ta) => ta.addEventListener('input', () => {
+      jsAns()[ta.dataset.q] = ta.value;
+      $(`jsq-${ta.dataset.q}`).classList.remove('miss');
+      clearTimeout(ta._t); ta._t = setTimeout(save, 400);
+    }));
+  }
+  function submitJSurvey() {
+    const miss = JS.questions.filter((q) => jsRequired(q) && !jsFilled(q));
+    document.querySelectorAll('#endingScreen .js-q').forEach((f) => f.classList.toggle('miss', miss.some((q) => `jsq-${q.id}` === f.id)));
+    if (miss.length) {
+      toast(T('jsMissing', miss.length));
+      const first = $(`jsq-${miss[0].id}`);
+      if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    // 학교 구글 설문지로 보내기 (주소가 아직 없으면 이 기기에만 저장)
+    try {
+      const E = JS.entries || {};
+      if (JS.action) {
+        const body = new URLSearchParams();
+        const put = (k, v) => { if (E[k] && v != null && v !== '') body.append(E[k], String(v)); };
+        const a = jsAns();
+        put('nick', player.nick);
+        put('mode', padMode() ? '태블릿' : '컴퓨터');
+        JS.questions.forEach((q) => put(q.id, Array.isArray(a[q.id]) ? a[q.id].join(', ') : a[q.id]));
+        if (!(navigator.sendBeacon && navigator.sendBeacon(JS.action, body))) fetch(JS.action, { method: 'POST', mode: 'no-cors', body }).catch(() => {});
+      }
+    } catch (e) { /* 보내기 실패는 조용히 */ }
+    player.jsurveyDone = Date.now();
+    save();
+    reportProgress('junior survey');
+    sfx('star');
+    toast(T('jsThanks'));
+    renderEnding();
+    endDir = 1;
+    setTimeout(() => { if (END_STEPS[endStep] === 'jsurvey') { endStep++; renderEnding(); } }, 1400);
+  }
   function askCertUploaded() {
     openInfo('📌', T('certAskTitle'), `<div class="cert-ask">
         <p>${esc(T('certAskText'))}</p>
-        <ol class="cert-ask-steps">${(certCanCopy() ? ['certUp1', 'certUp2', 'certUp3'] : isTouchPad() ? ['certUp1Pad', 'certUp2', 'certUp3Pad'] : ['certUp1Save', 'certUp2', 'certUp3Save']).map((k) => `<li>${esc(T(k))}</li>`).join('')}</ol>
+        <ol class="cert-ask-steps">${(certCanCopy() ? ['certUp1', 'certUp2', 'certUp3'] : padMode() ? ['certUp1Pad', 'certUp2', 'certUp3Pad'] : ['certUp1Save', 'certUp2', 'certUp3Save']).map((k) => `<li>${esc(T(k))}</li>`).join('')}</ol>
         <div class="t-buttons">
           <button type="button" class="btn btn-go" id="certAskNo">${esc(T('certAskNo'))}</button>
           <button type="button" class="btn btn-ghost" id="certAskYes">${esc(T('certAskYes'))}</button>
