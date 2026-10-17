@@ -517,6 +517,33 @@ window.STATIONS = [
       { yt: 'Bze-QbeThmg', title: { ko: '"할아버지가 목숨 바친 나라가 궁금했어요"', es: '"Quería conocer el país por el que mi abuelo dio la vida"' }, by: '연합뉴스TV', len: '1:28' }
     ],
     // ★TODO 학생들이 답사 때 찍은 기념비 사진을 img/ 폴더에 넣고 image: 'img/memorial.jpg' 추가
+    /* 🕊️ 가상 방문·추모 — 직접 못 가도 위치를 알고, 기념비를 둘러보고, 꽃을 놓고 묵념해요
+       출처: 인천투데이·위키백과(연희동 213-7 일대 경명공원, 2018.7.25. 이전), 2026년 기사(서해구 75주년 추모식)
+       spots: 그림에서 누르는 곳 (at: 그림 속 자리 x, y)
+       ★TODO 교사: 조각의 뜻은 '꼬끼오 History' 영상(1:54~3:44) 설명과 맞는지 한 번 확인해 주세요 */
+    visit: {
+      address: { ko: '인천광역시 서해구(옛 서구) 연희동 213-7 일대 · 경명공원 안', es: 'Parque Gyeongmyeong, Yeonhui-dong 213-7, distrito de Seohae-gu (antes Seo-gu), Incheon' },
+      mapQuery: '콜롬비아군 참전기념비',
+      where: {
+        ko: '기념비는 처음에 1975년 가정동 콜롬비아공원에 세워졌어요. 그 자리에 도시철도 2호선 공사와 새 도시 개발이 시작되면서, 2018년 7월 25일 지금의 경명공원으로 옮겨 왔어요. 인천 지도에서 반짝이는 별이 기념비 자리예요.',
+        es: 'El monumento se levantó en 1975 en el parque Colombia de Gajeong-dong. Cuando allí empezaron las obras de la línea 2 del metro y un nuevo barrio, el 25 de julio de 2018 se trasladó al parque Gyeongmyeong. La estrella que brilla en el mapa de Incheon marca el lugar.'
+      },
+      spots: [
+        { id: 'soldier', at: [128, 128],
+          name: { ko: '칼을 든 군인', es: 'El soldado con la espada' },
+          text: { ko: '칼을 들고 서 있는 군인 조각이에요. 먼 나라의 평화를 지키려고 용감하게 싸운 콜롬비아 군인들을 떠올리게 해요.', es: 'La escultura de un soldado de pie con una espada: hace pensar en los soldados colombianos que lucharon con valentía por la paz de un país lejano.' } },
+        { id: 'woman', at: [196, 178],
+          name: { ko: '무릎 꿇고 기도하는 여인', es: 'La mujer arrodillada' },
+          text: { ko: '무릎을 꿇고 기도하는 여인 조각이에요. 돌아오지 못한 군인들을 그리워하며 평화를 비는 마음이 느껴져요.', es: 'La escultura de una mujer arrodillada en oración: transmite la nostalgia por los soldados que no volvieron y el deseo de paz.' } },
+        { id: 'sail', at: [262, 92],
+          name: { ko: '돛을 닮은 하얀 벽', es: 'El muro blanco en forma de vela' },
+          text: { ko: '배의 돛처럼 생긴 하얀 벽이에요. 콜롬비아 군인들이 먼 바다를 건너 배를 타고 한국에 온 길을 떠올리게 해요.', es: 'Un muro blanco con forma de vela: recuerda el largo viaje por mar de los soldados colombianos hasta Corea.' } },
+        { id: 'stone', at: [312, 196],
+          name: { ko: '두 나라 말로 새긴 비문', es: 'La inscripción en dos idiomas' },
+          text: { ko: '한국어와 스페인어로 글이 새겨져 있어요. "611명의 고귀한 생명이 피를 흘렸다"는 말로 콜롬비아 군인들의 희생을 기억해요.', es: 'Tiene un texto en coreano y en español que recuerda el sacrificio de los soldados colombianos: "611 nobles vidas derramaron su sangre".' } }
+      ],
+      silence: 10 // 묵념 시간(초)
+    },
     heroes: [],
     quiz: {
       type: 'choice',

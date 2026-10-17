@@ -191,6 +191,16 @@
         date: 'Built Sep 24, 1975 → moved Jul 25, 2018',
         place: 'Gyeongmyeong Park, Incheon',
         story: 'In Gyeongmyeong Park in Incheon stands the memorial to the Colombian soldiers of the Korean War. It has a statue of a soldier holding a sword, a woman kneeling in prayer, and a white wall shaped like a ship\'s sail. The stone carries words in Korean and Spanish remembering the sacrifice of 611 people. A memorial ceremony is held there every year.',
+        visit: {
+          address: 'Gyeongmyeong Park, 213-7 Yeonhui-dong, Seohae-gu (formerly Seo-gu), Incheon',
+          where: 'The memorial was first built in 1975 in Colombia Park in Gajeong-dong. When work on subway Line 2 and a new town began there, it was moved to Gyeongmyeong Park on July 25, 2018. The shining star on the Incheon map marks the spot.',
+          spots: [
+            ['The soldier with a sword', 'A statue of a soldier standing with a sword. It reminds us of the Colombian soldiers who fought bravely for peace in a faraway country.'],
+            ['The kneeling woman', 'A statue of a woman kneeling in prayer. You can feel her longing for the soldiers who did not come home and her wish for peace.'],
+            ['The white wall shaped like a sail', 'A white wall shaped like a ship\'s sail. It reminds us of the long sea journey the Colombian soldiers made to Korea.'],
+            ['Words in two languages', 'Words are carved in Korean and Spanish. They remember the sacrifice of the Colombian soldiers: "611 noble lives shed their blood."']
+          ]
+        },
         videos: ['"Leave the hill battles to us!" The Colombian memorial', 'Reunion after 70 years: Colombian veterans visit Korea', '"I wanted to see the country my grandfather fought for"'],
         quiz: {
           q: 'What does the number 611 on the memorial mean?',
@@ -442,6 +452,10 @@
     if (s.find && e.find) ['q', 'hint', 'explain'].forEach((k) => put(s.find[k], e.find[k]));
     (s.timeline || []).forEach((t, i) => { if (e.timeline && e.timeline[i]) { put(t.date, e.timeline[i][0]); put(t.text, e.timeline[i][1]); } });
     (s.videos || []).forEach((v, i) => put(v.title, e.videos && e.videos[i]));
+    if (s.visit && e.visit) {
+      put(s.visit.address, e.visit.address); put(s.visit.where, e.visit.where);
+      (s.visit.spots || []).forEach((p, i) => { const ep = e.visit.spots && e.visit.spots[i]; if (ep) { put(p.name, ep[0]); put(p.text, ep[1]); } });
+    }
     (s.heroes || []).forEach((h, i) => { const eh = e.heroes && e.heroes[i]; if (eh) ['author', 'name', 'role', 'body'].forEach((k) => put(h[k], eh[k])); });
     if (s.quiz && e.quiz) {
       put(s.quiz.q, e.quiz.q); put(s.quiz.explain, e.quiz.explain);

@@ -366,6 +366,21 @@
       kStory: '그곳에서 있었던 일',
       kTimeline: '전쟁의 흐름 한눈에 보기',
       kHero: '위인전 카드',
+      kVisit: '가상 방문 · 추모하기',
+      visitWhere: '📍 기념비는 어디에 있을까요?',
+      visitMaps: '지도 앱에서 직접 찾아보기',
+      mapNaver: '네이버 지도', mapKakao: '카카오맵', mapGoogle: '구글 지도',
+      visitLook: '🏛️ 기념비 둘러보기',
+      visitLookHint: (n, t) => `그림에서 반짝이는 곳을 눌러 보세요. (${n} / ${t})`,
+      visitDrawn: '그림으로 간단히 그린 모습이에요. 진짜 모습은 앞에서 본 영상에서 확인해요.',
+      visitTribute: '💐 추모하기',
+      tributeLocked: '기념비를 다 둘러보면 추모할 수 있어요.',
+      flowerBtn: '💐 꽃 놓기', flowerDone: '꽃을 놓았어요',
+      silenceBtn: (n) => `🙏 ${n}초 묵념하기`, silenceNow: (n) => `눈을 감고 마음속으로 감사해요… ${n}`, silenceDone: '묵념을 마쳤어요',
+      msgLabel: '✍️ 콜롬비아 용사들께 남기는 추모 한마디 (하고 싶은 친구만)',
+      msgPh: '예) 먼 나라의 평화를 지켜 주셔서 고맙습니다.',
+      msgSave: '남기기', msgSaved: '추모 한마디를 남겼어요',
+      tributeDone: '🕊️ 추모를 마쳤어요. 용사들의 희생을 오래 기억할게요.',
       kQuiz: '추리 퀴즈',
       kQuestion: '질문 카드',
       kVideo: '영상으로 보기',
@@ -955,6 +970,21 @@
       kStory: 'Qué pasó aquí',
       kTimeline: 'La guerra de un vistazo',
       kHero: 'Tarjeta biográfica',
+      kVisit: 'Visita virtual y homenaje',
+      visitWhere: '📍 ¿Dónde está el monumento?',
+      visitMaps: 'Búscalo tú mismo en un mapa',
+      mapNaver: 'Naver Map', mapKakao: 'Kakao Map', mapGoogle: 'Google Maps',
+      visitLook: '🏛️ Recorre el monumento',
+      visitLookHint: (n, t) => `Toca los puntos que brillan en el dibujo. (${n} / ${t})`,
+      visitDrawn: 'Es un dibujo sencillo, no una foto del monumento real.',
+      visitTribute: '💐 Rinde homenaje',
+      tributeLocked: 'Cuando termines de recorrer el monumento, podrás rendir homenaje.',
+      flowerBtn: '💐 Dejar una flor', flowerDone: 'Dejaste una flor',
+      silenceBtn: (n) => `🙏 Guardar ${n} segundos de silencio`, silenceNow: (n) => `Cierra los ojos y da las gracias en silencio… ${n}`, silenceDone: 'Guardaste un momento de silencio',
+      msgLabel: '✍️ Un mensaje para los combatientes colombianos (si quieres)',
+      msgPh: 'Ej.: Gracias por proteger la paz de un país lejano.',
+      msgSave: 'Dejar mensaje', msgSaved: 'Dejaste tu mensaje',
+      tributeDone: '🕊️ Has rendido homenaje. Recordaremos siempre su sacrificio.',
       kQuiz: 'Ponte a prueba',
       kQuestion: 'Tarjeta de pregunta',
       kVideo: 'Ver en video',
@@ -1543,6 +1573,21 @@
       kStory: 'What happened here',
       kTimeline: 'The war at a glance',
       kHero: 'Hero story card',
+      kVisit: 'Virtual visit & tribute',
+      visitWhere: '📍 Where is the memorial?',
+      visitMaps: 'Find it yourself on a map',
+      mapNaver: 'Naver Map', mapKakao: 'Kakao Map', mapGoogle: 'Google Maps',
+      visitLook: '🏛️ Look around the memorial',
+      visitLookHint: (n, t) => `Tap the shining spots in the picture. (${n} / ${t})`,
+      visitDrawn: 'This is a simple drawing, not a photo of the real memorial.',
+      visitTribute: '💐 Pay tribute',
+      tributeLocked: 'Look around the whole memorial first, then you can pay tribute.',
+      flowerBtn: '💐 Lay a flower', flowerDone: 'You laid a flower',
+      silenceBtn: (n) => `🙏 ${n} seconds of silence`, silenceNow: (n) => `Close your eyes and say thank you in your heart… ${n}`, silenceDone: 'You kept a moment of silence',
+      msgLabel: '✍️ A message for the Colombian soldiers (if you like)',
+      msgPh: 'e.g. Thank you for protecting peace in a faraway country.',
+      msgSave: 'Leave it', msgSaved: 'You left your message',
+      tributeDone: '🕊️ You paid tribute. We will always remember their sacrifice.',
       kQuiz: 'Guess quiz',
       kQuestion: 'Question card',
       kVideo: 'Watch a video',
@@ -3454,7 +3499,7 @@
     label(126.86, 37.555, T('inchSeoul'), 'i-note');
     // 경명공원 (⑩ 작전 지점) 자리
     const [mx, my] = IP(126.675, 37.548);
-    svgEl('path', { d: `M${mx} ${my - 11} l3.2 7 7.6 .8 -5.7 5 1.7 7.4 -6.8 -3.9 -6.8 3.9 1.7 -7.4 -5.7 -5 7.6 -.8z`, class: 'i-memorial' }, svg);
+    svgEl('path', { d: `M${mx} ${my - 11} l3.2 7 7.6 .8 -5.7 5 1.7 7.4 -6.8 -3.9 -6.8 3.9 1.7 -7.4 -5.7 -5 7.6 -.8z`, class: 'i-memorial', id: 'inchMemStar' }, svg);
     label(126.675, 37.567, T('inchMemorial'), 'i-note');
 
     // 작전 효과 층 + 핀
@@ -3979,6 +4024,7 @@
     if (s.mission === 'lighthouse') steps.push({ type: 'mission' });
     if (s.timeline && s.timeline.length) steps.push({ type: 'timeline' });
     if (videosOf(s).length) steps.push({ type: 'video' });
+    if (s.visit) steps.push({ type: 'visit' });
     (s.heroes || []).forEach((h) => steps.push({ type: 'hero', h, cid: h.card || null }));
     if (s.quiz) steps.push({ type: 'quiz' });
     (s.questions || []).forEach((qid) => { if (QUESTIONS[qid]) steps.push({ type: 'question', qid }); });
@@ -4012,6 +4058,7 @@
     // 배가 도착하기 전에 닫아도 25일 항해의 별은 받아요
     if (cur && cur.s.offMap && cur.completed) giveStars('voyage', RULES.voyage, $('starChip'));
     stopWatch();
+    stopSilence();
     stopTimeline();
     endMission();
     $('map').classList.remove('finding', 'hide-line38', 'hide-dmz');
@@ -4108,6 +4155,164 @@
       </article>`;
     annotate($('opDetail'));
     showOpFx(op.id);
+  }
+
+  /* ---------------- 🕊️ 가상 방문·추모: 위치 알기 → 기념비 둘러보기 → 꽃 놓기·묵념·추모 한마디 ---------------- */
+  // 기록: player.tribute = { flower, silence, text, time } (선생님 미리 보기는 저장하지 않아요)
+  const tribStore = () => (previewMode || !player ? (cur.previewTrib = cur.previewTrib || {}) : (player.tribute = player.tribute || {}));
+  const tribSave = () => { if (!previewMode && player) save(); };
+  function stopSilence() {
+    if (!cur || !cur.silenceTimer) return;
+    clearInterval(cur.silenceTimer);
+    cur.silenceTimer = 0;
+    document.body.classList.remove('silence');
+    bgmSync();
+  }
+  function visitHtml(s) {
+    const v = s.visit, t = tribStore();
+    const q = encodeURIComponent(v.mapQuery);
+    const maps = [['mapNaver', `https://map.naver.com/p/search/${q}`], ['mapKakao', `https://map.kakao.com/?q=${q}`], ['mapGoogle', `https://www.google.com/maps/search/?api=1&query=${q}`]];
+    if (lang !== 'ko') maps.unshift(maps.pop()); // 스페인어·영어 화면은 구글 지도부터
+    return `<div class="kicker game-k">🕊️ ${esc(T('kVisit'))}</div>
+      <section class="visit-part">
+        <h4>${esc(T('visitWhere'))}</h4>
+        <p class="visit-addr">${esc(L(v.address))}</p>
+        <p class="story-text">${esc(L(v.where))}</p>
+        <p class="t-help">${esc(T('visitMaps'))}</p>
+        <div class="visit-maps">${maps.map(([k, u]) => `<a class="btn btn-sm btn-blue" href="${esc(u)}" target="_blank" rel="noopener">🗺️ ${esc(T(k))} ↗</a>`).join('')}</div>
+      </section>
+      <section class="visit-part">
+        <h4>${esc(T('visitLook'))}</h4>
+        <p class="t-help" id="visitCount"></p>
+        <div class="visit-scene"><svg id="visitSvg" viewBox="0 0 380 240" role="group" aria-label="${esc(L(s.name))}"></svg></div>
+        <div class="visit-spot" id="visitSpot" role="status" hidden></div>
+        <p class="skip-hint">${esc(T('visitDrawn'))}</p>
+      </section>
+      <section class="visit-part" id="visitTrib">
+        <h4>${esc(T('visitTribute'))}</h4>
+        <p class="t-help" id="tribLock">${esc(T('tributeLocked'))}</p>
+        <div class="trib-acts">
+          <button type="button" class="btn btn-go" id="flowerBtn"></button>
+          <button type="button" class="btn btn-go" id="silenceBtn"></button>
+        </div>
+        <label class="trib-label" for="tribMsg">${esc(T('msgLabel'))}</label>
+        <div class="trib-row">
+          <textarea id="tribMsg" class="guess" maxlength="80" rows="2" placeholder="${esc(T('msgPh'))}">${esc(t.text || '')}</textarea>
+          <button type="button" class="btn btn-sm btn-blue" id="tribSave">${esc(T('msgSave'))}</button>
+        </div>
+        <small class="trib-note" id="tribNote" role="alert"></small>
+        <p class="trib-done" id="tribDone" role="status" hidden>${esc(T('tributeDone'))}</p>
+      </section>`;
+  }
+  // 기념비 그림 (사진이 아니라 간단한 그림): 하얀 돛 벽 · 칼을 든 군인 · 기도하는 여인 · 비석
+  function drawMemorialScene(svg, v) {
+    svgEl('rect', { x: 0, y: 0, width: 380, height: 240, class: 'vs-sky' }, svg);
+    svgEl('rect', { x: 0, y: 206, width: 380, height: 34, class: 'vs-grass' }, svg);
+    svgEl('path', { d: 'M40 214 L340 214 L352 224 L28 224 Z', class: 'vs-step' }, svg);
+    svgEl('path', { d: 'M228 214 L228 34 Q300 70 336 214 Z', class: 'vs-sail' }, svg);
+    svgEl('path', { d: 'M236 214 L236 58 Q290 90 318 214', class: 'vs-sail-line' }, svg);
+    // 군인 (받침대 위)
+    svgEl('rect', { x: 98, y: 168, width: 60, height: 46, rx: 3, class: 'vs-base' }, svg);
+    const sol = svgEl('g', { class: 'vs-bronze' }, svg);
+    svgEl('circle', { cx: 128, cy: 66, r: 10 }, sol);
+    svgEl('path', { d: 'M116 80 Q128 74 140 80 L144 128 L136 128 L134 166 L124 166 L122 128 L112 128 Z' }, sol);
+    svgEl('path', { d: 'M140 84 L152 70 L156 74 L144 92 Z' }, sol);
+    svgEl('path', { d: 'M152 72 L162 22', class: 'vs-sword' }, svg);
+    // 무릎 꿇고 기도하는 여인
+    const wom = svgEl('g', { class: 'vs-bronze' }, svg);
+    svgEl('circle', { cx: 196, cy: 152, r: 8 }, wom);
+    svgEl('path', { d: 'M188 162 Q196 158 204 164 L208 192 L222 196 L222 212 L180 212 L184 190 Z' }, wom);
+    svgEl('path', { d: 'M200 168 L212 160 L214 164 L204 174 Z' }, wom);
+    // 비석
+    svgEl('rect', { x: 284, y: 174, width: 60, height: 38, rx: 3, class: 'vs-stone' }, svg);
+    [184, 192, 200].forEach((y) => svgEl('line', { x1: 292, y1: y, x2: 336, y2: y, class: 'vs-text' }, svg));
+    svgEl('g', { id: 'vsFlowers' }, svg);
+    // 누르는 곳
+    v.spots.forEach((sp, k) => {
+      const g = svgEl('g', { class: 'vs-spot', 'data-k': k, transform: `translate(${sp.at[0]} ${sp.at[1]})`, tabindex: 0, role: 'button', 'aria-label': L(sp.name) }, svg);
+      svgEl('circle', { r: 16, class: 'vs-ring' }, g);
+      svgEl('circle', { r: 7, class: 'vs-dot' }, g);
+    });
+  }
+  function drawFlower() {
+    const g = $('vsFlowers');
+    if (!g || g.childNodes.length) return;
+    const f = svgEl('g', { class: 'vs-flower', transform: 'translate(252 214)' }, g);
+    [-10, 0, 10].forEach((dx) => svgEl('path', { d: `M0 0 L${dx} -16`, class: 'vs-stem' }, f));
+    [[-10, -16, '#e8455b'], [0, -18, '#ffd23f'], [10, -16, '#2f6fd6'], [-5, -21, '#ffffff'], [5, -21, '#e8455b']].forEach(([x, y, c]) => svgEl('circle', { cx: x, cy: y, r: 4.2, fill: c, class: 'vs-petal' }, f));
+  }
+  function bindVisit(s) {
+    const v = s.visit, t = tribStore(), svg = $('visitSvg');
+    drawMemorialScene(svg, v);
+    if (t.flower) drawFlower();
+    cur.seenSpots = cur.seenSpots || new Set();
+    if (t.flower || t.silence || isDone(s.id) || previewMode) v.spots.forEach((_, k) => cur.seenSpots.add(k));
+    const all = () => cur.seenSpots.size >= v.spots.length;
+    const refresh = () => {
+      $('visitCount').textContent = T('visitLookHint', cur.seenSpots.size, v.spots.length);
+      svg.querySelectorAll('.vs-spot').forEach((g) => g.classList.toggle('seen', cur.seenSpots.has(+g.dataset.k)));
+      const open = all(), running = !!cur.silenceTimer;
+      $('tribLock').hidden = open;
+      $('visitTrib').classList.toggle('locked', !open);
+      $('flowerBtn').disabled = !open || !!t.flower;
+      $('flowerBtn').textContent = t.flower ? `✓ ${T('flowerDone')}` : T('flowerBtn');
+      $('silenceBtn').disabled = !open || !!t.silence || running;
+      if (!running) $('silenceBtn').textContent = t.silence ? `✓ ${T('silenceDone')}` : T('silenceBtn', v.silence);
+      $('tribMsg').disabled = !open;
+      $('tribSave').disabled = !open;
+      $('tribDone').hidden = !(t.flower && t.silence);
+      unlockNext();
+    };
+    const pickSpot = (k) => {
+      const sp = v.spots[k];
+      cur.seenSpots.add(k);
+      const box = $('visitSpot');
+      box.hidden = false;
+      box.innerHTML = `<b>${esc(L(sp.name))}</b><p>${esc(L(sp.text))}</p>`;
+      svg.querySelectorAll('.vs-spot').forEach((g) => g.classList.toggle('sel', +g.dataset.k === k));
+      sfx('buoy');
+      refresh();
+    };
+    svg.querySelectorAll('.vs-spot').forEach((g) => {
+      g.addEventListener('click', () => pickSpot(+g.dataset.k));
+      g.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pickSpot(+g.dataset.k); } });
+    });
+    $('flowerBtn').addEventListener('click', () => {
+      t.flower = Date.now();
+      tribSave();
+      drawFlower();
+      sfx('piece');
+      refresh();
+    });
+    $('silenceBtn').addEventListener('click', () => {
+      let left = v.silence || 10;
+      Sound.bgm(null); // 묵념 동안은 배경음악도 멈춰요
+      document.body.classList.add('silence');
+      const btn = $('silenceBtn');
+      btn.textContent = T('silenceNow', left);
+      cur.silenceTimer = setInterval(() => {
+        left -= 1;
+        if (left > 0) { btn.textContent = T('silenceNow', left); return; }
+        stopSilence();
+        t.silence = Date.now();
+        tribSave();
+        sfx('key');
+        refresh();
+      }, 1000);
+      refresh();
+    });
+    $('tribSave').addEventListener('click', () => {
+      const box = $('tribMsg'), text = box.value.trim();
+      if (!text) return;
+      const bad = textProblem(text);
+      if (bad) { $('tribNote').textContent = bad; $('tribNote').classList.add('bad'); box.classList.add('is-error'); return; }
+      box.classList.remove('is-error');
+      $('tribNote').classList.remove('bad');
+      t.text = text; t.time = Date.now();
+      tribSave();
+      $('tribNote').textContent = `✓ ${T('msgSaved')}`;
+    });
+    refresh();
   }
 
   /* ---------------- 영상: 썸네일을 누르면 재생 (학교 인터넷 아끼기) ---------------- */
@@ -4429,6 +4634,7 @@
 
   function renderStep() {
     stopWatch();
+    stopSilence();
     const { s, steps, step } = cur;
     // 📌 작전 지점 안에서 몇 번째 단계를 보고 있는지 기억해요 → 페이지가 새로 열려도(태블릿에서 영상·유튜브 앱을 오가다가 등) 그 단계부터
     if (player && !previewMode && !cur.retryQuiz && !isDone(s.id) && (!player.at || player.at.id !== s.id || player.at.step !== step || player.at.video !== cur.video)) {
@@ -4476,6 +4682,8 @@
         <button id="mRetry" class="btn btn-ghost btn-sm" type="button">${esc(T('mRetry'))}</button>`;
     } else if (st.type === 'video') {
       html = videoCardHtml(s);
+    } else if (st.type === 'visit') {
+      html = visitHtml(s);
     } else if (st.type === 'hero') {
       const h = st.h;
       html = `<div class="kicker">${esc(T('kHero'))}</div>
@@ -4516,6 +4724,14 @@
     if (st.type === 'video') bindVideo();
     if (st.type === 'ops') bindOps();
     else if (s.inset === 'incheon') showOpFx(null);
+    if (s.visit) {
+      // 🕊️ 가상 방문 때는 인천 지도로 바꿔서 기념비 자리(별)를 반짝여요
+      const onVisit = st.type === 'visit';
+      showLayer(onVisit ? 'incheon' : null);
+      $('incheon').classList.toggle('mem-focus', onVisit);
+      $('mapHome').hidden = onVisit;
+      if (onVisit) bindVisit(s);
+    }
     if (st.type === 'hero' && st.cid) unlockCard(st.cid);
     if (st.type === 'hero' && st.h.link && $('workLink')) {
       // 🎨 모둠 작품(캔바 사이트)은 다른 사이트라 스크롤을 읽을 수 없어요 → 연 뒤 1분(WORK_MIN) 넘게 보고 와야 [다음]이 열려요
@@ -4582,6 +4798,7 @@
     if (st.type === 'quiz') return quizStore()[s.id] === undefined;
     if (st.type === 'find') return !(cur.finding && cur.finding.done) && !(cur.cleared && cur.cleared.has(cur.step));
     if (st.type === 'hero' && st.h.link) return !(player.works && player.works[st.h.link]);
+    if (st.type === 'visit') { const t = tribStore(); return !(t.flower && t.silence); }
     return false;
   }
   function unlockNext() { if (cur) $('nextBtn').disabled = stepLocked(cur.s, cur.steps[cur.step]); }
@@ -4924,6 +5141,7 @@
       if (x.type === 'hero') return !!x.cid && !(player.cards || {})[x.cid];
       if (x.type === 'quiz') return lacking(`quiz:${s.id}`, RULES.quiz[0]);
       if (x.type === 'question') return !st[`q:${x.qid}`];
+      if (x.type === 'visit') return !(player.tribute && player.tribute.flower && player.tribute.silence);
       return false;
     });
     if (k > 0) { cur.step = k; renderStep(); }

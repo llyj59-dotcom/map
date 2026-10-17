@@ -1368,3 +1368,48 @@ body.modal-open { overflow: hidden; }
   #printArea .pf-cert img { max-width: 100%; max-height: 250mm; }
   #printArea .pf-foot { margin-top: 12pt; color: #555; font-size: 10pt; }
 }
+
+/* ---------- 🕊️ 가상 방문·추모 (⑫ 콜롬비아군 참전기념비) ---------- */
+#incheon.mem-focus .op-pin, #incheon.mem-focus #opFx { opacity: .25; pointer-events: none; }
+#incheon.mem-focus #inchMemStar { stroke-width: 3; transform-box: fill-box; transform-origin: center; animation: memStar 1.6s ease-in-out infinite; }
+@keyframes memStar { 50% { transform: scale(1.6); } }
+.visit-part { margin: 14px 0 6px; padding-top: 12px; border-top: 2px dashed #e4e0d4; }
+.visit-part:first-of-type { border-top: 0; padding-top: 0; }
+.visit-part h4 { margin: 0 0 8px; font-family: var(--display); font-weight: 400; font-size: 21px; }
+.visit-addr { margin: 0 0 8px; padding: 10px 12px; border-radius: 14px; background: #fffbea; border: 2px solid var(--co-yellow); font-weight: 700; }
+.visit-maps { display: flex; flex-wrap: wrap; gap: 8px; }
+.visit-maps a { text-decoration: none; }
+.visit-scene { border-radius: 18px; overflow: hidden; border: 3px solid #e4e0d4; }
+.visit-scene svg { display: block; width: 100%; height: auto; }
+.vs-sky { fill: #dcecf8; }
+.vs-grass { fill: #9cc98a; }
+.vs-step { fill: #cfc8bb; }
+.vs-sail { fill: #fff; stroke: #c4ccd6; stroke-width: 2; }
+.vs-sail-line { fill: none; stroke: #e1e6ec; stroke-width: 2; }
+.vs-base { fill: #b9b2a6; }
+.vs-bronze { fill: #6e5b44; }
+.vs-sword { stroke: #8a8f96; stroke-width: 3; stroke-linecap: round; }
+.vs-stone { fill: #4a4f57; }
+.vs-text { stroke: #c8ccd2; stroke-width: 2; stroke-linecap: round; }
+.vs-stem { stroke: #3d8a3a; stroke-width: 2; fill: none; }
+.vs-flower { animation: fadeUp .5s ease; }
+.vs-spot { cursor: pointer; outline: none; }
+.vs-ring { fill: rgba(252, 209, 22, .25); stroke: var(--co-yellow); stroke-width: 3; animation: focusPulse 1.4s ease-in-out infinite; }
+.vs-dot { fill: var(--co-yellow); stroke: var(--co-blue); stroke-width: 2; }
+.vs-spot.seen .vs-ring { animation: none; fill: rgba(255, 255, 255, .35); stroke: #fff; }
+.vs-spot.seen .vs-dot { fill: #fff; }
+.vs-spot.sel .vs-dot, .vs-spot:focus-visible .vs-dot { fill: var(--co-red); }
+.visit-spot { margin-top: 10px; padding: 12px 14px; border-radius: 14px; background: #f3f7fc; border-left: 5px solid var(--co-blue); animation: fadeUp .3s ease; }
+.visit-spot p { margin: 4px 0 0; }
+#visitTrib.locked .trib-acts, #visitTrib.locked .trib-row, #visitTrib.locked .trib-label { opacity: .45; }
+.trib-acts { display: flex; flex-wrap: wrap; gap: 10px; margin: 6px 0 12px; }
+.trib-label { display: block; font-weight: 700; margin-bottom: 6px; }
+.trib-row { display: flex; gap: 8px; align-items: flex-start; flex-wrap: wrap; }
+.trib-row textarea { flex: 1 1 220px; min-width: 0; }
+.trib-note { display: block; min-height: 1.2em; margin-top: 4px; color: var(--ok); font-weight: 700; }
+.trib-note.bad { color: var(--no); }
+.trib-row .guess { min-height: 70px; }
+.trib-done { margin: 12px 0 0; padding: 12px 14px; border-radius: 14px; background: #eaf6ea; font-weight: 700; animation: fadeUp .4s ease; }
+/* 묵념하는 동안 화면을 살짝 어둡게 */
+body.silence::after { content: ''; position: fixed; inset: 0; background: rgba(10, 20, 40, .35); pointer-events: none; z-index: 50; animation: fadeUp .6s ease; }
+.guess.is-error { border-color: var(--no); }
