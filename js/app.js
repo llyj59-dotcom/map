@@ -9,10 +9,29 @@
   const CONFIG = window.MAP_CONFIG;
   // 🧒 3·4학년용 링크: 주소 끝에 ?grade=34 를 붙이면 소감 설문 없이 '더 해 보기 → 인증서 → 끝'
   const JUNIOR = (() => { try { return new URLSearchParams(location.search).get('grade') === '34'; } catch (e) { return false; } })();
-  const NO_SURVEY = (() => { try { const p = new URLSearchParams(location.search); return p.get('grade') === '34' || p.get('survey') === 'off'; } catch (e) { return false; } })();
+  // 🧪 테스터 소감 설문(구글 설문지)은 이제 기본으로 꺼요 — 다시 켜려면 주소 끝에 ?survey=on (3·4학년은 따로 부스 체험 설문)
+  const NO_SURVEY = (() => { try { const p = new URLSearchParams(location.search); return p.get('grade') === '34' || p.get('survey') !== 'on'; } catch (e) { return true; } })();
+  // 🎚️ 수준: ?grade=34 (3·4학년) · 기본 5·6학년 · ?grade=ms (중학교) · ?grade=hs (고등학교)
+  //   사전·사후 점검 문항과 (중·고) 작전 지점 퀴즈·해설이 수준에 맞게 바뀌어요
+  // 🏫 반 주소: ?class=ABC123 (담임 선생님이 웹앱에서 만든 반) · 선생님용 결과 주소: ?view=ABC123.열쇠
+  const CLASS_CODE = (() => { try { const c = (new URLSearchParams(location.search).get('class') || '').toUpperCase(); return /^[A-Z0-9]{4,8}$/.test(c) ? c : ''; } catch (e) { return ''; } })();
+  const VIEW_KEY = (() => { try { const m = /^([A-Za-z0-9]{4,8})\.([A-Za-z0-9]{6,20})$/.exec(new URLSearchParams(location.search).get('view') || ''); return m ? { cls: m[1].toUpperCase(), key: m[2] } : null; } catch (e) { return null; } })();
+  const GRADE = (() => { try { const g = (new URLSearchParams(location.search).get('grade') || '').toLowerCase(); return ['34', 'ms', 'hs'].includes(g) ? g : '56'; } catch (e) { return '56'; } })();
   const STORE_KEY = 'mapTomorrow.v2';
   const ROSTER_KEY = 'mapTomorrow.roster.v1';
   const N = STATIONS.length;
+  // 🔀 보기 섞기 — id 로 정해지는 순서라 모든 학생·사전/사후가 같은 순서예요 (정답 번호도 함께 옮겨요)
+  const seedOf = (str) => { let h = 2166136261; for (const ch of String(str)) h = Math.imul(h ^ ch.codePointAt(0), 16777619) >>> 0; return h || 1; };
+  function shuffleQuiz(q, seed) {
+    if (!q || q.type !== 'choice') return q;
+    const order = q.options.map((_, k) => k);
+    let x = seedOf(seed);
+    for (let i = order.length - 1; i > 0; i--) { x = Math.imul(x ^ (x >>> 15), 2246822507) >>> 0; x = (x ^ (x >>> 13)) >>> 0; const j = x % (i + 1); [order[i], order[j]] = [order[j], order[i]]; }
+    return Object.assign({}, q, { options: order.map((k) => q.options[k]), answer: order.indexOf(q.answer) });
+  }
+  // 🎓 중학교·고등학교: 작전 지점 퀴즈를 수준에 맞는 문제로 (한국어)
+  const LEVEL_Q = (window.LEVEL_QUIZ || {})[GRADE];
+  if (LEVEL_Q) STATIONS.forEach((s) => { if (LEVEL_Q[s.id]) s.quiz = shuffleQuiz(LEVEL_Q[s.id], `${GRADE}:${s.id}`); });
   // 🔗 claude.ai 링크(아티팩트)로 열 때: 다른 사이트를 페이지 안에 넣을 수 없어서
   //   유튜브는 새 탭으로, 외부 사진은 빼고, 패들렛은 링크로, 인증서는 '저장' 확인 창으로 받아요.
   const SANDBOX = window.MAP_HOST === 'artifact';
@@ -492,6 +511,45 @@
       jsDone: '✅ 설문을 보냈어요. 고마워요!',
       extraFinishJs: '✅ 끝내기 (마지막 설문하러 가기) ▶',
       doneCheckJs: '오늘 활동 설문 보내기',
+      clsOpen: '🏫 선생님: 우리 반 만들기 · 결과 보기',
+      clsLead: '우리 반 주소를 만들어 학생들에게 나눠 주면, 출발 전·도착 점검 결과와 진행 상황을 선생님만 볼 수 있어요. 학생 실명은 모이지 않고 닉네임만 모여요.',
+      clsOff: '반 결과 모으기가 아직 켜져 있지 않아요. 웹앱을 관리하는 선생님께 문의해 주세요.',
+      clsName: '반 이름', clsNamePh: '예) 6학년 8반', clsGrade: '문제 수준',
+      clsGrades: { 34: '3·4학년', 56: '5·6학년', ms: '중학교', hs: '고등학교' },
+      clsMake: '우리 반 만들기', clsMaking: '만드는 중…', clsFail: '만들지 못했어요. 인터넷 연결을 확인하고 다시 해 보세요.', clsNeedName: '반 이름을 적어 주세요.',
+      clsStudentLink: '👧 학생용 주소 — 학생들에게 나눠 주세요', clsTeacherLink: '🔑 선생님용 결과 주소 — 다른 사람에게 알려 주지 마세요!',
+      clsKeep: '선생님용 주소는 꼭 따로 저장해 두세요. 이 기기에도 기억해 둘게요.',
+      clsCopy: '복사', clsCopied: '복사했어요!',
+      clsMine: '이 기기에서 만든 반', clsView: '결과 보기',
+      clsResTitle: (n) => `${n} 결과`,
+      clsLoading: '불러오는 중…', clsBadKey: '주소가 맞지 않아요. 선생님용 결과 주소를 다시 확인해 주세요.', clsLoadFail: '불러오지 못했어요. 인터넷 연결을 확인해 주세요.',
+      clsSummary: (n, done) => `참여 ${n}명 · 도착 점검까지 마친 학생 ${done}명`,
+      clsAvg: (a, b, d) => `평균 점수: 출발 전 ${a} → 도착 후 ${b} (${d})`,
+      clsCols: ['닉네임', '작전 지점', '출발 전', '도착 후', '변화', '생각 변화 (앎·중요)', '11/11 묵념', '추모 카드', '인증서', '마지막 활동'],
+      clsItems: '📊 문항별 정답률 (출발 전 → 도착 후)', clsReflects: '✍️ 학생 소감', clsCsv: '⬇️ 엑셀(CSV)로 받기', clsRefresh: '🔄 새로 고침',
+      clsEmpty: '아직 참여한 학생이 없어요. 학생용 주소로 들어와 닉네임을 정하면 여기에 나타나요.',
+      clsNote: '점수는 학생 화면과 인증서에는 나오지 않고, 이 화면에서만 보여요.',
+      chkPreTitle: '📋 출발 전 점검',
+      chkPreLead: '여정을 떠나기 전에, 지금 알고 있는 만큼만 골라 보세요. 틀려도 괜찮아요! 모르면 "잘 모르겠어요"를 골라요. 여정을 마치고 같은 문제를 다시 풀면 얼마나 자랐는지 볼 수 있어요.',
+      chkPostTitle: '📋 도착 점검',
+      chkPostLead: '출발 전에 풀었던 문제를 다시 풀어 봐요. 여정에서 알게 된 것을 떠올려 보세요!',
+      chkAttTitle: '💭 지금 내 생각은?', chkItemsTitle: '🧩 문제',
+      chkDunno: '잘 모르겠어요',
+      chkLeft: (n) => `아직 ${n}개 남았어요`,
+      chkSubmitPre: '점검 마치고 여정 떠나기 ▶', chkSubmitPost: '점검 마치고 결과 보기 ▶',
+      chkPreDone: '좋아요! 이제 여정을 떠나요. 마지막에 같은 문제를 다시 풀어 볼 거예요.',
+      chkStart: '여정 시작 ▶',
+      chkReflectOpt: '하고 싶으면',
+      chkResultTitle: '📈 나의 성장',
+      chkPre: '출발 전', chkPost: '도착 후',
+      chkGain: (d) => (d > 0 ? `${d}문제 더 알게 되었어요!` : d === 0 ? '출발 전과 같아요' : '다음에 다시 도전해요'),
+      chkNoPre: '출발 전 점검 기록이 이 기기에 없어서, 도착 점검 결과만 보여요.',
+      chkAttChange: '💭 내 생각의 변화',
+      chkReview: '🔎 문제 다시 보기',
+      chkNowRight: '새로 알게 됐어요', chkStillWrong: '다시 확인해요', chkBothRight: '처음부터 알았어요', chkLost: '헷갈렸어요',
+      chkPostNeed: '도착 점검을 먼저 마쳐 주세요.',
+      doneCheckPost: '출발 전·도착 점검 하기',
+      extraFinishPost: '✅ 끝내기 (도착 점검하러 가기) ▶',
       certOnlyTitle: '인증서를 사진으로 저장해요',
       certOnlyLead: '태블릿에서는 패들렛에 올리지 않아도 돼요. 아래 버튼만 누르면 끝!',
       certOnlyAnd: '[📸 인증서 사진으로 저장하기]를 누르면 갤러리(사진) 앱에 저장돼요.',
@@ -1152,6 +1210,45 @@
       jsDone: '✅ Encuesta enviada. ¡Gracias!',
       extraFinishJs: '✅ Terminar (ir a la última encuesta) ▶',
       doneCheckJs: 'Enviar la encuesta de hoy',
+      clsOpen: '🏫 Docentes: crear mi grupo · ver resultados',
+      clsLead: 'Crea el enlace de tu grupo y compártelo con tus estudiantes: solo tú verás los resultados de las pruebas de salida y llegada y su progreso. Solo se guardan apodos, no nombres reales.',
+      clsOff: 'La recopilación de resultados aún no está activada. Consulta con quien administra la aplicación.',
+      clsName: 'Nombre del grupo', clsNamePh: 'Ej.: 6.º B', clsGrade: 'Nivel de las preguntas',
+      clsGrades: { 34: '3.º–4.º de primaria', 56: '5.º–6.º de primaria', ms: 'Secundaria (Corea)', hs: 'Bachillerato (Corea)' },
+      clsMake: 'Crear mi grupo', clsMaking: 'Creando…', clsFail: 'No se pudo crear. Revisa la conexión e inténtalo de nuevo.', clsNeedName: 'Escribe el nombre del grupo.',
+      clsStudentLink: '👧 Enlace para estudiantes — compártelo con ellos', clsTeacherLink: '🔑 Enlace de resultados para docentes — ¡no lo compartas!',
+      clsKeep: 'Guarda el enlace docente en otro lugar. También lo recordaremos en este dispositivo.',
+      clsCopy: 'Copiar', clsCopied: '¡Copiado!',
+      clsMine: 'Grupos creados en este dispositivo', clsView: 'Ver resultados',
+      clsResTitle: (n) => `Resultados: ${n}`,
+      clsLoading: 'Cargando…', clsBadKey: 'El enlace no es válido. Revisa el enlace de resultados para docentes.', clsLoadFail: 'No se pudo cargar. Revisa la conexión.',
+      clsSummary: (n, done) => `${n} estudiantes · ${done} terminaron la prueba de llegada`,
+      clsAvg: (a, b, d) => `Promedio: al principio ${a} → al final ${b} (${d})`,
+      clsCols: ['Apodo', 'Etapas', 'Al principio', 'Al final', 'Cambio', 'Opinión (saber·importancia)', '11/11', 'Tarjeta', 'Certificado', 'Última actividad'],
+      clsItems: '📊 Aciertos por pregunta (al principio → al final)', clsReflects: '✍️ Comentarios de los estudiantes', clsCsv: '⬇️ Descargar CSV (Excel)', clsRefresh: '🔄 Actualizar',
+      clsEmpty: 'Todavía no hay estudiantes. Aparecerán aquí cuando entren con el enlace y elijan su apodo.',
+      clsNote: 'Las puntuaciones solo se muestran aquí, no en la pantalla del estudiante ni en el certificado.',
+      chkPreTitle: '📋 Prueba de salida',
+      chkPreLead: 'Antes de empezar, responde solo con lo que sabes ahora. ¡No importa si te equivocas! Si no sabes, elige "No lo sé". Al final harás las mismas preguntas y verás cuánto aprendiste.',
+      chkPostTitle: '📋 Prueba de llegada',
+      chkPostLead: 'Responde otra vez las preguntas del principio. ¡Recuerda lo que aprendiste en el recorrido!',
+      chkAttTitle: '💭 ¿Qué piensas ahora?', chkItemsTitle: '🧩 Preguntas',
+      chkDunno: 'No lo sé',
+      chkLeft: (n) => `Te faltan ${n}`,
+      chkSubmitPre: 'Terminar y empezar el recorrido ▶', chkSubmitPost: 'Terminar y ver el resultado ▶',
+      chkPreDone: '¡Muy bien! Ahora empieza el recorrido. Al final harás las mismas preguntas.',
+      chkStart: 'Empezar ▶',
+      chkReflectOpt: 'si quieres',
+      chkResultTitle: '📈 Lo que aprendí',
+      chkPre: 'Al principio', chkPost: 'Al final',
+      chkGain: (d) => (d > 0 ? `¡Ahora sabes ${d} ${d === 1 ? 'respuesta' : 'respuestas'} más!` : d === 0 ? 'Igual que al principio' : 'Inténtalo de nuevo otro día'),
+      chkNoPre: 'No hay prueba de salida en este dispositivo; solo se muestra el resultado final.',
+      chkAttChange: '💭 Cómo cambió lo que pienso',
+      chkReview: '🔎 Revisar las preguntas',
+      chkNowRight: 'Lo aprendiste', chkStillWrong: 'Revísalo otra vez', chkBothRight: 'Ya lo sabías', chkLost: 'Te confundiste',
+      chkPostNeed: 'Primero termina la prueba de llegada.',
+      doneCheckPost: 'Hacer las pruebas de salida y llegada',
+      extraFinishPost: '✅ Terminar (ir a la prueba de llegada) ▶',
       certOnlyTitle: 'Guarda tu certificado como foto',
       certOnlyLead: 'En la tableta no hace falta subirlo al Padlet. ¡Solo pulsa el botón de abajo!',
       certOnlyAnd: 'Pulsa [📸 Guardar el certificado en Fotos] y se guardará en la galería.',
@@ -1811,6 +1908,45 @@
       jsDone: '✅ Survey sent. Thank you!',
       extraFinishJs: '✅ Finish (go to the last survey) ▶',
       doneCheckJs: "Send today's survey",
+      clsOpen: '🏫 Teachers: make my class · see results',
+      clsLead: 'Make a link for your class and share it with your students. Only you will see their starting and finishing check results and progress. Only nicknames are collected, never real names.',
+      clsOff: 'Class results are not switched on yet. Please ask the teacher who manages this web app.',
+      clsName: 'Class name', clsNamePh: 'e.g. Grade 6, Class 8', clsGrade: 'Question level',
+      clsGrades: { 34: 'Grades 3–4', 56: 'Grades 5–6', ms: 'Middle school', hs: 'High school' },
+      clsMake: 'Make my class', clsMaking: 'Making…', clsFail: 'Could not make the class. Check the connection and try again.', clsNeedName: 'Please write a class name.',
+      clsStudentLink: '👧 Student link — share it with your students', clsTeacherLink: '🔑 Teacher results link — do not share it!',
+      clsKeep: 'Save the teacher link somewhere safe. This device will remember it too.',
+      clsCopy: 'Copy', clsCopied: 'Copied!',
+      clsMine: 'Classes made on this device', clsView: 'See results',
+      clsResTitle: (n) => `Results: ${n}`,
+      clsLoading: 'Loading…', clsBadKey: 'This link is not valid. Please check the teacher results link.', clsLoadFail: 'Could not load. Please check the connection.',
+      clsSummary: (n, done) => `${n} students · ${done} finished the final check`,
+      clsAvg: (a, b, d) => `Average score: before ${a} → after ${b} (${d})`,
+      clsCols: ['Nickname', 'Stops', 'Before', 'After', 'Change', 'Thinking (know·important)', '11/11', 'Card', 'Certificate', 'Last activity'],
+      clsItems: '📊 Correct answers by question (before → after)', clsReflects: '✍️ Student reflections', clsCsv: '⬇️ Download CSV (Excel)', clsRefresh: '🔄 Refresh',
+      clsEmpty: 'No students yet. They will appear here when they open the student link and choose a nickname.',
+      clsNote: 'Scores appear only here, not on the student screen or the certificate.',
+      chkPreTitle: '📋 Starting check',
+      chkPreLead: 'Before the journey, answer with what you know right now. It is fine to be wrong! If you do not know, choose "I don\'t know". At the end you will answer the same questions and see how much you learned.',
+      chkPostTitle: '📋 Finishing check',
+      chkPostLead: 'Answer the questions from the start again. Think about what you learned on the journey!',
+      chkAttTitle: '💭 What do you think now?', chkItemsTitle: '🧩 Questions',
+      chkDunno: "I don't know",
+      chkLeft: (n) => `${n} left`,
+      chkSubmitPre: 'Finish and start the journey ▶', chkSubmitPost: 'Finish and see my result ▶',
+      chkPreDone: 'Great! Now start the journey. At the end you will answer the same questions again.',
+      chkStart: 'Start ▶',
+      chkReflectOpt: 'if you like',
+      chkResultTitle: '📈 How much I grew',
+      chkPre: 'Before', chkPost: 'After',
+      chkGain: (d) => (d > 0 ? `You now know ${d} more!` : d === 0 ? 'Same as before' : 'Try again another time'),
+      chkNoPre: 'There is no starting check on this device, so only the final result is shown.',
+      chkAttChange: '💭 How my thinking changed',
+      chkReview: '🔎 Review the questions',
+      chkNowRight: 'New learning', chkStillWrong: 'Check again', chkBothRight: 'Knew it already', chkLost: 'Got mixed up',
+      chkPostNeed: 'Please finish the finishing check first.',
+      doneCheckPost: 'Do the starting and finishing checks',
+      extraFinishPost: '✅ Finish (go to the finishing check) ▶',
       certOnlyTitle: 'Save your certificate as a photo',
       certOnlyLead: 'On a tablet you do not need to post it on the Padlet. Just tap the button below!',
       certOnlyAnd: 'Tap [📸 Save certificate to Photos] and it is saved to your gallery.',
@@ -2150,6 +2286,7 @@
     document.documentElement.lang = lang;
     document.querySelectorAll('[data-i18n]').forEach((el) => { el.textContent = T(el.dataset.i18n); });
     try { renderTtbSoon(); } catch (e) { /* 아직 준비 전 */ }
+    try { renderClassFold(); } catch (e) { /* 아직 준비 전 */ }
     $('reportNote').hidden = !reportOn(); // 진행 상황을 선생님께 보낼 때만 알려 줘요
     // 시작 화면: M.A.P.의 뜻 + 이 게임을 만든 까닭
     const mlColor = { M: 'var(--co-blue)', A: 'var(--co-red)', P: '#1f8a4c' };
@@ -2856,6 +2993,7 @@
   const PF = CONFIG.progressForm || {};
   const reportOn = () => !SANDBOX && !!(PF.action && PF.entries && PF.entries.code); // 링크 모드는 다른 사이트로 보낼 수 없어요
   function reportProgress(event) {
+    classSync(event);
     if (!reportOn() || previewMode || !player) return;
     try {
       const E = PF.entries;
@@ -3144,6 +3282,8 @@
     renderSaved();
     closeStartModal();
     renderTtbSoon();
+    renderClassFold();
+    if (VIEW_KEY && !showStart.viewed) { showStart.viewed = true; setTimeout(() => openClassView(VIEW_KEY.cls, VIEW_KEY.key), 500); return; }
     if (ttbAutoOpen()) { setTimeout(() => { if (!$('startScreen').hidden) { openTribute(); ttbFromStart = true; } }, 600); return; }
     if (Object.keys(store.games).length) setTimeout(() => { if (!$('startScreen').hidden) openStartModal('resume'); }, 600);
   }
@@ -3188,6 +3328,7 @@
   function startGame(g) {
     closeStartModal();
     player = g;
+    if (CLASS_CODE && !g.cls) g.cls = CLASS_CODE; // 반 주소로 이어 하면 그 반으로
     store.last = g.id;
     save();
     enterGame();
@@ -3203,7 +3344,7 @@
     $('startError').textContent = err;
     $('nickInput').classList.toggle('is-error', !!err);
     if (err) { $('nickInput').focus(); return; }
-    const g = { id: newId(), nick, done: [], quiz: {}, answers: {}, created: Date.now(), updated: Date.now() };
+    const g = { id: newId(), nick, done: [], quiz: {}, answers: {}, created: Date.now(), updated: Date.now(), cls: CLASS_CODE, grade: GRADE };
     store.games[g.id] = g;
     $('nickInput').value = '';
     startGame(g);
@@ -3977,7 +4118,8 @@
     if ($('guestbookBtn')) $('guestbookBtn').hidden = !previewMode;
     sayNext();
     // 처음 들어오면 임무 안내부터 (이미 하던 여정이라도 안내를 못 봤으면 한 번)
-    if (player && !previewMode && !player.briefed) setTimeout(openBriefing, 500);
+    if (needPreCheck()) setTimeout(() => openPreCheck(() => { if (!player.briefed) openBriefing(); }), 500);
+    else if (player && !previewMode && !player.briefed) setTimeout(openBriefing, 500);
     // 작전 지점을 하다가 페이지가 닫혔으면, 그 지점의 그 단계부터 바로 이어서
     else if (player && !previewMode && player.at) {
       const at = player.at;
@@ -5734,7 +5876,7 @@
   // 순서: 진짜 답 → 더 알아보기 → 소감 설문 → 인증서(패들렛에 올리기) → 🏁 여정 완료
   // (소감을 먼저 쓰고, 제출하면 저절로 인증서로 — 인증서를 빼먹지 않게)
   const JS = window.JUNIOR_SURVEY;
-  const END_STEPS = ['intro', ...QIDS, 'more', 'extra', ...(CONFIG.feedbackForms && !NO_SURVEY ? ['survey'] : []), ...(JUNIOR && JS ? ['jsurvey'] : []), 'finish', 'done'];
+  const END_STEPS = ['intro', ...QIDS, 'more', 'extra', ...(window.KNOW_CHECK ? ['post'] : []), ...(CONFIG.feedbackForms && !NO_SURVEY ? ['survey'] : []), ...(JUNIOR && JS ? ['jsurvey'] : []), 'finish', 'done'];
   let endDir = 1; // 마지막으로 움직인 방향 (다 모은 아이는 '더 해 보기'를 건너뛸 때 씀)
 
   /* 🎯 더 해 보기: 작전 지점마다 아직 못 받은 별·영웅 카드 (전부 모았으면 빈 목록 → 화면을 건너뜀) */
@@ -6658,6 +6800,8 @@
                <p class="t-help">${esc(T('surveyHelp'))} <a href="${esc(fb)}" target="_blank" rel="noopener">${esc(T('surveyOpen'))} ↗</a></p>`}
           <p class="survey-next-note">➡️ ${esc(T('surveyAutoNote'))}</p>
         </div>`;
+    } else if (step === 'post') {
+      html = player.check && player.check.post && !previewMode ? checkResultHtml() : checkFormHtml('post');
     } else if (step === 'jsurvey') {
       if (previewMode) { endStep = Math.max(0, Math.min(END_STEPS.length - 1, endStep + endDir)); renderEnding(); return; }
       html = jsurveyHtml();
@@ -6679,6 +6823,7 @@
       const checks = [
         [doneCount(player) === N, T('doneCheckMap', N)],
         ...(NO_SURVEY ? [] : [[!!player.surveyDone, T('doneCheckSurvey')]]),
+        ...(window.KNOW_CHECK ? [[!!(player.check && player.check.post), T('doneCheckPost')]] : []),
         ...(JUNIOR && JS ? [[!!player.jsurveyDone, T('doneCheckJs')]] : []),
         [!!(player.certUploaded || player.certCaptured), T(certPadOnly() ? 'doneCheckCertSave' : 'doneCheckCert')]
       ];
@@ -6766,13 +6911,14 @@
     }
     if (step === 'done') sfx('fanfare');
     if (step === 'jsurvey') bindJSurvey();
+    if (step === 'post' && $('chkForm')) bindCheckForm('post', () => { renderEnding(); $('endingBody').scrollTop = 0; });
     if (QUESTIONS[step]) trackVetVideo();
     body.querySelectorAll('[data-retry]').forEach((b) => b.addEventListener('click', () => retryFromEnding(+b.dataset.retry)));
 
     $('endDots').innerHTML = END_STEPS.map((x, k) => `<i class="${k === endStep ? 'on' : ''}${QUESTIONS[x] ? ' q' : ''}"></i>`).join('');
     if (player && !previewMode && player.endAt !== step) { player.endAt = step; save(); } // 📌 엔딩 어디까지 봤는지 기억
     $('endPrev').textContent = endStep === 0 ? T('toMapBtn') : T('prev');
-    $('endNext').textContent = step === 'intro' ? T('endStart') : step === 'extra' ? T(JUNIOR && JS ? 'extraFinishJs' : NO_SURVEY ? 'extraFinishCert' : 'extraFinish') : step === 'jsurvey' ? T(player && player.jsurveyDone ? 'next' : 'jsSubmit') : step === 'survey' ? T('toCertBtn') : step === 'finish' ? T('endFinishBtn') : T('next');
+    $('endNext').textContent = step === 'post' && !previewMode && !(player.check && player.check.post) ? T('chkSubmitPost') : step === 'intro' ? T('endStart') : step === 'extra' ? T(window.KNOW_CHECK ? 'extraFinishPost' : JUNIOR && JS ? 'extraFinishJs' : NO_SURVEY ? 'extraFinishCert' : 'extraFinish') : step === 'jsurvey' ? T(player && player.jsurveyDone ? 'next' : 'jsSubmit') : step === 'survey' ? T('toCertBtn') : step === 'finish' ? T('endFinishBtn') : T('next');
     $('endNext').hidden = endStep === END_STEPS.length - 1; // 맨 마지막 화면에서는 [다음]이 없어요
   }
 
@@ -6784,9 +6930,269 @@
     if (QUESTIONS[END_STEPS[endStep]] && !previewMode && player && !endQuestionReady()) return;
     // 3·4학년 설문: 다 골라서 보내야 인증서로 넘어가요
     if (END_STEPS[endStep] === 'jsurvey' && !previewMode && player && !player.jsurveyDone) { submitJSurvey(); return; }
+    // 📋 도착 점검: 다 풀어야 다음으로 (선생님 미리 보기는 그냥 넘어가요)
+    if (END_STEPS[endStep] === 'post' && !previewMode && player && !(player.check && player.check.post)) { checkSubmit(); return; }
     endDir = 1;
     if (endStep < END_STEPS.length - 1) { endStep++; renderEnding(); }
   });
+  /* =====================================================================
+     🏫 반 결과 모으기 — 학생마다 한 줄 (닉네임·진행·출발 전/도착 점검) → 구글 시트 (CONFIG.classApi)
+     · 담임 선생님: 첫 화면 [우리 반 만들기] → 학생용 주소(?class=…) + 선생님용 결과 주소(?view=반.열쇠)
+     · 관리하는 선생님: 구글 시트 「결과」에서 전체를 봐요
+     ===================================================================== */
+  const classOn = () => !!CONFIG.classApi && !SANDBOX;
+  function classSync(ev) {
+    if (!classOn() || previewMode || !player) return;
+    try {
+      const c = player.check || {};
+      const pre = c.pre || null, post = c.post || null;
+      const d = {
+        gid: player.id, nick: player.nick, cls: player.cls || '', set: c.set || checkSet(), lang,
+        prog: `${doneCount(player)}/${N}`, total: (post || pre || {}).total || '',
+        pre: pre ? pre.score : '', post: post ? post.score : '',
+        preAns: pre ? pre.ans : '', postAns: post ? post.ans : '',
+        preAtt: pre && pre.att ? pre.att.join('·') : '', postAtt: post && post.att ? post.att.join('·') : '',
+        reflect: (post && post.reflect) || '',
+        card: (store.tributes || []).some((t) => t.card), ttb: !!store.ttbJoined,
+        cert: !!(player.certUploaded || player.certCaptured), ev: String(ev || '')
+      };
+      fetch(CONFIG.classApi, { method: 'POST', mode: 'no-cors', keepalive: true, body: JSON.stringify(d) }).catch(() => {});
+    } catch (e) { /* 보내기 실패는 조용히 */ }
+  }
+  const pageUrl = (q) => `${location.origin}${location.pathname}?${q}`;
+  const myClasses = () => (store.myClasses = store.myClasses || []);
+  let clsPick = GRADE; // 고른 문제 수준 (반을 만든 뒤에도 그대로)
+  function renderClassFold() {
+    const body = $('classBody');
+    if (!body) return;
+    if (!classOn()) { body.innerHTML = `<p class="fold-help">${esc(T('clsOff'))}</p>`; return; }
+    const grades = T('clsGrades');
+    body.innerHTML = `<p class="fold-help">${esc(T('clsLead'))}</p>
+      <label for="clsName">${esc(T('clsName'))}</label>
+      <input id="clsName" type="text" maxlength="30" autocomplete="off" placeholder="${esc(T('clsNamePh'))}">
+      <label for="clsGrade">${esc(T('clsGrade'))}</label>
+      <select id="clsGrade" class="arc-input">${['34', '56', 'ms', 'hs'].map((g) => `<option value="${g}"${g === clsPick ? ' selected' : ''}>${esc(grades[g])}</option>`).join('')}</select>
+      <button class="btn btn-blue" type="button" id="clsMake">${esc(T('clsMake'))}</button>
+      <p class="form-error" id="clsErr" role="alert"></p>
+      <div id="clsOut"></div>
+      ${myClasses().length ? `<h4>${esc(T('clsMine'))}</h4><ul class="cls-mine">${myClasses().map((c, k) => `<li><b>${esc(c.name)}</b> <small>${esc(grades[c.grade] || '')}</small>
+        <button type="button" class="btn btn-sm btn-ghost" data-cls="${k}">${esc(T('clsView'))}</button></li>`).join('')}</ul>` : ''}`;
+    $('clsMake').addEventListener('click', createClass);
+    body.querySelectorAll('[data-cls]').forEach((b) => b.addEventListener('click', () => { const c = myClasses()[+b.dataset.cls]; openClassView(c.cls, c.key); }));
+  }
+  const linkBox = (label, url, id) => `<div class="cls-link"><p>${esc(label)}</p><div class="cls-link-row"><input id="${id}" type="text" readonly value="${esc(url)}"><button type="button" class="btn btn-sm btn-blue" data-copy="${id}">${esc(T('clsCopy'))}</button></div></div>`;
+  async function createClass() {
+    const name = $('clsName').value.trim(), grade = $('clsGrade').value;
+    clsPick = grade;
+    if (!name) { $('clsErr').textContent = T('clsNeedName'); $('clsName').focus(); return; }
+    const bad = textProblem(name);
+    if (bad) { $('clsErr').textContent = bad; return; }
+    $('clsErr').textContent = '';
+    const btn = $('clsMake');
+    btn.disabled = true; btn.textContent = T('clsMaking');
+    try {
+      const r = await (await fetch(`${CONFIG.classApi}?action=create&name=${encodeURIComponent(name)}&grade=${grade}`)).json();
+      if (!r.ok) throw new Error(r.error || 'fail');
+      myClasses().unshift({ cls: r.cls, key: r.key, name: r.name, grade: r.grade, t: Date.now() });
+      save();
+      renderClassFold();
+      const gq = r.grade === '56' ? '' : `&grade=${r.grade}`;
+      $('clsOut').innerHTML = `${linkBox(T('clsStudentLink'), pageUrl(`class=${r.cls}${gq}`), 'clsStu')}${linkBox(T('clsTeacherLink'), pageUrl(`view=${r.cls}.${r.key}`), 'clsTea')}<p class="t-help">${esc(T('clsKeep'))}</p>`;
+      $('clsOut').querySelectorAll('[data-copy]').forEach((b) => b.addEventListener('click', () => copyText($(b.dataset.copy).value, $(b.dataset.copy)).then((ok) => toast(ok ? T('clsCopied') : T('copyFail')))));
+    } catch (e) {
+      $('clsErr').textContent = T('clsFail');
+      btn.disabled = false; btn.textContent = T('clsMake');
+    }
+  }
+  // 🔑 선생님용 결과 화면: 요약 · 문항별 정답률 · 학생 표 · 소감 · CSV
+  async function openClassView(cls, key) {
+    openInfo('🏫', T('clsLoading'), `<p class="t-help">${esc(T('clsLoading'))}</p>`);
+    let r;
+    try { r = await (await fetch(`${CONFIG.classApi}?action=view&cls=${encodeURIComponent(cls)}&key=${encodeURIComponent(key)}`)).json(); } catch (e) { r = { ok: false, error: 'net' }; }
+    if (!r.ok) { $('infoTitle').textContent = '🏫'; $('infoBody').innerHTML = `<p class="form-error">${esc(T(r.error === 'key' ? 'clsBadKey' : 'clsLoadFail'))}</p>`; return; }
+    $('infoTitle').textContent = T('clsResTitle', r.name || cls);
+    const rows = r.rows.slice().sort((a, b) => String(a.nick).localeCompare(String(b.nick), 'ko'));
+    const num = (v) => (v === '' || v == null ? null : Number(v));
+    const avg = (xs) => (xs.length ? (xs.reduce((a, b) => a + b, 0) / xs.length) : null);
+    const pres = rows.map((x) => num(x.pre)).filter((x) => x != null), posts = rows.map((x) => num(x.post)).filter((x) => x != null);
+    const pairs = rows.filter((x) => num(x.pre) != null && num(x.post) != null);
+    const gain = avg(pairs.map((x) => num(x.post) - num(x.pre)));
+    const f1 = (v) => (v == null ? '—' : v.toFixed(1));
+    // 문항별 정답률 (반 수준의 문항 기준)
+    const set = (r.grade && KC.levels[r.grade]) ? r.grade : '56';
+    const items = KC.levels[set];
+    const rate = (key, k) => { const xs = rows.map((x) => String(x[key] || '')).filter((a) => a.length === items.length); return xs.length ? Math.round((xs.filter((a) => a[k] === 'o').length / xs.length) * 100) : null; };
+    const itemRows = items.map((it, k) => ({ q: L(it.q), a: rate('preAns', k), b: rate('postAns', k) }));
+    const fmtT = (t) => { const d = new Date(t); return isNaN(d) ? '' : d.toLocaleString(lang === 'es' ? 'es-CO' : lang === 'en' ? 'en-US' : 'ko-KR', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' }); };
+    const cols = T('clsCols');
+    const table = rows.map((x) => { const g = num(x.pre) != null && num(x.post) != null ? num(x.post) - num(x.pre) : null; return [x.nick, x.prog, x.pre === '' ? '—' : `${x.pre}/${x.total || items.length}`, x.post === '' ? '—' : `${x.post}/${x.total || items.length}`, g == null ? '' : (g > 0 ? `+${g}` : String(g)), x.preAtt || x.postAtt ? `${x.preAtt || '—'} → ${x.postAtt || '—'}` : '', x.ttb ? '✓' : '', x.card ? '✓' : '', x.cert ? '✓' : '', fmtT(x.t)]; });
+    $('infoBody').innerHTML = rows.length ? `
+      <p class="cls-sum">${esc(T('clsSummary', rows.length, posts.length))}</p>
+      <p class="cls-avg">${esc(T('clsAvg', f1(avg(pres)), f1(avg(posts)), gain == null ? '—' : (gain >= 0 ? '+' : '') + gain.toFixed(1)))}</p>
+      <div class="t-buttons"><button type="button" class="btn btn-sm btn-go" id="clsCsv">${esc(T('clsCsv'))}</button><button type="button" class="btn btn-sm btn-ghost" id="clsRefresh">${esc(T('clsRefresh'))}</button></div>
+      <div class="cls-table-wrap"><table class="cls-table"><thead><tr>${cols.map((c) => `<th>${esc(c)}</th>`).join('')}</tr></thead>
+        <tbody>${table.map((tr) => `<tr>${tr.map((td, k) => `<td${k === 4 && td.startsWith('+') ? ' class="up"' : ''}>${esc(td)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
+      <h3>${esc(T('clsItems'))}</h3>
+      <ol class="cls-items">${itemRows.map((it) => `<li><span>${esc(it.q)}</span><b>${it.a == null ? '—' : it.a + '%'} → ${it.b == null ? '—' : it.b + '%'}</b>
+        <div class="cls-ibar"><i class="a" style="width:${it.a || 0}%"></i><i class="b" style="width:${it.b || 0}%"></i></div></li>`).join('')}</ol>
+      ${rows.some((x) => x.reflect) ? `<h3>${esc(T('clsReflects'))}</h3><ul class="cls-reflects">${rows.filter((x) => x.reflect).map((x) => `<li><b>${esc(x.nick)}</b> ${esc(x.reflect)}</li>`).join('')}</ul>` : ''}
+      <p class="t-help">${esc(T('clsNote'))}</p>`
+      : `<p class="t-help">${esc(T('clsEmpty'))}</p><div class="t-buttons"><button type="button" class="btn btn-sm btn-ghost" id="clsRefresh">${esc(T('clsRefresh'))}</button></div>`;
+    $('clsRefresh').addEventListener('click', () => openClassView(cls, key));
+    if ($('clsCsv')) $('clsCsv').addEventListener('click', () => {
+      const q = (v) => `"${String(v == null ? '' : v).replace(/"/g, '""')}"`;
+      const head = [...cols, ...items.map((_, k) => `Q${k + 1} ${T('chkPre')}`), ...items.map((_, k) => `Q${k + 1} ${T('chkPost')}`), T('clsReflects').replace(/^\S+\s/, '')];
+      const lines = rows.map((x, i) => [...table[i], ...items.map((_, k) => String(x.preAns || '')[k] || ''), ...items.map((_, k) => String(x.postAns || '')[k] || ''), x.reflect || '']);
+      const csv = '﻿' + [head, ...lines].map((l) => l.map(q).join(',')).join('\r\n');
+      downloadBlob(new Blob([csv], { type: 'text/csv;charset=utf-8' }), `${(r.name || cls).replace(/[\\/:*?"<>|\s]+/g, '_')}_results.csv`);
+    });
+  }
+
+  /* ---------------- 📋 출발 전·도착 점검 (사전·사후) ----------------
+     같은 문항을 여정 전·후에 풀어요. 점수는 이 기기(player.check)와 반 결과(classSync)에만 — 인증서에는 나오지 않아요
+     player.check = { set: '34'|'56'|'ms'|'hs', pre: { ans: 'ox?o…', score, total, att: [1~5, 1~5], t }, post: { …, reflect } } */
+  const KC = window.KNOW_CHECK;
+  const CHK_FACES = ['😞', '🙁', '😐', '🙂', '😄'];
+  // 문항 묶음은 처음 고른 것으로 고정 (사전·사후가 같은 문항) — 스페인어·영어는 5·6학년 문항
+  const checkSet = () => (player && player.check && player.check.set) || (lang !== 'ko' || !KC.levels[GRADE] ? '56' : GRADE);
+  const checkItems = (set = checkSet()) => (KC.levels[set] || KC.levels['56']).map((it) => shuffleQuiz(it, `chk:${it.id}`));
+  function needPreCheck() {
+    if (!KC || !player || previewMode || (player.check && 'pre' in player.check)) return false;
+    // 이미 여정을 하던 친구(업데이트 전에 시작 · 다른 기기에서 코드로 이어 옴)는 사전 점검을 건너뛰어요
+    if (player.done.length || player.keyDone) { player.check = { set: checkSet(), pre: null }; save(); return false; }
+    return true;
+  }
+  let chkState = null; // 지금 풀고 있는 점검 { phase, items, att: [], ans: [] }
+  function checkFormHtml(phase) {
+    const items = checkItems();
+    chkState = { phase, items, att: KC.attitude.map(() => null), ans: items.map(() => undefined) };
+    const opt = (k, v, label, cls = '') => `<button type="button" class="${cls}" data-k="${k}" data-v="${esc(String(v))}">${esc(label)}</button>`;
+    return `<div class="chk" id="chkForm">
+        <h2 class="end-h2">${esc(T(phase === 'pre' ? 'chkPreTitle' : 'chkPostTitle'))}</h2>
+        <p class="end-lead">${esc(T(phase === 'pre' ? 'chkPreLead' : 'chkPostLead'))}</p>
+        <section class="chk-sec"><h3>${esc(T('chkAttTitle'))}</h3>
+          ${KC.attitude.map((a, i) => `<div class="chk-q" data-att="${i}">
+            <p>${esc(L(a.q))}</p>
+            <div class="chk-scale">${CHK_FACES.map((f, v) => `<button type="button" data-a="${i}" data-v="${v + 1}" aria-label="${v + 1}">${f}</button>`).join('')}</div>
+            <div class="chk-ends"><span>${esc(L(a.low))}</span><span>${esc(L(a.high))}</span></div>
+          </div>`).join('')}
+        </section>
+        <section class="chk-sec"><h3>${esc(T('chkItemsTitle'))}</h3>
+          ${items.map((it, k) => `<div class="chk-q" data-q="${k}">
+            <p><b class="chk-n">${k + 1}</b>${esc(L(it.q))}</p>
+            <div class="chk-opts${it.type === 'ox' ? ' is-ox' : ''}">
+              ${it.type === 'ox' ? opt(k, 'true', 'O', 'ox-o') + opt(k, 'false', 'X', 'ox-x') : it.options.map((o, j) => opt(k, j, L(o))).join('')}
+              ${opt(k, 'dunno', T('chkDunno'), 'dunno')}
+            </div>
+          </div>`).join('')}
+        </section>
+        ${phase === 'post' ? `<section class="chk-sec">
+          <label class="trib-label" for="chkReflect">✍️ ${esc(L(KC.reflect))} <em class="js-tag opt">${esc(T('chkReflectOpt'))}</em></label>
+          <textarea id="chkReflect" class="guess" rows="2" maxlength="150"></textarea>
+        </section>` : ''}
+        <p class="chk-left" id="chkLeft" role="status"></p>
+        ${phase === 'pre' ? `<p class="chk-submit"><button type="button" class="btn btn-go" id="chkSubmit">${esc(T('chkSubmitPre'))}</button></p>` : ''}
+        <small class="trib-note bad" id="chkNote" role="alert"></small>
+      </div>`;
+  }
+  let chkDone = null;
+  function bindCheckForm(phase, onDone) {
+    chkDone = onDone;
+    const root = $('chkForm');
+    const left = () => chkState.att.filter((v) => v == null).length + chkState.ans.filter((v) => v === undefined).length;
+    const paint = () => {
+      const n = left();
+      $('chkLeft').textContent = n ? T('chkLeft', n) : '✓';
+      if (!n) $('chkNote').textContent = '';
+      root.querySelectorAll('.chk-q.miss').forEach((x) => { if (x.querySelector('.on')) x.classList.remove('miss'); });
+    };
+    root.querySelectorAll('[data-a]').forEach((b) => b.addEventListener('click', () => {
+      chkState.att[+b.dataset.a] = +b.dataset.v;
+      root.querySelectorAll(`[data-a="${b.dataset.a}"]`).forEach((x) => x.classList.toggle('on', x === b));
+      paint();
+    }));
+    root.querySelectorAll('[data-k]').forEach((b) => b.addEventListener('click', () => {
+      chkState.ans[+b.dataset.k] = b.dataset.v;
+      root.querySelectorAll(`[data-k="${b.dataset.k}"]`).forEach((x) => x.classList.toggle('on', x === b));
+      b.closest('.chk-q').classList.add('done');
+      paint();
+    }));
+    if ($('chkSubmit')) $('chkSubmit').addEventListener('click', checkSubmit);
+    paint();
+  }
+  function checkSubmit() {
+    if (!chkState || !$('chkForm')) return;
+    const root = $('chkForm');
+    const firstAtt = chkState.att.findIndex((v) => v == null);
+    const firstQ = chkState.ans.findIndex((v) => v === undefined);
+    if (firstAtt >= 0 || firstQ >= 0) {
+      const el = firstAtt >= 0 ? root.querySelector(`[data-att="${firstAtt}"]`) : root.querySelector(`[data-q="${firstQ}"]`);
+      root.querySelectorAll('.chk-q.miss').forEach((x) => x.classList.remove('miss'));
+      el.classList.add('miss');
+      el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      $('chkNote').textContent = T('chkLeft', chkState.att.filter((v) => v == null).length + chkState.ans.filter((v) => v === undefined).length);
+      return;
+    }
+    const reflect = $('chkReflect') ? $('chkReflect').value.trim() : '';
+    if (reflect) { const bad = textProblem(reflect); if (bad) { $('chkNote').textContent = bad; $('chkReflect').classList.add('is-error'); return; } }
+    const marks = chkState.items.map((it, k) => {
+      const v = chkState.ans[k];
+      if (v === 'dunno') return '?';
+      return String(it.type === 'ox' ? v === 'true' : Number(v)) === String(it.answer) ? 'o' : 'x';
+    }).join('');
+    const res = { ans: marks, score: (marks.match(/o/g) || []).length, total: marks.length, att: chkState.att.slice(), t: Date.now() };
+    if (reflect) res.reflect = reflect;
+    if (!previewMode && player) {
+      player.check = player.check || {};
+      player.check.set = checkSet();
+      player.check[chkState.phase] = res;
+      save();
+      reportProgress(`${chkState.phase} ${res.score}/${res.total}`);
+    }
+    sfx(chkState.phase === 'post' ? 'fanfare' : 'right');
+    const done = chkDone; chkState = null;
+    if (done) done(res);
+  }
+  // 출발 전 점검: 닉네임을 정하고 들어오면 지도 위에 크게 (끝내야 여정 시작)
+  function openPreCheck(next) {
+    const old = $('chkOv'); if (old) old.remove();
+    const el = document.createElement('div');
+    el.id = 'chkOv'; el.className = 'chk-ov';
+    el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true');
+    el.innerHTML = `<div class="chk-ov-card">${checkFormHtml('pre')}</div>`;
+    document.body.appendChild(el);
+    bindCheckForm('pre', () => {
+      el.querySelector('.chk-ov-card').innerHTML = `<div class="chk-pre-done"><p class="chk-big">🧭</p><p class="end-lead">${esc(T('chkPreDone'))}</p>
+        <p><button type="button" class="btn btn-go" id="chkGo">${esc(T('chkStart'))}</button></p></div>`;
+      $('chkGo').addEventListener('click', () => { el.remove(); if (next) next(); });
+      $('chkGo').focus();
+    });
+  }
+  // 도착 점검 결과: 출발 전 → 도착 후 막대 + 생각의 변화 + 문제마다 (새로 알게 됨 / 처음부터 앎 / 다시 확인)
+  function checkResultHtml() {
+    const c = player.check, pre = c.pre, post = c.post;
+    const items = checkItems(c.set);
+    const bar = (label, r, cls) => `<div class="chk-bar ${cls}"><span>${esc(label)}</span><div class="chk-track"><i style="width:${r ? Math.round((r.score / r.total) * 100) : 0}%"></i></div><b>${r ? `${r.score} / ${r.total}` : '—'}</b></div>`;
+    const ansText = (it) => (it.type === 'ox' ? `${it.answer ? 'O' : 'X'}${T(it.answer ? 'oxT' : 'oxF') ? ` (${T(it.answer ? 'oxT' : 'oxF')})` : ''}` : L(it.options[it.answer]));
+    return `<div class="chk-result">
+        <h2 class="end-h2">${esc(T('chkResultTitle'))}</h2>
+        <div class="chk-bars">${bar(T('chkPre'), pre, 'pre')}${bar(T('chkPost'), post, 'post')}</div>
+        <p class="chk-gain${pre && post.score - pre.score < 1 ? ' flat' : ''}">${esc(pre ? T('chkGain', post.score - pre.score) : T('chkNoPre'))}</p>
+        <h3>${esc(T('chkAttChange'))}</h3>
+        <ul class="chk-att-change">${KC.attitude.map((a, i) => `<li><span>${esc(L(a.q))}</span><b>${pre && pre.att ? `${CHK_FACES[pre.att[i] - 1]} → ` : ''}${CHK_FACES[post.att[i] - 1]}</b></li>`).join('')}</ul>
+        <h3>${esc(T('chkReview'))}</h3>
+        <ol class="chk-review">${items.map((it, k) => {
+          const a = pre ? pre.ans[k] : null, b = post.ans[k];
+          const st = b === 'o' ? (a === 'o' ? 'both' : 'now') : (a === 'o' ? 'lost' : 'still');
+          const tag = { both: 'chkBothRight', now: 'chkNowRight', lost: 'chkLost', still: 'chkStillWrong' }[st];
+          return `<li class="st-${st}"><span class="chk-tag">${esc(T(tag))}</span>
+            <p class="chk-rq">${esc(L(it.q))}</p>
+            <p class="chk-ra">✔ ${esc(ansText(it))}</p>
+            <p class="chk-why">${esc(L(it.why))}</p></li>`;
+        }).join('')}</ol>
+      </div>`;
+  }
+
   /* ---------------- 📝 3·4학년 체험 설문 (부스 체험 + 웹앱) ----------------
      객관식은 모두 꼭, 주관식은 컴퓨터 모드에서 pcRequired 인 것만 꼭 (태블릿은 글자 치기가 힘들어서 모두 '하고 싶으면')
      답은 고를 때마다 이 기기에 저장 → 보내면 학교 구글 설문지(JUNIOR_SURVEY.action)로 전해져요 */

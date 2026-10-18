@@ -34,6 +34,9 @@ window.MAP_CONFIG = {
   //   enabled: false 로 바꾸면 꺼져요 · remindMinutes: 몇 분 전부터 안내 창을 띄울지
   ttb: { enabled: true, remindMinutes: 3 },
   // 🕊️ 추모 카드만 모으는 패들렛 (11월 11일 추모의 벽) — 인증서 패들렛과 따로예요. 비우면 위의 padletUrl 로 열려요
+  // 🏫 반 결과 모으기 (구글 Apps Script 웹 앱 주소) — apps-script/class-results.gs 를 구글 시트에 붙여 배포한 뒤 그 주소를 넣어요
+  //   비어 있으면: 결과를 보내지 않고, 첫 화면의 [우리 반 만들기]는 '아직 설정 전'이라고 알려 줘요
+  classApi: '',
   tributePadletUrl: 'https://padlet.com/llyj591/11-11-m-a-p-to-tomorrow-wall-of-memory-muro-de-la-memoria-s024lxylx7jjz4807ggh',
 
   // 1차시를 끝낼 작전 지점 id — 이 작전 지점을 통과하면 "1차시는 여기까지!"와 코드를 크게 보여 줘요 ('' = 안 나눔)
@@ -1272,3 +1275,231 @@ window.EXTRA_ACTIVITIES = [
     }
   }
 ];
+
+/* =====================================================================
+   📋 사전·사후 점검 (같은 문항을 게임 전·후에 풀어서 얼마나 자랐는지 봐요)
+   · 수준: '34' 3·4학년 · '56' 5·6학년(기본) · 'ms' 중학교 · 'hs' 고등학교 (주소 ?grade=34 / ms / hs)
+   · type: 'ox' (answer: true/false) · 'choice' (answer: 정답 번호, 0부터)
+   · 모든 문항에 '잘 모르겠어요'가 함께 나와요 (사전 점검에서 찍지 않게)
+   · 3·4학년·중·고 문항은 한국어만 — 스페인어·영어 화면에서는 5·6학년 문항이 나와요
+   · 인증서에는 점수가 나오지 않아요. 점검을 마쳤는지만 '여정 완료' 목록에 보여요
+   · topic: 관련 작전 지점 id (사후 점검 해설에서 다시 볼 곳)
+   ===================================================================== */
+window.KNOW_CHECK = {
+  // 인식 변화 (1~5) — 사전·사후 모두. 성과보고서 '유엔참전용사에 대한 인식 변화'
+  attitude: [
+    { id: 'know',
+      q: { ko: '6·25 전쟁과 유엔참전용사에 대해 얼마나 알고 있나요?', es: '¿Cuánto sabes sobre la Guerra de Corea y los veteranos de la ONU?', en: 'How much do you know about the Korean War and the UN veterans?' },
+      low: { ko: '거의 몰라요', es: 'Casi nada', en: 'Almost nothing' }, high: { ko: '아주 잘 알아요', es: 'Mucho', en: 'A lot' } },
+    { id: 'care',
+      q: { ko: '먼 나라에서 와서 싸운 참전용사들을 기억하는 일이 중요하다고 생각하나요?', es: '¿Crees que es importante recordar a los veteranos que vinieron a luchar desde países lejanos?', en: 'Do you think it is important to remember the veterans who came from faraway countries to fight?' },
+      low: { ko: '별로 중요하지 않아요', es: 'No mucho', en: 'Not really' }, high: { ko: '아주 중요해요', es: 'Muy importante', en: 'Very important' } }
+  ],
+  // 사후 점검 끝의 한 줄 소감 (모두 '하고 싶으면')
+  reflect: { ko: '이 활동으로 새로 알게 된 것이나 느낀 점을 한 줄로 써 보세요.', es: 'Escribe en una línea algo que aprendiste o sentiste con esta actividad.', en: 'Write one line about something you learned or felt in this activity.' },
+  levels: {
+    '34': [
+      { id: 'j1', type: 'ox', topic: 'war', q: { ko: '6·25 전쟁은 1950년 6월 25일에 일어났다.' }, answer: true,
+        why: { ko: '맞아요! 1950년 6월 25일 새벽, 북한군이 38도선을 넘어 쳐들어오면서 전쟁이 시작됐어요.' } },
+      { id: 'j2', type: 'ox', topic: 'war', q: { ko: '6·25 전쟁 때 우리나라를 도우러 온 나라는 하나도 없었다.' }, answer: false,
+        why: { ko: '아니에요! 세계 여러 나라가 유엔의 이름으로 우리나라를 도우러 왔어요.' } },
+      { id: 'j3', type: 'choice', topic: 'colombia', q: { ko: '콜롬비아는 우리나라에서 어디쯤에 있을까요?' },
+        options: [{ ko: '바로 옆 나라' }, { ko: '지구 반대편' }, { ko: '바다 한가운데 섬' }], answer: 1,
+        why: { ko: '콜롬비아는 지구 반대편에 있는 나라예요. 그렇게 먼 곳에서 우리를 도우러 왔어요.' } },
+      { id: 'j4', type: 'choice', topic: 'busan', q: { ko: '콜롬비아 군인들은 무엇을 타고 우리나라에 왔을까요?' },
+        options: [{ ko: '🚢 배' }, { ko: '🚂 기차' }, { ko: '🚌 버스' }], answer: 0,
+        why: { ko: '큰 배를 타고 약 25일 동안 태평양을 건너 부산항에 도착했어요.' } },
+      { id: 'j5', type: 'ox', topic: 'incheon', q: { ko: '인천상륙작전 때 섬의 등대에 불을 밝혀 배들이 길을 찾았다.' }, answer: true,
+        why: { ko: '맞아요! 팔미도 등대에 불을 밝혀 캄캄한 밤바다에서 배들이 인천으로 들어올 수 있었어요.' } },
+      { id: 'j6', type: 'choice', topic: 'armistice', q: { ko: '"이제 싸움을 멈추자"는 약속(정전협정)을 맺은 곳은?' },
+        options: [{ ko: '판문점' }, { ko: '제주도' }, { ko: '독도' }], answer: 0,
+        why: { ko: '1953년 7월 27일 판문점에서 정전협정을 맺었어요.' } },
+      { id: 'j7', type: 'ox', topic: 'westsea', q: { ko: '콜롬비아 해군은 우리 바다를 지키는 일도 했다.' }, answer: true,
+        why: { ko: '맞아요! 콜롬비아 해군의 배들이 서해와 동해 바다를 지켰어요.' } },
+      { id: 'j8', type: 'ox', topic: 'memorial', q: { ko: '인천에는 콜롬비아 군인들을 기억하는 기념비가 있다.' }, answer: true,
+        why: { ko: '맞아요! 인천 경명공원에 콜롬비아군 참전기념비가 있어요.' } }
+    ],
+    '56': [
+      { id: 'e1', type: 'choice', topic: 'war',
+        q: { ko: '6·25 전쟁이 시작된 날은 언제일까요?', es: '¿Cuándo empezó la Guerra de Corea?', en: 'When did the Korean War begin?' },
+        options: [{ ko: '1945년 8월 15일', es: '15 de agosto de 1945', en: 'August 15, 1945' }, { ko: '1950년 6월 25일', es: '25 de junio de 1950', en: 'June 25, 1950' }, { ko: '1953년 7월 27일', es: '27 de julio de 1953', en: 'July 27, 1953' }, { ko: '1919년 3월 1일', es: '1 de marzo de 1919', en: 'March 1, 1919' }], answer: 1,
+        why: { ko: '1950년 6월 25일 새벽, 북한군이 38도선을 넘어 쳐들어왔어요. 1953년 7월 27일은 정전협정을 맺은 날이에요.', es: 'El 25 de junio de 1950 el ejército norcoreano cruzó el paralelo 38. El 27 de julio de 1953 se firmó el armisticio.', en: 'At dawn on June 25, 1950, North Korean troops crossed the 38th parallel. July 27, 1953 is the day the armistice was signed.' } },
+      { id: 'e2', type: 'ox', topic: 'war',
+        q: { ko: '6·25 전쟁 때 세계 여러 나라가 유엔의 이름으로 대한민국을 도왔다.', es: 'Durante la Guerra de Corea, muchos países ayudaron a Corea del Sur bajo la bandera de la ONU.', en: 'During the Korean War, many countries helped South Korea under the UN flag.' }, answer: true,
+        why: { ko: '맞아요. 전투 병력과 의료 지원을 합쳐 22개 나라가 함께했어요.', es: 'Correcto. En total, 22 países enviaron tropas de combate o apoyo médico.', en: 'Yes. In all, 22 countries sent combat troops or medical support.' } },
+      { id: 'e3', type: 'choice', topic: 'incheon',
+        q: { ko: '인천상륙작전에서 가장 먼저 상륙한 섬은?', es: '¿En qué isla se desembarcó primero durante el desembarco de Incheon?', en: 'Which island was landed on first in the Incheon Landing?' },
+        options: [{ ko: '월미도', es: 'Wolmido', en: 'Wolmido' }, { ko: '강화도', es: 'Ganghwado', en: 'Ganghwado' }, { ko: '제주도', es: 'Jejudo', en: 'Jejudo' }, { ko: '울릉도', es: 'Ulleungdo', en: 'Ulleungdo' }], answer: 0,
+        why: { ko: '1950년 9월 15일 새벽, 인천항을 지키는 월미도에 먼저 상륙했어요.', es: 'Al amanecer del 15 de septiembre de 1950 se desembarcó primero en Wolmido, la isla que protegía el puerto de Incheon.', en: 'At dawn on September 15, 1950, troops first landed on Wolmido, the island guarding Incheon port.' } },
+      { id: 'e4', type: 'choice', topic: 'colombia',
+        q: { ko: '라틴아메리카에서 단 하나, 6·25 전쟁에 싸우는 군대(전투 병력)를 보낸 나라는?', es: '¿Cuál fue el único país de América Latina que envió tropas de combate a la Guerra de Corea?', en: 'Which was the only Latin American country to send combat troops to the Korean War?' },
+        options: [{ ko: '브라질', es: 'Brasil', en: 'Brazil' }, { ko: '멕시코', es: 'México', en: 'Mexico' }, { ko: '콜롬비아', es: 'Colombia', en: 'Colombia' }, { ko: '아르헨티나', es: 'Argentina', en: 'Argentina' }], answer: 2,
+        why: { ko: '콜롬비아는 육군 콜롬비아대대와 해군 배(프리깃함)를 보냈어요.', es: 'Colombia envió el Batallón Colombia y fragatas de su Armada.', en: 'Colombia sent the Colombia Battalion and navy frigates.' } },
+      { id: 'e5', type: 'choice', topic: 'busan',
+        q: { ko: '콜롬비아대대가 처음 도착한 우리나라 항구는?', es: '¿A qué puerto coreano llegó primero el Batallón Colombia?', en: 'At which Korean port did the Colombia Battalion first arrive?' },
+        options: [{ ko: '인천항', es: 'Incheon', en: 'Incheon' }, { ko: '부산항', es: 'Busan', en: 'Busan' }, { ko: '목포항', es: 'Mokpo', en: 'Mokpo' }, { ko: '여수항', es: 'Yeosu', en: 'Yeosu' }], answer: 1,
+        why: { ko: '1951년 6월 15일, 약 25일 동안 태평양을 건너 부산항에 도착했어요.', es: 'El 15 de junio de 1951, tras cruzar el Pacífico durante unos 25 días, llegó al puerto de Busan.', en: 'On June 15, 1951, after about 25 days crossing the Pacific, it arrived at Busan port.' } },
+      { id: 'e6', type: 'choice', topic: 'busan',
+        q: { ko: '전쟁 동안 우리나라에 온 콜롬비아 군인은 모두 약 몇 명일까요?', es: '¿Cuántos soldados colombianos vinieron a Corea en total durante la guerra?', en: 'About how many Colombian soldiers came to Korea in total during the war?' },
+        options: [{ ko: '약 50명', es: 'Unos 50', en: 'About 50' }, { ko: '약 500명', es: 'Unos 500', en: 'About 500' }, { ko: '약 5,100명', es: 'Unos 5.100', en: 'About 5,100' }, { ko: '약 5만 명', es: 'Unos 50.000', en: 'About 50,000' }], answer: 2,
+        why: { ko: '여러 번 교대하며 모두 약 5,100명이 왔어요.', es: 'Llegaron por turnos: en total, unos 5.100 soldados.', en: 'They came in rotations: about 5,100 soldiers in total.' } },
+      { id: 'e7', type: 'ox', topic: 'westsea',
+        q: { ko: '콜롬비아 해군은 서해 바다를 지키는 일도 했다.', es: 'La Armada colombiana también protegió el Mar Amarillo.', en: 'The Colombian Navy also guarded the Yellow Sea.' }, answer: true,
+        why: { ko: '맞아요. 알미란테 파디야호 등이 서해를 돌며 북한군의 바닷길을 막았어요.', es: 'Correcto. La fragata Almirante Padilla y otras patrullaron el Mar Amarillo y cortaron las rutas marítimas norcoreanas.', en: 'Yes. The Almirante Padilla and other frigates patrolled the Yellow Sea and blocked North Korean sea routes.' } },
+      { id: 'e8', type: 'choice', topic: 'oldbaldy',
+        q: { ko: '콜롬비아대대에게 가장 힘들고 슬픈 전투는?', es: '¿Cuál fue la batalla más dura y dolorosa para el Batallón Colombia?', en: 'Which was the hardest and saddest battle for the Colombia Battalion?' },
+        options: [{ ko: '불모고지 전투', es: 'Old Baldy', en: 'Old Baldy' }, { ko: '흑운토령 전투', es: 'Heuguntoryeong', en: 'Heuguntoryeong' }, { ko: '인천상륙작전', es: 'El desembarco de Incheon', en: 'The Incheon Landing' }, { ko: '400고지 전투', es: 'La colina 400', en: 'Hill 400' }], answer: 0,
+        why: { ko: '1953년 3월 불모고지 전투에서 많은 콜롬비아 군인이 다치거나 목숨을 잃었어요.', es: 'En la batalla de Old Baldy (marzo de 1953) muchos soldados colombianos resultaron heridos o murieron.', en: 'In the Battle of Old Baldy (March 1953), many Colombian soldiers were wounded or killed.' } },
+      { id: 'e9', type: 'ox', topic: 'armistice',
+        q: { ko: '정전협정은 전쟁을 완전히 끝낸 약속(종전)이다.', es: 'El armisticio puso fin definitivo a la guerra.', en: 'The armistice ended the war completely.' }, answer: false,
+        why: { ko: '정전은 싸움을 멈춘 것이에요. 그래서 지금도 휴전선이 있어요.', es: 'El armisticio solo detuvo los combates; por eso todavía existe la línea de demarcación.', en: 'The armistice only stopped the fighting. That is why the demarcation line still exists.' } },
+      { id: 'e10', type: 'choice', topic: 'memorial',
+        q: { ko: '인천 경명공원에 있는 것은?', es: '¿Qué hay en el parque Gyeongmyeong de Incheon?', en: 'What is in Gyeongmyeong Park in Incheon?' },
+        options: [{ ko: '콜롬비아군 참전기념비', es: 'El monumento a los combatientes colombianos', en: 'The memorial to the Colombian soldiers' }, { ko: '유엔기념공원', es: 'El Cementerio Memorial de la ONU', en: 'The UN Memorial Cemetery' }, { ko: '독립기념관', es: 'El Salón de la Independencia', en: 'The Independence Hall' }, { ko: '전쟁기념관', es: 'El Museo Memorial de la Guerra', en: 'The War Memorial of Korea' }], answer: 0,
+        why: { ko: '경명공원에는 콜롬비아군 참전기념비가 있어요. 유엔기념공원은 부산에 있어요.', es: 'En el parque Gyeongmyeong está el monumento colombiano. El Cementerio Memorial de la ONU está en Busan.', en: 'Gyeongmyeong Park has the Colombian memorial. The UN Memorial Cemetery is in Busan.' } }
+    ],
+    ms: [
+      { id: 'm1', type: 'choice', topic: 'war', q: { ko: '1950년 6월 25일 북한군이 넘어 쳐들어온 경계선은?' },
+        options: [{ ko: '38도선' }, { ko: '휴전선' }, { ko: '낙동강' }, { ko: '압록강' }], answer: 0,
+        why: { ko: '38도선은 1945년 광복 뒤 남북을 나눈 선이에요. 휴전선은 1953년 정전협정으로 생긴 선이라 서로 달라요.' } },
+      { id: 'm2', type: 'choice', topic: 'war', q: { ko: '1950년 8월, 국군과 유엔군이 끝까지 지켜 낸 방어선은?' },
+        options: [{ ko: '한강 방어선' }, { ko: '낙동강 방어선' }, { ko: '압록강 방어선' }, { ko: '휴전선' }], answer: 1,
+        why: { ko: '남쪽 끝까지 밀려났지만 낙동강 방어선을 지켜 냈고, 이어서 인천상륙작전으로 반격했어요.' } },
+      { id: 'm3', type: 'choice', topic: 'incheon', q: { ko: '인천이 상륙 작전을 하기 매우 어려운 곳이었던 까닭은?' },
+        options: [{ ko: '밀물과 썰물의 높이 차이가 매우 커서' }, { ko: '항구가 하나도 없어서' }, { ko: '바다가 꽁꽁 얼어서' }, { ko: '높은 산으로 둘러싸여서' }], answer: 0,
+        why: { ko: '인천은 밀물과 썰물의 차이가 최대 약 10m나 돼서, 밀물 때에 맞춰 상륙해야 했어요.' } },
+      { id: 'm4', type: 'choice', topic: 'war', q: { ko: '1950년 10월 이후 국군과 유엔군이 다시 남쪽으로 물러난(1·4 후퇴) 까닭은?' },
+        options: [{ ko: '중국군이 전쟁에 뛰어들어서' }, { ko: '정전협정을 맺어서' }, { ko: '유엔군이 모두 돌아가서' }, { ko: '인천상륙작전이 실패해서' }], answer: 0,
+        why: { ko: '중국군이 참전하면서 국군과 유엔군은 다시 남쪽으로 물러났고, 1951년 1월 4일 서울을 다시 내주었어요.' } },
+      { id: 'm5', type: 'choice', topic: 'colombia', q: { ko: '콜롬비아가 6·25 전쟁에 보낸 병력으로 옳은 것은?' },
+        options: [{ ko: '육군 대대와 해군 프리깃함' }, { ko: '의료 지원단만' }, { ko: '공군 전투기 부대만' }, { ko: '식량과 물자만' }], answer: 0,
+        why: { ko: '콜롬비아는 라틴아메리카에서 유일하게 전투 병력(육군 콜롬비아대대 + 해군 프리깃함)을 보냈어요.' } },
+      { id: 'm6', type: 'choice', topic: 'geumseong', q: { ko: '콜롬비아대대가 주로 함께 작전을 펼친 나라의 군대는?' },
+        options: [{ ko: '미국' }, { ko: '영국' }, { ko: '튀르키예' }, { ko: '프랑스' }], answer: 0,
+        why: { ko: '콜롬비아대대는 미군 부대와 한 팀이 되어 싸웠어요.' } },
+      { id: 'm7', type: 'choice', topic: 'hill400', q: { ko: '1951년부터 1953년까지 전쟁의 모습으로 가장 알맞은 것은?' },
+        options: [{ ko: '38도선 근처의 높은 산(고지)을 서로 차지하려는 치열한 싸움' }, { ko: '바다에서만 벌어진 싸움' }, { ko: '부산 근처에서만 벌어진 싸움' }, { ko: '싸움이 완전히 멈춘 시기' }], answer: 0,
+        why: { ko: '전선이 38도선 근처에 머무는 동안 고지를 둘러싼 고지전이 이어졌어요. 콜롬비아대대도 이때 싸웠어요.' } },
+      { id: 'm8', type: 'ox', topic: 'westsea', q: { ko: '콜롬비아 해군은 정전협정 뒤에도 1955년까지 한국 바다를 지켰다.' }, answer: true,
+        why: { ko: '맞아요. 콜롬비아 해군은 전쟁이 멈춘 뒤에도 1955년까지 한국 바다에 머물렀어요.' } },
+      { id: 'm9', type: 'choice', topic: 'armistice', q: { ko: '오늘날 한반도의 상태를 바르게 설명한 것은?' },
+        options: [{ ko: '정전 상태라서 휴전선을 사이에 두고 남북이 나뉘어 있다' }, { ko: '전쟁이 완전히 끝나 평화 조약을 맺었다' }, { ko: '38도선이 그대로 국경이 되었다' }, { ko: '남북이 이미 통일되었다' }], answer: 0,
+        why: { ko: '1953년의 약속은 싸움을 멈춘 정전협정이에요. 그래서 지금도 휴전선이 있어요.' } },
+      { id: 'm10', type: 'choice', topic: 'memorial', q: { ko: '해마다 11월 11일 오전 11시(한국 시간)에 부산 유엔기념공원을 향해 1분 동안 묵념하는 국제 추모 행사는?' },
+        options: [{ ko: '부산을 향하여(턴 투워드 부산)' }, { ko: '현충일 추념식' }, { ko: '광복절 경축식' }, { ko: '국군의 날 기념식' }], answer: 0,
+        why: { ko: '유엔참전용사 국제추모의 날(11월 11일)에 세계가 함께 부산 유엔기념공원을 향해 묵념해요.' } }
+    ],
+    hs: [
+      { id: 'h1', type: 'choice', topic: 'war', q: { ko: '6·25 전쟁에 유엔의 이름으로 함께한 나라(전투 병력·의료 지원)는 모두 몇 개국일까요?' },
+        options: [{ ko: '7개국' }, { ko: '16개국' }, { ko: '22개국' }, { ko: '50개국' }], answer: 2,
+        why: { ko: '전투 병력을 보낸 16개국과 의료 지원을 한 6개국을 합쳐 22개국이에요.' } },
+      { id: 'h2', type: 'choice', topic: 'incheon', q: { ko: '인천상륙작전이 전쟁의 흐름에 준 영향으로 가장 알맞은 것은?' },
+        options: [{ ko: '북한군의 보급로를 끊어 반격과 9월 28일 서울 수복으로 이어졌다' }, { ko: '곧바로 정전협정이 맺어졌다' }, { ko: '중국군이 전쟁에 들어오지 않게 되었다' }, { ko: '국군과 유엔군이 낙동강까지 밀려났다' }], answer: 0,
+        why: { ko: '인천상륙작전으로 북한군의 뒤를 끊었고, 13일 뒤인 9월 28일 서울을 되찾았어요. 중국군은 그 뒤 10월에 참전했어요.' } },
+      { id: 'h3', type: 'choice', topic: 'incheon', q: { ko: '인천상륙작전 전, 영흥도에 들어간 X-RAY 첩보대가 한 일은?' },
+        options: [{ ko: '인천 바다의 깊이·갯벌·적의 배치를 알아내 유엔군에 알렸다' }, { ko: '월미도에 가장 먼저 상륙했다' }, { ko: '팔미도 등대를 처음 세웠다' }, { ko: '정전 회담을 열었다' }], answer: 0,
+        why: { ko: '함명수 소령 등 해군 첩보대원들이 주민의 도움을 받아 상륙에 꼭 필요한 정보를 모았어요.' } },
+      { id: 'h4', type: 'choice', topic: 'busan', q: { ko: '콜롬비아대대 1진(1,083명)이 부산항에 도착한 날은?' },
+        options: [{ ko: '1950년 6월 25일' }, { ko: '1950년 9월 15일' }, { ko: '1951년 6월 15일' }, { ko: '1953년 7월 27일' }], answer: 2,
+        why: { ko: '1951년 6월 15일이에요. 나머지는 전쟁 시작(1950.6.25.), 인천상륙작전(1950.9.15.), 정전협정(1953.7.27.) 날이에요.' } },
+      { id: 'h5', type: 'choice', topic: 'heukun', q: { ko: '콜롬비아대대의 전투를 일어난 순서대로 바르게 늘어놓은 것은?' },
+        options: [{ ko: '흑운토령 → 금성 진격전 → 400고지 → 불모고지' }, { ko: '금성 진격전 → 흑운토령 → 불모고지 → 400고지' }, { ko: '400고지 → 흑운토령 → 금성 진격전 → 불모고지' }, { ko: '불모고지 → 400고지 → 금성 진격전 → 흑운토령' }], answer: 0,
+        why: { ko: '흑운토령(1951.8.) → 금성 진격전(1951.10.) → 400고지(1952.6.) → 불모고지(1953.3.) 순서예요.' } },
+      { id: 'h6', type: 'choice', topic: 'hill400', q: { ko: '1951년 하반기부터 1953년까지 고지를 둘러싼 전투가 특히 치열했던 까닭으로 가장 알맞은 것은?' },
+        options: [{ ko: '정전 회담이 이어지는 동안 조금이라도 유리한 경계선을 차지하려고' }, { ko: '고지마다 금광이 있어서' }, { ko: '평지에서는 싸우지 않기로 약속해서' }, { ko: '바다가 얼어 배가 다닐 수 없어서' }], answer: 0,
+        why: { ko: '1951년 7월부터 정전 회담이 이어졌고, 그동안 양쪽은 더 유리한 선을 차지하려고 고지에서 치열하게 싸웠어요.' } },
+      { id: 'h7', type: 'choice', topic: 'hill180', q: { ko: '1953년 3월 콜롬비아대대가 바르불라 작전(180고지)과 불모고지 전투를 치른 곳은 오늘날 어느 지역 일대일까요?' },
+        options: [{ ko: '경기도 연천' }, { ko: '강원도 금성' }, { ko: '부산' }, { ko: '인천 월미도' }], answer: 0,
+        why: { ko: '두 전투 모두 경기도 연천 일대에서 벌어졌어요.' } },
+      { id: 'h8', type: 'ox', topic: 'armistice', q: { ko: '정전협정은 평화 조약이어서, 이 협정으로 6·25 전쟁은 법적으로 완전히 끝났다.' }, answer: false,
+        why: { ko: '정전협정은 싸움을 멈춘 협정일 뿐이에요. 전쟁을 끝내는 평화 조약은 아직 맺지 않았어요.' } },
+      { id: 'h9', type: 'choice', topic: 'westsea', q: { ko: '콜롬비아 해군의 활동으로 옳은 것은?' },
+        options: [{ ko: '정전 뒤에도 1955년까지 한국 바다에 머물렀다' }, { ko: '1950년 9월 인천상륙작전 때 처음 도착했다' }, { ko: '서해에서만 활동하고 동해에는 가지 않았다' }, { ko: '배를 1척만 보냈다' }], answer: 0,
+        why: { ko: '첫 배 알미란테 파디야호는 1951년 5월에 왔고, 서해 봉쇄와 동해 함포 지원을 했어요. 프리깃함 3척을 보냈고 1955년까지 머물렀어요.' } },
+      { id: 'h10', type: 'choice', topic: 'memorial', q: { ko: '콜롬비아군 참전기념비가 2018년 경명공원으로 옮겨진 까닭은?' },
+        options: [{ ko: '원래 자리에 도시철도 2호선 공사와 새 도시 개발이 시작되어서' }, { ko: '콜롬비아로 보내기 위해서' }, { ko: '바닷가로 옮기기 위해서' }, { ko: '비석을 새로 만들기 위해서' }], answer: 0,
+        why: { ko: '1975년 가정동에 세웠던 기념비를 2018년 7월 25일 경명공원으로 옮겼어요. 지금도 해마다 이곳에서 추모식이 열려요.' } }
+    ]
+  }
+};
+
+/* =====================================================================
+   🎓 중학교·고등학교 작전 지점 퀴즈 (한국어 화면에서만 — 다른 언어는 기본 퀴즈)
+   주소 ?grade=ms / ?grade=hs 일 때 각 작전 지점의 '추리 퀴즈'가 이걸로 바뀌어요
+   ===================================================================== */
+window.LEVEL_QUIZ = {
+  ms: {
+    war: { type: 'choice', q: { ko: '북한군이 1950년 6월 25일 넘어온 선과, 1953년 정전으로 생긴 선을 바르게 짝지은 것은?' },
+      options: [{ ko: '38도선 – 휴전선' }, { ko: '휴전선 – 38도선' }, { ko: '낙동강 – 압록강' }, { ko: '압록강 – 38도선' }], answer: 0,
+      explain: { ko: '38도선은 1945년 광복 뒤 남북을 나눈 선, 휴전선(군사분계선)은 1953년 정전협정으로 생긴 선이에요. 두 선은 위치가 달라요.' } },
+    incheon: { type: 'choice', q: { ko: '인천상륙작전이 "5000분의 1의 확률"이라 불릴 만큼 어려웠던 까닭은?' },
+      options: [{ ko: '밀물과 썰물의 높이 차이가 매우 커서' }, { ko: '항구가 하나도 없어서' }, { ko: '겨울이라 바다가 얼어서' }, { ko: '유엔군에 배가 없어서' }], answer: 0,
+      explain: { ko: '인천은 밀물과 썰물 차이가 최대 약 10m라, 밀물 때를 맞춰 9월 15일 새벽(월미도)과 오후(본대) 두 번에 나누어 상륙했어요. 덕분에 9월 28일 서울을 되찾았어요.' } },
+    colombia: { type: 'choice', q: { ko: '콜롬비아가 6·25 전쟁에 보낸 병력으로 옳은 것은?' },
+      options: [{ ko: '육군 대대와 해군 프리깃함' }, { ko: '의료 지원단만' }, { ko: '공군 전투기 부대만' }, { ko: '식량과 물자만' }], answer: 0,
+      explain: { ko: '콜롬비아는 라틴아메리카에서 유일하게 전투 병력을 보냈어요. 육군 "콜롬비아대대"와 해군 프리깃함 3척이에요.' } },
+    busan: { type: 'choice', q: { ko: '전쟁 동안 한국에 온 콜롬비아 군인은 모두 약 몇 명일까요?' },
+      options: [{ ko: '약 1,000명' }, { ko: '약 5,100명' }, { ko: '약 1만 명' }, { ko: '약 5만 명' }], answer: 1,
+      explain: { ko: '1진 1,083명이 1951년 6월 15일 부산항에 도착했고, 여러 번 교대하며 모두 약 5,100명이 왔어요.' } },
+    heukun: { type: 'ox', q: { ko: '흑운토령 전투는 정전협정이 맺어진 뒤에 벌어진 전투다.' }, answer: false,
+      explain: { ko: '아니에요. 흑운토령 전투는 1951년 8월, 콜롬비아대대의 첫 전투예요. 정전협정은 1953년 7월이에요.' } },
+    geumseong: { type: 'choice', q: { ko: '1951년 10월 콜롬비아대대가 미군 부대와 함께 금성 쪽으로 나아간 작전 이름은?' },
+      options: [{ ko: '노매드 작전' }, { ko: '크로마이트 작전' }, { ko: '바르불라 작전' }, { ko: 'X-RAY 작전' }], answer: 0,
+      explain: { ko: '노매드 작전이에요. 크로마이트는 인천상륙작전, 바르불라는 180고지 기습, X-RAY는 영흥도 첩보 작전의 이름이에요.' } },
+    hill400: { type: 'choice', q: { ko: '1951년 하반기부터 1953년까지 고지를 둘러싼 싸움이 많았던 까닭으로 알맞은 것은?' },
+      options: [{ ko: '정전 회담이 이어지는 동안 유리한 땅을 차지하려고' }, { ko: '고지에 금광이 있어서' }, { ko: '산에서만 싸우기로 약속해서' }, { ko: '평지가 얼어서' }], answer: 0,
+      explain: { ko: '1951년 7월부터 정전 회담이 이어졌어요. 그동안 양쪽은 조금이라도 유리한 경계선을 만들려고 고지에서 치열하게 싸웠어요.' } },
+    hill180: { type: 'choice', q: { ko: '바르불라 작전(180고지)의 특징으로 알맞은 것은?' },
+      options: [{ ko: '새벽에 몰래 다가가 짧게 기습하고 돌아왔다' }, { ko: '바다에서 배로 상륙했다' }, { ko: '비행기에서 낙하산으로 내렸다' }, { ko: '몇 달 동안 산을 둘러싸고 기다렸다' }], answer: 0,
+      explain: { ko: '1953년 3월 10일 새벽, 적의 진지에 몰래 다가가 짧은 시간에 공격하고 돌아온 기습 작전이에요.' } },
+    oldbaldy: { type: 'ox', q: { ko: '불모고지 전투는 콜롬비아대대에게 가장 큰 아픔을 남긴 전투였다.' }, answer: true,
+      explain: { ko: '맞아요. 1953년 3월 불모고지 전투에서 많은 콜롬비아 군인이 다치거나 목숨을 잃었어요.' } },
+    armistice: { type: 'choice', q: { ko: '정전협정에 대한 설명으로 옳은 것은?' },
+      options: [{ ko: '싸움을 멈추기로 한 약속이라, 지금도 휴전선을 사이에 두고 남북이 나뉘어 있다' }, { ko: '전쟁을 완전히 끝낸 평화 조약이다' }, { ko: '남북이 하나로 통일하기로 한 약속이다' }, { ko: '38도선을 그대로 국경으로 정한 약속이다' }], answer: 0,
+      explain: { ko: '1953년 7월 27일 판문점에서 맺은 정전협정은 싸움을 멈춘 약속이에요. 그래서 평화를 지키는 노력이 계속 필요해요.' } },
+    westsea: { type: 'choice', q: { ko: '콜롬비아 해군이 서해에서 한 일로 알맞은 것은?' },
+      options: [{ ko: '북한군의 바닷길 이동과 보급을 막는 순찰' }, { ko: '인천상륙작전의 첫 상륙' }, { ko: '부산항 건설' }, { ko: '고기잡이배 호위만' }], answer: 0,
+      explain: { ko: '알미란테 파디야호는 1951년 5월부터 서해 초도~석도 사이를 순찰하며 북한군의 바닷길을 막았어요.' } },
+    memorial: { type: 'choice', q: { ko: '콜롬비아군 참전기념비가 2018년 경명공원으로 옮겨진 까닭은?' },
+      options: [{ ko: '원래 자리에 도시철도 2호선 공사와 새 도시 개발이 시작되어서' }, { ko: '콜롬비아로 보내기 위해서' }, { ko: '비석이 무너져서' }, { ko: '바닷가로 옮기려고' }], answer: 0,
+      explain: { ko: '1975년 가정동에 세운 기념비를 2018년 7월 25일 경명공원으로 옮겼어요. 지금도 해마다 추모식이 열려요.' } }
+  },
+  hs: {
+    war: { type: 'choice', q: { ko: '6·25 전쟁에 유엔의 이름으로 함께한 나라는 전투 병력과 의료 지원을 합쳐 모두 몇 개국일까요?' },
+      options: [{ ko: '7개국' }, { ko: '16개국' }, { ko: '22개국' }, { ko: '50개국' }], answer: 2,
+      explain: { ko: '전투 병력 16개국과 의료 지원 6개국을 합쳐 22개국이에요. 그중 라틴아메리카에서 전투 병력을 보낸 나라는 콜롬비아뿐이에요.' } },
+    incheon: { type: 'choice', q: { ko: '인천상륙작전이 전쟁의 흐름에 준 영향으로 가장 알맞은 것은?' },
+      options: [{ ko: '북한군의 보급로를 끊어 반격과 9월 28일 서울 수복으로 이어졌다' }, { ko: '곧바로 정전협정이 맺어졌다' }, { ko: '중국군이 전쟁에 들어오지 않게 되었다' }, { ko: '국군과 유엔군이 낙동강까지 밀려났다' }], answer: 0,
+      explain: { ko: '북한군의 뒤를 끊어 낙동강 전선의 반격이 가능해졌고, 13일 뒤 서울을 되찾았어요. 중국군은 그 뒤인 1950년 10월에 참전했어요.' } },
+    colombia: { type: 'choice', q: { ko: '콜롬비아의 6·25 전쟁 참전에 대한 설명으로 옳지 않은 것은?' },
+      options: [{ ko: '한국과 가까운 이웃 나라라서 참전했다' }, { ko: '라틴아메리카에서 유일하게 전투 병력을 보냈다' }, { ko: '육군 대대와 해군 프리깃함을 함께 보냈다' }, { ko: '모두 약 5,100명의 군인이 한국에 왔다' }], answer: 0,
+      explain: { ko: '콜롬비아는 한국에서 지구 반대편에 있는 나라예요. 그렇게 먼 나라도 유엔의 이름으로 한국을 도왔어요.' } },
+    busan: { type: 'choice', q: { ko: '콜롬비아대대 1진(1,083명)이 부산항에 도착한 날은?' },
+      options: [{ ko: '1950년 6월 25일' }, { ko: '1950년 9월 15일' }, { ko: '1951년 6월 15일' }, { ko: '1953년 7월 27일' }], answer: 2,
+      explain: { ko: '1951년 5월 21일 부에나벤투라항을 떠나 약 25일 만인 6월 15일 부산항에 도착했어요. 나머지는 전쟁 시작, 인천상륙작전, 정전협정 날이에요.' } },
+    heukun: { type: 'choice', q: { ko: '콜롬비아대대의 전투를 일어난 순서대로 바르게 늘어놓은 것은?' },
+      options: [{ ko: '흑운토령 → 금성 진격전 → 400고지 → 불모고지' }, { ko: '금성 진격전 → 흑운토령 → 불모고지 → 400고지' }, { ko: '400고지 → 흑운토령 → 금성 진격전 → 불모고지' }, { ko: '불모고지 → 400고지 → 금성 진격전 → 흑운토령' }], answer: 0,
+      explain: { ko: '흑운토령(1951.8.) → 금성 진격전(1951.10.) → 400고지(1952.6.) → 불모고지(1953.3.) 순서예요.' } },
+    geumseong: { type: 'choice', q: { ko: '금성 진격전에 대한 설명으로 바르게 짝지어진 것은?' },
+      options: [{ ko: '미군 부대와 함께 – 노매드 작전' }, { ko: '영국군과 함께 – 크로마이트 작전' }, { ko: '튀르키예군과 함께 – 바르불라 작전' }, { ko: '프랑스군과 함께 – X-RAY 작전' }], answer: 0,
+      explain: { ko: '1951년 10월 콜롬비아대대는 미군 부대와 함께 노매드 작전으로 금성 쪽 고지(570고지 등)를 빼앗았어요. 금성 일대는 지금 휴전선 북쪽이에요.' } },
+    hill400: { type: 'choice', q: { ko: '1951년 7월 이후 전쟁이 "고지전"의 모습을 띠게 된 까닭으로 가장 알맞은 것은?' },
+      options: [{ ko: '정전 회담이 이어지는 동안 유리한 경계선을 차지하려는 다툼이 계속되어서' }, { ko: '유엔군이 모두 철수해서' }, { ko: '바다에서 싸울 수 없게 되어서' }, { ko: '정전협정이 먼저 맺어져서' }], answer: 0,
+      explain: { ko: '정전 회담이 2년 넘게 이어지는 동안, 회담에서 정할 경계선을 조금이라도 유리하게 하려고 고지에서 치열하게 싸웠어요.' } },
+    hill180: { type: 'choice', q: { ko: '1953년 3월 바르불라 작전(180고지)과 불모고지 전투가 벌어진 곳은 오늘날 어느 지역 일대일까요?' },
+      options: [{ ko: '경기도 연천' }, { ko: '강원도 금성' }, { ko: '부산' }, { ko: '인천 월미도' }], answer: 0,
+      explain: { ko: '두 전투 모두 경기도 연천 일대에서 벌어졌어요. 정전협정 약 넉 달 전이었어요.' } },
+    oldbaldy: { type: 'choice', q: { ko: '불모고지 전투(1953.3.)가 정전협정 약 넉 달 전에 벌어졌다는 사실에서 알 수 있는 점은?' },
+      options: [{ ko: '정전 회담 중에도 고지를 둘러싼 치열한 전투가 끝까지 이어졌다' }, { ko: '전투는 정전협정 뒤에 벌어졌다' }, { ko: '정전 회담은 1953년 7월에 처음 시작되었다' }, { ko: '콜롬비아대대는 1953년에 처음 도착했다' }], answer: 0,
+      explain: { ko: '회담이 진행되는 동안에도 전선에서는 많은 희생이 이어졌어요. 불모고지는 콜롬비아대대에게 가장 큰 아픔을 남긴 전투였어요.' } },
+    armistice: { type: 'choice', q: { ko: '정전협정(1953.7.27.)에 대한 설명으로 옳지 않은 것은?' },
+      options: [{ ko: '이 협정으로 전쟁이 법적으로 완전히 끝났다' }, { ko: '판문점에서 맺어졌다' }, { ko: '군사분계선(휴전선)이 생겼다' }, { ko: '3년 1개월 만에 총소리가 멈췄다' }], answer: 0,
+      explain: { ko: '정전협정은 싸움을 멈춘 협정이에요. 전쟁을 끝내는 평화 조약은 아직 맺지 않았어요.' } },
+    westsea: { type: 'choice', q: { ko: '콜롬비아 해군의 활동으로 옳은 것은?' },
+      options: [{ ko: '정전 뒤에도 1955년까지 한국 바다에 머물렀다' }, { ko: '1950년 9월 인천상륙작전 때 처음 도착했다' }, { ko: '서해에서만 활동하고 동해에는 가지 않았다' }, { ko: '배를 1척만 보냈다' }], answer: 0,
+      explain: { ko: '첫 배 알미란테 파디야호는 1951년 5월에 왔어요. 서해 봉쇄와 동해 함포 지원을 했고, 프리깃함 3척이 1955년까지 머물렀어요.' } },
+    memorial: { type: 'choice', q: { ko: '해마다 11월 11일 오전 11시(한국 시간), 세계가 부산 유엔기념공원을 향해 1분 동안 묵념하는 국제 추모 행사는?' },
+      options: [{ ko: '부산을 향하여(턴 투워드 부산)' }, { ko: '현충일 추념식' }, { ko: '유엔의 날 기념식' }, { ko: '국군의 날 기념식' }], answer: 0,
+      explain: { ko: '2007년에 시작해 2020년 법정기념일(유엔참전용사 국제추모의 날)이 되었어요. 인천 경명공원의 콜롬비아군 참전기념비에서도 해마다 추모식이 열려요.' } }
+  }
+};

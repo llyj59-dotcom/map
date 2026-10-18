@@ -1471,3 +1471,81 @@ body.silence::after { content: ''; position: fixed; inset: 0; background: rgba(1
 .card-make .guess { min-height: 70px; }
 .card-img { display: block; width: 100%; max-width: 420px; margin: 12px auto 6px; border-radius: 16px; box-shadow: 0 6px 20px rgba(20, 34, 75, .18); }
 .ttb-ov-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+
+/* ---------- 📋 출발 전·도착 점검 ---------- */
+.chk-ov { position: fixed; inset: 0; z-index: 9000; overflow-y: auto; padding: 16px; background: rgba(20, 34, 75, .55); }
+.chk-ov-card { width: min(760px, 100%); margin: 0 auto; background: #fffdf5; border-radius: 24px; padding: 22px 20px; border-top: 8px solid var(--co-yellow); box-shadow: 0 20px 60px rgba(0, 0, 0, .3); }
+.chk-sec { margin: 16px 0; }
+.chk-sec > h3 { margin: 0 0 10px; font-size: 20px; }
+.chk-q { margin: 0 0 12px; padding: 14px; border-radius: 16px; background: #fff; border: 2px solid #ece6d4; transition: border-color .2s; }
+.chk-q.done { border-color: #b9dcb9; }
+.chk-q.miss { border-color: var(--no); animation: shake .4s; }
+.chk-q > p { margin: 0 0 10px; font-size: 18px; line-height: 1.55; font-weight: 700; }
+.chk-n { display: inline-grid; place-items: center; width: 28px; height: 28px; margin-right: 8px; border-radius: 50%; background: var(--co-blue); color: #fff; font-size: 15px; }
+.chk-opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; }
+.chk-opts.is-ox { grid-template-columns: 1fr 1fr 1fr; }
+.chk-opts button, .chk-scale button { min-height: 52px; padding: 10px 12px; border-radius: 14px; border: 2px solid #d8d2c0; background: #fffdf3; font: inherit; font-size: 17px; line-height: 1.35; cursor: pointer; color: var(--ink); }
+.chk-opts .ox-o, .chk-opts .ox-x { font-family: 'Baloo 2', var(--body); font-weight: 800; font-size: 30px; }
+.chk-opts .dunno { color: #667; font-size: 15px; background: #f4f4f4; }
+.chk-opts button.on, .chk-scale button.on { border-color: var(--co-blue); background: #e3eefc; box-shadow: inset 0 0 0 2px var(--co-blue); }
+.chk-scale { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.chk-scale button { font-size: 30px; padding: 6px 0; }
+.chk-ends { display: flex; justify-content: space-between; font-size: 14px; color: #667; margin-top: 4px; }
+.chk-left { text-align: center; font-weight: 700; color: #556; }
+.chk-submit { text-align: center; }
+.chk-pre-done { text-align: center; padding: 20px 0; }
+.chk-big { font-size: 64px; margin: 0; }
+/* 결과 */
+.chk-bars { display: grid; gap: 10px; margin: 12px 0; }
+.chk-bar { display: grid; grid-template-columns: 76px 1fr 72px; align-items: center; gap: 10px; font-weight: 700; }
+.chk-track { height: 26px; border-radius: 13px; background: #ece6d4; overflow: hidden; }
+.chk-track i { display: block; height: 100%; border-radius: 13px; background: #9aa6bf; transition: width .8s ease; }
+.chk-bar.post .chk-track i { background: var(--co-blue); }
+.chk-bar b { font-size: 20px; text-align: right; }
+.chk-gain { text-align: center; font-size: 22px; font-weight: 800; color: #2c7a3a; margin: 6px 0 16px; }
+.chk-att-change { list-style: none; padding: 0; }
+.chk-att-change li { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px dashed #ddd; }
+.chk-att-change b { font-size: 26px; white-space: nowrap; }
+.chk-review { padding-left: 22px; }
+.chk-review li { position: relative; margin: 0 0 12px; padding: 12px 14px; border-radius: 14px; background: #fff; border-left: 6px solid #ccc; }
+.chk-review li.st-now { border-left-color: #2c9a4a; background: #eef8ef; }
+.chk-review li.st-both { border-left-color: #5b92e5; }
+.chk-review li.st-still, .chk-review li.st-lost { border-left-color: #e0a12a; background: #fff8e8; }
+.chk-tag { display: inline-block; margin-bottom: 4px; padding: 2px 10px; border-radius: 999px; font-size: 13px; font-weight: 800; background: #eee; }
+.st-now .chk-tag { background: #2c9a4a; color: #fff; }
+.st-both .chk-tag { background: #5b92e5; color: #fff; }
+.st-still .chk-tag, .st-lost .chk-tag { background: #e0a12a; color: #fff; }
+.chk-rq { margin: 2px 0; font-weight: 700; }
+.chk-ra { margin: 2px 0; color: var(--co-blue); font-weight: 700; }
+.chk-why { margin: 2px 0; color: #445; }
+@media (max-width: 520px) { .chk-opts.is-ox { grid-template-columns: 1fr 1fr; } .chk-opts.is-ox .dunno { grid-column: span 2; } .chk-bar { grid-template-columns: 64px 1fr 60px; } }
+.chk-gain.flat { color: #8a6d1f; }
+
+/* ---------- 🏫 반 결과 ---------- */
+#classBody label { display: block; font-weight: 700; margin: 8px 0 4px; }
+#classBody input[type="text"] { width: 100%; }
+.cls-link { margin: 12px 0 4px; padding: 10px 12px; border-radius: 14px; background: #f3f7fc; }
+.cls-link p { margin: 0 0 6px; font-weight: 700; }
+.cls-link-row { display: flex; gap: 6px; }
+.cls-link-row input { flex: 1; min-width: 0; font-size: 14px; padding: 8px 10px; border: 2px solid #ccd; border-radius: 10px; background: #fff; }
+.cls-mine { list-style: none; padding: 0; }
+.cls-mine li { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px dashed #ddd; }
+.cls-mine li button { margin-left: auto; }
+.cls-sum { font-weight: 800; font-size: 18px; margin: 0 0 4px; }
+.cls-avg { font-weight: 700; color: var(--co-blue); margin: 0 0 10px; }
+.cls-table-wrap { overflow-x: auto; margin: 10px 0 16px; border-radius: 12px; border: 1px solid #e3ddca; }
+.cls-table { border-collapse: collapse; width: 100%; font-size: 14px; white-space: nowrap; }
+.cls-table th, .cls-table td { padding: 8px 10px; border-bottom: 1px solid #eee; text-align: center; }
+.cls-table th { background: #fffbea; position: sticky; top: 0; }
+.cls-table td:first-child, .cls-table th:first-child { text-align: left; font-weight: 700; }
+.cls-table td.up { color: #2c9a4a; font-weight: 800; }
+.cls-items { padding-left: 22px; }
+.cls-items li { margin: 0 0 10px; }
+.cls-items li span { display: block; font-size: 15px; }
+.cls-items li b { font-size: 14px; color: #445; }
+.cls-ibar { position: relative; height: 18px; margin-top: 4px; border-radius: 9px; background: #eee; overflow: hidden; }
+.cls-ibar i { position: absolute; left: 0; height: 9px; border-radius: 9px; }
+.cls-ibar i.a { top: 0; background: #9aa6bf; }
+.cls-ibar i.b { top: 9px; background: var(--co-blue); }
+.cls-reflects { padding-left: 18px; }
+.cls-reflects li { margin: 4px 0; }
