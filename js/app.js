@@ -4593,8 +4593,10 @@
     const g = $('vsFlowers');
     if (!g || g.childNodes.length) return;
     if (flowerPic) { // 🌼 헌화 꽃 그림 (img/flowers.webp) — 기념비 앞 바닥에
-      const w = 300, h = w * flowerPic.height / flowerPic.width;
-      svgEl('image', { href: FLOWER_IMG, x: 560 - w / 2, y: 700 - h * 0.8, width: w, height: h, class: 'vs-flower' }, g);
+      // 기념비(약 10m)에 맞춰 작게 — 기단 앞 바닥에 눕혀 놓은 크기
+      const w = 150, h = w * flowerPic.height / flowerPic.width;
+      svgEl('ellipse', { cx: 552, cy: 712, rx: 62, ry: 9, fill: 'rgba(40,40,40,.22)', class: 'vs-flower' }, g);
+      svgEl('image', { href: FLOWER_IMG, x: 552 - w / 2, y: 714 - h * 0.92, width: w, height: h, class: 'vs-flower' }, g);
       return;
     }
     const f = svgEl('g', { class: 'vs-flower', transform: 'translate(560 690) scale(3.4)' }, g);
@@ -5596,7 +5598,7 @@
       y += 44;
     }
     // 그림: 11시 묵념에 함께했으면 부산 유엔기념공원, 아니면 인천 콜롬비아군 참전기념비
-    const pw = 600, ph = 375, px = cx - pw / 2, py = y;
+    const pw = 576, ph = 340, px = cx - pw / 2, py = y;
     ctx.save(); roundRect(ctx, px, py, pw, ph, 6); ctx.clip();
     if (d.pic) {
       const sc = Math.max(pw / d.pic.width, ph / d.pic.height), iw = d.pic.width * sc, ih = d.pic.height * sc;
@@ -5605,26 +5607,33 @@
     ctx.restore();
     ctx.strokeStyle = '#d6ccb4'; ctx.lineWidth = 2; roundRect(ctx, px, py, pw, ph, 6); ctx.stroke();
     // 헌화 꽃 그림이 있으면 그림 오른쪽 아래에 살짝 걸쳐서
-    if (d.flower) { const fw = 210, fh = fw * d.flower.height / d.flower.width; ctx.drawImage(d.flower, px + pw - fw * 0.9, py + ph - fh - 4, fw, fh); } // 그림 안 오른쪽 아래 바닥에 놓은 꽃다발
     ctx.font = cardSerif(500, 20); ctx.fillStyle = CARD_SOFT;
     ctx.fillText(T(d.ttb ? 'cardPicUN' : 'cardPicMem'), cx, py + ph + 30);
     y = py + ph + 58;
-    // 추모 한마디
-    const nameY = H - 150;
+    // 추모 한마디 (이름·꽃다발 줄 위까지)
+    const nameY = H - 168, msgEnd = nameY - 72;
     let size = lang === 'ko' ? 40 : 38, lines;
-    for (;;) { ctx.font = cardSerif(500, size); lines = wrapLines(ctx, `“${d.text}”`, W - 220, 9); if (lines.length * size * 1.55 <= nameY - 36 - y || size <= 26) break; size -= 2; }
-    const lh = Math.round(size * 1.55);
-    lines = lines.slice(0, Math.max(1, Math.floor((nameY - 36 - y) / lh)));
-    let ty = y + Math.max(0, (nameY - 44 - y - lines.length * lh) / 2) + lh / 2;
+    for (;;) { ctx.font = cardSerif(500, size); lines = wrapLines(ctx, `“${d.text}”`, W - 220, 9); if (lines.length * size * 1.5 <= msgEnd - y || size <= 26) break; size -= 2; }
+    const lh = Math.round(size * 1.5);
+    lines = lines.slice(0, Math.max(1, Math.floor((msgEnd - y) / lh)));
+    let ty = y + Math.max(0, (msgEnd - y - lines.length * lh) / 2) + lh / 2;
     ctx.fillStyle = CARD_INK;
     lines.forEach((ln) => { ctx.fillText(ln, cx, ty); ty += lh; });
-    // 이름
+    // 이름 — 헌화 꽃다발을 이름 옆 종이 위에 (그림 속이 아니라 카드에 꽃을 올려 둔 느낌)
     ctx.font = cardSerif(700, 32); ctx.fillStyle = '#3a4560';
-    ctx.fillText(`— ${d.name}`, cx, nameY);
+    const nameText = `— ${d.name}`;
+    if (d.flower) {
+      const nw = ctx.measureText(nameText).width, fw = 150, fh = fw * d.flower.height / d.flower.width, gap = 14;
+      const startX = cx - (nw + gap + fw) / 2;
+      ctx.textAlign = 'left'; ctx.fillText(nameText, startX, nameY); ctx.textAlign = 'center';
+      ctx.save(); ctx.shadowColor = 'rgba(40,40,60,.18)'; ctx.shadowBlur = 8; ctx.shadowOffsetY = 3;
+      ctx.drawImage(d.flower, startX + nw + gap, nameY - fh * 0.55, fw, fh);
+      ctx.restore();
+    } else ctx.fillText(nameText, cx, nameY);
     // 만든 곳 + 가는 콜롬비아 국기색 선
     ctx.font = bodyFont(17); ctx.fillStyle = '#8a8e99';
-    ctx.fillText(L(CONFIG.madeBy), cx, H - 92, W - 140);
-    [['#d9b84a', -1], ['#3d5a99', 0], ['#b0434d', 1]].forEach(([c, k]) => { ctx.fillStyle = c; ctx.fillRect(cx - 60 + k * 120, H - 66, 120, 3); });
+    ctx.fillText(L(CONFIG.madeBy), cx, H - 82, W - 140);
+    [['#d9b84a', -1], ['#3d5a99', 0], ['#b0434d', 1]].forEach(([c, k]) => { ctx.fillStyle = c; ctx.fillRect(cx - 60 + k * 120, H - 60, 120, 3); });
   }
   const FLOWER_IMG = 'img/flowers.webp'; // 🌼 헌화 꽃 그림 (있으면 써요 — 없으면 간단한 그림)
   const loadImg = (src) => new Promise((res) => { const im = new Image(); im.onload = () => res(im); im.onerror = () => res(null); im.src = src; });
