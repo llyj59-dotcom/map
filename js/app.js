@@ -549,6 +549,7 @@
       chkNowRight: '새로 알게 됐어요', chkStillWrong: '다시 확인해요', chkBothRight: '처음부터 알았어요', chkLost: '헷갈렸어요',
       chkPostNeed: '도착 점검을 먼저 마쳐 주세요.',
       doneCheckPost: '출발 전·도착 점검 하기',
+      certChecked: '✓ 출발 전·도착 점검 완료',
       extraFinishPost: '✅ 끝내기 (도착 점검하러 가기) ▶',
       certOnlyTitle: '인증서를 사진으로 저장해요',
       certOnlyLead: '태블릿에서는 패들렛에 올리지 않아도 돼요. 아래 버튼만 누르면 끝!',
@@ -1248,6 +1249,7 @@
       chkNowRight: 'Lo aprendiste', chkStillWrong: 'Revísalo otra vez', chkBothRight: 'Ya lo sabías', chkLost: 'Te confundiste',
       chkPostNeed: 'Primero termina la prueba de llegada.',
       doneCheckPost: 'Hacer las pruebas de salida y llegada',
+      certChecked: '✓ Pruebas de salida y llegada hechas',
       extraFinishPost: '✅ Terminar (ir a la prueba de llegada) ▶',
       certOnlyTitle: 'Guarda tu certificado como foto',
       certOnlyLead: 'En la tableta no hace falta subirlo al Padlet. ¡Solo pulsa el botón de abajo!',
@@ -1946,6 +1948,7 @@
       chkNowRight: 'New learning', chkStillWrong: 'Check again', chkBothRight: 'Knew it already', chkLost: 'Got mixed up',
       chkPostNeed: 'Please finish the finishing check first.',
       doneCheckPost: 'Do the starting and finishing checks',
+      certChecked: '✓ Starting and finishing checks done',
       extraFinishPost: '✅ Finish (go to the finishing check) ▶',
       certOnlyTitle: 'Save your certificate as a photo',
       certOnlyLead: 'On a tablet you do not need to post it on the Padlet. Just tap the button below!',
@@ -5999,7 +6002,8 @@
       nation: player.nation === 'other' ? '' : player.nation, nationName: nationName(player),
       stars, rank: rankOf(stars), cards: cardCount(), cardsTotal: cards.length,
       gold: goldCount(), pieces: doneCount(player), pledge: (player.pledge || '').trim(), hero, date,
-      perfect: STATIONS.map((s) => !previewMode && isDone(s.id) && stationReqs(s).every(Boolean))
+      perfect: STATIONS.map((s) => !previewMode && isDone(s.id) && stationReqs(s).every(Boolean)),
+      checked: !!(player.check && player.check.post)
     };
   }
 
@@ -6242,6 +6246,15 @@
       ctx.fillText('—', RX + RW / 2, ry + hh / 2 + 8); ctx.textAlign = 'left';
     }
 
+    // 📋 출발 전·도착 점검을 마쳤으면 작은 표시 (점수는 넣지 않아요) — 담임 선생님이 인증서만 봐도 알 수 있게
+    if (D.checked) {
+      ctx.font = bodyFont(17, true);
+      const cw = Math.min(RW, ctx.measureText(T('certChecked')).width + 32);
+      ctx.fillStyle = '#e6f4e8'; roundRect(ctx, RX + RW - cw, CM.y + CM.h + 10, cw, 32, 16); ctx.fill();
+      ctx.strokeStyle = '#2c9a4a'; ctx.lineWidth = 2; roundRect(ctx, RX + RW - cw, CM.y + CM.h + 10, cw, 32, 16); ctx.stroke();
+      ctx.fillStyle = '#1f7a38'; ctx.textAlign = 'center'; ctx.fillText(T('certChecked'), RX + RW - cw / 2, CM.y + CM.h + 32, cw - 16); ctx.textAlign = 'left';
+    }
+
     /* ---- 아래: 나의 평화 다짐 ---- */
     const PY = 990;
     ctx.fillStyle = '#fff'; roundRect(ctx, 40, PY, W - 80, 192, 22); ctx.fill();
@@ -6308,7 +6321,7 @@
   async function certFonts() {
     if (!document.fonts || !document.fonts.load) return;
     const text = [T('certTitle'), player.nick, player.pledge || '', player.realName || '', player.school || '', nationName(player), schoolEx(), T('certPledge'), T('finishQuote'), L(CONFIG.madeBy), T('certMyHero'), T('certNameLabel'),
-      T('certStars'), T('certCards'), T('certGold'), T('certPieces'), T('certGoldStamp'), rankOf(starTotal(player)), T('seaW'), T('seaE'), T('line38'),
+      T('certStars'), T('certCards'), T('certGold'), T('certPieces'), T('certGoldStamp'), T('certChecked'), rankOf(starTotal(player)), T('seaW'), T('seaE'), T('line38'),
       ...allCards().map((c) => L(c.name) + L(c.role)), ...STATIONS.map((s) => L(s.name) + L(s.date)), '0123456789/,.—「」'].join('');
     const fonts = ['40px Jua', '800 40px "Baloo 2"', '600 40px "Baloo 2"', '700 40px "Baloo 2"', '400 20px "Noto Sans KR"', '700 20px "Noto Sans KR"'];
     try { await Promise.race([Promise.all(fonts.map((f) => document.fonts.load(f, text))), new Promise((r) => setTimeout(r, 3000))]); } catch (e) { /* 글꼴이 없으면 기본 글꼴로 */ }
