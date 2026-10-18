@@ -16,6 +16,7 @@
   // 🏫 반 주소: ?class=ABC123 (담임 선생님이 웹앱에서 만든 반) · 선생님용 결과 주소: ?view=ABC123.열쇠
   const CLASS_CODE = (() => { try { const c = (new URLSearchParams(location.search).get('class') || '').toUpperCase(); return /^[A-Z0-9]{4,8}$/.test(c) ? c : ''; } catch (e) { return ''; } })();
   const VIEW_KEY = (() => { try { const m = /^([A-Za-z0-9]{4,8})\.([A-Za-z0-9]{6,20})$/.exec(new URLSearchParams(location.search).get('view') || ''); return m ? { cls: m[1].toUpperCase(), key: m[2] } : null; } catch (e) { return null; } })();
+  const TRIBUTE_ONLY = (() => { try { return new URLSearchParams(location.search).get('tribute') === '1'; } catch (e) { return false; } })();
   const GRADE = (() => { try { const g = (new URLSearchParams(location.search).get('grade') || '').toLowerCase(); return ['34', 'ms', 'hs'].includes(g) ? g : '56'; } catch (e) { return '56'; } })();
   const STORE_KEY = 'mapTomorrow.v2';
   const ROSTER_KEY = 'mapTomorrow.roster.v1';
@@ -3339,6 +3340,8 @@
     closeStartModal();
     renderTtbSoon();
     renderClassFold();
+    // 🕊️ 추모만 하는 주소 (?tribute=1): 들어오자마자 추모 창 — 게임은 하지 않아도 돼요
+    if (TRIBUTE_ONLY && !showStart.tributed) { showStart.tributed = true; setTimeout(() => { if (!$('startScreen').hidden) openTribute(); }, 500); return; }
     if (VIEW_KEY && !showStart.viewed) { showStart.viewed = true; setTimeout(() => openClassView(VIEW_KEY.cls, VIEW_KEY.key), 500); return; }
     if (ttbAutoOpen()) { setTimeout(() => { if (!$('startScreen').hidden) { openTribute(); ttbFromStart = true; } }, 600); return; }
     if (Object.keys(store.games).length) setTimeout(() => { if (!$('startScreen').hidden) openStartModal('resume'); }, 600);
