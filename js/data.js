@@ -36,7 +36,7 @@ window.MAP_CONFIG = {
   // 🕊️ 추모 카드만 모으는 패들렛 (11월 11일 추모의 벽) — 인증서 패들렛과 따로예요. 비우면 위의 padletUrl 로 열려요
   // 🏫 반 결과 모으기 (구글 Apps Script 웹 앱 주소) — apps-script/class-results.gs 를 구글 시트에 붙여 배포한 뒤 그 주소를 넣어요
   //   비어 있으면: 결과를 보내지 않고, 첫 화면의 [우리 반 만들기]는 '아직 설정 전'이라고 알려 줘요
-  classApi: '',
+  classApi: 'https://script.google.com/macros/s/AKfycbyVL57Fr2rbBaibWtWGNNSQP863RfdzvHr4Xt9nqAKOnWkyYjdzA9CXcsdPz7R_dgCVTg/exec',
   tributePadletUrl: 'https://padlet.com/llyj591/11-11-m-a-p-to-tomorrow-wall-of-memory-muro-de-la-memoria-s024lxylx7jjz4807ggh',
 
   // 1차시를 끝낼 작전 지점 id — 이 작전 지점을 통과하면 "1차시는 여기까지!"와 코드를 크게 보여 줘요 ('' = 안 나눔)
