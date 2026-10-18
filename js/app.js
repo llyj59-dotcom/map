@@ -6975,10 +6975,29 @@
   const pageUrl = (q) => `${location.origin}${location.pathname}?${q}`;
   const myClasses = () => (store.myClasses = store.myClasses || []);
   let clsPick = GRADE; // 고른 문제 수준 (반을 만든 뒤에도 그대로)
+  let clsUnlocked = false; // 선생님 비밀번호를 넣었나요? (이 페이지를 닫으면 다시 잠겨요)
   function renderClassFold() {
     const body = $('classBody');
     if (!body) return;
+    // 👧 학생용 반 주소로 들어온 화면에서는 아예 보이지 않아요
+    if ($('classFold')) $('classFold').hidden = !!CLASS_CODE;
     if (!classOn()) { body.innerHTML = `<p class="fold-help">${esc(T('clsOff'))}</p>`; return; }
+    // 🔒 반 만들기·이 기기에서 만든 반 목록은 선생님 비밀번호를 넣어야 열려요 (학생이 장난으로 만들거나 결과를 보지 않게)
+    if (!clsUnlocked) {
+      body.innerHTML = `<p class="fold-help">${esc(T('clsLead'))}</p>
+        <form id="clsLock" autocomplete="off" novalidate>
+          <label for="clsPw">${esc(T('password'))}</label>
+          <input id="clsPw" type="password" autocomplete="off">
+          <button class="btn btn-ghost" type="submit">${esc(T('enter'))}</button>
+          <p class="form-error" id="clsPwErr" role="alert"></p>
+        </form>`;
+      $('clsLock').addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (teacherHash($('clsPw').value.trim()) === String(CONFIG.teacherPasswordHash)) { clsUnlocked = true; renderClassFold(); if ($('clsName')) $('clsName').focus(); }
+        else $('clsPwErr').textContent = T('wrongPw');
+      });
+      return;
+    }
     const grades = T('clsGrades');
     body.innerHTML = `<p class="fold-help">${esc(T('clsLead'))}</p>
       <label for="clsName">${esc(T('clsName'))}</label>
