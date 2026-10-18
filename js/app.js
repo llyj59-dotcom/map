@@ -386,12 +386,24 @@
       tribTitle: '콜롬비아 용사들을 위한 추모',
       tribLead: '인천 경명공원의 콜롬비아군 참전기념비 앞에 선 마음으로 꽃을 놓고, 1분 동안 묵념해요.',
       ttbTitle: '11월 11일, 유엔참전용사 국제추모의 날',
-      ttbText: '해마다 11월 11일 오전 11시 정각, 6·25 전쟁에 함께한 22개 나라가 부산 유엔기념공원을 향해 1분 동안 묵념해요. 이 추모를 "부산을 향하여(Turn Toward Busan)"라고 불러요.',
-      ttbBefore: (t) => `오전 11시까지 ${t} 남았어요.`,
+      ttbText: '해마다 11월 11일 한국 시간 오전 11시 정각, 6·25 전쟁에 함께한 22개 나라가 다 같이 부산 유엔기념공원을 향해 1분 동안 묵념해요. 이 추모를 "부산을 향하여(Turn Toward Busan)"라고 불러요.',
+      ttbBefore: (t) => `묵념까지 ${t} 남았어요.`,
       ttbNow: '지금이 바로 그 시간이에요! 함께 묵념해요.',
-      ttbAfter: '11시는 지났지만, 지금 함께 묵념해도 좋아요.',
+      ttbAfter: '오늘 묵념 시간은 지났지만, 지금 함께 묵념해도 좋아요.',
       ttbSoon: (d) => `D-${d} · 11월 11일은 유엔참전용사 국제추모의 날`,
       ttbToday: '오늘은 유엔참전용사 국제추모의 날',
+      ttbLocal: (t) => `이 기기 시각으로는 ${t}이에요.`,
+      ovSoonTitle: '🇺🇳 곧 유엔참전용사 국제추모의 날 묵념 시간이에요',
+      ovWhy: '부산 유엔기념공원은 세계에서 하나뿐인 유엔군 묘지예요. 6·25 전쟁 때 머나먼 한국을 지키다 목숨을 잃은 여러 나라 용사들이 잠들어 있어요. 그분들의 희생을 잊지 않으려고, 세계 곳곳에서 같은 시각에 함께 고개를 숙여요.',
+      ovKeep: '하던 활동은 그대로 저장돼 있어요. 묵념이 끝나면 이어서 할 수 있어요.',
+      ovSoonIn: '묵념 시작까지',
+      ovReady: '바르게 앉아 마음을 가다듬고 기다려요.',
+      ovNowTitle: '🙏 지금, 다 함께 묵념해요',
+      ovNowText: '눈을 감고, 먼 나라의 평화를 위해 싸운 용사들께 마음속으로 감사 인사를 전해요.',
+      ovDoneTitle: '🕊️ 함께해 주어서 고마워요',
+      ovDoneText: '오늘 우리는 세계의 여러 나라 사람들과 같은 시각에 유엔참전용사들을 기억했어요.',
+      ovBack: '하던 활동으로 돌아가기 ▶',
+      ovTeacher: '선생님: 이 화면 끄기', ovTeacherPh: '선생님 비밀번호', ovTeacherBtn: '끄기',
       ttbBusan: '🧭 부산 유엔기념공원 쪽(인천에서 남동쪽)을 바라보며 묵념해요.',
       silenceMin: '🙏 1분 묵념하기',
       tribPadlet: '🗂️ 기억의 벽(패들렛)에 붙이기',
@@ -1019,12 +1031,24 @@
       tribTitle: 'Homenaje a los combatientes colombianos',
       tribLead: 'Como si estuvieras frente al monumento colombiano del parque Gyeongmyeong de Incheon, deja una flor y guarda un minuto de silencio.',
       ttbTitle: '11 de noviembre: Día Internacional de Homenaje a los Veteranos de la ONU',
-      ttbText: 'Cada 11 de noviembre, a las 11:00 en punto, los 22 países que participaron en la Guerra de Corea guardan un minuto de silencio mirando hacia el Cementerio Memorial de la ONU en Busan. Este homenaje se llama "Turn Toward Busan" (Mirando hacia Busan).',
-      ttbBefore: (t) => `Faltan ${t} para las 11:00.`,
+      ttbText: 'Cada 11 de noviembre, a las 11:00 en punto hora de Corea, los 22 países que participaron en la Guerra de Corea guardan al mismo tiempo un minuto de silencio mirando hacia el Cementerio Memorial de la ONU en Busan. Este homenaje se llama "Turn Toward Busan" (Mirando hacia Busan).',
+      ttbBefore: (t) => `Faltan ${t} para el minuto de silencio.`,
       ttbNow: '¡Es justo la hora! Guardemos silencio juntos.',
-      ttbAfter: 'Ya pasaron las 11:00, pero puedes guardar silencio ahora.',
+      ttbAfter: 'Ya pasó la hora del homenaje, pero puedes guardar silencio ahora.',
       ttbSoon: (d) => `Faltan ${d} días · el 11 de noviembre es el Día de Homenaje a los Veteranos de la ONU`,
       ttbToday: 'Hoy es el Día de Homenaje a los Veteranos de la ONU',
+      ttbLocal: (t) => `En la hora de este dispositivo: ${t}`,
+      ovSoonTitle: '🇺🇳 Pronto empieza el minuto de silencio por los veteranos de la ONU',
+      ovWhy: 'El Cementerio Memorial de la ONU en Busan es el único cementerio de las Naciones Unidas en el mundo. Allí descansan soldados de muchos países que dieron la vida defendiendo a Corea, un país lejano. Para no olvidar su sacrificio, en todo el mundo inclinamos la cabeza a la misma hora.',
+      ovKeep: 'Lo que estabas haciendo quedó guardado. Cuando termine el silencio, podrás continuar.',
+      ovSoonIn: 'El silencio empieza en',
+      ovReady: 'Siéntate bien y prepárate en calma.',
+      ovNowTitle: '🙏 Ahora, guardemos silencio juntos',
+      ovNowText: 'Cierra los ojos y da las gracias en silencio a los soldados que lucharon por la paz de un país lejano.',
+      ovDoneTitle: '🕊️ Gracias por participar',
+      ovDoneText: 'Hoy recordamos a los veteranos de la ONU a la misma hora que personas de muchos países del mundo.',
+      ovBack: 'Volver a lo que estaba haciendo ▶',
+      ovTeacher: 'Docente: cerrar esta pantalla', ovTeacherPh: 'Contraseña docente', ovTeacherBtn: 'Cerrar',
       ttbBusan: '🧭 Guarda silencio mirando hacia el Cementerio Memorial de la ONU en Busan.',
       silenceMin: '🙏 Guardar un minuto de silencio',
       tribPadlet: '🗂️ Pegar en el Muro de la memoria (Padlet)',
@@ -1651,12 +1675,24 @@
       tribTitle: 'A tribute to the Colombian soldiers',
       tribLead: 'Imagine you are standing in front of the Colombian memorial in Gyeongmyeong Park, Incheon. Lay a flower and keep one minute of silence.',
       ttbTitle: 'November 11: International Day of Remembrance for UN Veterans',
-      ttbText: 'Every year on November 11 at exactly 11 a.m., the 22 countries that took part in the Korean War keep one minute of silence facing the UN Memorial Cemetery in Busan. This tribute is called "Turn Toward Busan".',
-      ttbBefore: (t) => `${t} left until 11 a.m.`,
+      ttbText: 'Every year on November 11 at exactly 11 a.m. Korea time, the 22 countries that took part in the Korean War keep one minute of silence together facing the UN Memorial Cemetery in Busan. This tribute is called "Turn Toward Busan".',
+      ttbBefore: (t) => `${t} until the minute of silence.`,
       ttbNow: 'It is time! Let us keep silence together.',
-      ttbAfter: 'It is past 11 a.m., but you can still keep a moment of silence now.',
+      ttbAfter: 'The minute of silence has passed, but you can still keep a moment of silence now.',
       ttbSoon: (d) => `D-${d} · November 11 is the Day of Remembrance for UN Veterans`,
       ttbToday: 'Today is the Day of Remembrance for UN Veterans',
+      ttbLocal: (t) => `On this device's clock: ${t}`,
+      ovSoonTitle: '🇺🇳 The minute of silence for UN veterans starts soon',
+      ovWhy: 'The UN Memorial Cemetery in Busan is the only United Nations cemetery in the world. Soldiers from many countries who gave their lives defending faraway Korea rest there. So that we never forget their sacrifice, people around the world bow their heads at the same moment.',
+      ovKeep: 'What you were doing is saved. You can carry on after the silence.',
+      ovSoonIn: 'Silence starts in',
+      ovReady: 'Sit up straight and get ready calmly.',
+      ovNowTitle: '🙏 Now, let us keep silence together',
+      ovNowText: 'Close your eyes and silently thank the soldiers who fought for peace in a faraway country.',
+      ovDoneTitle: '🕊️ Thank you for taking part',
+      ovDoneText: 'Today we remembered the UN veterans at the same moment as people in many countries around the world.',
+      ovBack: 'Back to what I was doing ▶',
+      ovTeacher: 'Teacher: close this screen', ovTeacherPh: 'Teacher password', ovTeacherBtn: 'Close',
       ttbBusan: '🧭 Keep silence facing the UN Memorial Cemetery in Busan.',
       silenceMin: '🙏 One minute of silence',
       tribPadlet: '🗂️ Post on the Wall of Memory (Padlet)',
@@ -1934,6 +1970,7 @@
   let lang = UI[store.lang] ? store.lang : 'ko';
   let player = null;      // 지금 하는 여정
   let previewMode = false; // 선생님 미리 보기
+  let ttbOn = false;        // 🇺🇳 11월 11일 묵념 화면이 떠 있는 동안 (배경음악을 다시 켜지 않아요)
 
   function loadStore() {
     try {
@@ -2273,7 +2310,7 @@
   const sfx = (name) => Sound.sfx(name);
   // 장면에 맞는 배경음악: 작전 지점마다 data.js 의 MAP_CONFIG.bgmStations 로 정해요
   function bgmSync() {
-    if (!$('teacherScreen').hidden || previewMode) { Sound.bgm(null); return; }
+    if (ttbOn || !$('teacherScreen').hidden || previewMode) { Sound.bgm(null); return; }
     if (!$('startScreen').hidden) { Sound.bgm('start'); return; }
     if (!$('endingScreen').hidden) { Sound.bgm('ending'); return; }
     if (cur) {
@@ -4475,7 +4512,7 @@
       const cc = box.dataset.cc ? `&cc_load_policy=1&cc_lang_pref=${lang}` : '';
       const must = mustWatch(cur.s);
       const track = must && must.yt === box.dataset.yt;
-      const api = track ? `&enablejsapi=1&origin=${encodeURIComponent(location.origin)}` : '';
+      const api = track ? `&enablejsapi=1&origin=${encodeURIComponent(location.origin)}` : '&enablejsapi=1'; // (11월 11일 묵념 때 멈출 수 있게)
       // ✂️ 보여 줄 부분만 (from~to)
       const cv = videosOf(cur.s).find((x) => x.yt === box.dataset.yt) || {};
       const cut = clipOf(cv);
@@ -5081,20 +5118,36 @@
      ===================================================================== */
   const TTB_Q = (() => { try { return new URLSearchParams(location.search); } catch (e) { return new URLSearchParams(); } })();
   const TTB_FORCE = TTB_Q.get('ttb') === '1';
+  // 「부산을 향하여」는 한국 시간 오전 11시 정각에 세계가 함께 묵념해요 → 시각은 모두 한국 시간(KST)으로 계산
+  //   (콜롬비아는 11월 10일 밤 9시 무렵 — 기기 시각으로 바꿔 보여 줘요)
+  const KST_MS = 9 * 3600e3;
   const TTB_OFFSET = (() => {
-    const m = /^(\d{1,2}):(\d{2})$/.exec(TTB_Q.get('ttbclock') || '');
+    const m = /^(\d{1,2}):(\d{2})(?::(\d{2}))?$/.exec(TTB_Q.get('ttbclock') || ''); // 시험용: 한국 시간 그 시각인 것처럼
     if (!m) return 0;
-    const d = new Date(); d.setHours(+m[1], +m[2], 0, 0);
-    return d.getTime() - Date.now();
+    const k = new Date(Date.now() + KST_MS);
+    return Date.UTC(k.getUTCFullYear(), k.getUTCMonth(), k.getUTCDate(), +m[1], +m[2], +(m[3] || 0)) - KST_MS - Date.now();
   })();
-  const ttbClock = () => new Date(Date.now() + TTB_OFFSET);
-  const isTtbDay = (d = ttbClock()) => TTB_FORCE || (d.getMonth() === 10 && d.getDate() === 11);
-  const ttbDaysLeft = (d = ttbClock()) => (d.getMonth() === 10 && d.getDate() < 11 ? 11 - d.getDate() : 0); // 11월 1~10일
-  const dayKey = (d) => `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+  const ttbNow = () => Date.now() + TTB_OFFSET;
+  const kstDate = (ms = ttbNow()) => new Date(ms + KST_MS); // getUTC… 로 읽으면 한국 날짜·시각
+  const isTtbDay = (ms = ttbNow()) => { const k = kstDate(ms); return TTB_FORCE || (k.getUTCMonth() === 10 && k.getUTCDate() === 11); };
+  const ttbDaysLeft = (ms = ttbNow()) => { const k = kstDate(ms); return k.getUTCMonth() === 10 && k.getUTCDate() < 11 ? 11 - k.getUTCDate() : 0; }; // 11월 1~10일
+  const dayKey = (ms = ttbNow()) => { const k = kstDate(ms); return `${k.getUTCFullYear()}-${k.getUTCMonth() + 1}-${k.getUTCDate()}`; };
+  const ttbTarget = (ms = ttbNow()) => { const k = kstDate(ms); return Date.UTC(k.getUTCFullYear(), k.getUTCMonth(), k.getUTCDate(), 11, 0, 0) - KST_MS; }; // 그날 한국 시간 11:00
+  const ttbLocalText = () => {
+    if (new Date().getTimezoneOffset() === -540) return ''; // 한국 기기는 그대로
+    const loc = lang === 'es' ? 'es-CO' : lang === 'en' ? 'en-US' : 'ko-KR';
+    return T('ttbLocal', new Date(ttbTarget()).toLocaleString(loc, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }));
+  };
+  // 안내 창이 뜨는 동안: 11시 remindMinutes 분 전 ~ 11시 1분
+  const inTtbWindow = (ms = ttbNow()) => {
+    const C = CONFIG.ttb || {};
+    if (C.enabled === false || !isTtbDay(ms)) return false;
+    const t0 = ttbTarget(ms);
+    return ms >= t0 - (C.remindMinutes ?? 3) * 60e3 && ms < t0 + 60e3;
+  };
   function ttbAutoOpen() {
-    const d = ttbClock();
-    if (!isTtbDay(d) || store.ttbSeen === dayKey(d)) return false;
-    store.ttbSeen = dayKey(d);
+    if (!isTtbDay() || inTtbWindow() || store.ttbSeen === dayKey()) return false;
+    store.ttbSeen = dayKey();
     save();
     return true;
   }
@@ -5135,7 +5188,7 @@
       <section class="ttb-box${ttb ? ' today' : ''}">
         <h3>🇺🇳 ${esc(T('ttbTitle'))}</h3>
         <p>${esc(T('ttbText'))}</p>
-        ${ttb ? '<p class="ttb-clock" id="ttbClock" role="status"></p>' : ''}
+        ${ttb ? `<p class="ttb-clock" id="ttbClock" role="status"></p>${ttbLocalText() ? `<p class="t-help">${esc(ttbLocalText())}</p>` : ''}` : ''}
       </section>
       <p class="story-text">${esc(T('tribLead'))}</p>
       <div class="visit-scene"><svg id="soloSvg" viewBox="0 0 380 240" aria-hidden="true"></svg></div>
@@ -5223,8 +5276,7 @@
       const tick = () => {
         const el = $('ttbClock');
         if (!el || $('infoSheet').hidden) { clearInterval(ttbTimer); ttbTimer = 0; return; }
-        const now = ttbClock(), at = new Date(now); at.setHours(11, 0, 0, 0);
-        const left = Math.ceil((at - now) / 1000);
+        const left = Math.ceil((ttbTarget() - ttbNow()) / 1000);
         el.classList.toggle('now', left <= 0 && left > -60);
         if (left > 0) el.textContent = `⏰ ${T('ttbBefore', left >= 3600 ? `${Math.floor(left / 3600)}:${String(Math.floor((left % 3600) / 60)).padStart(2, '0')}:${String(left % 60).padStart(2, '0')}` : fmtSec(left))}`;
         else el.textContent = `⏰ ${T(left > -60 ? 'ttbNow' : 'ttbAfter')}`;
@@ -5234,7 +5286,103 @@
     }
   }
   $('quickTribute').addEventListener('click', openTribute);
-  $('infoClose').addEventListener('click', stopSolo);
+  /* ---------- 🇺🇳 11월 11일 묵념 안내 창 — 어느 화면에 있든 (닉네임 쓰는 중·인증서·영상 보는 중에도) ----------
+     · 한국 시간 11시 remindMinutes 분 전: 무슨 행사인지·왜 하는지 + 남은 시간 (영상·배경음악은 멈춰요)
+     · 11:00~11:01: 다 함께 1분 묵념 (모든 기기가 같은 시각에 끝나요)
+     · 끝나면 [하던 활동으로 돌아가기] — 하던 것은 그대로예요. 하루에 한 번만 (store.ttbDone)
+     · 선생님은 비밀번호로 끌 수 있어요 */
+  let ttbPhase = null;
+  function pauseAllMedia() {
+    document.querySelectorAll('iframe').forEach((f) => {
+      if (/youtube/.test(f.src)) { try { f.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'pauseVideo', args: '' }), '*'); } catch (e) { /* 무시 */ } }
+    });
+    document.querySelectorAll('video').forEach((v) => { try { v.pause(); } catch (e) { /* 무시 */ } });
+  }
+  function closeTtbOverlay() {
+    const el = $('ttbOverlay');
+    if (el) el.remove();
+    ttbOn = false; ttbPhase = null;
+    bgmSync();
+  }
+  function showTtbOverlay() {
+    ttbOn = true; ttbPhase = null;
+    Sound.bgm(null);
+    pauseAllMedia();
+    stopSolo();
+    if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+    const el = document.createElement('div');
+    el.id = 'ttbOverlay';
+    el.className = 'ttb-ov';
+    el.setAttribute('role', 'dialog');
+    el.setAttribute('aria-modal', 'true');
+    el.setAttribute('aria-labelledby', 'ttbOvTitle');
+    el.innerHTML = `<div class="ttb-ov-card">
+        <h2 id="ttbOvTitle"></h2>
+        <p class="ttb-ov-big" id="ttbOvBig" role="timer" aria-live="off"></p>
+        <p class="ttb-ov-text" id="ttbOvText"></p>
+        <p class="ttb-ov-why" id="ttbOvWhy"></p>
+        <p class="ttb-ov-local" id="ttbOvLocal"></p>
+        <p class="ttb-ov-keep" id="ttbOvKeep"></p>
+        <p><button type="button" class="btn btn-go" id="ttbOvBack" hidden></button></p>
+        <details class="ttb-ov-teacher"><summary id="ttbOvTSum"></summary>
+          <input type="password" id="ttbOvPw" autocomplete="off">
+          <button type="button" class="btn btn-sm btn-ghost" id="ttbOvPwBtn"></button>
+          <small id="ttbOvPwMsg" role="alert"></small>
+        </details>
+      </div>`;
+    document.body.appendChild(el);
+    $('ttbOvTSum').textContent = T('ovTeacher');
+    $('ttbOvPw').placeholder = T('ovTeacherPh');
+    $('ttbOvPwBtn').textContent = T('ovTeacherBtn');
+    $('ttbOvBack').textContent = T('ovBack');
+    $('ttbOvBack').addEventListener('click', closeTtbOverlay);
+    const offByTeacher = () => {
+      if (teacherHash(($('ttbOvPw').value || '').trim()) !== String(CONFIG.teacherPasswordHash)) { $('ttbOvPwMsg').textContent = T('watchPwWrong'); return; }
+      store.ttbDone = dayKey(); save();
+      closeTtbOverlay();
+    };
+    $('ttbOvPwBtn').addEventListener('click', offByTeacher);
+    $('ttbOvPw').addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); offByTeacher(); } });
+    updateTtbOverlay();
+  }
+  function updateTtbOverlay() {
+    if (!$('ttbOverlay')) return;
+    const ms = ttbNow(), t0 = ttbTarget(ms);
+    const phase = ms < t0 ? 'soon' : ms < t0 + 60e3 ? 'now' : 'done';
+    if (phase !== 'done') { Sound.bgm(null); pauseAllMedia(); }
+    if (phase !== ttbPhase) {
+      ttbPhase = phase;
+      $('ttbOverlay').dataset.phase = phase;
+      $('ttbOvTitle').textContent = T(phase === 'soon' ? 'ovSoonTitle' : phase === 'now' ? 'ovNowTitle' : 'ovDoneTitle');
+      $('ttbOvText').textContent = phase === 'soon' ? T('ttbText') : phase === 'now' ? T('ovNowText') : T('ovDoneText');
+      $('ttbOvWhy').textContent = phase === 'soon' ? T('ovWhy') : '';
+      $('ttbOvLocal').textContent = phase === 'soon' ? ttbLocalText() : '';
+      $('ttbOvKeep').textContent = phase === 'done' ? '' : T('ovKeep');
+      $('ttbOvBack').hidden = phase !== 'done';
+      if (phase === 'now') sfx('buoy');
+      if (phase === 'done') {
+        sfx('key');
+        store.tributes = store.tributes || [];
+        store.tributes.push({ ttb: true, silence: Date.now(), time: Date.now() });
+        store.ttbDone = dayKey();
+        save();
+        reportProgress('ttb');
+        $('ttbOvBack').focus();
+      }
+    }
+    const big = $('ttbOvBig');
+    if (phase === 'soon') big.innerHTML = `<small>${esc(T('ovSoonIn'))}</small>${esc(fmtSec(Math.ceil((t0 - ms) / 1000)))}<small>${esc(T('ovReady'))}</small>`;
+    else if (phase === 'now') big.textContent = String(Math.ceil((t0 + 60e3 - ms) / 1000));
+    else big.textContent = '🕊️';
+  }
+  function ttbWatch() {
+    if (ttbOn) { updateTtbOverlay(); return; }
+    if (inTtbWindow() && store.ttbDone !== dayKey()) showTtbOverlay();
+  }
+  setInterval(ttbWatch, 1000);
+  setTimeout(ttbWatch, 800);
+
+  $('infoClose').addEventListener('click', () => setTimeout(stopSolo)); // 창이 닫힌 다음에
 
   /* =====================================================================
      🗂️ 아카이브 탐험 — 국가보훈부 「유엔참전용사 디지털 아카이브」에서 자료를 찾아 기록하고 패들렛(기억의 벽)에 올려요
@@ -5487,7 +5635,7 @@
     }
     if (video.type === 'youtube') {
       const id = youtubeId(src);
-      return `<div class="video-box"><iframe src="https://www.youtube-nocookie.com/embed/${esc(id)}?rel=0" title="video" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      return `<div class="video-box"><iframe src="https://www.youtube-nocookie.com/embed/${esc(id)}?rel=0&enablejsapi=1" title="video" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
         <a class="v-yt-link" href="https://www.youtube.com/watch?v=${esc(id)}" target="_blank" rel="noopener">${esc(T('onYoutube'))}</a>`;
     }
     return `<div class="video-box"><video src="${esc(src)}" controls preload="metadata" playsinline></video></div>`;
@@ -6414,7 +6562,7 @@
     // 긴 영상은 유튜브 앱으로 넘어가지 않게 웹앱 안의 창에서 틀어요 (✕를 누르면 그대로 웹앱)
     body.querySelectorAll('[data-long]').forEach((b) => b.addEventListener('click', () => {
       const v = longVideos().find((x) => x.yt === b.dataset.long) || {};
-      openInfo('🎬', L(v.title) || T('longTitle'), `<div class="video-box"><iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(b.dataset.long)}?autoplay=1&rel=0&playsinline=1&hl=${lang}" title="video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>`);
+      openInfo('🎬', L(v.title) || T('longTitle'), `<div class="video-box"><iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(b.dataset.long)}?autoplay=1&rel=0&playsinline=1&enablejsapi=1&hl=${lang}" title="video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>`);
       Sound.bgm(null);
     }));
     if ($('endPortfolio')) $('endPortfolio').addEventListener('click', printPortfolio);

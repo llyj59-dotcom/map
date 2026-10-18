@@ -29,6 +29,11 @@ window.MAP_CONFIG = {
     { name: 'Institución Educativa Técnica La Esperanza', nation: 'co', lang: 'es' }
   ],
 
+  // 🇺🇳 11월 11일 「부산을 향하여(Turn Toward Busan)」 — 유엔참전용사 국제추모의 날 (법정기념일, 해마다 저절로)
+  //   한국 시간 오전 11시 정각에 1분 묵념. 그 시각에 웹앱을 켜 두면 어느 화면이든 안내 창이 뜨고 함께 묵념해요.
+  //   enabled: false 로 바꾸면 꺼져요 · remindMinutes: 몇 분 전부터 안내 창을 띄울지
+  ttb: { enabled: true, remindMinutes: 3 },
+
   // 1차시를 끝낼 작전 지점 id — 이 작전 지점을 통과하면 "1차시는 여기까지!"와 코드를 크게 보여 줘요 ('' = 안 나눔)
   lessonBreakAfter: 'busan',
 
