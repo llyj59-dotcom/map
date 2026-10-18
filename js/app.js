@@ -404,6 +404,21 @@
       ovDoneText: '오늘 우리는 세계의 여러 나라 사람들과 같은 시각에 유엔참전용사들을 기억했어요.',
       ovBack: '하던 활동으로 돌아가기 ▶',
       ovTeacher: '선생님: 이 화면 끄기', ovTeacherPh: '선생님 비밀번호', ovTeacherBtn: '끄기',
+      cardTitle: '추모 카드',
+      cardStamp: (y) => `${y}. 11. 11. 오전 11시 「부산을 향하여」 1분 묵념 참여`,
+      cardName: '카드에 들어갈 이름 (닉네임도 좋아요)', cardNamePh: '예) 지민',
+      cardMake: '🖼️ 추모 카드 만들기',
+      cardNeedTrib: '꽃을 놓고 묵념을 마치면 추모 카드를 만들 수 있어요.',
+      cardNeedMsg: '추모 한마디를 5자 이상 써 주세요.',
+      cardNeedName: '카드에 들어갈 이름을 적어 주세요.',
+      cardUpload: '📋 카드 복사하고 추모의 벽 열기',
+      cardUploadPad: '💾 카드 저장하고 추모의 벽 열기',
+      cardHow: '추모의 벽(패들렛)이 열리면 ＋ 버튼을 누르고 붙여 넣기(Ctrl+V) 해요.',
+      cardHowPad: '추모의 벽(패들렛)이 열리면 ＋ 버튼을 누르고, 저장한 카드 그림을 골라 올려요.',
+      cardCopied: '카드를 복사했어요! 패들렛에 붙여 넣으세요.',
+      cardSavedImg: '카드를 그림으로 저장했어요. 패들렛에서 ＋ → 저장한 그림을 올려요. (안 되면 아래 그림을 길게 눌러 저장)',
+      cardJoined: '✓ 오전 11시 묵념에 함께했어요',
+      ovCard: '✍️ 추모 카드 쓰고 추모의 벽에 올리기',
       ttbBusan: '🧭 부산 유엔기념공원 쪽(인천에서 남동쪽)을 바라보며 묵념해요.',
       silenceMin: '🙏 1분 묵념하기',
       tribPadlet: '🗂️ 기억의 벽(패들렛)에 붙이기',
@@ -1049,6 +1064,21 @@
       ovDoneText: 'Hoy recordamos a los veteranos de la ONU a la misma hora que personas de muchos países del mundo.',
       ovBack: 'Volver a lo que estaba haciendo ▶',
       ovTeacher: 'Docente: cerrar esta pantalla', ovTeacherPh: 'Contraseña docente', ovTeacherBtn: 'Cerrar',
+      cardTitle: 'Tarjeta de homenaje',
+      cardStamp: (y) => `11 de noviembre de ${y}, 11:00 (hora de Corea) · Turn Toward Busan: un minuto de silencio`,
+      cardName: 'Nombre para la tarjeta (puede ser tu apodo)', cardNamePh: 'Ej.: Valentina',
+      cardMake: '🖼️ Crear la tarjeta de homenaje',
+      cardNeedTrib: 'Cuando dejes una flor y guardes silencio, podrás crear la tarjeta.',
+      cardNeedMsg: 'Escribe un mensaje de al menos 5 caracteres.',
+      cardNeedName: 'Escribe el nombre para la tarjeta.',
+      cardUpload: '📋 Copiar la tarjeta y abrir el Muro',
+      cardUploadPad: '💾 Guardar la tarjeta y abrir el Muro',
+      cardHow: 'Cuando se abra el Muro de la memoria (Padlet), pulsa ＋ y pega la tarjeta (Ctrl+V).',
+      cardHowPad: 'Cuando se abra el Muro de la memoria (Padlet), pulsa ＋ y elige la imagen guardada.',
+      cardCopied: '¡Tarjeta copiada! Pégala en el Padlet.',
+      cardSavedImg: 'Guardamos la tarjeta como imagen. En el Padlet, pulsa ＋ y sube la imagen. (Si no funciona, mantén pulsada la imagen de abajo para guardarla).',
+      cardJoined: '✓ Participaste en el minuto de silencio de las 11:00',
+      ovCard: '✍️ Escribir una tarjeta y subirla al Muro de la memoria',
       ttbBusan: '🧭 Guarda silencio mirando hacia el Cementerio Memorial de la ONU en Busan.',
       silenceMin: '🙏 Guardar un minuto de silencio',
       tribPadlet: '🗂️ Pegar en el Muro de la memoria (Padlet)',
@@ -1693,6 +1723,21 @@
       ovDoneText: 'Today we remembered the UN veterans at the same moment as people in many countries around the world.',
       ovBack: 'Back to what I was doing ▶',
       ovTeacher: 'Teacher: close this screen', ovTeacherPh: 'Teacher password', ovTeacherBtn: 'Close',
+      cardTitle: 'Tribute card',
+      cardStamp: (y) => `November 11, ${y}, 11 a.m. (Korea time) · Turn Toward Busan: one minute of silence`,
+      cardName: 'Name for the card (a nickname is fine)', cardNamePh: 'e.g. Alex',
+      cardMake: '🖼️ Make a tribute card',
+      cardNeedTrib: 'Lay a flower and keep the silence first, then you can make a card.',
+      cardNeedMsg: 'Please write a message of at least 5 characters.',
+      cardNeedName: 'Please write a name for the card.',
+      cardUpload: '📋 Copy the card and open the Wall',
+      cardUploadPad: '💾 Save the card and open the Wall',
+      cardHow: 'When the Wall of Memory (Padlet) opens, tap ＋ and paste the card (Ctrl+V).',
+      cardHowPad: 'When the Wall of Memory (Padlet) opens, tap ＋ and choose the saved card image.',
+      cardCopied: 'Card copied! Paste it on the Padlet.',
+      cardSavedImg: 'We saved the card as an image. On the Padlet, tap ＋ and upload it. (If that does not work, press and hold the image below to save it.)',
+      cardJoined: '✓ You joined the 11 a.m. minute of silence',
+      ovCard: '✍️ Write a tribute card for the Wall of Memory',
       ttbBusan: '🧭 Keep silence facing the UN Memorial Cemetery in Busan.',
       silenceMin: '🙏 One minute of silence',
       tribPadlet: '🗂️ Post on the Wall of Memory (Padlet)',
@@ -5092,17 +5137,17 @@
   }
 
   // 패들렛을 새 창(팝업)으로 열기
-  function openPadlet() {
+  function openPadlet(url = CONFIG.padletUrl) {
     // 링크 모드는 새 창을 스크립트로 열 수 없어서, 바로 누를 수 있는 링크 버튼을 보여 줘요
     if (SANDBOX) {
       openInfo('✎', T('padletTitle'), `<p>${esc(T('padletLinkHelp'))}</p>
-        <p><a class="btn btn-go" href="${esc(CONFIG.padletUrl)}" target="_blank" rel="noopener">${esc(T('gbBoard'))}</a></p>`);
+        <p><a class="btn btn-go" href="${esc(url)}" target="_blank" rel="noopener">${esc(T('gbBoard'))}</a></p>`);
       return false;
     }
-    const w = window.open(CONFIG.padletUrl, 'mapTomorrowPadlet', 'popup=yes,width=1000,height=820');
+    const w = window.open(url, 'mapTomorrowPadlet', 'popup=yes,width=1000,height=820');
     if (!w) {
       openInfo('✎', T('padletTitle'), `<p>${esc(T('popupBlocked'))}</p>
-        <p><a class="btn btn-go" href="${esc(CONFIG.padletUrl)}" target="_blank" rel="noopener">${esc(T('gbBoard'))}</a></p>`);
+        <p><a class="btn btn-go" href="${esc(url)}" target="_blank" rel="noopener">${esc(T('gbBoard'))}</a></p>`);
       return false;
     }
     return true;
@@ -5178,101 +5223,139 @@
     copying.then((ok) => toast(ok ? (opened ? T('padletPopup') : T('copied')) : T('copyFail')));
   }
 
-  function openTribute() {
+  // 🕊️ 추모 창 — joined: 11시 묵념(안내 창)을 막 마치고 들어온 경우 (꽃·묵념은 끝난 것으로, 카드에 참여 도장)
+  function openTribute(opts = {}) {
     stopSolo();
     store.tributes = store.tributes || [];
     const ttb = isTtbDay();
-    const rec = {}; // 이번 추모
-    let stored = false;
+    const joined = !!opts.joined || (ttb && store.ttbJoined === dayKey()); // 오늘 11시 묵념에 함께했나요?
+    const rec = joined ? { flower: Date.now(), silence: Date.now(), ttb: true } : {}; // 이번 추모
+    let stored = joined; // 11시 묵념은 이미 기록했어요
+    const nick = player ? player.nick : (store.cardName || '');
     openInfo('🕊️', T('tribTitle'), `
+      ${joined ? `<p class="trib-done">${esc(T('cardJoined'))}</p>` : `
       <section class="ttb-box${ttb ? ' today' : ''}">
         <h3>🇺🇳 ${esc(T('ttbTitle'))}</h3>
         <p>${esc(T('ttbText'))}</p>
         ${ttb ? `<p class="ttb-clock" id="ttbClock" role="status"></p>${ttbLocalText() ? `<p class="t-help">${esc(ttbLocalText())}</p>` : ''}` : ''}
       </section>
-      <p class="story-text">${esc(T('tribLead'))}</p>
+      <p class="story-text">${esc(T('tribLead'))}</p>`}
       <div class="visit-scene"><svg id="soloSvg" viewBox="0 0 380 240" aria-hidden="true"></svg></div>
-      <p class="ttb-busan">${esc(T('ttbBusan'))}</p>
+      ${joined ? '' : `<p class="ttb-busan">${esc(T('ttbBusan'))}</p>
       <div class="trib-acts">
         <button type="button" class="btn btn-go" id="soloFlower">${esc(T('flowerBtn'))}</button>
         <button type="button" class="btn btn-go" id="soloSilence">${esc(T('silenceMin'))}</button>
       </div>
-      <label class="trib-label" for="soloMsg">${esc(T('msgLabel'))}</label>
-      <textarea id="soloMsg" class="guess" maxlength="80" rows="2" placeholder="${esc(T('msgPh'))}"></textarea>
-      <div class="t-buttons trib-btns">
-        <button type="button" class="btn btn-sm btn-blue" id="soloSave">${esc(T('msgSave'))}</button>
-        ${CONFIG.padletUrl ? `<button type="button" class="btn btn-sm btn-go" id="soloPadlet">${esc(T('tribPadlet'))}</button>` : ''}
-      </div>
-      <textarea id="copyFallback" class="guess" rows="4" readonly hidden></textarea>
-      <small class="trib-note" id="soloNote" role="alert"></small>
-      <p class="trib-done" id="soloDone" role="status" hidden>${esc(T('tributeDone'))}</p>
+      <p class="trib-done" id="soloDone" role="status" hidden>${esc(T('tributeDone'))}</p>`}
+      <section class="card-make" id="cardMake">
+        <h3>🖼️ ${esc(T('cardTitle'))}</h3>
+        <p class="t-help" id="cardLock">${esc(T('cardNeedTrib'))}</p>
+        <label class="trib-label" for="soloMsg">${esc(T('msgLabel').replace(/\s*\(.*\)\s*$/, ''))}</label>
+        <textarea id="soloMsg" class="guess" maxlength="100" rows="3" placeholder="${esc(T('msgPh'))}"></textarea>
+        ${player ? '' : `<label class="trib-label" for="cardName">${esc(T('cardName'))}</label>
+        <input id="cardName" class="arc-input" type="text" maxlength="12" autocomplete="off" placeholder="${esc(T('cardNamePh'))}" value="${esc(nick)}">`}
+        <div class="t-buttons"><button type="button" class="btn btn-go" id="cardBtn">${esc(T('cardMake'))}</button></div>
+        <small class="trib-note" id="soloNote" role="alert"></small>
+        <div id="cardOut" hidden>
+          <img id="cardImg" class="card-img" alt="">
+          <p class="t-help">${esc(T(padMode() ? 'cardHowPad' : 'cardHow'))}</p>
+          <div class="t-buttons"><button type="button" class="btn btn-go" id="cardUp">${esc(T(padMode() ? 'cardUploadPad' : 'cardUpload'))}</button></div>
+        </div>
+      </section>
       <p class="t-help" id="soloCount"></p>`);
     drawMemorialScene($('soloSvg'), { spots: [] });
+    if (joined) drawFlower();
     const count = () => { const n = store.tributes.length; $('soloCount').textContent = n ? T('tribCount', n) : ''; };
+    const ready = () => !!(rec.flower && rec.silence);
+    const lockCard = () => {
+      $('cardLock').hidden = ready();
+      $('cardMake').classList.toggle('locked', !ready());
+      ['soloMsg', 'cardName', 'cardBtn'].forEach((id) => { if ($(id)) $(id).disabled = !ready(); });
+    };
     const finish = () => {
-      $('soloDone').hidden = !(rec.flower && rec.silence);
-      if (rec.flower && rec.silence && !stored) {
+      if ($('soloDone')) $('soloDone').hidden = !ready();
+      if (ready() && !stored) {
         stored = true;
         store.tributes.push(rec);
         save();
         reportProgress('tribute');
         count();
       } else if (stored) save();
+      lockCard();
     };
-    $('soloFlower').addEventListener('click', () => {
-      rec.flower = Date.now();
-      drawFlower();
-      sfx('piece');
-      $('soloFlower').disabled = true;
-      $('soloFlower').textContent = `✓ ${T('flowerDone')}`;
-      finish();
-    });
-    $('soloSilence').addEventListener('click', () => {
-      const btn = $('soloSilence');
-      let left = 60;
-      Sound.bgm(null); // 묵념 동안은 조용히
-      sfx('buoy');
-      document.body.classList.add('silence');
-      btn.disabled = true;
-      btn.textContent = T('silenceNow', left);
-      clearInterval(soloTimer);
-      soloTimer = setInterval(() => {
-        left -= 1;
-        if (left > 0) { btn.textContent = T('silenceNow', left); return; }
-        clearInterval(soloTimer); soloTimer = 0;
-        document.body.classList.remove('silence');
-        bgmSync();
-        sfx('key');
-        rec.silence = Date.now();
-        btn.textContent = `✓ ${T('silenceDone')}`;
+    if (!joined) {
+      $('soloFlower').addEventListener('click', () => {
+        rec.flower = Date.now();
+        drawFlower();
+        sfx('piece');
+        $('soloFlower').disabled = true;
+        $('soloFlower').textContent = `✓ ${T('flowerDone')}`;
         finish();
-      }, 1000);
-    });
-    const readMsg = () => {
-      const box = $('soloMsg'), text = box.value.trim();
-      if (!text) return '';
-      const bad = textProblem(text);
-      $('soloNote').classList.toggle('bad', !!bad);
-      box.classList.toggle('is-error', !!bad);
-      if (bad) { $('soloNote').textContent = bad; return ''; }
-      return text;
-    };
-    $('soloSave').addEventListener('click', () => {
-      const text = readMsg();
-      if (!text) return;
+      });
+      $('soloSilence').addEventListener('click', () => {
+        const btn = $('soloSilence');
+        let left = 60;
+        Sound.bgm(null); // 묵념 동안은 조용히
+        sfx('buoy');
+        document.body.classList.add('silence');
+        btn.disabled = true;
+        btn.textContent = T('silenceNow', left);
+        clearInterval(soloTimer);
+        soloTimer = setInterval(() => {
+          left -= 1;
+          if (left > 0) { btn.textContent = T('silenceNow', left); return; }
+          clearInterval(soloTimer); soloTimer = 0;
+          document.body.classList.remove('silence');
+          bgmSync();
+          sfx('key');
+          rec.silence = Date.now();
+          btn.textContent = `✓ ${T('silenceDone')}`;
+          finish();
+        }, 1000);
+      });
+    }
+    const note = (msg, bad) => { $('soloNote').textContent = msg; $('soloNote').classList.toggle('bad', !!bad); };
+    let cardBlob = null, cardFile = '';
+    $('cardBtn').addEventListener('click', async () => {
+      const msgBox = $('soloMsg'), text = msgBox.value.trim();
+      const name = player ? player.nick : ($('cardName').value || '').trim();
+      if (text.replace(/\s/g, '').length < 5) { note(T('cardNeedMsg'), true); msgBox.focus(); return; }
+      if (!name) { note(T('cardNeedName'), true); $('cardName').focus(); return; }
+      const bad = textProblem(text) || (player ? '' : (window.WordFilter && window.WordFilter.check(name, 'nick') ? T('textBad') : ''));
+      msgBox.classList.toggle('is-error', !!bad);
+      if (bad) { note(bad, true); return; }
+      note('');
       rec.text = text; rec.time = Date.now();
+      if (!player) store.cardName = name;
       finish();
-      $('soloNote').textContent = `✓ ${T('msgSaved')}`;
+      cardBlob = await tributeCardBlob({ text, name, ttb: !!rec.ttb });
+      cardFile = `${name}_tribute-card.png`.replace(/[\\/:*?"<>|]+/g, '').replace(/\s+/g, '');
+      if (!cardBlob) { toast(T('copyFail')); return; }
+      const img = $('cardImg');
+      if (img.dataset.url) URL.revokeObjectURL(img.dataset.url);
+      img.dataset.url = URL.createObjectURL(cardBlob);
+      img.src = img.dataset.url;
+      $('cardOut').hidden = false;
+      sfx('card');
+      $('cardOut').scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     });
-    if ($('soloPadlet')) $('soloPadlet').addEventListener('click', () => {
-      const text = readMsg();
-      if (!text) { $('soloMsg').focus(); return; }
-      rec.text = text; rec.time = Date.now();
-      finish();
-      shareToPadlet(`[🕊️ ${T('tribTitle')}]\n${text}${player ? `\n— ${player.nick}` : ''}`);
+    $('cardUp').addEventListener('click', async () => {
+      if (!cardBlob) return;
+      const url = CONFIG.tributePadletUrl || CONFIG.padletUrl;
+      let copied = false;
+      if (!padMode() && navigator.clipboard && navigator.clipboard.write && window.ClipboardItem) {
+        try { await navigator.clipboard.write([new ClipboardItem({ 'image/png': cardBlob })]); copied = true; } catch (e) { copied = false; }
+      }
+      if (!copied && !SANDBOX) downloadBlob(cardBlob, cardFile);
+      rec.card = Date.now();
+      save();
+      reportProgress('tribute-card');
+      if (url) openPadlet(url);
+      toast(T(copied ? 'cardCopied' : 'cardSavedImg'));
     });
     count();
-    if (ttb) {
+    lockCard();
+    if (ttb && !joined) {
       const tick = () => {
         const el = $('ttbClock');
         if (!el || $('infoSheet').hidden) { clearInterval(ttbTimer); ttbTimer = 0; return; }
@@ -5284,6 +5367,93 @@
       tick();
       ttbTimer = setInterval(tick, 1000);
     }
+  }
+
+  /* 🖼️ 추모 카드 (정사각형 1080×1080) — 패들렛 벽에 여러 장이 작게 모여도 잘 읽히게:
+     맨 위 날짜·참여 도장, 가운데 큰 글씨 추모 한마디, 아래 이름. 보고서용 캡처에 맞춰 모든 카드가 같은 모양이에요 */
+  const CARD = 1080;
+  function drawTributeCard(ctx, d) {
+    const W = CARD, H = CARD, cx = W / 2;
+    ctx.fillStyle = '#fffdf5'; ctx.fillRect(0, 0, W, H);
+    // 위: 유엔 하늘색 띠 / 아래: 콜롬비아·태극 띠
+    ctx.fillStyle = '#5b92e5'; ctx.fillRect(0, 0, W, 150);
+    ctx.fillStyle = '#fcd116'; ctx.fillRect(0, H - 30, W / 3, 30);
+    ctx.fillStyle = '#003893'; ctx.fillRect(W / 3, H - 30, W / 3, 30);
+    ctx.fillStyle = '#ce1126'; ctx.fillRect((2 * W) / 3, H - 30, W / 3, 30);
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillStyle = '#fff'; ctx.font = certFont(lang === 'ko' ? 72 : 64, true);
+    ctx.fillText(T('cardTitle'), cx, 64);
+    ctx.font = `700 26px "Baloo 2", "Noto Sans KR", sans-serif`; ctx.fillStyle = 'rgba(255,255,255,.9)';
+    ctx.fillText('M.A.P. to Tomorrow · Wall of Memory', cx, 122);
+    // 도장 (11시 묵념 참여) 또는 날짜
+    let y = 200;
+    if (d.ttb) {
+      ctx.font = bodyFont(lang === 'ko' ? 34 : 28, true);
+      const lines = wrapLines(ctx, T('cardStamp', d.year), W - 200, 2);
+      const bh = lines.length * 46 + 30;
+      ctx.fillStyle = '#e3eefc'; roundRect(ctx, 70, y - 20, W - 140, bh, 26); ctx.fill();
+      ctx.strokeStyle = '#003893'; ctx.lineWidth = 4; roundRect(ctx, 70, y - 20, W - 140, bh, 26); ctx.stroke();
+      ctx.fillStyle = '#003893';
+      lines.forEach((ln, i) => ctx.fillText(ln, cx, y + 4 + i * 46 + 14));
+      y += bh + 10;
+    } else {
+      ctx.font = bodyFont(32, true); ctx.fillStyle = '#4b5878';
+      ctx.fillText(d.date, cx, y + 10);
+      y += 60;
+    }
+    // 기념비 그림 (작게)
+    const sc = 1.05, gx = cx - (380 * sc) / 2, gy = y;
+    ctx.save(); ctx.translate(gx, gy); ctx.scale(sc, sc);
+    roundRect(ctx, 0, 0, 380, 240, 22); ctx.clip();
+    const fill = (c, path) => { ctx.fillStyle = c; ctx.fill(new Path2D(path)); };
+    ctx.fillStyle = '#dcecf8'; ctx.fillRect(0, 0, 380, 240);
+    ctx.fillStyle = '#9cc98a'; ctx.fillRect(0, 206, 380, 34);
+    fill('#cfc8bb', 'M40 214 L340 214 L352 224 L28 224 Z');
+    fill('#ffffff', 'M228 214 L228 34 Q300 70 336 214 Z');
+    ctx.strokeStyle = '#c4ccd6'; ctx.lineWidth = 2; ctx.stroke(new Path2D('M228 214 L228 34 Q300 70 336 214 Z'));
+    fill('#b9b2a6', 'M98 168 h60 v46 h-60 Z');
+    ['M118 66 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0', 'M116 80 Q128 74 140 80 L144 128 L136 128 L134 166 L124 166 L122 128 L112 128 Z', 'M140 84 L152 70 L156 74 L144 92 Z',
+      'M188 152 a8 8 0 1 0 16 0 a8 8 0 1 0 -16 0', 'M188 162 Q196 158 204 164 L208 192 L222 196 L222 212 L180 212 L184 190 Z', 'M200 168 L212 160 L214 164 L204 174 Z'].forEach((pth) => fill('#6e5b44', pth));
+    ctx.strokeStyle = '#8a8f96'; ctx.lineWidth = 3; ctx.lineCap = 'round'; ctx.stroke(new Path2D('M152 72 L162 22'));
+    fill('#4a4f57', 'M284 174 h60 v38 h-60 Z');
+    // 꽃다발 (카드에서는 크게)
+    ctx.strokeStyle = '#3d8a3a'; ctx.lineWidth = 3;
+    [-16, 0, 16].forEach((dx) => { ctx.beginPath(); ctx.moveTo(258, 216); ctx.lineTo(258 + dx, 186); ctx.stroke(); });
+    [[-16, -32, '#e8455b'], [0, -36, '#ffd23f'], [16, -32, '#2f6fd6'], [-8, -42, '#ffffff'], [8, -42, '#e8455b']].forEach(([x, yy, c]) => {
+      ctx.fillStyle = c; ctx.beginPath(); ctx.arc(258 + x, 216 + yy, 8, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = 'rgba(0,0,0,.12)'; ctx.lineWidth = 1; ctx.stroke();
+    });
+    ctx.restore();
+    y += 240 * sc + 40;
+    // 추모 한마디 (큰 글씨)
+    let size = lang === 'ko' ? 54 : 48, lines;
+    for (;;) { ctx.font = certFont(size); lines = wrapLines(ctx, `“${d.text}”`, W - 180, 9); if (lines.length <= 4 || size <= 36) break; size -= 4; }
+    lines = lines.slice(0, 5);
+    const lh = Math.round(size * 1.35);
+    const nameY = H - 130;
+    let ty = y + Math.max(0, (nameY - 50 - y - lines.length * lh) / 2) + lh / 2;
+    ctx.fillStyle = '#14224b';
+    lines.forEach((ln) => { ctx.fillText(ln, cx, ty); ty += lh; });
+    // 이름
+    ctx.font = certFont(lang === 'ko' ? 46 : 42, true); ctx.fillStyle = '#003893';
+    ctx.fillText(`— ${d.name}`, cx, nameY);
+    ctx.font = bodyFont(20); ctx.fillStyle = '#6b7590';
+    ctx.fillText(L(CONFIG.madeBy), cx, H - 70, W - 80);
+  }
+  async function tributeCardBlob(d) {
+    const k = kstDate();
+    d.year = k.getUTCFullYear();
+    d.date = new Date().toLocaleDateString(lang === 'es' ? 'es-CO' : lang === 'en' ? 'en-US' : 'ko-KR', { year: 'numeric', month: 'long', day: 'numeric' });
+    try {
+      if (document.fonts && document.fonts.load) {
+        const sample = `${T('cardTitle')}${d.text}${d.name}${T('cardStamp', d.year)}${d.date}`;
+        await Promise.all([certFont(54), certFont(46, true), certFont(72, true), bodyFont(34, true), bodyFont(20)].map((f) => document.fonts.load(f, sample).catch(() => {})));
+      }
+    } catch (e) { /* 글꼴이 없어도 그려요 */ }
+    const c = document.createElement('canvas');
+    c.width = CARD; c.height = CARD;
+    drawTributeCard(c.getContext('2d'), d);
+    return new Promise((res) => c.toBlob(res, 'image/png'));
   }
   $('quickTribute').addEventListener('click', openTribute);
   /* ---------- 🇺🇳 11월 11일 묵념 안내 창 — 어느 화면에 있든 (닉네임 쓰는 중·인증서·영상 보는 중에도) ----------
@@ -5323,7 +5493,7 @@
         <p class="ttb-ov-why" id="ttbOvWhy"></p>
         <p class="ttb-ov-local" id="ttbOvLocal"></p>
         <p class="ttb-ov-keep" id="ttbOvKeep"></p>
-        <p><button type="button" class="btn btn-go" id="ttbOvBack" hidden></button></p>
+        <p class="ttb-ov-btns"><button type="button" class="btn btn-go" id="ttbOvCard" hidden></button><button type="button" class="btn btn-ghost" id="ttbOvBack" hidden></button></p>
         <details class="ttb-ov-teacher"><summary id="ttbOvTSum"></summary>
           <input type="password" id="ttbOvPw" autocomplete="off">
           <button type="button" class="btn btn-sm btn-ghost" id="ttbOvPwBtn"></button>
@@ -5336,6 +5506,8 @@
     $('ttbOvPwBtn').textContent = T('ovTeacherBtn');
     $('ttbOvBack').textContent = T('ovBack');
     $('ttbOvBack').addEventListener('click', closeTtbOverlay);
+    $('ttbOvCard').textContent = T('ovCard');
+    $('ttbOvCard').addEventListener('click', () => { closeTtbOverlay(); openTribute({ joined: true }); }); // 묵념 바로 다음에 추모 카드
     const offByTeacher = () => {
       if (teacherHash(($('ttbOvPw').value || '').trim()) !== String(CONFIG.teacherPasswordHash)) { $('ttbOvPwMsg').textContent = T('watchPwWrong'); return; }
       store.ttbDone = dayKey(); save();
@@ -5359,15 +5531,17 @@
       $('ttbOvLocal').textContent = phase === 'soon' ? ttbLocalText() : '';
       $('ttbOvKeep').textContent = phase === 'done' ? '' : T('ovKeep');
       $('ttbOvBack').hidden = phase !== 'done';
+      $('ttbOvCard').hidden = phase !== 'done';
       if (phase === 'now') sfx('buoy');
       if (phase === 'done') {
         sfx('key');
         store.tributes = store.tributes || [];
         store.tributes.push({ ttb: true, silence: Date.now(), time: Date.now() });
         store.ttbDone = dayKey();
+        store.ttbJoined = dayKey(); // 끝까지 함께했어요 → 추모 카드에 참여 도장
         save();
         reportProgress('ttb');
-        $('ttbOvBack').focus();
+        $('ttbOvCard').focus();
       }
     }
     const big = $('ttbOvBig');
@@ -5542,7 +5716,7 @@
       copying.then((ok) => toast(ok ? (opened ? T('padletPopup') : T('copied')) : T('copyFail')));
     });
     const p = $('openPadletBtn');
-    if (p) p.addEventListener('click', openPadlet);
+    if (p) p.addEventListener('click', () => openPadlet());
   }
   $('guestbookBtn').addEventListener('click', () => openGuestbook(previewMode));
 

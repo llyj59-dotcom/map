@@ -33,6 +33,8 @@ window.MAP_CONFIG = {
   //   한국 시간 오전 11시 정각에 1분 묵념. 그 시각에 웹앱을 켜 두면 어느 화면이든 안내 창이 뜨고 함께 묵념해요.
   //   enabled: false 로 바꾸면 꺼져요 · remindMinutes: 몇 분 전부터 안내 창을 띄울지
   ttb: { enabled: true, remindMinutes: 3 },
+  // 🕊️ 추모 카드만 모으는 패들렛 (11월 11일 추모의 벽) — 인증서 패들렛과 따로예요. 비우면 위의 padletUrl 로 열려요
+  tributePadletUrl: 'https://padlet.com/llyj591/11-11-m-a-p-to-tomorrow-wall-of-memory-muro-de-la-memoria-s024lxylx7jjz4807ggh',
 
   // 1차시를 끝낼 작전 지점 id — 이 작전 지점을 통과하면 "1차시는 여기까지!"와 코드를 크게 보여 줘요 ('' = 안 나눔)
   lessonBreakAfter: 'busan',

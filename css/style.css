@@ -1463,3 +1463,11 @@ body.silence::after { content: ''; position: fixed; inset: 0; background: rgba(1
 .ttb-ov[data-phase="now"] .ttb-ov-text { text-align: center; }
 .ttb-ov[data-phase="now"] .ttb-ov-keep { color: #9fd0a8; }
 .ttb-ov[data-phase="now"] .ttb-ov-teacher { color: #8896b8; }
+
+/* 🖼️ 추모 카드 */
+.card-make { margin-top: 14px; padding: 14px 16px; border-radius: 18px; background: #f3f7fc; border: 3px solid #5b92e5; }
+.card-make h3 { margin: 0 0 6px; }
+.card-make.locked .trib-label, .card-make.locked textarea, .card-make.locked input, .card-make.locked .t-buttons { opacity: .45; }
+.card-make .guess { min-height: 70px; }
+.card-img { display: block; width: 100%; max-width: 420px; margin: 12px auto 6px; border-radius: 16px; box-shadow: 0 6px 20px rgba(20, 34, 75, .18); }
+.ttb-ov-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
