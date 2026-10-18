@@ -53,7 +53,7 @@
       aboutTitle: '💡 이 게임은 왜 만들었을까요?',
       about: [
         '이 게임은 인천신검단초등학교 6학년 8반 친구들이 직접 조사한 이야기로 만든 평화의 지도예요.',
-        '우리 학교는 인천 서구에 있어요. 같은 서구의 경명공원에는 콜롬비아 참전기념비가 서 있어요. 콜롬비아는 6·25 전쟁 때 라틴아메리카에서 유일하게 전투 부대를 보낸 나라예요. 기념비에는 콜롬비아 용사들이 싸운 흑운토령·금성 전투가 새겨져 있지요.',
+        '우리 학교는 인천 검단구에 있어요. 이웃한 서해구의 경명공원에는 콜롬비아 참전기념비가 서 있어요. 콜롬비아는 6·25 전쟁 때 라틴아메리카에서 유일하게 전투 부대를 보낸 나라예요. 기념비에는 콜롬비아 용사들이 싸운 흑운토령·금성 전투가 새겨져 있지요.',
         '인천상륙작전(1950)은 콜롬비아대대가 오기 전의 일이에요. 그래도 우리 고장 인천에서 시작된 이 작전이 전쟁의 흐름을 바꾸었고, 그 뒤 지구 반대편에서 온 콜롬비아 용사들이 고지에서 싸우고, 콜롬비아 해군이 서해를 지켰어요. 그 이야기를 인천에서 시작해 인천으로 돌아오는 한 장의 지도로 이었어요.'
       ],
       aboutGoals: [
@@ -660,7 +660,7 @@
       aboutTitle: '💡 ¿Por qué hicimos este juego?',
       about: [
         'Este mapa de la paz nace de las investigaciones de los estudiantes del grupo 8 de 6.º de primaria (11-12 años) de la Escuela Primaria Singeomdan, en Incheon (Corea del Sur), y está pensado para compartirlo con nuestros amigos de Colombia.',
-        'Nuestra escuela está en el distrito de Seo-gu, en Incheon. En ese mismo distrito, en el parque Gyeongmyeong, se levanta el monumento a los soldados colombianos. Colombia fue el único país de América Latina que envió tropas de combate a la Guerra de Corea, y en el monumento están grabadas las batallas de Heuguntoryeong y Geumseong.',
+        'Nuestra escuela está en el distrito de Geomdan-gu, en Incheon. En el distrito vecino de Seohae-gu, en el parque Gyeongmyeong, se levanta el monumento a los soldados colombianos. Colombia fue el único país de América Latina que envió tropas de combate a la Guerra de Corea, y en el monumento están grabadas las batallas de Heuguntoryeong y Geumseong.',
         'El Desembarco de Incheon (1950) ocurrió antes de que llegara el Batallón Colombia. Pero esa operación, que empezó en nuestra ciudad, cambió el rumbo de la guerra; después, los soldados colombianos llegaron desde el otro lado del mundo para luchar en las colinas, y la Armada colombiana protegió el Mar Amarillo. Unimos toda esa historia en un solo mapa que empieza y termina en Incheon.'
       ],
       aboutGoals: [
@@ -1263,7 +1263,7 @@
       aboutTitle: '💡 Why did we make this game?',
       about: [
         'This map of peace was made from the research of Class 6-8 (6th grade) at Singeomdan Elementary School in Incheon, Korea, to share with our friends in Colombia.',
-        'Our school is in Seo-gu, a district of Incheon. In the same district, in Gyeongmyeong Park, stands the memorial to the Colombian soldiers. Colombia was the only Latin American country to send combat troops to the Korean War, and the battles of Heuguntoryeong and Geumseong are carved on the memorial.',
+        'Our school is in Geomdan-gu, a district of Incheon. In the neighboring district of Seohae-gu, in Gyeongmyeong Park, stands the memorial to the Colombian soldiers. Colombia was the only Latin American country to send combat troops to the Korean War, and the battles of Heuguntoryeong and Geumseong are carved on the memorial.',
         'The Incheon Landing (1950) happened before the Colombia Battalion arrived. But that operation, which began in our city, turned the tide of the war; afterwards, Colombian soldiers came from the other side of the world to fight on the hills, and the Colombian Navy guarded the Yellow Sea. We joined all of this into one map that starts and ends in Incheon.'
       ],
       aboutGoals: [
