@@ -4592,6 +4592,11 @@
   function drawFlower() {
     const g = $('vsFlowers');
     if (!g || g.childNodes.length) return;
+    if (flowerPic) { // 🌼 헌화 꽃 그림 (img/flowers.png) — 기념비 앞 바닥에
+      const w = 300, h = w * flowerPic.height / flowerPic.width;
+      svgEl('image', { href: FLOWER_IMG, x: 560 - w / 2, y: 700 - h * 0.8, width: w, height: h, class: 'vs-flower' }, g);
+      return;
+    }
     const f = svgEl('g', { class: 'vs-flower', transform: 'translate(560 690) scale(3.4)' }, g);
     [-10, 0, 10].forEach((dx) => svgEl('path', { d: `M0 0 L${dx} -16`, class: 'vs-stem' }, f));
     [[-10, -16, '#e8455b'], [0, -18, '#ffd23f'], [10, -16, '#2f6fd6'], [-5, -21, '#ffffff'], [5, -21, '#e8455b']].forEach(([x, y, c]) => svgEl('circle', { cx: x, cy: y, r: 4.2, fill: c, class: 'vs-petal' }, f));
@@ -5555,73 +5560,85 @@
   /* 🖼️ 추모 카드 (정사각형 1080×1080) — 패들렛 벽에 여러 장이 작게 모여도 잘 읽히게:
      맨 위 날짜·참여 도장, 가운데 큰 글씨 추모 한마디, 아래 이름. 보고서용 캡처에 맞춰 모든 카드가 같은 모양이에요 */
   const CARD = 1080;
+  // 🖋️ 추모 카드는 진중하게: 상아색 종이 · 옅은 금색 두 줄 테두리 · 명조체(Noto Serif KR) · 짙은 남색 글씨
+  const cardSerif = (w, size) => `${w} ${size}px "Noto Serif KR", "Nanum Myeongjo", "Times New Roman", serif`;
+  const CARD_GOLD = '#b5a06e', CARD_INK = '#1d2a44', CARD_SOFT = '#6f7482';
   function drawTributeCard(ctx, d) {
     const W = CARD, H = CARD, cx = W / 2;
-    ctx.fillStyle = '#fffdf5'; ctx.fillRect(0, 0, W, H);
-    // 위: 유엔 하늘색 띠 / 아래: 콜롬비아·태극 띠
-    ctx.fillStyle = '#5b92e5'; ctx.fillRect(0, 0, W, 150);
-    ctx.fillStyle = '#fcd116'; ctx.fillRect(0, H - 30, W / 3, 30);
-    ctx.fillStyle = '#003893'; ctx.fillRect(W / 3, H - 30, W / 3, 30);
-    ctx.fillStyle = '#ce1126'; ctx.fillRect((2 * W) / 3, H - 30, W / 3, 30);
+    ctx.fillStyle = '#faf7f0'; ctx.fillRect(0, 0, W, H);
+    // 테두리 (두 줄)
+    ctx.strokeStyle = CARD_GOLD; ctx.lineWidth = 2.5; ctx.strokeRect(30, 30, W - 60, H - 60);
+    ctx.strokeStyle = 'rgba(181,160,110,.55)'; ctx.lineWidth = 1; ctx.strokeRect(42, 42, W - 84, H - 84);
     ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    ctx.fillStyle = '#fff'; ctx.font = certFont(lang === 'ko' ? 72 : 64, true);
-    ctx.fillText(T('cardTitle'), cx, 64);
-    ctx.font = `700 26px "Baloo 2", "Noto Sans KR", sans-serif`; ctx.fillStyle = 'rgba(255,255,255,.9)';
-    ctx.fillText('M.A.P. to Tomorrow · Wall of Memory', cx, 122);
-    // 도장 (11시 묵념 참여) 또는 날짜
-    let y = 200;
+    // 머리말 · 제목 · 가운데 마름모 구분선
+    ctx.fillStyle = CARD_SOFT; ctx.font = cardSerif(500, 21);
+    try { ctx.letterSpacing = '3px'; } catch (e) { /* 오래된 브라우저 */ }
+    ctx.fillText('M.A.P. to Tomorrow  ·  Wall of Memory', cx, 96);
+    try { ctx.letterSpacing = '0px'; } catch (e) { /* 무시 */ }
+    ctx.fillStyle = CARD_INK; ctx.font = cardSerif(700, lang === 'ko' ? 60 : 54);
+    ctx.fillText(T('cardTitle'), cx, 152);
+    ctx.strokeStyle = CARD_GOLD; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(cx - 160, 200); ctx.lineTo(cx - 16, 200); ctx.moveTo(cx + 16, 200); ctx.lineTo(cx + 160, 200); ctx.stroke();
+    ctx.fillStyle = CARD_GOLD; ctx.beginPath(); ctx.moveTo(cx, 192); ctx.lineTo(cx + 8, 200); ctx.lineTo(cx, 208); ctx.lineTo(cx - 8, 200); ctx.closePath(); ctx.fill();
+    // 11시 묵념 참여 (글자만, 차분하게) 또는 날짜
+    let y = 246;
     if (d.ttb) {
-      ctx.font = bodyFont(lang === 'ko' ? 34 : 28, true);
-      const lines = wrapLines(ctx, T('cardStamp', d.year), W - 200, 2);
-      const bh = lines.length * 46 + 30;
-      ctx.fillStyle = '#e3eefc'; roundRect(ctx, 70, y - 20, W - 140, bh, 26); ctx.fill();
-      ctx.strokeStyle = '#003893'; ctx.lineWidth = 4; roundRect(ctx, 70, y - 20, W - 140, bh, 26); ctx.stroke();
-      ctx.fillStyle = '#003893';
-      lines.forEach((ln, i) => ctx.fillText(ln, cx, y + 4 + i * 46 + 14));
-      y += bh + 10;
+      ctx.fillStyle = '#2b4277'; ctx.font = cardSerif(600, lang === 'ko' ? 28 : 24);
+      const lines = wrapLines(ctx, T('cardStamp', d.year), W - 220, 2);
+      lines.forEach((ln, i) => ctx.fillText(ln, cx, y + i * 38));
+      y += lines.length * 38 + 14;
     } else {
-      ctx.font = bodyFont(32, true); ctx.fillStyle = '#4b5878';
-      ctx.fillText(d.date, cx, y + 10);
-      y += 60;
+      ctx.fillStyle = CARD_SOFT; ctx.font = cardSerif(500, 26);
+      ctx.fillText(d.date, cx, y);
+      y += 44;
     }
     // 그림: 11시 묵념에 함께했으면 부산 유엔기념공원, 아니면 인천 콜롬비아군 참전기념비
     const pw = 600, ph = 375, px = cx - pw / 2, py = y;
-    ctx.save(); roundRect(ctx, px, py, pw, ph, 24); ctx.clip();
+    ctx.save(); roundRect(ctx, px, py, pw, ph, 6); ctx.clip();
     if (d.pic) {
-      const s = Math.max(pw / d.pic.width, ph / d.pic.height), iw = d.pic.width * s, ih = d.pic.height * s;
+      const sc = Math.max(pw / d.pic.width, ph / d.pic.height), iw = d.pic.width * sc, ih = d.pic.height * sc;
       ctx.drawImage(d.pic, px + (pw - iw) / 2, py + (ph - ih) / 2, iw, ih);
-    } else { ctx.fillStyle = '#dcecf8'; ctx.fillRect(px, py, pw, ph); }
+    } else { ctx.fillStyle = '#e8e4da'; ctx.fillRect(px, py, pw, ph); }
     ctx.restore();
-    ctx.strokeStyle = 'rgba(20,34,75,.15)'; ctx.lineWidth = 3; roundRect(ctx, px, py, pw, ph, 24); ctx.stroke();
-    ctx.font = bodyFont(22, true); ctx.fillStyle = '#6b7590';
-    ctx.fillText(T(d.ttb ? 'cardPicUN' : 'cardPicMem'), cx, py + ph + 26);
-    y = py + ph + 50;
-    // 추모 한마디 (큰 글씨)
-    const nameY = H - 130;
-    let size = lang === 'ko' ? 50 : 46, lines;
-    for (;;) { ctx.font = certFont(size); lines = wrapLines(ctx, `“${d.text}”`, W - 180, 9); if (lines.length * size * 1.35 <= nameY - 40 - y || size <= 30) break; size -= 3; }
-    const lh = Math.round(size * 1.35);
-    lines = lines.slice(0, Math.max(1, Math.floor((nameY - 40 - y) / lh)));
-    let ty = y + Math.max(0, (nameY - 50 - y - lines.length * lh) / 2) + lh / 2;
-    ctx.fillStyle = '#14224b';
+    ctx.strokeStyle = '#d6ccb4'; ctx.lineWidth = 2; roundRect(ctx, px, py, pw, ph, 6); ctx.stroke();
+    // 헌화 꽃 그림이 있으면 그림 오른쪽 아래에 살짝 걸쳐서
+    if (d.flower) { const fw = 190, fh = fw * d.flower.height / d.flower.width; ctx.drawImage(d.flower, px + pw - fw * 0.78, py + ph - fh * 0.72, fw, fh); }
+    ctx.font = cardSerif(500, 20); ctx.fillStyle = CARD_SOFT;
+    ctx.fillText(T(d.ttb ? 'cardPicUN' : 'cardPicMem'), cx, py + ph + 30);
+    y = py + ph + 58;
+    // 추모 한마디
+    const nameY = H - 150;
+    let size = lang === 'ko' ? 40 : 38, lines;
+    for (;;) { ctx.font = cardSerif(500, size); lines = wrapLines(ctx, `“${d.text}”`, W - 220, 9); if (lines.length * size * 1.55 <= nameY - 36 - y || size <= 26) break; size -= 2; }
+    const lh = Math.round(size * 1.55);
+    lines = lines.slice(0, Math.max(1, Math.floor((nameY - 36 - y) / lh)));
+    let ty = y + Math.max(0, (nameY - 44 - y - lines.length * lh) / 2) + lh / 2;
+    ctx.fillStyle = CARD_INK;
     lines.forEach((ln) => { ctx.fillText(ln, cx, ty); ty += lh; });
     // 이름
-    ctx.font = certFont(lang === 'ko' ? 46 : 42, true); ctx.fillStyle = '#003893';
+    ctx.font = cardSerif(700, 32); ctx.fillStyle = '#3a4560';
     ctx.fillText(`— ${d.name}`, cx, nameY);
-    ctx.font = bodyFont(20); ctx.fillStyle = '#6b7590';
-    ctx.fillText(L(CONFIG.madeBy), cx, H - 70, W - 80);
+    // 만든 곳 + 가는 콜롬비아 국기색 선
+    ctx.font = bodyFont(17); ctx.fillStyle = '#8a8e99';
+    ctx.fillText(L(CONFIG.madeBy), cx, H - 92, W - 140);
+    [['#d9b84a', -1], ['#3d5a99', 0], ['#b0434d', 1]].forEach(([c, k]) => { ctx.fillStyle = c; ctx.fillRect(cx - 60 + k * 120, H - 66, 120, 3); });
   }
+  const FLOWER_IMG = 'img/flowers.png'; // 🌼 헌화 꽃 그림 (있으면 써요 — 없으면 간단한 그림)
+  const loadImg = (src) => new Promise((res) => { const im = new Image(); im.onload = () => res(im); im.onerror = () => res(null); im.src = src; });
+  let flowerPic; // undefined = 아직 모름 · null = 없음
+  loadImg(FLOWER_IMG).then((im) => { flowerPic = im; });
   async function tributeCardBlob(d) {
     const k = kstDate();
     d.year = k.getUTCFullYear();
     d.date = new Date().toLocaleDateString(lang === 'es' ? 'es-CO' : lang === 'en' ? 'en-US' : 'ko-KR', { year: 'numeric', month: 'long', day: 'numeric' });
     try {
       if (document.fonts && document.fonts.load) {
-        const sample = `${T('cardTitle')}${d.text}${d.name}${T('cardStamp', d.year)}${d.date}`;
-        await Promise.all([certFont(54), certFont(46, true), certFont(72, true), bodyFont(34, true), bodyFont(20)].map((f) => document.fonts.load(f, sample).catch(() => {})));
+        const sample = `${T('cardTitle')}${d.text}${d.name}${T('cardStamp', d.year)}${d.date}${T('cardPicUN')}${T('cardPicMem')}M.A.P. to Tomorrow Wall of Memory`;
+        await Promise.all([cardSerif(500, 40), cardSerif(600, 28), cardSerif(700, 60), bodyFont(17)].map((f) => document.fonts.load(f, sample).catch(() => {})));
       }
     } catch (e) { /* 글꼴이 없어도 그려요 */ }
-    d.pic = await new Promise((res) => { const im = new Image(); im.onload = () => res(im); im.onerror = () => res(null); im.src = d.ttb ? 'img/un-cemetery.jpg' : MEM_IMG; });
+    d.pic = await loadImg(d.ttb ? 'img/un-cemetery.jpg' : MEM_IMG);
+    d.flower = flowerPic === undefined ? await loadImg(FLOWER_IMG) : flowerPic;
     const c = document.createElement('canvas');
     c.width = CARD; c.height = CARD;
     drawTributeCard(c.getContext('2d'), d);
