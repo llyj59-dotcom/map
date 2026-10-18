@@ -1412,3 +1412,31 @@ body.modal-open { overflow: hidden; }
 /* 묵념하는 동안 화면을 살짝 어둡게 */
 body.silence::after { content: ''; position: fixed; inset: 0; background: rgba(10, 20, 40, .35); pointer-events: none; z-index: 50; animation: fadeUp .6s ease; }
 .guess.is-error { border-color: var(--no); }
+
+/* ---------- 🕊️ 첫 화면: 따로 추모하기 · 아카이브 탐험 ---------- */
+.start-quick { margin: 18px auto 6px; padding: 16px; border-radius: 20px; background: #fffbea; border: 3px solid var(--co-yellow); text-align: center; max-width: 560px; }
+.start-quick-lead { margin: 0 0 10px; }
+.start-quick-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.ttb-soon { margin: 0 0 10px; padding: 8px 12px; border-radius: 999px; background: #5b92e5; color: #fff; font-weight: 700; display: inline-block; }
+.ttb-box { margin: 0 0 12px; padding: 14px 16px; border-radius: 16px; background: #eef4fc; border-left: 6px solid #5b92e5; }
+.ttb-box h3 { margin: 0 0 6px; font-size: 19px; }
+.ttb-box p { margin: 4px 0 0; }
+.ttb-box.today { background: #e3eefc; border-left-color: var(--co-blue); }
+.ttb-clock { font-weight: 800; font-size: 20px; color: var(--co-blue); }
+.ttb-clock.now { color: var(--co-red); animation: fadeUp .6s ease infinite alternate; }
+.ttb-busan { margin: 10px 0 6px; font-weight: 700; }
+.trib-btns { margin-top: 8px; }
+.extra-arc { text-align: center; margin: 12px 0 0; }
+/* 🗂️ 아카이브 탐험 */
+.arc-steps { padding-left: 0; list-style: none; margin: 10px 0; }
+.arc-steps > li { margin: 0 0 12px; padding: 12px 14px; border-radius: 14px; background: #f6f4ee; }
+.arc-steps > li > p { margin: 0 0 8px; font-weight: 700; }
+.arc-input { width: 100%; border: 3px solid var(--co-yellow); border-radius: 14px; padding: 10px 14px; font-size: 18px; background: #fffdf3; margin-bottom: 8px; }
+.arc-input:focus { outline: none; border-color: var(--co-blue); }
+.arc-steps .guess { min-height: 90px; }
+.arc-list { list-style: none; padding: 0; margin: 8px 0 0; }
+.arc-list li { padding: 12px 14px; margin-bottom: 8px; border-radius: 14px; background: #f3f7fc; border-left: 5px solid var(--co-blue); }
+.arc-list li small { color: #667; margin-left: 4px; }
+.arc-list li p { margin: 4px 0 8px; }
+.arc-list li.empty { background: transparent; border: 0; color: #667; }
+#infoBody .visit-scene { max-width: 420px; margin: 8px auto; }

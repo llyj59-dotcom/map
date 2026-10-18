@@ -381,6 +381,35 @@
       msgPh: '예) 먼 나라의 평화를 지켜 주셔서 고맙습니다.',
       msgSave: '남기기', msgSaved: '추모 한마디를 남겼어요',
       tributeDone: '🕊️ 추모를 마쳤어요. 용사들의 희생을 오래 기억할게요.',
+      quickLead: '여정을 끝냈어도 언제든 다시 와서 할 수 있어요.',
+      quickTribute: '🕊️ 추모하기', quickArchive: '🗂️ 아카이브 탐험',
+      tribTitle: '콜롬비아 용사들을 위한 추모',
+      tribLead: '인천 경명공원의 콜롬비아군 참전기념비 앞에 선 마음으로 꽃을 놓고, 1분 동안 묵념해요.',
+      ttbTitle: '11월 11일, 유엔참전용사 국제추모의 날',
+      ttbText: '해마다 11월 11일 오전 11시 정각, 6·25 전쟁에 함께한 22개 나라가 부산 유엔기념공원을 향해 1분 동안 묵념해요. 이 추모를 "부산을 향하여(Turn Toward Busan)"라고 불러요.',
+      ttbBefore: (t) => `오전 11시까지 ${t} 남았어요.`,
+      ttbNow: '지금이 바로 그 시간이에요! 함께 묵념해요.',
+      ttbAfter: '11시는 지났지만, 지금 함께 묵념해도 좋아요.',
+      ttbSoon: (d) => `D-${d} · 11월 11일은 유엔참전용사 국제추모의 날`,
+      ttbToday: '오늘은 유엔참전용사 국제추모의 날',
+      ttbBusan: '🧭 부산 유엔기념공원 쪽(인천에서 남동쪽)을 바라보며 묵념해요.',
+      silenceMin: '🙏 1분 묵념하기',
+      tribPadlet: '🗂️ 기억의 벽(패들렛)에 붙이기',
+      tribCount: (n) => `이 기기에서 ${n}번 추모했어요.`,
+      arcTitle: '아카이브 탐험',
+      arcLead: '국가보훈부 「유엔참전용사 디지털 아카이브」에서 진짜 기록을 찾아보고, 알게 된 것을 남겨요.',
+      arcStep1: '① 디지털 아카이브를 열어요.', arcOpen: '디지털 아카이브 열기 ↗',
+      arcStep2: '② 검색창에 "콜롬비아"를 넣어 보거나 「유엔군 참전규모」를 둘러보며, 마음에 남는 자료(인터뷰·사진·기록)를 하나 골라요.',
+      arcStep3: '③ 찾은 자료를 기록해요.',
+      arcName: '자료 제목', arcNamePh: '예) 콜롬비아 참전용사 구술 인터뷰',
+      arcKind: '자료 종류', arcKinds: ['인터뷰 영상', '사진', '문서·기록', '기타'],
+      arcLearn: '알게 된 점 (10자 이상)', arcLearnPh: '예) 콜롬비아 군인들은 배를 타고 25일 동안 바다를 건너 한국에 왔어요.',
+      arcSave: '기록 남기기', arcSaved: '기록했어요! 패들렛에도 올려 보세요.',
+      arcNeedName: '자료 제목을 적어 주세요.', arcShort: '알게 된 점을 10자 이상 써 주세요.',
+      arcMine: '내가 찾은 자료', arcNone: '아직 기록한 자료가 없어요.',
+      arcPadlet: '🗂️ 기억의 벽(패들렛)에 올리기',
+      arcSource: '출처: 국가보훈부 유엔참전용사 디지털 아카이브',
+      extraArcBtn: '🗂️ 찾은 자료 기록하기',
       kQuiz: '추리 퀴즈',
       kQuestion: '질문 카드',
       kVideo: '영상으로 보기',
@@ -985,6 +1014,35 @@
       msgPh: 'Ej.: Gracias por proteger la paz de un país lejano.',
       msgSave: 'Dejar mensaje', msgSaved: 'Dejaste tu mensaje',
       tributeDone: '🕊️ Has rendido homenaje. Recordaremos siempre su sacrificio.',
+      quickLead: 'Aunque ya hayas terminado el recorrido, puedes volver cuando quieras.',
+      quickTribute: '🕊️ Rendir homenaje', quickArchive: '🗂️ Explorar el archivo',
+      tribTitle: 'Homenaje a los combatientes colombianos',
+      tribLead: 'Como si estuvieras frente al monumento colombiano del parque Gyeongmyeong de Incheon, deja una flor y guarda un minuto de silencio.',
+      ttbTitle: '11 de noviembre: Día Internacional de Homenaje a los Veteranos de la ONU',
+      ttbText: 'Cada 11 de noviembre, a las 11:00 en punto, los 22 países que participaron en la Guerra de Corea guardan un minuto de silencio mirando hacia el Cementerio Memorial de la ONU en Busan. Este homenaje se llama "Turn Toward Busan" (Mirando hacia Busan).',
+      ttbBefore: (t) => `Faltan ${t} para las 11:00.`,
+      ttbNow: '¡Es justo la hora! Guardemos silencio juntos.',
+      ttbAfter: 'Ya pasaron las 11:00, pero puedes guardar silencio ahora.',
+      ttbSoon: (d) => `Faltan ${d} días · el 11 de noviembre es el Día de Homenaje a los Veteranos de la ONU`,
+      ttbToday: 'Hoy es el Día de Homenaje a los Veteranos de la ONU',
+      ttbBusan: '🧭 Guarda silencio mirando hacia el Cementerio Memorial de la ONU en Busan.',
+      silenceMin: '🙏 Guardar un minuto de silencio',
+      tribPadlet: '🗂️ Pegar en el Muro de la memoria (Padlet)',
+      tribCount: (n) => `Rendiste homenaje ${n} ${n === 1 ? 'vez' : 'veces'} en este dispositivo.`,
+      arcTitle: 'Explorar el archivo',
+      arcLead: 'Busca registros reales en el «Archivo digital de veteranos de la ONU» del Ministerio de Patriotas y Veteranos de Corea y anota lo que aprendiste.',
+      arcStep1: '① Abre el archivo digital.', arcOpen: 'Abrir el archivo digital ↗',
+      arcStep2: '② Busca "Colombia" o revisa la sección sobre la participación de las fuerzas de la ONU, y elige un documento que te llame la atención (entrevista, foto o registro).',
+      arcStep3: '③ Anota lo que encontraste.',
+      arcName: 'Título del documento', arcNamePh: 'Ej.: Entrevista a un veterano colombiano',
+      arcKind: 'Tipo de documento', arcKinds: ['Entrevista en video', 'Foto', 'Documento o registro', 'Otro'],
+      arcLearn: 'Lo que aprendí (mínimo 10 caracteres)', arcLearnPh: 'Ej.: Los soldados colombianos cruzaron el mar en barco durante 25 días para llegar a Corea.',
+      arcSave: 'Guardar', arcSaved: '¡Guardado! Súbelo también al Padlet.',
+      arcNeedName: 'Escribe el título del documento.', arcShort: 'Escribe al menos 10 caracteres sobre lo que aprendiste.',
+      arcMine: 'Lo que encontré', arcNone: 'Todavía no has guardado ningún documento.',
+      arcPadlet: '🗂️ Subir al Muro de la memoria (Padlet)',
+      arcSource: 'Fuente: Archivo digital de veteranos de la ONU, Ministerio de Patriotas y Veteranos de Corea',
+      extraArcBtn: '🗂️ Anotar lo que encontré',
       kQuiz: 'Ponte a prueba',
       kQuestion: 'Tarjeta de pregunta',
       kVideo: 'Ver en video',
@@ -1588,6 +1646,35 @@
       msgPh: 'e.g. Thank you for protecting peace in a faraway country.',
       msgSave: 'Leave it', msgSaved: 'You left your message',
       tributeDone: '🕊️ You paid tribute. We will always remember their sacrifice.',
+      quickLead: 'Even after you finish the journey, you can come back any time.',
+      quickTribute: '🕊️ Pay tribute', quickArchive: '🗂️ Explore the archive',
+      tribTitle: 'A tribute to the Colombian soldiers',
+      tribLead: 'Imagine you are standing in front of the Colombian memorial in Gyeongmyeong Park, Incheon. Lay a flower and keep one minute of silence.',
+      ttbTitle: 'November 11: International Day of Remembrance for UN Veterans',
+      ttbText: 'Every year on November 11 at exactly 11 a.m., the 22 countries that took part in the Korean War keep one minute of silence facing the UN Memorial Cemetery in Busan. This tribute is called "Turn Toward Busan".',
+      ttbBefore: (t) => `${t} left until 11 a.m.`,
+      ttbNow: 'It is time! Let us keep silence together.',
+      ttbAfter: 'It is past 11 a.m., but you can still keep a moment of silence now.',
+      ttbSoon: (d) => `D-${d} · November 11 is the Day of Remembrance for UN Veterans`,
+      ttbToday: 'Today is the Day of Remembrance for UN Veterans',
+      ttbBusan: '🧭 Keep silence facing the UN Memorial Cemetery in Busan.',
+      silenceMin: '🙏 One minute of silence',
+      tribPadlet: '🗂️ Post on the Wall of Memory (Padlet)',
+      tribCount: (n) => `You paid tribute ${n} time${n === 1 ? '' : 's'} on this device.`,
+      arcTitle: 'Explore the archive',
+      arcLead: 'Find real records in the "UN Veterans Digital Archive" of Korea\'s Ministry of Patriots and Veterans Affairs, and write down what you learned.',
+      arcStep1: '① Open the digital archive.', arcOpen: 'Open the digital archive ↗',
+      arcStep2: '② Search for "Colombia" or look through the section on UN forces, and choose one record that stays with you (an interview, a photo or a document).',
+      arcStep3: '③ Write down what you found.',
+      arcName: 'Title of the record', arcNamePh: 'e.g. Interview with a Colombian veteran',
+      arcKind: 'Type of record', arcKinds: ['Interview video', 'Photo', 'Document or record', 'Other'],
+      arcLearn: 'What I learned (at least 10 characters)', arcLearnPh: 'e.g. Colombian soldiers sailed for 25 days to reach Korea.',
+      arcSave: 'Save', arcSaved: 'Saved! Post it on the Padlet too.',
+      arcNeedName: 'Please write the title of the record.', arcShort: 'Please write at least 10 characters about what you learned.',
+      arcMine: 'Records I found', arcNone: 'You have not saved any records yet.',
+      arcPadlet: '🗂️ Post on the Wall of Memory (Padlet)',
+      arcSource: 'Source: UN Veterans Digital Archive, Ministry of Patriots and Veterans Affairs (Korea)',
+      extraArcBtn: '🗂️ Write down what I found',
       kQuiz: 'Guess quiz',
       kQuestion: 'Question card',
       kVideo: 'Watch a video',
@@ -1980,6 +2067,7 @@
     try { renderModePick(); } catch (e) { /* 아직 준비 전 */ }
     document.documentElement.lang = lang;
     document.querySelectorAll('[data-i18n]').forEach((el) => { el.textContent = T(el.dataset.i18n); });
+    try { renderTtbSoon(); } catch (e) { /* 아직 준비 전 */ }
     $('reportNote').hidden = !reportOn(); // 진행 상황을 선생님께 보낼 때만 알려 줘요
     // 시작 화면: M.A.P.의 뜻 + 이 게임을 만든 까닭
     const mlColor = { M: 'var(--co-blue)', A: 'var(--co-red)', P: '#1f8a4c' };
@@ -2973,6 +3061,8 @@
     $('narration').innerHTML = T('narration').map((line, i) => `<span style="animation-delay:${0.3 + i * 1.1}s">${esc(line)}</span>`).join('\n');
     renderSaved();
     closeStartModal();
+    renderTtbSoon();
+    if (ttbAutoOpen()) { setTimeout(() => { if (!$('startScreen').hidden) { openTribute(); ttbFromStart = true; } }, 600); return; }
     if (Object.keys(store.games).length) setTimeout(() => { if (!$('startScreen').hidden) openStartModal('resume'); }, 600);
   }
 
@@ -4286,7 +4376,8 @@
     });
     $('silenceBtn').addEventListener('click', () => {
       let left = v.silence || 10;
-      Sound.bgm(null); // 묵념 동안은 배경음악도 멈춰요
+      Sound.bgm(null); // 묵념 동안은 배경음악도 멈춰요 (시작과 끝에만 작은 종소리)
+      sfx('buoy');
       document.body.classList.add('silence');
       const btn = $('silenceBtn');
       btn.textContent = T('silenceNow', left);
@@ -4980,6 +5071,227 @@
     return true;
   }
 
+  /* =====================================================================
+     🕊️ 따로 추모하기 (첫 화면 버튼) — 게임을 처음부터 하지 않아도 언제든
+     · 11월 11일(유엔참전용사 국제추모의 날)에는 첫 화면에서 저절로 열리고, 오전 11시까지 남은 시간을 보여 줘요
+       「부산을 향하여(Turn Toward Busan)」: 11월 11일 오전 11시 정각, 부산 유엔기념공원을 향해 1분 묵념
+     · 묵념하는 동안은 배경음악을 멈추고 조용히 — 시작과 끝에만 작은 종소리
+     · 기록: store.tributes = [{ flower, silence, text, time }] (이 기기)
+     · 시험해 보기: 주소 끝에 ?ttb=1 (11월 11일처럼) · ?ttb=1&ttbclock=10:59 (그 시각처럼)
+     ===================================================================== */
+  const TTB_Q = (() => { try { return new URLSearchParams(location.search); } catch (e) { return new URLSearchParams(); } })();
+  const TTB_FORCE = TTB_Q.get('ttb') === '1';
+  const TTB_OFFSET = (() => {
+    const m = /^(\d{1,2}):(\d{2})$/.exec(TTB_Q.get('ttbclock') || '');
+    if (!m) return 0;
+    const d = new Date(); d.setHours(+m[1], +m[2], 0, 0);
+    return d.getTime() - Date.now();
+  })();
+  const ttbClock = () => new Date(Date.now() + TTB_OFFSET);
+  const isTtbDay = (d = ttbClock()) => TTB_FORCE || (d.getMonth() === 10 && d.getDate() === 11);
+  const ttbDaysLeft = (d = ttbClock()) => (d.getMonth() === 10 && d.getDate() < 11 ? 11 - d.getDate() : 0); // 11월 1~10일
+  const dayKey = (d) => `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+  function ttbAutoOpen() {
+    const d = ttbClock();
+    if (!isTtbDay(d) || store.ttbSeen === dayKey(d)) return false;
+    store.ttbSeen = dayKey(d);
+    save();
+    return true;
+  }
+  function renderTtbSoon() {
+    const el = $('ttbSoon');
+    if (!el) return;
+    const left = ttbDaysLeft();
+    el.hidden = !(isTtbDay() || left);
+    el.textContent = isTtbDay() ? `🇺🇳 ${T('ttbToday')}` : left ? `🇺🇳 ${T('ttbSoon', left)}` : '';
+  }
+
+  let soloTimer = 0, ttbTimer = 0, ttbFromStart = false;
+  function stopSolo() {
+    clearInterval(ttbTimer); ttbTimer = 0;
+    // 11월 11일에 저절로 열린 추모 창을 닫으면, 원래 뜨던 [이어서 할까요?] 창을 보여 줘요
+    if (ttbFromStart && $('infoSheet').hidden) {
+      ttbFromStart = false;
+      if (!$('startScreen').hidden && Object.keys(store.games).length) setTimeout(() => openStartModal('resume'), 300);
+    }
+    if (!soloTimer) return;
+    clearInterval(soloTimer); soloTimer = 0;
+    document.body.classList.remove('silence');
+    bgmSync();
+  }
+  function shareToPadlet(text) {
+    const copying = copyText(text, $('copyFallback'));
+    const opened = CONFIG.padletUrl ? openPadlet() : false;
+    copying.then((ok) => toast(ok ? (opened ? T('padletPopup') : T('copied')) : T('copyFail')));
+  }
+
+  function openTribute() {
+    stopSolo();
+    store.tributes = store.tributes || [];
+    const ttb = isTtbDay();
+    const rec = {}; // 이번 추모
+    let stored = false;
+    openInfo('🕊️', T('tribTitle'), `
+      <section class="ttb-box${ttb ? ' today' : ''}">
+        <h3>🇺🇳 ${esc(T('ttbTitle'))}</h3>
+        <p>${esc(T('ttbText'))}</p>
+        ${ttb ? '<p class="ttb-clock" id="ttbClock" role="status"></p>' : ''}
+      </section>
+      <p class="story-text">${esc(T('tribLead'))}</p>
+      <div class="visit-scene"><svg id="soloSvg" viewBox="0 0 380 240" aria-hidden="true"></svg></div>
+      <p class="ttb-busan">${esc(T('ttbBusan'))}</p>
+      <div class="trib-acts">
+        <button type="button" class="btn btn-go" id="soloFlower">${esc(T('flowerBtn'))}</button>
+        <button type="button" class="btn btn-go" id="soloSilence">${esc(T('silenceMin'))}</button>
+      </div>
+      <label class="trib-label" for="soloMsg">${esc(T('msgLabel'))}</label>
+      <textarea id="soloMsg" class="guess" maxlength="80" rows="2" placeholder="${esc(T('msgPh'))}"></textarea>
+      <div class="t-buttons trib-btns">
+        <button type="button" class="btn btn-sm btn-blue" id="soloSave">${esc(T('msgSave'))}</button>
+        ${CONFIG.padletUrl ? `<button type="button" class="btn btn-sm btn-go" id="soloPadlet">${esc(T('tribPadlet'))}</button>` : ''}
+      </div>
+      <textarea id="copyFallback" class="guess" rows="4" readonly hidden></textarea>
+      <small class="trib-note" id="soloNote" role="alert"></small>
+      <p class="trib-done" id="soloDone" role="status" hidden>${esc(T('tributeDone'))}</p>
+      <p class="t-help" id="soloCount"></p>`);
+    drawMemorialScene($('soloSvg'), { spots: [] });
+    const count = () => { const n = store.tributes.length; $('soloCount').textContent = n ? T('tribCount', n) : ''; };
+    const finish = () => {
+      $('soloDone').hidden = !(rec.flower && rec.silence);
+      if (rec.flower && rec.silence && !stored) {
+        stored = true;
+        store.tributes.push(rec);
+        save();
+        reportProgress('tribute');
+        count();
+      } else if (stored) save();
+    };
+    $('soloFlower').addEventListener('click', () => {
+      rec.flower = Date.now();
+      drawFlower();
+      sfx('piece');
+      $('soloFlower').disabled = true;
+      $('soloFlower').textContent = `✓ ${T('flowerDone')}`;
+      finish();
+    });
+    $('soloSilence').addEventListener('click', () => {
+      const btn = $('soloSilence');
+      let left = 60;
+      Sound.bgm(null); // 묵념 동안은 조용히
+      sfx('buoy');
+      document.body.classList.add('silence');
+      btn.disabled = true;
+      btn.textContent = T('silenceNow', left);
+      clearInterval(soloTimer);
+      soloTimer = setInterval(() => {
+        left -= 1;
+        if (left > 0) { btn.textContent = T('silenceNow', left); return; }
+        clearInterval(soloTimer); soloTimer = 0;
+        document.body.classList.remove('silence');
+        bgmSync();
+        sfx('key');
+        rec.silence = Date.now();
+        btn.textContent = `✓ ${T('silenceDone')}`;
+        finish();
+      }, 1000);
+    });
+    const readMsg = () => {
+      const box = $('soloMsg'), text = box.value.trim();
+      if (!text) return '';
+      const bad = textProblem(text);
+      $('soloNote').classList.toggle('bad', !!bad);
+      box.classList.toggle('is-error', !!bad);
+      if (bad) { $('soloNote').textContent = bad; return ''; }
+      return text;
+    };
+    $('soloSave').addEventListener('click', () => {
+      const text = readMsg();
+      if (!text) return;
+      rec.text = text; rec.time = Date.now();
+      finish();
+      $('soloNote').textContent = `✓ ${T('msgSaved')}`;
+    });
+    if ($('soloPadlet')) $('soloPadlet').addEventListener('click', () => {
+      const text = readMsg();
+      if (!text) { $('soloMsg').focus(); return; }
+      rec.text = text; rec.time = Date.now();
+      finish();
+      shareToPadlet(`[🕊️ ${T('tribTitle')}]\n${text}${player ? `\n— ${player.nick}` : ''}`);
+    });
+    count();
+    if (ttb) {
+      const tick = () => {
+        const el = $('ttbClock');
+        if (!el || $('infoSheet').hidden) { clearInterval(ttbTimer); ttbTimer = 0; return; }
+        const now = ttbClock(), at = new Date(now); at.setHours(11, 0, 0, 0);
+        const left = Math.ceil((at - now) / 1000);
+        el.classList.toggle('now', left <= 0 && left > -60);
+        if (left > 0) el.textContent = `⏰ ${T('ttbBefore', left >= 3600 ? `${Math.floor(left / 3600)}:${String(Math.floor((left % 3600) / 60)).padStart(2, '0')}:${String(left % 60).padStart(2, '0')}` : fmtSec(left))}`;
+        else el.textContent = `⏰ ${T(left > -60 ? 'ttbNow' : 'ttbAfter')}`;
+      };
+      tick();
+      ttbTimer = setInterval(tick, 1000);
+    }
+  }
+  $('quickTribute').addEventListener('click', openTribute);
+  $('infoClose').addEventListener('click', stopSolo);
+
+  /* =====================================================================
+     🗂️ 아카이브 탐험 — 국가보훈부 「유엔참전용사 디지털 아카이브」에서 자료를 찾아 기록하고 패들렛(기억의 벽)에 올려요
+     · 기록: store.archive = [{ title, kind, learn, nick, time }] (이 기기) → 성과보고서 '디지털 아카이브 활용 실적'
+     ===================================================================== */
+  const ARCHIVE_URL = ((window.EXTRA_ACTIVITIES || []).find((x) => /unarchives/.test(x.url)) || {}).url || 'https://unarchives.mpva.go.kr/main.do';
+  const archiveText = (a) => `[🗂️ ${T('arcTitle')}] ${a.title} (${a.kind})\n→ ${a.learn}\n${T('arcSource')}${a.nick ? `\n— ${a.nick}` : ''}`;
+  function openArchive() {
+    store.archive = store.archive || [];
+    const kinds = T('arcKinds');
+    openInfo('🗂️', T('arcTitle'), `
+      <p class="story-text">${esc(T('arcLead'))}</p>
+      <ol class="arc-steps">
+        <li><p>${esc(T('arcStep1'))}</p><a class="btn btn-sm btn-blue" href="${esc(ARCHIVE_URL)}" target="_blank" rel="noopener">${esc(T('arcOpen'))}</a></li>
+        <li><p>${esc(T('arcStep2'))}</p></li>
+        <li><p>${esc(T('arcStep3'))}</p>
+          <label class="trib-label" for="arcName">${esc(T('arcName'))}</label>
+          <input id="arcName" class="arc-input" type="text" maxlength="60" autocomplete="off" placeholder="${esc(T('arcNamePh'))}">
+          <label class="trib-label" for="arcKind">${esc(T('arcKind'))}</label>
+          <select id="arcKind" class="arc-input">${kinds.map((k) => `<option>${esc(k)}</option>`).join('')}</select>
+          <label class="trib-label" for="arcLearn">${esc(T('arcLearn'))}</label>
+          <textarea id="arcLearn" class="guess" rows="3" maxlength="200" placeholder="${esc(T('arcLearnPh'))}"></textarea>
+          <div class="t-buttons"><button type="button" class="btn btn-go" id="arcSave">${esc(T('arcSave'))}</button></div>
+          <small class="trib-note" id="arcNote" role="alert"></small>
+        </li>
+      </ol>
+      <h3 class="device-title">${esc(T('arcMine'))}</h3>
+      <ul class="arc-list" id="arcList"></ul>
+      <textarea id="copyFallback" class="guess" rows="4" readonly hidden></textarea>`);
+    const list = () => {
+      const mine = store.archive;
+      $('arcList').innerHTML = mine.length ? mine.slice().reverse().map((a, k) => `<li>
+          <b>${esc(a.title)}</b> <small>${esc(a.kind)}</small>
+          <p>${esc(a.learn)}</p>
+          ${CONFIG.padletUrl ? `<button type="button" class="btn btn-sm btn-blue" data-pad="${mine.length - 1 - k}">${esc(T('arcPadlet'))}</button>` : ''}
+        </li>`).join('') : `<li class="empty">${esc(T('arcNone'))}</li>`;
+      $('arcList').querySelectorAll('[data-pad]').forEach((b) => b.addEventListener('click', () => shareToPadlet(archiveText(store.archive[+b.dataset.pad]))));
+    };
+    const note = (msg, bad) => { $('arcNote').textContent = msg; $('arcNote').classList.toggle('bad', !!bad); };
+    $('arcSave').addEventListener('click', () => {
+      const title = $('arcName').value.trim(), learn = $('arcLearn').value.trim();
+      if (!title) { note(T('arcNeedName'), true); $('arcName').focus(); return; }
+      if (learn.replace(/\s/g, '').length < 10) { note(T('arcShort'), true); $('arcLearn').focus(); return; }
+      const bad = textProblem(title) || textProblem(learn);
+      if (bad) { note(bad, true); return; }
+      store.archive.push({ title, kind: $('arcKind').value, learn, nick: player ? player.nick : '', time: Date.now() });
+      save();
+      reportProgress('archive');
+      $('arcName').value = ''; $('arcLearn').value = '';
+      note(`✓ ${T('arcSaved')}`);
+      sfx('card');
+      list();
+    });
+    list();
+  }
+  $('quickArchive').addEventListener('click', openArchive);
+
   /* ---------------- 버튼 연결 ---------------- */
   $('nextBtn').addEventListener('click', () => {
     if (!cur) return;
@@ -5088,7 +5400,7 @@
 
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
-    if (!$('infoSheet').hidden) $('infoSheet').hidden = true;
+    if (!$('infoSheet').hidden) { $('infoSheet').hidden = true; stopSolo(); }
     else if (!$('stationSheet').hidden) { flushGuess(); closeStation(); }
   });
 
@@ -6069,6 +6381,7 @@
             <span class="ea-icon" aria-hidden="true">${esc(x.icon || '🔗')}</span>
             <span class="ea-body"><b>${esc(L(x.name))}</b><small>${esc(L(x.by))}</small><span>${esc(L(x.desc))}</span><em>${esc(L(x.task))}</em></span>
             <span class="ea-go">${esc(T('extraActOpen'))} ↗</span></a>`).join('')}</div>
+          <p class="extra-arc"><button id="extraArc" class="btn btn-go btn-sm" type="button">${esc(T('extraArcBtn'))}</button></p>
         </section>` : ''}
         <section class="portfolio-box">
           <button id="endPortfolio" class="btn btn-go" type="button">${esc(T(padMode() ? 'portfolioPadBtn' : 'portfolioBtn'))}</button>
@@ -6105,6 +6418,7 @@
       Sound.bgm(null);
     }));
     if ($('endPortfolio')) $('endPortfolio').addEventListener('click', printPortfolio);
+    if ($('extraArc')) $('extraArc').addEventListener('click', openArchive);
     // 🎬 여정 완료 화면에 처음 오면 크레딧이 저절로 한 번 올라가요 (실제로 띄웠을 때만 '봤음'으로 기록)
     if (step === 'done' && !previewMode && player && !player.creditsSeen) {
       setTimeout(() => {
