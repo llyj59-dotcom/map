@@ -425,7 +425,10 @@
       ovTeacher: '선생님: 이 화면 끄기', ovTeacherPh: '선생님 비밀번호', ovTeacherBtn: '끄기',
       cardTitle: '추모 카드',
       cardStamp: (y) => `${y}. 11. 11. 오전 11시 「부산을 향하여」 1분 묵념 참여`,
-      cardName: '카드에 들어갈 이름 (닉네임도 좋아요)', cardNamePh: '예) 지민',
+      cardName: '카드에 들어갈 내 이름 (닉네임 말고 진짜 이름)', cardNamePh: '예) 김지민',
+      cardNameOdd: '이름을 바르게 써 주세요. 한글 이름은 2~5글자, 숫자·기호·장난 말은 안 돼요.',
+      cardMsgShort: (n) => `추모 한마디를 ${n}글자 이상, 한 문장으로 써 주세요.`,
+      cardMsgOdd: '뜻이 통하는 문장으로 다시 써 주세요. 같은 글자나 말을 되풀이하거나, 아무 글자나 치면 안 돼요.',
       cardMake: '🖼️ 추모 카드 만들기',
       cardNeedTrib: '꽃을 놓고 묵념을 마치면 추모 카드를 만들 수 있어요.',
       cardNeedMsg: '추모 한마디를 5자 이상 써 주세요.',
@@ -1125,7 +1128,10 @@
       ovTeacher: 'Docente: cerrar esta pantalla', ovTeacherPh: 'Contraseña docente', ovTeacherBtn: 'Cerrar',
       cardTitle: 'Tarjeta de homenaje',
       cardStamp: (y) => `11 de noviembre de ${y}, 11:00 (hora de Corea) · Turn Toward Busan: un minuto de silencio`,
-      cardName: 'Nombre para la tarjeta (puede ser tu apodo)', cardNamePh: 'Ej.: Valentina',
+      cardName: 'Tu nombre para la tarjeta (tu nombre real, no tu apodo)', cardNamePh: 'Ej.: Valentina Gómez',
+      cardNameOdd: 'Escribe bien tu nombre: solo letras, sin números, símbolos ni bromas.',
+      cardMsgShort: (n) => `Escribe un mensaje de al menos ${n} caracteres, en una frase.`,
+      cardMsgOdd: 'Escribe una frase con sentido. No repitas letras o palabras ni escribas letras al azar.',
       cardMake: '🖼️ Crear la tarjeta de homenaje',
       cardNeedTrib: 'Cuando dejes una flor y guardes silencio, podrás crear la tarjeta.',
       cardNeedMsg: 'Escribe un mensaje de al menos 5 caracteres.',
@@ -1824,7 +1830,10 @@
       ovTeacher: 'Teacher: close this screen', ovTeacherPh: 'Teacher password', ovTeacherBtn: 'Close',
       cardTitle: 'Tribute card',
       cardStamp: (y) => `November 11, ${y}, 11 a.m. (Korea time) · Turn Toward Busan: one minute of silence`,
-      cardName: 'Name for the card (a nickname is fine)', cardNamePh: 'e.g. Alex',
+      cardName: 'Your name for the card (your real name, not your nickname)', cardNamePh: 'e.g. Alex Kim',
+      cardNameOdd: 'Please write your name properly: letters only, no numbers, symbols or jokes.',
+      cardMsgShort: (n) => `Please write a message of at least ${n} characters, as a sentence.`,
+      cardMsgOdd: 'Please write a sentence that makes sense. Do not repeat letters or words or type random letters.',
       cardMake: '🖼️ Make a tribute card',
       cardNeedTrib: 'Lay a flower and keep the silence first, then you can make a card.',
       cardNeedMsg: 'Please write a message of at least 5 characters.',
@@ -3139,6 +3148,47 @@
     const why = window.WordFilter ? window.WordFilter.check(t, 'nick') : '';
     return why ? T(why === 'bad' ? 'banned' : 'nameOdd') : '';
   };
+  /* 🕊️ 추모 한마디 · 추모 카드 이름 검사 (추모 카드 · 작전 지점 ⑫ 추모)
+     한마디: 수준별 최소 글자(3·4학년 8 · 5·6학년 15 · 중·고 20, 띄어쓰기·문장부호 빼고) · 욕설·성적인 말·비하(바른말 거르개)
+             · 자음·모음만 · 같은 글자/두 글자 반복 · 같은 낱말 되풀이 · 글자 종류가 너무 적음 · 키보드 막 치기 · 한국어 화면인데 한글이 거의 없음
+     이름: 닉네임이 아닌 진짜 이름 — 한글은 2~5글자, 로마자 이름(콜롬비아 친구)은 글자·띄어쓰기·악센트·하이픈만 */
+  const TRIB_MIN = { 34: 8, 56: 15, ms: 20, hs: 20 }[GRADE] || 15;
+  const MASH = /(qwer|wert|asdf|sdfg|dfgh|fghj|ghjk|hjkl|zxcv|xcvb|cvbn|vbnm|uiop|yuio|poiu|lkjh|mnbv)/i;
+  function tribGibberish(t) {
+    const c = t.replace(/[\s.,!?~'"“”‘’·()\-]/g, '');
+    if (/[ㄱ-ㆎ]/.test(c) || /(.)\1\1/u.test(c) || /(..)\1\1/u.test(c)) return true;
+    const words = t.split(/\s+/).filter(Boolean);
+    if (words.length >= 3 && new Set(words).size <= Math.ceil(words.length / 2)) return true;
+    if (new Set(Array.from(c.toLowerCase())).size < 6) return true;
+    if (MASH.test(c) || /(가나다라|나다라마|다라마바|라마바사|abcd|bcde|cdef)/i.test(c)) return true; // 가나다·abc 차례대로 치기
+    const latin = t.match(/[A-Za-zÀ-ÿ]+/g) || [];
+    if (latin.some((w) => w.length >= 4 && !/[aeiouyáéíóúü]/i.test(w))) return true; // 모음 없는 낱말 (sdfgk…)
+    const han = (c.match(/[가-힣]/g) || []).length, letters = (c.match(/[가-힣A-Za-zÀ-ÿ]/g) || []).length;
+    if (lang === 'ko' && letters && han / letters < 0.6) return true;
+    if (letters < Array.from(c).length * 0.7) return true; // 숫자·기호가 너무 많아요
+    return false;
+  }
+  function tribMsgProblem(text) {
+    const t = String(text || '').trim();
+    const bad = textProblem(t);
+    if (bad) return bad;
+    if (Array.from(t.replace(/[\s.,!?~'"“”‘’·()\-]/g, '')).length < TRIB_MIN) return T('cardMsgShort', TRIB_MIN);
+    return tribGibberish(t) ? T('cardMsgOdd') : '';
+  }
+  function realNameProblem(name) {
+    const t = String(name || '').trim().replace(/\s+/g, ' ');
+    if (!t) return T('cardNeedName');
+    const why = window.WordFilter ? window.WordFilter.check(t, 'nick') : '';
+    if (why === 'bad') return T('banned');
+    if (why) return T('cardNameOdd');
+    if (/^[가-힣]+$/.test(t)) return t.length >= 2 && t.length <= 5 ? '' : T('cardNameOdd');
+    if (/^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ'’. -]*$/.test(t)) {
+      const letters = t.replace(/[^A-Za-zÀ-ÿ]/g, '');
+      if (letters.length < 2 || t.length > 30 || MASH.test(letters) || !/[aeiouyáéíóúü]/i.test(letters)) return T('cardNameOdd');
+      return '';
+    }
+    return T('cardNameOdd'); // 숫자·기호·한글과 로마자 섞기
+  }
   // 🕊️ 평화 다짐: 한 문장 (5글자 이상) · 자음·모음만 / 같은 글자·두 글자 반복은 다시
   const pledgeProblem = (text) => {
     const t = String(text || '').trim();
@@ -4622,7 +4672,7 @@
     $('tribSave').addEventListener('click', () => {
       const box = $('tribMsg'), text = box.value.trim();
       if (!text) return;
-      const bad = textProblem(text);
+      const bad = tribMsgProblem(text);
       if (bad) { $('tribNote').textContent = bad; $('tribNote').classList.add('bad'); box.classList.add('is-error'); return; }
       box.classList.remove('is-error');
       $('tribNote').classList.remove('bad');
@@ -5376,7 +5426,7 @@
     const joined = !!opts.joined || (ttb && store.ttbJoined === dayKey()); // 오늘 11시 묵념에 함께했나요?
     const rec = joined ? { flower: Date.now(), silence: Date.now(), ttb: true } : {}; // 이번 추모
     let stored = joined; // 11시 묵념은 이미 기록했어요
-    const nick = player ? player.nick : (store.cardName || '');
+    const nick = (player && player.realName) || store.cardName || ''; // 카드에는 닉네임이 아니라 내 이름 (인증서에 쓴 이름이 있으면 그대로)
     openInfo('🕊️', T('tribTitle'), `
       ${joined ? `<p class="trib-done">${esc(T('cardJoined'))}</p>` : `
       <section class="ttb-box${ttb ? ' today' : ''}">
@@ -5397,8 +5447,8 @@
         <p class="t-help" id="cardLock">${esc(T('cardNeedTrib'))}</p>
         <label class="trib-label" for="soloMsg">${esc(T('msgLabel').replace(/\s*\(.*\)\s*$/, ''))}</label>
         <textarea id="soloMsg" class="guess" maxlength="100" rows="3" placeholder="${esc(T('msgPh'))}"></textarea>
-        ${player ? '' : `<label class="trib-label" for="cardName">${esc(T('cardName'))}</label>
-        <input id="cardName" class="arc-input" type="text" maxlength="12" autocomplete="off" placeholder="${esc(T('cardNamePh'))}" value="${esc(nick)}">`}
+        <label class="trib-label" for="cardName">${esc(T('cardName'))}</label>
+        <input id="cardName" class="arc-input" type="text" maxlength="30" autocomplete="off" placeholder="${esc(T('cardNamePh'))}" value="${esc(nick)}">
         <div class="t-buttons"><button type="button" class="btn btn-go" id="cardBtn">${esc(T('cardMake'))}</button></div>
         <small class="trib-note" id="soloNote" role="alert"></small>
         <div id="cardOut" hidden>
@@ -5463,15 +5513,15 @@
     let cardBlob = null, cardFile = '';
     $('cardBtn').addEventListener('click', async () => {
       const msgBox = $('soloMsg'), text = msgBox.value.trim();
-      const name = player ? player.nick : ($('cardName').value || '').trim();
-      if (text.replace(/\s/g, '').length < 5) { note(T('cardNeedMsg'), true); msgBox.focus(); return; }
-      if (!name) { note(T('cardNeedName'), true); $('cardName').focus(); return; }
-      const bad = textProblem(text) || (player ? '' : (window.WordFilter && window.WordFilter.check(name, 'nick') ? T('textBad') : ''));
-      msgBox.classList.toggle('is-error', !!bad);
-      if (bad) { note(bad, true); return; }
+      const name = ($('cardName').value || '').trim().replace(/\s+/g, ' ');
+      const badMsg = tribMsgProblem(text), badName = badMsg ? '' : realNameProblem(name);
+      msgBox.classList.toggle('is-error', !!badMsg);
+      $('cardName').classList.toggle('is-error', !!badName);
+      if (badMsg) { note(badMsg, true); msgBox.focus(); return; }
+      if (badName) { note(badName, true); $('cardName').focus(); return; }
       note('');
       rec.text = text; rec.time = Date.now();
-      if (!player) store.cardName = name;
+      store.cardName = name;
       finish();
       cardBlob = await tributeCardBlob({ text, name, ttb: !!rec.ttb });
       cardFile = `${name}_tribute-card.png`.replace(/[\\/:*?"<>|]+/g, '').replace(/\s+/g, '');
