@@ -391,7 +391,7 @@
       mapNaver: '네이버 지도', mapKakao: '카카오맵', mapGoogle: '구글 지도',
       visitLook: '🏛️ 기념비 둘러보기',
       visitLookHint: (n, t) => `그림에서 반짝이는 곳을 눌러 보세요. (${n} / ${t})`,
-      visitDrawn: '그림으로 간단히 그린 모습이에요. 진짜 모습은 앞에서 본 영상에서 확인해요.',
+      visitDrawn: '기념비를 그림으로 그린 모습이에요. 진짜 모습은 앞에서 본 영상에서 확인해요.',
       visitTribute: '💐 추모하기',
       tributeLocked: '기념비를 다 둘러보면 추모할 수 있어요.',
       flowerBtn: '💐 꽃 놓기', flowerDone: '꽃을 놓았어요',
@@ -424,6 +424,7 @@
       ovBack: '하던 활동으로 돌아가기 ▶',
       ovTeacher: '선생님: 이 화면 끄기', ovTeacherPh: '선생님 비밀번호', ovTeacherBtn: '끄기',
       cardTitle: '추모 카드',
+      cardPicUN: '부산 유엔기념공원', cardPicMem: '인천 경명공원 · 콜롬비아군 참전기념비',
       cardStamp: (y) => `${y}. 11. 11. 오전 11시 「부산을 향하여」 1분 묵념 참여`,
       cardName: '카드에 들어갈 내 이름 (닉네임 말고 진짜 이름)', cardNamePh: '예) 김지민',
       cardNameOdd: '이름을 바르게 써 주세요. 한글 이름은 2~5글자, 숫자·기호·장난 말은 안 돼요.',
@@ -1094,7 +1095,7 @@
       mapNaver: 'Naver Map', mapKakao: 'Kakao Map', mapGoogle: 'Google Maps',
       visitLook: '🏛️ Recorre el monumento',
       visitLookHint: (n, t) => `Toca los puntos que brillan en el dibujo. (${n} / ${t})`,
-      visitDrawn: 'Es un dibujo sencillo, no una foto del monumento real.',
+      visitDrawn: 'Es una ilustración del monumento, no una foto.',
       visitTribute: '💐 Rinde homenaje',
       tributeLocked: 'Cuando termines de recorrer el monumento, podrás rendir homenaje.',
       flowerBtn: '💐 Dejar una flor', flowerDone: 'Dejaste una flor',
@@ -1127,6 +1128,7 @@
       ovBack: 'Volver a lo que estaba haciendo ▶',
       ovTeacher: 'Docente: cerrar esta pantalla', ovTeacherPh: 'Contraseña docente', ovTeacherBtn: 'Cerrar',
       cardTitle: 'Tarjeta de homenaje',
+      cardPicUN: 'Cementerio Memorial de la ONU, Busan', cardPicMem: 'Monumento a los combatientes colombianos · Incheon',
       cardStamp: (y) => `11 de noviembre de ${y}, 11:00 (hora de Corea) · Turn Toward Busan: un minuto de silencio`,
       cardName: 'Tu nombre para la tarjeta (tu nombre real, no tu apodo)', cardNamePh: 'Ej.: Valentina Gómez',
       cardNameOdd: 'Escribe bien tu nombre: solo letras, sin números, símbolos ni bromas.',
@@ -1796,7 +1798,7 @@
       mapNaver: 'Naver Map', mapKakao: 'Kakao Map', mapGoogle: 'Google Maps',
       visitLook: '🏛️ Look around the memorial',
       visitLookHint: (n, t) => `Tap the shining spots in the picture. (${n} / ${t})`,
-      visitDrawn: 'This is a simple drawing, not a photo of the real memorial.',
+      visitDrawn: 'This is an illustration of the memorial, not a photo.',
       visitTribute: '💐 Pay tribute',
       tributeLocked: 'Look around the whole memorial first, then you can pay tribute.',
       flowerBtn: '💐 Lay a flower', flowerDone: 'You laid a flower',
@@ -1829,6 +1831,7 @@
       ovBack: 'Back to what I was doing ▶',
       ovTeacher: 'Teacher: close this screen', ovTeacherPh: 'Teacher password', ovTeacherBtn: 'Close',
       cardTitle: 'Tribute card',
+      cardPicUN: 'UN Memorial Cemetery, Busan', cardPicMem: 'Colombian War Memorial · Gyeongmyeong Park, Incheon',
       cardStamp: (y) => `November 11, ${y}, 11 a.m. (Korea time) · Turn Toward Busan: one minute of silence`,
       cardName: 'Your name for the card (your real name, not your nickname)', cardNamePh: 'e.g. Alex Kim',
       cardNameOdd: 'Please write your name properly: letters only, no numbers, symbols or jokes.',
@@ -4551,7 +4554,7 @@
       <section class="visit-part">
         <h4>${esc(T('visitLook'))}</h4>
         <p class="t-help" id="visitCount"></p>
-        <div class="visit-scene"><svg id="visitSvg" viewBox="0 0 380 240" role="group" aria-label="${esc(L(s.name))}"></svg></div>
+        <div class="visit-scene"><svg id="visitSvg" viewBox="0 0 1200 751" role="group" aria-label="${esc(L(s.name))}"></svg></div>
         <div class="visit-spot" id="visitSpot" role="status" hidden></div>
         <p class="skip-hint">${esc(T('visitDrawn'))}</p>
       </section>
@@ -4572,39 +4575,24 @@
       </section>`;
   }
   // 기념비 그림 (사진이 아니라 간단한 그림): 하얀 돛 벽 · 칼을 든 군인 · 기도하는 여인 · 비석
+  // 🏛️ 기념비 그림 (img/memorial.jpg — 1200×751, 누르는 곳 at 은 이 그림의 자리)
+  const MEM_IMG = 'img/memorial.jpg', MEM_W = 1200, MEM_H = 751;
   function drawMemorialScene(svg, v) {
-    svgEl('rect', { x: 0, y: 0, width: 380, height: 240, class: 'vs-sky' }, svg);
-    svgEl('rect', { x: 0, y: 206, width: 380, height: 34, class: 'vs-grass' }, svg);
-    svgEl('path', { d: 'M40 214 L340 214 L352 224 L28 224 Z', class: 'vs-step' }, svg);
-    svgEl('path', { d: 'M228 214 L228 34 Q300 70 336 214 Z', class: 'vs-sail' }, svg);
-    svgEl('path', { d: 'M236 214 L236 58 Q290 90 318 214', class: 'vs-sail-line' }, svg);
-    // 군인 (받침대 위)
-    svgEl('rect', { x: 98, y: 168, width: 60, height: 46, rx: 3, class: 'vs-base' }, svg);
-    const sol = svgEl('g', { class: 'vs-bronze' }, svg);
-    svgEl('circle', { cx: 128, cy: 66, r: 10 }, sol);
-    svgEl('path', { d: 'M116 80 Q128 74 140 80 L144 128 L136 128 L134 166 L124 166 L122 128 L112 128 Z' }, sol);
-    svgEl('path', { d: 'M140 84 L152 70 L156 74 L144 92 Z' }, sol);
-    svgEl('path', { d: 'M152 72 L162 22', class: 'vs-sword' }, svg);
-    // 무릎 꿇고 기도하는 여인
-    const wom = svgEl('g', { class: 'vs-bronze' }, svg);
-    svgEl('circle', { cx: 196, cy: 152, r: 8 }, wom);
-    svgEl('path', { d: 'M188 162 Q196 158 204 164 L208 192 L222 196 L222 212 L180 212 L184 190 Z' }, wom);
-    svgEl('path', { d: 'M200 168 L212 160 L214 164 L204 174 Z' }, wom);
-    // 비석
-    svgEl('rect', { x: 284, y: 174, width: 60, height: 38, rx: 3, class: 'vs-stone' }, svg);
-    [184, 192, 200].forEach((y) => svgEl('line', { x1: 292, y1: y, x2: 336, y2: y, class: 'vs-text' }, svg));
+    svg.setAttribute('viewBox', `0 0 ${MEM_W} ${MEM_H}`);
+    svgEl('image', { href: MEM_IMG, x: 0, y: 0, width: MEM_W, height: MEM_H, preserveAspectRatio: 'xMidYMid slice' }, svg);
     svgEl('g', { id: 'vsFlowers' }, svg);
     // 누르는 곳
     v.spots.forEach((sp, k) => {
       const g = svgEl('g', { class: 'vs-spot', 'data-k': k, transform: `translate(${sp.at[0]} ${sp.at[1]})`, tabindex: 0, role: 'button', 'aria-label': L(sp.name) }, svg);
-      svgEl('circle', { r: 16, class: 'vs-ring' }, g);
-      svgEl('circle', { r: 7, class: 'vs-dot' }, g);
+      svgEl('circle', { r: 46, class: 'vs-ring' }, g);
+      svgEl('circle', { r: 18, class: 'vs-dot' }, g);
     });
   }
+  // 💐 기념비 앞 바닥에 놓는 꽃다발
   function drawFlower() {
     const g = $('vsFlowers');
     if (!g || g.childNodes.length) return;
-    const f = svgEl('g', { class: 'vs-flower', transform: 'translate(252 214)' }, g);
+    const f = svgEl('g', { class: 'vs-flower', transform: 'translate(560 690) scale(3.4)' }, g);
     [-10, 0, 10].forEach((dx) => svgEl('path', { d: `M0 0 L${dx} -16`, class: 'vs-stem' }, f));
     [[-10, -16, '#e8455b'], [0, -18, '#ffd23f'], [10, -16, '#2f6fd6'], [-5, -21, '#ffffff'], [5, -21, '#e8455b']].forEach(([x, y, c]) => svgEl('circle', { cx: x, cy: y, r: 4.2, fill: c, class: 'vs-petal' }, f));
   }
@@ -5435,7 +5423,7 @@
         ${ttb ? `<p class="ttb-clock" id="ttbClock" role="status"></p>${ttbLocalText() ? `<p class="t-help">${esc(ttbLocalText())}</p>` : ''}` : ''}
       </section>
       <p class="story-text">${esc(T('tribLead'))}</p>`}
-      <div class="visit-scene"><svg id="soloSvg" viewBox="0 0 380 240" aria-hidden="true"></svg></div>
+      <div class="visit-scene"><svg id="soloSvg" viewBox="0 0 1200 751" aria-hidden="true"></svg></div>
       ${joined ? '' : `<p class="ttb-busan">${esc(T('ttbBusan'))}</p>
       <div class="trib-acts">
         <button type="button" class="btn btn-go" id="soloFlower">${esc(T('flowerBtn'))}</button>
@@ -5596,36 +5584,24 @@
       ctx.fillText(d.date, cx, y + 10);
       y += 60;
     }
-    // 기념비 그림 (작게)
-    const sc = 1.05, gx = cx - (380 * sc) / 2, gy = y;
-    ctx.save(); ctx.translate(gx, gy); ctx.scale(sc, sc);
-    roundRect(ctx, 0, 0, 380, 240, 22); ctx.clip();
-    const fill = (c, path) => { ctx.fillStyle = c; ctx.fill(new Path2D(path)); };
-    ctx.fillStyle = '#dcecf8'; ctx.fillRect(0, 0, 380, 240);
-    ctx.fillStyle = '#9cc98a'; ctx.fillRect(0, 206, 380, 34);
-    fill('#cfc8bb', 'M40 214 L340 214 L352 224 L28 224 Z');
-    fill('#ffffff', 'M228 214 L228 34 Q300 70 336 214 Z');
-    ctx.strokeStyle = '#c4ccd6'; ctx.lineWidth = 2; ctx.stroke(new Path2D('M228 214 L228 34 Q300 70 336 214 Z'));
-    fill('#b9b2a6', 'M98 168 h60 v46 h-60 Z');
-    ['M118 66 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0', 'M116 80 Q128 74 140 80 L144 128 L136 128 L134 166 L124 166 L122 128 L112 128 Z', 'M140 84 L152 70 L156 74 L144 92 Z',
-      'M188 152 a8 8 0 1 0 16 0 a8 8 0 1 0 -16 0', 'M188 162 Q196 158 204 164 L208 192 L222 196 L222 212 L180 212 L184 190 Z', 'M200 168 L212 160 L214 164 L204 174 Z'].forEach((pth) => fill('#6e5b44', pth));
-    ctx.strokeStyle = '#8a8f96'; ctx.lineWidth = 3; ctx.lineCap = 'round'; ctx.stroke(new Path2D('M152 72 L162 22'));
-    fill('#4a4f57', 'M284 174 h60 v38 h-60 Z');
-    // 꽃다발 (카드에서는 크게)
-    ctx.strokeStyle = '#3d8a3a'; ctx.lineWidth = 3;
-    [-16, 0, 16].forEach((dx) => { ctx.beginPath(); ctx.moveTo(258, 216); ctx.lineTo(258 + dx, 186); ctx.stroke(); });
-    [[-16, -32, '#e8455b'], [0, -36, '#ffd23f'], [16, -32, '#2f6fd6'], [-8, -42, '#ffffff'], [8, -42, '#e8455b']].forEach(([x, yy, c]) => {
-      ctx.fillStyle = c; ctx.beginPath(); ctx.arc(258 + x, 216 + yy, 8, 0, Math.PI * 2); ctx.fill();
-      ctx.strokeStyle = 'rgba(0,0,0,.12)'; ctx.lineWidth = 1; ctx.stroke();
-    });
+    // 그림: 11시 묵념에 함께했으면 부산 유엔기념공원, 아니면 인천 콜롬비아군 참전기념비
+    const pw = 600, ph = 375, px = cx - pw / 2, py = y;
+    ctx.save(); roundRect(ctx, px, py, pw, ph, 24); ctx.clip();
+    if (d.pic) {
+      const s = Math.max(pw / d.pic.width, ph / d.pic.height), iw = d.pic.width * s, ih = d.pic.height * s;
+      ctx.drawImage(d.pic, px + (pw - iw) / 2, py + (ph - ih) / 2, iw, ih);
+    } else { ctx.fillStyle = '#dcecf8'; ctx.fillRect(px, py, pw, ph); }
     ctx.restore();
-    y += 240 * sc + 40;
+    ctx.strokeStyle = 'rgba(20,34,75,.15)'; ctx.lineWidth = 3; roundRect(ctx, px, py, pw, ph, 24); ctx.stroke();
+    ctx.font = bodyFont(22, true); ctx.fillStyle = '#6b7590';
+    ctx.fillText(T(d.ttb ? 'cardPicUN' : 'cardPicMem'), cx, py + ph + 26);
+    y = py + ph + 50;
     // 추모 한마디 (큰 글씨)
-    let size = lang === 'ko' ? 54 : 48, lines;
-    for (;;) { ctx.font = certFont(size); lines = wrapLines(ctx, `“${d.text}”`, W - 180, 9); if (lines.length <= 4 || size <= 36) break; size -= 4; }
-    lines = lines.slice(0, 5);
-    const lh = Math.round(size * 1.35);
     const nameY = H - 130;
+    let size = lang === 'ko' ? 50 : 46, lines;
+    for (;;) { ctx.font = certFont(size); lines = wrapLines(ctx, `“${d.text}”`, W - 180, 9); if (lines.length * size * 1.35 <= nameY - 40 - y || size <= 30) break; size -= 3; }
+    const lh = Math.round(size * 1.35);
+    lines = lines.slice(0, Math.max(1, Math.floor((nameY - 40 - y) / lh)));
     let ty = y + Math.max(0, (nameY - 50 - y - lines.length * lh) / 2) + lh / 2;
     ctx.fillStyle = '#14224b';
     lines.forEach((ln) => { ctx.fillText(ln, cx, ty); ty += lh; });
@@ -5645,6 +5621,7 @@
         await Promise.all([certFont(54), certFont(46, true), certFont(72, true), bodyFont(34, true), bodyFont(20)].map((f) => document.fonts.load(f, sample).catch(() => {})));
       }
     } catch (e) { /* 글꼴이 없어도 그려요 */ }
+    d.pic = await new Promise((res) => { const im = new Image(); im.onload = () => res(im); im.onerror = () => res(null); im.src = d.ttb ? 'img/un-cemetery.jpg' : MEM_IMG; });
     const c = document.createElement('canvas');
     c.width = CARD; c.height = CARD;
     drawTributeCard(c.getContext('2d'), d);
@@ -5682,6 +5659,7 @@
     el.setAttribute('aria-modal', 'true');
     el.setAttribute('aria-labelledby', 'ttbOvTitle');
     el.innerHTML = `<div class="ttb-ov-card">
+        <img class="ttb-ov-img" id="ttbOvImg" src="img/un-cemetery.jpg" alt="">
         <h2 id="ttbOvTitle"></h2>
         <p class="ttb-ov-big" id="ttbOvBig" role="timer" aria-live="off"></p>
         <p class="ttb-ov-text" id="ttbOvText"></p>
@@ -5723,6 +5701,7 @@
       $('ttbOvTitle').textContent = T(phase === 'soon' ? 'ovSoonTitle' : phase === 'now' ? 'ovNowTitle' : 'ovDoneTitle');
       $('ttbOvText').textContent = phase === 'soon' ? T('ttbText') : phase === 'now' ? T('ovNowText') : T('ovDoneText');
       $('ttbOvWhy').textContent = phase === 'soon' ? T('ovWhy') : '';
+      $('ttbOvImg').hidden = phase === 'now'; // 묵념하는 1분은 글자와 숫자만
       $('ttbOvLocal').textContent = phase === 'soon' ? ttbLocalText() : '';
       $('ttbOvKeep').textContent = phase === 'done' ? '' : T('ovKeep');
       $('ttbOvBack').hidden = phase !== 'done';

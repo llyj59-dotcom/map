@@ -197,7 +197,7 @@
           spots: [
             ['The soldier with a sword', 'A statue of a soldier standing with a sword. It reminds us of the Colombian soldiers who fought bravely for peace in a faraway country.'],
             ['The kneeling woman', 'A statue of a woman kneeling in prayer. You can feel her longing for the soldiers who did not come home and her wish for peace.'],
-            ['The white wall shaped like a sail', 'A white wall shaped like a ship\'s sail. It reminds us of the long sea journey the Colombian soldiers made to Korea.'],
+            ['The white wall shaped like a sail', 'A white wall shaped like a ship\'s sail, carved with traditional Colombian patterns. It reminds us of the long sea journey the Colombian soldiers made to Korea.'],
             ['Words in two languages', 'Words are carved in Korean and Spanish. They remember the sacrifice of the Colombian soldiers: "611 noble lives shed their blood."']
           ]
         },

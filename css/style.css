@@ -1549,3 +1549,8 @@ body.silence::after { content: ''; position: fixed; inset: 0; background: rgba(1
 .cls-ibar i.b { top: 9px; background: var(--co-blue); }
 .cls-reflects { padding-left: 18px; }
 .cls-reflects li { margin: 4px 0; }
+
+/* 🏛️ 기념비 그림 · 11/11 그림 */
+.vs-ring, .vs-dot { vector-effect: non-scaling-stroke; }
+.ttb-ov-img { display: block; width: 100%; max-height: 220px; object-fit: cover; border-radius: 16px; margin: 0 0 14px; }
+.ttb-ov-img[hidden] { display: none; }
