@@ -88,9 +88,10 @@ window.MAP_CONFIG = {
     westsea: 'ending', memorial: 'ending'
   },
 
-  // 선생님 모드 비밀번호를 뒤섞은 값 (지금 비밀번호: admin)
+  // 선생님 비밀번호를 뒤섞은 값 (선생님 모드·반 만들기·영상 통과·11/11 묵념 창 끄기에 써요)
+  // ※ 공개 저장소라 비밀번호 자체는 여기에 적지 마세요
   // 바꾸려면: 선생님 모드 → 맨 아래 "비밀번호 바꾸기 값 만들기"에서 새 값을 만들어 여기에 붙여 넣으세요.
-  teacherPasswordHash: '845wqw',
+  teacherPasswordHash: 'l1nbm3',
 
   nicknameMaxLength: 8,
   // 닉네임에 들어가면 시작할 수 없는 말 (필요하면 더 추가)
