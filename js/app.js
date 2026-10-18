@@ -425,7 +425,7 @@
       ovTeacher: '선생님: 이 화면 끄기', ovTeacherPh: '선생님 비밀번호', ovTeacherBtn: '끄기',
       cardTitle: '추모 카드',
       cardPicUN: '부산 유엔기념공원', cardPicMem: '인천 경명공원 · 콜롬비아군 참전기념비',
-      cardStamp: (y) => `${y}. 11. 11. 오전 11시 「부산을 향하여」 1분 묵념 참여`,
+      cardStamp: (y) => `유엔참전용사 국제추모의 날 · 부산을 향하여(Turn Toward Busan)\n${y}. 11. 11. 오전 11시 · 1분 묵념 참여`,
       cardName: '카드에 들어갈 내 이름 (닉네임 말고 진짜 이름)', cardNamePh: '예) 김지민',
       cardNameOdd: '이름을 바르게 써 주세요. 한글 이름은 2~5글자, 숫자·기호·장난 말은 안 돼요.',
       cardMsgShort: (n) => `추모 한마디를 ${n}글자 이상, 한 문장으로 써 주세요.`,
@@ -1129,7 +1129,7 @@
       ovTeacher: 'Docente: cerrar esta pantalla', ovTeacherPh: 'Contraseña docente', ovTeacherBtn: 'Cerrar',
       cardTitle: 'Tarjeta de homenaje',
       cardPicUN: 'Cementerio Memorial de la ONU, Busan', cardPicMem: 'Monumento a los combatientes colombianos · Incheon',
-      cardStamp: (y) => `11 de noviembre de ${y}, 11:00 (hora de Corea) · Turn Toward Busan: un minuto de silencio`,
+      cardStamp: (y) => `Día Internacional en Memoria de los Veteranos de la ONU · Turn Toward Busan\n11 de noviembre de ${y}, 11:00 (hora de Corea) · un minuto de silencio`,
       cardName: 'Tu nombre para la tarjeta (tu nombre real, no tu apodo)', cardNamePh: 'Ej.: Valentina Gómez',
       cardNameOdd: 'Escribe bien tu nombre: solo letras, sin números, símbolos ni bromas.',
       cardMsgShort: (n) => `Escribe un mensaje de al menos ${n} caracteres, en una frase.`,
@@ -1832,7 +1832,7 @@
       ovTeacher: 'Teacher: close this screen', ovTeacherPh: 'Teacher password', ovTeacherBtn: 'Close',
       cardTitle: 'Tribute card',
       cardPicUN: 'UN Memorial Cemetery, Busan', cardPicMem: 'Colombian War Memorial · Gyeongmyeong Park, Incheon',
-      cardStamp: (y) => `November 11, ${y}, 11 a.m. (Korea time) · Turn Toward Busan: one minute of silence`,
+      cardStamp: (y) => `International Day of Remembrance for UN Veterans · Turn Toward Busan\nNovember 11, ${y}, 11 a.m. (Korea time) · one minute of silence`,
       cardName: 'Your name for the card (your real name, not your nickname)', cardNamePh: 'e.g. Alex Kim',
       cardNameOdd: 'Please write your name properly: letters only, no numbers, symbols or jokes.',
       cardMsgShort: (n) => `Please write a message of at least ${n} characters, as a sentence.`,
@@ -4592,7 +4592,7 @@
   function drawFlower() {
     const g = $('vsFlowers');
     if (!g || g.childNodes.length) return;
-    if (flowerPic) { // 🌼 헌화 꽃 그림 (img/flowers.png) — 기념비 앞 바닥에
+    if (flowerPic) { // 🌼 헌화 꽃 그림 (img/flowers.webp) — 기념비 앞 바닥에
       const w = 300, h = w * flowerPic.height / flowerPic.width;
       svgEl('image', { href: FLOWER_IMG, x: 560 - w / 2, y: 700 - h * 0.8, width: w, height: h, class: 'vs-flower' }, g);
       return;
@@ -5583,10 +5583,13 @@
     // 11시 묵념 참여 (글자만, 차분하게) 또는 날짜
     let y = 246;
     if (d.ttb) {
-      ctx.fillStyle = '#2b4277'; ctx.font = cardSerif(600, lang === 'ko' ? 28 : 24);
-      const lines = wrapLines(ctx, T('cardStamp', d.year), W - 220, 2);
-      lines.forEach((ln, i) => ctx.fillText(ln, cx, y + i * 38));
-      y += lines.length * 38 + 14;
+      // 첫 줄: 기념일·기념식 이름 (작게) · 둘째 줄: 날짜·시각 (굵게)
+      const [name, when] = T('cardStamp', d.year).split('\n');
+      ctx.fillStyle = '#5a6a8c'; ctx.font = cardSerif(500, lang === 'ko' ? 22 : 20);
+      ctx.fillText(name, cx, y - 4, W - 180);
+      ctx.fillStyle = '#2b4277'; ctx.font = cardSerif(700, lang === 'ko' ? 27 : 24);
+      ctx.fillText(when, cx, y + 34, W - 180);
+      y += 70;
     } else {
       ctx.fillStyle = CARD_SOFT; ctx.font = cardSerif(500, 26);
       ctx.fillText(d.date, cx, y);
@@ -5602,7 +5605,7 @@
     ctx.restore();
     ctx.strokeStyle = '#d6ccb4'; ctx.lineWidth = 2; roundRect(ctx, px, py, pw, ph, 6); ctx.stroke();
     // 헌화 꽃 그림이 있으면 그림 오른쪽 아래에 살짝 걸쳐서
-    if (d.flower) { const fw = 190, fh = fw * d.flower.height / d.flower.width; ctx.drawImage(d.flower, px + pw - fw * 0.78, py + ph - fh * 0.72, fw, fh); }
+    if (d.flower) { const fw = 210, fh = fw * d.flower.height / d.flower.width; ctx.drawImage(d.flower, px + pw - fw * 0.9, py + ph - fh - 4, fw, fh); } // 그림 안 오른쪽 아래 바닥에 놓은 꽃다발
     ctx.font = cardSerif(500, 20); ctx.fillStyle = CARD_SOFT;
     ctx.fillText(T(d.ttb ? 'cardPicUN' : 'cardPicMem'), cx, py + ph + 30);
     y = py + ph + 58;
@@ -5623,7 +5626,7 @@
     ctx.fillText(L(CONFIG.madeBy), cx, H - 92, W - 140);
     [['#d9b84a', -1], ['#3d5a99', 0], ['#b0434d', 1]].forEach(([c, k]) => { ctx.fillStyle = c; ctx.fillRect(cx - 60 + k * 120, H - 66, 120, 3); });
   }
-  const FLOWER_IMG = 'img/flowers.png'; // 🌼 헌화 꽃 그림 (있으면 써요 — 없으면 간단한 그림)
+  const FLOWER_IMG = 'img/flowers.webp'; // 🌼 헌화 꽃 그림 (있으면 써요 — 없으면 간단한 그림)
   const loadImg = (src) => new Promise((res) => { const im = new Image(); im.onload = () => res(im); im.onerror = () => res(null); im.src = src; });
   let flowerPic; // undefined = 아직 모름 · null = 없음
   loadImg(FLOWER_IMG).then((im) => { flowerPic = im; });
