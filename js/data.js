@@ -237,7 +237,7 @@ window.STATIONS = [
         { ko: '아르헨티나', es: 'Argentina' }
       ],
       answer: 1,
-      explain: { ko: '콜롬비아! 콜롬비아는 남아메리카 대륙 북쪽 끝에 있는 나라예요. 그래서 한국과 콜롬비아는 "피를 나눈 형제 나라"라고 불려요.', es: 'Colombia. Por eso a Corea y Colombia se les llama "naciones hermanas de sangre".' }
+      explain: { ko: '콜롬비아! 콜롬비아는 남아메리카 대륙 북서쪽에 있는 나라예요. 6·25 전쟁 때 함께 피를 흘리며 싸웠기 때문에 한국과 콜롬비아는 "피를 나눈 형제 나라"라고 불려요.', es: 'Colombia, en el noroeste de Sudamérica. Como lucharon y derramaron sangre juntos en la Guerra de Corea, a Corea y Colombia se les llama "naciones hermanas de sangre".' }
     },
     questions: ['q1']
   },
@@ -298,7 +298,7 @@ window.STATIONS = [
     date: { ko: '1951. 8. 6.', es: '6 ago. 1951' },
     place: { ko: '강원도 중부 전선 (금성 남쪽, 851고지)', es: 'Frente central, Gangwon (al sur de Geumseong, colina 851)' }, // 국가보훈부: Hill 851, 첫 전투. 정확한 군·면 위치는 확인 못 함
     story: {
-      ko: '1951년 8월 6일, 콜롬비아대대의 첫 전투가 벌어졌어요. 처음 보는 높은 산과 낯선 날씨 속에서, 콜롬비아 군인들은 적이 차지한 851고지를 향해 용감하게 올라갔어요.',
+      ko: '1951년 8월 6일, 콜롬비아대대의 첫 전투가 벌어졌어요. 처음 보는 높은 산과 낯선 날씨 속에서, 콜롬비아대대의 수색대가 적이 차지한 851고지를 향해 나아갔다가 중국군과 맞붙었어요.',
       es: 'El 6 de agosto de 1951, el Batallón Colombia recibió su bautismo de fuego. En un terreno de montañas escarpadas y bajo un clima que no conocían, los soldados avanzaron con determinación hacia la colina 851, en poder del enemigo.'
     },
     videos: [
@@ -1496,7 +1496,7 @@ window.LEVEL_QUIZ = {
       explain: { ko: '정전협정은 싸움을 멈춘 협정이에요. 전쟁을 끝내는 평화 조약은 아직 맺지 않았어요.' } },
     westsea: { type: 'choice', q: { ko: '콜롬비아 해군의 활동으로 옳은 것은?' },
       options: [{ ko: '정전 뒤에도 1955년까지 한국 바다에 머물렀다' }, { ko: '1950년 9월 인천상륙작전 때 처음 도착했다' }, { ko: '서해에서만 활동하고 동해에는 가지 않았다' }, { ko: '배를 1척만 보냈다' }], answer: 0,
-      explain: { ko: '첫 배 알미란테 파디야호는 1951년 5월에 왔어요. 서해 봉쇄와 동해 함포 지원을 했고, 프리깃함 3척이 1955년까지 머물렀어요.' } },
+      explain: { ko: '첫 배 알미란테 파디야호는 1951년 5월에 왔어요. 서해 봉쇄와 동해 함포 지원을 했어요. 프리깃함 3척(파디야·토노·브리온)이 차례로 교대하며 왔고, 콜롬비아 해군은 1955년까지 한국 바다에 머물렀어요.' } },
     memorial: { type: 'choice', q: { ko: '해마다 11월 11일 오전 11시(한국 시간), 세계가 부산 유엔기념공원을 향해 1분 동안 묵념하는 국제 추모 행사는?' },
       options: [{ ko: '부산을 향하여(Turn Toward Busan)' }, { ko: '현충일 추념식' }, { ko: '유엔의 날 기념식' }, { ko: '국군의 날 기념식' }], answer: 0,
       explain: { ko: '2007년에 시작해 2020년 법정기념일(유엔참전용사 국제추모의 날)이 되었어요. 인천 경명공원의 콜롬비아군 참전기념비에서도 해마다 추모식이 열려요.' } }
