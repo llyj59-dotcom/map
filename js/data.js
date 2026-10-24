@@ -145,9 +145,9 @@ window.STATIONS = [
       { front: 'armistice', date: { ko: '1953. 7. 27.', es: '27 jul. 1953' }, text: { ko: '판문점에서 "싸움을 멈추자"는 약속(정전협정)을 맺고, 지금의 휴전선이 생겼어요.', es: 'Se firma el armisticio en Panmunjom y se traza la actual línea de demarcación.' } }
     ],
     videos: [
-      { yt: '_zojHBvJe4w', title: { ko: '6·25 전쟁 이야기', es: 'Historia de la Guerra de Corea' }, by: '국가보훈부', len: '3:21', req: true },
+      { yt: '_zojHBvJe4w', title: { ko: '6·25 전쟁 이야기', es: 'Historia de la Guerra de Corea' }, by: '국가보훈부', len: '3:21', req: true, note: { ko: '바로잡기: 2017년 영상이라 1:18쯤 "21개 나라"라고 나와요. 2018년 독일이 의료지원국으로 인정되어 지금은 22개국이에요. 또 정전협정에는 유엔군·북한군과 함께 중국군 대표도 서명했어요.' } },
       { yt: '4aiNjdNWGRE', title: { ko: 'UN 깃발 아래 모인 22개국, 6·25 전쟁 이야기', es: '22 países bajo la bandera de la ONU' }, by: '국가보훈부', len: '1:28' },
-      { yt: '-ECci4sNuYc', title: { ko: '6·25 전쟁, 잊을 수 없는 상처 (국가보훈처·EBS)', es: 'La Guerra de Corea, una herida inolvidable' }, by: 'EBS', len: '10:23', long: true }
+      { yt: '-ECci4sNuYc', title: { ko: '6·25 전쟁, 잊을 수 없는 상처 (국가보훈처·EBS)', es: 'La Guerra de Corea, una herida inolvidable' }, by: 'EBS', len: '10:23', long: true, note: { ko: '알아 두기: 2014년 영상이라 참전국 수가 지금과 다르게 나올 수 있어요. 2018년 독일이 의료지원국으로 인정되어 지금은 22개국(전투 16·의료 지원 6)이에요.' } }
     ],
     heroes: [],
     quiz: {
@@ -175,7 +175,7 @@ window.STATIONS = [
     // 아이들이 캔바에 찾아 둔 영상 (group = 찾은 모둠)
     // req: 꼭 끝까지 봐야 [다음]으로 넘어가는 영상 (작전 지점마다 짧은 것 하나) · 나머지는 골라 보기
     videos: [
-      { yt: '6Z0s7IM4cDE', title: { ko: 'AI로 재현한 인천상륙작전', es: 'El Desembarco de Incheon recreado con IA' }, by: '국방부 M프렌즈', group: 1, len: '1:09', req: true },
+      { yt: '6Z0s7IM4cDE', title: { ko: 'AI로 재현한 인천상륙작전', es: 'El Desembarco de Incheon recreado con IA' }, by: '국방부 M프렌즈', group: 1, len: '1:09', req: true, note: { ko: '알아 두기: 이 영상의 화면은 옛날 흑백 사진을 AI로 색칠하고 움직이게 만든 것이라 실제 모습과 다를 수 있어요.' } },
       { yt: 'hvnR-1rlgAA', title: { ko: '인천상륙작전 그 승리의 등불, 팔미도', es: 'Palmido, la luz de la victoria del Desembarco de Incheon' }, by: '인천보훈지청', len: '3:26' },
       { yt: '9xTEvB2wlYM', title: { ko: '"팔미도 등대 점등 작전" 참전용사 인터뷰', es: 'Entrevista a un veterano: la operación del faro de Palmido' }, by: 'LG헬로비전', group: 5, len: '2:34' },
       { yt: 'QbrdjCY2bl0', title: { ko: '인천상륙작전 74주년, 팔미도 등대 해상순례', es: '74.º aniversario: peregrinación marítima al faro de Palmido' }, by: '연합뉴스TV', len: '2:15' },
@@ -213,8 +213,8 @@ window.STATIONS = [
     },
     // lang: 'es' = 스페인어 화면에서만 보여요 / 'ko' = 한국어 화면에서만
     videos: [
-      { yt: '4VKiVFjt_PU', title: { ko: '한국전 참전 콜롬비아 용사들, 사진 첫 공개', es: 'Fotos inéditas de los combatientes colombianos en Corea' }, by: 'KBS News', len: '1:51', req: true },
-      { yt: 'ekqoDYEQ-GQ', title: { ko: '콜롬비아 참전용사 4058명 (KBS 다큐, 영어 자막)', es: 'Los 4.058 veteranos colombianos (documental de KBS, subt. en inglés)' }, by: 'KBS', len: '47:51', group: 5, long: true, cc: ['en'] } // 사람이 만든 영어 자막이 있어요
+      { yt: '4VKiVFjt_PU', title: { ko: '한국전 참전 콜롬비아 용사들, 사진 첫 공개', es: 'Fotos inéditas de los combatientes colombianos en Corea' }, by: 'KBS News', len: '1:51', req: true, note: { ko: '알아 두기: 불모고지 전투는 콜롬비아군이 가장 큰 피해를 본 전투이지만, 약 5,100명의 참전용사가 모두 이 전투에 나간 것은 아니에요. 부대가 차례로 교대하며 싸웠어요.' } },
+      { yt: 'ekqoDYEQ-GQ', title: { ko: '콜롬비아 참전용사 4058명 (KBS 다큐, 영어 자막)', es: 'Los 4.058 veteranos colombianos (documental de KBS, subt. en inglés)' }, by: 'KBS', len: '47:51', group: 5, long: true, cc: ['en'], note: { ko: '바로잡기: 이 2014년 다큐는 "금성 진격전이 첫 전투"라고 하지만, 콜롬비아대대의 첫 전투는 1951년 8월 흑운토령 전투예요. 참전 인원(4,058명)과 희생자 수도 자료마다 다른데, 국가보훈부는 해군을 포함해 약 5,100명이 참전했고 전사·실종 213명이라고 집계해요. 해군 프리깃함도 1척이 아니라 3척(파디야·토노·브리온)이 차례로 왔어요.', en: 'Good to know: this 2014 documentary says the Battle of Geumseong was the first battle, but the Colombia Battalion first fought at Heuguntoryeong in August 1951. Numbers differ by source: Korea counts about 5,100 Colombians (including the navy) and 213 killed or missing. Three frigates (Padilla, Tono, Brión) came in turn, not one.' } } // 사람이 만든 영어 자막이 있어요
       // (스페인어 개인 채널 영상은 뺐어요 — 스페인어 화면은 LANG_VIDEOS 의 공식 영상)
       //{ yt: '3u02L_RFV74', title: { ko: '(스페인어) 한국전쟁 속 콜롬비아대대', es: 'El Batallón Colombia en la Guerra de Corea' }, by: 'Exfors Histori', len: '9:30', lang: 'es' }
     ],
@@ -307,7 +307,7 @@ window.STATIONS = [
       es: 'El 6 de agosto de 1951, el Batallón Colombia recibió su bautismo de fuego. En un terreno de montañas escarpadas y bajo un clima que no conocían, los soldados avanzaron con determinación hacia la colina 851, en poder del enemigo.'
     },
     videos: [
-      { yt: 'UWLU39FTzho', title: { ko: '사라져 가는 콜롬비아 참전 노병, "혈맹"을 잇는 사람들', es: 'Los últimos veteranos colombianos y quienes mantienen viva su memoria' }, by: 'KBS News', len: '1:30', req: true }
+      { yt: 'UWLU39FTzho', title: { ko: '사라져 가는 콜롬비아 참전 노병, "혈맹"을 잇는 사람들', es: 'Los últimos veteranos colombianos y quienes mantienen viva su memoria' }, by: 'KBS News', len: '1:30', req: true, note: { ko: '알아 두기: 흑운토령 전투 장면이 아니라, 오늘날 콜롬비아에 사는 참전용사들과 그분들을 돕는 사람들의 이야기예요.' } }
     ],
     heroes: [],
     quiz: {
@@ -534,10 +534,10 @@ window.STATIONS = [
       es: 'En el parque Gyeongmyeong de Incheon se alza el monumento a los combatientes colombianos: la escultura de un soldado con una espada, una mujer arrodillada en oración y un muro blanco que evoca la vela de un barco. Su inscripción, en coreano y en español, honra el sacrificio de 611 combatientes. Cada año se celebra allí una ceremonia conmemorativa.'
     },
     videos: [
-      { yt: 'k8ip34sYFrQ', title: { ko: '콜롬비아군 참전기념비 제막식과 참배 행사 (2018, 경명공원)', es: 'Reinauguración del monumento colombiano en el parque Gyeongmyeong (2018)' }, by: '서해구TV', len: '2:00', req: true },
+      { yt: 'k8ip34sYFrQ', title: { ko: '콜롬비아군 참전기념비 제막식과 참배 행사 (2018, 경명공원)', es: 'Reinauguración del monumento colombiano en el parque Gyeongmyeong (2018)' }, by: '서해구TV', len: '2:00', req: true, note: { ko: '알아 두기: 2018년 영상이라 "서구"라고 나와요. 지금은 서해구예요.' } },
       { yt: 'MT47Vj_EJpg', title: { ko: '대한뉴스: 콜롬비아군 참전기념비 준공 (1975)', es: 'Noticiero de 1975: inauguración del monumento colombiano' }, by: 'KTV 아카이브', len: '0:15' },
       { yt: 'f_zao2_kxSs', title: { ko: '70년 만의 만남, 콜롬비아 참전용사 초청 행사', es: 'Reencuentro 70 años después: veteranos colombianos de visita en Corea' }, by: 'TV나라사랑', len: '3:30' },
-      { yt: 'Bze-QbeThmg', title: { ko: '"할아버지가 목숨 바친 나라가 궁금했어요"', es: '"Quería conocer el país por el que mi abuelo dio la vida"' }, by: '연합뉴스TV', len: '1:28' }
+      { yt: 'Bze-QbeThmg', title: { ko: '"할아버지가 목숨 바친 나라가 궁금했어요"', es: '"Quería conocer el país por el que mi abuelo dio la vida"' }, by: '연합뉴스TV', len: '1:28', note: { ko: '알아 두기: 자료마다 숫자가 조금씩 달라요. 국가보훈부는 콜롬비아군 전사·실종 213명, 부상 448명으로 집계해요.' } }
     ],
     // 🏛️ 기념비 그림: img/memorial.jpg (가상 방문·추모하기·추모 카드에 써요)
     /* 🕊️ 가상 방문·추모 — 직접 못 가도 위치를 알고, 기념비를 둘러보고, 꽃을 놓고 묵념해요
@@ -615,16 +615,16 @@ const TEEN_VIDEOS = {
     { yt: 'HGN762TbSvs', title: { ko: '인천상륙작전을 위한 기만 작전, 장사상륙작전 (참전용사 증언)' }, by: '국방홍보원', len: '10:48', long: true }
   ],
   colombia: [
-    { yt: '4VKiVFjt_PU', title: { ko: '한국전 참전 콜롬비아 용사들, 사진 첫 공개' }, by: 'KBS News', len: '1:51', req: true },
-    { yt: 'E0SGNvLFk2Q', title: { ko: '국가보훈처, 콜롬비아 6·25 참전용사 초청 감사와 보답' }, by: '국방홍보원', len: '3:45' },
-    { yt: 'ekqoDYEQ-GQ', title: { ko: '콜롬비아 참전용사 4058명 (KBS 다큐)' }, by: 'KBS', len: '47:51', long: true }
+    { yt: '4VKiVFjt_PU', title: { ko: '한국전 참전 콜롬비아 용사들, 사진 첫 공개' }, by: 'KBS News', len: '1:51', req: true, note: { ko: '알아 두기: 불모고지 전투는 콜롬비아군이 가장 큰 피해를 본 전투이지만, 약 5,100명의 참전용사가 모두 이 전투에 참여한 것은 아닙니다. 부대는 1951년부터 차례로 교대하며 싸웠습니다.' } },
+    { yt: 'E0SGNvLFk2Q', title: { ko: '국가보훈처, 콜롬비아 6·25 참전용사 초청 감사와 보답' }, by: '국방홍보원', len: '3:45', note: { ko: '알아 두기: 영상 속 "213명 전사"는 국가보훈부 기준으로 전사자와 실종자를 합친 숫자입니다.' } },
+    { yt: 'ekqoDYEQ-GQ', title: { ko: '콜롬비아 참전용사 4058명 (KBS 다큐)' }, by: 'KBS', len: '47:51', long: true, note: { ko: '바로잡기: 이 2014년 다큐는 "금성 진격전이 첫 전투"라고 하지만, 콜롬비아대대의 첫 전투는 1951년 8월 흑운토령 전투입니다. 참전 인원(4,058명)과 희생자 수도 자료마다 다르며, 국가보훈부는 해군을 포함해 약 5,100명 참전, 전사·실종 213명으로 집계합니다. 해군 프리깃함도 3척(알미란테 파디야·카피탄 토노·알미란테 브리온)이 차례로 파견되었습니다.' } }
   ],
   heukun: [
     { yt: 'wcux6r41zhY', title: { ko: '지식채널e 정전협정 70주년 특집 ⑫ 완전히 새로운 전쟁 (중국군 참전)' }, by: 'EBS', len: '5:11', req: true },
-    { yt: 'UWLU39FTzho', title: { ko: '사라져 가는 콜롬비아 참전 노병, "혈맹"을 잇는 사람들' }, by: 'KBS News', len: '1:30' }
+    { yt: 'UWLU39FTzho', title: { ko: '사라져 가는 콜롬비아 참전 노병, "혈맹"을 잇는 사람들' }, by: 'KBS News', len: '1:30', note: { ko: '알아 두기: 흑운토령 전투 장면이 아니라, 오늘날 콜롬비아의 참전용사들과 그들을 돕는 사람들의 이야기입니다.' } }
   ],
   hill400: [
-    { yt: 'EVcporxPHIY', title: { ko: '지식채널e 정전협정 70주년 특집 ⑯ 백마고지 전투 (고지전)' }, by: 'EBS', len: '6:05' }
+    { yt: 'EVcporxPHIY', title: { ko: '지식채널e 정전협정 70주년 특집 ⑯ 백마고지 전투 (고지전)' }, by: 'EBS', len: '6:05', note: { ko: '알아 두기: 백마고지 전투(1952년 10월)는 국군 제9사단이 싸운 전투로, 콜롬비아대대의 400고지 전투와는 다른 전투입니다. 같은 시기 고지전이 얼마나 치열했는지 보여 주는 영상입니다.' } }
   ],
   oldbaldy: [
     { yt: 'bc7T3QBOFhY', title: { ko: '콜롬비아 참전용사 유해, 처음으로 부산 유엔기념공원에 안장' }, by: '국방홍보원', len: '2:20' }
@@ -634,9 +634,9 @@ const TEEN_VIDEOS = {
     { yt: '7nIL-QzbHKY', title: { ko: '지식채널e 정전협정 70주년 특집 ⑳ 한미상호방위조약 체결' }, by: 'EBS', len: '6:20' }
   ],
   memorial: [
-    { yt: 'k8ip34sYFrQ', title: { ko: '콜롬비아군 참전기념비 제막식과 참배 행사 (2018, 경명공원)' }, by: '서해구TV', len: '2:00', req: true },
+    { yt: 'k8ip34sYFrQ', title: { ko: '콜롬비아군 참전기념비 제막식과 참배 행사 (2018, 경명공원)' }, by: '서해구TV', len: '2:00', req: true, note: { ko: '알아 두기: 2018년 영상이라 "서구"라고 나옵니다. 지금은 서해구입니다.' } },
     { yt: 'MT47Vj_EJpg', title: { ko: '대한뉴스: 콜롬비아군 참전기념비 준공 (1975)' }, by: 'KTV 아카이브', len: '0:15' },
-    { yt: 'lPlbkthBvdM', title: { ko: '우리가 알아야 할 보훈기념일: 턴투워드부산 · 정전협정 및 유엔군 참전의 날 (2017)' }, by: 'EBS', len: '7:38', note: { ko: '바로잡기: 이 영상은 2017년에 만들어져 참전국을 "21개국"으로 소개합니다. 2018년 정부가 독일을 의료지원국으로 공식 인정하면서, 지금은 전투병력 파병 16개국과 의료지원 6개국(스웨덴·인도·덴마크·노르웨이·이탈리아·독일)을 합쳐 22개국입니다.' } },
+    { yt: 'lPlbkthBvdM', title: { ko: '우리가 알아야 할 보훈기념일: 턴투워드부산 · 정전협정 및 유엔군 참전의 날 (2017)' }, by: 'EBS', len: '7:38', note: { ko: '바로잡기: 이 영상은 2017년에 만들어져 참전국을 "21개국"으로 소개합니다(1:02, 3:25, 4:11, 5:03쯤). 2018년 정부가 독일을 의료지원국으로 공식 인정하면서, 지금은 전투병력 파병 16개국과 의료지원 6개국(스웨덴·인도·덴마크·노르웨이·이탈리아·독일)을 합쳐 22개국입니다. 3:43쯤 "11월 10일"은 11월 11일을 잘못 말한 것입니다.' } },
     { yt: 'f_zao2_kxSs', title: { ko: '70년 만의 만남, 콜롬비아 참전용사 초청 행사' }, by: 'TV나라사랑', len: '3:30' }
   ]
 };
@@ -650,24 +650,24 @@ window.GRADE_VIDEOS = {
 window.LANG_VIDEOS = {
   es: {
     war: [
-      { yt: 'lWEnII1bIOQ', title: { es: '¿Cómo empezó la Guerra de Corea?' }, by: 'BBC News Mundo', len: '6:32', req: true }
+      { yt: 'lWEnII1bIOQ', title: { es: '¿Cómo empezó la Guerra de Corea?' }, by: 'BBC News Mundo', len: '6:32', req: true, note: { es: 'Para aclarar: Colombia no llegó en 1950 (2:22). La fragata Almirante Padilla llegó a mediados de 1951 y el Batallón Colombia en junio de 1951. En total participaron 22 países: 16 con tropas de combate y 6 con apoyo médico. La línea del armisticio cruza el paralelo 38; no es exactamente la misma frontera. Las cifras de víctimas civiles varían según la fuente.' } }
     ],
     incheon: [
-      { yt: 'yNgIj_JywTU', title: { es: 'La batalla de Incheon: resumen' }, by: 'unProfesor', len: '5:01', req: true }
+      { yt: 'yNgIj_JywTU', title: { es: 'La batalla de Incheon: resumen' }, by: 'unProfesor', len: '5:01', req: true, note: { es: 'Para aclarar: la guerra empezó el 25 de junio de 1950, no en 1949. La ONU actuó en pocos días (resoluciones del 25 y 27 de junio). Después de Incheon, la ONU avanzó al norte, China entró en la guerra (octubre de 1950) y Seúl volvió a caer en 1951; el estancamiento llegó después.' } }
     ],
     colombia: [
-      { yt: 'mOS0ah05vkk', title: { es: 'La partida del Batallón Colombia hacia Corea (archivo, 1951)' }, by: 'Señal Memoria (RTVC)', len: '3:51', req: true },
-      { yt: 'koCwQIB7Xq8', title: { es: '70 años de la participación de Colombia en la Guerra de Corea' }, by: 'MinDefensa Colombia', len: '7:53' }
+      { yt: 'mOS0ah05vkk', title: { es: 'La partida del Batallón Colombia hacia Corea (archivo, 1951)' }, by: 'Señal Memoria (RTVC)', len: '3:51', req: true, note: { es: 'Para tener en cuenta: es un noticiero de 1951; su lenguaje refleja la propaganda de la Guerra Fría de esa época.' } },
+      { yt: 'koCwQIB7Xq8', title: { es: '70 años de la participación de Colombia en la Guerra de Corea' }, by: 'MinDefensa Colombia', len: '7:53', note: { es: 'Para aclarar: según Corea, participaron 22 países (16 con tropas de combate y 6 con apoyo médico), no 18. Laureano Gómez asumió la presidencia el 7 de agosto de 1950; el 30 de julio gobernaba Mariano Ospina Pérez. Corea cuenta 213 muertos y desaparecidos colombianos.' } }
     ],
     heukun: [
-      { yt: '6U_F06qe9HI', title: { es: 'Sobrevivientes de la Guerra de Corea cuentan sus vivencias' }, by: 'Fuerzas Militares de Colombia', len: '6:08' }
+      { yt: '6U_F06qe9HI', title: { es: 'Sobrevivientes de la Guerra de Corea cuentan sus vivencias' }, by: 'Fuerzas Militares de Colombia', len: '6:08', note: { es: 'Para aclarar: los soldados colombianos viajaron por turnos entre 1951 y 1953 (unos 5.100 en total), no en 1950. La gran batalla del Batallón Colombia en Old Baldy duró pocos días, en marzo de 1953.' } }
     ],
     oldbaldy: [
       { yt: 'HXCfg8f8id0', title: { es: 'Homenaje a los héroes sobrevivientes del Batallón Colombia' }, by: 'Fuerzas Militares de Colombia', len: '3:48' }
     ],
     westsea: [
-      { yt: '5WXL2ACR0xQ', title: { es: 'La Guerra de Corea en la memoria de los marinos de la Armada' }, by: 'Fuerzas Militares de Colombia', len: '3:37', req: true },
-      { yt: '4HtNxdIdRFM', title: { es: 'La fragata ARC Almirante Padilla (archivo)' }, by: 'Señal Memoria (RTVC)', len: '6:32' }
+      { yt: '5WXL2ACR0xQ', title: { es: 'La Guerra de Corea en la memoria de los marinos de la Armada' }, by: 'Fuerzas Militares de Colombia', len: '3:37', req: true, to: '2:00' },
+      { yt: '4HtNxdIdRFM', title: { es: 'La fragata ARC Almirante Padilla (archivo)' }, by: 'Señal Memoria (RTVC)', len: '6:32', to: '4:20', note: { es: 'Para aclarar: en realidad participaron 22 países (16 con tropas de combate y 6 con apoyo médico). Colombia fue el único de América Latina con tropas de combate. Después de la Almirante Padilla también sirvieron las fragatas Capitán Tono y Almirante Brión.' } }
     ],
     memorial: [
       { yt: 'd7e8DSk0Wf0', title: { es: 'Los veteranos colombianos de la Guerra de Corea' }, by: 'BBC News Mundo', len: '2:56', req: true },
@@ -676,24 +676,24 @@ window.LANG_VIDEOS = {
   },
   en: {
     war: [
-      { yt: 'bhvJdQiHZuQ', title: { en: 'The Korean War never ended – but how did it start?' }, by: 'BBC World Service', len: '6:38', req: true },
-      { yt: '1QZUsesFtCc', title: { en: 'The Price of Freedom: the Korean War' }, by: 'National Museum of American History (Smithsonian)', len: '8:02' },
-      { yt: 'citxVsD0NcY', title: { en: 'Why is Korea divided?' }, by: 'Imperial War Museums', len: '14:02', long: true }
+      { yt: 'bhvJdQiHZuQ', title: { en: 'The Korean War never ended – but how did it start?' }, by: 'BBC World Service', len: '6:38', req: true, note: { en: 'Good to know: soldiers from 16 countries, including Colombia, fought under the UN flag, and 6 more countries sent medical help. The armistice (not a peace treaty) was signed by the UN Command, North Korea and China; South Korea did not sign.' } },
+      { yt: '1QZUsesFtCc', title: { en: 'The Price of Freedom: the Korean War' }, by: 'National Museum of American History (Smithsonian)', len: '8:02', note: { en: 'Good to know: the Soviet Union was boycotting the UN Security Council and was absent, so it could not use its veto. Chinese troops entered Korea in October 1950; their big attack began in late November. The US general signed the armistice for the UN Command. Soldiers from 16 countries, including Colombia, fought for the UN.' } },
+      { yt: 'citxVsD0NcY', title: { en: 'Why is Korea divided?' }, by: 'Imperial War Museums', len: '14:02', long: true, note: { en: 'Good to know: UN resolutions 82 (June 25) and 83 (June 27) asked countries to help South Korea; resolution 84 put the forces under one UN Command.' } }
     ],
     incheon: [
       { yt: '-o7iJWUlheA', title: { en: 'The Incheon Landing of the Korean War' }, by: 'Pritzker Military Museum & Library', len: '2:03', req: true },
-      { yt: 'PnS2VY4rGQg', title: { en: 'Battle study: the Battle of Incheon (map)' }, by: 'Marine Corps Association', len: '3:30' }
+      { yt: 'PnS2VY4rGQg', title: { en: 'Battle study: the Battle of Incheon (map)' }, by: 'Marine Corps Association', len: '3:30', to: '2:05', note: { en: 'Good to know: about 261 ships and 75,000 troops took part in the Incheon landing.' } }
     ],
     colombia: [
-      { yt: 'vrBXq1CKdKI', title: { en: 'Colombians in the Korean War' }, by: 'KBS WORLD TV', len: '1:58', req: true }
+      { yt: 'vrBXq1CKdKI', title: { en: 'Colombians in the Korean War' }, by: 'KBS WORLD TV', len: '1:58', req: true, note: { en: 'Good to know: about 5,100 Colombians served in turns from 1951 to 1954. Only the group there in March 1953 fought at Old Baldy. This report is from 2019.' } }
     ],
     oldbaldy: [
     ],
     armistice: [
-      { yt: 'Uzu-TbV7Hnc', title: { en: 'The Korean War Armistice – July 27, 1953' }, by: 'Pritzker Military Museum & Library', len: '2:29', req: true }
+      { yt: 'Uzu-TbV7Hnc', title: { en: 'The Korean War Armistice – July 27, 1953' }, by: 'Pritzker Military Museum & Library', len: '2:29', req: true, note: { en: 'Good to know: four neutral countries (Switzerland, Sweden, Poland and Czechoslovakia) checked the armistice. India led a separate group that handled prisoners.' } }
     ],
     memorial: [
-      { yt: 'B4_7IVFFFzg', title: { en: 'Event for Colombian Korean War veterans' }, by: 'KBS News', len: '1:42', req: true }
+      { yt: 'B4_7IVFFFzg', title: { en: 'Event for Colombian Korean War veterans' }, by: 'KBS News', len: '1:42', req: true, note: { en: 'Good to know: this report is from 2019; today even fewer veterans are alive.' } }
     ]
   }
 };

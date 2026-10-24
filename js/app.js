@@ -4858,7 +4858,7 @@
         <span>${esc(lang === 'ko' ? (v.by || '') : (CHANNEL_NAMES[v.by] || v.by || ''))}${v.len ? ` · ${esc(clipLabel(v))}` : ''}${(must && must.yt === v.yt) || SANDBOX ? '' : ` · <a href="https://www.youtube.com/watch?v=${esc(v.yt)}" target="_blank" rel="noopener">${esc(T('onYoutube'))}</a>`}</span>
         ${credit}
         ${v.long ? `<small class="v-long">⏱ ${esc(T('videoLong'))}</small>` : ''}
-        ${v.note && L(v.note) ? `<p class="v-note">📌 ${esc(L(v.note))}</p>` : ''}
+        ${v.note && v.note[lang] ? `<p class="v-note">📌 ${esc(v.note[lang])}</p>` : ''}
       </div>
       ${list.length > 1 ? `<h4 class="others-title">${esc(T('videoPick'))} · ${esc(T(list.some((x) => x.req) && CONFIG.requireVideos !== false ? 'videoOptionalReq' : 'videoOptional'))}</h4>
         <div class="v-list">${list.map((x, k) => `
@@ -6994,7 +6994,7 @@
             <b>${esc(L(l.name))} ↗</b><span>${esc(L(l.desc))}</span>${l.iosOnly ? `<small class="link-note">📱 ${esc(T('appIosOnly'))}</small>` : ''}
           </a>`).join('')}</div>
         ${longVideos().length ? `<h3 class="end-h3">🎬 ${esc(T('longTitle'))}</h3>
-          <ul class="works">${longVideos().map((v) => `<li><button type="button" class="btn btn-sm btn-blue" data-long="${esc(v.yt)}">${esc(T('longPlay'))}</button> ${esc(L(v.title))} <small>${esc(v.len || '')}</small></li>`).join('')}</ul>` : ''}
+          <ul class="works">${longVideos().map((v) => `<li><button type="button" class="btn btn-sm btn-blue" data-long="${esc(v.yt)}">${esc(T('longPlay'))}</button> ${esc(L(v.title))} <small>${esc(v.len || '')}</small>${v.note && v.note[lang] ? `<p class="v-note">📌 ${esc(v.note[lang])}</p>` : ''}</li>`).join('')}</ul>` : ''}
         ${(window.GROUP_WORKS || []).length ? `<h3 class="end-h3">${esc(T('worksTitle'))}</h3>
           <ul class="works">${window.GROUP_WORKS.map((w) => `<li><a href="${esc(w.url)}" target="_blank" rel="noopener">${esc(L(w.name))} ↗</a></li>`).join('')}</ul>` : ''}`;
     } else if (step === 'finish') {
