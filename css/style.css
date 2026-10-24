@@ -1559,3 +1559,6 @@ body.silence::after { content: ''; position: fixed; inset: 0; background: rgba(1
 .deep-box { margin: 14px 0 4px; padding: 12px 14px; border-left: 4px solid var(--co-blue, #003893); background: #f2f5fb; border-radius: 0 10px 10px 0; }
 .deep-box h4 { margin: 0 0 6px; font-size: 15px; color: var(--co-blue, #003893); }
 .deep-box p { margin: 0; line-height: 1.7; font-size: 15px; }
+
+/* 📌 영상 바로잡기 (옛 영상 속 숫자 등) */
+.v-note { margin: 8px 0 0; padding: 8px 12px; background: #fff7e0; border-left: 4px solid #f5b800; border-radius: 0 8px 8px 0; font-size: 14px; line-height: 1.6; }

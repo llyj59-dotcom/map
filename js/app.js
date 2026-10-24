@@ -4858,6 +4858,7 @@
         <span>${esc(lang === 'ko' ? (v.by || '') : (CHANNEL_NAMES[v.by] || v.by || ''))}${v.len ? ` · ${esc(clipLabel(v))}` : ''}${(must && must.yt === v.yt) || SANDBOX ? '' : ` · <a href="https://www.youtube.com/watch?v=${esc(v.yt)}" target="_blank" rel="noopener">${esc(T('onYoutube'))}</a>`}</span>
         ${credit}
         ${v.long ? `<small class="v-long">⏱ ${esc(T('videoLong'))}</small>` : ''}
+        ${v.note && L(v.note) ? `<p class="v-note">📌 ${esc(L(v.note))}</p>` : ''}
       </div>
       ${list.length > 1 ? `<h4 class="others-title">${esc(T('videoPick'))} · ${esc(T(list.some((x) => x.req) && CONFIG.requireVideos !== false ? 'videoOptionalReq' : 'videoOptional'))}</h4>
         <div class="v-list">${list.map((x, k) => `
