@@ -642,22 +642,19 @@ const TEEN_VIDEOS = {
 };
 window.GRADE_VIDEOS = {
   ms: TEEN_VIDEOS,
-  hs: Object.assign({}, TEEN_VIDEOS, {
-    armistice: TEEN_VIDEOS.armistice.concat([{ yt: '1aJSFlQhGKg', title: { ko: 'KBS 특별기획 한국전쟁 8부 「정전」 — 포로 송환과 휴전협정 (2010)' }, by: 'KBS 다큐', len: '56:31', long: true }])
-  })
+  hs: TEEN_VIDEOS // 고등도 같은 목록 (KBS 「정전」은 포로 폭력 장면이 있어 뺐어요)
 };
 
 window.LANG_VIDEOS = {
   es: {
     war: [
-      { yt: 'lWEnII1bIOQ', title: { es: '¿Cómo empezó la Guerra de Corea?' }, by: 'BBC News Mundo', len: '6:32', req: true, note: { es: 'Para aclarar: Colombia no llegó en 1950 (2:22). La fragata Almirante Padilla llegó a mediados de 1951 y el Batallón Colombia en junio de 1951. En total participaron 22 países: 16 con tropas de combate y 6 con apoyo médico. La línea del armisticio cruza el paralelo 38; no es exactamente la misma frontera. Las cifras de víctimas civiles varían según la fuente.' } }
+      { yt: 'lWEnII1bIOQ', title: { es: '¿Cómo empezó la Guerra de Corea?' }, by: 'BBC News Mundo', len: '6:32', to: '2:29', req: true, note: { es: 'Para aclarar: Colombia no llegó en 1950 (2:22). La fragata Almirante Padilla llegó a mediados de 1951 y el Batallón Colombia en junio de 1951. En total participaron 22 países: 16 con tropas de combate y 6 con apoyo médico.' } }
     ],
     incheon: [
       { yt: 'yNgIj_JywTU', title: { es: 'La batalla de Incheon: resumen' }, by: 'unProfesor', len: '5:01', req: true, note: { es: 'Para aclarar: la guerra empezó el 25 de junio de 1950, no en 1949. La ONU actuó en pocos días (resoluciones del 25 y 27 de junio). Después de Incheon, la ONU avanzó al norte, China entró en la guerra (octubre de 1950) y Seúl volvió a caer en 1951; el estancamiento llegó después.' } }
     ],
     colombia: [
-      { yt: 'mOS0ah05vkk', title: { es: 'La partida del Batallón Colombia hacia Corea (archivo, 1951)' }, by: 'Señal Memoria (RTVC)', len: '3:51', req: true, note: { es: 'Para tener en cuenta: es un noticiero de 1951; su lenguaje refleja la propaganda de la Guerra Fría de esa época.' } },
-      { yt: 'koCwQIB7Xq8', title: { es: '70 años de la participación de Colombia en la Guerra de Corea' }, by: 'MinDefensa Colombia', len: '7:53', note: { es: 'Para aclarar: según Corea, participaron 22 países (16 con tropas de combate y 6 con apoyo médico), no 18. Laureano Gómez asumió la presidencia el 7 de agosto de 1950; el 30 de julio gobernaba Mariano Ospina Pérez. Corea cuenta 213 muertos y desaparecidos colombianos.' } }
+      { yt: 'mOS0ah05vkk', title: { es: 'La partida del Batallón Colombia hacia Corea (archivo, 1951)' }, by: 'Señal Memoria (RTVC)', len: '3:51', req: true, note: { es: 'Para tener en cuenta: es un noticiero de 1951; su lenguaje refleja la propaganda de la Guerra Fría de esa época.' } }
     ],
     heukun: [
       { yt: '6U_F06qe9HI', title: { es: 'Sobrevivientes de la Guerra de Corea cuentan sus vivencias' }, by: 'Fuerzas Militares de Colombia', len: '6:08', note: { es: 'Para aclarar: los soldados colombianos viajaron por turnos entre 1951 y 1953 (unos 5.100 en total), no en 1950. La gran batalla del Batallón Colombia en Old Baldy duró pocos días, en marzo de 1953.' } }
@@ -670,15 +667,13 @@ window.LANG_VIDEOS = {
       { yt: '4HtNxdIdRFM', title: { es: 'La fragata ARC Almirante Padilla (archivo)' }, by: 'Señal Memoria (RTVC)', len: '6:32', to: '4:20', note: { es: 'Para aclarar: en realidad participaron 22 países (16 con tropas de combate y 6 con apoyo médico). Colombia fue el único de América Latina con tropas de combate. Después de la Almirante Padilla también sirvieron las fragatas Capitán Tono y Almirante Brión.' } }
     ],
     memorial: [
-      { yt: 'd7e8DSk0Wf0', title: { es: 'Los veteranos colombianos de la Guerra de Corea' }, by: 'BBC News Mundo', len: '2:56', req: true },
-      { yt: 'b-HHP1iNE0o', title: { es: 'Homenaje a los veteranos de Corea' }, by: 'Fuerzas Militares de Colombia', len: '5:26' }
+      { yt: 'd7e8DSk0Wf0', title: { es: 'Los veteranos colombianos de la Guerra de Corea' }, by: 'BBC News Mundo', len: '2:56', req: true }
     ]
   },
   en: {
     war: [
-      { yt: 'bhvJdQiHZuQ', title: { en: 'The Korean War never ended – but how did it start?' }, by: 'BBC World Service', len: '6:38', req: true, note: { en: 'Good to know: soldiers from 16 countries, including Colombia, fought under the UN flag, and 6 more countries sent medical help. The armistice (not a peace treaty) was signed by the UN Command, North Korea and China; South Korea did not sign.' } },
-      { yt: '1QZUsesFtCc', title: { en: 'The Price of Freedom: the Korean War' }, by: 'National Museum of American History (Smithsonian)', len: '8:02', note: { en: 'Good to know: the Soviet Union was boycotting the UN Security Council and was absent, so it could not use its veto. Chinese troops entered Korea in October 1950; their big attack began in late November. The US general signed the armistice for the UN Command. Soldiers from 16 countries, including Colombia, fought for the UN.' } },
-      { yt: 'citxVsD0NcY', title: { en: 'Why is Korea divided?' }, by: 'Imperial War Museums', len: '14:02', long: true, note: { en: 'Good to know: UN resolutions 82 (June 25) and 83 (June 27) asked countries to help South Korea; resolution 84 put the forces under one UN Command.' } }
+      { yt: 'bhvJdQiHZuQ', title: { en: 'The Korean War never ended – but how did it start?' }, by: 'BBC World Service', len: '6:38', to: '3:20', req: true, note: { en: 'Good to know: soldiers from 16 countries, including Colombia, fought under the UN flag, and 6 more countries sent medical help. The armistice (not a peace treaty) was signed by the UN Command, North Korea and China; South Korea did not sign.' } },
+      { yt: '1QZUsesFtCc', title: { en: 'The Price of Freedom: the Korean War' }, by: 'National Museum of American History (Smithsonian)', len: '8:02', note: { en: 'Good to know: the Soviet Union was boycotting the UN Security Council and was absent, so it could not use its veto. Chinese troops entered Korea in October 1950; their big attack began in late November. The US general signed the armistice for the UN Command. Soldiers from 16 countries, including Colombia, fought for the UN.' } }
     ],
     incheon: [
       { yt: '-o7iJWUlheA', title: { en: 'The Incheon Landing of the Korean War' }, by: 'Pritzker Military Museum & Library', len: '2:03', req: true },
