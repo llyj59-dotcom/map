@@ -31,8 +31,101 @@
     return Object.assign({}, q, { options: order.map((k) => q.options[k]), answer: order.indexOf(q.answer) });
   }
   // 🎓 중학교·고등학교: 작전 지점 퀴즈를 수준에 맞는 문제로 (한국어)
-  const LEVEL_Q = (window.LEVEL_QUIZ || {})[GRADE];
-  if (LEVEL_Q) STATIONS.forEach((s) => { if (LEVEL_Q[s.id]) s.quiz = shuffleQuiz(LEVEL_Q[s.id], `${GRADE}:${s.id}`); });
+  const TEEN = GRADE === 'ms' || GRADE === 'hs'; // 🎓 중·고등: 문항·영상·말투가 달라져요 (한국어 화면)
+  // 작전 지점 퀴즈 수준: 한국어는 학년(?grade=)대로, 스페인어·영어는 중학교(ms) 수준 — 언어를 바꾸면 다시 골라요
+  const levelOf = (lg) => (lg === 'ko' ? GRADE : 'ms');
+  STATIONS.forEach((s) => { s.baseQuiz = s.quiz; });
+  function applyLevelQuiz(lg) {
+    const lv = levelOf(lg), lq = (window.LEVEL_QUIZ || {})[lv];
+    STATIONS.forEach((s) => { s.quiz = lq && lq[s.id] ? shuffleQuiz(lq[s.id], `${lv}:${s.id}`) : s.baseQuiz; });
+  }
+  // 🎓 중·고등 한국어 화면은 '~습니다' 체로: 문장 끝(마침표·물음표·따옴표·괄호·태그 앞 또는 글 끝)의 '~요'만 바꿔요
+  const formal = (() => {
+    const B = 0xac00;
+    const isH = (ch) => { const c = ch.charCodeAt(0) - B; return c >= 0 && c < 11172; };
+    const parts = (ch) => { const c = ch.charCodeAt(0) - B; return [Math.floor(c / 588), Math.floor((c % 588) / 28), c % 28]; };
+    const make = (i, v, f) => String.fromCharCode(B + i * 588 + v * 28 + f);
+    const fin = (ch) => (isH(ch) ? parts(ch)[2] : -1);
+    const setFin = (ch, f) => { const [i, v] = parts(ch); return make(i, v, f); };
+    const END = '(?=[.!?…"”’)\\]<(]|\\s[—(]|\\s*$)';
+    const endRe = (s) => new RegExp(s + END, 'g');
+    const q = (str, off) => str[off] === '?';
+    const RULES = [
+      ['아니에요', '아닙니다'], ['달라요', '다릅니다'], ['일까요', '입니까'], ['었지요', '었습니다'],
+      ['거예요', '것입니다'], ['이에요', '입니다'], ['예요', '입니다'], ['고마워요', '고맙습니다'], ['세요', '십시오']
+    ];
+    // 받침 없는 마지막 글자(어간+어/아가 줄어든 꼴) → 어간 마지막 글자
+    const ㅡ_INIT = new Set([4, 10, 15, 1]); // ㄸ ㅆ ㅋ ㄲ : 떠·써·커·꺼 → 뜨·쓰·크·끄
+    function stemOf(prev, ch) {
+      const [i, v] = parts(ch);
+      if (v === 6 && i === 11) return [prev, '이']; // 모여·숙여 → 모이·숙이
+      if (v === 14 && i === 11 && prev) return [setFin(prev, 17), '']; // 아쉬워·어려워 → 아쉽·어렵 (ㅂ 불규칙)
+      if (v === 6) return [prev, make(i, 20, 0)]; // ㅕ→ㅣ (려·겨·여·켜·져)
+      if (v === 14) return [prev, make(i, 13, 0)]; // ㅝ→ㅜ (춰·꿔·줘)
+      if (v === 9) return [prev, make(i, 8, 0)]; // ㅘ→ㅗ (봐·와)
+      if (v === 10) return [prev, make(i, 11, 0)]; // ㅙ→ㅚ (돼)
+      if (v === 1 && i === 18) return [prev, make(18, 0, 0)]; // 해→하
+      if ((v === 4 || v === 0) && i === 5 && prev && fin(prev) === 8) return [setFin(prev, 0), make(5, 18, 0)]; // 불러·골라 → 부르·고르
+      if (v === 4 && ㅡ_INIT.has(i)) return [prev, make(i, 18, 0)];
+      return [prev, ch];
+    }
+    function formal(s) {
+      if (typeof s !== 'string' || !/요/.test(s)) return s;
+      let t = s;
+      RULES.forEach(([a, b]) => { t = t.replace(endRe(a), (m, off, str) => (q(str, off + m.length) && b.endsWith('니다') ? b.slice(0, -2) + '니까' : b)); });
+      // ㄹ게요 → 겠습니다, ㄹ까요 → 겠습니까, 을까요 → 습니까
+      t = t.replace(endRe('([가-힣])게요'), (m, ch) => (fin(ch) === 8 ? setFin(ch, 0) + '겠습니다' : m));
+      t = t.replace(endRe('([가-힣])을까요'), (m, ch) => (fin(ch) > 0 ? ch + '습니까' : m));
+      t = t.replace(endRe('([가-힣])까요'), (m, ch) => (fin(ch) === 8 ? setFin(ch, 0) + '겠습니까' : m));
+      // 받침 + 나요? → 습니까 / 받침 없음 + 나요? → ㅂ니까
+      t = t.replace(/([가-힣])나요(?=\?)/g, (m, ch) => (fin(ch) > 0 ? ch + '습니까' : setFin(ch, 17) + '니까'));
+      // 받침 + 어요/아요 → 습니다 (ㄹ 받침은 ㄹ 탈락: 열어요→엽니다), 받침 없음 + 어요/아요 → ㅂ니다 (뀌어요→뀝니다)
+      t = t.replace(endRe('([가-힣])(어요|아요)'), (m, ch, _e, off, str) => {
+        const k = q(str, off + m.length) ? '까' : '다';
+        const f = fin(ch);
+        if (f === 0) return setFin(ch, 17) + '니' + k;
+        if (f === 8) return setFin(ch, 17) + '니' + k;
+        return ch + '습니' + k;
+      });
+      // 그 밖의 받침 없는 글자 + 요 (가요·생겨요·불러요·멈춰요·떠요 …) → ㅂ니다
+      t = t.replace(endRe('([가-힣]?)([가-힣])요'), (m, prev, ch, off, str) => {
+        if (fin(ch) !== 0 || /[네지니이]/.test(ch)) return m;
+        const [p, st] = stemOf(prev, ch);
+        if (!st) return p + '습니' + (q(str, off + m.length) ? '까' : '다');
+        return p + setFin(st, 17) + '니' + (q(str, off + m.length) ? '까' : '다');
+      });
+      t = t.replace(/(니다|시오)!/g, '$1.');
+      return t;
+    }
+    return formal;
+  })();
+  if (TEEN) {
+    const TEEN_TEXT = [
+      ['바닷물이 들어오고 빠질 때(밀물과 썰물) 높이 차이가', '밀물과 썰물의 높이 차이가'], ['"성공할 확률이 5000분의 1(5000번 해서 1번)"이라는 말이 나올 만큼', '흔히 "성공 확률 5000분의 1"이라고 할 만큼'],
+      ['작전이었지요', '작전이었어요'], ['"이제 싸움을 멈추자"는 약속(정전협정)', '정전협정'], ['"싸움을 멈추자"는 약속(정전협정)', '정전협정'], ['싸우는 군대(전투 병력)', '전투 병력'], ['해군 배(프리깃함)', '해군 프리깃함'],
+      ['함포(배에 실린 대포)로', '함포로'], ['높은 산(고지)', '고지'], ['인천상륙작전 성공! ', '인천상륙작전이 성공한 뒤 '],
+      ['행사(추모식)', '추모식'], ['땅에서 싸우는 군인들을', '지상군을'], ['유엔군이 땅에 오르는 것을', '유엔군의 상륙을'], ['답니다', '어요']
+    ];
+    const calm = (o) => { if (o && typeof o.ko === 'string') TEEN_TEXT.forEach(([x, y]) => { o.ko = o.ko.split(x).join(y); }); };
+    STATIONS.forEach((s) => { calm(s.story); (s.timeline || []).forEach((t) => calm(t.text)); (s.heroes || []).forEach((h) => calm(h.body)); if (s.find) calm(s.find.explain); });
+    // 내용 문장 전체를 '~습니다' 체로 (학생들이 쓴 질문 카드는 그대로)
+    const toFormal = (o, skip) => {
+      if (!o || typeof o !== 'object') return;
+      if (typeof o.ko === 'string') o.ko = formal(o.ko);
+      Object.keys(o).forEach((k) => { if (k !== 'ko' && !(skip && skip.includes(k))) toFormal(o[k]); });
+    };
+    STATIONS.forEach((s) => {
+      toFormal(s, ['deep', 'baseQuiz']);
+      if (s.deep && s.deep[GRADE]) { if (typeof s.deep[GRADE] === 'string') s.deep[GRADE] = formal(s.deep[GRADE]); else toFormal(s.deep[GRADE]); }
+    });
+    const KCx = window.KNOW_CHECK || {};
+    toFormal(KCx, ['levels', 'reflectLevels']);
+    if (KCx.levels) toFormal(KCx.levels[GRADE]);
+    if (KCx.reflectLevels) toFormal(KCx.reflectLevels[GRADE]);
+    toFormal((window.LEVEL_QUIZ || {})[GRADE]);
+    [window.INCHEON_OPS, window.HERO_CARDS, window.GLOSSARY].forEach((o) => toFormal(o));
+    if (window.GLOSSARY && Array.isArray(window.GLOSSARY.ko)) window.GLOSSARY.ko.forEach((g) => { g[1] = formal(g[1]); });
+  }
   // 🔗 claude.ai 링크(아티팩트)로 열 때: 다른 사이트를 페이지 안에 넣을 수 없어서
   //   유튜브는 새 탭으로, 외부 사진은 빼고, 패들렛은 링크로, 인증서는 '저장' 확인 창으로 받아요.
   const SANDBOX = window.MAP_HOST === 'artifact';
@@ -161,7 +254,7 @@
         '콜롬비아 용사들은 한 번도 가 본 적 없는 나라의 평화를 지키려고 태평양을 건넜어요.',
         '흑운토령과 금성 — 콜롬비아대대는 전쟁의 한가운데에서 싸웠어요.',
         '고지 위에서 콜롬비아 용사들과 유엔군은 서로의 목숨을 지켜 준 형제였어요.',
-        '불모고지의 큰 희생 뒤, 1953년 7월 27일 정전협정으로 총소리가 멈췄어요. 그 기억 속 이름들을 우리가 기억해요.',
+        '불모고지의 큰 희생 뒤, 1953년 7월 27일 정전협정으로 총소리가 멈췄어요. 그 전쟁에서 목숨을 잃은 분들의 이름을 우리는 잊지 않아요.',
         '서해를 지킨 콜롬비아 해군과 인천에 서 있는 참전기념비처럼, 그날의 기억은 오늘도 우리 곁에 있어요.'
       ],
       keyLabel: '🔑 열쇠 낱말',
@@ -217,7 +310,7 @@
       rankLine: (n, t, r) => `⭐ ${n.toLocaleString()} / ${t.toLocaleString()} · 칭호 「${r}」`,
       gHelloStars: '별 1,083개를 모아 봐! 1951년 태평양을 건너온 콜롬비아 용사 1,083명을 한 분씩 기억하는 별이야.',
       starInfoTitle: '평화의 별 1,083개',
-      starInfoLead: '1951년, 콜롬비아대대 용사 1,083명이 태평양을 건너 한국에 왔어요. 별 하나하나가 그 용사 한 분을 기억하는 마음이에요. 미션마다 받는 별의 숫자에도 역사가 숨어 있어요! (1,083명은 처음 배를 타고 온 군인 수예요. 전쟁에서 목숨을 잃거나 실종된 콜롬비아 군인은 213명이에요(국가보훈부 기준).)',
+      starInfoLead: '1951년, 콜롬비아대대 용사 1,083명이 태평양을 건너 한국에 왔어요. 별 하나하나가 그 용사 한 분을 기억하는 마음이에요. 미션마다 받는 별의 숫자에도 역사가 숨어 있어요! (1,083명은 처음 배를 타고 온 군인 수예요. 국가보훈부 기준으로 전쟁에서 목숨을 잃거나 실종된 콜롬비아 군인은 213명이에요.)',
       starMine: (n, t) => `지금까지 ${n.toLocaleString()}개 / ${t.toLocaleString()}개`,
       starRows: [
         ['mission', '🔦 팔미도 등대 미션', '안내한 함대 261척'],
@@ -971,7 +1064,7 @@
       watchResume: (s) => `Seguimos desde donde ibas (${s} vistos).`,
       workHint: 'Abre el trabajo del grupo, míralo hasta el final (más de 1 minuto) y al volver se activará [Siguiente].',
       workSeen: '¡Ya lo viste! Ahora puedes pasar a [Siguiente].',
-      clipNote: (a, b, all, n) => `De este video solo vemos la parte importante (${a}–${b}). YouTube muestra la duración completa (${all}), pero se detiene solo en ${b}. ¡Son unos ${n}!`,
+      clipNote: (a, b, all, n) => `De este video solo vemos la parte importante (${a}–${b}). YouTube muestra la duración completa (${all}), pero se detiene solo en ${b}. Son unos ${n}.`,
       volTip: '🔊 Si la música suena muy baja o muy alta, cámbiala con el botón 🔊 de arriba a la derecha.',
       watchTeacher: 'Desbloqueado con la confirmación del docente. Ya puedes pasar a [Siguiente].',
       whyRate: '⏩ El video está acelerado y no cuenta. Ponlo a velocidad normal (1x).',
@@ -979,7 +1072,7 @@
       whyStart: '▶ Pulsa reproducir para empezar el video.',
       whyPaused: (s) => `⏸ El video está en pausa. Pulsa ▶ para seguir. (Faltan unos ${s})`,
       whyEnded: (s) => `⚠️ El video terminó, pero te faltan unos ${s} sin ver. Usa los botones de abajo para ver solo esas partes.`,
-      whyPlaying: (s) => `▶ ¡Vas bien! En unos ${s} se desbloquea [Siguiente].`,
+      whyPlaying: (s) => `▶ Sigue así. En unos ${s} se desbloquea [Siguiente].`,
       whyGaps: 'Partes sin ver:',
       whyMore: (n) => `y ${n} más`,
       watchHelpQ: '¿Lo viste completo y aún no avanza?',
@@ -1239,19 +1332,19 @@
       clsEmpty: 'Todavía no hay estudiantes. Aparecerán aquí cuando entren con el enlace y elijan su apodo.',
       clsNote: 'Las puntuaciones solo se muestran aquí, no en la pantalla del estudiante ni en el certificado.',
       chkPreTitle: '📋 Prueba de salida',
-      chkPreLead: 'Antes de empezar, responde solo con lo que sabes ahora. ¡No importa si te equivocas! Si no sabes, elige "No lo sé". Al final harás las mismas preguntas y verás cuánto aprendiste.',
+      chkPreLead: 'Antes de empezar, responde solo con lo que sabes ahora. No importa si te equivocas. Si no sabes, elige "No lo sé". Al final harás las mismas preguntas y verás cuánto aprendiste.',
       chkPostTitle: '📋 Prueba de llegada',
-      chkPostLead: 'Responde otra vez las preguntas del principio. ¡Recuerda lo que aprendiste en el recorrido!',
+      chkPostLead: 'Responde otra vez las preguntas del principio. Recuerda lo que aprendiste en el recorrido.',
       chkAttTitle: '💭 ¿Qué piensas ahora?', chkItemsTitle: '🧩 Preguntas',
       chkDunno: 'No lo sé',
       chkLeft: (n) => `Te faltan ${n}`,
       chkSubmitPre: 'Terminar y empezar el recorrido ▶', chkSubmitPost: 'Terminar y ver el resultado ▶',
-      chkPreDone: '¡Muy bien! Ahora empieza el recorrido. Al final harás las mismas preguntas.',
+      chkPreDone: 'Listo. Ahora empieza el recorrido. Al final harás las mismas preguntas.',
       chkStart: 'Empezar ▶',
       chkReflectOpt: 'si quieres',
       chkResultTitle: '📈 Lo que aprendí',
       chkPre: 'Al principio', chkPost: 'Al final',
-      chkGain: (d) => (d > 0 ? `¡Ahora sabes ${d} ${d === 1 ? 'respuesta' : 'respuestas'} más!` : d === 0 ? 'Igual que al principio' : 'Inténtalo de nuevo otro día'),
+      chkGain: (d) => (d > 0 ? `Ahora aciertas ${d} ${d === 1 ? 'respuesta' : 'respuestas'} más que al principio` : d === 0 ? 'Igual que al principio' : 'Inténtalo de nuevo otro día'),
       chkNoPre: 'No hay prueba de salida en este dispositivo; solo se muestra el resultado final.',
       chkAttChange: '💭 Cómo cambió lo que pienso',
       chkReview: '🔎 Revisar las preguntas',
@@ -1454,7 +1547,7 @@
       subtitle: 'Memory · Across · Peace — a map to tomorrow',
       narration: ['In 1950, a war broke out on the Korean Peninsula.', 'On the other side of the world, in Colombia, a young man boarded a ship.', "Let's step into the memories of that day."],
       startTagline: 'A peaceful tomorrow, drawn with a map of Memory, Across and Peace',
-      startLead: 'Start with the Incheon Landing. Then follow the Colombia Battalion’s battles, the Colombian Navy in the Yellow Sea and the memorial in Incheon. Pass all 12 mission points and complete the map of peace!',
+      startLead: 'Start with the Incheon Landing. Then follow the Colombia Battalion’s battles, the Colombian Navy in the Yellow Sea and the memorial in Incheon. Pass all 12 mission points and complete the map of peace.',
       mapLetters: [
         ['M', 'Memory', 'Find and remember the heroes in the records'],
         ['A', 'Across', 'Meet friends in Colombia across time and borders'],
@@ -1496,12 +1589,12 @@
       resumeAsk: 'You have a saved journey. Continue?',
       newStartBtn: '＋ Start a new journey',
       otherDeviceLink: 'Started on another device? Continue with your journey code →',
-      ctaText: 'Finished reading? Choose a nickname and start your journey on the map of peace!',
+      ctaText: 'Finished reading? Choose a nickname and start your journey on the map of peace.',
       scrollHint: '▼ Read the introduction to the end to start your journey',
       continue: 'Continue ▶',
       newTitle: 'Start a new journey',
       nickLabel: 'Nickname',
-      nickGuide: 'Make up a nickname for the game, not your real name! Using a nickname online is one way to protect your personal information.',
+      nickGuide: 'Use a nickname, not your real name: using a nickname online is a simple way to protect your personal information.',
       startBtn: 'Start the journey ▶',
       needNick: 'Please write your nickname.',
       tooLong: (n) => `Your nickname can be up to ${n} characters.`,
@@ -1513,7 +1606,7 @@
       textBad: 'This contains offensive words. Please rewrite it respectfully.',
       textRepeat: 'Please leave out things like ㅋㅋ or lol and write it seriously.',
       nickExists: (n) => `There is already a journey for "${n}" on this device. Press [Continue] in the list above, or choose a different nickname.`,
-      breakTitle: "That's it for lesson 1!",
+      breakTitle: 'End of lesson 1',
       breakText: 'We will continue next time. You might use a different device, so write this code in your notebook.',
       backTeacher: '‹ Back to teacher screen',
       resumeTitle: 'Continue a journey from another device',
@@ -1532,11 +1625,11 @@
       chIncheon: 'Incheon Landing',
       chJourney: 'Battles of the Colombia Battalion',
       chReturn: 'Back to Incheon · The sea of memory',
-      gToIncheon: "Chapter A (Across) is done! Now the last one, P (Peace): back to Incheon, to the Yellow Sea the Colombian Navy guarded and today's memorial.",
+      gToIncheon: "Chapter A (Across) is complete. The last chapter, P (Peace), begins: back to Incheon, to the Yellow Sea the Colombian Navy guarded and today's memorial.",
       lensTitle: 'Incheon lens',
       nowEyebrow: (i, n) => `Next mission point · ${i} / ${n}`,
       enterStation: 'Enter mission point ▶',
-      allDone: 'You passed every mission point!',
+      allDone: 'You completed every mission point',
       allDoneMeta: "Now let's meet the veterans' real answers.",
       toEnding: '🎬 Ending: meet the real answers ▶',
       guestbookBtn: '✎ Our guestbook',
@@ -1545,13 +1638,13 @@
       starChip: (n) => `⭐ ${n}`,
       cardChip: (a, b) => `🎴 ${a}/${b}`,
       starPop: (n) => `+${n} ⭐`,
-      gHello: (n) => `Hi, ${n}! I'm Paz, the dove of peace. We are stuck in a memory of the Korean War. To go back to today, we must find the pieces of the map of peace and open the "Door to Tomorrow"!`,
-      briefTitle: 'Mission: get back to today!',
+      gHello: (n) => `Hello, ${n}. I'm Paz, the dove of peace. We are trapped in a memory of the Korean War of the 1950s. To return to the present, we need to rebuild the map of peace and open the "Door to Tomorrow."`,
+      briefTitle: 'Mission: return to the present',
       brief: [
         'You have stepped into the memory of the Korean War in the 1950s. There is only one way back to today: open the "Door to Tomorrow".',
         'But the "map of peace" that opens the door is torn into 12 pieces. The pieces are spread over the battle places.',
         'Pass the mission points one by one and collect the pieces. Every 2 pieces, a 🔑 key word appears.',
-        'Put the 6 key words in the right order to make a sentence from a Colombian veteran. Then the door in Incheon will open!'
+        'Put the 6 key words in the right order to make a sentence from a Colombian veteran. If you succeed, the door in Incheon will open.'
       ],
       briefGo: 'Start the mission ▶',
       routeTitle: 'Journey map: M → A → P → to Tomorrow',
@@ -1574,48 +1667,48 @@
       keyLabel: '🔑 Key words',
       keyWords: ['Brothers', 'in', 'war,', 'brothers', 'in', 'peace.'],
       keyPop: (w) => `🔑 Key word found: "${w}"`,
-      gKey: (w, n, t) => `Two pieces joined and a key word appeared: "${w}" (${n}/${t}). Remember it!`,
-      gDoorReady: 'The map of peace is complete! Now use the 6 key words to open the Door to Tomorrow.',
+      gKey: (w, n, t) => `Two pieces joined and a key word appeared: "${w}" (${n}/${t}). Keep it in mind.`,
+      gDoorReady: 'The map of peace is complete. Now use the 6 key words to open the Door to Tomorrow.',
       doorTitle: 'The Door to Tomorrow',
       doorMeta: "Rebuild the veteran's words with the 6 key words to get back to today.",
       doorBtn: '🔑 Open the Door to Tomorrow ▶',
       doorStory: 'You put in the 12th piece. Now an old door appears in front of the memorial in Incheon. It has 6 empty boxes. Tap your key words in the right order to fill them.',
       doorHint1: 'These are words the Colombian veteran Jaime Álvarez sent to Korean students. What are the two countries to each other, in war and in peace today?',
       doorHint2: 'Hint: "Brothers in ___, brothers in ___."',
-      doorWrong: "The door won't open… Try a different order!",
+      doorWrong: "The door won't open. Check the order and try again.",
       doorReset: 'Start over',
       doorOpen: "The Door to Tomorrow is open! You remembered the past (M), crossed the ocean (A) and finished the map of peace (P). Now you are back in the present. Read the veterans' real answers. At the end, write your own peace promise for tomorrow.",
       doorGo: 'Back to today ▶',
-      gDoorOpen: 'You did it! The door is open. Back to today!',
-      gNext: (name) => `Next stop: "${name}"! Tap the blinking number.`,
-      gToColombia: "You've finished chapter M (Memory)! Now chapter A (Across) begins: let's meet the Colombian soldiers who crossed the Pacific from the other side of the world. 🌎",
-      gAllDone: "You passed every mission point! The veterans' reply (the ending) is waiting for you.",
-      gFind: "I hid all the road signs. Find it on the map yourself!",
-      gFindWrong: (d) => `So close! A little more to the ${d}.`,
-      gFindRight: 'You found it! Amazing!',
-      gFindReveal: "It was right here! Now you'll remember it.",
-      gCard: (n) => `You got a new hero card: ${n}!`,
-      gMission: 'The sea is pitch dark… light the lighthouse first!',
-      gMissionDone: 'Mission complete! Thanks to you, the fleet arrived safely!',
-      gQuizRetry: "It's okay, pick again!",
+      gDoorOpen: 'You did it: the door is open. Now, back to the present.',
+      gNext: (name) => `Next stop: "${name}". Tap the blinking number.`,
+      gToColombia: "You've finished chapter M (Memory). Now chapter A (Across) begins: we travel to the other side of the world to follow the Colombian soldiers who crossed the Pacific. 🌎",
+      gAllDone: "You completed every mission point. The veterans' replies are waiting for you in the ending.",
+      gFind: "I've hidden the map labels. This time, find it yourself.",
+      gFindWrong: (d) => `Close. Try a little more to the ${d}.`,
+      gFindRight: 'Exactly right. Good eye.',
+      gFindReveal: "It was here. Now you know where it is.",
+      gCard: (n) => `New hero card: ${n}.`,
+      gMission: 'The sea is completely dark. First, the lighthouse must be lit.',
+      gMissionDone: 'Mission complete: thanks to you, the fleet arrived safely.',
+      gQuizRetry: "No problem, you have another try.",
       dirs: { N: 'north', S: 'south', E: 'east', W: 'west', NE: 'northeast', NW: 'northwest', SE: 'southeast', SW: 'southwest' },
-      kFind: 'Mission: find it on the map!',
+      kFind: 'Mission: find it on the map',
       findTap: '👆 Tap the map',
       findLeft: (n) => `${n} ${n === 1 ? 'try' : 'tries'} left`,
-      kMission: 'Mission: light the Palmido lighthouse!',
+      kMission: 'Mission: light the Palmido lighthouse',
       m1: 'September 15, 1950, just after midnight. In the dark sea, a fleet of 261 ships is waiting.',
       m2: '① Tap the Palmido lighthouse 🗼 on the map to turn on the light.',
-      m3: '② Tap the buoys in order, starting from the open sea, to guide the fleet to Wolmido. Watch out for buoys on the mudflats!',
-      mLit: 'The lighthouse is on! Now find the buoys along the channel.',
-      mDecoy: 'Oops! That way is mudflat. The ship almost got stuck!',
-      mOrder: 'Not that buoy yet. Start with the one closest to the ship!',
+      m3: '② Tap the buoys in order, starting from the open sea, to guide the fleet to Wolmido. Watch out for buoys on the mudflats.',
+      mLit: 'The lighthouse is lit. Now follow the buoys along the channel.',
+      mDecoy: 'That is a mudflat: the ship nearly ran aground.',
+      mOrder: 'Not that buoy yet. Start with the one closest to the ship.',
       mProgress: (a, b) => `Buoys ${a} / ${b}`,
       mSuccess: 'Mission complete! The fleet arrived safely at Wolmido.',
       mRetry: 'Start over',
-      quizRetry: 'So close! Want to pick again?',
+      quizRetry: 'Almost. Want to try again?',
       oxT: 'True', oxF: 'False',
       albumTitle: 'Hero card album',
-      albumLead: (a, b) => `You collected ${a} of ${b} cards. Meet heroes at each mission point to get more cards!`,
+      albumLead: (a, b) => `You collected ${a} of ${b} cards. Meet the heroes at each mission point to complete the album.`,
       albumWhere: (w) => `Found at: ${w}`,
       lockedCard: 'Not collected yet',
       albumEnding: 'the ending',
@@ -1637,20 +1730,20 @@
         ['question', '✎ Question cards (5)', '45 each'],
         ['op', '📍 5 Incheon operations', '10 each']
       ],
-      starWhy: { mission: '261 ships guided!', 'find:war': 'You found the 38th parallel', 'find:busan': 'June 15, arrived in Busan', 'find:armistice': 'July 27, the armistice', voyage: 'A 25-day voyage', allies: '22 countries together' },
+      starWhy: { mission: '261 ships guided', 'find:war': 'You found the 38th parallel', 'find:busan': 'June 15, arrived in Busan', 'find:armistice': 'July 27, the armistice', voyage: 'A 25-day voyage', allies: '22 countries together' },
       glossTitle: 'Word helper',
       atlasOpen: '🗺️ Full map',
       atlasClose: '✕ Close full map',
       atlasHint: "Tap the cards floating on the map. Places you haven't visited yet are gray.",
       atlasDoneHint: '🎉 The map of peace is complete! Now tap anywhere on the map.',
       placeGo: 'Go here ▶',
-      placeLocked: "🔒 You haven't been here yet. It opens as you follow the journey!",
+      placeLocked: "🔒 You haven't been here yet. It opens as you follow the journey.",
       placeDone: '✓ Visited',
       placeNext: '▶ Your next stop',
       placeHeroes: 'Hero cards from this place',
       placeOps: 'Operations at this place',
       photoCredit: 'Photo',
-      gAtlas: "Here's the full map! Tap a floating card.",
+      gAtlas: "This is the full map. Tap the floating cards to explore it.",
       albumSections: { co: 'Colombia', kr: 'Republic of Korea', us: 'UN forces' },
       albumTap: 'Tap a card you collected to see what the hero did.',
       deedsTitle: 'What they did',
@@ -1659,22 +1752,22 @@
       pieceLabel: '🧩 Pieces of the map of peace',
       piecePop: '🧩 You found a map piece!',
       mapComplete: '🎉 The map of peace is complete!',
-      gMapDone: (n) => `Wow! You collected all ${n} pieces and the map of peace is complete!`,
+      gMapDone: (n) => `You collected all ${n} pieces: the map of peace is complete.`,
       goldLabel: 'Gold card',
       goldNew: 'It turned gold!',
-      gGold: (n) => `Awesome! The ${n} card is shining gold!`,
+      gGold: (n) => `Excellent: the ${n} card now shines gold.`,
       goldCount: (a, b) => `Gold cards ${a} / ${b}`,
       goldHowTitle: 'How do I make it gold?',
       goldHow: 'Get the quiz, the map search and the mission at this point right on the first try. If there is a question card, leave your guess.',
       goldHowEnding: 'Leave your guess on all 5 question cards and it turns gold.',
       retryBtn: 'Try again',
-      gRetry: "Try again! Get it right on the first try this time. You'll earn the stars you missed.",
+      gRetry: "Another chance: answer correctly on the first try to earn the stars you missed.",
       watchNeed: 'Watch this video to the end to unlock [Next]. (Skipping ahead or speeding up does not count.)',
       watchRate: 'Videos only count at normal speed (1x).',
       watchResume: (s) => `Picking up where you left off (${s} watched).`,
       workHint: 'Open the group\'s project, scroll to the end (over 1 minute), then come back and [Next] will unlock.',
       workSeen: 'You saw it! Now go to [Next].',
-      clipNote: (a, b, all, n) => `We only watch the important part of this video (${a}–${b}). YouTube shows the full length (${all}), but it stops by itself at ${b}. Only about ${n}!`,
+      clipNote: (a, b, all, n) => `We only watch the important part of this video (${a}–${b}). YouTube shows the full length (${all}), but it stops by itself at ${b}. That's about ${n}.`,
       volTip: '🔊 If the music is too quiet or too loud, change it with the 🔊 button at the top right.',
       watchTeacher: 'Unlocked by your teacher. You can go to [Next] now.',
       whyRate: '⏩ The video is sped up, so it does not count. Please set it to normal speed (1x).',
@@ -1682,7 +1775,7 @@
       whyStart: '▶ Press play to start the video.',
       whyPaused: (s) => `⏸ The video is paused. Press ▶ to keep watching. (About ${s} to go)`,
       whyEnded: (s) => `⚠️ The video ended, but about ${s} was not watched. Use the buttons below to watch just those parts.`,
-      whyPlaying: (s) => `▶ Good! About ${s} more and [Next] unlocks.`,
+      whyPlaying: (s) => `▶ Keep going. In about ${s}, [Next] unlocks.`,
       whyGaps: 'Parts not watched:',
       whyMore: (n) => `and ${n} more`,
       watchHelpQ: 'Watched it all but still stuck?',
@@ -1706,7 +1799,7 @@
       gWatchDone: 'You watched it to the end! Let’s keep going.',
       longTitle: 'Long videos to watch at home (over 10 min)',
       certTitle: 'Map of Peace Certificate',
-      certLead: (n) => `This is the map of peace ${n} completed! Write your name, school and nationality, and as the last step of the journey, one line for your peace pledge. Once it's all on the certificate, you can save it as a picture and post it on Padlet.`,
+      certLead: (n) => `This is the map of peace that ${n} completed. Write your name, school and nationality, and as the last step of the journey, one line for your peace pledge. Once it's all on the certificate, you can save it as a picture and post it on Padlet.`,
       certNeedPledge: 'Fill in your name, school, nationality and peace pledge to save the certificate.',
       certRealName: 'Name',
       certRealNamePh: 'e.g. Alex Kim',
@@ -1912,7 +2005,7 @@
       certOnlyPc: 'Press [📸 Save certificate as a picture] and it goes to your Downloads folder.',
       certOnlySavedPc: 'Certificate saved to your Downloads folder!',
       jsTitle: "Today's survey",
-      jsLead: 'How were the booths and the game today? Finish this to get your certificate!',
+      jsLead: 'How were the booths and the game today? Finish this to get your certificate.',
       jsNeed: 'Required',
       jsOpt: 'Optional',
       jsMany: 'You can choose more than one',
@@ -1942,19 +2035,19 @@
       clsEmpty: 'No students yet. They will appear here when they open the student link and choose a nickname.',
       clsNote: 'Scores appear only here, not on the student screen or the certificate.',
       chkPreTitle: '📋 Starting check',
-      chkPreLead: 'Before the journey, answer with what you know right now. It is fine to be wrong! If you do not know, choose "I don\'t know". At the end you will answer the same questions and see how much you learned.',
+      chkPreLead: 'Before the journey, answer with what you know right now. It is fine to be wrong. If you do not know, choose "I don\'t know". At the end you will answer the same questions and see how much you learned.',
       chkPostTitle: '📋 Finishing check',
-      chkPostLead: 'Answer the questions from the start again. Think about what you learned on the journey!',
+      chkPostLead: 'Answer the questions from the start again. Think about what you learned on the journey.',
       chkAttTitle: '💭 What do you think now?', chkItemsTitle: '🧩 Questions',
       chkDunno: "I don't know",
       chkLeft: (n) => `${n} left`,
       chkSubmitPre: 'Finish and start the journey ▶', chkSubmitPost: 'Finish and see my result ▶',
-      chkPreDone: 'Great! Now start the journey. At the end you will answer the same questions again.',
+      chkPreDone: 'Done. Now start the journey. At the end you will answer the same questions again.',
       chkStart: 'Start ▶',
       chkReflectOpt: 'if you like',
       chkResultTitle: '📈 How much I grew',
       chkPre: 'Before', chkPost: 'After',
-      chkGain: (d) => (d > 0 ? `You now know ${d} more!` : d === 0 ? 'Same as before' : 'Try again another time'),
+      chkGain: (d) => (d > 0 ? `You got ${d} more right than at the start` : d === 0 ? 'Same as before' : 'Try again another time'),
       chkNoPre: 'There is no starting check on this device, so only the final result is shown.',
       chkAttChange: '💭 How my thinking changed',
       chkReview: '🔎 Review the questions',
@@ -1973,7 +2066,7 @@
       backAgain: 'Press back again to leave the app.',
       videoOptionalReq: "Only the 'Must see' video has to be watched to the end; the others are up to you.",
       onYoutube: 'Watch on YouTube ↗',
-      tlHint: 'Tap each one. The front line moves on the map!',
+      tlHint: 'Tap each event and watch the front line move on the map.',
       tlPlay: '▶ Play in order',
       tlStop: '■ Stop',
       legendNorth: 'Held by North Korean and Chinese forces',
@@ -1986,7 +2079,7 @@
       worldDist: 'About 15,000 km in a straight line',
       worldVoyage: 'Across the Pacific to Korea',
       kOps: 'Incheon map made by our classmates',
-      opsHint: 'Tap the numbers on the map or the list below. These are the 5 Incheon Landing operations our classmates researched! (Optional: you can go on without opening them all)',
+      opsHint: 'Tap the numbers on the map or the list below. These are the 5 Incheon Landing operations our classmates researched. (Optional: you can go on without opening them all)',
       opsBy: (g) => `🎒 Researched by Group ${g}`,
       opsSeen: (n, t) => `You looked at ${n} of ${t} places`,
       opsHeroes: 'Heroes of this operation',
@@ -2003,11 +2096,11 @@
       openWork: "See the group's project ↗",
       quizHint: "It's okay if you don't know! Pick one and check the answer. [Next] unlocks after you answer.",
       right: 'Correct!',
-      wrong: 'So close! The answer is…',
+      wrong: 'Almost. The answer is…',
       stamp: 'Cleared!',
       doneTitle: (name) => `Mission point "${name}" cleared`,
       nextStop: (name) => `The next mission point is "${name}".`,
-      lastStop: 'You passed the very last mission point!',
+      lastStop: 'You reached the last mission point.',
       preview: 'Preview',
 
       askedBy: (name) => `A question ${name} asked the veterans`,
@@ -2154,6 +2247,45 @@
       pyongyang: 'Pyongyang'
     }
   };
+  // 🎓 중·고등(한국어) 말투: 안내 말풍선·피드백을 차분하고 진중하게
+  const UI_TEEN = {
+    deepTitle: '역사 더 보기',
+    gHello: (n) => `${n} 님, 1950년 6·25 전쟁의 현장으로 들어왔습니다. 작전 지점을 따라가며 평화의 지도 조각을 모으고, 마지막에 열쇠 낱말로 "내일의 문"을 열어 오늘로 돌아옵니다.`,
+    gKey: (w, n, t) => `지도 조각 두 개가 모여 열쇠 낱말 "${w}"이(가) 드러났습니다. (${n}/${t})`,
+    gDoorReady: '평화의 지도를 모두 모았습니다. 열쇠 낱말 여섯 개로 내일의 문을 여십시오.',
+    gDoorOpen: '문이 열렸습니다. 오늘로 돌아갑니다.',
+    gNext: (name) => `다음 작전 지점은 "${name}"입니다. 깜빡이는 번호를 누르십시오.`,
+    gToColombia: 'M(Memory·기억)의 장을 마쳤습니다. 이제 A(Across·연결)의 장입니다. 지구 반대편 콜롬비아에서 태평양을 건너온 군인들의 여정을 따라갑니다.',
+    gToIncheon: 'A(Across·연결)의 장을 마쳤습니다. 마지막 P(Peace·평화)의 장입니다. 콜롬비아 해군이 지킨 서해와 인천의 참전기념비로 향합니다.',
+    gAllDone: '모든 작전 지점을 지났습니다. 참전용사의 답변이 기다리고 있습니다.',
+    gFind: '지도 위의 길 표시를 모두 숨겼습니다. 직접 위치를 찾아보십시오.',
+    gFindWrong: (dir) => `조금 더 ${dir}쪽입니다.`,
+    gFindRight: '정확한 위치입니다.',
+    gFindReveal: '이곳이 정답 위치입니다.',
+    gCard: (n) => `영웅 카드를 얻었습니다: ${n}`,
+    gMission: '불빛 하나 없는 밤바다입니다. 먼저 등대를 밝히십시오.',
+    gMissionDone: '작전에 성공했습니다. 함대가 무사히 인천으로 들어왔습니다.',
+    gQuizRetry: '다시 한 번 생각해 보십시오.',
+    quizRetry: '다시 한 번 골라 보십시오.',
+    quizHint: '확실하지 않아도 하나를 골라 정답을 확인해 보십시오. 답을 골라야 [다음]이 열립니다.',
+    doorWrong: '문이 열리지 않습니다. 낱말의 순서를 다시 맞춰 보십시오.',
+    gHelloStars: '별 1,083개는 1951년 태평양을 건너온 콜롬비아대대 1진 1,083명을 한 분씩 기억한다는 의미입니다.',
+    gAtlas: '전체 지도입니다. 지도 위의 카드를 눌러 보십시오.',
+    gMapDone: (n) => `${n}개의 조각을 모두 모아 평화의 지도를 완성했습니다.`,
+    gGold: (n) => `${n} 카드가 금빛 카드가 되었습니다.`,
+    gRetry: '다시 도전합니다. 한 번에 맞히면 부족했던 별만큼 더 받을 수 있습니다.',
+    gWatchDone: '영상을 끝까지 보았습니다. 다음으로 넘어가십시오.',
+    right: '정답입니다.',
+    wrong: '오답입니다. 정답은…',
+    stamp: '완료',
+    piecePop: '🧩 지도 조각을 찾았습니다.',
+    mapComplete: '평화의 지도를 완성했습니다.',
+    lastStop: '마지막 작전 지점까지 모두 지났습니다.',
+    skipGuess: '지금 떠오르지 않으면 넘어가도 됩니다. 마지막에 실제 답을 보기 전에 한 문장으로 적게 됩니다.',
+    qIntro: '인천신검단초등학교 6학년 학생이 콜롬비아 참전용사께 실제로 보낸 질문입니다. 참전용사가 어떻게 답했을지 생각해 보십시오.',
+    endLead: '인천신검단초등학교 6학년 학생들이 콜롬비아 참전용사께 드린 질문에, 참전용사가 콜롬비아에서 영상으로 답을 보내 왔습니다. 먼저 내 생각을 적고 실제 답과 비교해 보십시오.',
+    endLeadText: '인천신검단초등학교 6학년 학생들이 콜롬비아 참전용사께 드린 질문에 참전용사가 답을 보내 왔습니다. 답을 줄여 옮겨 두었으니, 내 생각과 비교해 보십시오.'
+  };
   const LANGS = [['ko', 'KO', '한국어'], ['es', 'ES', 'Español'], ['en', 'EN', 'English']];
   // 유튜브 채널 이름 (스페인어·영어 화면에서는 로마자로)
   const CHANNEL_NAMES = {
@@ -2165,6 +2297,7 @@
   /* ---------------- 저장 ---------------- */
   let store = loadStore();
   let lang = UI[store.lang] ? store.lang : 'ko';
+  applyLevelQuiz(lang);
   let player = null;      // 지금 하는 여정
   let previewMode = false; // 선생님 미리 보기
   let ttbOn = false;        // 🇺🇳 11월 11일 묵념 화면이 떠 있는 동안 (배경음악을 다시 켜지 않아요)
@@ -2184,7 +2317,8 @@
 
   /* ---------------- 도우미 ---------------- */
   const $ = (id) => document.getElementById(id);
-  const T = (key, ...args) => { const v = UI[lang][key] ?? UI.ko[key]; return typeof v === 'function' ? v(...args) : v; };
+  const formalDeep = (r) => (typeof r === 'string' ? formal(r) : Array.isArray(r) ? r.map(formalDeep) : r);
+  const T = (key, ...args) => { const teen = TEEN && lang === 'ko'; const v = (teen && UI_TEEN[key] !== undefined) ? UI_TEEN[key] : (UI[lang][key] ?? UI.ko[key]); const r = typeof v === 'function' ? v(...args) : v; return teen ? formalDeep(r) : r; };
   const L = (obj) => (obj == null ? '' : typeof obj === 'string' ? obj : (obj[lang] || obj.ko || ''));
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const svgEl = (tag, attrs = {}, parent) => {
@@ -3456,6 +3590,7 @@
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !$('langMenu').hidden) { langMenu(false); $('langBtn').focus(); } });
   function setLang(next) {
     lang = next;
+    applyLevelQuiz(lang);
     store.lang = lang;
     save();
     applyStaticText();
@@ -4233,7 +4368,7 @@
   // 화면 언어로 들을 수 있는 영상만: 말(lang, 없으면 한국어)이 같거나, 그 언어의 사람이 만든 자막(cc)이 있는 영상
   // + 언어별로 따로 찾은 영상 (data.js 의 LANG_VIDEOS)
   const videosAll = (s) => [
-    ...(s.videos || []),
+    ...((TEEN && lang === 'ko' && ((window.GRADE_VIDEOS || {})[GRADE] || {})[s.id]) || (TEEN && lang === 'ko' && (window.GRADE_VIDEOS || {})[GRADE] ? [] : s.videos) || []),
     ...(((window.LANG_VIDEOS || {})[lang] || {})[s.id] || []).map((v) => ({ lang, ...v }))
   ].filter((v) => [v.lang || 'ko', ...(v.cc || [])].includes(lang));
   // 게임 안에서는 10분 넘는 긴 영상은 빼고(→ 엔딩 '더 알아보기'), 꼭 볼 영상(req)을 맨 앞에
@@ -4998,6 +5133,8 @@
     if (cur) cur.mission = null;
   }
 
+  // 📚 역사 더 보기 문장: 한국어는 중·고등만, 스페인어·영어는 중학교 수준(ms)
+  const deepText = (s) => { if (!s.deep) return ''; const d = lang === 'ko' ? (TEEN ? s.deep[GRADE] : null) : s.deep.ms; return !d ? '' : typeof d === 'string' ? (lang === 'ko' ? d : '') : (d[lang] || ''); };
   function renderStep() {
     stopWatch();
     stopSilence();
@@ -5016,7 +5153,8 @@
       html = `<div class="kicker">${esc(T('kStory'))}</div>
         <div class="facts"><span>📅 ${esc(L(s.date))}</span><span>📍 ${esc(L(s.place))}</span></div>
         ${s.image ? `<img class="story-img" src="${esc(s.image)}" alt="">` : ''}
-        <p class="story-text">${esc(L(s.story))}</p>`;
+        <p class="story-text">${esc(L(s.story))}</p>
+        ${deepText(s) ? `<section class="deep-box"><h4>📚 ${esc(lang === 'es' ? 'Para saber más' : lang === 'en' ? 'Learn more' : T('deepTitle'))}</h4><p>${esc(deepText(s))}</p></section>` : ''}`;
     } else if (st.type === 'timeline') {
       html = `<div class="kicker">${esc(T('kTimeline'))}</div>
         <p class="tl-hint">🗺️ ${esc(T('tlHint'))}</p>
@@ -7147,7 +7285,7 @@
   const KC = window.KNOW_CHECK;
   const CHK_FACES = ['😞', '🙁', '😐', '🙂', '😄'];
   // 문항 묶음은 처음 고른 것으로 고정 (사전·사후가 같은 문항) — 스페인어·영어는 5·6학년 문항
-  const checkSet = () => (player && player.check && player.check.set) || (lang !== 'ko' || !KC.levels[GRADE] ? '56' : GRADE);
+  const checkSet = () => (player && player.check && player.check.set) || (lang !== 'ko' ? 'ms' : !KC.levels[GRADE] ? '56' : GRADE);
   const checkItems = (set = checkSet()) => (KC.levels[set] || KC.levels['56']).map((it) => shuffleQuiz(it, `chk:${it.id}`));
   function needPreCheck() {
     if (!KC || !player || previewMode || (player.check && 'pre' in player.check)) return false;
@@ -7180,7 +7318,7 @@
           </div>`).join('')}
         </section>
         ${phase === 'post' ? `<section class="chk-sec">
-          <label class="trib-label" for="chkReflect">✍️ ${esc(L(KC.reflect))} <em class="js-tag opt">${esc(T('chkReflectOpt'))}</em></label>
+          <label class="trib-label" for="chkReflect">✍️ ${esc(L((KC.reflectLevels && KC.reflectLevels[levelOf(lang)]) || KC.reflect))} <em class="js-tag opt">${esc(T('chkReflectOpt'))}</em></label>
           <textarea id="chkReflect" class="guess" rows="2" maxlength="150"></textarea>
         </section>` : ''}
         <p class="chk-left" id="chkLeft" role="status"></p>

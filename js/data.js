@@ -128,6 +128,8 @@ window.STATIONS = [
     name: { ko: '6·25 전쟁은 어떤 전쟁?', es: '¿Qué fue la Guerra de Corea?' },
     date: { ko: '1950. 6. 25. ~ 1953. 7. 27.', es: '25 jun. 1950 – 27 jul. 1953' },
     place: { ko: '한반도 전체', es: 'Toda la península de Corea' },
+    // 📚 중·고등 '역사 더 보기' (한국어 화면 · ?grade=ms / hs) — 이야기 아래 상자로 보여요
+    deep: { ms: "광복 뒤 미국과 소련이 38도선을 경계로 남북을 나누어 점령했고, 1948년 남과 북에 서로 다른 정부가 세워졌어요. 냉전 속에서 소련의 지원을 받은 북한이 남침하자, 유엔 안전보장이사회는 이를 평화를 깨뜨린 행위로 규정하고 회원국들에게 대한민국을 돕도록 권고했어요.", hs: "1945년 광복 뒤 38도선을 경계로 미군과 소련군이 남북을 나누어 점령했고, 1948년 남북에 각각 정부가 수립되면서 분단이 굳어졌어요. 북한은 소련의 승인과 무기 지원, 중국의 동의를 얻어 남침했어요. 유엔 안전보장이사회는 6월 25일 결의 82호로 북한의 공격을 평화 파괴로 규정했고, 6월 27일 결의 83호로 회원국의 군사 지원을 권고했어요. 당시 소련은 중국 대표권 문제로 안보리에 나오지 않아 거부권을 쓰지 않았어요." },
     story: {
       ko: '1950년 6월 25일 새벽, 북한군이 38도선을 넘어 남쪽으로 쳐들어왔어요. 3년 넘게 이어진 이 전쟁에서 수많은 사람이 가족과 집을 잃었어요. 이때 세계 여러 나라가 유엔의 이름으로 대한민국을 도우러 왔답니다.',
       es: 'En la madrugada del 25 de junio de 1950, el ejército de Corea del Norte cruzó el paralelo 38 e invadió el Sur. El conflicto se prolongó por más de tres años y dejó a innumerables personas sin familia y sin hogar. Frente a la invasión, numerosos países acudieron en apoyo de Corea del Sur bajo la bandera de las Naciones Unidas.'
@@ -137,14 +139,15 @@ window.STATIONS = [
     timeline: [
       { front: 'start', date: { ko: '1950. 6. 25.', es: '25 jun. 1950' }, text: { ko: '새벽, 북한군이 38도선을 넘어 갑자기 남쪽으로 쳐들어왔어요.', es: 'Al amanecer, el ejército norcoreano cruza el paralelo 38 en un ataque sorpresa hacia el Sur.' } },
       { front: 'nakdong', date: { ko: '1950. 8.', es: 'ago. 1950' }, text: { ko: '국군과 유엔군은 낙동강까지 밀려났지만, 그곳만은 끝까지 지켜 냈어요.', es: 'Las fuerzas surcoreanas y de la ONU, replegadas hasta el río Nakdong, resisten en su última línea de defensa.' } },
-      { front: 'north', date: { ko: '1950. 9. ~ 11.', es: 'sep. – nov. 1950' }, text: { ko: '인천상륙작전 성공! 서울을 되찾고 북쪽 끝까지 올라갔어요.', es: 'El Desembarco de Incheon cambia el rumbo: se recupera Seúl y se avanza hasta el extremo norte.' } },
+      { front: 'north', date: { ko: '1950. 9. ~ 11.', es: 'sep. – nov. 1950' }, text: { ko: '인천상륙작전이 성공해 서울을 되찾고, 북쪽 압록강 가까이까지 올라갔어요.', es: 'El Desembarco de Incheon cambia el rumbo: se recupera Seúl y se avanza hasta el extremo norte.' } },
       { front: 'retreat', date: { ko: '1950. 10. ~ 1951. 1.', es: 'oct. 1950 – ene. 1951' }, text: { ko: '중국군이 전쟁에 뛰어들어, 국군과 유엔군은 다시 남쪽으로 물러났어요. (1·4 후퇴)', es: 'La intervención china obliga a una nueva retirada (la “retirada del 4 de enero”).' } },
-      { front: 'dmz', date: { ko: '1951 ~ 1953', es: '1951 – 1953' }, text: { ko: '38도선 근처의 높은 산(고지)을 서로 차지하려고 아주 세게 싸웠어요. 콜롬비아대대가 싸운 때예요!', es: 'Guerra de posiciones: feroces combates por las colinas cercanas al paralelo 38. En esta etapa luchó el Batallón Colombia.' } },
+      { front: 'dmz', date: { ko: '1951 ~ 1953', es: '1951 – 1953' }, text: { ko: '38도선 근처의 높은 산(고지)을 서로 차지하려는 치열한 싸움이 이어졌어요. 콜롬비아대대도 이 시기에 싸웠어요.', es: 'Guerra de posiciones: feroces combates por las colinas cercanas al paralelo 38. En esta etapa luchó el Batallón Colombia.' } },
       { front: 'armistice', date: { ko: '1953. 7. 27.', es: '27 jul. 1953' }, text: { ko: '판문점에서 "싸움을 멈추자"는 약속(정전협정)을 맺고, 지금의 휴전선이 생겼어요.', es: 'Se firma el armisticio en Panmunjom y se traza la actual línea de demarcación.' } }
     ],
     videos: [
       { yt: '_zojHBvJe4w', title: { ko: '6·25 전쟁 이야기', es: 'Historia de la Guerra de Corea' }, by: '국가보훈부', len: '3:21', req: true },
-      { yt: 'G9asrGB6lsM', title: { ko: '역사만화로 보는 6·25 전쟁', es: 'La Guerra de Corea en historieta' }, by: '공부왕찐천재', len: '2:22' }
+      { yt: '4aiNjdNWGRE', title: { ko: 'UN 깃발 아래 모인 22개국, 6·25 전쟁 이야기', es: '22 países bajo la bandera de la ONU' }, by: '국가보훈부', len: '1:28' },
+      { yt: '-ECci4sNuYc', title: { ko: '6·25 전쟁, 잊을 수 없는 상처 (국가보훈처·EBS)', es: 'La Guerra de Corea, una herida inolvidable' }, by: 'EBS', len: '10:23', long: true }
     ],
     heroes: [],
     quiz: {
@@ -163,6 +166,8 @@ window.STATIONS = [
     name: { ko: '인천상륙작전', es: 'Desembarco de Incheon' },
     date: { ko: '1950. 9. 15.', es: '15 sep. 1950' },
     place: { ko: '인천 월미도·팔미도', es: 'Wolmido y Palmido, Incheon' },
+    // 📚 중·고등 '역사 더 보기' (한국어 화면 · ?grade=ms / hs) — 이야기 아래 상자로 보여요
+    deep: { ms: "서울을 되찾은 뒤 국군은 1950년 10월 1일 38도선을 넘었고(국군의 날의 유래), 유엔군도 북쪽으로 나아갔어요. 국군과 유엔군이 압록강 가까이 이르자 중국군이 참전했고, 전쟁은 다시 길어졌어요.", hs: "국군은 1950년 10월 1일 38도선을 넘었고, 유엔군도 북진해 10월 19일 평양을 점령했어요. 압록강이 가까워지자 중국군이 대규모로 참전했고, 국군과 유엔군은 흥남 철수와 1·4 후퇴로 다시 밀려났어요. 6·25 전쟁은 냉전의 두 진영이 정면으로 맞선 국제전이 되었어요." },
     story: {
       ko: '바닷물이 들어오고 빠질 때(밀물과 썰물) 높이 차이가 아주 큰 인천은 큰 배가 들어오기 어려운 곳이었어요. 그래서 "성공할 확률이 5000분의 1(5000번 해서 1번)"이라는 말이 나올 만큼 모두가 걱정한 작전이었지요. 하지만 팔미도 등대에 불을 밝히고, 새벽에 월미도부터 상륙하면서 작전은 성공했어요. 덕분에 9월 28일 서울을 되찾았답니다.',
       es: 'En Incheon la diferencia entre marea alta y marea baja es enorme, lo que hacía muy difícil el acceso de los barcos. Tanto preocupaba la Operación Chromite que se llegó a decir que tenía "1 posibilidad entre 5.000" de éxito. Sin embargo, se encendió el faro de Palmido y, al amanecer, las tropas desembarcaron primero en Wolmido. La operación anfibia fue un éxito y permitió recuperar Seúl el 28 de septiembre.'
@@ -171,10 +176,9 @@ window.STATIONS = [
     // req: 꼭 끝까지 봐야 [다음]으로 넘어가는 영상 (작전 지점마다 짧은 것 하나) · 나머지는 골라 보기
     videos: [
       { yt: '6Z0s7IM4cDE', title: { ko: 'AI로 재현한 인천상륙작전', es: 'El Desembarco de Incheon recreado con IA' }, by: '국방부 M프렌즈', group: 1, len: '1:09', req: true },
-      { yt: 'TWv1WJhboyw', title: { ko: '등대 불빛 하나에 달린 작전 (팔미도 등대)', es: 'Una operación que dependía de la luz de un faro (Palmido)' }, by: '인사이드 스토리', group: 1, len: '0:50' },
+      { yt: 'hvnR-1rlgAA', title: { ko: '인천상륙작전 그 승리의 등불, 팔미도', es: 'Palmido, la luz de la victoria del Desembarco de Incheon' }, by: '인천보훈지청', len: '3:26' },
       { yt: '9xTEvB2wlYM', title: { ko: '"팔미도 등대 점등 작전" 참전용사 인터뷰', es: 'Entrevista a un veterano: la operación del faro de Palmido' }, by: 'LG헬로비전', group: 5, len: '2:34' },
-      { yt: 'GRJJ0R9tcHI', title: { ko: '작전명 X-Ray, 숨겨진 영웅들', es: 'Operación X-Ray: los héroes anónimos' }, by: '짧군', group: '1·2', len: '1:00' },
-      { yt: '9cdx2UlKTq8', title: { ko: '비밀 첩보 작전 X-RAY', es: 'X-RAY, la operación secreta de inteligencia' }, by: '채널A', group: 3, len: '4:08' },
+      { yt: 'QbrdjCY2bl0', title: { ko: '인천상륙작전 74주년, 팔미도 등대 해상순례', es: '74.º aniversario: peregrinación marítima al faro de Palmido' }, by: '연합뉴스TV', len: '2:15' },
       { yt: 'dMX8XiqYp1w', title: { ko: '전세 역전의 발판, 부평 지구 전투', es: 'La batalla de Bupyeong, clave para cambiar el rumbo de la guerra' }, by: 'LG헬로비전', group: 2, len: '1:53' }
     ],
     // 이 작전 지점을 열면 인천 확대 지도로 바뀌고, 아이들이 조사한 5대 작전(INCHEON_OPS)이 핀으로 나와요
@@ -210,8 +214,9 @@ window.STATIONS = [
     // lang: 'es' = 스페인어 화면에서만 보여요 / 'ko' = 한국어 화면에서만
     videos: [
       { yt: '4VKiVFjt_PU', title: { ko: '한국전 참전 콜롬비아 용사들, 사진 첫 공개', es: 'Fotos inéditas de los combatientes colombianos en Corea' }, by: 'KBS News', len: '1:51', req: true },
-      { yt: 'ekqoDYEQ-GQ', title: { ko: '콜롬비아 참전용사 4058명 (KBS 다큐, 영어 자막)', es: 'Los 4.058 veteranos colombianos (documental de KBS, subt. en inglés)' }, by: 'KBS', len: '47:51', group: 5, long: true, cc: ['en'] }, // 사람이 만든 영어 자막이 있어요
-      { yt: '3u02L_RFV74', title: { ko: '(스페인어) 한국전쟁 속 콜롬비아대대', es: 'El Batallón Colombia en la Guerra de Corea' }, by: 'Exfors Histori', len: '9:30', lang: 'es' }
+      { yt: 'ekqoDYEQ-GQ', title: { ko: '콜롬비아 참전용사 4058명 (KBS 다큐, 영어 자막)', es: 'Los 4.058 veteranos colombianos (documental de KBS, subt. en inglés)' }, by: 'KBS', len: '47:51', group: 5, long: true, cc: ['en'] } // 사람이 만든 영어 자막이 있어요
+      // (스페인어 개인 채널 영상은 뺐어요 — 스페인어 화면은 LANG_VIDEOS 의 공식 영상)
+      //{ yt: '3u02L_RFV74', title: { ko: '(스페인어) 한국전쟁 속 콜롬비아대대', es: 'El Batallón Colombia en la Guerra de Corea' }, by: 'Exfors Histori', len: '9:30', lang: 'es' }
     ],
     heroes: [
       {
@@ -250,7 +255,7 @@ window.STATIONS = [
     date: { ko: '1951. 6. 15.', es: '15 jun. 1951' },
     place: { ko: '부산항', es: 'Puerto de Busan' },
     story: {
-      ko: '1951년 5월 21일, 콜롬비아대대 군인 1,083명이 콜롬비아의 부에나벤투라 항구에서 미국의 큰 배에 올랐어요. 약 25일 동안 태평양을 건너 6월 15일 부산항에 도착하자, 많은 사람이 크게 환영해 주었어요. 콜롬비아대대는 미군 부대와 한 팀이 되어 한반도 가운데의 싸움터로 올라갔어요. 전쟁 동안 콜롬비아에서 온 군인은 모두 약 5,100명이에요.',
+      ko: '1951년 5월 21일, 콜롬비아대대 군인 1,083명이 콜롬비아의 부에나벤투라 항구에서 미국 수송선에 올랐어요. 약 25일 동안 태평양을 건너 6월 15일 부산항에 도착하자, 많은 사람이 크게 환영해 주었어요. 콜롬비아대대는 미군 부대에 소속되어 한반도 중부의 전선으로 올라갔어요. 전쟁 동안 콜롬비아에서 온 군인은 모두 약 5,100명이에요.',
       es: 'El 21 de mayo de 1951, los 1.083 hombres del Batallón Colombia zarparon de Buenaventura a bordo de un buque de transporte estadounidense. Tras unos 25 días de travesía por el Pacífico, desembarcaron en Busan el 15 de junio, donde fueron recibidos con honores. El batallón quedó adscrito a la 24.ª División de Infantería de EE. UU. y avanzó hacia el frente central. A lo largo de la guerra, Colombia envió en total unos 5.100 efectivos del Ejército y la Armada.'
     },
     // 출처: 국가보훈부(출항 1951.5.21., 부산 도착 6.15., 참전 연인원 5,100명 · 전사 213 · 부상 448 · 포로 28),
@@ -298,11 +303,11 @@ window.STATIONS = [
     date: { ko: '1951. 8. 6.', es: '6 ago. 1951' },
     place: { ko: '강원도 중부 전선 (금성 남쪽, 851고지)', es: 'Frente central, Gangwon (al sur de Geumseong, colina 851)' }, // 국가보훈부: Hill 851, 첫 전투. 정확한 군·면 위치는 확인 못 함
     story: {
-      ko: '1951년 8월 6일, 콜롬비아대대의 첫 전투가 벌어졌어요. 처음 보는 높은 산과 낯선 날씨 속에서, 콜롬비아대대의 수색대가 적이 차지한 851고지를 향해 나아갔다가 중국군과 맞붙었어요.',
+      ko: '1951년 8월 6일, 콜롬비아대대의 첫 전투가 벌어졌어요. 처음 보는 높은 산과 낯선 날씨 속에서, 대대의 수색대가 적이 차지한 851고지를 향해 나아갔다가 중국군과 맞붙었어요.',
       es: 'El 6 de agosto de 1951, el Batallón Colombia recibió su bautismo de fuego. En un terreno de montañas escarpadas y bajo un clima que no conocían, los soldados avanzaron con determinación hacia la colina 851, en poder del enemigo.'
     },
     videos: [
-      { yt: 'Rr8VX6djY38', title: { ko: '"혈맹 콜롬비아군, 영원히 기억하겠습니다" (국방뉴스)', es: '"Aliados de sangre: recordaremos siempre a las tropas colombianas"' }, by: '국방뉴스', len: '1:42', req: true }
+      { yt: 'UWLU39FTzho', title: { ko: '사라져 가는 콜롬비아 참전 노병, "혈맹"을 잇는 사람들', es: 'Los últimos veteranos colombianos y quienes mantienen viva su memoria' }, by: 'KBS News', len: '1:30', req: true }
     ],
     heroes: [],
     quiz: {
@@ -350,7 +355,7 @@ window.STATIONS = [
     date: { ko: '1952. 6. 21.', es: '21 jun. 1952' },
     place: { ko: '강원도 김화 일대 (중부 전선)', es: 'Zona de Gimhwa, Gangwon (frente central)' },
     story: {
-      ko: '1952년 6월 21일, 콜롬비아대대는 김화 근처 400고지에 있는 적의 진지로 몰래 다가가 갑자기 공격했어요. 재빠른 공격으로 적의 진지를 무너뜨렸지만, 콜롬비아 군인 2명이 목숨을 잃고 15명이 다쳤어요.',
+      ko: '1952년 6월 21일, 콜롬비아대대는 김화 근처 400고지에 있는 적의 진지를 기습 공격했어요. 빠른 공격으로 진지를 무너뜨렸지만, 콜롬비아 군인 2명이 목숨을 잃고 15명이 다쳤어요.',
       es: 'El 21 de junio de 1952, el Batallón Colombia, entonces adscrito a la 7.ª División de Infantería de EE. UU., lanzó un asalto sorpresa contra las posiciones enemigas de la colina 400, cerca de Gimhwa. La rapidez del ataque permitió destruirlas, pero 2 soldados colombianos murieron y 15 resultaron heridos.'
     },
     // 출처: 국가보훈부 영문 누리집 — Hill 400 (1952. 6. 21.) 기습, 콜롬비아군 전사 2 · 부상 15
@@ -372,7 +377,7 @@ window.STATIONS = [
     date: { ko: '1953. 3. 10.', es: '10 mar. 1953' },
     place: { ko: '경기도 연천 일대', es: 'Yeoncheon, Gyeonggi' },
     story: {
-      ko: '1953년 3월 10일 새벽, 콜롬비아대대는 "바르불라 작전"으로 연천의 180고지에 몰래 다가가 갑자기 공격했어요. 짧은 시간에 적의 진지를 공격하고 돌아온 이 작전으로, 콜롬비아대대가 얼마나 용감한지 널리 알려졌어요. 그리고 2주쯤 뒤, 가장 힘든 불모고지 전투가 기다리고 있었어요.',
+      ko: '1953년 3월 10일 새벽, 콜롬비아대대는 "바르불라 작전"으로 연천의 180고지에 있는 적의 진지를 기습했어요. 짧은 시간 안에 공격을 마치고 돌아온 이 작전으로 콜롬비아대대의 용맹이 널리 알려졌어요. 그리고 2주쯤 뒤, 가장 힘든 불모고지 전투가 기다리고 있었어요.',
       es: 'En la madrugada del 10 de marzo de 1953, el Batallón Colombia lanzó un golpe sorpresa contra la colina 180, en Yeoncheon: la Operación Bárbula. Fue una incursión relámpago —atacar la posición enemiga y replegarse— que dio fama al valor del batallón. Dos semanas después le esperaba su batalla más dura: Old Baldy.'
     },
     // 출처: 국가보훈부 영문 누리집 — Hill 180 (1953. 3. 10.), 미 육군 특수전 역사 기사(Operation Barbula)
@@ -399,12 +404,14 @@ window.STATIONS = [
     name: { ko: '불모고지 전투', es: 'Batalla de Old Baldy' },
     date: { ko: '1953. 3. 23. ~ 24.', es: '23–24 mar. 1953' },
     place: { ko: '경기도 연천 일대', es: 'Yeoncheon, Gyeonggi' },
+    // 📚 중·고등 '역사 더 보기' (한국어 화면 · ?grade=ms / hs) — 이야기 아래 상자로 보여요
+    deep: { ms: "1951년 7월 정전 회담이 시작됐지만, 포로를 어떻게 돌려보낼지를 두고 2년 가까이 맞섰어요. 그동안 고지에서는 경계선을 조금이라도 유리하게 정하려는 전투가 이어져 희생이 계속됐어요.", hs: "정전 회담은 1951년 7월 개성에서 시작해 10월부터 판문점에서 이어졌어요. 군사분계선은 \"협정을 맺을 때 양쪽 군대가 맞선 접촉선\"으로 정하기로 1951년 11월 잠정 합의했지만, 포로 본인의 뜻을 존중하자는 유엔군(자유 송환)과 모두 돌려보내자는 공산군(전원 송환)이 맞서 회담은 1953년까지 길어졌어요. 접촉선이 곧 경계선이 되기에, 회담 중에도 고지전은 끝까지 치열했어요." },
     story: {
-      ko: '"불모고지"는 폭탄을 너무 많이 맞아 풀 한 포기 남지 않은 산이라는 뜻이에요. 콜롬비아대대에게 가장 힘들고 슬픈 전투였어요. 많은 군인이 다치거나 목숨을 잃었지만, 끝까지 동료를 지키며 싸웠어요.',
+      ko: '"불모고지"는 폭탄을 너무 많이 맞아 풀 한 포기 남지 않은 산이라는 뜻이에요. 콜롬비아대대가 가장 큰 희생을 치른 전투였어요. 많은 군인이 다치거나 목숨을 잃었지만, 끝까지 동료를 지키며 싸웠어요.',
       es: '"Old Baldy" (en español, "Monte Calvo") recibió ese nombre porque los bombardeos fueron tan intensos que no quedó en pie ni una planta. Fue la batalla más dura y dolorosa para el Batallón Colombia. Muchos soldados resultaron heridos o perdieron la vida, pero combatieron hasta el final sin abandonar a sus compañeros.'
     },
     videos: [
-      { yt: 'sQspC5vg2G8', title: { ko: '(스페인어) 참호의 악마들', es: 'Los Demonios de las Trincheras' }, by: 'El Gran Historium', len: '14:03', lang: 'es', long: true }
+      { yt: 'bc7T3QBOFhY', title: { ko: '콜롬비아 참전용사 유해, 처음으로 부산 유엔기념공원에 안장', es: 'Por primera vez, restos de veteranos colombianos reposan en el Cementerio de la ONU en Busan' }, by: '국방홍보원', len: '2:20' }
     ],
     // ★TODO 교사: 사상자 수 등 확인 후 보완
     heroes: [],
@@ -436,6 +443,8 @@ window.STATIONS = [
       hint: { ko: '힌트: 휴전선의 서쪽(왼쪽) 끝 가까이, 서울에서 북쪽으로 조금 올라간 곳이에요.', es: 'Pista: cerca del extremo occidental (izquierdo) de la línea, un poco al norte de Seúl.' },
       explain: { ko: '판문점은 휴전선 위에 있는 마을이에요. 1953년 7월 27일 이곳에서 정전협정을 맺었고, 지금도 남과 북이 만나는 곳이에요.', es: 'Panmunjom es una aldea situada sobre la línea de demarcación. Allí se firmó el armisticio el 27 de julio de 1953, y todavía hoy es el punto de encuentro entre el Norte y el Sur.' }
     },
+    // 📚 중·고등 '역사 더 보기' (한국어 화면 · ?grade=ms / hs) — 이야기 아래 상자로 보여요
+    deep: { ms: "정전협정에는 유엔군 사령관과 북한군·중국군 사령관이 서명했어요. 북진 통일을 주장한 대한민국 정부는 서명하지 않았어요. 군사분계선 남북으로 2km씩은 비무장 지대(DMZ)예요.", hs: "정전협정에는 유엔군 사령관과 북한군·중국군 사령관이 서명했고, 북진 통일을 주장한 대한민국 정부는 서명하지 않았어요. 협정 직전인 1953년 6월 이승만 정부는 반공 포로를 석방해 회담이 흔들리기도 했어요. 협정 뒤 1953년 10월 한미상호방위조약을 맺었고, 군사정전위원회와 중립국감독위원회가 정전을 관리하게 되었어요. 군사분계선 남북 2km씩은 비무장 지대(DMZ)이며, 지금도 평화 조약은 맺어지지 않았어요." },
     story: {
       ko: '3년 1개월 동안의 싸움 끝에, 판문점에서 "이제 싸움을 멈추자"는 약속(정전협정)을 맺고 총소리가 멈췄어요. 전쟁이 완전히 끝난 것(종전)이 아니라 잠시 멈춘 것(정전)이라서, 지금도 남과 북 사이에 휴전선이 있어요.',
       es: 'Tras 3 años y 1 mes de guerra, la firma del armisticio en Panmunjom silenció las armas. Pero no fue el fin formal de la guerra, sino un cese de los combates; por eso la línea de demarcación sigue dividiendo la península.'
@@ -445,7 +454,7 @@ window.STATIONS = [
       type: 'ox',
       q: { ko: '정전협정은 전쟁을 완전히 끝낸 약속이다.', es: 'El armisticio fue un acuerdo que puso fin definitivo a la guerra.' },
       answer: false,
-      explain: { ko: 'X, 사실이 아니에요! "정전"은 싸움을 멈춘 것이에요. 그래서 평화를 지키는 노력이 계속 필요해요.', es: 'Falso. El armisticio solo suspendió los combates; técnicamente, la guerra no ha terminado. Por eso mantener la paz exige un esfuerzo constante.' }
+      explain: { ko: 'X, 사실이 아니에요! "정전"은 싸움을 잠시 멈춘 것이에요. 그래서 평화를 지키는 노력이 계속 필요해요.', es: 'Falso. El armisticio solo suspendió los combates; técnicamente, la guerra no ha terminado. Por eso mantener la paz exige un esfuerzo constante.' }
     },
     questions: ['q3']
   },
@@ -458,7 +467,7 @@ window.STATIONS = [
     date: { ko: '1951 ~ 1955', es: '1951 – 1955' },
     place: { ko: '서해 (초도~석도 일대) · 동해', es: 'Mar Amarillo y Mar del Este' },
     story: {
-      ko: '1951년 5월, 콜롬비아 해군의 첫 배 알미란테 파디야호가 한국에 왔어요. 5월 14일부터 서해의 초도와 석도 사이 바다를 돌며 북한군이 바다로 오가는 길을 막았고, 동해에서는 배에 달린 대포로 땅에서 싸우는 군인들을 도왔어요. 콜롬비아 해군은 전쟁이 멈춘 뒤에도 1955년까지 한국 바다를 지켰어요.',
+      ko: '1951년 5월, 콜롬비아 해군의 첫 배 알미란테 파디야호가 한국에 왔어요. 5월 14일부터 서해의 초도와 석도 사이 바다를 돌며 북한군이 바다로 오가는 길을 막았고, 동해에서는 함포(배에 실린 대포)로 땅에서 싸우는 군인들을 도왔어요. 콜롬비아 해군은 전쟁이 멈춘 뒤에도 1955년까지 한국 바다를 지켰어요.',
       es: 'En mayo de 1951 llegó a Corea la fragata Almirante Padilla, el primer buque de la Armada colombiana en llegar. Desde el 14 de mayo patrulló el Mar Amarillo entre las islas Cho-do y Sok-do para cortar las rutas marítimas norcoreanas, y en el Mar del Este dio apoyo de artillería naval a las tropas en tierra. La Armada colombiana siguió custodiando las aguas coreanas incluso después del armisticio, hasta 1955.'
     },
     // 출처: 국가보훈부 영문 누리집(파디야호 1951.5.14.부터 서해 초도~석도 순찰, 동해 함포 지원, 1955년 10월 철수)
@@ -469,7 +478,7 @@ window.STATIONS = [
         name: { ko: '서해를 지킨 콜롬비아 해군', es: 'La Armada que protegió el Mar Amarillo' },
         role: { ko: '서해 방어 작전', es: 'Defensa del Mar Amarillo' },
         body: {
-          ko: '콜롬비아 해군은 서해안 바다를 철통같이 지켜 냈어요. 콜롬비아 용사들의 희생을 기리기 위해, 지금 인천 경명공원에는 참전기념비가 있어요.',
+          ko: '콜롬비아 해군은 서해 바다를 철통같이 지켜 냈어요. 콜롬비아 용사들의 희생을 기리기 위해, 지금 인천 경명공원에는 참전기념비가 있어요.',
           es: 'La Armada colombiana defendió sin descanso las aguas del Mar Amarillo. En homenaje al sacrificio de los combatientes colombianos, hoy se levanta un monumento en el parque Gyeongmyeong de Incheon.'
         },
         link: 'https://lldfg.my.canva.site/5'
@@ -490,7 +499,7 @@ window.STATIONS = [
         name: { ko: '서해와 동해를 지킨 호위함', es: 'Fragatas en el Mar Amarillo y el Mar del Este' },
         role: { ko: '바닷길 막기 작전', es: 'Bloqueo naval' },
         body: {
-          ko: '콜롬비아 해군은 호위함을 보내 서해와 동해의 바다를 막는 작전에 참여했어요. 적이 물건을 나르는 바닷길을 끊고, 바닷가의 적을 대포로 공격하고, 유엔군이 땅에 오르는 것을 도우며 바다를 안전하게 지켰어요.',
+          ko: '콜롬비아 해군은 호위함을 보내 서해와 동해를 봉쇄하는 작전에 참여했어요. 적이 물건을 나르는 바닷길을 끊고, 바닷가의 적을 대포로 공격하고, 유엔군이 땅에 오르는 것을 도우며 바다를 안전하게 지켰어요.',
           es: 'La Armada colombiana envió fragatas a las operaciones de bloqueo en el Mar Amarillo y el Mar del Este: cortaron las líneas de suministros enemigas, bombardearon la costa y apoyaron los desembarcos de la ONU.'
         },
         link: 'https://lldfg.my.canva.site/4'
@@ -518,12 +527,15 @@ window.STATIONS = [
     name: { ko: '콜롬비아군 참전기념비', es: 'Monumento a los combatientes colombianos' },
     date: { ko: '1975. 9. 24. 세움 → 2018. 7. 25. 경명공원으로 옮김', es: 'Erigido el 24 sep. 1975 → trasladado el 25 jul. 2018' },
     place: { ko: '인천 경명공원', es: 'Parque Gyeongmyeong, Incheon' },
+    // 📚 중·고등 '역사 더 보기' (한국어 화면 · ?grade=ms / hs) — 이야기 아래 상자로 보여요
+    deep: { ms: "6·25 전쟁으로 남북의 군인과 민간인 수백만 명이 죽거나 다쳤고, 수많은 피란민과 전쟁고아, 이산가족이 생겼어요. 해마다 11월 11일 오전 11시(한국 시간)에는 세계 곳곳에서 부산 유엔기념공원을 향해 1분 동안 묵념하는 \"부산을 향하여(Turn Toward Busan)\"가 열려요.", hs: "추산은 자료마다 다르지만, 남북의 군인과 민간인 사상자는 수백만 명에 이르고 전쟁으로 흩어진 이산가족은 1,000만 명에 이른다고도 해요. 전쟁은 분단을 굳혔고, 남한에서는 이승만 정부가 권력을 강화했으며 북한에서는 김일성이 반대파를 숙청하며 1인 독재 체제를 굳혔어요. 유엔군 전사자 가운데 일부는 부산 유엔기념공원에 잠들어 있고, 해마다 11월 11일 오전 11시(한국 시간) \"부산을 향하여(Turn Toward Busan)\"로 그들을 기려요." },
     story: {
       ko: '인천 경명공원에 콜롬비아군 참전기념비가 있어요. 칼을 든 군인과 무릎 꿇고 기도하는 여인의 조각, 그리고 배의 돛을 닮은 하얀 벽이 있어요. 비석에는 한국어와 스페인어로 611명의 희생을 기억하는 글이 새겨져 있어요. 해마다 이곳에서 돌아가신 분들을 기리는 행사(추모식)가 열려요.',
       es: 'En el parque Gyeongmyeong de Incheon se alza el monumento a los combatientes colombianos: la escultura de un soldado con una espada, una mujer arrodillada en oración y un muro blanco que evoca la vela de un barco. Su inscripción, en coreano y en español, honra el sacrificio de 611 combatientes. Cada año se celebra allí una ceremonia conmemorativa.'
     },
     videos: [
-      { yt: 'TQIYpORL2Pc', title: { ko: '고지전은 우리에게 맡겨라! 콜롬비아군 참전기념비', es: '"Déjennos la guerra de colinas": el monumento colombiano de Incheon' }, by: '꼬끼오 History', len: '5:31', from: '1:54', to: '3:44', req: true }, // ✂️ 동상의 뜻·611명 비문·전통 문양·콜롬비아대대 전투만 (1분 50초)
+      { yt: 'k8ip34sYFrQ', title: { ko: '콜롬비아군 참전기념비 제막식과 참배 행사 (2018, 경명공원)', es: 'Reinauguración del monumento colombiano en el parque Gyeongmyeong (2018)' }, by: '서해구TV', len: '2:00', req: true },
+      { yt: 'MT47Vj_EJpg', title: { ko: '대한뉴스: 콜롬비아군 참전기념비 준공 (1975)', es: 'Noticiero de 1975: inauguración del monumento colombiano' }, by: 'KTV 아카이브', len: '0:15' },
       { yt: 'f_zao2_kxSs', title: { ko: '70년 만의 만남, 콜롬비아 참전용사 초청 행사', es: 'Reencuentro 70 años después: veteranos colombianos de visita en Corea' }, by: 'TV나라사랑', len: '3:30' },
       { yt: 'Bze-QbeThmg', title: { ko: '"할아버지가 목숨 바친 나라가 궁금했어요"', es: '"Quería conocer el país por el que mi abuelo dio la vida"' }, by: '연합뉴스TV', len: '1:28' }
     ],
@@ -548,7 +560,7 @@ window.STATIONS = [
           text: { ko: '무릎을 꿇고 기도하는 여인 조각이에요. 돌아오지 못한 군인들을 그리워하며 평화를 비는 마음이 느껴져요.', es: 'La escultura de una mujer arrodillada en oración: transmite la nostalgia por los soldados que no volvieron y el deseo de paz.' } },
         { id: 'sail', at: [410, 350],
           name: { ko: '돛을 닮은 하얀 벽', es: 'El muro blanco en forma de vela' },
-          text: { ko: '배의 돛처럼 생긴 하얀 벽이에요. 콜롬비아 전통 문양(사다리꼴 빗살 무늬)이 새겨져 있고, 콜롬비아 군인들이 먼 바다를 건너 배를 타고 한국에 온 길을 떠올리게 해요.', es: 'Un muro blanco con forma de vela, con motivos tradicionales colombianos tallados: recuerda el largo viaje por mar de los soldados colombianos hasta Corea.' } },
+          text: { ko: '배의 돛처럼 생긴 하얀 벽이에요. 콜롬비아 전통 문양(사다리꼴 빗살 무늬)이 새겨져 있고, 콜롬비아 군인들이 배를 타고 먼 바다를 건너 한국에 온 길을 떠올리게 해요.', es: 'Un muro blanco con forma de vela, con motivos tradicionales colombianos tallados: recuerda el largo viaje por mar de los soldados colombianos hasta Corea.' } },
         { id: 'stone', at: [858, 607],
           name: { ko: '두 나라 말로 새긴 비문', es: 'La inscripción en dos idiomas' },
           text: { ko: '한국어와 스페인어로 글이 새겨져 있어요. "611명의 고귀한 생명이 피를 흘렸다"는 말로 콜롬비아 군인들의 희생을 기억해요.', es: 'Tiene un texto en coreano y en español que recuerda el sacrificio de los soldados colombianos: "611 nobles vidas derramaron su sangre".' } }
@@ -581,11 +593,64 @@ window.STATIONS = [
 /* 🎬 스페인어·영어 화면 전용 영상 (말이 그 언어인 영상만 — 2026.9 재생·퍼가기 가능 확인)
    한국어 영상은 한국어 화면에서만 보여요. 자동 생성 한국어 자막뿐이라 스페인어·영어 화면에는 맞지 않아서요.
    ※ 옛 전쟁 기록 영상이 섞여 있을 수 있어요. 수업 전에 선생님이 한 번 훑어봐 주세요. */
+/* =====================================================================
+   🎓 중학교·고등학교 영상 (한국어 화면 · 주소 ?grade=ms / ?grade=hs)
+   작전 지점의 영상 목록이 이걸로 바뀌어요. 모두 공식 채널(EBS·국방홍보원·국가보훈부·인천보훈지청·서해구·KTV·KBS 등)
+   req: 꼭 볼 영상 (1배속으로 끝까지) · long: 10분 넘는 영상은 엔딩 '더 알아보기'로
+   ※ EBS 지식채널e 「정전협정 70주년 특집」(2023) 20부작에서 골랐어요. 수업 전에 선생님이 한 번 훑어봐 주세요.
+   ===================================================================== */
+const TEEN_VIDEOS = {
+  war: [
+    { yt: 'kcKEA8xw66E', title: { ko: '지식채널e 정전협정 70주년 특집 ① 시티코프의 일기' }, by: 'EBS', len: '5:20', req: true },
+    { yt: 'DnmbJxaqWkU', title: { ko: '지식채널e 정전협정 70주년 특집 ② 비밀 전문 8600' }, by: 'EBS', len: '5:25' },
+    { yt: 'Jb48FAVONjk', title: { ko: '지식채널e 정전협정 70주년 특집 ③ 6·25 전쟁 72시간의 미스터리' }, by: 'EBS', len: '5:56' },
+    { yt: '4aiNjdNWGRE', title: { ko: 'UN 깃발 아래 모인 22개국, 6·25 전쟁 이야기' }, by: '국가보훈부', len: '1:28' }
+  ],
+  incheon: [
+    { yt: '4VuNj6JMwOw', title: { ko: '지식채널e 정전협정 70주년 특집 ⑧ 작전명 크로마이트' }, by: 'EBS', len: '6:03', req: true },
+    { yt: 'hvnR-1rlgAA', title: { ko: '인천상륙작전 그 승리의 등불, 팔미도' }, by: '인천보훈지청', len: '3:26' },
+    { yt: '9xTEvB2wlYM', title: { ko: '"팔미도 등대 점등 작전" 참전유공자 인터뷰' }, by: 'LG헬로비전', len: '2:34' },
+    { yt: 'knJvrCIUSkg', title: { ko: '지식채널e 정전협정 70주년 특집 ⑩ 서울 탈환, 윌리엄 해밀턴 쇼의 마지막 임무' }, by: 'EBS', len: '5:32' },
+    { yt: 'KIWZP9ktN9U', title: { ko: '지식채널e 정전협정 70주년 특집 ⑪ 38선 돌파, 그리고 북진' }, by: 'EBS', len: '4:50' },
+    { yt: 'HGN762TbSvs', title: { ko: '인천상륙작전을 위한 기만 작전, 장사상륙작전 (참전용사 증언)' }, by: '국방홍보원', len: '10:48', long: true }
+  ],
+  colombia: [
+    { yt: '4VKiVFjt_PU', title: { ko: '한국전 참전 콜롬비아 용사들, 사진 첫 공개' }, by: 'KBS News', len: '1:51', req: true },
+    { yt: 'E0SGNvLFk2Q', title: { ko: '국가보훈처, 콜롬비아 6·25 참전용사 초청 감사와 보답' }, by: '국방홍보원', len: '3:45' },
+    { yt: 'ekqoDYEQ-GQ', title: { ko: '콜롬비아 참전용사 4058명 (KBS 다큐)' }, by: 'KBS', len: '47:51', long: true }
+  ],
+  heukun: [
+    { yt: 'wcux6r41zhY', title: { ko: '지식채널e 정전협정 70주년 특집 ⑫ 완전히 새로운 전쟁 (중국군 참전)' }, by: 'EBS', len: '5:11', req: true },
+    { yt: 'UWLU39FTzho', title: { ko: '사라져 가는 콜롬비아 참전 노병, "혈맹"을 잇는 사람들' }, by: 'KBS News', len: '1:30' }
+  ],
+  hill400: [
+    { yt: 'EVcporxPHIY', title: { ko: '지식채널e 정전협정 70주년 특집 ⑯ 백마고지 전투 (고지전)' }, by: 'EBS', len: '6:05' }
+  ],
+  oldbaldy: [
+    { yt: 'bc7T3QBOFhY', title: { ko: '콜롬비아 참전용사 유해, 처음으로 부산 유엔기념공원에 안장' }, by: '국방홍보원', len: '2:20' }
+  ],
+  armistice: [
+    { yt: 'vnun-boz3Fc', title: { ko: '158차례의 휴전회담, 그리고 정전협정' }, by: '국방홍보원', len: '5:08', req: true },
+    { yt: '7nIL-QzbHKY', title: { ko: '지식채널e 정전협정 70주년 특집 ⑳ 한미상호방위조약 체결' }, by: 'EBS', len: '6:20' }
+  ],
+  memorial: [
+    { yt: 'k8ip34sYFrQ', title: { ko: '콜롬비아군 참전기념비 제막식과 참배 행사 (2018, 경명공원)' }, by: '서해구TV', len: '2:00', req: true },
+    { yt: 'MT47Vj_EJpg', title: { ko: '대한뉴스: 콜롬비아군 참전기념비 준공 (1975)' }, by: 'KTV 아카이브', len: '0:15' },
+    { yt: 'lPlbkthBvdM', title: { ko: '우리가 알아야 할 보훈기념일: 턴투워드부산 · 정전협정 및 유엔군 참전의 날 (2017년 영상이라 "21개국"으로 나와요)' }, by: 'EBS', len: '7:38' },
+    { yt: 'f_zao2_kxSs', title: { ko: '70년 만의 만남, 콜롬비아 참전용사 초청 행사' }, by: 'TV나라사랑', len: '3:30' }
+  ]
+};
+window.GRADE_VIDEOS = {
+  ms: TEEN_VIDEOS,
+  hs: Object.assign({}, TEEN_VIDEOS, {
+    armistice: TEEN_VIDEOS.armistice.concat([{ yt: '1aJSFlQhGKg', title: { ko: 'KBS 특별기획 한국전쟁 8부 「정전」 — 포로 송환과 휴전협정 (2010)' }, by: 'KBS 다큐', len: '56:31', long: true }])
+  })
+};
+
 window.LANG_VIDEOS = {
   es: {
     war: [
-      { yt: 'lWEnII1bIOQ', title: { es: '¿Cómo empezó la Guerra de Corea?' }, by: 'BBC News Mundo', len: '6:32', req: true },
-      { yt: '1wve7tGKI78', title: { es: 'Corea del Norte y del Sur: ¿por qué se dividieron? (animación)' }, by: 'TikTak Draw', len: '8:04' }
+      { yt: 'lWEnII1bIOQ', title: { es: '¿Cómo empezó la Guerra de Corea?' }, by: 'BBC News Mundo', len: '6:32', req: true }
     ],
     incheon: [
       { yt: 'yNgIj_JywTU', title: { es: 'La batalla de Incheon: resumen' }, by: 'unProfesor', len: '5:01', req: true }
@@ -598,7 +663,7 @@ window.LANG_VIDEOS = {
       { yt: '6U_F06qe9HI', title: { es: 'Sobrevivientes de la Guerra de Corea cuentan sus vivencias' }, by: 'Fuerzas Militares de Colombia', len: '6:08' }
     ],
     oldbaldy: [
-      { yt: 'W_QtdqnFJJ8', title: { es: 'La batalla de Monte Calvo (Old Baldy)' }, by: 'Exfors Histori', len: '8:04' }
+      { yt: 'HXCfg8f8id0', title: { es: 'Homenaje a los héroes sobrevivientes del Batallón Colombia' }, by: 'Fuerzas Militares de Colombia', len: '3:48' }
     ],
     westsea: [
       { yt: '5WXL2ACR0xQ', title: { es: 'La Guerra de Corea en la memoria de los marinos de la Armada' }, by: 'Fuerzas Militares de Colombia', len: '3:37', req: true },
@@ -611,8 +676,9 @@ window.LANG_VIDEOS = {
   },
   en: {
     war: [
-      { yt: 'yxaegqvl4aE', title: { en: 'The Korean War (1950–53)' }, by: 'Simple History', len: '4:31', req: true },
-      { yt: 'bhvJdQiHZuQ', title: { en: 'The Korean War never ended – but how did it start?' }, by: 'BBC World Service', len: '6:38' }
+      { yt: 'bhvJdQiHZuQ', title: { en: 'The Korean War never ended – but how did it start?' }, by: 'BBC World Service', len: '6:38', req: true },
+      { yt: '1QZUsesFtCc', title: { en: 'The Price of Freedom: the Korean War' }, by: 'National Museum of American History (Smithsonian)', len: '8:02' },
+      { yt: 'citxVsD0NcY', title: { en: 'Why is Korea divided?' }, by: 'Imperial War Museums', len: '14:02', long: true }
     ],
     incheon: [
       { yt: '-o7iJWUlheA', title: { en: 'The Incheon Landing of the Korean War' }, by: 'Pritzker Military Museum & Library', len: '2:03', req: true },
@@ -622,14 +688,12 @@ window.LANG_VIDEOS = {
       { yt: 'vrBXq1CKdKI', title: { en: 'Colombians in the Korean War' }, by: 'KBS WORLD TV', len: '1:58', req: true }
     ],
     oldbaldy: [
-      { yt: '2JOmbaARel4', title: { en: "Colombia's forgotten Korean War heroes (short documentary)" }, by: 'LatinLora', len: '5:09', req: true }
     ],
     armistice: [
       { yt: 'Uzu-TbV7Hnc', title: { en: 'The Korean War Armistice – July 27, 1953' }, by: 'Pritzker Military Museum & Library', len: '2:29', req: true }
     ],
     memorial: [
-      { yt: 'B4_7IVFFFzg', title: { en: 'Event for Colombian Korean War veterans' }, by: 'KBS News', len: '1:42', req: true },
-      { yt: 'YCFQ8n9HHos', title: { en: 'Remembering the sacrifice of Colombian Korean War veterans' }, by: 'KOREAZ', len: '2:55' }
+      { yt: 'B4_7IVFFFzg', title: { en: 'Event for Colombian Korean War veterans' }, by: 'KBS News', len: '1:42', req: true }
     ]
   }
 };
@@ -642,7 +706,7 @@ window.INCHEON_OPS = [
     date: { ko: '1950. 8. 중순 ~ 9. 14.', es: 'mediados de ago. – 14 sep. 1950' },
     // 출처: 부대 편성 8월 16~17일, 부산 출발 8.18., 영흥도 도착 8.24., 작전 종료 9.14.
     text: {
-      ko: '인천상륙작전 전인 1950년 8월 24일, 함명수 소령 등 해군 첩보대원 17명이 적들 몰래 영흥도로 들어갔어요. 영흥도 주민들의 도움을 받아 인천 바다의 깊이와 갯벌, 바다 밑에 숨겨진 폭탄, 적의 대포와 군사가 어디 있는지 알아내 유엔군에 알렸어요. 영화 《인천상륙작전》의 이야기가 된 실화예요.',
+      ko: '인천상륙작전 전인 1950년 8월 24일, 함명수 소령 등 해군 첩보대원 17명이 적의 눈을 피해 영흥도로 들어갔어요. 영흥도 주민들의 도움을 받아 인천 바다의 깊이와 갯벌, 바다 밑에 숨겨진 폭탄, 적의 대포와 군인이 어디에 있는지 알아내 유엔군에 알렸어요. 영화 《인천상륙작전》의 이야기가 된 실화예요.',
       es: 'El 24 de agosto de 1950, antes del desembarco, el mayor Ham Myeong-su y otros agentes de inteligencia naval —17 en total— se infiltraron en la isla Yeongheungdo. Con ayuda de los isleños, reunieron datos sobre la profundidad del mar, las marismas, las minas ocultas y la ubicación de la artillería y las tropas enemigas, y los transmitieron al Comando de las Naciones Unidas. Esta historia real inspiró la película "Operación Chromite" (2016).'
     },
     heroes: [
@@ -689,7 +753,7 @@ window.INCHEON_OPS = [
     name: { ko: '인천항 본대 상륙', es: 'Desembarco principal en el puerto de Incheon' },
     date: { ko: '1950. 9. 15. 오후 5시 30분', es: '15 sep. 1950, 17:30' },
     text: {
-      ko: '그날 오후 5시 30분쯤, 두 번째 밀물에 맞춰 미 해병대가 레드비치와 블루비치로 상륙했어요. 바닷가의 높은 둑(방파제)을 사다리로 넘어 시내로 들어갔고, 밤에는 한국 해병대도 뒤따라 상륙했어요. 약 7만 5천 명의 군인과 261척의 배가 함께한 이 작전 덕분에, 13일 뒤인 9월 28일 서울을 되찾았어요. 콜롬비아는 9개월 뒤인 1951년 6월, 땅에서 싸우는 군대를 보내 유엔군과 함께 싸웠어요.',
+      ko: '그날 오후 5시 30분쯤, 두 번째 밀물에 맞춰 미 해병대가 레드비치와 블루비치로 상륙했어요. 바닷가의 높은 둑(방파제)을 사다리로 넘어 시내로 들어갔고, 밤에는 한국 해병대도 뒤따라 상륙했어요. 약 7만 5천 명의 군인과 261척의 배가 함께한 이 작전 덕분에, 13일 뒤인 9월 28일 서울을 되찾았어요. 콜롬비아도 9개월 뒤인 1951년 6월, 육군 부대(콜롬비아대대)를 보내 유엔군과 함께 싸웠어요.',
       es: 'Esa misma tarde, hacia las 17:30, aprovechando la segunda marea alta, los marines de EE. UU. desembarcaron en Red Beach y Blue Beach. Treparon con escaleras los altos malecones y avanzaron hacia la ciudad; por la noche los siguió la Infantería de Marina surcoreana. Con unos 75.000 efectivos y 261 buques, la operación permitió recuperar Seúl 13 días después, el 28 de septiembre. Nueve meses más tarde, en junio de 1951, Colombia desplegó sus tropas terrestres junto a las fuerzas de la ONU.'
     },
     heroes: [],
@@ -706,7 +770,7 @@ window.INCHEON_OPS = [
     },
     // 출처: 인천투데이 — 원통이고개 전투(9.17.), 부평전투 승전기념비(2008년 부평아트센터). '한·미 해병대'는 확인되지 않아 '미 해병대를 비롯한 연합군'으로 고쳤어요
     heroes: [
-      { card: 'kimdongseok', name: { ko: '김동석 (육군 정보장교)', es: 'Kim Dong-seok (oficial de inteligencia)' }, text: { ko: '인천에서 서울로 가는 길의 적 정보를 모아 서울을 되찾는 데 도운 정보장교 (훗날 대령)', es: 'Oficial de inteligencia que reunió datos sobre el enemigo en la ruta Incheon–Seúl y contribuyó a recuperar la capital (luego coronel).' } }
+      { card: 'kimdongseok', name: { ko: '김동석 (육군 정보장교)', es: 'Kim Dong-seok (oficial de inteligencia)' }, text: { ko: '인천에서 서울로 가는 길의 적 정보를 모아 서울을 되찾는 데 힘을 보탠 정보장교 (훗날 대령)', es: 'Oficial de inteligencia que reunió datos sobre el enemigo en la ruta Incheon–Seúl y contribuyó a recuperar la capital (luego coronel).' } }
     ],
     groups: [1, 2, 3, 4, 5]
   }
@@ -774,7 +838,7 @@ window.HERO_CARDS = [
     deeds: [
       { ko: '콜롬비아 해군 군함을 타고 한국 바다를 지켰어요. 영상에서 "알미란테 파디야호에서 복무했다"고 이야기해 주셨어요.', es: 'Defendió las aguas coreanas a bordo de un buque de la Armada colombiana. En su video contó que sirvió en la Almirante Padilla.' },
       { ko: '서해와 동해, 남해를 돌며 한반도 둘레의 바다를 순찰했어요.', es: 'Patrulló los mares que rodean la península: el Mar Amarillo, el Mar del Este y las aguas del sur.' },
-      { ko: '92세에 6학년 친구들의 질문에 영상으로 답장을 보내 주셨어요. 내일의 문을 여는 한 문장도 이 답장에 들어 있어요.', es: 'A los 92 años respondió en video a las preguntas de estudiantes coreanos de 6.º de primaria, con una frase que guarda la clave de la Puerta del Mañana.' }
+      { ko: '92세의 나이에 6학년 친구들의 질문에 영상으로 답장을 보내 주셨어요. 내일의 문을 여는 한 문장도 이 답장에 들어 있어요.', es: 'A los 92 años respondió en video a las preguntas de estudiantes coreanos de 6.º de primaria, con una frase que guarda la clave de la Puerta del Mañana.' }
     ],
     // 출처: 참전용사 본인의 답장 영상
     groups: []
@@ -804,7 +868,7 @@ window.HERO_CARDS = [
     deeds: [
       { ko: '독립운동가 손정도 목사의 아들이에요.', es: 'Hijo del pastor Son Jeong-do, activista del movimiento de independencia coreano.' },
       { ko: '광복 뒤인 1945년 11월 해군의 뿌리인 해방병단을 만들고, 첫 해군참모총장이 되었어요.', es: 'Tras la liberación, en noviembre de 1945, fundó el Haebang Byeongdan, cuerpo naval que dio origen a la Armada, y fue el primer jefe del Estado Mayor de la Armada.' },
-      { ko: '인천상륙작전 때 한국군을 이끄는 가장 높은 지휘관으로 해군과 해병대를 이끌었어요.', es: 'En el Desembarco de Incheon fue el comandante surcoreano de mayor rango, al frente de la Armada y la Infantería de Marina.' },
+      { ko: '인천상륙작전 때 한국군의 가장 높은 지휘관으로서 해군과 해병대를 이끌었어요.', es: 'En el Desembarco de Incheon fue el comandante surcoreano de mayor rango, al frente de la Armada y la Infantería de Marina.' },
       { ko: '1953년 국방부 장관이 되었어요.', es: 'En 1953 fue nombrado ministro de Defensa Nacional.' }
     ],
     // 출처: 한국민족문화대백과, 국방부
@@ -818,7 +882,7 @@ window.HERO_CARDS = [
     img: 'https://upload.wikimedia.org/wikipedia/commons/5/52/Navy_%28ROKN%29_Vice_Admiral_Hahm_Myong-soo_%ED%95%B4%EA%B5%B0%EC%A4%91%EC%9E%A5_%ED%95%A8%EB%AA%85%EC%88%98_%28NH_104908_Korean_Chief_of_Naval_Operations_visits_Norfolk%2C_Virginia%29.jpg',
     credit: { ko: '미 해군 역사유산사령부 NH 104908 (1966년, 해군참모총장 시절), 퍼블릭 도메인', es: 'Comando de Historia y Patrimonio Naval de EE. UU., NH 104908 (1966, como jefe de la Armada), dominio público' },
     deeds: [
-      { ko: '1950년 8월 24일, 자신을 포함한 해군 첩보대원 17명을 이끌고 영흥도에 몰래 들어갔어요.', es: 'El 24 de agosto de 1950 se infiltró en Yeongheungdo al frente de un equipo de 17 agentes de inteligencia naval, él incluido.' },
+      { ko: '1950년 8월 24일, 해군 첩보대를 이끌고 영흥도에 몰래 들어갔어요. 대원은 자신을 포함해 모두 17명이었어요.', es: 'El 24 de agosto de 1950 se infiltró en Yeongheungdo al frente de un equipo de 17 agentes de inteligencia naval, él incluido.' },
       { ko: '인천 바다의 깊이와 갯벌, 적의 진지를 조사해 유엔군에 알렸어요.', es: 'Reconoció la profundidad del mar, las marismas y las posiciones enemigas, y lo reportó a las fuerzas de la ONU.' },
       { ko: '이 정보 덕분에 인천상륙작전의 길이 열렸어요. 뒷날 제7대 해군참모총장(1964~1966)이 되었어요.', es: 'Esa información allanó el camino al desembarco. Más tarde fue el 7.º jefe del Estado Mayor de la Armada (1964–1966).' }
     ],
@@ -835,8 +899,8 @@ window.HERO_CARDS = [
     deeds: [
       { ko: 'X-RAY 작전 대원으로 영흥도에서 인천상륙작전에 필요한 정보를 모았어요.', es: 'Como integrantes de X-RAY, reunieron en Yeongheungdo información clave para el Desembarco de Incheon.' },
       { ko: '1950년 9월 14일 적에게 둘러싸이자, 작전의 비밀을 지키려고 끝까지 싸우다 목숨을 바쳤어요.', es: 'El 14 de septiembre de 1950, cercados por el enemigo, combatieron hasta el final y dieron la vida para no revelar el secreto de la operación.' },
-      { ko: '나라에서 을지무공훈장을, 미국에서 은성무공훈장을 주어 용기를 기렸어요.', es: 'Corea les otorgó la Orden al Mérito Militar Eulji, y EE. UU., la Estrella de Plata, en honor a su valor.' },
-      { ko: '2014년 9월 "이달의 6·25전쟁영웅"으로 뽑혔어요. 임병래는 당시 소위였는데, 세상을 떠난 뒤 중위로 올려졌어요.', es: 'En septiembre de 2014 fueron nombrados "Héroes de la Guerra de Corea del mes". Im era subteniente y recibió el ascenso póstumo a teniente.' }
+      { ko: '우리나라는 을지무공훈장을, 미국은 은성무공훈장을 주어 그 용기를 기렸어요.', es: 'Corea les otorgó la Orden al Mérito Militar Eulji, y EE. UU., la Estrella de Plata, en honor a su valor.' },
+      { ko: '2014년 9월 "이달의 6·25전쟁영웅"으로 뽑혔어요. 임병래는 당시 소위였는데, 세상을 떠난 뒤 한 계급 올려 중위가 되었어요.', es: 'En septiembre de 2014 fueron nombrados "Héroes de la Guerra de Corea del mes". Im era subteniente y recibió el ascenso póstumo a teniente.' }
     ],
     // 출처: 국가보훈처 보도자료(2014. 9. 이달의 6·25전쟁영웅), 위키백과
     groups: [1, 3]
@@ -917,6 +981,7 @@ window.GLOSSARY = {
     ['상륙작전', '배를 타고 바다에서 적이 있는 땅으로 올라가 공격하는 작전이에요.'],
     ['상륙', '배에서 내려 바다에서 육지로 올라오는 것이에요.'],
     ['첩보', '적의 비밀 정보를 몰래 알아내는 일이에요.'],
+    ['수색대', '적이 어디에 있는지 찾아 살피는 일을 맡은 부대예요.'],
     ['켈로부대', '6·25 전쟁 때 적의 뒤쪽에서 몰래 정보를 모은 한국인 첩보부대(KLO)예요.'],
     ['함대', '여러 척의 군함이 한데 모인 무리예요.'],
     ['프리깃함', '다른 배를 지키고 바다를 순찰하는 중간 크기의 군함이에요. 호위함이라고도 해요.'],
@@ -929,6 +994,7 @@ window.GLOSSARY = {
     ['대대', '수백 명에서 천 명쯤의 군인으로 이루어진 군대 단위예요.'],
     ['사단', '1만 명이 넘는 군인으로 이루어진 큰 군대 단위예요.'],
     ['해병대', '바다와 땅 모두에서 싸울 수 있도록 훈련된 군대예요.'],
+    ['지상군', '땅에서 싸우는 군대예요.'],
     ['참전용사', '전쟁에 나가 싸운 사람이에요.'],
     ['참모총장', '육군·해군·공군 가운데 한 군 전체를 이끄는 가장 높은 군인이에요.'],
     ['제독', '해군의 높은 장군을 부르는 말이에요.'],
@@ -939,7 +1005,7 @@ window.GLOSSARY = {
     ['정보장교', '적의 움직임과 비밀 정보를 모으고 분석하는 일을 맡은 군인이에요.'],
     ['노매드 작전', '1951년 10월 유엔군이 금성 쪽으로 밀고 올라간 작전의 이름이에요.'],
     ['승조원', '배에 타서 일하는 사람이에요.'],
-    ['전선', '싸움이 벌어지는 맨 앞쪽의 줄이에요.'],
+    ['전선', '적과 마주 보며 싸움이 벌어지는 맨 앞쪽 지역이에요.'],
     ['진지', '군대가 싸우려고 자리 잡고 방어 시설을 만든 곳이에요.'],
     ['진격', '앞으로 나아가며 공격하는 것이에요.'],
     ['후퇴', '싸움에서 뒤로 물러나는 것이에요.'],
@@ -1056,7 +1122,7 @@ window.QUESTIONS = {
         veteran: 'jorge',
         video: { type: 'mp4', src: 'videos/jorge_q2.mp4' }, // 원본: Answer Jorge Suarez to Won seoyul_내보내기.mp4 (한국어 자막, 학생 이름 인사는 잘라냄)
         summary: {
-          ko: '가장 힘들었던 건 전우들이 쓰러지는 모습을 보는 것이었어요. 다친 동료를 보면 마치 나에게 일어난 일 같았어요. 떠나간 동료도 있었지만, 살아남은 우리는 계속 앞으로 나아가야 했어요.',
+          ko: '가장 힘들었던 건 전우들이 쓰러지는 모습을 보는 것이었어요. 다친 동료를 보면 마치 제게 일어난 일 같았어요. 떠나간 동료도 있었지만, 살아남은 우리는 계속 앞으로 나아가야 했어요.',
           es: 'Lo más difícil fue ver caer a los compañeros. Ver a un compañero herido o muerto era como si le pasara a uno mismo. Algunos se quedaron en el camino, pero los que sobrevivimos teníamos que seguir adelante.'
         }
       },
@@ -1092,7 +1158,7 @@ window.QUESTIONS = {
         veteran: 'jorge',
         video: { type: 'mp4', src: 'videos/jorge_q3.mp4' }, // 원본: Answer Jorge Suárez to Choi yijun_내보내기.mp4 (한국어 자막, 학생 이름 인사는 잘라냄)
         summary: {
-          ko: '전쟁 뒤 우리와 여러분은 아주 가까웠어요. 오랜 시간이 지나도 여러분이 우리를 기억해 주어 고마워요. 여러분의 자유를 위해 작은 모래 한 알을 보탤 수 있었던 것이 자랑스러워요.',
+          ko: '전쟁 뒤 우리와 여러분은 아주 가까웠어요. 오랜 시간이 지나도 여러분이 우리를 기억해 주어 고마워요. 여러분의 자유를 위해 모래 한 알만큼이라도 힘을 보탤 수 있었던 것이 자랑스러워요.',
           es: 'Después de la guerra, la relación entre ustedes y nosotros ha sido muy cercana. Gracias por recordarnos después de tantos años. Nos alegra haber puesto un pequeño grano de arena por su libertad.'
         }
       }
@@ -1130,7 +1196,7 @@ window.QUESTIONS = {
         veteran: 'jaime',
         video: { type: 'mp4', src: 'videos/jaime_q5.mp4' }, // 원본: Answer Jaime Alvarez to Juhwan Kim_내보내기.mp4 (한국어 자막, 학생 이름 인사는 잘라냄)
         summary: {
-          ko: '평화의 메시지는 미움을 내려놓는 거예요. 옷차림이나 생각이 다르다고 미워하면 안 돼요. 가족의 다름을 받아들이듯 다른 사람도 받아들이세요. 제게 가장 중요한 말은 "관용"이에요. 관용이 있을 때 평화가 찾아와요.',
+          ko: '평화의 메시지는 미움을 내려놓는 거예요. 옷차림이나 생각이 다르다고 미워하면 안 돼요. 가족끼리 서로 다른 점을 받아들이듯, 다른 사람도 받아들이세요. 제게 가장 중요한 말은 "관용"이에요. 관용이 있을 때 평화가 찾아와요.',
           es: 'El mensaje de paz es dejar atrás el odio. No debemos odiar a nadie porque se vista, actúe o piense diferente. Acepten a los demás como aceptan las diferencias dentro de su propia familia. Para mí la palabra clave es "tolerancia": con tolerancia llegará la paz.'
         }
       },
@@ -1297,6 +1363,11 @@ window.KNOW_CHECK = {
       low: { ko: '별로 중요하지 않아요', es: 'No mucho', en: 'Not really' }, high: { ko: '아주 중요해요', es: 'Muy importante', en: 'Very important' } }
   ],
   // 사후 점검 끝의 한 줄 소감 (모두 '하고 싶으면')
+  // 중·고등은 한국어 화면에서 이 질문으로 바뀌어요
+  reflectLevels: {
+    ms: { ko: '정전 상태가 오늘 우리의 삶에 어떤 영향을 주고 있는지, 이번 활동에서 알게 된 것과 연결해 한두 문장으로 써 보세요.' },
+    hs: { ko: '참전용사의 증언과 역사적 사실(냉전·정전 체제)을 연결해, 평화를 지키기 위해 우리 사회가 할 일을 근거와 함께 써 보세요.' }
+  },
   reflect: { ko: '이 활동으로 새로 알게 된 것이나 느낀 점을 한 줄로 써 보세요.', es: 'Escribe en una línea algo que aprendiste o sentiste con esta actividad.', en: 'Write one line about something you learned or felt in this activity.' },
   levels: {
     '34': [
@@ -1347,41 +1418,42 @@ window.KNOW_CHECK = {
         q: { ko: '콜롬비아 해군은 서해 바다를 지키는 일도 했다.', es: 'La Armada colombiana también protegió el Mar Amarillo.', en: 'The Colombian Navy also guarded the Yellow Sea.' }, answer: true,
         why: { ko: '맞아요. 알미란테 파디야호 등이 서해를 돌며 북한군의 바닷길을 막았어요.', es: 'Correcto. La fragata Almirante Padilla y otras patrullaron el Mar Amarillo y cortaron las rutas marítimas norcoreanas.', en: 'Yes. The Almirante Padilla and other frigates patrolled the Yellow Sea and blocked North Korean sea routes.' } },
       { id: 'e8', type: 'choice', topic: 'oldbaldy',
-        q: { ko: '콜롬비아대대에게 가장 힘들고 슬픈 전투는?', es: '¿Cuál fue la batalla más dura y dolorosa para el Batallón Colombia?', en: 'Which was the hardest and saddest battle for the Colombia Battalion?' },
+        q: { ko: '콜롬비아대대가 가장 큰 희생을 치른 전투는?', es: '¿Cuál fue la batalla más dura y dolorosa para el Batallón Colombia?', en: 'Which was the hardest and saddest battle for the Colombia Battalion?' },
         options: [{ ko: '불모고지 전투', es: 'Old Baldy', en: 'Old Baldy' }, { ko: '흑운토령 전투', es: 'Heuguntoryeong', en: 'Heuguntoryeong' }, { ko: '인천상륙작전', es: 'El desembarco de Incheon', en: 'The Incheon Landing' }, { ko: '400고지 전투', es: 'La colina 400', en: 'Hill 400' }], answer: 0,
         why: { ko: '1953년 3월 불모고지 전투에서 많은 콜롬비아 군인이 다치거나 목숨을 잃었어요.', es: 'En la batalla de Old Baldy (marzo de 1953) muchos soldados colombianos resultaron heridos o murieron.', en: 'In the Battle of Old Baldy (March 1953), many Colombian soldiers were wounded or killed.' } },
       { id: 'e9', type: 'ox', topic: 'armistice',
         q: { ko: '정전협정은 전쟁을 완전히 끝낸 약속(종전)이다.', es: 'El armisticio puso fin definitivo a la guerra.', en: 'The armistice ended the war completely.' }, answer: false,
-        why: { ko: '정전은 싸움을 멈춘 것이에요. 그래서 지금도 휴전선이 있어요.', es: 'El armisticio solo detuvo los combates; por eso todavía existe la línea de demarcación.', en: 'The armistice only stopped the fighting. That is why the demarcation line still exists.' } },
+        why: { ko: '정전은 싸움을 잠시 멈춘 것이에요. 그래서 지금도 휴전선이 있어요.', es: 'El armisticio solo detuvo los combates; por eso todavía existe la línea de demarcación.', en: 'The armistice only stopped the fighting. That is why the demarcation line still exists.' } },
       { id: 'e10', type: 'choice', topic: 'memorial',
-        q: { ko: '인천 경명공원에 있는 것은?', es: '¿Qué hay en el parque Gyeongmyeong de Incheon?', en: 'What is in Gyeongmyeong Park in Incheon?' },
-        options: [{ ko: '콜롬비아군 참전기념비', es: 'El monumento a los combatientes colombianos', en: 'The memorial to the Colombian soldiers' }, { ko: '유엔기념공원', es: 'El Cementerio Memorial de la ONU', en: 'The UN Memorial Cemetery' }, { ko: '독립기념관', es: 'El Salón de la Independencia', en: 'The Independence Hall' }, { ko: '전쟁기념관', es: 'El Museo Memorial de la Guerra', en: 'The War Memorial of Korea' }], answer: 0,
-        why: { ko: '경명공원에는 콜롬비아군 참전기념비가 있어요. 유엔기념공원은 부산에 있어요.', es: 'En el parque Gyeongmyeong está el monumento colombiano. El Cementerio Memorial de la ONU está en Busan.', en: 'Gyeongmyeong Park has the Colombian memorial. The UN Memorial Cemetery is in Busan.' } }
+        q: { ko: '6·25 전쟁 때 가족과 헤어져 남과 북으로 흩어진 뒤, 지금까지도 만나지 못하는 사람들을 무엇이라고 할까요?', es: '¿Cómo se llama a las personas que quedaron separadas de su familia entre el Norte y el Sur durante la Guerra de Corea?', en: 'What are people called who were separated from their families between North and South during the Korean War?' },
+        options: [{ ko: '이산가족', es: 'Familias separadas', en: 'Separated families' }, { ko: '다문화 가족', es: 'Familias multiculturales', en: 'Multicultural families' }, { ko: '핵가족', es: 'Familias nucleares', en: 'Nuclear families' }, { ko: '대가족', es: 'Familias extensas', en: 'Extended families' }], answer: 0,
+        why: { ko: '전쟁으로 많은 가족이 남과 북으로 흩어졌어요. 이들을 이산가족이라고 해요. 전쟁은 군인뿐 아니라 수많은 사람의 삶에 깊은 상처를 남겼어요.', es: 'La guerra separó a muchas familias entre el Norte y el Sur. Se les llama "familias separadas": la guerra dejó heridas profundas en millones de personas, no solo en los soldados.', en: 'The war split many families between North and South; they are called separated families. The war left deep wounds on millions of people, not only soldiers.' } }
     ],
     ms: [
-      { id: 'm1', type: 'choice', topic: 'war', q: { ko: '1950년 6월 25일 북한군이 넘어 쳐들어온 경계선은?' },
-        options: [{ ko: '38도선' }, { ko: '휴전선' }, { ko: '낙동강' }, { ko: '압록강' }], answer: 0,
-        why: { ko: '38도선은 1945년 광복 뒤 남북을 나눈 선이에요. 휴전선은 1953년 정전협정으로 생긴 선이라 서로 달라요.' } },
+      { id: 'm1', type: 'choice', topic: 'armistice', q: { ko: "1951년 7월 시작된 정전 회담이 2년 가까이 이어진 가장 큰 까닭은?" },
+        options: [{ ko: "포로를 어떻게 돌려보낼지를 두고 의견이 크게 달라서" }, { ko: "회담 장소를 정하지 못해서" }, { ko: "유엔군이 회담에 나오지 않아서" }, { ko: "콜롬비아가 회담을 반대해서" }], answer: 0,
+        why: { ko: "유엔군은 포로 본인의 뜻을 존중하자고 했고, 공산군은 모두 돌려보내자고 맞섰어요. 회담이 길어지는 동안 고지전으로 희생이 계속됐어요." } },
       { id: 'm2', type: 'choice', topic: 'war', q: { ko: '1950년 8월, 국군과 유엔군이 끝까지 지켜 낸 방어선은?' },
         options: [{ ko: '한강 방어선' }, { ko: '낙동강 방어선' }, { ko: '압록강 방어선' }, { ko: '휴전선' }], answer: 1,
         why: { ko: '남쪽 끝까지 밀려났지만 낙동강 방어선을 지켜 냈고, 이어서 인천상륙작전으로 반격했어요.' } },
-      { id: 'm3', type: 'choice', topic: 'incheon', q: { ko: '인천이 상륙 작전을 하기 매우 어려운 곳이었던 까닭은?' },
-        options: [{ ko: '밀물과 썰물의 높이 차이가 매우 커서' }, { ko: '항구가 하나도 없어서' }, { ko: '바다가 꽁꽁 얼어서' }, { ko: '높은 산으로 둘러싸여서' }], answer: 0,
-        why: { ko: '인천은 밀물과 썰물의 차이가 최대 약 10m나 돼서, 밀물 때에 맞춰 상륙해야 했어요.' } },
+      { id: 'm3', type: 'choice', topic: 'war', q: { ko: "광복 뒤 한반도가 38도선을 경계로 나뉜 까닭은?" },
+        options: [{ ko: "미국과 소련이 38도선을 경계로 남북을 나누어 점령해서" }, { ko: "남북이 각자 독립을 선언해서" }, { ko: "정전협정으로 선을 그어서" }, { ko: "유엔이 국경선으로 정해서" }], answer: 0,
+        why: { ko: "1945년 광복 뒤 미군과 소련군이 38도선 남북에 각각 들어왔고, 1948년 남과 북에 서로 다른 정부가 세워졌어요." } },
       { id: 'm4', type: 'choice', topic: 'war', q: { ko: '1950년 10월 이후 국군과 유엔군이 다시 남쪽으로 물러난(1·4 후퇴) 까닭은?' },
         options: [{ ko: '중국군이 전쟁에 뛰어들어서' }, { ko: '정전협정을 맺어서' }, { ko: '유엔군이 모두 돌아가서' }, { ko: '인천상륙작전이 실패해서' }], answer: 0,
         why: { ko: '중국군이 참전하면서 국군과 유엔군은 다시 남쪽으로 물러났고, 1951년 1월 4일 서울을 다시 내주었어요.' } },
       { id: 'm5', type: 'choice', topic: 'colombia', q: { ko: '6·25 전쟁에 함께한 나라 가운데 콜롬비아만의 특별한 점은?' },
         options: [{ ko: '라틴아메리카에서 유일하게 전투 병력을 보냈다' }, { ko: '가장 먼저 군대를 보냈다' }, { ko: '가장 많은 군대를 보냈다' }, { ko: '한국과 국경이 맞닿아 있었다' }], answer: 0,
         why: { ko: '콜롬비아는 라틴아메리카에서 유일하게 육군 콜롬비아대대와 해군 프리깃함을 보냈어요. 가장 먼저, 가장 많이 보낸 나라는 미국이에요.' } },
-      { id: 'm6', type: 'choice', topic: 'geumseong', q: { ko: '콜롬비아대대가 주로 함께 작전을 펼친 나라의 군대는?' },
-        options: [{ ko: '미국' }, { ko: '영국' }, { ko: '튀르키예' }, { ko: '프랑스' }], answer: 0,
-        why: { ko: '콜롬비아대대는 미군 부대와 한 팀이 되어 싸웠어요.' } },
+      { id: 'm6', type: 'choice', topic: 'war', q: { ko: "북한의 남침 직후 유엔이 한 일로 옳은 것은?" },
+        options: [{ ko: "안전보장이사회가 북한의 공격을 평화를 깨뜨린 행위로 보고, 회원국에 대한민국을 돕도록 권고했다" }, { ko: "곧바로 정전협정을 맺게 했다" }, { ko: "중국에 군대를 보내 달라고 요청했다" }, { ko: "아무 결정도 내리지 못했다" }], answer: 0,
+        why: { ko: "유엔 안보리는 1950년 6월 25일과 27일 결의로 북한의 공격을 평화 파괴로 규정하고, 회원국의 군사 지원을 권고했어요. 그래서 16개국이 전투 병력을 보냈어요." } },
       { id: 'm7', type: 'choice', topic: 'hill400', q: { ko: '1951년부터 1953년까지 전쟁의 모습으로 가장 알맞은 것은?' },
         options: [{ ko: '38도선 근처의 높은 산(고지)을 서로 차지하려는 치열한 싸움' }, { ko: '바다에서만 벌어진 싸움' }, { ko: '부산 근처에서만 벌어진 싸움' }, { ko: '싸움이 완전히 멈춘 시기' }], answer: 0,
         why: { ko: '전선이 38도선 근처에 머무는 동안 고지를 둘러싼 고지전이 이어졌어요. 콜롬비아대대도 이때 싸웠어요.' } },
-      { id: 'm8', type: 'ox', topic: 'westsea', q: { ko: '콜롬비아 해군은 정전협정 뒤에도 1955년까지 한국 바다를 지켰다.' }, answer: true,
-        why: { ko: '맞아요. 콜롬비아 해군은 전쟁이 멈춘 뒤에도 1955년까지 한국 바다에 머물렀어요.' } },
+      { id: 'm8', type: 'choice', topic: 'memorial', q: { ko: "6·25 전쟁이 남긴 피해로 알맞지 않은 것은?" },
+        options: [{ ko: "남북한 인구가 크게 늘었다" }, { ko: "많은 피란민과 전쟁고아가 생겼다" }, { ko: "가족이 남북으로 흩어진 이산가족이 생겼다" }, { ko: "집·학교·공장·도로가 크게 부서졌다" }], answer: 0,
+        why: { ko: "전쟁으로 수많은 사람이 죽거나 다쳤고, 피란민·전쟁고아·이산가족이 생겼으며 국토가 크게 파괴되었어요." } },
       { id: 'm9', type: 'choice', topic: 'armistice', q: { ko: '오늘날 한반도의 상태를 바르게 설명한 것은?' },
         options: [{ ko: '정전 상태라서 휴전선을 사이에 두고 남북이 나뉘어 있다' }, { ko: '전쟁이 완전히 끝나 평화 조약을 맺었다' }, { ko: '38도선이 그대로 국경이 되었다' }, { ko: '남북이 이미 통일되었다' }], answer: 0,
         why: { ko: '1953년의 약속은 싸움을 멈춘 정전협정이에요. 그래서 지금도 휴전선이 있어요.' } },
@@ -1390,34 +1462,35 @@ window.KNOW_CHECK = {
         why: { ko: '비문에는 "611명의 고귀한 생명이 피를 흘렸다"고 새겨져 있어요. 목숨을 잃거나 다친 콜롬비아 군인들을 기억하는 숫자예요.' } }
     ],
     hs: [
-      { id: 'h1', type: 'choice', topic: 'war', q: { ko: '6·25 전쟁 때 유엔의 이름으로 대한민국을 도운 나라들에 대한 설명으로 옳은 것은?' },
-        options: [{ ko: '전투 병력을 보낸 나라와 의료 지원을 한 나라가 함께했다' }, { ko: '미국 한 나라만 군대를 보냈다' }, { ko: '유럽 나라들만 참여했다' }, { ko: '모두 정전협정 뒤에 도착했다' }], answer: 0,
-        why: { ko: '전투 병력을 보낸 16개국과 의료 지원을 한 6개국, 모두 22개국이 함께했어요.' } },
+      { id: 'h1', type: 'choice', topic: 'war', q: { ko: "6·25 전쟁이 국제전으로 커진 까닭을 냉전과 관련지어 옳게 설명한 것은?" },
+        options: [{ ko: "미국과 소련이 대립하는 냉전 속에서 유엔군과 중국군이 각각 참전했다" }, { ko: "남과 북이 각자 유럽 나라들과 군사 동맹을 맺었다" }, { ko: "정전협정을 맺은 뒤에 여러 나라가 들어왔다" }, { ko: "일본이 군대를 보내 양쪽을 모두 도왔다" }], answer: 0,
+        why: { ko: "북한의 남침은 소련의 승인과 지원 속에 이루어졌어요. 유엔은 안보리 결의로 16개국 전투 병력을 보냈고, 1950년 10월에는 중국군이 참전했어요." } },
       { id: 'h2', type: 'choice', topic: 'war', q: { ko: '다음 사건을 일어난 순서대로 바르게 늘어놓은 것은?' },
         options: [{ ko: '북한군 남침 → 낙동강 방어선 → 인천상륙작전 → 1·4 후퇴' }, { ko: '북한군 남침 → 인천상륙작전 → 낙동강 방어선 → 1·4 후퇴' }, { ko: '낙동강 방어선 → 북한군 남침 → 1·4 후퇴 → 인천상륙작전' }, { ko: '1·4 후퇴 → 인천상륙작전 → 낙동강 방어선 → 북한군 남침' }], answer: 0,
         why: { ko: '남침(1950.6.) → 낙동강 방어선(1950.8.) → 인천상륙작전(1950.9.) → 중국군 참전과 1·4 후퇴(1951.1.) 순서예요.' } },
-      { id: 'h3', type: 'choice', topic: 'incheon', q: { ko: '인천상륙작전 전, 영흥도에 들어간 X-RAY 첩보대가 한 일은?' },
-        options: [{ ko: '인천 바다의 깊이·갯벌·적의 배치를 알아내 유엔군에 알렸다' }, { ko: '월미도에 가장 먼저 상륙했다' }, { ko: '팔미도 등대를 처음 세웠다' }, { ko: '정전 회담을 열었다' }], answer: 0,
-        why: { ko: '함명수 소령 등 해군 첩보대원들이 주민의 도움을 받아 상륙에 꼭 필요한 정보를 모았어요.' } },
-      { id: 'h4', type: 'choice', topic: 'busan', q: { ko: '콜롬비아대대가 태평양을 건너는 데 걸린 기간과 처음 도착한 항구가 바르게 짝지어진 것은?' },
-        options: [{ ko: '약 25일 – 부산항' }, { ko: '약 3일 – 인천항' }, { ko: '약 3개월 – 부산항' }, { ko: '약 25일 – 인천항' }], answer: 0,
-        why: { ko: '1951년 5월 21일 부에나벤투라항을 떠나 약 25일 만인 6월 15일 부산항에 도착했어요.' } },
+      { id: 'h3', type: 'choice', topic: 'incheon', q: { ko: "1950년 10월 중국군이 참전하게 된 직접적인 계기는?" },
+        options: [{ ko: "국군과 유엔군이 38도선을 넘어 압록강 가까이까지 북진해서" }, { ko: "인천상륙작전이 실패해서" }, { ko: "정전 회담이 결렬되어서" }, { ko: "부산이 함락되어서" }], answer: 0,
+        why: { ko: "인천상륙작전으로 서울을 되찾은 뒤 국군과 유엔군은 38도선을 넘어 북진했어요. 압록강에 가까워지자 중국군이 대규모로 참전했어요." } },
+      { id: 'h4', type: 'choice', topic: 'oldbaldy', q: { ko: "정전 회담이 2년 넘게 이어진 가장 큰 쟁점은?" },
+        options: [{ ko: "포로를 본인의 뜻에 따라 돌려보낼지(자유 송환), 모두 돌려보낼지(전원 송환)" }, { ko: "38도선을 그대로 국경으로 할지" }, { ko: "남북이 함께 유엔에 가입할지" }, { ko: "전쟁 배상금을 얼마로 정할지" }], answer: 0,
+        why: { ko: "군사분계선은 협정 당시의 접촉선으로 하기로 1951년 11월 잠정 합의했지만, 포로 송환 방식을 두고 맞서 회담이 1953년까지 길어졌어요." } },
       { id: 'h5', type: 'choice', topic: 'heukun', q: { ko: '콜롬비아대대의 첫 전투와, 가장 큰 아픔을 남긴 전투를 바르게 짝지은 것은?' },
         options: [{ ko: '흑운토령 전투 – 불모고지 전투' }, { ko: '불모고지 전투 – 흑운토령 전투' }, { ko: '금성 진격전 – 400고지 전투' }, { ko: '인천상륙작전 – 판문점 정전협정' }], answer: 0,
         why: { ko: '첫 전투는 1951년 8월 흑운토령 전투, 가장 큰 아픔을 남긴 전투는 1953년 3월 불모고지 전투예요.' } },
       { id: 'h6', type: 'choice', topic: 'hill400', q: { ko: '1951년 하반기부터 1953년까지 고지를 둘러싼 전투가 특히 치열했던 까닭으로 가장 알맞은 것은?' },
         options: [{ ko: '정전 회담이 이어지는 동안 조금이라도 유리한 경계선을 차지하려고' }, { ko: '고지마다 금광이 있어서' }, { ko: '평지에서는 싸우지 않기로 약속해서' }, { ko: '바다가 얼어 배가 다닐 수 없어서' }], answer: 0,
         why: { ko: '1951년 7월부터 정전 회담이 이어졌고, 그동안 양쪽은 더 유리한 선을 차지하려고 고지에서 치열하게 싸웠어요.' } },
-      { id: 'h7', type: 'choice', topic: 'hill180', q: { ko: '1953년 3월 콜롬비아대대가 바르불라 작전(180고지)과 불모고지 전투를 치른 곳은 오늘날 어느 지역 일대일까요?' },
-        options: [{ ko: '경기도 연천' }, { ko: '강원도 금성' }, { ko: '부산' }, { ko: '인천 월미도' }], answer: 0,
-        why: { ko: '두 전투 모두 경기도 연천 일대에서 벌어졌어요.' } },
-      { id: 'h8', type: 'ox', topic: 'armistice', q: { ko: '정전협정은 평화 조약이어서, 이 협정으로 6·25 전쟁은 법적으로 완전히 끝났다.' }, answer: false,
-        why: { ko: '정전협정은 싸움을 멈춘 협정일 뿐이에요. 전쟁을 끝내는 평화 조약은 아직 맺지 않았어요.' } },
+      { id: 'h7', type: 'choice', topic: 'memorial', q: { ko: "6·25 전쟁이 남긴 영향으로 옳지 않은 것은?" },
+        options: [{ ko: "남북 사이의 교류와 왕래가 활발해졌다" }, { ko: "분단이 굳어지고 남북의 적대감이 깊어졌다" }, { ko: "수많은 이산가족과 전쟁고아가 생겼다" }, { ko: "한미상호방위조약이 맺어져 한미 동맹이 시작되었다" }], answer: 0,
+        why: { ko: "전쟁은 분단을 굳히고 남북의 적대감을 깊게 했어요. 수많은 이산가족과 전쟁고아가 생겼고, 1953년 10월 한미상호방위조약이 맺어졌어요." } },
+      { id: 'h8', type: 'choice', topic: 'war', q: { ko: "북한의 남침 직후 유엔군 파견이 빠르게 결정될 수 있었던 배경으로 옳은 것은?" },
+        options: [{ ko: "소련이 안전보장이사회에 나오지 않아 거부권을 행사하지 않았다" }, { ko: "중국이 유엔군 파견을 제안했다" }, { ko: "정전 회담에서 결정되었다" }, { ko: "북한이 유엔에 도움을 요청했다" }], answer: 0,
+        why: { ko: "소련은 1950년 1월부터 중국 대표권 문제로 안보리에 불참하고 있었어요. 그 사이 결의 82·83·84호로 북한의 공격을 규정하고, 회원국의 지원과 유엔군 통합사령부를 정했어요." } },
       { id: 'h9', type: 'ox', topic: 'westsea', q: { ko: '콜롬비아 해군의 첫 군함 알미란테 파디야호는 1950년 9월 인천상륙작전에 참여했다.' }, answer: false,
         why: { ko: '아니에요. 파디야호는 1951년 5월에 한국 바다에 왔어요. 그 뒤 서해 봉쇄와 동해 함포 지원을 했고, 콜롬비아 해군은 1955년까지 머물렀어요.' } },
-      { id: 'h10', type: 'choice', topic: 'memorial', q: { ko: '콜롬비아군 참전기념비가 2018년 경명공원으로 옮겨진 까닭은?' },
-        options: [{ ko: '원래 자리에 도시철도 2호선 공사와 새 도시 개발이 시작되어서' }, { ko: '콜롬비아로 보내기 위해서' }, { ko: '바닷가로 옮기기 위해서' }, { ko: '비석을 새로 만들기 위해서' }], answer: 0,
-        why: { ko: '1975년 가정동에 세웠던 기념비를 2018년 7월 25일 경명공원으로 옮겼어요. 지금도 해마다 이곳에서 추모식이 열려요.' } }
+      { id: 'h10', type: 'choice', topic: 'armistice', q: { ko: "1953년 7월 27일 정전협정에 서명하지 않은 쪽은?" },
+        options: [{ ko: "대한민국 정부" }, { ko: "유엔군 사령관" }, { ko: "북한군 사령관" }, { ko: "중국군 사령관" }], answer: 0,
+        why: { ko: "이승만 정부는 북진 통일을 주장하며 정전에 반대해 서명하지 않았어요. 협정 직전 반공 포로를 석방했고, 협정 뒤 한미상호방위조약을 맺었어요." } }
     ]
   }
 };
@@ -1431,9 +1504,9 @@ window.LEVEL_QUIZ = {
     war: { type: 'choice', q: { ko: '북한군이 1950년 6월 25일 넘어온 선과, 1953년 정전으로 생긴 선을 바르게 짝지은 것은?' },
       options: [{ ko: '38도선 – 휴전선' }, { ko: '휴전선 – 38도선' }, { ko: '낙동강 – 압록강' }, { ko: '압록강 – 38도선' }], answer: 0,
       explain: { ko: '38도선은 1945년 광복 뒤 남북을 나눈 선, 휴전선(군사분계선)은 1953년 정전협정으로 생긴 선이에요. 두 선은 위치가 달라요.' } },
-    incheon: { type: 'choice', q: { ko: '인천상륙작전이 "5000분의 1의 확률"이라 불릴 만큼 어려웠던 까닭은?' },
-      options: [{ ko: '밀물과 썰물의 높이 차이가 매우 커서' }, { ko: '항구가 하나도 없어서' }, { ko: '겨울이라 바다가 얼어서' }, { ko: '유엔군에 배가 없어서' }], answer: 0,
-      explain: { ko: '인천은 밀물과 썰물 차이가 최대 약 10m라, 밀물 때를 맞춰 9월 15일 새벽(월미도)과 오후(본대) 두 번에 나누어 상륙했어요. 덕분에 9월 28일 서울을 되찾았어요.' } },
+    incheon: { type: 'choice', q: { ko: "인천이 상륙 작전을 펼치기에 매우 어려운 곳으로 꼽힌 까닭으로 가장 알맞은 것은?" },
+      options: [{ ko: "밀물과 썰물의 차이가 크고 바닷길이 좁아서" }, { ko: "항구가 하나도 없어서" }, { ko: "북한군이 인천에 한 명도 없어서" }, { ko: "유엔군에 배가 거의 없어서" }], answer: 0,
+      explain: { ko: "인천은 밀물과 썰물 차이가 최대 약 10m이고 바닷길이 좁아, 흔히 \"성공 확률 5000분의 1\"이라고 할 만큼 위험한 작전이었어요. 밀물 때를 맞춰 9월 15일 상륙했고, 9월 28일 서울을 되찾았어요." } },
     colombia: { type: 'choice', q: { ko: '콜롬비아가 6·25 전쟁에 보낸 병력으로 옳은 것은?' },
       options: [{ ko: '육군 대대와 해군 프리깃함' }, { ko: '의료 지원단만' }, { ko: '공군 전투기 부대만' }, { ko: '식량과 물자만' }], answer: 0,
       explain: { ko: '콜롬비아는 라틴아메리카에서 유일하게 전투 병력을 보냈어요. 육군 "콜롬비아대대"와 해군 프리깃함 3척이에요.' } },
@@ -1442,55 +1515,55 @@ window.LEVEL_QUIZ = {
       explain: { ko: '1진 1,083명이 1951년 6월 15일 부산항에 도착했고, 여러 번 교대하며 모두 약 5,100명이 왔어요.' } },
     heukun: { type: 'ox', q: { ko: '흑운토령 전투는 정전협정이 맺어진 뒤에 벌어진 전투다.' }, answer: false,
       explain: { ko: '아니에요. 흑운토령 전투는 1951년 8월, 콜롬비아대대의 첫 전투예요. 정전협정은 1953년 7월이에요.' } },
-    geumseong: { type: 'choice', q: { ko: '1951년 10월 콜롬비아대대가 미군 부대와 함께 금성 쪽으로 나아간 작전 이름은?' },
-      options: [{ ko: '노매드 작전' }, { ko: '크로마이트 작전' }, { ko: '바르불라 작전' }, { ko: 'X-RAY 작전' }], answer: 0,
-      explain: { ko: '노매드 작전이에요. 크로마이트는 인천상륙작전, 바르불라는 180고지 기습, X-RAY는 영흥도 첩보 작전의 이름이에요.' } },
-    hill400: { type: 'choice', q: { ko: '1951년 하반기부터 1953년까지 고지를 둘러싼 싸움이 많았던 까닭으로 알맞은 것은?' },
-      options: [{ ko: '정전 회담이 이어지는 동안 유리한 땅을 차지하려고' }, { ko: '고지에 금광이 있어서' }, { ko: '산에서만 싸우기로 약속해서' }, { ko: '평지가 얼어서' }], answer: 0,
-      explain: { ko: '1951년 7월부터 정전 회담이 이어졌어요. 그동안 양쪽은 조금이라도 유리한 경계선을 만들려고 고지에서 치열하게 싸웠어요.' } },
+    geumseong: { type: 'choice', q: { ko: "콜롬비아대대가 1951년 10월 빼앗은 금성 쪽 고지 일대는 오늘날 어디에 있을까요?" },
+      options: [{ ko: "휴전선 북쪽 — 정전 직전까지의 전투 결과에 따라 군사분계선이 정해져서" }, { ko: "휴전선 남쪽 — 콜롬비아대대가 끝까지 지켜서" }, { ko: "휴전선이 금성 한가운데를 지나서 반반" }, { ko: "금성은 바다 위의 섬이라 휴전선과 관계없다" }], answer: 0,
+      explain: { ko: "콜롬비아대대는 노매드 작전으로 금성 쪽 고지를 빼앗았지만, 1953년 7월 중국군의 대공세 뒤 정전이 되면서 금성 일대는 휴전선 북쪽이 되었어요. 군사분계선은 정전 순간 양쪽 군대가 맞선 선을 따라 그어졌어요." } },
+    hill400: { type: 'choice', q: { ko: "콜롬비아대대가 400고지를 기습한 1952년 6월, 판문점에서는 무엇이 이어지고 있었나요?" },
+      options: [{ ko: "정전 회담" }, { ko: "평화 조약 서명식" }, { ko: "인천상륙작전 준비" }, { ko: "남북 정상 회담" }], answer: 0,
+      explain: { ko: "정전 회담은 1951년 7월에 시작해 1953년 7월까지 이어졌어요. 회담이 이어지는 동안에도 전선에서는 고지를 둘러싼 전투가 계속됐어요." } },
     hill180: { type: 'choice', q: { ko: '바르불라 작전(180고지)의 특징으로 알맞은 것은?' },
       options: [{ ko: '새벽에 몰래 다가가 짧게 기습하고 돌아왔다' }, { ko: '바다에서 배로 상륙했다' }, { ko: '비행기에서 낙하산으로 내렸다' }, { ko: '몇 달 동안 산을 둘러싸고 기다렸다' }], answer: 0,
       explain: { ko: '1953년 3월 10일 새벽, 적의 진지에 몰래 다가가 짧은 시간에 공격하고 돌아온 기습 작전이에요.' } },
     oldbaldy: { type: 'ox', q: { ko: '불모고지 전투는 콜롬비아대대에게 가장 큰 아픔을 남긴 전투였다.' }, answer: true,
       explain: { ko: '맞아요. 1953년 3월 불모고지 전투에서 많은 콜롬비아 군인이 다치거나 목숨을 잃었어요.' } },
-    armistice: { type: 'choice', q: { ko: '정전협정에 대한 설명으로 옳은 것은?' },
-      options: [{ ko: '싸움을 멈추기로 한 약속이라, 지금도 휴전선을 사이에 두고 남북이 나뉘어 있다' }, { ko: '전쟁을 완전히 끝낸 평화 조약이다' }, { ko: '남북이 하나로 통일하기로 한 약속이다' }, { ko: '38도선을 그대로 국경으로 정한 약속이다' }], answer: 0,
-      explain: { ko: '1953년 7월 27일 판문점에서 맺은 정전협정은 싸움을 멈춘 약속이에요. 그래서 평화를 지키는 노력이 계속 필요해요.' } },
+    armistice: { type: 'choice', q: { ko: "1953년 7월 27일 정전협정에 서명하지 않은 쪽은?" },
+      options: [{ ko: "대한민국 정부" }, { ko: "유엔군 사령관" }, { ko: "북한군 사령관" }, { ko: "중국군 사령관" }], answer: 0,
+      explain: { ko: "북진 통일을 주장한 대한민국 정부는 정전에 반대해 서명하지 않았어요. 그 뒤 1953년 10월 한미상호방위조약을 맺었어요." } },
     westsea: { type: 'choice', q: { ko: '콜롬비아 해군이 서해에서 한 일로 알맞은 것은?' },
       options: [{ ko: '북한군의 바닷길 이동과 보급을 막는 순찰' }, { ko: '인천상륙작전의 첫 상륙' }, { ko: '부산항 건설' }, { ko: '고기잡이배 호위만' }], answer: 0,
       explain: { ko: '알미란테 파디야호는 1951년 5월부터 서해 초도~석도 사이를 순찰하며 북한군의 바닷길을 막았어요.' } },
-    memorial: { type: 'choice', q: { ko: '콜롬비아군 참전기념비가 2018년 경명공원으로 옮겨진 까닭은?' },
-      options: [{ ko: '원래 자리에 도시철도 2호선 공사와 새 도시 개발이 시작되어서' }, { ko: '콜롬비아로 보내기 위해서' }, { ko: '비석이 무너져서' }, { ko: '바닷가로 옮기려고' }], answer: 0,
-      explain: { ko: '1975년 가정동에 세운 기념비를 2018년 7월 25일 경명공원으로 옮겼어요. 지금도 해마다 추모식이 열려요.' } }
+    memorial: { type: 'choice', q: { ko: "인천 콜롬비아군 참전기념비의 비문을 한국어와 스페인어로 함께 새긴 뜻으로 가장 알맞은 것은?" },
+      options: [{ ko: "두 나라 사람들이 함께 희생을 기억하자는 뜻" }, { ko: "관광객을 끌어모으려고" }, { ko: "스페인이 기념비를 세워서" }, { ko: "한국어만으로는 비석이 너무 작아서" }], answer: 0,
+      explain: { ko: "1975년 세운 기념비는 2018년 경명공원으로 옮겨졌어요. 해마다 이곳에서 한국과 콜롬비아가 함께 추모식을 열어요." } }
   },
   hs: {
-    war: { type: 'choice', q: { ko: '6·25 전쟁에 유엔의 이름으로 함께한 나라는 전투 병력과 의료 지원을 합쳐 모두 몇 개국일까요?' },
-      options: [{ ko: '7개국' }, { ko: '16개국' }, { ko: '22개국' }, { ko: '50개국' }], answer: 2,
-      explain: { ko: '전투 병력 16개국과 의료 지원 6개국을 합쳐 22개국이에요. 그중 라틴아메리카에서 전투 병력을 보낸 나라는 콜롬비아뿐이에요.' } },
+    war: { type: 'choice', q: { ko: "1945년 광복부터 6·25 전쟁 직전까지의 상황으로 옳은 것은?" },
+      options: [{ ko: "미·소 분할 점령 뒤 1948년 남과 북에 각각 정부가 세워졌다" }, { ko: "광복 직후 남북이 하나의 정부를 세웠다" }, { ko: "38도선은 1953년에 처음 그어졌다" }, { ko: "유엔은 북한 정부만 승인했다" }], answer: 0,
+      explain: { ko: "광복 뒤 38도선을 경계로 미군과 소련군이 남북을 나누어 점령했고, 1948년 8월 대한민국 정부, 9월 북한 정권이 각각 수립되었어요. 유엔 총회는 1948년 12월 대한민국 정부를 승인했어요." } },
     incheon: { type: 'choice', q: { ko: '인천상륙작전이 전쟁의 흐름에 준 영향으로 가장 알맞은 것은?' },
       options: [{ ko: '북한군의 보급로를 끊어 반격과 9월 28일 서울 수복으로 이어졌다' }, { ko: '곧바로 정전협정이 맺어졌다' }, { ko: '중국군이 전쟁에 들어오지 않게 되었다' }, { ko: '국군과 유엔군이 낙동강까지 밀려났다' }], answer: 0,
       explain: { ko: '북한군의 뒤를 끊어 낙동강 전선의 반격이 가능해졌고, 13일 뒤 서울을 되찾았어요. 중국군은 그 뒤인 1950년 10월에 참전했어요.' } },
-    colombia: { type: 'choice', q: { ko: '콜롬비아의 6·25 전쟁 참전에 대한 설명으로 옳지 않은 것은?' },
-      options: [{ ko: '한국과 가까운 이웃 나라라서 참전했다' }, { ko: '라틴아메리카에서 유일하게 전투 병력을 보냈다' }, { ko: '육군 대대와 해군 프리깃함을 함께 보냈다' }, { ko: '모두 약 5,100명의 군인이 한국에 왔다' }], answer: 0,
-      explain: { ko: '콜롬비아는 한국에서 지구 반대편에 있는 나라예요. 그렇게 먼 나라도 유엔의 이름으로 한국을 도왔어요.' } },
-    busan: { type: 'choice', q: { ko: '콜롬비아대대 1진(1,083명)이 부산항에 도착한 날은?' },
-      options: [{ ko: '1950년 6월 25일' }, { ko: '1950년 9월 15일' }, { ko: '1951년 6월 15일' }, { ko: '1953년 7월 27일' }], answer: 2,
-      explain: { ko: '1951년 5월 21일 부에나벤투라항을 떠나 약 25일 만인 6월 15일 부산항에 도착했어요. 나머지는 전쟁 시작, 인천상륙작전, 정전협정 날이에요.' } },
+    colombia: { type: 'choice', q: { ko: "콜롬비아가 6·25 전쟁에 군대를 보낸 국제적 배경으로 가장 알맞은 것은?" },
+      options: [{ ko: "유엔 안보리의 결의에 따라 회원국으로서 군사 지원에 나섰다" }, { ko: "한국과 맺은 군사 동맹 조약 때문이었다" }, { ko: "정전협정을 감시하기 위해서였다" }, { ko: "중국군을 돕기 위해서였다" }], answer: 0,
+      explain: { ko: "유엔 안보리 결의 83호(1950.6.27.)는 회원국에 대한민국을 돕도록 권고했어요. 콜롬비아는 라틴아메리카에서 유일하게 전투 병력(육군 대대·해군 프리깃함)을 보냈어요." } },
+    busan: { type: 'choice', q: { ko: "부산이 전쟁 내내 유엔군이 들어오는 관문 역할을 할 수 있었던 까닭은?" },
+      options: [{ ko: "낙동강 방어선 안쪽에 있어 북한군에게 점령되지 않았다" }, { ko: "휴전선 바로 아래에 있었다" }, { ko: "콜롬비아와 가장 가까운 항구였다" }, { ko: "전쟁 전부터 유엔군 기지가 있었다" }], answer: 0,
+      explain: { ko: "1950년 8월 국군과 유엔군은 낙동강 방어선을 지켜 냈고, 부산은 임시 수도이자 유엔군의 군수 기지가 되었어요. 콜롬비아대대 1진도 1951년 6월 15일 부산항으로 들어왔어요." } },
     heukun: { type: 'choice', q: { ko: '콜롬비아대대의 전투를 일어난 순서대로 바르게 늘어놓은 것은?' },
       options: [{ ko: '흑운토령 → 금성 진격전 → 400고지 → 불모고지' }, { ko: '금성 진격전 → 흑운토령 → 불모고지 → 400고지' }, { ko: '400고지 → 흑운토령 → 금성 진격전 → 불모고지' }, { ko: '불모고지 → 400고지 → 금성 진격전 → 흑운토령' }], answer: 0,
       explain: { ko: '흑운토령(1951.8.) → 금성 진격전(1951.10.) → 400고지(1952.6.) → 불모고지(1953.3.) 순서예요.' } },
-    geumseong: { type: 'choice', q: { ko: '금성 진격전에 대한 설명으로 바르게 짝지어진 것은?' },
-      options: [{ ko: '미군 부대와 함께 – 노매드 작전' }, { ko: '영국군과 함께 – 크로마이트 작전' }, { ko: '튀르키예군과 함께 – 바르불라 작전' }, { ko: '프랑스군과 함께 – X-RAY 작전' }], answer: 0,
-      explain: { ko: '1951년 10월 콜롬비아대대는 미군 부대와 함께 노매드 작전으로 금성 쪽 고지(570고지 등)를 빼앗았어요. 금성 일대는 지금 휴전선 북쪽이에요.' } },
-    hill400: { type: 'choice', q: { ko: '1951년 7월 이후 전쟁이 "고지전"의 모습을 띠게 된 까닭으로 가장 알맞은 것은?' },
-      options: [{ ko: '정전 회담이 이어지는 동안 유리한 경계선을 차지하려는 다툼이 계속되어서' }, { ko: '유엔군이 모두 철수해서' }, { ko: '바다에서 싸울 수 없게 되어서' }, { ko: '정전협정이 먼저 맺어져서' }], answer: 0,
-      explain: { ko: '정전 회담이 2년 넘게 이어지는 동안, 회담에서 정할 경계선을 조금이라도 유리하게 하려고 고지에서 치열하게 싸웠어요.' } },
+    geumseong: { type: 'choice', q: { ko: "콜롬비아대대가 1951년 빼앗은 금성 쪽 고지 일대가 오늘날 휴전선 북쪽에 있다는 사실이 보여 주는 것은?" },
+      options: [{ ko: "정전 직전까지 이어진 전투 결과에 따라 군사분계선의 위치가 정해졌다" }, { ko: "정전협정은 38도선을 그대로 경계로 삼았다" }, { ko: "콜롬비아대대가 정전 때까지 금성에 남아 있었다" }, { ko: "금성은 처음부터 북한 땅으로 약속되어 있었다" }], answer: 0,
+      explain: { ko: "1953년 7월 중국군이 금성 돌출부에 대공세를 펼쳐 전선이 남쪽으로 밀렸고, 7월 27일 양쪽 군대가 맞선 선을 기준으로 군사분계선이 그어졌어요." } },
+    hill400: { type: 'choice', q: { ko: "정전 회담에서 군사분계선(휴전선)을 어떻게 정하기로 했나요?" },
+      options: [{ ko: "협정을 맺는 때에 양쪽 군대가 맞선 접촉선을 기준으로" }, { ko: "38도선을 그대로" }, { ko: "압록강을 경계로" }, { ko: "유엔이 따로 정한 선으로" }], answer: 0,
+      explain: { ko: "1951년 11월 \"협정 당시의 접촉선\"을 군사분계선으로 하기로 잠정 합의했어요. 그래서 회담이 이어지는 동안 한 뼘이라도 더 차지하려는 고지전이 계속됐어요." } },
     hill180: { type: 'choice', q: { ko: '1953년 3월 바르불라 작전(180고지)과 불모고지 전투가 벌어진 곳은 오늘날 어느 지역 일대일까요?' },
       options: [{ ko: '경기도 연천' }, { ko: '강원도 금성' }, { ko: '부산' }, { ko: '인천 월미도' }], answer: 0,
       explain: { ko: '두 전투 모두 경기도 연천 일대에서 벌어졌어요. 정전협정 약 넉 달 전이었어요.' } },
-    oldbaldy: { type: 'choice', q: { ko: '불모고지 전투(1953.3.)가 정전협정 약 넉 달 전에 벌어졌다는 사실에서 알 수 있는 점은?' },
-      options: [{ ko: '정전 회담 중에도 고지를 둘러싼 치열한 전투가 끝까지 이어졌다' }, { ko: '전투는 정전협정 뒤에 벌어졌다' }, { ko: '정전 회담은 1953년 7월에 처음 시작되었다' }, { ko: '콜롬비아대대는 1953년에 처음 도착했다' }], answer: 0,
-      explain: { ko: '회담이 진행되는 동안에도 전선에서는 많은 희생이 이어졌어요. 불모고지는 콜롬비아대대에게 가장 큰 아픔을 남긴 전투였어요.' } },
+    oldbaldy: { type: 'choice', q: { ko: "불모고지 전투(1953.3.)가 정전협정 약 넉 달 전에 벌어졌다는 사실에서 알 수 있는 점은?" },
+      options: [{ ko: "정전 회담 중에도 경계선을 둘러싼 전투로 희생이 끝까지 이어졌다" }, { ko: "정전 회담이 결렬되어 전쟁이 처음부터 다시 시작되었다" }, { ko: "포로 문제가 모두 해결되어 경계선만 남아 있었다" }, { ko: "유엔군이 이미 모두 철수한 뒤였다" }], answer: 0,
+      explain: { ko: "1953년 3월에도 포로 송환 문제는 풀리지 않았고(6월에야 합의), 접촉선이 곧 경계선이 되기에 고지전은 끝까지 치열했어요. 불모고지는 콜롬비아대대에게 가장 큰 아픔을 남긴 전투였어요." } },
     armistice: { type: 'choice', q: { ko: '정전협정(1953.7.27.)에 대한 설명으로 옳지 않은 것은?' },
       options: [{ ko: '이 협정으로 전쟁이 법적으로 완전히 끝났다' }, { ko: '판문점에서 맺어졌다' }, { ko: '군사분계선(휴전선)이 생겼다' }, { ko: '3년 1개월 만에 총소리가 멈췄다' }], answer: 0,
       explain: { ko: '정전협정은 싸움을 멈춘 협정이에요. 전쟁을 끝내는 평화 조약은 아직 맺지 않았어요.' } },
@@ -1502,3 +1575,634 @@ window.LEVEL_QUIZ = {
       explain: { ko: '2007년에 시작해 2020년 법정기념일(유엔참전용사 국제추모의 날)이 되었어요. 인천 경명공원의 콜롬비아군 참전기념비에서도 해마다 추모식이 열려요.' } }
   }
 };
+
+/* 🌎 스페인어·영어 화면: 학년과 관계없이 중학교(ms) 수준 문항·해설·「더 알아보기」를 써요.
+   한국어 원문(ko)은 위 KNOW_CHECK.levels.ms · LEVEL_QUIZ.ms · deep.ms 에 있고, 여기에는 번역만 모아 두었어요. */
+(function (MS_ES_EN) {
+  const put = (o, t) => { if (o && t) { if (t.es) o.es = t.es; if (t.en) o.en = t.en; } };
+  const fill = (item, t) => {
+    if (!item || !t) return;
+    put(item.q, t.q); put(item.why, t.why); put(item.explain, t.explain);
+    (t.options || []).forEach((op, i) => put(item.options && item.options[i], op));
+  };
+  ((window.KNOW_CHECK.levels || {}).ms || []).forEach((it) => fill(it, MS_ES_EN.check[it.id]));
+  const lq = (window.LEVEL_QUIZ || {}).ms || {};
+  Object.keys(lq).forEach((id) => fill(lq[id], MS_ES_EN.quiz[id]));
+  const rl = (window.KNOW_CHECK.reflectLevels || {}).ms;
+  put(rl, MS_ES_EN.reflect);
+  window.STATIONS.forEach((s) => {
+    const t = MS_ES_EN.deep[s.id];
+    if (s.deep && t) s.deep.ms = Object.assign({ ko: typeof s.deep.ms === 'string' ? s.deep.ms : (s.deep.ms || {}).ko }, t);
+  });
+})({
+  "check": {
+    "m1": {
+      "q": {
+        "es": "Las negociaciones del armisticio comenzaron en julio de 1951. ¿Cuál fue la razón principal por la que se prolongaron casi dos años?",
+        "en": "Armistice talks began in July 1951. What was the main reason they dragged on for almost two years?"
+      },
+      "options": [
+        {
+          "es": "Había un fuerte desacuerdo sobre cómo devolver a los prisioneros de guerra",
+          "en": "The two sides strongly disagreed about how to return prisoners of war"
+        },
+        {
+          "es": "No lograban decidir dónde realizar las negociaciones",
+          "en": "They could not decide where to hold the talks"
+        },
+        {
+          "es": "Las fuerzas de la ONU no se presentaron a las negociaciones",
+          "en": "The UN forces did not show up for the talks"
+        },
+        {
+          "es": "Colombia se opuso a las negociaciones",
+          "en": "Colombia was against the talks"
+        }
+      ],
+      "why": {
+        "es": "Las fuerzas de la ONU proponían respetar la voluntad de cada prisionero, mientras que el bando comunista exigía devolverlos a todos. Mientras las negociaciones se alargaban, los combates por las colinas siguieron cobrando vidas.",
+        "en": "The UN forces wanted to respect each prisoner’s own choice, while the communist side demanded that all prisoners be sent back. While the talks dragged on, battles for the hills kept costing lives."
+      }
+    },
+    "m2": {
+      "q": {
+        "es": "En agosto de 1950, ¿qué línea de defensa lograron sostener hasta el final las fuerzas surcoreanas y de la ONU?",
+        "en": "In August 1950, which defense line did South Korean and UN forces manage to hold to the end?"
+      },
+      "options": [
+        {
+          "es": "La línea del río Han",
+          "en": "The Han River line"
+        },
+        {
+          "es": "La línea del río Nakdong",
+          "en": "The Nakdong River line"
+        },
+        {
+          "es": "La línea del río Yalu (Amnok)",
+          "en": "The Yalu (Amnok) River line"
+        },
+        {
+          "es": "La línea de demarcación militar",
+          "en": "The Military Demarcation Line"
+        }
+      ],
+      "why": {
+        "es": "Aunque fueron empujadas hasta el extremo sur de la península, resistieron en la línea del río Nakdong y luego contraatacaron con el Desembarco de Incheon.",
+        "en": "Although they were pushed back to the southern tip of the peninsula, they held the Nakdong River line and then struck back with the Incheon Landing."
+      }
+    },
+    "m3": {
+      "q": {
+        "es": "Tras la liberación de Corea en 1945, ¿por qué quedó dividida la península a lo largo del paralelo 38?",
+        "en": "After Korea’s liberation in 1945, why was the peninsula divided at the 38th parallel?"
+      },
+      "options": [
+        {
+          "es": "Estados Unidos y la Unión Soviética ocuparon el sur y el norte, con el paralelo 38 como límite",
+          "en": "The United States and the Soviet Union occupied the South and the North, with the 38th parallel as the dividing line"
+        },
+        {
+          "es": "El Norte y el Sur declararon su independencia por separado",
+          "en": "The North and the South each declared independence on their own"
+        },
+        {
+          "es": "El armisticio trazó esa línea",
+          "en": "The Armistice Agreement drew that line"
+        },
+        {
+          "es": "La ONU la fijó como frontera",
+          "en": "The UN set it as a border"
+        }
+      ],
+      "why": {
+        "es": "Tras la liberación en 1945, las tropas estadounidenses entraron al sur del paralelo 38 y las soviéticas al norte. En 1948 se establecieron gobiernos distintos en el Sur y en el Norte.",
+        "en": "After liberation in 1945, US troops entered the area south of the 38th parallel and Soviet troops the area north of it. In 1948, separate governments were set up in the South and the North."
+      }
+    },
+    "m4": {
+      "q": {
+        "es": "¿Por qué, después de octubre de 1950, las fuerzas surcoreanas y de la ONU tuvieron que retirarse de nuevo hacia el sur (la retirada del 4 de enero)?",
+        "en": "After October 1950, why did South Korean and UN forces have to retreat south again (the January 4 Retreat)?"
+      },
+      "options": [
+        {
+          "es": "Las tropas chinas entraron en la guerra",
+          "en": "Chinese troops entered the war"
+        },
+        {
+          "es": "Se firmó el armisticio",
+          "en": "The Armistice Agreement was signed"
+        },
+        {
+          "es": "Todas las fuerzas de la ONU regresaron a sus países",
+          "en": "All the UN forces went home"
+        },
+        {
+          "es": "Fracasó el Desembarco de Incheon",
+          "en": "The Incheon Landing failed"
+        }
+      ],
+      "why": {
+        "es": "Con la entrada de las tropas chinas en la guerra, las fuerzas surcoreanas y de la ONU se replegaron otra vez hacia el sur y, el 4 de enero de 1951, perdieron Seúl de nuevo.",
+        "en": "When Chinese troops entered the war, South Korean and UN forces fell back south again, and on January 4, 1951, they lost Seoul once more."
+      }
+    },
+    "m5": {
+      "q": {
+        "es": "Entre los países que participaron en la Guerra de Corea, ¿qué tiene de especial Colombia?",
+        "en": "Among the countries that took part in the Korean War, what makes Colombia special?"
+      },
+      "options": [
+        {
+          "es": "Fue el único país de América Latina que envió tropas de combate",
+          "en": "It was the only Latin American country to send combat troops"
+        },
+        {
+          "es": "Fue el primer país en enviar tropas",
+          "en": "It was the first country to send troops"
+        },
+        {
+          "es": "Fue el país que envió más tropas",
+          "en": "It sent the most troops"
+        },
+        {
+          "es": "Tenía frontera con Corea",
+          "en": "It shared a border with Korea"
+        }
+      ],
+      "why": {
+        "es": "Colombia fue el único país latinoamericano que envió tropas de combate: el Batallón Colombia del Ejército y fragatas de la Armada. El país que envió tropas primero y en mayor número fue Estados Unidos.",
+        "en": "Colombia was the only Latin American country to send combat troops: the Army’s Colombia Battalion and Navy frigates. The country that sent troops first and in the largest numbers was the United States."
+      }
+    },
+    "m6": {
+      "q": {
+        "es": "Justo después de la invasión norcoreana, ¿qué hizo la ONU?",
+        "en": "What did the UN do right after North Korea invaded the South?"
+      },
+      "options": [
+        {
+          "es": "El Consejo de Seguridad calificó el ataque norcoreano como un quebrantamiento de la paz y recomendó a los países miembros ayudar a Corea del Sur",
+          "en": "The Security Council called North Korea’s attack a breach of the peace and recommended that member states help South Korea"
+        },
+        {
+          "es": "Hizo firmar de inmediato un armisticio",
+          "en": "It immediately had both sides sign an armistice"
+        },
+        {
+          "es": "Le pidió a China que enviara tropas",
+          "en": "It asked China to send troops"
+        },
+        {
+          "es": "No logró tomar ninguna decisión",
+          "en": "It could not make any decision"
+        }
+      ],
+      "why": {
+        "es": "Con resoluciones del 25 y el 27 de junio de 1950, el Consejo de Seguridad de la ONU declaró que el ataque norcoreano quebrantaba la paz y recomendó a los países miembros prestar ayuda militar. Por eso 16 países enviaron tropas de combate.",
+        "en": "In resolutions on June 25 and 27, 1950, the UN Security Council declared North Korea’s attack a breach of the peace and recommended that member states give military help. That is why 16 countries sent combat troops."
+      }
+    },
+    "m7": {
+      "q": {
+        "es": "¿Qué describe mejor la guerra entre 1951 y 1953?",
+        "en": "Which best describes the war from 1951 to 1953?"
+      },
+      "options": [
+        {
+          "es": "Combates feroces por controlar las colinas cercanas al paralelo 38",
+          "en": "Fierce fighting to capture the hills near the 38th parallel"
+        },
+        {
+          "es": "Combates solo en el mar",
+          "en": "Fighting only at sea"
+        },
+        {
+          "es": "Combates solo cerca de Busan",
+          "en": "Fighting only near Busan"
+        },
+        {
+          "es": "Un período en que los combates se detuvieron por completo",
+          "en": "A period when the fighting stopped completely"
+        }
+      ],
+      "why": {
+        "es": "Mientras el frente se mantuvo cerca del paralelo 38, continuaron los combates por las colinas. En esta etapa también luchó el Batallón Colombia.",
+        "en": "While the front line stayed near the 38th parallel, battles for the hills continued. The Colombia Battalion fought during this period too."
+      }
+    },
+    "m8": {
+      "q": {
+        "es": "¿Cuál de las siguientes NO fue una consecuencia de la Guerra de Corea?",
+        "en": "Which of these was NOT a result of the Korean War?"
+      },
+      "options": [
+        {
+          "es": "La población de las dos Coreas aumentó mucho",
+          "en": "The population of North and South Korea grew greatly"
+        },
+        {
+          "es": "Hubo muchísimos refugiados y huérfanos de guerra",
+          "en": "There were many refugees and war orphans"
+        },
+        {
+          "es": "Muchas familias quedaron separadas entre el Norte y el Sur",
+          "en": "Many families were separated between the North and the South"
+        },
+        {
+          "es": "Casas, escuelas, fábricas y carreteras quedaron gravemente destruidas",
+          "en": "Homes, schools, factories and roads were badly destroyed"
+        }
+      ],
+      "why": {
+        "es": "La guerra dejó innumerables muertos y heridos, además de refugiados, huérfanos de guerra y familias separadas, y destruyó gran parte del país.",
+        "en": "The war killed or wounded countless people, left behind refugees, war orphans and separated families, and destroyed much of the country."
+      }
+    },
+    "m9": {
+      "q": {
+        "es": "¿Qué describe correctamente la situación actual de la península de Corea?",
+        "en": "Which correctly describes the Korean Peninsula today?"
+      },
+      "options": [
+        {
+          "es": "Sigue en armisticio, y el Norte y el Sur están separados por la línea de demarcación militar",
+          "en": "It is still under an armistice, and the North and South are divided by the Military Demarcation Line"
+        },
+        {
+          "es": "La guerra terminó por completo con un tratado de paz",
+          "en": "The war ended completely with a peace treaty"
+        },
+        {
+          "es": "El paralelo 38 se convirtió en la frontera tal como estaba",
+          "en": "The 38th parallel became the border exactly as it was"
+        },
+        {
+          "es": "El Norte y el Sur ya se reunificaron",
+          "en": "The North and South have already reunified"
+        }
+      ],
+      "why": {
+        "es": "Lo que se firmó en 1953 fue un armisticio, es decir, un acuerdo para detener los combates. Por eso todavía existe la línea de demarcación.",
+        "en": "What was signed in 1953 was an armistice, an agreement to stop the fighting. That is why the armistice line still exists today."
+      }
+    },
+    "m10": {
+      "q": {
+        "es": "En el monumento a los combatientes colombianos del parque Gyeongmyeong (Incheon) está grabado el número 611. ¿Qué recuerda ese número?",
+        "en": "The number 611 is carved on the memorial to the Colombian veterans in Gyeongmyeong Park, Incheon. What does it remember?"
+      },
+      "options": [
+        {
+          "es": "A los soldados colombianos que murieron o resultaron heridos en la guerra",
+          "en": "The Colombian soldiers who were killed or wounded in the war"
+        },
+        {
+          "es": "La distancia hasta Colombia",
+          "en": "The distance to Colombia"
+        },
+        {
+          "es": "La fecha en que se levantó el monumento",
+          "en": "The date the memorial was built"
+        },
+        {
+          "es": "El número de un buque colombiano",
+          "en": "The number of a Colombian warship"
+        }
+      ],
+      "why": {
+        "es": "La inscripción dice: \"611 nobles vidas derramaron su sangre\". Es la cifra con la que se recuerda a los soldados colombianos muertos o heridos.",
+        "en": "The inscription says: \"611 noble lives shed their blood.\" The number remembers the Colombian soldiers who were killed or wounded."
+      }
+    }
+  },
+  "quiz": {
+    "war": {
+      "q": {
+        "es": "¿Qué opción empareja correctamente la línea que cruzó el ejército norcoreano el 25 de junio de 1950 con la línea que surgió del armisticio de 1953?",
+        "en": "Which option correctly pairs the line North Korean troops crossed on June 25, 1950, with the line created by the 1953 armistice?"
+      },
+      "options": [
+        {
+          "es": "Paralelo 38 – línea de demarcación militar",
+          "en": "38th parallel – Military Demarcation Line"
+        },
+        {
+          "es": "Línea de demarcación militar – paralelo 38",
+          "en": "Military Demarcation Line – 38th parallel"
+        },
+        {
+          "es": "Río Nakdong – río Yalu",
+          "en": "Nakdong River – Yalu River"
+        },
+        {
+          "es": "Río Yalu – paralelo 38",
+          "en": "Yalu River – 38th parallel"
+        }
+      ],
+      "explain": {
+        "es": "El paralelo 38 es la línea que dividió el Norte y el Sur tras la liberación de 1945; la línea de demarcación militar (línea del armisticio) surgió del armisticio de 1953. Las dos líneas no están en el mismo lugar.",
+        "en": "The 38th parallel is the line that divided North and South after liberation in 1945. The Military Demarcation Line (the armistice line) was created by the 1953 Armistice Agreement. The two lines are not in the same place."
+      }
+    },
+    "incheon": {
+      "q": {
+        "es": "¿Cuál es la razón principal por la que Incheon se consideraba un lugar muy difícil para un desembarco?",
+        "en": "What was the main reason Incheon was considered a very difficult place for a landing?"
+      },
+      "options": [
+        {
+          "es": "La diferencia entre marea alta y marea baja es enorme y el canal es estrecho",
+          "en": "The difference between high and low tide is huge, and the sea channel is narrow"
+        },
+        {
+          "es": "No tenía ningún puerto",
+          "en": "It had no port at all"
+        },
+        {
+          "es": "No había ni un solo soldado norcoreano en Incheon",
+          "en": "There was not a single North Korean soldier in Incheon"
+        },
+        {
+          "es": "Las fuerzas de la ONU casi no tenían barcos",
+          "en": "The UN forces had almost no ships"
+        }
+      ],
+      "explain": {
+        "es": "En Incheon la diferencia entre mareas llega a unos 10 m y el canal es estrecho; por eso se solía decir que la operación tenía \"1 posibilidad entre 5.000\" de éxito. Las tropas desembarcaron el 15 de septiembre, aprovechando la marea alta, y recuperaron Seúl el 28 de septiembre.",
+        "en": "At Incheon the tide can rise and fall by up to about 10 m, and the channel is narrow, so people often said the operation had \"a 1 in 5,000 chance\" of success. Troops landed at high tide on September 15 and retook Seoul on September 28."
+      }
+    },
+    "colombia": {
+      "q": {
+        "es": "¿Qué fuerzas envió Colombia a la Guerra de Corea?",
+        "en": "What forces did Colombia send to the Korean War?"
+      },
+      "options": [
+        {
+          "es": "Un batallón del Ejército y fragatas de la Armada",
+          "en": "An Army battalion and Navy frigates"
+        },
+        {
+          "es": "Solo un equipo médico",
+          "en": "Only a medical team"
+        },
+        {
+          "es": "Solo una unidad de aviones de combate",
+          "en": "Only a fighter plane unit"
+        },
+        {
+          "es": "Solo alimentos y suministros",
+          "en": "Only food and supplies"
+        }
+      ],
+      "explain": {
+        "es": "Colombia fue el único país de América Latina que envió tropas de combate: el \"Batallón Colombia\" del Ejército y tres fragatas de la Armada.",
+        "en": "Colombia was the only Latin American country to send combat troops: the Army’s \"Colombia Battalion\" and three Navy frigates."
+      }
+    },
+    "busan": {
+      "q": {
+        "es": "Durante la guerra, ¿aproximadamente cuántos soldados colombianos llegaron a Corea en total?",
+        "en": "About how many Colombian soldiers came to Korea in total during the war?"
+      },
+      "options": [
+        {
+          "es": "Unos 1.000",
+          "en": "About 1,000"
+        },
+        {
+          "es": "Unos 5.100",
+          "en": "About 5,100"
+        },
+        {
+          "es": "Unos 10.000",
+          "en": "About 10,000"
+        },
+        {
+          "es": "Unos 50.000",
+          "en": "About 50,000"
+        }
+      ],
+      "explain": {
+        "es": "El primer contingente, de 1.083 hombres, llegó al puerto de Busan el 15 de junio de 1951. Con los relevos sucesivos, en total llegaron unos 5.100.",
+        "en": "The first group of 1,083 men arrived at the port of Busan on June 15, 1951. With several rotations of troops, about 5,100 came in total."
+      }
+    },
+    "heukun": {
+      "q": {
+        "es": "La batalla de Heuguntoryeong ocurrió después de la firma del armisticio.",
+        "en": "The Battle of Heuguntoryeong took place after the Armistice Agreement was signed."
+      },
+      "explain": {
+        "es": "Falso. La batalla de Heuguntoryeong, en agosto de 1951, fue el primer combate del Batallón Colombia. El armisticio se firmó en julio de 1953.",
+        "en": "False. The Battle of Heuguntoryeong, in August 1951, was the Colombia Battalion’s first battle. The armistice was signed in July 1953."
+      }
+    },
+    "geumseong": {
+      "q": {
+        "es": "En octubre de 1951, el Batallón Colombia tomó unas colinas en la zona de Geumseong. ¿Dónde queda hoy esa zona?",
+        "en": "In October 1951, the Colombia Battalion captured hills in the Geumseong area. Where is that area today?"
+      },
+      "options": [
+        {
+          "es": "Al norte de la línea de demarcación, porque la línea se trazó según el resultado de los combates hasta justo antes del armisticio",
+          "en": "North of the armistice line, because the line was drawn according to the results of the fighting right up to the armistice"
+        },
+        {
+          "es": "Al sur de la línea de demarcación, porque el Batallón Colombia la defendió hasta el final",
+          "en": "South of the armistice line, because the Colombia Battalion held it to the end"
+        },
+        {
+          "es": "La línea de demarcación cruza Geumseong por la mitad",
+          "en": "The armistice line runs right through the middle of Geumseong"
+        },
+        {
+          "es": "Geumseong es una isla en el mar, así que no tiene relación con la línea de demarcación",
+          "en": "Geumseong is an island at sea, so it has nothing to do with the armistice line"
+        }
+      ],
+      "explain": {
+        "es": "Con la Operación Nomad, el Batallón Colombia tomó colinas en la zona de Geumseong. Pero tras la gran ofensiva china de julio de 1953 llegó el armisticio, y la zona de Geumseong quedó al norte de la línea de demarcación. Esta línea se trazó siguiendo el frente en el que se enfrentaban los dos ejércitos en el momento del armisticio.",
+        "en": "In Operation Nomad, the Colombia Battalion captured hills in the Geumseong area. But after a major Chinese offensive in July 1953, the armistice was signed and the Geumseong area ended up north of the armistice line. The Military Demarcation Line followed the front where the two armies faced each other at the moment of the armistice."
+      }
+    },
+    "hill400": {
+      "q": {
+        "es": "En junio de 1952, cuando el Batallón Colombia lanzó su asalto sorpresa contra la colina 400, ¿qué estaba ocurriendo en Panmunjom?",
+        "en": "In June 1952, when the Colombia Battalion made its surprise attack on Hill 400, what was going on at Panmunjom?"
+      },
+      "options": [
+        {
+          "es": "Las negociaciones del armisticio",
+          "en": "Armistice talks"
+        },
+        {
+          "es": "La ceremonia de firma de un tratado de paz",
+          "en": "A peace treaty signing ceremony"
+        },
+        {
+          "es": "Los preparativos del Desembarco de Incheon",
+          "en": "Preparations for the Incheon Landing"
+        },
+        {
+          "es": "Una cumbre entre los líderes del Norte y del Sur",
+          "en": "A summit between the leaders of North and South Korea"
+        }
+      ],
+      "explain": {
+        "es": "Las negociaciones del armisticio empezaron en julio de 1951 y duraron hasta julio de 1953. Mientras se negociaba, en el frente seguían los combates por las colinas.",
+        "en": "The armistice talks began in July 1951 and lasted until July 1953. While the talks went on, battles for the hills continued at the front."
+      }
+    },
+    "hill180": {
+      "q": {
+        "es": "¿Qué caracterizó a la Operación Bárbula (colina 180)?",
+        "en": "What was characteristic of Operation Bárbula (Hill 180)?"
+      },
+      "options": [
+        {
+          "es": "Se acercaron en secreto de madrugada, atacaron por sorpresa durante poco tiempo y regresaron",
+          "en": "Troops crept close before dawn, made a short surprise attack and came back"
+        },
+        {
+          "es": "Desembarcaron desde barcos",
+          "en": "They landed from ships"
+        },
+        {
+          "es": "Saltaron en paracaídas desde aviones",
+          "en": "They parachuted from planes"
+        },
+        {
+          "es": "Rodearon la montaña y esperaron durante meses",
+          "en": "They surrounded the mountain and waited for months"
+        }
+      ],
+      "explain": {
+        "es": "Fue una incursión sorpresa: en la madrugada del 10 de marzo de 1953, los soldados se acercaron en secreto a la posición enemiga, atacaron en poco tiempo y regresaron.",
+        "en": "It was a surprise raid: before dawn on March 10, 1953, the soldiers secretly approached the enemy position, attacked quickly and returned."
+      }
+    },
+    "oldbaldy": {
+      "q": {
+        "es": "La batalla de Old Baldy fue la que dejó el dolor más profundo en el Batallón Colombia.",
+        "en": "The Battle of Old Baldy was the most painful battle for the Colombia Battalion."
+      },
+      "explain": {
+        "es": "Verdadero. En la batalla de Old Baldy, en marzo de 1953, muchos soldados colombianos resultaron heridos o perdieron la vida.",
+        "en": "True. In the Battle of Old Baldy in March 1953, many Colombian soldiers were wounded or killed."
+      }
+    },
+    "armistice": {
+      "q": {
+        "es": "¿Quién NO firmó el armisticio del 27 de julio de 1953?",
+        "en": "Who did NOT sign the Armistice Agreement on July 27, 1953?"
+      },
+      "options": [
+        {
+          "es": "El gobierno de Corea del Sur",
+          "en": "The South Korean government"
+        },
+        {
+          "es": "El comandante de las fuerzas de la ONU",
+          "en": "The commander of the UN forces"
+        },
+        {
+          "es": "El comandante del ejército norcoreano",
+          "en": "The commander of the North Korean army"
+        },
+        {
+          "es": "El comandante de las tropas chinas",
+          "en": "The commander of the Chinese forces"
+        }
+      ],
+      "explain": {
+        "es": "El gobierno de Corea del Sur, que defendía la reunificación avanzando hacia el norte, se opuso al armisticio y no lo firmó. Después, en octubre de 1953, firmó con Estados Unidos el Tratado de Defensa Mutua.",
+        "en": "The South Korean government, which wanted to unify Korea by pushing north, opposed the armistice and did not sign it. Later, in October 1953, it signed the Mutual Defense Treaty with the United States."
+      }
+    },
+    "westsea": {
+      "q": {
+        "es": "¿Qué hizo la Armada colombiana en el Mar Amarillo?",
+        "en": "What did the Colombian Navy do in the Yellow Sea?"
+      },
+      "options": [
+        {
+          "es": "Patrulló para impedir los movimientos y el abastecimiento norcoreanos por mar",
+          "en": "It patrolled to stop North Korean movement and supplies by sea"
+        },
+        {
+          "es": "Hizo el primer desembarco en Incheon",
+          "en": "It made the first landing at Incheon"
+        },
+        {
+          "es": "Construyó el puerto de Busan",
+          "en": "It built the port of Busan"
+        },
+        {
+          "es": "Solo escoltó barcos pesqueros",
+          "en": "It only escorted fishing boats"
+        }
+      ],
+      "explain": {
+        "es": "Desde mayo de 1951, la fragata Almirante Padilla patrulló el Mar Amarillo entre las islas Cho-do y Sok-do y cerró las rutas marítimas norcoreanas.",
+        "en": "From May 1951, the frigate Almirante Padilla patrolled the Yellow Sea between the islands of Cho-do and Sok-do and blocked North Korean sea routes."
+      }
+    },
+    "memorial": {
+      "q": {
+        "es": "La inscripción del monumento a los combatientes colombianos de Incheon está grabada en coreano y en español. ¿Cuál es el sentido más probable de esa decisión?",
+        "en": "The inscription on the memorial to the Colombian veterans in Incheon is carved in both Korean and Spanish. What is the most likely reason?"
+      },
+      "options": [
+        {
+          "es": "Que la gente de los dos países recuerde junta el sacrificio",
+          "en": "So that people of both countries can remember the sacrifice together"
+        },
+        {
+          "es": "Atraer turistas",
+          "en": "To attract tourists"
+        },
+        {
+          "es": "España construyó el monumento",
+          "en": "Because Spain built the memorial"
+        },
+        {
+          "es": "La piedra era demasiado pequeña para escribir solo en coreano",
+          "en": "Because the stone was too small for Korean alone"
+        }
+      ],
+      "explain": {
+        "es": "El monumento, levantado en 1975, se trasladó al parque Gyeongmyeong en 2018. Cada año, Corea y Colombia celebran allí juntas una ceremonia conmemorativa.",
+        "en": "The memorial, built in 1975, was moved to Gyeongmyeong Park in 2018. Every year, Korea and Colombia hold a memorial ceremony there together."
+      }
+    }
+  },
+  "deep": {
+    "war": {
+      "es": "Tras la liberación, Estados Unidos y la Unión Soviética ocuparon el sur y el norte de la península, con el paralelo 38 como límite, y en 1948 se establecieron dos gobiernos distintos en el Sur y en el Norte. En plena Guerra Fría, Corea del Norte, con el apoyo de la Unión Soviética, invadió el Sur. El Consejo de Seguridad de la ONU calificó la invasión como un quebrantamiento de la paz y recomendó a los países miembros ayudar a Corea del Sur.",
+      "en": "After liberation, the United States and the Soviet Union occupied the South and the North, with the 38th parallel as the dividing line, and in 1948 two separate governments were set up in the South and the North. During the Cold War, North Korea, backed by the Soviet Union, invaded the South. The UN Security Council called the invasion a breach of the peace and recommended that member states help South Korea."
+    },
+    "incheon": {
+      "es": "Tras recuperar Seúl, el ejército surcoreano cruzó el paralelo 38 el 1 de octubre de 1950 (origen del Día de las Fuerzas Armadas de Corea), y las fuerzas de la ONU también avanzaron hacia el norte. Cuando las fuerzas surcoreanas y de la ONU se acercaron al río Yalu (Amnok), las tropas chinas entraron en la guerra, y el conflicto volvió a alargarse.",
+      "en": "After Seoul was retaken, South Korean troops crossed the 38th parallel on October 1, 1950 (the origin of Korea’s Armed Forces Day), and the UN forces also advanced north. When South Korean and UN forces neared the Yalu (Amnok) River, Chinese troops entered the war, and the war dragged on once again."
+    },
+    "oldbaldy": {
+      "es": "En julio de 1951 comenzaron las negociaciones del armisticio, pero durante casi dos años las partes no se pusieron de acuerdo sobre cómo devolver a los prisioneros de guerra. Mientras tanto, en las colinas continuaron los combates para trazar la línea divisoria en una posición aunque fuera un poco más favorable, y las víctimas siguieron sumándose.",
+      "en": "Armistice talks began in July 1951, but for almost two years the two sides disagreed about how to return prisoners of war. Meanwhile, battles for the hills went on as each side tried to move the future dividing line even slightly in its favor, and the losses kept mounting."
+    },
+    "armistice": {
+      "es": "El armisticio lo firmaron el comandante de las fuerzas de la ONU y los comandantes del ejército norcoreano y de las tropas chinas. El gobierno de Corea del Sur, que defendía la reunificación avanzando hacia el norte, no lo firmó. La franja de 2 km a cada lado de la línea de demarcación militar es la Zona Desmilitarizada (DMZ).",
+      "en": "The Korean War Armistice Agreement was signed by the commander of the UN forces and the commanders of the North Korean army and the Chinese forces. The South Korean government, which wanted to unify Korea by pushing north, did not sign it. The strip 2 km on each side of the Military Demarcation Line is the Demilitarized Zone (DMZ)."
+    },
+    "memorial": {
+      "es": "La Guerra de Corea dejó millones de soldados y civiles muertos o heridos en el Norte y en el Sur, además de innumerables refugiados, huérfanos de guerra y familias separadas. Cada 11 de noviembre, a las 11:00 (hora de Corea), en distintos lugares del mundo se guarda un minuto de silencio mirando hacia el Cementerio Memorial de la ONU en Busan: es la ceremonia \"Turn Toward Busan\" (Mirando hacia Busan).",
+      "en": "The Korean War killed or wounded millions of soldiers and civilians in the North and the South, and left countless refugees, war orphans and separated families. Every year on November 11 at 11:00 a.m. (Korea time), people in many parts of the world observe a minute of silence facing the UN Memorial Cemetery in Busan. This is called \"Turn Toward Busan.\""
+    }
+  },
+  "reflect": {
+    "es": "Relaciónalo con lo que aprendiste en esta actividad y escribe en una o dos oraciones cómo afecta hoy a la vida de las personas que la Guerra de Corea siga solo en armisticio.",
+    "en": "Connect it to what you learned in this activity: in one or two sentences, explain how the fact that the Korean War is still only under an armistice affects people’s lives today."
+  }
+});

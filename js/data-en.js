@@ -19,22 +19,22 @@
         place: 'The whole Korean Peninsula',
         story: 'At dawn on June 25, 1950, North Korean troops crossed the 38th parallel and attacked South Korea. The war lasted more than three years, and very many people lost their families and homes. Many countries came to help South Korea under the flag of the United Nations.',
         find: {
-          q: 'Where is the 38th parallel that the North Korean army crossed? Tap the map where the line runs!',
+          q: 'Where is the 38th parallel that the North Korean army crossed? Tap the map where the line runs.',
           hint: 'Hint: it runs across the "waist" of the peninsula, a little north of Seoul.',
           explain: 'The 38th parallel divided the peninsula into North and South after Korea\'s liberation in 1945. At dawn on June 25, 1950, the North Korean army crossed this line.'
         },
         timeline: [
           ['Jun 25, 1950', 'At dawn, North Korean troops crossed the 38th parallel in a surprise attack.'],
           ['Aug 1950', 'South Korean and UN forces were pushed back to the Nakdong River and held the last defense line.'],
-          ['Sep – Nov 1950', 'The Incheon Landing succeeded! Seoul was retaken and the UN forces advanced far to the north.'],
+          ['Sep – Nov 1950', 'The Incheon Landing turned the tide: Seoul was retaken and the UN forces advanced far to the north.'],
           ['Oct 1950 – Jan 1951', 'Chinese troops joined the war, and the UN forces had to retreat again (the January 4 Retreat).'],
-          ['1951 – 1953', 'Fierce battles for hills near the 38th parallel. This is when the Colombia Battalion fought!'],
+          ['1951 – 1953', 'Fierce battles for hills near the 38th parallel. This is when the Colombia Battalion fought.'],
           ['Jul 27, 1953', 'The Armistice Agreement was signed at Panmunjom, creating today\'s armistice line.']
         ],
-        videos: ['The Story of the Korean War', 'The Korean War in a history cartoon'],
+        videos: ['The Story of the Korean War', '22 countries under the UN flag', 'The Korean War, an unforgettable wound (MPVA·EBS)'],
         quiz: {
           q: 'During the Korean War, only the United States came to help South Korea.',
-          explain: 'False! 22 countries helped: 16 sent combat troops and 6 sent medical support. Colombia was one of them.'
+          explain: 'False. 22 countries helped: 16 sent combat troops and 6 sent medical support. Colombia was one of them.'
         }
       },
       incheon: {
@@ -42,12 +42,12 @@
         name: 'The Incheon Landing',
         date: 'Sep 15, 1950',
         place: 'Wolmido and Palmido, Incheon',
-        story: 'Incheon has a huge difference between high and low tide, so it was very hard for ships to get in. People even said the plan had "a 1 in 5,000 chance" of success. But the Palmido lighthouse was lit, and at dawn the troops landed first on Wolmido. The operation succeeded, and Seoul was retaken on September 28!',
-        videos: ['The Incheon Landing recreated with AI', 'An operation that depended on one lighthouse (Palmido)', 'Interview: the Palmido lighthouse operation', 'Operation X-Ray: the hidden heroes', 'The secret spy mission X-RAY', 'The Battle of Bupyeong'],
+        story: 'Incheon has a huge difference between high and low tide, so it was very hard for ships to get in. People even said the plan had "a 1 in 5,000 chance" of success. But the Palmido lighthouse was lit, and at dawn the troops landed first on Wolmido. The operation succeeded, and Seoul was retaken on September 28.',
+        videos: ['The Incheon Landing recreated with AI', 'Palmido, the light of victory', 'Interview: the Palmido lighthouse operation', '74th anniversary: sea pilgrimage to Palmido lighthouse', 'The Battle of Bupyeong'],
         quiz: {
           q: 'Where did the troops land first in the Incheon Landing?',
           options: ['Wolmido', 'Ganghwado', 'Jejudo', 'Ulleungdo'],
-          explain: 'Wolmido! The landing began there at about 6:30 a.m. on September 15, 1950.'
+          explain: 'Wolmido. The landing began there at about 6:30 a.m. on September 15, 1950.'
         }
       },
       colombia: {
@@ -56,7 +56,7 @@
         date: '1950 – 1951',
         place: 'Colombia, on the other side of the world',
         story: 'Colombia is on the other side of the world from Korea. The language, food and customs were all different, but Colombia was the only country in Latin America to send combat troops. The Army\'s "Colombia Battalion" and three Navy frigates crossed the ocean.',
-        videos: ['First look: photos of Colombian soldiers in the Korean War', 'The 4,058 Colombian soldiers (KBS documentary, English subtitles)', '(Spanish) The Colombia Battalion in the Korean War'],
+        videos: ['First look: photos of Colombian soldiers in the Korean War', 'The 4,058 Colombian soldiers (KBS documentary, English subtitles)'],
         heroes: [{
           author: 'From our interview with the veteran',
           name: 'Mr. Jaime Álvarez',
@@ -66,7 +66,7 @@
         quiz: {
           q: 'Which was the only Latin American country to send combat troops to the Korean War?',
           options: ['Brazil', 'Colombia', 'Mexico', 'Argentina'],
-          explain: 'Colombia! It is a country in the northwest of South America. Because they fought and shed blood together in the Korean War, Korea and Colombia call each other "brother nations".'
+          explain: 'Colombia. It is a country in the northwest of South America. Because they fought and shed blood together in the Korean War, Korea and Colombia call each other "brother nations".'
         }
       },
       busan: {
@@ -82,14 +82,14 @@
           body: 'He was the first commander of the Colombian infantry battalion and led more than 1,000 soldiers on their first steps in Korea.'
         }],
         find: {
-          q: 'Where is the port of Busan, where the Colombia Battalion arrived? Tap it on the map!',
+          q: 'Where is the port of Busan, where the Colombia Battalion arrived? Find it on the map.',
           hint: 'Hint: at the bottom-right tip of the peninsula, by the sea.',
           explain: 'Busan is the big port at the southeast tip of the peninsula. It was defended until the end of the war, so it became the UN forces\' gateway into Korea.'
         },
         quiz: {
           q: 'About how many days did the Colombia Battalion spend crossing the Pacific to Korea?',
           options: ['3 days', 'About 25 days', 'About 100 days', '1 year'],
-          explain: 'They left on May 21 and arrived on June 15: about 25 days! Today the trip takes one day by plane, but back then it took almost a month by ship.'
+          explain: 'They left on May 21 and arrived on June 15: about 25 days. Today the trip takes one day by plane, but back then it took almost a month by ship.'
         }
       },
       heukun: {
@@ -97,11 +97,11 @@
         name: 'Battle of Heuguntoryeong',
         date: 'Aug 6, 1951',
         place: 'Central front, Gangwon (south of Geumseong, Hill 851)',
-        story: 'On August 6, 1951, the Colombia Battalion fought its first battle. In tall mountains and strange weather, the Colombian soldiers bravely climbed toward Hill 851, which the enemy held.',
-        videos: ['"We will always remember our Colombian allies" (Defense News)'],
+        story: 'On August 6, 1951, the Colombia Battalion fought its first battle. In steep mountains and unfamiliar weather, the Colombian soldiers advanced with determination toward Hill 851, which the enemy held.',
+        videos: ['The last Colombian veterans and those who keep their memory alive (KBS)'],
         quiz: {
           q: 'The Battle of Heuguntoryeong was the Colombia Battalion\'s first battle in Korea.',
-          explain: 'True! It was their first battle, on August 6, 1951, less than two months after arriving in Busan.'
+          explain: 'True. It was their first battle, on August 6, 1951, less than two months after arriving in Busan.'
         }
       },
       geumseong: {
@@ -113,7 +113,7 @@
         quiz: {
           q: 'Which country\'s troops did the Colombia Battalion mainly fight alongside?',
           options: ['United Kingdom', 'France', 'Türkiye', 'United States'],
-          explain: 'The United States! The Colombia Battalion was part of a US division and fought together with it.'
+          explain: 'The United States. The Colombia Battalion was part of a US division and fought together with it.'
         }
       },
       hill400: {
@@ -124,7 +124,7 @@
         story: 'On June 21, 1952, the Colombia Battalion, then part of the US 7th Infantry Division, made a surprise attack on enemy positions on Hill 400 near Gimhwa. The quick attack destroyed the enemy positions, but 2 Colombian soldiers were killed and 15 were wounded.',
         quiz: {
           q: 'The "400" in "Hill 400" means the height of the hill (about 400 m).',
-          explain: 'True! The number in a hill\'s name is its height in meters on the map. That\'s why they are called Hill 400, Hill 180, and so on.'
+          explain: 'True. The number in a hill\'s name is its height in meters on the map. That\'s why they are called Hill 400, Hill 180, and so on.'
         }
       },
       hill180: {
@@ -136,7 +136,7 @@
         quiz: {
           q: 'What was the name of the operation in which the Colombia Battalion raided Hill 180?',
           options: ['Operation Bárbula', 'Operation Nomad', 'Operation X-RAY', 'Operation Chromite'],
-          explain: 'Operation Bárbula! Nomad was the Geumseong offensive, X-RAY was the spy mission on Yeongheungdo, and Chromite was the Incheon Landing.'
+          explain: 'Operation Bárbula. Nomad was the Geumseong offensive, X-RAY was the spy mission on Yeongheungdo, and Chromite was the Incheon Landing.'
         }
       },
       oldbaldy: {
@@ -144,12 +144,12 @@
         name: 'Battle of Old Baldy',
         date: 'Mar 23 – 24, 1953',
         place: 'Yeoncheon area, Gyeonggi',
-        story: '"Old Baldy" (Bulmo-goji in Korean) means a hill so heavily bombed that not a single plant was left. It was the hardest and saddest battle for the Colombia Battalion. Many soldiers were wounded or killed, but they fought to the end to protect their comrades.',
-        videos: ['(Spanish) The Demons of the Trenches'],
+        story: '"Old Baldy" (Bulmo-goji in Korean) means a hill so heavily bombed that not a single plant was left. It was the hardest and most painful battle for the Colombia Battalion. Many soldiers were wounded or killed, but they fought to the end to protect their comrades.',
+        videos: ['For the first time, Colombian veterans laid to rest at the UN Memorial Cemetery in Busan'],
         quiz: {
           q: 'What does the name "Old Baldy" (Bulmo-goji) mean?',
-          options: ['A mountain with lots of snow', 'A bare hill without a single plant', 'A mountain with buried treasure', 'A mountain where many birds live'],
-          explain: 'A bare hill! Just the name tells you how fierce the fighting was.'
+          options: ['A mountain with lots of snow', 'A bare hill without a single plant', 'A mountain sacred to Koreans', 'A mountain where many birds live'],
+          explain: 'A bare hill. Just the name tells you how fierce the fighting was.'
         }
       },
       armistice: {
@@ -158,14 +158,14 @@
         date: 'Jul 27, 1953',
         place: 'Panmunjom',
         find: {
-          q: 'Where is Panmunjom, where the Armistice Agreement was signed? Follow the armistice line and tap it!',
+          q: 'Where is Panmunjom, where the Armistice Agreement was signed? Follow the armistice line and tap it.',
           hint: 'Hint: near the western (left) end of the armistice line, a little north of Seoul.',
           explain: 'Panmunjom is a village on the armistice line. The Armistice Agreement was signed there on July 27, 1953, and it is still where North and South meet.'
         },
         story: 'After 3 years and 1 month of fighting, the Armistice Agreement was signed at Panmunjom and the fighting stopped. It was not an "end" to the war but a "pause" in the fighting, so the armistice line still exists today.',
         quiz: {
           q: 'The Armistice Agreement completely ended the war.',
-          explain: 'False! An armistice only stops the fighting. That is why we must keep working to protect peace.'
+          explain: 'False. An armistice only stops the fighting; technically, the war has not ended. That is why we must keep working to protect peace.'
         }
       },
       westsea: {
@@ -181,8 +181,8 @@
         ],
         quiz: {
           q: 'What was the name of the first warship Colombia sent to Korea?',
-          options: ['Almirante Padilla', 'Titanic', 'Turtle ship', 'Mayflower'],
-          explain: 'The Almirante Padilla! The Colombian Navy sent three frigates: the Almirante Padilla, the Capitán Tono and the Almirante Brión.'
+          options: ['Almirante Padilla', 'ARC Capitán Tono', 'ARC Almirante Brión', 'ARC Gloria'],
+          explain: 'The Almirante Padilla, the first to arrive, in 1951. The Colombian Navy sent three frigates: the Almirante Padilla, the Capitán Tono and the Almirante Brión.'
         }
       },
       memorial: {
@@ -201,7 +201,7 @@
             ['Words in two languages', 'Words are carved in Korean and Spanish. They remember the sacrifice of the Colombian soldiers: "611 noble lives shed their blood."']
           ]
         },
-        videos: ['"Leave the hill battles to us!" The Colombian memorial', 'Reunion after 70 years: Colombian veterans visit Korea', '"I wanted to see the country my grandfather fought for"'],
+        videos: ['Rededication of the Colombian memorial in Gyeongmyeong Park (2018)', 'Newsreel: the Colombian memorial is completed (1975)', 'Reunion after 70 years: Colombian veterans visit Korea', '"I wanted to see the country my grandfather fought for"'],
         quiz: {
           q: 'What does the number 611 on the memorial mean?',
           options: ['The distance to Colombia', 'The date the memorial was built', 'The number of Colombian soldiers killed or wounded in the war', 'The number of a Colombian ship'],
@@ -213,7 +213,7 @@
     ops: {
       xray: {
         short: 'Operation X-RAY', name: 'Operation X-RAY on Yeongheungdo', date: 'Mid-Aug – Sep 14, 1950',
-        text: 'On August 24, 1950, before the Incheon Landing, Major Ham Myeong-su and his team of navy spies, 17 in all, secretly slipped onto the island of Yeongheungdo. The islanders helped them. They learned how deep the sea was. They found the tidal flats and hidden mines. They found the enemy\'s guns and soldiers. Then they reported all of this to the UN forces. The movie "Operation Chromite" is based on this true story.',
+        text: 'On August 24, 1950, before the Incheon Landing, Major Ham Myeong-su and a team of naval intelligence agents, 17 in all, secretly slipped onto the island of Yeongheungdo. With help from the islanders, they gathered information on the depth of the sea, the tidal flats, hidden mines, and the positions of enemy guns and troops, and reported it to the UN Command. The movie "Operation Chromite" (2016) is based on this true story.',
         heroes: [
           { name: 'Major Ham Myeong-su', text: 'Navy intelligence commander who led Operation X-RAY and found a safe route to Incheon' },
           { name: 'Lt. Im Byeong-rae · Sgt. Hong Si-uk', text: 'Heroes who were surrounded by the enemy on September 14, 1950, and gave their lives to protect the secret of the landing' }
@@ -390,7 +390,7 @@
       ['high tide', 'When the sea rises highest toward the land.'],
       ['liberation', 'Korea becoming free from Japanese rule in 1945.'],
       ['comrades', 'Fellow soldiers who fight together.'],
-      ['tolerance', 'Kindly accepting people who are different from us.'],
+      ['tolerance', 'Respecting and accepting people who are different from us.'],
       ['buoys', 'Floating markers that show ships the safe way.'],
       ['memorial', 'A monument built so that people remember an event or people.'],
       ['sacrifice', 'Giving up something very important, even your life, for others.'],
