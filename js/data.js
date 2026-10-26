@@ -1274,8 +1274,8 @@ window.REVIEW_SURVEY = {
     '56': ['5학년', '6학년'],
     ms: ['중학교 1학년', '중학교 2학년', '중학교 3학년'],
     hs: ['고등학교 1학년', '고등학교 2학년', '고등학교 3학년'],
-    es: ['Primaria', 'Bachillerato (6.º a 9.º)', 'Media (10.º y 11.º)', 'Docente / adulto'],
-    en: ['Elementary school', 'Middle school', 'High school', 'Teacher / adult']
+    es: ['Primaria', 'Bachillerato (6.º a 9.º)', 'Media (10.º y 11.º)'],
+    en: ['Elementary school', 'Middle school', 'High school']
   },
   questions: [
     { id: 'grade', type: 'one', opts: 'grades', q: { ko: '몇 학년인가요?', es: '¿En qué nivel estás?', en: 'What level are you in?' } },
