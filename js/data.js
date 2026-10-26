@@ -1264,42 +1264,47 @@ window.CREDITS = {
 };
 
 /* ⏰ 추가 활동 — 여정 완료 화면 (인증서까지 올리고 시간이 남은 학생용) */
-// 📝 3·4학년 체험 설문 — ?grade=34 링크에서만, 인증서 바로 앞에 나와요 (다 해야 인증서를 받아요)
-//   부스 체험(콜롬비아 체험 부스 4곳 + 마지막 부스) + 교실에서 한 웹앱 게임의 만족도 → 내년 계획에 반영
-//   type: one(하나 고르기) · many(여러 개 고르기) · scale(1~5단계, faces: false 면 얼굴 없이 숫자만 · mid: 가운데 3의 뜻) · text(글쓰기)
-//   객관식은 모두 꼭 답해야 해요. 글쓰기는 4학년이거나 컴퓨터 모드면 모두 꼭, 3학년 태블릿 모드는 모두 선택
-//   action/entries: 응답이 모이는 구글 설문지 "M.A.P. to Tomorrow 3·4학년 체험 설문" (학교 드라이브 dolce52@icedu.kr)
-//   ⚠️ 보기 글자는 바꿔도 괜찮지만, 질문을 더하거나 빼면 구글 설문지에도 같은 질문을 더해 entry 번호를 적어 주세요
-const BOOTH_OPTS = [
-  '1번 부스 Memory: 언니·오빠들이 만든 캔바 웹사이트로 설명 듣기',
-  '2번 부스 Across: 위인전 읽고 이젤패드에 붙이기',
-  '3번 부스 Peace: 콜롬비아 이야기 듣고 색칠하기',
-  '4번 부스 Tomorrow: 콜롬비아 손님과 인사하기',
-  '마지막 부스: 방명록 쓰기 · 간식 · 도장',
-  '교실에서 한 웹앱 게임 「M.A.P. to Tomorrow」'
-];
-window.JUNIOR_SURVEY = {
-  action: 'https://docs.google.com/forms/d/e/1FAIpQLScktQzY3uzOhk_S9axAqeycgy7wgFvJ_yzkO9kRspovQnEXsQ/formResponse',
-  entries: {
-    nick: 'entry.475826209', mode: 'entry.2018806525', grade: 'entry.287545027', klass: 'entry.1303132364',
-    fun: 'entry.2048636378', best: 'entry.1659841313', overall: 'entry.858740604', game: 'entry.701440636',
-    learned: 'entry.832423406', level: 'entry.612375507', again: 'entry.451536870', wish: 'entry.67783124',
-    memorable: 'entry.1611748280', improve: 'entry.2092534403', message: 'entry.2142614669'
+/* 📝 웹앱 후기 설문 — 모든 학교급(?grade=34·5·6·ms·hs)과 스페인어·영어 화면에서 인증서 앞에 나와요.
+   보내면 '반 결과' 구글 시트의 「후기」 탭에 한 줄씩 모이고, 선생님은 웹앱 「후기 모아 보기」(?reviews=열쇠)에서 봐요.
+   객관식은 모두 꼭, 글쓰기는 opt 가 아니면 꼭 (3학년 태블릿은 글쓰기가 모두 '하고 싶으면') */
+window.REVIEW_SURVEY = {
+  // 학년 보기: 한국어는 주소의 학교급대로, 스페인어·영어는 학교급만
+  grades: {
+    '34': ['3학년', '4학년'],
+    '56': ['5학년', '6학년'],
+    ms: ['중학교 1학년', '중학교 2학년', '중학교 3학년'],
+    hs: ['고등학교 1학년', '고등학교 2학년', '고등학교 3학년'],
+    es: ['Primaria', 'Bachillerato (6.º a 9.º)', 'Media (10.º y 11.º)', 'Docente / adulto'],
+    en: ['Elementary school', 'Middle school', 'High school', 'Teacher / adult']
   },
   questions: [
-    { id: 'grade', type: 'one', q: '몇 학년인가요?', opts: ['3학년', '4학년'] },
-    { id: 'klass', type: 'one', q: '몇 반인가요?', opts: ['1반', '2반', '3반', '4반', '5반', '6반', '7반', '8반', '9반', '10반', '11반', '12반'] },
-    { id: 'fun', type: 'many', q: '오늘 한 활동 중 재미있었던 것을 모두 골라요.', opts: BOOTH_OPTS },
-    { id: 'best', type: 'one', q: '그중에서 가장 재미있었던 것 하나만 골라요.', opts: BOOTH_OPTS },
-    { id: 'overall', type: 'scale', q: '오늘 콜롬비아 체험 활동은 전체적으로 어땠나요?', low: '별로였어요', high: '최고였어요' },
-    { id: 'game', type: 'scale', q: '웹앱 게임 「M.A.P. to Tomorrow」는 얼마나 재미있었나요?', low: '별로였어요', high: '아주 재미있었어요' },
-    { id: 'learned', type: 'scale', q: '6·25 전쟁과 콜롬비아에 대해 새로 알게 된 것이 많았나요?', low: '거의 없어요', high: '아주 많아요' },
-    { id: 'level', type: 'scale', faces: false, q: '웹앱 게임은 얼마나 어려웠나요?', low: '너무 쉬웠어요', mid: '딱 알맞았어요', high: '너무 어려웠어요' },
-    { id: 'again', type: 'scale', q: '내년에도 이런 콜롬비아 체험을 하고 싶나요?', low: '하고 싶지 않아요', mid: '보통이에요', high: '꼭 하고 싶어요' },
-    { id: 'wish', type: 'many', q: '내년에 더 해 보고 싶은 활동을 모두 골라요.', opts: ['간단한 스페인어 배우기', '콜롬비아 음식 맛보기', '콜롬비아 춤·노래·놀이', '콜롬비아 친구와 영상 편지 주고받기', '참전용사님께 편지·그림 보내기', '웹앱 게임 더 하기', '만들기·꾸미기 활동', '잘 모르겠어요'] },
-    { id: 'memorable', type: 'text', q: '오늘 가장 기억에 남는 것은 무엇인가요?', pcRequired: true },
-    { id: 'improve', type: 'text', q: '아쉬웠던 점이나 바꾸면 좋을 점이 있나요?' },
-    { id: 'message', type: 'text', q: '콜롬비아 친구들이나 참전용사님께 하고 싶은 말을 적어 주세요.', pcRequired: true }
+    { id: 'grade', type: 'one', opts: 'grades', q: { ko: '몇 학년인가요?', es: '¿En qué nivel estás?', en: 'What level are you in?' } },
+    { id: 'overall', type: 'scale', q: { ko: '이 웹앱 게임은 전체적으로 어땠나요?', es: 'En general, ¿qué te pareció este juego?', en: 'Overall, how was this game?' },
+      low: { ko: '별로였어요', es: 'No me gustó', en: 'Not good' }, high: { ko: '아주 좋았어요', es: 'Me encantó', en: 'Excellent' } },
+    { id: 'fun', type: 'scale', q: { ko: '얼마나 재미있었나요?', es: '¿Qué tan divertido fue?', en: 'How fun was it?' },
+      low: { ko: '지루했어요', es: 'Aburrido', en: 'Boring' }, high: { ko: '아주 재미있었어요', es: 'Muy divertido', en: 'Very fun' } },
+    { id: 'learned', type: 'scale', q: { ko: '6·25 전쟁과 콜롬비아에 대해 새로 알게 된 것이 많았나요?', es: '¿Aprendiste cosas nuevas sobre la Guerra de Corea y Colombia?', en: 'Did you learn new things about the Korean War and Colombia?' },
+      low: { ko: '거의 없어요', es: 'Casi nada', en: 'Almost nothing' }, high: { ko: '아주 많아요', es: 'Muchísimo', en: 'A lot' } },
+    { id: 'diff', type: 'scale', faces: false, q: { ko: '문제와 내용은 얼마나 어려웠나요?', es: '¿Qué tan difíciles fueron las preguntas y los textos?', en: 'How difficult were the questions and texts?' },
+      low: { ko: '너무 쉬웠어요', es: 'Muy fáciles', en: 'Too easy' }, mid: { ko: '딱 알맞았어요', es: 'Justo bien', en: 'Just right' }, high: { ko: '너무 어려웠어요', es: 'Muy difíciles', en: 'Too hard' } },
+    { id: 'length', type: 'scale', faces: false, q: { ko: '게임 길이는 어땠나요?', es: '¿Qué te pareció la duración del juego?', en: 'How was the length of the game?' },
+      low: { ko: '너무 짧았어요', es: 'Muy corto', en: 'Too short' }, mid: { ko: '알맞았어요', es: 'Bien', en: 'Just right' }, high: { ko: '너무 길었어요', es: 'Muy largo', en: 'Too long' } },
+    { id: 'best', type: 'many', q: { ko: '좋았던 활동을 모두 골라요.', es: 'Elige todas las actividades que te gustaron.', en: 'Choose all the activities you liked.' },
+      opts: [
+        { ko: '작전 지점 이야기와 지도', es: 'Las historias y el mapa', en: 'The stories and the map' },
+        { ko: '퀴즈·찾기 미션', es: 'Las preguntas y misiones', en: 'Quizzes and missions' },
+        { ko: '영상', es: 'Los videos', en: 'The videos' },
+        { ko: '영웅 카드 모으기', es: 'Las tarjetas de héroes', en: 'Collecting hero cards' },
+        { ko: '참전용사님의 답장 영상', es: 'Las respuestas en video de los veteranos', en: "The veterans' video answers" },
+        { ko: '기념비 둘러보기와 추모', es: 'Visitar el monumento y rendir homenaje', en: 'Visiting the memorial and paying tribute' },
+        { ko: '내일의 문 열기', es: 'Abrir la puerta del mañana', en: 'Opening the door to tomorrow' },
+        { ko: '인증서 만들기', es: 'Crear el certificado', en: 'Making the certificate' }
+      ] },
+    { id: 'recommend', type: 'scale', q: { ko: '친구들에게도 이 게임을 해 보라고 하고 싶나요?', es: '¿Recomendarías este juego a tus amigos?', en: 'Would you recommend this game to your friends?' },
+      low: { ko: '아니요', es: 'No', en: 'No' }, high: { ko: '꼭 해 보라고 할래요', es: 'Sí, sin duda', en: 'Definitely' } },
+    { id: 'good', type: 'text', q: { ko: '좋았던 점을 적어 주세요.', es: '¿Qué te gustó?', en: 'What did you like?' } },
+    { id: 'improve', type: 'text', q: { ko: '고칠 점이나 바뀌면 좋을 점을 적어 주세요. (어려웠던 곳, 막혔던 곳, 오류도 좋아요)', es: '¿Qué deberíamos mejorar o cambiar? (partes difíciles, lugares donde te trabaste o errores)', en: 'What should we fix or change? (hard parts, places you got stuck, or errors)' } },
+    { id: 'message', type: 'text', opt: true, q: { ko: '참전용사님이나 이 게임을 만든 6학년 8반 친구들에게 하고 싶은 말이 있나요?', es: '¿Quieres dejar un mensaje para los veteranos o para los estudiantes de 6.º grado que hicieron este juego?', en: 'Any message for the veterans or for the 6th graders who made this game?' } }
   ]
 };
 

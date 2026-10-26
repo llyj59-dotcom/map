@@ -14,10 +14,17 @@
       → [배포] → (처음이면 권한 허용) → 나오는 '웹 앱 URL'을 복사해요.
    4. 웹앱의 js/data.js 에서 classApi: '' 따옴표 안에 그 URL을 붙여 넣어요.
    ※ 코드를 고친 뒤에는 [배포] → [배포 관리] → ✏️ → 버전: 새 버전 → [배포] 해야 바뀐 내용이 적용돼요.
+   📝 웹앱 후기: 학생이 게임 끝에 낸 후기 설문은 「후기」 시트에 모여요.
+      선생님용 「후기 모아 보기」 주소는 이 편집기에서 함수 reviewLink 를 골라 [실행]하면 아래 [실행 로그]에 나와요.
    ===================================================================== */
 
 const SHEET_RESULTS = '결과';
 const SHEET_CLASSES = '반';
+const SHEET_REVIEWS = '후기';
+const APP_URL = 'https://llyj59-dotcom.github.io/map/';
+// 후기 시트 칸 (웹앱 REVIEW_SURVEY 문항 id 와 같은 차례)
+const REVIEW_IDS = ['grade', 'overall', 'fun', 'learned', 'diff', 'length', 'best', 'recommend', 'good', 'improve', 'message'];
+const HEAD_R = ['보낸 때', '학교급', '언어', '기기', '반 코드', '닉네임', '기록 id', '학년', '전체', '재미', '새로 안 것', '난이도', '길이', '좋았던 활동', '추천', '좋았던 점', '고칠 점', '하고 싶은 말'];
 const HEAD = ['마지막 활동', '반 코드', '반 이름', '문항 수준', '언어', '닉네임', '기록 id', '작전 지점',
   '사전 점수', '사후 점수', '변화', '문항 수', '사전 응답', '사후 응답', '사전 생각(앎·중요)', '사후 생각(앎·중요)',
   '소감', '추모 카드', '11/11 묵념', '인증서', '마지막 일'];
@@ -87,13 +94,51 @@ function doGet(e) {
     }));
     return json_({ ok: true, cls: cls, name: info.name || '', grade: info.grade || '', rows: out });
   }
-  return json_({ ok: true, app: 'map-to-tomorrow' });
+  if (p.action === 'reviews') {
+    if (String(p.key || '') !== reviewKey_()) return json_({ ok: false, error: 'key' });
+    const sh = sheet_(SHEET_REVIEWS, HEAD_R);
+    const rows = sh.getLastRow() > 1 ? sh.getRange(2, 1, sh.getLastRow() - 1, HEAD_R.length).getValues() : [];
+    const out = rows.map((r) => {
+      const o = { t: r[0] instanceof Date ? r[0].getTime() : r[0], level: r[1], lang: r[2], mode: r[3], cls: r[4], nick: r[5] };
+      REVIEW_IDS.forEach((id, k) => { o[id] = r[7 + k]; });
+      return o;
+    });
+    return json_({ ok: true, rows: out });
+  }
+  return json_({ ok: true, app: 'map-to-tomorrow', v: 2 });
+}
+
+// 📝 후기 모아 보기 열쇠 (반 열쇠와 같은 방식, 이 스크립트의 비밀 값으로 만들어져요)
+function reviewKey_() { return sign_('__REVIEWS__'); }
+// ▶ 편집기에서 이 함수를 골라 [실행] → [실행 로그]에 선생님용 후기 주소가 나와요 (다른 사람에게 알려 주지 마세요)
+function reviewLink() {
+  const url = APP_URL + '?reviews=' + reviewKey_();
+  Logger.log('후기 모아 보기 주소: ' + url);
+  return url;
+}
+
+// 학생 한 명(기록 id)당 한 줄 — 다시 내면 새 답으로 바꿔요
+function reviewPost_(d) {
+  const cls = String(d.cls || '').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 8);
+  const row = [new Date(), clean_(d.level, 4), clean_(d.lang, 4), clean_(d.mode, 8), cls, clean_(d.nick, 20), clean_(d.gid, 30)]
+    .concat(REVIEW_IDS.map((id) => (/^(overall|fun|learned|diff|length|recommend)$/.test(id) ? num_(d[id]) : clean_(d[id], 600))));
+  const lock = LockService.getScriptLock();
+  lock.waitLock(10000);
+  try {
+    const sh = sheet_(SHEET_REVIEWS, HEAD_R);
+    const n = sh.getLastRow() - 1;
+    const ids = n > 0 ? sh.getRange(2, 7, n, 1).getValues().map((x) => x[0]) : [];
+    const at = ids.indexOf(row[6]);
+    if (at >= 0) sh.getRange(at + 2, 1, 1, row.length).setValues([row]); else sh.appendRow(row);
+  } finally { lock.releaseLock(); }
+  return json_({ ok: true });
 }
 
 function doPost(e) {
   let d;
   try { d = JSON.parse(e.postData.contents); } catch (err) { return json_({ ok: false }); }
   if (!d || !d.gid) return json_({ ok: false });
+  if (d.type === 'review') return reviewPost_(d);
   const cls = String(d.cls || '').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 8);
   const info = cls ? classInfo_(cls) : {};
   const pre = num_(d.pre), post = num_(d.post);

@@ -16,6 +16,8 @@
   // 🏫 반 주소: ?class=ABC123 (담임 선생님이 웹앱에서 만든 반) · 선생님용 결과 주소: ?view=ABC123.열쇠
   const CLASS_CODE = (() => { try { const c = (new URLSearchParams(location.search).get('class') || '').toUpperCase(); return /^[A-Z0-9]{4,8}$/.test(c) ? c : ''; } catch (e) { return ''; } })();
   const VIEW_KEY = (() => { try { const m = /^([A-Za-z0-9]{4,8})\.([A-Za-z0-9]{6,20})$/.exec(new URLSearchParams(location.search).get('view') || ''); return m ? { cls: m[1].toUpperCase(), key: m[2] } : null; } catch (e) { return null; } })();
+  // 📝 선생님용 후기 모아 보기: ?reviews=열쇠 (Apps Script 편집기에서 reviewLink() 를 실행하면 주소가 나와요)
+  const REVIEW_KEY = (() => { try { const k = new URLSearchParams(location.search).get('reviews') || ''; return /^[A-Za-z0-9]{6,20}$/.test(k) ? k : ''; } catch (e) { return ''; } })();
   const TRIBUTE_ONLY = (() => { try { return new URLSearchParams(location.search).get('tribute') === '1'; } catch (e) { return false; } })();
   const GRADE = (() => { try { const g = (new URLSearchParams(location.search).get('grade') || '').toLowerCase(); return ['34', 'ms', 'hs'].includes(g) ? g : '56'; } catch (e) { return '56'; } })();
   const STORE_KEY = 'mapTomorrow.v2';
@@ -123,7 +125,7 @@
     if (KCx.levels) toFormal(KCx.levels[GRADE]);
     if (KCx.reflectLevels) toFormal(KCx.reflectLevels[GRADE]);
     toFormal((window.LEVEL_QUIZ || {})[GRADE]);
-    [window.INCHEON_OPS, window.HERO_CARDS, window.GLOSSARY].forEach((o) => toFormal(o));
+    [window.INCHEON_OPS, window.HERO_CARDS, window.GLOSSARY, window.REVIEW_SURVEY].forEach((o) => toFormal(o));
     if (window.GLOSSARY && Array.isArray(window.GLOSSARY.ko)) window.GLOSSARY.ko.forEach((g) => { g[1] = formal(g[1]); });
   }
   // 🔗 claude.ai 링크(아티팩트)로 열 때: 다른 사이트를 페이지 안에 넣을 수 없어서
@@ -597,8 +599,8 @@
       certOnlyLeadPc: '패들렛에 올리지 않아도 돼요. 아래 버튼만 누르면 끝!',
       certOnlyPc: '[📸 인증서 그림으로 저장]을 누르면 컴퓨터의 다운로드 폴더에 저장돼요.',
       certOnlySavedPc: '인증서 그림이 저장됐어요! 다운로드 폴더에서 볼 수 있어요.',
-      jsTitle: '오늘 활동 설문',
-      jsLead: '오늘 한 부스 체험과 웹앱 게임은 어땠나요? 솔직하게 골라 주세요. 다 하면 인증서를 받을 수 있어요!',
+      jsTitle: '웹앱 후기 설문',
+      jsLead: '평화의 지도 여행은 어땠나요? 솔직한 후기와 고칠 점을 남겨 주면 더 좋은 게임을 만드는 데 써요. 다 하면 인증서를 받을 수 있어요.',
       jsNeed: '꼭',
       jsOpt: '하고 싶으면',
       jsMany: '여러 개 골라도 돼요',
@@ -608,7 +610,26 @@
       jsThanks: '고마워요! 설문이 전해졌어요. 이제 인증서를 만들어요.',
       jsDone: '✅ 설문을 보냈어요. 고마워요!',
       extraFinishJs: '✅ 끝내기 (마지막 설문하러 가기) ▶',
-      doneCheckJs: '오늘 활동 설문 보내기',
+      doneCheckJs: '웹앱 후기 설문 보내기',
+      rvTitle: '웹앱 후기 모아 보기',
+      rvLoading: '후기를 불러오는 중이에요…',
+      rvBadKey: '후기 주소가 맞지 않아요. Apps Script의 reviewLink()로 나온 주소를 다시 확인해 주세요.',
+      rvOld: '시트의 Apps Script가 아직 옛 버전이에요. 새 코드를 붙여 넣고 [배포 관리] → 새 버전으로 배포해 주세요.',
+      rvFail: '후기를 불러오지 못했어요. 인터넷 연결을 확인해 주세요.',
+      rvEmpty: '아직 들어온 후기가 없어요.',
+      rvAll: '전체',
+      rvLevels: { '34': '초등 3·4', '56': '초등 5·6', ms: '중학교', hs: '고등학교', es: '스페인어', en: '영어' },
+      rvCount: (n) => `후기 ${n}개`,
+      rvAvg: '평균 (5점 만점)',
+      rvDist: '응답 나눔',
+      rvBest: '좋았던 활동',
+      rvCards: '후기',
+      rvImproveOnly: '고칠 점만 보기',
+      rvGood: '좋았던 점',
+      rvImprove: '고칠 점',
+      rvMessage: '하고 싶은 말',
+      rvCsv: '⬇️ 표로 내려받기 (CSV)',
+      rvRefresh: '🔄 새로고침',
       clsOpen: '🏫 선생님: 우리 반 만들기 · 결과 보기',
       clsLead: '우리 반 주소를 만들어 학생들에게 나눠 주면, 출발 전·도착 점검 결과와 진행 상황을 선생님만 볼 수 있어요. 학생 실명은 모이지 않고 닉네임만 모여요.',
       clsOff: '반 결과 모으기가 아직 켜져 있지 않아요. 웹앱을 관리하는 선생님께 문의해 주세요.',
@@ -1301,8 +1322,8 @@
       certOnlyLeadPc: 'No hace falta subirlo al Padlet. ¡Solo pulsa el botón!',
       certOnlyPc: 'Pulsa [📸 Guardar el certificado como imagen] y se guardará en Descargas.',
       certOnlySavedPc: '¡Certificado guardado en la carpeta Descargas!',
-      jsTitle: 'Encuesta de hoy',
-      jsLead: '¿Qué te parecieron los stands y el juego? Al terminar recibirás tu certificado.',
+      jsTitle: 'Encuesta sobre el juego',
+      jsLead: '¿Qué te pareció el viaje por el mapa de la paz? Tu opinión y tus sugerencias nos ayudan a mejorar el juego. Al terminar recibirás tu certificado.',
       jsNeed: 'Obligatoria',
       jsOpt: 'Opcional',
       jsMany: 'Puedes elegir varias',
@@ -1312,7 +1333,7 @@
       jsThanks: '¡Gracias! Encuesta enviada. Ahora crea tu certificado.',
       jsDone: '✅ Encuesta enviada. ¡Gracias!',
       extraFinishJs: '✅ Terminar (ir a la última encuesta) ▶',
-      doneCheckJs: 'Enviar la encuesta de hoy',
+      doneCheckJs: 'Enviar la encuesta sobre el juego',
       clsOpen: '🏫 Docentes: crear mi grupo · ver resultados',
       clsLead: 'Crea el enlace de tu grupo y compártelo con tus estudiantes: solo tú verás los resultados de las pruebas de salida y llegada y su progreso. Solo se guardan apodos, no nombres reales.',
       clsOff: 'La recopilación de resultados aún no está activada. Consulta con quien administra la aplicación.',
@@ -2004,8 +2025,8 @@
       certOnlyLeadPc: 'No need to post it on the Padlet. Just press the button!',
       certOnlyPc: 'Press [📸 Save certificate as a picture] and it goes to your Downloads folder.',
       certOnlySavedPc: 'Certificate saved to your Downloads folder!',
-      jsTitle: "Today's survey",
-      jsLead: 'How were the booths and the game today? Finish this to get your certificate.',
+      jsTitle: 'Game feedback survey',
+      jsLead: 'How was your journey across the map of peace? Your honest feedback and ideas help us improve the game. Finish this to get your certificate.',
       jsNeed: 'Required',
       jsOpt: 'Optional',
       jsMany: 'You can choose more than one',
@@ -2015,7 +2036,7 @@
       jsThanks: 'Thank you! Survey sent. Now make your certificate.',
       jsDone: '✅ Survey sent. Thank you!',
       extraFinishJs: '✅ Finish (go to the last survey) ▶',
-      doneCheckJs: "Send today's survey",
+      doneCheckJs: 'Send the game feedback survey',
       clsOpen: '🏫 Teachers: make my class · see results',
       clsLead: 'Make a link for your class and share it with your students. Only you will see their starting and finishing check results and progress. Only nicknames are collected, never real names.',
       clsOff: 'Class results are not switched on yet. Please ask the teacher who manages this web app.',
@@ -3476,6 +3497,7 @@
     renderClassFold();
     // 🕊️ 추모만 하는 주소 (?tribute=1): 들어오자마자 추모 창 — 게임은 하지 않아도 돼요
     if (TRIBUTE_ONLY && !showStart.tributed) { showStart.tributed = true; setTimeout(() => { if (!$('startScreen').hidden) openTribute(); }, 500); return; }
+    if (REVIEW_KEY && !showStart.reviewed) { showStart.reviewed = true; setTimeout(() => openReviewView(REVIEW_KEY), 500); return; }
     if (VIEW_KEY && !showStart.viewed) { showStart.viewed = true; setTimeout(() => openClassView(VIEW_KEY.cls, VIEW_KEY.key), 500); return; }
     if (ttbAutoOpen()) { setTimeout(() => { if (!$('startScreen').hidden) { openTribute(); ttbFromStart = true; } }, 600); return; }
     if (Object.keys(store.games).length) setTimeout(() => { if (!$('startScreen').hidden) openStartModal('resume'); }, 600);
@@ -6078,8 +6100,8 @@
   // 엔딩: 시작 → 질문 5개(진짜 답) → 더 알아보기 → 인증서 → 📝 소감 설문 (게임의 맨 마지막)
   // 순서: 진짜 답 → 더 알아보기 → 소감 설문 → 인증서(패들렛에 올리기) → 🏁 여정 완료
   // (소감을 먼저 쓰고, 제출하면 저절로 인증서로 — 인증서를 빼먹지 않게)
-  const JS = window.JUNIOR_SURVEY;
-  const END_STEPS = ['intro', ...QIDS, 'more', 'extra', ...(window.KNOW_CHECK ? ['post'] : []), ...(CONFIG.feedbackForms && !NO_SURVEY ? ['survey'] : []), ...(JUNIOR && JS ? ['jsurvey'] : []), 'finish', 'done'];
+  const JS = window.REVIEW_SURVEY;
+  const END_STEPS = ['intro', ...QIDS, 'more', 'extra', ...(window.KNOW_CHECK ? ['post'] : []), ...(CONFIG.feedbackForms && !NO_SURVEY ? ['survey'] : []), ...(JS ? ['jsurvey'] : []), 'finish', 'done'];
   let endDir = 1; // 마지막으로 움직인 방향 (다 모은 아이는 '더 해 보기'를 건너뛸 때 씀)
 
   /* 🎯 더 해 보기: 작전 지점마다 아직 못 받은 별·영웅 카드 (전부 모았으면 빈 목록 → 화면을 건너뜀) */
@@ -7037,7 +7059,7 @@
         [doneCount(player) === N, T('doneCheckMap', N)],
         ...(NO_SURVEY ? [] : [[!!player.surveyDone, T('doneCheckSurvey')]]),
         ...(window.KNOW_CHECK ? [[!!(player.check && player.check.post), T('doneCheckPost')]] : []),
-        ...(JUNIOR && JS ? [[!!player.jsurveyDone, T('doneCheckJs')]] : []),
+        ...(JS ? [[!!player.jsurveyDone, T('doneCheckJs')]] : []),
         [!!(player.certUploaded || player.certCaptured), T(certPadOnly() ? 'doneCheckCertSave' : 'doneCheckCert')]
       ];
       html = `<div class="end-hero journey-done">
@@ -7280,6 +7302,68 @@
     });
   }
 
+  /* ---------------- 📝 웹앱 후기 모아 보기 (선생님) ----------------
+     '반 결과' 시트의 「후기」 탭을 학교급별로 — 평균 점수, 응답 나눔, 후기 카드(좋았던 점·고칠 점·하고 싶은 말) */
+  let rvTab = 'all', rvImproveOnly = false, rvCache = null;
+  async function openReviewView(key, cached) {
+    let r = cached && rvCache;
+    if (!r) openInfo('📝', T('rvTitle'), `<p class="t-help">${esc(T('rvLoading'))}</p>`);
+    if (!r) try { r = await (await fetch(`${CONFIG.classApi}?action=reviews&key=${encodeURIComponent(key)}`)).json(); } catch (e) { r = { ok: false, error: 'net' }; }
+    if (r && r.ok && !Array.isArray(r.rows)) r = { ok: false, error: 'old' };
+    rvCache = r && r.ok ? r : null;
+    if (!r || !r.ok) { $('infoBody').innerHTML = `<p class="form-error">${esc(T(r && r.error === 'key' ? 'rvBadKey' : r && r.error === 'old' ? 'rvOld' : 'rvFail'))}</p>`; return; }
+    const all = r.rows.slice().sort((a, b) => Number(b.t) - Number(a.t));
+    const groupOf = (x) => (x.lang && x.lang !== 'ko' ? x.lang : x.level || '56');
+    const LV = T('rvLevels');
+    const tabs = ['all', ...Object.keys(LV).filter((g) => all.some((x) => groupOf(x) === g))];
+    if (!tabs.includes(rvTab)) rvTab = 'all';
+    const rows = rvTab === 'all' ? all : all.filter((x) => groupOf(x) === rvTab);
+    const qs = JS.questions;
+    const lbl = (q, k) => (q[k] ? (q[k].ko || L(q[k])) : '');
+    const nums = (id) => rows.map((x) => Number(x[id])).filter((v) => v >= 1 && v <= 5);
+    const avg = (xs) => (xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : null);
+    const scaleQs = qs.filter((q) => q.type === 'scale');
+    const avgHtml = scaleQs.filter((q) => q.faces !== false).map((q) => { const a = avg(nums(q.id)); return `<li><span>${esc(q.q.ko)}</span><b>${a == null ? '—' : a.toFixed(1)}</b><div class="rv-bar"><i style="width:${a == null ? 0 : (a / 5) * 100}%"></i></div></li>`; }).join('');
+    const distHtml = scaleQs.filter((q) => q.faces === false).map((q) => {
+      const xs = nums(q.id); const c = [1, 2, 3, 4, 5].map((v) => xs.filter((x) => x === v).length);
+      return `<li><span>${esc(q.q.ko)}</span><div class="rv-dist">${c.map((n, k) => `<i title="${k + 1}: ${n}" style="flex:${n || 0.0001}" class="d${k + 1}">${n ? n : ''}</i>`).join('')}</div><small>1 ${esc(lbl(q, 'low'))} · 3 ${esc(lbl(q, 'mid'))} · 5 ${esc(lbl(q, 'high'))}</small></li>`;
+    }).join('');
+    const bestQ = qs.find((q) => q.id === 'best');
+    const bestHtml = bestQ ? (() => {
+      const opts = bestQ.opts.map((o) => o.ko);
+      const cnt = opts.map((o, k) => ({ o, n: rows.filter((x) => String(x.best || '').split(', ').some((v) => v === o || v === (bestQ.opts[k].es) || v === (bestQ.opts[k].en))).length })).sort((a, b) => b.n - a.n);
+      const max = Math.max(1, ...cnt.map((c) => c.n));
+      return cnt.map((c) => `<li><span>${esc(c.o)}</span><b>${c.n}</b><div class="rv-bar"><i style="width:${(c.n / max) * 100}%"></i></div></li>`).join('');
+    })() : '';
+    const fmtT = (t) => { const d = new Date(Number(t)); return isNaN(d) ? '' : d.toLocaleString('ko-KR', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' }); };
+    const cards = rows.filter((x) => !rvImproveOnly || String(x.improve || '').trim()).map((x) => `<li class="rv-card">
+        <div class="rv-meta"><b>${esc(x.nick || '—')}</b> <span>${esc(LV[groupOf(x)] || '')}${x.grade ? ' · ' + esc(x.grade) : ''}</span> <span class="rv-stars" aria-label="${esc(x.overall)}/5">${'★'.repeat(Number(x.overall) || 0)}${'☆'.repeat(5 - (Number(x.overall) || 0))}</span> <small>${esc(fmtT(x.t))}</small></div>
+        ${!rvImproveOnly && x.good ? `<p><em>${esc(T('rvGood'))}</em> ${esc(x.good)}</p>` : ''}
+        ${x.improve ? `<p class="rv-improve"><em>${esc(T('rvImprove'))}</em> ${esc(x.improve)}</p>` : ''}
+        ${!rvImproveOnly && x.message ? `<p><em>${esc(T('rvMessage'))}</em> ${esc(x.message)}</p>` : ''}
+      </li>`).join('');
+    $('infoBody').innerHTML = `
+      <div class="rv-tabs" role="tablist">${tabs.map((g) => `<button type="button" role="tab" class="btn btn-sm ${g === rvTab ? 'btn-go' : 'btn-ghost'}" data-rv="${g}" aria-selected="${g === rvTab}">${esc(g === 'all' ? T('rvAll') : LV[g])} (${g === 'all' ? all.length : all.filter((x) => groupOf(x) === g).length})</button>`).join('')}</div>
+      ${rows.length ? `
+      <p class="cls-sum">${esc(T('rvCount', rows.length))}</p>
+      <h3>${esc(T('rvAvg'))}</h3><ul class="rv-list">${avgHtml}</ul>
+      <h3>${esc(T('rvDist'))}</h3><ul class="rv-list">${distHtml}</ul>
+      <h3>${esc(T('rvBest'))}</h3><ul class="rv-list">${bestHtml}</ul>
+      <h3>${esc(T('rvCards'))} <label class="rv-only"><input type="checkbox" id="rvOnly"${rvImproveOnly ? ' checked' : ''}> ${esc(T('rvImproveOnly'))}</label></h3>
+      <ul class="rv-cards">${cards}</ul>` : `<p class="t-help">${esc(T('rvEmpty'))}</p>`}
+      <div class="t-buttons">${rows.length ? `<button type="button" class="btn btn-sm btn-go" id="rvCsv">${esc(T('rvCsv'))}</button>` : ''}<button type="button" class="btn btn-sm btn-ghost" id="rvRefresh">${esc(T('rvRefresh'))}</button></div>`;
+    document.querySelectorAll('#infoBody [data-rv]').forEach((b) => b.addEventListener('click', () => { rvTab = b.dataset.rv; openReviewView(key, true); }));
+    if ($('rvOnly')) $('rvOnly').addEventListener('change', (e) => { rvImproveOnly = e.target.checked; openReviewView(key, true); });
+    $('rvRefresh').addEventListener('click', () => openReviewView(key));
+    if ($('rvCsv')) $('rvCsv').addEventListener('click', () => {
+      const q = (v) => `"${String(v == null ? '' : v).replace(/"/g, '""')}"`;
+      const head = ['보낸 때', '학교급', '언어', '기기', '닉네임', ...qs.map((x) => x.q.ko)];
+      const lines = rows.map((x) => [fmtT(x.t), LV[groupOf(x)] || x.level, x.lang, x.mode, x.nick, ...qs.map((qq) => x[qq.id])]);
+      const csv = '\ufeff' + [head, ...lines].map((l) => l.map(q).join(',')).join('\r\n');
+      downloadBlob(new Blob([csv], { type: 'text/csv;charset=utf-8' }), `MAP_reviews_${rvTab}.csv`);
+    });
+  }
+
   /* ---------------- 📋 출발 전·도착 점검 (사전·사후) ----------------
      같은 문항을 여정 전·후에 풀어요. 점수는 이 기기(player.check)와 반 결과(classSync)에만 — 인증서에는 나오지 않아요
      player.check = { set: '34'|'56'|'ms'|'hs', pre: { ans: 'ox?o…', score, total, att: [1~5, 1~5], t }, post: { …, reflect } } */
@@ -7425,12 +7509,14 @@
       </div>`;
   }
 
-  /* ---------------- 📝 3·4학년 체험 설문 (부스 체험 + 웹앱) ----------------
-     객관식은 모두 꼭, 주관식은 컴퓨터 모드에서 pcRequired 인 것만 꼭 (태블릿은 글자 치기가 힘들어서 모두 '하고 싶으면')
-     답은 고를 때마다 이 기기에 저장 → 보내면 학교 구글 설문지(JUNIOR_SURVEY.action)로 전해져요 */
+  /* ---------------- 📝 웹앱 후기 설문 (모든 학교급 · 인증서 바로 앞) ----------------
+     객관식은 모두 꼭, 글쓰기는 opt 가 아니면 꼭 (3학년 태블릿은 글자 치기가 힘들어서 모두 '하고 싶으면')
+     답은 고를 때마다 이 기기에 저장 → 보내면 '반 결과' 시트의 「후기」 탭으로 (CONFIG.classApi) */
   const jsAns = () => { player.jsurvey = player.jsurvey || {}; return player.jsurvey; };
-  // 글쓰기: 4학년이거나 컴퓨터 모드면 모두 꼭, 3학년 태블릿은 모두 '하고 싶으면'
-  const jsRequired = (q) => q.type !== 'text' || !padMode() || jsAns().grade === '4학년';
+  // 글쓰기: opt 가 아니면 꼭 — 단, 3학년 태블릿은 모두 '하고 싶으면'
+  const jsRequired = (q) => q.type !== 'text' || (!q.opt && !(JUNIOR && padMode() && jsAns().grade !== '4학년'));
+  // 학년 보기는 화면 언어·학교급에 따라 달라요
+  const jsOpts = (q) => (q.opts === 'grades' ? (lang === 'ko' ? JS.grades[GRADE] : JS.grades[lang] || JS.grades.en) : q.opts);
   const jsRefreshTags = () => JS.questions.forEach((q) => { const tag = document.querySelector(`#jsq-${q.id} .js-tag`); if (!tag) return; const req = jsRequired(q); tag.className = `js-tag ${req ? 'need' : 'opt'}`; tag.textContent = T(req ? 'jsNeed' : 'jsOpt'); });
   const jsFilled = (q) => { const v = jsAns()[q.id]; return Array.isArray(v) ? v.length > 0 : v != null && String(v).trim() !== ''; };
   function jsurveyHtml() {
@@ -7443,7 +7529,7 @@
       const tag = `<em class="js-tag ${req ? 'need' : 'opt'}">${esc(T(req ? 'jsNeed' : 'jsOpt'))}</em>`;
       let body = '';
       if (q.type === 'one' || q.type === 'many') {
-        body = `${q.type === 'many' ? `<small class="js-many">✔ ${esc(T('jsMany'))}</small>` : ''}<div class="js-opts${q.opts.some((o) => L(o).length > 10) ? ' js-col' : ''}">${q.opts.map((o) => {
+        body = `${q.type === 'many' ? `<small class="js-many">✔ ${esc(T('jsMany'))}</small>` : ''}<div class="js-opts${jsOpts(q).some((o) => L(o).length > 10) ? ' js-col' : ''}">${jsOpts(q).map((o) => {
           const on = q.type === 'many' ? (v || []).includes(L(o)) : v === L(o);
           return `<button type="button" class="js-opt${on ? ' on' : ''}" aria-pressed="${on}" data-q="${esc(q.id)}" data-v="${esc(L(o))}"${done ? ' disabled' : ''}>${esc(L(o))}</button>`;
         }).join('')}</div>`;
@@ -7470,7 +7556,7 @@
       if (q.type === 'many') {
         const set = new Set(a[q.id] || []);
         if (set.has(b.dataset.v)) set.delete(b.dataset.v); else set.add(b.dataset.v);
-        a[q.id] = q.opts.map(L).filter((o) => set.has(o)); // 보기 순서대로
+        a[q.id] = jsOpts(q).map(L).filter((o) => set.has(o)); // 보기 순서대로
       } else a[q.id] = b.dataset.v;
       save();
       const box = $(`jsq-${q.id}`);
@@ -7497,22 +7583,18 @@
       if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
-    // 학교 구글 설문지로 보내기 (주소가 아직 없으면 이 기기에만 저장)
+    // '반 결과' 시트의 「후기」 탭으로 (주소가 없거나 claude.ai 링크면 이 기기에만 저장)
     try {
-      const E = JS.entries || {};
-      if (JS.action) {
-        const body = new URLSearchParams();
-        const put = (k, v) => { if (E[k] && v != null && v !== '') body.append(E[k], String(v)); };
+      if (classOn()) {
         const a = jsAns();
-        put('nick', player.nick);
-        put('mode', padMode() ? '태블릿' : '컴퓨터');
-        JS.questions.forEach((q) => put(q.id, Array.isArray(a[q.id]) ? a[q.id].join(', ') : a[q.id]));
-        if (!(navigator.sendBeacon && navigator.sendBeacon(JS.action, body))) fetch(JS.action, { method: 'POST', mode: 'no-cors', body }).catch(() => {});
+        const d = { type: 'review', gid: player.id, nick: player.nick, cls: player.cls || '', level: GRADE, lang, mode: padMode() ? 'tablet' : 'pc' };
+        JS.questions.forEach((q) => { d[q.id] = Array.isArray(a[q.id]) ? a[q.id].join(', ') : (a[q.id] == null ? '' : String(a[q.id])); });
+        fetch(CONFIG.classApi, { method: 'POST', mode: 'no-cors', keepalive: true, body: JSON.stringify(d) }).catch(() => {});
       }
     } catch (e) { /* 보내기 실패는 조용히 */ }
     player.jsurveyDone = Date.now();
     save();
-    reportProgress('junior survey');
+    reportProgress('review survey');
     sfx('star');
     toast(T('jsThanks'));
     renderEnding();

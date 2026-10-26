@@ -1562,3 +1562,23 @@ body.silence::after { content: ''; position: fixed; inset: 0; background: rgba(1
 
 /* 📌 영상 바로잡기 (옛 영상 속 숫자 등) */
 .v-note { margin: 8px 0 0; padding: 8px 12px; background: #fff7e0; border-left: 4px solid #f5b800; border-radius: 0 8px 8px 0; font-size: 14px; line-height: 1.6; }
+
+/* 📝 웹앱 후기 모아 보기 (선생님) */
+.rv-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; }
+.rv-list { list-style: none; margin: 0 0 14px; padding: 0; display: grid; gap: 8px; }
+.rv-list li { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; align-items: center; font-size: 14px; }
+.rv-list li small { grid-column: 1 / -1; color: #667; }
+.rv-bar { grid-column: 1 / -1; height: 8px; background: #e8edf6; border-radius: 4px; overflow: hidden; }
+.rv-bar i { display: block; height: 100%; background: #003893; }
+.rv-dist { grid-column: 1 / -1; display: flex; height: 22px; border-radius: 4px; overflow: hidden; font-size: 12px; font-style: normal; }
+.rv-dist i { display: flex; align-items: center; justify-content: center; color: #fff; font-style: normal; min-width: 0; }
+.rv-dist .d1 { background: #6c8ebf; } .rv-dist .d2 { background: #8fb0d9; } .rv-dist .d3 { background: #3a9d5d; } .rv-dist .d4 { background: #e3a33b; } .rv-dist .d5 { background: #ce1126; }
+.rv-only { font-size: 13px; font-weight: normal; margin-left: 8px; }
+.rv-cards { list-style: none; margin: 0 0 12px; padding: 0; display: grid; gap: 10px; }
+.rv-card { border: 1px solid #dde3ee; border-radius: 10px; padding: 10px 12px; background: #fff; }
+.rv-card p { margin: 6px 0 0; line-height: 1.6; font-size: 14px; }
+.rv-card em { font-style: normal; font-weight: 700; color: #003893; margin-right: 4px; }
+.rv-card .rv-improve { background: #fff7e0; border-radius: 6px; padding: 4px 8px; }
+.rv-card .rv-improve em { color: #a05a00; }
+.rv-meta { display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline; font-size: 13px; color: #556; }
+.rv-stars { color: #f5b800; letter-spacing: 1px; }
