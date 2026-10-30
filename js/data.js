@@ -1246,21 +1246,15 @@ window.GROUP_WORKS = [
 ];
 
 /* 🎬 엔딩 크레딧 — 아이들 이름은 성 없이 이름만 (개인정보 이용 동의 받음, 2026. 10.)
-   names 가 비어 있는 모둠은 크레딧에 안 나오고, 모두 비어 있으면 '6학년 8반 친구들 모두'로 나와요 */
+   names 가 비어 있는 모둠은 크레딧에 안 나오고, 모두 비어 있으면 '6학년 8반 일동'으로 나와요 */
 window.CREDITS = {
   teacher: '예진',        // 크레딧: '6학년 8반 담임 예진 선생님'
   teacherRoman: 'Yejin',  // 스페인어·영어 화면: 'Yejin (예진)'
   partnerTeacher: 'Cristian', // 콜롬비아 La Esperanza 담당 선생님 (성 없이 이름만)
   copyright: '찐찐쌤',    // 맨 아래 © 표시
-  // 위인전 책 『M.A.P. to TOMORROW』 목차 기준 (같은 이름 '서율'이 둘이라 성의 영어 머리글자로 구분: 원 W, 최 C)
-  // roman: 스페인어·영어 화면에서 '로마자 (한글)'로 나와요
-  groups: [
-    { n: 1, names: ['서율 W', '주호', '지훈', '서율 C'], roman: ['Seoyul W', 'Juho', 'Jihun', 'Seoyul C'] },
-    { n: 2, names: ['유건', '도연', '예은', '수진'], roman: ['Yugeon', 'Doyeon', 'Yeeun', 'Sujin'] },
-    { n: 3, names: ['예림', '채경', '주환', '하빈'], roman: ['Yerim', 'Chaegyeong', 'Juhwan', 'Habin'] },
-    { n: 4, names: ['다빈', '나연', '지후', '정근'], roman: ['Dabin', 'Nayeon', 'Jihu', 'Jeonggeun'] },
-    { n: 5, names: ['응민', '지유', '연우', '이준', '민지'], roman: ['Eungmin', 'Jiyu', 'Yeonu', 'Ijun', 'Minji'] }
-  ]
+  // 모둠·이름은 크레딧에 싣지 않아요 (2026. 10. 30.) → '6학년 8반 일동' 한 줄로 나와요
+  // 다시 넣으려면: { n: 1, names: ['이름', …], roman: ['Name', …] } (roman: 스페인어·영어 화면에서 '로마자 (한글)')
+  groups: []
 };
 
 /* ⏰ 추가 활동 — 여정 완료 화면 (인증서까지 올리고 시간이 남은 학생용) */
