@@ -508,7 +508,7 @@
       ttbSoon: (d) => `D-${d} · 11월 11일은 유엔참전용사 국제추모의 날`,
       ttbToday: '오늘은 유엔참전용사 국제추모의 날',
       ttbLocal: (t) => `이 기기 시각으로는 ${t}이에요.`,
-      ovSoonTitle: '🇺🇳 곧 유엔참전용사 국제추모의 날 묵념 시간이에요',
+      ovSoonTitle: '🕊️ 곧 유엔참전용사 국제추모의 날 묵념 시간이에요',
       ovWhy: '부산 유엔기념공원은 세계에서 하나뿐인 유엔군 묘지예요. 6·25 전쟁 때 머나먼 한국을 지키다 목숨을 잃은 여러 나라 용사들이 잠들어 있어요. 그분들의 희생을 잊지 않으려고, 세계 곳곳에서 같은 시각에 함께 고개를 숙여요.',
       ovKeep: '하던 활동은 그대로 저장돼 있어요. 묵념이 끝나면 이어서 할 수 있어요.',
       ovSoonIn: '묵념 시작까지',
@@ -785,9 +785,9 @@
       creditsClose: '닫기',
       crTeacher: '함께 만든 선생님',
       crTeacherLine: (n) => `6학년 8반 담임 ${n} 선생님`,
-      crMakers: '함께 만든 친구들 · 인천신검단초등학교 6학년 8반',
+      crMakers: '함께 만든 친구들',
       crGroup: (n) => `${n}모둠`,
-      crClassAll: '6학년 8반 일동',
+      crClassAll: '인천신검단초 6학년 8반 일동',
       crWorks: '모둠 조사 작품',
       crMusic: '배경음악',
       crMusicBy: '6학년 8반 1~5모둠이 직접 만든 노래',
@@ -1231,7 +1231,7 @@
       ttbSoon: (d) => `Faltan ${d} días · el 11 de noviembre es el Día de Homenaje a los Veteranos de la ONU`,
       ttbToday: 'Hoy es el Día de Homenaje a los Veteranos de la ONU',
       ttbLocal: (t) => `En la hora de este dispositivo: ${t}`,
-      ovSoonTitle: '🇺🇳 Pronto empieza el minuto de silencio por los veteranos de la ONU',
+      ovSoonTitle: '🕊️ Pronto empieza el minuto de silencio por los veteranos de la ONU',
       ovWhy: 'El Cementerio Memorial de la ONU en Busan es el único cementerio de las Naciones Unidas en el mundo. Allí descansan soldados de muchos países que dieron la vida defendiendo a Corea, un país lejano. Para no olvidar su sacrificio, en todo el mundo inclinamos la cabeza a la misma hora.',
       ovKeep: 'Lo que estabas haciendo quedó guardado. Cuando termine el silencio, podrás continuar.',
       ovSoonIn: 'El silencio empieza en',
@@ -1488,9 +1488,9 @@
       creditsClose: 'Cerrar',
       crTeacher: 'Docente',
       crTeacherLine: (n) => `${n} · docente del grupo 8 de 6.º`,
-      crMakers: 'Estudiantes · Grupo 8 de 6.º, Escuela Primaria Singeomdan (Incheon)',
+      crMakers: 'Estudiantes',
       crGroup: (n) => `Grupo ${n}`,
-      crClassAll: 'Todo el grupo 8 de 6.º',
+      crClassAll: 'Todo el grupo 8 de 6.º, Escuela Primaria Singeomdan (Incheon)',
       crWorks: 'Investigaciones de los grupos',
       crMusic: 'Música',
       crMusicBy: 'Canciones creadas por los grupos 1 a 5 del grupo 8 de 6.º',
@@ -1934,7 +1934,7 @@
       ttbSoon: (d) => `D-${d} · November 11 is the Day of Remembrance for UN Veterans`,
       ttbToday: 'Today is the Day of Remembrance for UN Veterans',
       ttbLocal: (t) => `On this device's clock: ${t}`,
-      ovSoonTitle: '🇺🇳 The minute of silence for UN veterans starts soon',
+      ovSoonTitle: '🕊️ The minute of silence for UN veterans starts soon',
       ovWhy: 'The UN Memorial Cemetery in Busan is the only United Nations cemetery in the world. Soldiers from many countries who gave their lives defending faraway Korea rest there. So that we never forget their sacrifice, people around the world bow their heads at the same moment.',
       ovKeep: 'What you were doing is saved. You can carry on after the silence.',
       ovSoonIn: 'Silence starts in',
@@ -2191,9 +2191,9 @@
       creditsClose: 'Close',
       crTeacher: 'Teacher',
       crTeacherLine: (n) => `${n} · Class 6-8 homeroom teacher`,
-      crMakers: 'Students · Class 6-8, Singeomdan Elementary School (Incheon)',
+      crMakers: 'Students',
       crGroup: (n) => `Group ${n}`,
-      crClassAll: 'All of Class 6-8',
+      crClassAll: 'All of Class 6-8, Singeomdan Elementary School (Incheon)',
       crWorks: 'Group research projects',
       crMusic: 'Background music',
       crMusicBy: 'Songs made by Groups 1–5 of Class 6-8',
@@ -5555,7 +5555,7 @@
     if (!el) return;
     const left = ttbDaysLeft();
     el.hidden = !(isTtbDay() || left);
-    el.textContent = isTtbDay() ? `🇺🇳 ${T('ttbToday')}` : left ? `🇺🇳 ${T('ttbSoon', left)}` : '';
+    el.textContent = isTtbDay() ? `🕊️ ${T('ttbToday')}` : left ? `🕊️ ${T('ttbSoon', left)}` : '';
   }
 
   let soloTimer = 0, ttbTimer = 0, ttbFromStart = false;
@@ -5589,7 +5589,7 @@
     openInfo('🕊️', T('tribTitle'), `
       ${joined ? `<p class="trib-done">${esc(T('cardJoined'))}</p>` : `
       <section class="ttb-box${ttb ? ' today' : ''}">
-        <h3>🇺🇳 ${esc(T('ttbTitle'))}</h3>
+        <h3>🕊️ ${esc(T('ttbTitle'))}</h3>
         <p>${esc(T('ttbText'))}</p>
         ${ttb ? `<p class="ttb-clock" id="ttbClock" role="status"></p>${ttbLocalText() ? `<p class="t-help">${esc(ttbLocalText())}</p>` : ''}` : ''}
       </section>
