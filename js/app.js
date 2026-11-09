@@ -823,6 +823,7 @@
       doneCheckMap: (n) => `평화의 지도 ${n}조각 모으기`,
       doneCheckSurvey: '게임 소감 남기기',
       doneCheckCert: '인증서를 패들렛에 올리기',
+      doneCheckTrib: '추모 카드를 추모의 벽에 올리기',
       surveyHelp: '설문이 잘 안 보이면',
       surveyOpen: '새 창에서 설문 열기',
       surveyThanks: '끝까지 함께해 줘서 고마워요. 오늘 기억한 이야기를 내일의 평화로 이어 가요!',
@@ -1526,6 +1527,7 @@
       doneCheckMap: (n) => `Reunir las ${n} piezas del mapa de la paz`,
       doneCheckSurvey: 'Dejar tu opinión sobre el juego',
       doneCheckCert: 'Subir el certificado al Padlet',
+      doneCheckTrib: 'Subir la tarjeta de homenaje al Muro de la memoria',
       surveyHelp: 'Si la encuesta no se ve bien,',
       surveyOpen: 'ábrela en otra pestaña',
       surveyThanks: 'Gracias por llegar hasta el final. Llevemos lo que recordamos hoy hacia la paz del mañana.',
@@ -2229,6 +2231,7 @@
       doneCheckMap: (n) => `Collect all ${n} pieces of the map of peace`,
       doneCheckSurvey: 'Share your feedback',
       doneCheckCert: 'Post your certificate on the Padlet',
+      doneCheckTrib: 'Post your tribute card on the Wall of Memory',
       surveyHelp: "If the survey doesn't show well,",
       surveyOpen: 'open it in a new tab',
       surveyThanks: "Thank you for coming all the way. Let's carry what we remembered today into tomorrow's peace!",
@@ -3590,7 +3593,7 @@
 
   $('teacherLogin').addEventListener('submit', (e) => {
     e.preventDefault();
-    if (teacherHash($('teacherPw').value.trim()) === String(CONFIG.teacherPasswordHash)) {
+    if (isClassPw($('teacherPw').value)) {
       $('teacherPw').value = ''; $('teacherError').textContent = ''; $('teacherFold').open = false;
       showTeacher();
     } else {
@@ -7066,7 +7069,8 @@
         ...(NO_SURVEY ? [] : [[!!player.surveyDone, T('doneCheckSurvey')]]),
         ...(window.KNOW_CHECK ? [[!!(player.check && player.check.post), T('doneCheckPost')]] : []),
         ...(JS ? [[!!player.jsurveyDone, T('doneCheckJs')]] : []),
-        [!!(player.certUploaded || player.certCaptured), T(certPadOnly() ? 'doneCheckCertSave' : 'doneCheckCert')]
+        [!!(player.certUploaded || player.certCaptured), T(certPadOnly() ? 'doneCheckCertSave' : 'doneCheckCert')],
+        [(store.tributes || []).some((t) => t && t.card), T('doneCheckTrib')]
       ];
       html = `<div class="end-hero journey-done">
           <span class="end-flags" aria-hidden="true"><i class="f-y"></i><i class="f-b"></i><i class="f-r"></i></span>
@@ -7075,6 +7079,7 @@
           <p class="end-lead">${esc(T('finishText', player.nick))}</p>
           <p class="door-quote">${esc(T('finishQuote'))}</p>
           <ul class="done-checks">${checks.map(([ok, label]) => `<li class="${ok ? 'ok' : ''}">${ok ? '✅' : '⬜'} ${esc(label)}</li>`).join('')}</ul>
+          ${previewMode || (store.tributes || []).some((t) => t && t.card) ? '' : `<p><button id="endTrib" class="btn btn-go" type="button">${esc(T('ovCard'))}</button></p>`}
           <p class="survey-thanks">🕊️ ${esc(T('surveyThanks'))}</p>
         </div>
         <div class="t-buttons end-buttons">
@@ -7116,6 +7121,7 @@
     if ($('endSave')) $('endSave').addEventListener('click', () => { if (saveEndGuess(true)) { toast(T('saved')); renderEnding(); } else $('endGuess').focus(); });
     if ($('certCanvas')) bindCert();
     if ($('endCode')) $('endCode').addEventListener('click', showCode);
+    if ($('endTrib')) $('endTrib').addEventListener('click', () => openTribute());
     if ($('endMap')) $('endMap').addEventListener('click', () => (previewMode ? showTeacher() : enterGame()));
     if ($('endHome')) $('endHome').addEventListener('click', () => (previewMode ? showTeacher() : showStart()));
     if ($('endCredits')) $('endCredits').addEventListener('click', showCredits);
