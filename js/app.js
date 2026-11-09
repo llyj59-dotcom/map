@@ -3270,6 +3270,12 @@
     return (h1 % 1679616).toString(36).padStart(4, '0') + (h2 % 1296).toString(36).padStart(2, '0');
   }
 
+  // 담임 선생님 공용 비밀번호 (반 만들기 · 영상 넘기기). 선생님 모드·11/11 묵념 창 끄기는 teacherPasswordHash 만 열어요.
+  const isClassPw = (v) => {
+    const h = teacherHash(String(v || '').trim());
+    return h === String(CONFIG.teacherPasswordHash) || (!!CONFIG.classPasswordHash && h === String(CONFIG.classPasswordHash));
+  };
+
   /* =====================================================================
      시작 화면
      ===================================================================== */
@@ -4896,7 +4902,7 @@
     if (pwBtn) pwBtn.addEventListener('click', () => {
       const must = mustWatch(cur.s);
       if (!must) return;
-      if (teacherHash(($('watchPw').value || '').trim()) === String(CONFIG.teacherPasswordHash)) { if (cur.watch) keepWatch(cur.watch); watchDone(must, 'teacher'); }
+      if (isClassPw($('watchPw').value)) { if (cur.watch) keepWatch(cur.watch); watchDone(must, 'teacher'); }
       else { $('watchPwMsg').textContent = T('watchPwWrong'); }
     });
     if ($('watchPw')) $('watchPw').addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); pwBtn.click(); } });
@@ -7215,7 +7221,7 @@
         </form>`;
       $('clsLock').addEventListener('submit', (e) => {
         e.preventDefault();
-        if (teacherHash($('clsPw').value.trim()) === String(CONFIG.teacherPasswordHash)) { clsUnlocked = true; renderClassFold(); if ($('clsName')) $('clsName').focus(); }
+        if (isClassPw($('clsPw').value)) { clsUnlocked = true; renderClassFold(); if ($('clsName')) $('clsName').focus(); }
         else $('clsPwErr').textContent = T('wrongPw');
       });
       return;
