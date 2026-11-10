@@ -23,11 +23,11 @@ const SHEET_CLASSES = '반';
 const SHEET_REVIEWS = '후기';
 const APP_URL = 'https://llyj59-dotcom.github.io/map/';
 // 후기 시트 칸 (웹앱 REVIEW_SURVEY 문항 id 와 같은 차례)
-const REVIEW_IDS = ['grade', 'overall', 'fun', 'learned', 'diff', 'length', 'best', 'recommend', 'good', 'improve', 'message'];
-const HEAD_R = ['보낸 때', '학교급', '언어', '기기', '반 코드', '닉네임', '기록 id', '학년', '전체', '재미', '새로 안 것', '난이도', '길이', '좋았던 활동', '추천', '좋았던 점', '고칠 점', '하고 싶은 말'];
+const REVIEW_IDS = ['grade', 'overall', 'fun', 'learned', 'diff', 'length', 'hard', 'trouble', 'best', 'recommend', 'good', 'improve', 'reflect', 'message'];
+const HEAD_R = ['보낸 때', '학교급', '언어', '기기', '반 코드', '닉네임', '기록 id', '학년', '전체', '재미', '새로 안 것', '난이도', '길이', '어려웠던 지점', '불편했던 점', '좋았던 활동', '추천', '좋았던 점', '고칠 점', '성찰·소감', '하고 싶은 말'];
 const HEAD = ['마지막 활동', '반 코드', '반 이름', '문항 수준', '언어', '닉네임', '기록 id', '작전 지점',
   '사전 점수', '사후 점수', '변화', '문항 수', '사전 응답', '사후 응답', '사전 생각(앎·중요)', '사후 생각(앎·중요)',
-  '소감', '추모 카드', '11/11 묵념', '인증서', '마지막 일'];
+  '소감', '추모 카드', '11/11 묵념', '인증서', '마지막 일', '후기'];
 
 // 반 열쇠를 만드는 비밀 값 — 처음 실행할 때 저절로 만들어져 이 스크립트에만 저장돼요
 function secret_() {
@@ -49,6 +49,13 @@ function code_(n) {
 function sheet_(name, head) {
   const ss = SpreadsheetApp.getActive();
   let sh = ss.getSheetByName(name);
+  // 후기 칸 구성이 바뀌었으면 예전 탭은 '후기(이전)'으로 보관하고 새로 만들어요
+  if (sh && name === SHEET_REVIEWS && sh.getLastColumn() > 0 && String(sh.getRange(1, 1, 1, sh.getLastColumn()).getValues()[0].join('|')) !== head.join('|')) {
+    sh.setName(SHEET_REVIEWS + '(이전 ' + Utilities.formatDate(new Date(), 'Asia/Seoul', 'MMdd-HHmm') + ')');
+    sh = null;
+  }
+  // 결과 탭에 새 칸이 생겼으면 제목만 채워요
+  if (sh && name === SHEET_RESULTS && sh.getLastColumn() < head.length) sh.getRange(1, 1, 1, head.length).setValues([head]).setFontWeight('bold');
   if (!sh) { sh = ss.insertSheet(name); sh.appendRow(head); sh.setFrozenRows(1); sh.getRange(1, 1, 1, head.length).setFontWeight('bold'); }
   return sh;
 }
@@ -90,7 +97,7 @@ function doGet(e) {
     const out = rows.filter((r) => r[1] === cls).map((r) => ({
       t: r[0] instanceof Date ? r[0].getTime() : r[0], set: r[3], lang: r[4], nick: r[5], prog: r[7],
       pre: r[8], post: r[9], total: r[11], preAns: r[12], postAns: r[13], preAtt: r[14], postAtt: r[15],
-      reflect: r[16], card: r[17], ttb: r[18], cert: r[19], ev: r[20]
+      reflect: r[16], card: r[17], ttb: r[18], cert: r[19], ev: r[20], rev: r[21]
     }));
     return json_({ ok: true, cls: cls, name: info.name || '', grade: info.grade || '', rows: out });
   }
@@ -144,7 +151,7 @@ function doPost(e) {
   const pre = num_(d.pre), post = num_(d.post);
   const row = [new Date(), cls, info.name || '', clean_(d.set, 4), clean_(d.lang, 4), clean_(d.nick, 20), clean_(d.gid, 30), clean_(d.prog, 10),
     pre, post, pre !== '' && post !== '' ? post - pre : '', num_(d.total), clean_(d.preAns, 30), clean_(d.postAns, 30),
-    clean_(d.preAtt, 10), clean_(d.postAtt, 10), clean_(d.reflect, 300), d.card ? '✓' : '', d.ttb ? '✓' : '', d.cert ? '✓' : '', clean_(d.ev, 40)];
+    clean_(d.preAtt, 10), clean_(d.postAtt, 10), clean_(d.reflect, 300), d.card ? '✓' : '', d.ttb ? '✓' : '', d.cert ? '✓' : '', clean_(d.ev, 40), d.rev ? '✓' : ''];
   const lock = LockService.getScriptLock();
   lock.waitLock(10000);
   try {

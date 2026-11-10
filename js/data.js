@@ -96,6 +96,9 @@ window.MAP_CONFIG = {
   // 담임 선생님들께 나눠 주는 공용 비밀번호를 뒤섞은 값 — 반 만들기·영상 넘기기만 열려요 (선생님 모드·묵념 창 끄기는 위 값으로만)
   classPasswordHash: 'l1nbm3',
 
+  // 👩‍🏫 선생님 소감 구글 폼 (선택 응답) — 선생님 화면과 우리 반 결과 화면에서 언제든 열려요 ('' 이면 버튼이 안 보여요)
+  teacherFeedbackForm: 'https://docs.google.com/forms/d/e/1FAIpQLSf5zP7Gty8c_AycCnC8NBYL0jq73HBik49bb_P60y4iKlBMug/viewform',
+
   nicknameMaxLength: 8,
   // 닉네임에 들어가면 시작할 수 없는 말 (필요하면 더 추가)
   bannedWords: ['시발', '씨발', 'ㅅㅂ', '병신', 'ㅂㅅ', '개새', '좆', '존나', '꺼져', '닥쳐', 'fuck', 'shit', 'puta', 'mierda', 'idiota'],
@@ -1261,9 +1264,9 @@ window.CREDITS = {
 };
 
 /* ⏰ 추가 활동 — 여정 완료 화면 (인증서까지 올리고 시간이 남은 학생용) */
-/* 📝 웹앱 후기 설문 — 모든 학교급(?grade=34·5·6·ms·hs)과 스페인어·영어 화면에서 인증서 앞에 나와요.
+/* 📝 웹앱 후기 설문 — 모든 문항 필수 · 모든 학교급(?grade=34·5·6·ms·hs)과 스페인어·영어 화면에서 인증서 앞에 나와요.
    보내면 '반 결과' 구글 시트의 「후기」 탭에 한 줄씩 모이고, 선생님은 웹앱 「후기 모아 보기」(?reviews=열쇠)에서 봐요.
-   객관식은 모두 꼭, 글쓰기는 opt 가 아니면 꼭 (3학년 태블릿은 글쓰기가 모두 '하고 싶으면') */
+   모든 문항이 필수예요 (객관식·글쓰기 모두) */
 window.REVIEW_SURVEY = {
   // 학년 보기: 한국어는 주소의 학교급대로, 스페인어·영어는 학교급만
   grades: {
@@ -1286,6 +1289,19 @@ window.REVIEW_SURVEY = {
       low: { ko: '너무 쉬웠어요', es: 'Muy fáciles', en: 'Too easy' }, mid: { ko: '딱 알맞았어요', es: 'Justo bien', en: 'Just right' }, high: { ko: '너무 어려웠어요', es: 'Muy difíciles', en: 'Too hard' } },
     { id: 'length', type: 'scale', faces: false, q: { ko: '게임 길이는 어땠나요?', es: '¿Qué te pareció la duración del juego?', en: 'How was the length of the game?' },
       low: { ko: '너무 짧았어요', es: 'Muy corto', en: 'Too short' }, mid: { ko: '알맞았어요', es: 'Bien', en: 'Just right' }, high: { ko: '너무 길었어요', es: 'Muy largo', en: 'Too long' } },
+    { id: 'hard', type: 'many', opts: 'stations', none: { ko: '어렵거나 막힌 곳이 없었어요', es: 'No hubo partes difíciles', en: 'No difficult parts' },
+      q: { ko: '어렵거나 지루하거나 막혔던 작전 지점을 모두 골라요.', es: 'Elige todas las etapas que fueron difíciles, aburridas o donde te trabaste.', en: 'Choose all the stops that were hard, boring or where you got stuck.' } },
+    { id: 'trouble', type: 'many',
+      q: { ko: '하면서 불편했던 점을 모두 골라요.', es: 'Elige todo lo que te resultó incómodo.', en: 'Choose everything that was inconvenient.' },
+      opts: [
+        { ko: '영상이 안 나오거나 끊겼어요', es: 'El video no se veía o se cortaba', en: "A video wouldn't play or kept cutting out" },
+        { ko: '소리가 안 들리거나 너무 작았어요', es: 'No se oía o el sonido era muy bajo', en: 'No sound, or the sound was too quiet' },
+        { ko: '글씨나 버튼이 작아서 보기 어려웠어요', es: 'Los textos o botones eran pequeños', en: 'Text or buttons were too small' },
+        { ko: '[다음]이 눌러지지 않거나 멈췄어요', es: 'El botón [Siguiente] no funcionaba o se trabó', en: 'The [Next] button did not work or it froze' },
+        { ko: '영상을 끝까지 봐야 해서 답답했어요', es: 'Tener que ver el video completo fue frustrante', en: 'Having to watch the whole video was frustrating' },
+        { ko: '글이 너무 많거나 어려웠어요', es: 'Había demasiado texto o era difícil', en: 'There was too much text or it was hard' },
+        { ko: '불편한 점이 없었어요', es: 'No hubo nada incómodo', en: 'Nothing was inconvenient' }
+      ] },
     { id: 'best', type: 'many', q: { ko: '좋았던 활동을 모두 골라요.', es: 'Elige todas las actividades que te gustaron.', en: 'Choose all the activities you liked.' },
       opts: [
         { ko: '작전 지점 이야기와 지도', es: 'Las historias y el mapa', en: 'The stories and the map' },
@@ -1301,7 +1317,8 @@ window.REVIEW_SURVEY = {
       low: { ko: '아니요', es: 'No', en: 'No' }, high: { ko: '꼭 해 보라고 할래요', es: 'Sí, sin duda', en: 'Definitely' } },
     { id: 'good', type: 'text', q: { ko: '좋았던 점을 적어 주세요.', es: '¿Qué te gustó?', en: 'What did you like?' } },
     { id: 'improve', type: 'text', q: { ko: '고칠 점이나 바뀌면 좋을 점을 적어 주세요. (어려웠던 곳, 막혔던 곳, 오류도 좋아요)', es: '¿Qué deberíamos mejorar o cambiar? (partes difíciles, lugares donde te trabaste o errores)', en: 'What should we fix or change? (hard parts, places you got stuck, or errors)' } },
-    { id: 'message', type: 'text', opt: true, q: { ko: '참전용사님이나 이 게임을 만든 6학년 8반 친구들에게 하고 싶은 말이 있나요?', es: '¿Quieres dejar un mensaje para los veteranos o para los estudiantes de 6.º grado que hicieron este juego?', en: 'Any message for the veterans or for the 6th graders who made this game?' } }
+    { id: 'reflect', type: 'text', q: { ko: '이 게임을 하고 나서, 6·25 전쟁이나 참전용사, 평화에 대한 내 생각이나 마음이 어떻게 달라졌나요?', es: 'Después de este juego, ¿cómo cambió lo que piensas o sientes sobre la Guerra de Corea, los veteranos y la paz?', en: 'After this game, how have your thoughts or feelings about the Korean War, the veterans and peace changed?' } },
+    { id: 'message', type: 'text', q: { ko: '참전용사님이나 이 게임을 만든 6학년 8반 친구들에게 하고 싶은 말이 있나요?', es: '¿Quieres dejar un mensaje para los veteranos o para los estudiantes de 6.º grado que hicieron este juego?', en: 'Any message for the veterans or for the 6th graders who made this game?' } }
   ]
 };
 

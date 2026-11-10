@@ -628,6 +628,7 @@
       rvGood: '좋았던 점',
       rvImprove: '고칠 점',
       rvMessage: '하고 싶은 말',
+      rvHard: '어렵거나 막혔던 작전 지점', rvTrouble: '불편했던 점', rvReflect: '성찰·소감',
       rvCsv: '⬇️ 표로 내려받기 (CSV)',
       rvRefresh: '🔄 새로고침',
       clsOpen: '🏫 선생님: 우리 반 만들기 · 결과 보기',
@@ -645,6 +646,12 @@
       clsSummary: (n, done) => `참여 ${n}명 · 도착 점검까지 마친 학생 ${done}명`,
       clsAvg: (a, b, d) => `평균 점수: 출발 전 ${a} → 도착 후 ${b} (${d})`,
       clsCols: ['닉네임', '작전 지점', '출발 전', '도착 후', '변화', '생각 변화 (앎·중요)', '11/11 묵념', '추모 카드', '인증서', '마지막 활동'],
+      clsColsV: ['닉네임', '진행', '출발 전→도착 후', '인증서', '후기', '추모 카드', '마지막 활동'],
+      clsDoneOf: (lbl, a, n) => `${lbl} ${a}/${n}`, clsStatLbl: ['인증서', '후기', '추모 카드'],
+      clsNoRev: '※ 후기 완료 표시는 구글 스크립트를 새 버전으로 배포한 뒤부터 나와요.',
+      clsTFeedback: '👩‍🏫 선생님 소감 남기기 (구글 폼)',
+      tfbTitle: '👩‍🏫 선생님 소감 남기기',
+      tfbGuide: '아이들과 해 보신 느낀 점을 언제든 남겨 주세요. 모든 문항은 선택이라 쓰고 싶은 것만 적으시면 돼요.',
       clsItems: '📊 문항별 정답률 (출발 전 → 도착 후)', clsReflects: '✍️ 학생 소감', clsCsv: '⬇️ 엑셀(CSV)로 받기', clsRefresh: '🔄 새로 고침',
       clsEmpty: '아직 참여한 학생이 없어요. 학생용 주소로 들어와 닉네임을 정하면 여기에 나타나요.',
       clsNote: '점수는 학생 화면과 인증서에는 나오지 않고, 이 화면에서만 보여요.',
@@ -1350,6 +1357,12 @@
       clsSummary: (n, done) => `${n} estudiantes · ${done} terminaron la prueba de llegada`,
       clsAvg: (a, b, d) => `Promedio: al principio ${a} → al final ${b} (${d})`,
       clsCols: ['Apodo', 'Etapas', 'Al principio', 'Al final', 'Cambio', 'Opinión (saber·importancia)', '11/11', 'Tarjeta', 'Certificado', 'Última actividad'],
+      clsColsV: ['Apodo', 'Avance', 'Antes→Después', 'Certificado', 'Opinión', 'Tarjeta', 'Última actividad'],
+      clsDoneOf: (lbl, a, n) => `${lbl} ${a}/${n}`, clsStatLbl: ['Certificado', 'Encuesta', 'Tarjeta'],
+      clsNoRev: '※ La marca de encuesta aparece después de publicar la nueva versión del script de Google.',
+      clsTFeedback: '👩‍🏫 Deja tu opinión como docente (Google Forms)',
+      tfbTitle: '👩‍🏫 Tu opinión como docente',
+      tfbGuide: 'Cuéntanos cómo fue con tus alumnos, cuando quieras. Todas las preguntas son opcionales.',
       clsItems: '📊 Aciertos por pregunta (al principio → al final)', clsReflects: '✍️ Comentarios de los estudiantes', clsCsv: '⬇️ Descargar CSV (Excel)', clsRefresh: '🔄 Actualizar',
       clsEmpty: 'Todavía no hay estudiantes. Aparecerán aquí cuando entren con el enlace y elijan su apodo.',
       clsNote: 'Las puntuaciones solo se muestran aquí, no en la pantalla del estudiante ni en el certificado.',
@@ -2054,6 +2067,12 @@
       clsSummary: (n, done) => `${n} students · ${done} finished the final check`,
       clsAvg: (a, b, d) => `Average score: before ${a} → after ${b} (${d})`,
       clsCols: ['Nickname', 'Stops', 'Before', 'After', 'Change', 'Thinking (know·important)', '11/11', 'Card', 'Certificate', 'Last activity'],
+      clsColsV: ['Nickname', 'Progress', 'Before→After', 'Certificate', 'Survey', 'Tribute card', 'Last activity'],
+      clsDoneOf: (lbl, a, n) => `${lbl} ${a}/${n}`, clsStatLbl: ['Certificate', 'Survey', 'Tribute card'],
+      clsNoRev: '※ The survey mark appears once the new Google script version is deployed.',
+      clsTFeedback: '👩‍🏫 Share your teacher feedback (Google Form)',
+      tfbTitle: '👩‍🏫 Teacher feedback',
+      tfbGuide: 'Share how it went with your class any time. Every question is optional.',
       clsItems: '📊 Correct answers by question (before → after)', clsReflects: '✍️ Student reflections', clsCsv: '⬇️ Download CSV (Excel)', clsRefresh: '🔄 Refresh',
       clsEmpty: 'No students yet. They will appear here when they open the student link and choose a nickname.',
       clsNote: 'Scores appear only here, not on the student screen or the certificate.',
@@ -7201,7 +7220,7 @@
         preAtt: pre && pre.att ? pre.att.join('·') : '', postAtt: post && post.att ? post.att.join('·') : '',
         reflect: (post && post.reflect) || '',
         card: (store.tributes || []).some((t) => t.card), ttb: !!store.ttbJoined,
-        cert: !!(player.certUploaded || player.certCaptured), ev: String(ev || '')
+        cert: !!(player.certUploaded || player.certCaptured), rev: !!player.jsurveyDone, ev: String(ev || '')
       };
       fetch(CONFIG.classApi, { method: 'POST', mode: 'no-cors', keepalive: true, body: JSON.stringify(d) }).catch(() => {});
     } catch (e) { /* 보내기 실패는 조용히 */ }
@@ -7292,12 +7311,20 @@
     const fmtT = (t) => { const d = new Date(t); return isNaN(d) ? '' : d.toLocaleString(lang === 'es' ? 'es-CO' : lang === 'en' ? 'en-US' : 'ko-KR', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' }); };
     const cols = T('clsCols');
     const table = rows.map((x) => { const g = num(x.pre) != null && num(x.post) != null ? num(x.post) - num(x.pre) : null; return [x.nick, x.prog, x.pre === '' ? '—' : `${x.pre}/${x.total || items.length}`, x.post === '' ? '—' : `${x.post}/${x.total || items.length}`, g == null ? '' : (g > 0 ? `+${g}` : String(g)), x.preAtt || x.postAtt ? `${x.preAtt || '—'} → ${x.postAtt || '—'}` : '', x.ttb ? '✓' : '', x.card ? '✓' : '', x.cert ? '✓' : '', fmtT(x.t)]; });
+    const colsV = T('clsColsV'), ok = (v) => (v ? '✅' : '·');
+    const noRev = rows.length && rows.every((x) => x.rev === undefined);
+    const nCert = rows.filter((x) => x.cert).length, nRev = rows.filter((x) => x.rev).length, nCard = rows.filter((x) => x.card).length;
+    const statLbl = T('clsStatLbl');
+    const prog = (x) => { const m = String(x.prog || '').match(/^(\d+)\/(\d+)/); const p = m ? Math.round((+m[1] / +m[2]) * 100) : 0; return `<span class="cls-prog"><i style="width:${p}%"></i></span><b>${esc(String(x.prog || '—').replace(/ ?🔑/, ''))}</b>`; };
+    const chk = (x) => (x.pre === '' && x.post === '' ? '—' : `${x.pre === '' ? '—' : x.pre} → ${x.post === '' ? '—' : x.post}${num(x.pre) != null && num(x.post) != null ? ` (${num(x.post) - num(x.pre) > 0 ? '+' : ''}${num(x.post) - num(x.pre)})` : ''}`);
     $('infoBody').innerHTML = rows.length ? `
       <p class="cls-sum">${esc(T('clsSummary', rows.length, posts.length))}</p>
+      <p class="cls-stats"><span>🏅 ${esc(T('clsDoneOf', statLbl[0], nCert, rows.length))}</span><span>📝 ${esc(noRev ? statLbl[1] + ' —' : T('clsDoneOf', statLbl[1], nRev, rows.length))}</span><span>🕊️ ${esc(T('clsDoneOf', statLbl[2], nCard, rows.length))}</span></p>
       <p class="cls-avg">${esc(T('clsAvg', f1(avg(pres)), f1(avg(posts)), gain == null ? '—' : (gain >= 0 ? '+' : '') + gain.toFixed(1)))}</p>
-      <div class="t-buttons"><button type="button" class="btn btn-sm btn-go" id="clsCsv">${esc(T('clsCsv'))}</button><button type="button" class="btn btn-sm btn-ghost" id="clsRefresh">${esc(T('clsRefresh'))}</button></div>
-      <div class="cls-table-wrap"><table class="cls-table"><thead><tr>${cols.map((c) => `<th>${esc(c)}</th>`).join('')}</tr></thead>
-        <tbody>${table.map((tr) => `<tr>${tr.map((td, k) => `<td${k === 4 && td.startsWith('+') ? ' class="up"' : ''}>${esc(td)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
+      <div class="t-buttons"><button type="button" class="btn btn-sm btn-go" id="clsCsv">${esc(T('clsCsv'))}</button><button type="button" class="btn btn-sm btn-ghost" id="clsRefresh">${esc(T('clsRefresh'))}</button>${CONFIG.teacherFeedbackForm ? `<a class="btn btn-sm btn-blue" href="${esc(CONFIG.teacherFeedbackForm)}" target="_blank" rel="noopener">${esc(T('clsTFeedback'))}</a>` : ''}</div>
+      <div class="cls-table-wrap"><table class="cls-table cls-compact"><thead><tr>${colsV.map((c) => `<th>${esc(c)}</th>`).join('')}</tr></thead>
+        <tbody>${rows.map((x) => `<tr><td>${esc(x.nick)}</td><td class="pg">${prog(x)}</td><td>${esc(chk(x))}</td><td class="st">${ok(x.cert)}</td><td class="st">${x.rev === undefined ? '·' : ok(x.rev)}</td><td class="st">${ok(x.card)}</td><td class="tm">${esc(fmtT(x.t))}</td></tr>`).join('')}</tbody></table></div>
+      ${noRev ? `<p class="t-help">${esc(T('clsNoRev'))}</p>` : ''}
       <h3>${esc(T('clsItems'))}</h3>
       <ol class="cls-items">${itemRows.map((it) => `<li><span>${esc(it.q)}</span><b>${it.a == null ? '—' : it.a + '%'} → ${it.b == null ? '—' : it.b + '%'}</b>
         <div class="cls-ibar"><i class="a" style="width:${it.a || 0}%"></i><i class="b" style="width:${it.b || 0}%"></i></div></li>`).join('')}</ol>
@@ -7307,8 +7334,8 @@
     $('clsRefresh').addEventListener('click', () => openClassView(cls, key));
     if ($('clsCsv')) $('clsCsv').addEventListener('click', () => {
       const q = (v) => `"${String(v == null ? '' : v).replace(/"/g, '""')}"`;
-      const head = [...cols, ...items.map((_, k) => `Q${k + 1} ${T('chkPre')}`), ...items.map((_, k) => `Q${k + 1} ${T('chkPost')}`), T('clsReflects').replace(/^\S+\s/, '')];
-      const lines = rows.map((x, i) => [...table[i], ...items.map((_, k) => String(x.preAns || '')[k] || ''), ...items.map((_, k) => String(x.postAns || '')[k] || ''), x.reflect || '']);
+      const head = [...cols, T('clsColsV')[4], ...items.map((_, k) => `Q${k + 1} ${T('chkPre')}`), ...items.map((_, k) => `Q${k + 1} ${T('chkPost')}`), T('clsReflects').replace(/^\S+\s/, '')];
+      const lines = rows.map((x, i) => [...table[i], x.rev ? '✓' : '', ...items.map((_, k) => String(x.preAns || '')[k] || ''), ...items.map((_, k) => String(x.postAns || '')[k] || ''), x.reflect || '']);
       const csv = '﻿' + [head, ...lines].map((l) => l.map(q).join(',')).join('\r\n');
       downloadBlob(new Blob([csv], { type: 'text/csv;charset=utf-8' }), `${(r.name || cls).replace(/[\\/:*?"<>|\s]+/g, '_')}_results.csv`);
     });
@@ -7340,18 +7367,20 @@
       const xs = nums(q.id); const c = [1, 2, 3, 4, 5].map((v) => xs.filter((x) => x === v).length);
       return `<li><span>${esc(q.q.ko)}</span><div class="rv-dist">${c.map((n, k) => `<i title="${k + 1}: ${n}" style="flex:${n || 0.0001}" class="d${k + 1}">${n ? n : ''}</i>`).join('')}</div><small>1 ${esc(lbl(q, 'low'))} · 3 ${esc(lbl(q, 'mid'))} · 5 ${esc(lbl(q, 'high'))}</small></li>`;
     }).join('');
-    const bestQ = qs.find((q) => q.id === 'best');
-    const bestHtml = bestQ ? (() => {
-      const opts = bestQ.opts.map((o) => o.ko);
-      const cnt = opts.map((o, k) => ({ o, n: rows.filter((x) => String(x.best || '').split(', ').some((v) => v === o || v === (bestQ.opts[k].es) || v === (bestQ.opts[k].en))).length })).sort((a, b) => b.n - a.n);
+    const manyHtml = (id) => {
+      const q = qs.find((z) => z.id === id); if (!q) return '';
+      const list = jsOpts(q);
+      const cnt = list.map((o) => ({ o: o.ko, n: rows.filter((x) => String(x[id] || '').split(', ').some((v) => v === o.ko || v === o.es || v === o.en)).length })).sort((p, r2) => r2.n - p.n);
       const max = Math.max(1, ...cnt.map((c) => c.n));
       return cnt.map((c) => `<li><span>${esc(c.o)}</span><b>${c.n}</b><div class="rv-bar"><i style="width:${(c.n / max) * 100}%"></i></div></li>`).join('');
-    })() : '';
+    };
+    const bestHtml = manyHtml('best'), hardHtml = manyHtml('hard'), troubleHtml = manyHtml('trouble');
     const fmtT = (t) => { const d = new Date(Number(t)); return isNaN(d) ? '' : d.toLocaleString('ko-KR', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' }); };
     const cards = rows.filter((x) => !rvImproveOnly || String(x.improve || '').trim()).map((x) => `<li class="rv-card">
         <div class="rv-meta"><b>${esc(x.nick || '—')}</b> <span>${esc(LV[groupOf(x)] || '')}${x.grade ? ' · ' + esc(x.grade) : ''}</span> <span class="rv-stars" aria-label="${esc(x.overall)}/5">${'★'.repeat(Number(x.overall) || 0)}${'☆'.repeat(5 - (Number(x.overall) || 0))}</span> <small>${esc(fmtT(x.t))}</small></div>
         ${!rvImproveOnly && x.good ? `<p><em>${esc(T('rvGood'))}</em> ${esc(x.good)}</p>` : ''}
         ${x.improve ? `<p class="rv-improve"><em>${esc(T('rvImprove'))}</em> ${esc(x.improve)}</p>` : ''}
+        ${!rvImproveOnly && x.reflect ? `<p><em>${esc(T('rvReflect'))}</em> ${esc(x.reflect)}</p>` : ''}
         ${!rvImproveOnly && x.message ? `<p><em>${esc(T('rvMessage'))}</em> ${esc(x.message)}</p>` : ''}
       </li>`).join('');
     $('infoBody').innerHTML = `
@@ -7361,6 +7390,8 @@
       <h3>${esc(T('rvAvg'))}</h3><ul class="rv-list">${avgHtml}</ul>
       <h3>${esc(T('rvDist'))}</h3><ul class="rv-list">${distHtml}</ul>
       <h3>${esc(T('rvBest'))}</h3><ul class="rv-list">${bestHtml}</ul>
+      <h3>${esc(T('rvHard'))}</h3><ul class="rv-list">${hardHtml}</ul>
+      <h3>${esc(T('rvTrouble'))}</h3><ul class="rv-list">${troubleHtml}</ul>
       <h3>${esc(T('rvCards'))} <label class="rv-only"><input type="checkbox" id="rvOnly"${rvImproveOnly ? ' checked' : ''}> ${esc(T('rvImproveOnly'))}</label></h3>
       <ul class="rv-cards">${cards}</ul>` : `<p class="t-help">${esc(T('rvEmpty'))}</p>`}
       <div class="t-buttons">${rows.length ? `<button type="button" class="btn btn-sm btn-go" id="rvCsv">${esc(T('rvCsv'))}</button>` : ''}<button type="button" class="btn btn-sm btn-ghost" id="rvRefresh">${esc(T('rvRefresh'))}</button></div>`;
@@ -7526,9 +7557,9 @@
      답은 고를 때마다 이 기기에 저장 → 보내면 '반 결과' 시트의 「후기」 탭으로 (CONFIG.classApi) */
   const jsAns = () => { player.jsurvey = player.jsurvey || {}; return player.jsurvey; };
   // 글쓰기: opt 가 아니면 꼭 — 단, 3학년 태블릿은 모두 '하고 싶으면'
-  const jsRequired = (q) => q.type !== 'text' || (!q.opt && !(JUNIOR && padMode() && jsAns().grade !== '4학년'));
+  const jsRequired = () => true; // 후기 설문은 모든 문항이 필수예요
   // 학년 보기는 화면 언어·학교급에 따라 달라요
-  const jsOpts = (q) => (q.opts === 'grades' ? (lang === 'ko' ? JS.grades[GRADE] : JS.grades[lang] || JS.grades.en) : q.opts);
+  const jsOpts = (q) => (q.opts === 'stations' ? [...STATIONS.map((st, i) => ({ ko: `${i + 1}. ${st.name.ko}`, es: `${i + 1}. ${st.name.es || st.name.ko}`, en: `${i + 1}. ${st.name.en || st.name.ko}` })), q.none] : q.opts === 'grades' ? (lang === 'ko' ? JS.grades[GRADE] : JS.grades[lang] || JS.grades.en) : q.opts);
   const jsRefreshTags = () => JS.questions.forEach((q) => { const tag = document.querySelector(`#jsq-${q.id} .js-tag`); if (!tag) return; const req = jsRequired(q); tag.className = `js-tag ${req ? 'need' : 'opt'}`; tag.textContent = T(req ? 'jsNeed' : 'jsOpt'); });
   const jsFilled = (q) => { const v = jsAns()[q.id]; return Array.isArray(v) ? v.length > 0 : v != null && String(v).trim() !== ''; };
   function jsurveyHtml() {
@@ -7742,6 +7773,7 @@
     $('rosterNick').placeholder = T('rosterNickOpt');
     $('rosterCode').placeholder = T('rosterCodePh');
     $('savedCount').textContent = T('savedCount', Object.keys(store.games).length);
+    if (CONFIG.teacherFeedbackForm) { $('tFeedbackLink').href = CONFIG.teacherFeedbackForm; $('tFeedbackCard').hidden = false; }
     $('confirmBox').hidden = true;
     $('previewList').innerHTML = STATIONS.map((s, i) => `<button class="btn btn-ghost btn-sm" type="button" data-i="${i}">${i + 1}. ${esc(L(s.name))}</button>`).join('')
       + `<button class="btn btn-go btn-sm" type="button" data-i="ending">${esc(T('endingPreview'))}</button>`;
