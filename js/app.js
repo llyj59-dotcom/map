@@ -2339,7 +2339,10 @@
 
   /* ---------------- 저장 ---------------- */
   let store = loadStore();
-  let lang = UI[store.lang] ? store.lang : 'ko';
+  // 🌐 주소로 언어 고르기: ?lang=es · ?lang=en · ?lang=ko (QR 코드용)
+  const URL_LANG = (() => { try { return (new URLSearchParams(location.search).get('lang') || '').toLowerCase(); } catch (e) { return ''; } })();
+  let lang = UI[URL_LANG] ? URL_LANG : (UI[store.lang] ? store.lang : 'ko');
+  if (UI[URL_LANG]) store.lang = URL_LANG;
   applyLevelQuiz(lang);
   let player = null;      // 지금 하는 여정
   let previewMode = false; // 선생님 미리 보기
