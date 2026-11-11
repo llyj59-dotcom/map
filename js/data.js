@@ -97,7 +97,7 @@ window.MAP_CONFIG = {
   classPasswordHash: 'l1nbm3',
 
   // 👩‍🏫 선생님 소감 구글 폼 (선택 응답) — 선생님 화면과 우리 반 결과 화면에서 언제든 열려요 ('' 이면 버튼이 안 보여요)
-  teacherFeedbackForm: 'https://docs.google.com/forms/d/e/1FAIpQLSf5zP7Gty8c_AycCnC8NBYL0jq73HBik49bb_P60y4iKlBMug/viewform',
+  teacherFeedbackForm: 'https://docs.google.com/forms/d/e/1FAIpQLSdfQ4dGDOCFewv83HdH_VATY342GHOO_hjkQ8HZ4En6ibHVlA/viewform',
 
   nicknameMaxLength: 8,
   // 닉네임에 들어가면 시작할 수 없는 말 (필요하면 더 추가)
