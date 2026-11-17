@@ -5,6 +5,7 @@
      스페인어를 아직 못 채웠으면 es를 비워 두세요 → 한국어가 대신 나옵니다.
    · ★TODO 표시 = 선생님이 사실 확인 / 실제 자료로 바꿔 넣을 곳
    · 작전 지점 순서 = STATIONS 배열 순서 (위에서 아래로 여행)
+   · 학생 진행 정보(닉네임·진행 상황·점검 결과·소감 등) 일부는 선생님용 Google 설문·시트로 전송돼요 (실명은 보내지 않아요)
    ===================================================================== */
 
 window.MAP_CONFIG = {
@@ -175,8 +176,8 @@ window.STATIONS = [
     // 📚 중·고등 '역사 더 보기' (한국어 화면 · ?grade=ms / hs) — 이야기 아래 상자로 보여요
     deep: { ms: "서울을 되찾은 뒤 국군은 1950년 10월 1일 38도선을 넘었고(국군의 날의 유래), 유엔군도 북쪽으로 나아갔어요. 국군과 유엔군이 압록강 가까이 이르자 중국군이 참전했고, 전쟁은 다시 길어졌어요.", hs: "국군은 1950년 10월 1일 38도선을 넘었고, 유엔군도 북진해 10월 19일 평양을 점령했어요. 압록강이 가까워지자 중국군이 대규모로 참전했고, 국군과 유엔군은 흥남 철수와 1·4 후퇴로 다시 밀려났어요. 6·25 전쟁은 냉전의 두 진영이 정면으로 맞선 국제전이 되었어요." },
     story: {
-      ko: '바닷물이 들어오고 빠질 때(밀물과 썰물) 높이 차이가 아주 큰 인천은 큰 배가 들어오기 어려운 곳이었어요. 그래서 "성공할 확률이 5000분의 1(5000번 해서 1번)"이라는 말이 나올 만큼 모두가 걱정한 작전이었지요. 하지만 팔미도 등대에 불을 밝히고, 새벽에 월미도부터 상륙하면서 작전은 성공했어요. 덕분에 9월 28일 서울을 되찾았답니다.',
-      es: 'En Incheon la diferencia entre marea alta y marea baja es enorme, lo que hacía muy difícil el acceso de los barcos. Tanto preocupaba la Operación Chromite que se llegó a decir que tenía "1 posibilidad entre 5.000" de éxito. Sin embargo, se encendió el faro de Palmido y, al amanecer, las tropas desembarcaron primero en Wolmido. La operación anfibia fue un éxito y permitió recuperar Seúl el 28 de septiembre.'
+      ko: '바닷물이 들어오고 빠질 때(밀물과 썰물) 높이 차이가 아주 큰 인천은 큰 배가 들어오기 어려운 곳이었어요. 그래서 "성공하기가 5,000대 1만큼 어렵다"는 말까지 나올 만큼 모두가 걱정한 작전이었지요. 하지만 팔미도 등대에 불을 밝히고, 새벽에 월미도부터 상륙하면서 작전은 성공했어요. 덕분에 9월 28일 서울을 되찾았답니다.',
+      es: 'En Incheon la diferencia entre marea alta y marea baja es enorme, lo que hacía muy difícil el acceso de los barcos. Tanto preocupaba la Operación Chromite que se llegó a decir que sus probabilidades de éxito eran de 5.000 contra 1. Sin embargo, se encendió el faro de Palmido y, al amanecer, las tropas desembarcaron primero en Wolmido. La operación anfibia fue un éxito y permitió recuperar Seúl el 28 de septiembre.'
     },
     // 아이들이 캔바에 찾아 둔 영상 (group = 찾은 모둠)
     // req: 꼭 끝까지 봐야 [다음]으로 넘어가는 영상 (작전 지점마다 짧은 것 하나) · 나머지는 골라 보기
@@ -276,7 +277,7 @@ window.STATIONS = [
           ko: '콜롬비아대대를 처음 이끈 대장이에요. 1,000명이 넘는 군인과 함께 한국 땅에 처음 발을 디뎠어요.',
           es: 'Primer comandante del batallón de infantería colombiano, estuvo al mando de más de 1.000 hombres cuando pisaron suelo coreano por primera vez.'
         },
-        link: 'https://lldfg.my.canva.site/1'
+        link: 'maps/1-team.html'
       }
     ],
     find: {
@@ -487,7 +488,7 @@ window.STATIONS = [
           ko: '콜롬비아 해군은 서해 바다를 철통같이 지켜 냈어요. 콜롬비아 용사들의 희생을 기리기 위해, 지금 인천 경명공원에는 참전기념비가 있어요.',
           es: 'La Armada colombiana defendió sin descanso las aguas del Mar Amarillo. En homenaje al sacrificio de los combatientes colombianos, hoy se levanta un monumento en el parque Gyeongmyeong de Incheon.'
         },
-        link: 'https://lldfg.my.canva.site/5'
+        link: 'maps/2-team.html'
       },
       {
         card: 'padilla',
@@ -498,7 +499,7 @@ window.STATIONS = [
           ko: '서해 바다를 돌며 북한군이 바다로 오가는 길을 막고, 유엔군의 바닷길을 지켜 낸 콜롬비아 해군 영웅들이에요.',
           es: 'Marinos colombianos que patrullaron el Mar Amarillo, cerraron las rutas marítimas norcoreanas y aseguraron las líneas de navegación de las fuerzas de la ONU.'
         },
-        link: 'https://lldfg.my.canva.site/1'
+        link: 'maps/1-team.html'
       },
       {
         author: { ko: '4모둠 친구들이 조사한 이야기', es: 'Relato investigado por el Grupo 4 (Incheon)' },
@@ -508,7 +509,7 @@ window.STATIONS = [
           ko: '콜롬비아 해군은 호위함을 보내 서해와 동해를 봉쇄하는 작전에 참여했어요. 적이 물건을 나르는 바닷길을 끊고, 바닷가의 적을 대포로 공격하고, 유엔군이 땅에 오르는 것을 도우며 바다를 안전하게 지켰어요.',
           es: 'La Armada colombiana envió fragatas a las operaciones de bloqueo en el Mar Amarillo y el Mar del Este: cortaron las líneas de suministros enemigas, bombardearon la costa y apoyaron los desembarcos de la ONU.'
         },
-        link: 'https://lldfg.my.canva.site/4'
+        link: 'maps/4-team.html'
       }
     ],
     quiz: {
@@ -743,8 +744,8 @@ window.INCHEON_OPS = [
       es: 'Wolmido custodiaba la entrada al puerto de Incheon: había que tomarla primero para que el grueso de las tropas pudiera entrar con seguridad. La marea de Incheon varía hasta 10 metros y casi todos se oponían al plan, pero hacia las 6:30 del 15 de septiembre, con la marea subiendo, los marines de EE. UU. desembarcaron en Wolmido y desarticularon las posiciones norcoreanas.'
     },
     heroes: [
-      { card: 'macarthur', name: { ko: '더글러스 맥아더 장군', es: 'General Douglas MacArthur' }, text: { ko: '"성공 확률 5000분의 1"이라는 말이 나올 만큼 어려운 인천상륙작전을 계획하고 이끈 유엔군 사령관', es: 'Comandante de las fuerzas de la ONU que planeó y dirigió un desembarco tan arriesgado que se hablaba de "1 posibilidad entre 5.000".' } },
-      { card: 'sonwonil', name: { ko: '손원일 제독', es: 'Almirante Sohn Won-il' }, text: { ko: '독립운동가 손정도 목사의 아들로, 해군을 만들고 인천상륙작전 함대를 이끈 "대한민국 해군의 아버지"', es: 'Hijo del pastor independentista Son Jeong-do, fundó la Armada surcoreana y comandó su flota en Incheon: es "el padre de la Armada de Corea".' } }
+      { card: 'macarthur', name: { ko: '더글러스 맥아더 장군', es: 'General Douglas MacArthur' }, text: { ko: '성공하기가 5,000대 1만큼 어렵다는 말까지 나올 만큼 어려운 인천상륙작전을 계획하고 이끈 유엔군 사령관', es: 'Comandante de las fuerzas de la ONU que planeó y dirigió un desembarco tan arriesgado que se decía que sus probabilidades eran de 5.000 contra 1.' } },
+      { card: 'sonwonil', name: { ko: '손원일 제독', es: 'Almirante Sohn Won-il' }, text: { ko: '독립운동가 손정도 목사의 아들로, 해군을 만들고 해군참모총장으로서 국군 해군·해병대의 인천상륙작전 참여와 지원에 기여한 "대한민국 해군의 아버지"', es: 'Hijo del pastor independentista Son Jeong-do, fundó la Armada surcoreana y, como jefe del Estado Mayor de la Armada, contribuyó a que la Armada y la Infantería de Marina surcoreanas participaran en el Desembarco de Incheon y lo apoyaran: es "el padre de la Armada de Corea".' } }
     ],
     groups: [1, 3, 4, 5]
   },
@@ -771,7 +772,7 @@ window.INCHEON_OPS = [
     },
     // 출처: 인천투데이 — 원통이고개 전투(9.17.), 부평전투 승전기념비(2008년 부평아트센터). '한·미 해병대'는 확인되지 않아 '미 해병대를 비롯한 연합군'으로 고쳤어요
     heroes: [
-      { card: 'kimdongseok', name: { ko: '김동석 (육군 정보장교)', es: 'Kim Dong-seok (oficial de inteligencia)' }, text: { ko: '인천에서 서울로 가는 길의 적 정보를 모아 서울을 되찾는 데 힘을 보탠 정보장교 (훗날 대령)', es: 'Oficial de inteligencia que reunió datos sobre el enemigo en la ruta Incheon–Seúl y contribuyó a recuperar la capital (luego coronel).' } }
+      { card: 'kimdongseok', name: { ko: '김동석 (육군 정보장교)', es: 'Kim Dong-seok (oficial de inteligencia)' }, text: { ko: '1950년 9월 미 제8군 정보연락장교로 활동하며 서울 탈환 작전을 위한 첩보 업무를 맡은 정보장교 (훗날 대령)', es: 'Oficial de inteligencia (luego coronel) que en septiembre de 1950 sirvió como oficial de enlace de inteligencia del 8.º Ejército de EE. UU. y reunió información para la operación de recuperación de Seúl.' } }
     ],
     groups: [1, 2, 3, 4, 5]
   }
@@ -869,7 +870,7 @@ window.HERO_CARDS = [
     deeds: [
       { ko: '독립운동가 손정도 목사의 아들이에요.', es: 'Hijo del pastor Son Jeong-do, activista del movimiento de independencia coreano.' },
       { ko: '광복 뒤인 1945년 11월 해군의 뿌리인 해방병단을 만들고, 첫 해군참모총장이 되었어요.', es: 'Tras la liberación, en noviembre de 1945, fundó el Haebang Byeongdan, cuerpo naval que dio origen a la Armada, y fue el primer jefe del Estado Mayor de la Armada.' },
-      { ko: '인천상륙작전 때 한국군의 가장 높은 지휘관으로서 해군과 해병대를 이끌었어요.', es: 'En el Desembarco de Incheon fue el comandante surcoreano de mayor rango, al frente de la Armada y la Infantería de Marina.' },
+      { ko: '인천상륙작전 때 해군참모총장으로서 국군 해군·해병대가 작전에 참여하고 지원하도록 힘썼어요.', es: 'En el Desembarco de Incheon, como jefe del Estado Mayor de la Armada, contribuyó a que la Armada y la Infantería de Marina surcoreanas participaran en la operación y la apoyaran.' },
       { ko: '1953년 국방부 장관이 되었어요.', es: 'En 1953 fue nombrado ministro de Defensa Nacional.' }
     ],
     // 출처: 한국민족문화대백과, 국방부
@@ -928,8 +929,7 @@ window.HERO_CARDS = [
     years: '1923 – 2009',
     // 사진: 자유롭게 쓸 수 있는 사진을 찾지 못했어요
     deeds: [
-      { ko: '1950년 9월, 미8군과 함께 일한 한국군 정보장교였어요.', es: 'En septiembre de 1950 era oficial de inteligencia surcoreano y colaboraba con el 8.º Ejército de EE. UU.' },
-      { ko: '인천에서 서울로 가는 길의 적 정보를 모아 맥아더 사령부에 전했어요.', es: 'Recopiló información sobre el enemigo en la ruta Incheon–Seúl y la hizo llegar al cuartel general de MacArthur.' },
+      { ko: '1950년 9월 미 제8군 정보연락장교로 활동하며 서울 탈환 작전을 위한 첩보 업무를 맡았어요.', es: 'En septiembre de 1950 sirvió como oficial de enlace de inteligencia del 8.º Ejército de EE. UU. y reunió información para la operación de recuperación de Seúl.' },
       { ko: '그 정보가 서울을 되찾고 북쪽으로 나아가는 작전에 쓰였어요. 2016년 9월 "이달의 6·25전쟁영웅"으로 뽑혔어요.', es: 'Sus informes se usaron para recuperar Seúl y avanzar hacia el norte. En septiembre de 2016 fue nombrado "Héroe de la Guerra de Corea del mes".' }
     ],
     // 출처: 국가보훈처 보도자료(2016. 9. 이달의 6·25전쟁영웅 김동석 대령)
@@ -945,7 +945,7 @@ window.HERO_CARDS = [
     credit: { ko: '인천상륙작전 때의 맥아더 · 미 해군 역사유산사령부, 퍼블릭 도메인', es: 'MacArthur en el Desembarco de Incheon · Comando de Historia y Patrimonio Naval de EE. UU., dominio público' },
     deeds: [
       { ko: '모두가 어렵다고 반대한 인천상륙작전을 계획하고 이끌었어요.', es: 'Planeó y dirigió el Desembarco de Incheon pese a que casi todos lo consideraban inviable.' },
-      { ko: '"성공 확률 5000분의 1"이라는 말이 나올 만큼 어려운 작전이었지만 성공시켰어요.', es: 'Se decía que tenía "1 posibilidad entre 5.000" de éxito, y aun así la operación triunfó.' },
+      { ko: '성공하기가 5,000대 1만큼 어렵다는 말까지 나올 만큼 어려운 작전이었지만 성공시켰어요.', es: 'Se decía que sus probabilidades eran de 5.000 contra 1, y aun así la operación triunfó.' },
       { ko: '작전 13일 만인 9월 28일, 서울을 되찾는 길을 열었어요.', es: 'Abrió el camino para recuperar Seúl el 28 de septiembre, apenas 13 días después.' }
     ],
     groups: [1, 2, 3, 4]
@@ -1241,14 +1241,15 @@ window.LINKS = [
   }
 ];
 
-/* 학생 모둠 캔바 작품 (엔딩 화면 갤러리)
-   캔바 '웹사이트로 게시'한 주소라 로그인 없이 누구나 볼 수 있어요 */
+/* 학생 모둠 작품 — 인터랙티브 지도 (엔딩 화면 갤러리 · 크레딧 · 영웅 카드의 [모둠 작품 보러 가기])
+   아이들이 캔바로 만든 자료를 선생님이 사실 확인해서 웹페이지로 다시 꾸민 판이에요 (maps 폴더, 인터넷 없이도 열려요)
+   ※ 모둠 이름은 지도 안에 적힌 그대로예요 (캔바 모둠 기준 — 위인전 모둠 번호와 달라요) */
 window.GROUP_WORKS = [
-  { name: { ko: '1모둠 · 인천 6·25 전쟁 5대 전투 & 잊지 말아야 할 영웅들', es: 'Grupo 1 · Las cinco grandes batallas de Incheon y los héroes que no debemos olvidar' }, url: 'https://lldfg.my.canva.site/1' },
-  { name: { ko: '2모둠 · 6·25 전쟁 때 콜롬비아가 참전한 전투', es: 'Grupo 2 · Las batallas en las que participó Colombia' }, url: 'https://lldfg.my.canva.site/2' },
-  { name: { ko: '3모둠 · 콜롬비아 군대가 참전한 한국 전쟁들', es: 'Grupo 3 · Las batallas de Corea en las que luchó el ejército colombiano' }, url: 'https://lldfg.my.canva.site/3' },
-  { name: { ko: '4모둠 · 6·25 전쟁 참전국가, 콜롬비아', es: 'Grupo 4 · Colombia, país participante en la Guerra de Corea' }, url: 'https://lldfg.my.canva.site/4' },
-  { name: { ko: '5모둠 · 기억해야 할 그날, 6·25 전쟁 속 인천', es: 'Grupo 5 · Un día para recordar: Incheon en la Guerra de Corea' }, url: 'https://lldfg.my.canva.site/5' }
+  { name: { ko: '1모둠 · 인천상륙작전과 콜롬비아의 6·25전쟁 참전', es: 'Grupo 1 · El Desembarco de Incheon y la participación de Colombia en la Guerra de Corea' }, url: 'maps/1-team.html' },
+  { name: { ko: '2모둠 · 기억해야 할 그날, 6·25전쟁 속 인천', es: 'Grupo 2 · Un día para recordar: Incheon en la Guerra de Corea' }, url: 'maps/2-team.html' },
+  { name: { ko: '3모둠 · 콜롬비아, 잊지 않은 우정', es: 'Grupo 3 · Colombia, una amistad que no olvidamos' }, url: 'maps/3-team.html' },
+  { name: { ko: '4모둠 · 6·25전쟁 참전국가, 콜롬비아', es: 'Grupo 4 · Colombia, país participante en la Guerra de Corea' }, url: 'maps/4-team.html' },
+  { name: { ko: '전투모둠 · 인천상륙작전과 6·25전쟁의 주요 작전', es: 'Grupo de batallas · El Desembarco de Incheon y las principales operaciones de la Guerra de Corea' }, url: 'maps/battle-team.html' }
 ];
 
 /* 🎬 엔딩 크레딧 — 아이들 이름은 성 없이 이름만 (개인정보 이용 동의 받음, 2026. 10.)
@@ -1520,7 +1521,7 @@ window.LEVEL_QUIZ = {
       explain: { ko: '38도선은 1945년 광복 뒤 남북을 나눈 선, 휴전선(군사분계선)은 1953년 정전협정으로 생긴 선이에요. 두 선은 위치가 달라요.' } },
     incheon: { type: 'choice', q: { ko: "인천이 상륙 작전을 펼치기에 매우 어려운 곳으로 꼽힌 까닭으로 가장 알맞은 것은?" },
       options: [{ ko: "밀물과 썰물의 차이가 크고 바닷길이 좁아서" }, { ko: "항구가 하나도 없어서" }, { ko: "북한군이 인천에 한 명도 없어서" }, { ko: "유엔군에 배가 거의 없어서" }], answer: 0,
-      explain: { ko: "인천은 밀물과 썰물 차이가 최대 약 10m이고 바닷길이 좁아, 흔히 \"성공 확률 5000분의 1\"이라고 할 만큼 위험한 작전이었어요. 밀물 때를 맞춰 9월 15일 상륙했고, 9월 28일 서울을 되찾았어요." } },
+      explain: { ko: "인천은 밀물과 썰물 차이가 최대 약 10m이고 바닷길이 좁아, \"성공하기가 5,000대 1만큼 어렵다\"는 말까지 나올 만큼 위험한 작전이었어요. 밀물 때를 맞춰 9월 15일 상륙했고, 9월 28일 서울을 되찾았어요." } },
     colombia: { type: 'choice', q: { ko: '콜롬비아가 6·25 전쟁에 보낸 병력으로 옳은 것은?' },
       options: [{ ko: '육군 대대와 해군 프리깃함' }, { ko: '의료 지원단만' }, { ko: '공군 전투기 부대만' }, { ko: '식량과 물자만' }], answer: 0,
       explain: { ko: '콜롬비아는 라틴아메리카에서 유일하게 전투 병력을 보냈어요. 육군 "콜롬비아대대"와 해군 프리깃함 3척이에요.' } },
@@ -1944,8 +1945,8 @@ window.LEVEL_QUIZ = {
         }
       ],
       "explain": {
-        "es": "En Incheon la diferencia entre mareas llega a unos 10 m y el canal es estrecho; por eso se solía decir que la operación tenía \"1 posibilidad entre 5.000\" de éxito. Las tropas desembarcaron el 15 de septiembre, aprovechando la marea alta, y recuperaron Seúl el 28 de septiembre.",
-        "en": "At Incheon the tide can rise and fall by up to about 10 m, and the channel is narrow, so people often said the operation had \"a 1 in 5,000 chance\" of success. Troops landed at high tide on September 15 and retook Seoul on September 28."
+        "es": "En Incheon la diferencia entre mareas llega a unos 10 m y el canal es estrecho; por eso se llegó a decir que sus probabilidades de éxito eran de 5.000 contra 1. Las tropas desembarcaron el 15 de septiembre, aprovechando la marea alta, y recuperaron Seúl el 28 de septiembre.",
+        "en": "At Incheon the tide can rise and fall by up to about 10 m, and the channel is narrow, so people said the odds against it were 5,000 to 1. Troops landed at high tide on September 15 and retook Seoul on September 28."
       }
     },
     "colombia": {

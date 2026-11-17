@@ -103,7 +103,7 @@
   })();
   if (TEEN) {
     const TEEN_TEXT = [
-      ['바닷물이 들어오고 빠질 때(밀물과 썰물) 높이 차이가', '밀물과 썰물의 높이 차이가'], ['"성공할 확률이 5000분의 1(5000번 해서 1번)"이라는 말이 나올 만큼', '흔히 "성공 확률 5000분의 1"이라고 할 만큼'],
+      ['바닷물이 들어오고 빠질 때(밀물과 썰물) 높이 차이가', '밀물과 썰물의 높이 차이가'],
       ['작전이었지요', '작전이었어요'], ['"이제 싸움을 멈추자"는 약속(정전협정)', '정전협정'], ['"싸움을 멈추자"는 약속(정전협정)', '정전협정'], ['싸우는 군대(전투 병력)', '전투 병력'], ['해군 배(프리깃함)', '해군 프리깃함'],
       ['함포(배에 실린 대포)로', '함포로'], ['높은 산(고지)', '고지'], ['인천상륙작전 성공! ', '인천상륙작전이 성공한 뒤 '],
       ['행사(추모식)', '추모식'], ['땅에서 싸우는 군인들을', '지상군을'], ['유엔군이 땅에 오르는 것을', '유엔군의 상륙을'], ['답니다', '어요']
@@ -360,7 +360,7 @@
       watchNeed: '▶를 눌러 이 영상을 끝까지 봐야 [다음]으로 넘어갈 수 있어요. (빨리 감기·배속으로 본 부분은 본 시간에 들어가지 않아요)',
       watchRate: '영상은 보통 속도(1배)로만 볼 수 있어요. 배속은 본 시간에 들어가지 않아요.',
       watchResume: (s) => `전에 본 곳(${s})에 이어서 볼게요.`,
-      workHint: '모둠 작품을 눌러 끝까지 내려 보며 1분 넘게 보고 오면 [다음]이 열려요.',
+      workHint: '모둠 작품(지도)을 눌러 끝까지 살펴보며 1분 넘게 보고 오면 [다음]이 열려요.',
       workSeen: '작품을 봤어요! 이제 [다음]으로 넘어가요.',
       clipNote: (a, b, all, n) => `이 영상은 중요한 부분(${a}~${b})만 봐요. 유튜브에는 전체 길이(${all})가 보이지만, ${b}가 되면 저절로 멈춰요. 약 ${n}만 보면 돼요!`,
       volTip: '🔊 음악 소리가 작거나 크면, 오른쪽 위 🔊 버튼에서 크기를 바꿀 수 있어요.',
@@ -1801,7 +1801,7 @@
       watchNeed: 'Watch this video to the end to unlock [Next]. (Skipping ahead or speeding up does not count.)',
       watchRate: 'Videos only count at normal speed (1x).',
       watchResume: (s) => `Picking up where you left off (${s} watched).`,
-      workHint: 'Open the group\'s project, scroll to the end (over 1 minute), then come back and [Next] will unlock.',
+      workHint: 'Open the group\'s project (map), look through it to the end (over 1 minute), then come back and [Next] will unlock.',
       workSeen: 'You saw it! Now go to [Next].',
       clipNote: (a, b, all, n) => `We only watch the important part of this video (${a}–${b}). YouTube shows the full length (${all}), but it stops by itself at ${b}. That's about ${n}.`,
       volTip: '🔊 If the music is too quiet or too loud, change it with the 🔊 button at the top right.',
@@ -5250,7 +5250,7 @@
           <h3>${esc(L(h.name))}</h3>
           <div class="role">${esc(L(h.role))}</div>
           <p>${esc(L(h.body))}</p>
-          ${h.link ? `<a class="btn btn-blue" id="workLink" href="${esc(h.link)}" target="_blank" rel="noopener">${esc(T('openWork'))}</a>${stepLocked(s, st) ? `<p class="skip-hint" id="workHint">👀 ${esc(T('workHint'))}</p>` : ''}` : ''}
+          ${h.link ? `${(() => { const w = (window.GROUP_WORKS || []).find((x) => x.url === h.link); return w ? `<p class="work-of">🗺️ ${esc(L(w.name))}</p>` : ''; })()}<a class="btn btn-blue" id="workLink" href="${esc(h.link)}" target="_blank" rel="noopener">${esc(T('openWork'))}</a>${stepLocked(s, st) ? `<p class="skip-hint" id="workHint">👀 ${esc(T('workHint'))}</p>` : ''}` : ''}
         </article>`;
     } else if (st.type === 'quiz') {
       html = renderQuiz(s);
@@ -5292,7 +5292,7 @@
     }
     if (st.type === 'hero' && st.cid) unlockCard(st.cid);
     if (st.type === 'hero' && st.h.link && $('workLink')) {
-      // 🎨 모둠 작품(캔바 사이트)은 다른 사이트라 스크롤을 읽을 수 없어요 → 연 뒤 1분(WORK_MIN) 넘게 보고 와야 [다음]이 열려요
+      // 🎨 모둠 작품(지도 HTML)은 새 탭에서 열려 스크롤을 읽을 수 없어요 → 연 뒤 1분(WORK_MIN) 넘게 보고 와야 [다음]이 열려요
       const link = st.h.link;
       const WORK_MIN = 60;
       const tick = () => {

@@ -42,7 +42,7 @@
         name: 'The Incheon Landing',
         date: 'Sep 15, 1950',
         place: 'Wolmido and Palmido, Incheon',
-        story: 'Incheon has a huge difference between high and low tide, so it was very hard for ships to get in. People even said the plan had "a 1 in 5,000 chance" of success. But the Palmido lighthouse was lit, and at dawn the troops landed first on Wolmido. The operation succeeded, and Seoul was retaken on September 28.',
+        story: 'Incheon has a huge difference between high and low tide, so it was very hard for ships to get in. People even said the odds against it were 5,000 to 1. But the Palmido lighthouse was lit, and at dawn the troops landed first on Wolmido. The operation succeeded, and Seoul was retaken on September 28.',
         videos: ['The Incheon Landing recreated with AI', 'Palmido, the light of victory', 'Interview: the Palmido lighthouse operation', '74th anniversary: sea pilgrimage to Palmido lighthouse', 'The Battle of Bupyeong'],
         quiz: {
           q: 'Where did the troops land first in the Incheon Landing?',
@@ -231,8 +231,8 @@
         short: 'Wolmido', name: 'Landing on Wolmido', date: 'Sep 15, 1950, about 6:30 a.m.',
         text: 'Wolmido is the island that guards the port of Incheon, so it had to be taken first before the main force could come in safely. Incheon\'s tide rises and falls by up to 10 meters and almost everyone was against the plan, but at about 6:30 a.m. on September 15, at high tide, US Marines landed on Wolmido first and destroyed the North Korean positions.',
         heroes: [
-          { name: 'General Douglas MacArthur', text: 'UN commander who planned and led the Incheon Landing, an operation so hard that people spoke of "a 1 in 5,000 chance"' },
-          { name: 'Admiral Sohn Won-il', text: 'Son of independence activist Pastor Son Jeong-do; he founded the navy and led its fleet in the Incheon Landing — "the father of the Korean Navy"' }
+          { name: 'General Douglas MacArthur', text: 'UN commander who planned and led the Incheon Landing, an operation so hard that people said the odds against it were 5,000 to 1' },
+          { name: 'Admiral Sohn Won-il', text: 'Son of independence activist Pastor Son Jeong-do; he founded the navy and, as Chief of Naval Operations, helped the Korean Navy and Marines take part in and support the Incheon Landing — "the father of the Korean Navy"' }
         ]
       },
       port: {
@@ -244,7 +244,7 @@
         short: 'Bupyeong', name: 'Battle of Bupyeong & Yellow Sea Blockade', date: 'From Sep 16, 1950',
         text: 'After Incheon was retaken, on September 17 the Allied forces, led by the US Marines, defeated a North Korean tank unit at Wontong Pass in Bupyeong and opened the road to Seoul. Today there is a victory monument for the Battle of Bupyeong at the Bupyeong Art Center. At sea, the UN forces blocked the Yellow Sea to cut off enemy movements and supplies, and the Colombian Navy, which came later, also guarded the Yellow Sea.',
         heroes: [
-          { name: 'Kim Dong-seok (Army intelligence officer)', text: 'Intelligence officer (later a colonel) who gathered information about the enemy on the road from Incheon to Seoul and helped retake Seoul' }
+          { name: 'Kim Dong-seok (Army intelligence officer)', text: 'Intelligence officer (later a colonel) who, in September 1950, served as an intelligence liaison officer with the US Eighth Army and gathered intelligence for the operation to retake Seoul' }
         ]
       }
     },
@@ -299,7 +299,7 @@
         deeds: [
           'He was the son of Pastor Son Jeong-do, an independence activist.',
           'After liberation, in November 1945, he founded the Maritime Defense Corps, the root of the Korean Navy, and became the navy\'s first Chief of Naval Operations.',
-          'In the Incheon Landing, as the highest-ranking Korean commander, he led the Korean Navy and Marines.',
+          'In the Incheon Landing, as Chief of Naval Operations, he helped the Korean Navy and Marines take part in and support the operation.',
           'In 1953 he became Minister of National Defense.'
         ]
       },
@@ -335,8 +335,7 @@
       kimdongseok: {
         name: 'Kim Dong-seok', role: 'Army intelligence officer (later a colonel)',
         deeds: [
-          'In September 1950, he was a Korean intelligence officer working with the US Eighth Army.',
-          'He gathered information about the enemy on the road from Incheon to Seoul and sent it to MacArthur\'s headquarters.',
+          'In September 1950, he served as an intelligence liaison officer with the US Eighth Army and gathered intelligence for the operation to retake Seoul.',
           'His information was used to retake Seoul and advance north. In September 2016 he was named a "Korean War Hero of the Month".'
         ]
       },
@@ -345,7 +344,7 @@
         credit: 'MacArthur at the Incheon Landing · U.S. Naval History and Heritage Command, public domain',
         deeds: [
           'He planned and led the Incheon Landing, even though almost everyone thought it was too difficult.',
-          'The operation was so hard that people spoke of "a 1 in 5,000 chance", but it succeeded.',
+          'People said the odds against the operation were 5,000 to 1, but it succeeded.',
           'He opened the way to retake Seoul on September 28, 13 days after the landing.'
         ]
       },
@@ -432,11 +431,11 @@
       { name: 'Ministry of Patriots and Veterans Affairs (Korea)', desc: 'The Korean government ministry that honors those who served the country.' }
     ],
     works: [
-      'Group 1 · Five battles of Incheon and the heroes we must remember',
-      'Group 2 · Battles Colombia fought in the Korean War',
-      'Group 3 · The Korean War battles the Colombian army fought in',
+      'Group 1 · The Incheon Landing and Colombia in the Korean War',
+      'Group 2 · A day to remember: Incheon in the Korean War',
+      'Group 3 · Colombia, a friendship we have not forgotten',
       'Group 4 · Colombia, a country that joined the Korean War',
-      'Group 5 · Incheon in the Korean War: a day to remember'
+      'Battle group · The Incheon Landing and the main operations of the Korean War'
     ]
   };
 

@@ -1605,3 +1605,5 @@ body.silence::after { content: ''; position: fixed; inset: 0; background: rgba(1
 .rv-meta { display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline; font-size: 13px; color: #556; }
 .rv-stars { color: #f5b800; letter-spacing: 1px; }
 #tFeedbackLink{text-decoration:none}
+/* 🗺️ 영웅 카드: 어느 모둠 지도 작품으로 가는지 */
+.hero-card .work-of { margin: 14px 0 6px; font-size: 14px; color: var(--ink-soft); font-weight: 700; }
