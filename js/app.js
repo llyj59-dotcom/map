@@ -360,7 +360,12 @@
       watchNeed: '▶를 눌러 이 영상을 끝까지 봐야 [다음]으로 넘어갈 수 있어요. (빨리 감기·배속으로 본 부분은 본 시간에 들어가지 않아요)',
       watchRate: '영상은 보통 속도(1배)로만 볼 수 있어요. 배속은 본 시간에 들어가지 않아요.',
       watchResume: (s) => `전에 본 곳(${s})에 이어서 볼게요.`,
-      workHint: '모둠 작품(지도)을 눌러 끝까지 살펴보며 1분 넘게 보고 오면 [다음]이 열려요.',
+      workHint: '모둠 작품(지도)을 열어 마지막 장까지 한 장씩 넘겨 보면 [다음]이 열려요.',
+      workProg: (a, b) => `📖 ${a} / ${b}장 봤어요 · 한 장씩 넘겨 보세요`,
+      workAll: '✓ 모든 장을 다 봤어요!',
+      workPart: (a, b) => `📖 지도를 ${a} / ${b}장 봤어요. 나머지 장도 넘겨 보면 [다음]이 열려요.`,
+      workClose: '닫기 ✕',
+      workNewTab: '새 탭 ↗',
       workSeen: '작품을 봤어요! 이제 [다음]으로 넘어가요.',
       clipNote: (a, b, all, n) => `이 영상은 중요한 부분(${a}~${b})만 봐요. 유튜브에는 전체 길이(${all})가 보이지만, ${b}가 되면 저절로 멈춰요. 약 ${n}만 보면 돼요!`,
       volTip: '🔊 음악 소리가 작거나 크면, 오른쪽 위 🔊 버튼에서 크기를 바꿀 수 있어요.',
@@ -565,8 +570,6 @@
       videoPick: '다른 영상',
       videoOptional: '영상은 골라서 봐도 돼요.',
       resumeAt: '보던 곳부터 이어서 할게요.',
-      workWait: (s) => `아직 다 못 본 것 같아요. 모둠 작품을 끝까지 내려 보고 와요. (${s}초 남았어요)`,
-      workOpened: (s) => `⏳ 모둠 작품을 끝까지 보는 중… ${s}초 뒤에 [다음]이 열려요.`,
       endNeedGuess: '참전용사님의 진짜 답을 보기 전에, 내 생각을 한 줄 적고 [적어 두기]를 눌러요.',
       endNeedVideo: (n) => `${n} 님의 답변 영상을 끝까지 봐야 다음으로 넘어갈 수 있어요.`,
       vetWatchHint: '▶ 답변 영상을 끝까지 보면 다음으로 넘어갈 수 있어요.',
@@ -1092,7 +1095,12 @@
       watchNeed: 'Mira este video hasta el final para pasar a [Siguiente]. (Adelantar o acelerar no cuenta)',
       watchRate: 'El video solo cuenta a velocidad normal (1x).',
       watchResume: (s) => `Seguimos desde donde ibas (${s} vistos).`,
-      workHint: 'Abre el trabajo del grupo, míralo hasta el final (más de 1 minuto) y al volver se activará [Siguiente].',
+      workHint: 'Abre el trabajo del grupo (mapa) y pasa todas las páginas hasta la última: así se activará [Siguiente].',
+      workProg: (a, b) => `📖 Has visto ${a} de ${b} páginas · pasa página por página`,
+      workAll: '✓ ¡Viste todas las páginas!',
+      workPart: (a, b) => `📖 Has visto ${a} de ${b} páginas del mapa. Mira las demás y se activará [Siguiente].`,
+      workClose: 'Cerrar ✕',
+      workNewTab: 'Nueva pestaña ↗',
       workSeen: '¡Ya lo viste! Ahora puedes pasar a [Siguiente].',
       clipNote: (a, b, all, n) => `De este video solo vemos la parte importante (${a}–${b}). YouTube muestra la duración completa (${all}), pero se detiene solo en ${b}. Son unos ${n}.`,
       volTip: '🔊 Si la música suena muy baja o muy alta, cámbiala con el botón 🔊 de arriba a la derecha.',
@@ -1297,8 +1305,6 @@
       videoPick: 'Otros videos',
       videoOptional: 'Puedes elegir qué videos ver.',
       resumeAt: 'Seguimos donde lo dejaste.',
-      workWait: (s) => `Parece que aún no lo terminaste. Míralo hasta el final (faltan ${s} s).`,
-      workOpened: (s) => `⏳ Viendo el trabajo del grupo… [Siguiente] se activa en ${s} s.`,
       endNeedGuess: 'Antes de ver la respuesta real, escribe una línea con tu idea y pulsa [Guardar].',
       endNeedVideo: (n) => `Mira hasta el final el video de ${n} para continuar.`,
       vetWatchHint: '▶ Mira el video hasta el final para continuar.',
@@ -1803,7 +1809,12 @@
       watchNeed: 'Watch this video to the end to unlock [Next]. (Skipping ahead or speeding up does not count.)',
       watchRate: 'Videos only count at normal speed (1x).',
       watchResume: (s) => `Picking up where you left off (${s} watched).`,
-      workHint: 'Open the group\'s project (map), look through it to the end (over 1 minute), then come back and [Next] will unlock.',
+      workHint: 'Open the group\'s project (map) and go through every page to the last one, and [Next] will unlock.',
+      workProg: (a, b) => `📖 ${a} of ${b} pages seen · go page by page`,
+      workAll: '✓ You saw every page!',
+      workPart: (a, b) => `📖 You have seen ${a} of ${b} pages of the map. See the rest and [Next] will unlock.`,
+      workClose: 'Close ✕',
+      workNewTab: 'New tab ↗',
       workSeen: 'You saw it! Now go to [Next].',
       clipNote: (a, b, all, n) => `We only watch the important part of this video (${a}–${b}). YouTube shows the full length (${all}), but it stops by itself at ${b}. That's about ${n}.`,
       volTip: '🔊 If the music is too quiet or too loud, change it with the 🔊 button at the top right.',
@@ -2008,8 +2019,6 @@
       videoPick: 'Other videos',
       videoOptional: 'You can choose which videos to watch.',
       resumeAt: 'Picking up where you left off.',
-      workWait: (s) => `Looks like you have not finished it yet. Scroll to the end of the project (${s} s left).`,
-      workOpened: (s) => `⏳ Viewing the group project… [Next] unlocks in ${s} s.`,
       endNeedGuess: 'Before you see the real answer, write one line with your idea and tap [Save].',
       endNeedVideo: (n) => `Watch ${n}'s answer video to the end to continue.`,
       vetWatchHint: '▶ Watch the answer video to the end to continue.',
@@ -5295,36 +5304,15 @@
     }
     if (st.type === 'hero' && st.cid) unlockCard(st.cid);
     if (st.type === 'hero' && st.h.link && $('workLink')) {
-      // 🎨 모둠 작품(지도 HTML)은 새 탭에서 열려 스크롤을 읽을 수 없어요 → 연 뒤 1분(WORK_MIN) 넘게 보고 와야 [다음]이 열려요
+      // 🗺️ 모둠 작품(지도 HTML)은 웹앱 안 창에서 열려요 → 모든 장을 한 장씩 넘겨 봐야 [다음]이 열려요 (openWork)
       const link = st.h.link;
-      const WORK_MIN = 60;
-      const tick = () => {
-        if (!cur || cur.steps[cur.step] !== st || !$('workHint')) { clearInterval(cur && cur.workTimer); return; }
-        if (player.works && player.works[link]) return;
-        const t0 = (player.workOpen || {})[link];
-        if (!t0) return;
-        const left = Math.ceil(WORK_MIN - (Date.now() - t0) / 1000);
-        if (left <= 0) {
-          player.works = player.works || {};
-          player.works[link] = Date.now();
-          save();
-          $('workHint').textContent = '✓ ' + T('workSeen');
-          unlockNext();
-          clearInterval(cur.workTimer);
-        } else $('workHint').textContent = document.hidden ? T('workOpened', left) : T(cur.workBack ? 'workWait' : 'workOpened', left);
+      cur.onWork = () => {
+        if (!cur || cur.steps[cur.step] !== st || !$('workHint')) return;
+        if (player && player.works && player.works[link]) { $('workHint').textContent = '✓ ' + T('workSeen'); unlockNext(); return; }
+        const p = ((player && player.workPart) || {})[link];
+        if (p && p.length) $('workHint').textContent = T('workPart', p.length, (player.workTotal || {})[link] || '?');
       };
-      $('workLink').addEventListener('click', () => {
-        if (previewMode || !player) return;
-        player.workOpen = player.workOpen || {};
-        if (!player.workOpen[link]) { player.workOpen[link] = Date.now(); save(); }
-        cur.workBack = false;
-      });
-      clearInterval(cur.workTimer);
-      cur.workTimer = setInterval(tick, 1000);
-      const back = () => { if (!document.hidden && cur && cur.steps[cur.step] === st) { cur.workBack = true; tick(); } };
-      document.addEventListener('visibilitychange', back);
-      window.addEventListener('focus', back);
-      tick();
+      cur.onWork();
     }
     if (st.type === 'story') (s.cards || []).forEach(unlockCard);
     if (st.type === 'quiz') bindQuiz(s);
@@ -5352,6 +5340,64 @@
   const certPadOnly = () => padMode(); // 3·4학년 링크도 컴퓨터 모드(4학년)는 패들렛에 올려요
   const isIOS = () => /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   const certCanCopy = () => !padMode() && !!(navigator.clipboard && navigator.clipboard.write && window.ClipboardItem);
+
+  // 🗺️ 모둠 작품(지도 HTML) 보기 창 — 같은 사이트 파일이라 몇 번째 장을 보고 있는지 읽을 수 있어요
+  //    한 장을 1.5초 넘게 펼쳐 둬야 '본 장'으로 세고, 모든 장을 보면 player.works[주소]에 기록해요
+  const WORK_DWELL = 1500;
+  function openWork(url) {
+    const w = (window.GROUP_WORKS || []).find((x) => x.url === url);
+    const name = w ? L(w.name) : '';
+    let ov = $('workView');
+    if (!ov) { ov = document.createElement('div'); ov.id = 'workView'; ov.className = 'work-view'; ov.setAttribute('role', 'dialog'); ov.setAttribute('aria-modal', 'true'); document.body.appendChild(ov); }
+    ov.setAttribute('aria-label', name);
+    ov.innerHTML = `<div class="wv-bar"><b class="wv-title">🗺️ ${esc(name)}</b><span class="wv-prog" id="wvProg" aria-live="polite"></span><a class="wv-tab" href="${esc(url)}" target="_blank" rel="noopener">${esc(T('workNewTab'))}</a><button class="btn btn-sm btn-blue wv-close" id="wvClose" type="button">${esc(T('workClose'))}</button></div><iframe class="wv-frame" id="wvFrame" src="${esc(url)}" title="${esc(name)}"></iframe>`;
+    ov.hidden = false;
+    document.body.classList.add('wv-open');
+    const track = player && !previewMode;
+    const seen = new Set(track ? ((player.workPart || {})[url] || []) : []);
+    let at = -1, since = 0;
+    const isDoneW = () => !!(player && player.works && player.works[url]);
+    const poll = () => {
+      let doc = null; try { doc = $('wvFrame').contentDocument; } catch (e) { /* 무시 */ }
+      const slides = doc ? doc.querySelectorAll('[data-slide]') : [];
+      const total = slides.length;
+      if (!total) return;
+      const idx = Array.prototype.findIndex.call(slides, (x) => x.classList.contains('active'));
+      const now = Date.now();
+      if (idx !== at) { at = idx; since = now; } else if (idx >= 0 && now - since >= WORK_DWELL && !seen.has(idx)) {
+        seen.add(idx);
+        if (track) {
+          player.workPart = player.workPart || {}; player.workPart[url] = [...seen];
+          player.workTotal = player.workTotal || {}; player.workTotal[url] = total;
+          if (seen.size >= total && !isDoneW()) { player.works = player.works || {}; player.works[url] = Date.now(); }
+          save();
+          if (cur && cur.onWork) cur.onWork();
+        }
+      }
+      const all = seen.size >= total || isDoneW();
+      const txt = all ? T('workAll') : T('workProg', seen.size, total);
+      if ($('wvProg').textContent !== txt) { $('wvProg').textContent = txt; $('wvProg').classList.toggle('done', all); }
+    };
+    const timer = setInterval(poll, 300);
+    const onKey = (e) => { if (e.key === 'Escape') close(); };
+    const close = () => {
+      clearInterval(timer);
+      ov.hidden = true; ov.innerHTML = '';
+      document.body.classList.remove('wv-open');
+      document.removeEventListener('keydown', onKey);
+      if (cur && cur.onWork) cur.onWork();
+    };
+    document.addEventListener('keydown', onKey);
+    $('wvClose').addEventListener('click', close);
+    $('wvFrame').addEventListener('load', () => { try { $('wvFrame').contentWindow.focus(); $('wvFrame').contentDocument.addEventListener('keydown', onKey); } catch (e) { /* 무시 */ } poll(); });
+  }
+  // 지도 링크(maps/…)는 모두 이 창으로 — Ctrl·Shift 클릭이나 창 안의 [새 탭]은 그대로 새 탭
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest && e.target.closest('a[href^="maps/"]');
+    if (!a || a.classList.contains('wv-tab') || e.ctrlKey || e.metaKey || e.shiftKey || e.button) return;
+    e.preventDefault();
+    openWork(a.getAttribute('href'));
+  });
 
   function stepLocked(s, st) {
     if (st.type === 'video') return !!mustWatch(s);
@@ -7214,7 +7260,7 @@
      · 관리하는 선생님: 구글 시트 「결과」에서 전체를 봐요
      ===================================================================== */
   // 🎒 데이터의 모둠 번호(groups·group)는 예전 캔바 모둠 사이트 번호예요 → 지도(GROUP_WORKS)에 적힌 모둠 이름으로 보여 줘요
-  //    (사이트 5번 = 2모둠, 사이트 2번 = 전투모둠) · 지도 순서대로, 예: '1·2·3·4모둠·전투모둠'
+  //    (사이트 5번 = 2모둠, 사이트 2번 = 5모둠) · 지도 순서대로, 예: '1·2·3·4·5모둠'
   function groupsText(nums) {
     const works = window.GROUP_WORKS || [];
     const at = (g) => { const i = works.findIndex((w) => w.was === g); return i < 0 ? 99 + g : i; };

@@ -435,7 +435,7 @@
       'Group 2 · A day to remember: Incheon in the Korean War',
       'Group 3 · Colombia, a friendship we have not forgotten',
       'Group 4 · Colombia, a country that joined the Korean War',
-      'Battle group · The Incheon Landing and the main operations of the Korean War'
+      'Group 5 · The Incheon Landing and the main operations of the Korean War'
     ]
   };
 
