@@ -12,7 +12,7 @@ window.MAP_CONFIG = {
   // 만든 곳 (엔딩·교사 화면 아래쪽에 작게 표시)
   madeBy: { ko: '인천신검단초등학교 6학년 · 국가보훈부 유엔참전국 글로벌 아카데미', es: 'Escuela Primaria Singeomdan, 6.º de primaria (Incheon, Corea) · Academia Global de Países Aliados de la ONU' },
 
-  // 서버·로그인 없음. 모든 기록은 그 기기(브라우저)에만 저장되고, 인터넷으로 보내지 않아요.
+  // 서버·로그인 없음. 학습 기록은 그 기기(브라우저)에 저장돼요.
   //  · 다른 기기에서 이어 할 때 / 선생님께 결과를 알릴 때 → 게임 속 "나의 여정 코드" 6글자
   //  · 예상 답변 글 → 같은 기기의 방명록에 쌓이고, 패들렛을 연결하면 게임 안에서 바로 패들렛에 붙여 넣기
 
@@ -72,7 +72,7 @@ window.MAP_CONFIG = {
   // 🎵 배경음악 — 우리 반 모둠이 만든 mp3를 audio 폴더에 넣고 파일 이름을 적어요 (비워 두면 배경음악 없이, 효과음만)
   //    영상이 나올 때는 저절로 멈추고, 오른쪽 위 🔊 버튼으로 끌 수 있어요
   bgm: {
-    start: 'audio/1_start.mp3',     // 1모둠: 시작 화면·지도·① 6·25 전쟁·② 인천 (A dignified swell)
+    start: 'audio/1_start.mp3',     // 1모둠: 시작 화면·지도·① 6·25전쟁·② 인천 (A dignified swell)
     mission: 'audio/2_mission.mp3', // 2모둠: 팔미도 등대 미션 (Midnight Sea Mission)
     voyage: 'audio/3_voyage.mp3',   // 3모둠: ③ 콜롬비아 → ④ 부산 항해 (Marcha hacia Busan)
     battle: 'audio/4_battle.mp3',   // 4모둠: ⑤ 흑운토령 ~ ⑩ 판문점 (전장의 숨결)
@@ -121,7 +121,7 @@ window.MAP_CONFIG = {
 window.STATIONS = [
   {
     id: 'war', chapter: 'prologue',
-    short: { ko: '6·25 전쟁', es: 'La guerra' },
+    short: { ko: '6·25전쟁', es: 'La guerra' },
     // "지도에서 찾아라!" 미션: 길·작전 지점 표시가 사라진 지도에서 직접 눌러 찾기
     //   target: [경도, 위도] + tol(허용 거리, 지도 단위) 또는 lat: 위도(그 위도 선 근처면 정답)
     //   hide: 미션 동안 숨길 힌트 ('line38' 38도선, 'dmz' 휴전선)
@@ -132,7 +132,7 @@ window.STATIONS = [
       explain: { ko: '38도선은 1945년 광복 뒤 한반도를 남과 북으로 나눈 선이에요. 1950년 6월 25일 새벽, 북한군이 이 선을 넘어 쳐들어왔어요.', es: 'Tras la liberación del dominio japonés en 1945, el paralelo 38 dividió la península en norte y sur. En la madrugada del 25 de junio de 1950, el ejército norcoreano lo cruzó.' }
     },
     map: { x: 395, y: 500 }, label: 'right',
-    name: { ko: '6·25 전쟁은 어떤 전쟁?', es: '¿Qué fue la Guerra de Corea?' },
+    name: { ko: '6·25전쟁은 어떤 전쟁?', es: '¿Qué fue la Guerra de Corea?' },
     date: { ko: '1950. 6. 25. ~ 1953. 7. 27.', es: '25 jun. 1950 – 27 jul. 1953' },
     place: { ko: '한반도 전체', es: 'Toda la península de Corea' },
     // 📚 중·고등 '역사 더 보기' (한국어 화면 · ?grade=ms / hs) — 이야기 아래 상자로 보여요
@@ -159,7 +159,7 @@ window.STATIONS = [
     heroes: [],
     quiz: {
       type: 'ox',
-      q: { ko: '6·25 전쟁 때 대한민국을 도우러 온 나라는 미국 한 나라뿐이었다.', es: 'Estados Unidos fue el único país que acudió en apoyo de Corea del Sur durante la guerra.' },
+      q: { ko: '6·25전쟁 때 대한민국을 도우러 온 나라는 미국 한 나라뿐이었다.', es: 'Estados Unidos fue el único país que acudió en apoyo de Corea del Sur durante la guerra.' },
       answer: false,
       explain: { ko: 'X, 사실이 아니에요! 전투 부대를 보낸 16개 나라와 의료 지원을 한 6개 나라, 모두 22개 나라가 도왔어요. 콜롬비아도 그중 하나예요.', es: 'Falso. Participaron 22 países: 16 enviaron tropas de combate y 6 aportaron apoyo médico. Colombia fue uno de ellos.' }
     },
@@ -174,7 +174,7 @@ window.STATIONS = [
     date: { ko: '1950. 9. 15.', es: '15 sep. 1950' },
     place: { ko: '인천 월미도·팔미도', es: 'Wolmido y Palmido, Incheon' },
     // 📚 중·고등 '역사 더 보기' (한국어 화면 · ?grade=ms / hs) — 이야기 아래 상자로 보여요
-    deep: { ms: "서울을 되찾은 뒤 국군은 1950년 10월 1일 38도선을 넘었고(국군의 날의 유래), 유엔군도 북쪽으로 나아갔어요. 국군과 유엔군이 압록강 가까이 이르자 중국군이 참전했고, 전쟁은 다시 길어졌어요.", hs: "국군은 1950년 10월 1일 38도선을 넘었고, 유엔군도 북진해 10월 19일 평양을 점령했어요. 압록강이 가까워지자 중국군이 대규모로 참전했고, 국군과 유엔군은 흥남 철수와 1·4 후퇴로 다시 밀려났어요. 6·25 전쟁은 냉전의 두 진영이 정면으로 맞선 국제전이 되었어요." },
+    deep: { ms: "서울을 되찾은 뒤 국군은 1950년 10월 1일 38도선을 넘었고(국군의 날의 유래), 유엔군도 북쪽으로 나아갔어요. 국군과 유엔군이 압록강 가까이 이르자 중국군이 참전했고, 전쟁은 다시 길어졌어요.", hs: "국군은 1950년 10월 1일 38도선을 넘었고, 유엔군도 북진해 10월 19일 평양을 점령했어요. 압록강이 가까워지자 중국군이 대규모로 참전했고, 국군과 유엔군은 흥남 철수와 1·4 후퇴로 다시 밀려났어요. 6·25전쟁은 냉전의 두 진영이 정면으로 맞선 국제전이 되었어요." },
     story: {
       ko: '바닷물이 들어오고 빠질 때(밀물과 썰물) 높이 차이가 아주 큰 인천은 큰 배가 들어오기 어려운 곳이었어요. 그래서 "성공하기가 5,000대 1만큼 어렵다"는 말까지 나올 만큼 모두가 걱정한 작전이었지요. 하지만 팔미도 등대에 불을 밝히고, 새벽에 월미도부터 상륙하면서 작전은 성공했어요. 덕분에 9월 28일 서울을 되찾았답니다.',
       es: 'En Incheon la diferencia entre marea alta y marea baja es enorme, lo que hacía muy difícil el acceso de los barcos. Tanto preocupaba la Operación Chromite que se llegó a decir que sus probabilidades de éxito eran de 5.000 contra 1. Sin embargo, se encendió el faro de Palmido y, al amanecer, las tropas desembarcaron primero en Wolmido. La operación anfibia fue un éxito y permitió recuperar Seúl el 28 de septiembre.'
@@ -241,7 +241,7 @@ window.STATIONS = [
     ],
     quiz: {
       type: 'choice',
-      q: { ko: '6·25 전쟁 때 라틴아메리카(중남미)에서 단 하나, 싸우는 군대를 보낸 나라는?', es: '¿Cuál fue el único país latinoamericano que envió tropas de combate a la Guerra de Corea?' },
+      q: { ko: '6·25전쟁 때 라틴아메리카(중남미)에서 단 하나, 싸우는 군대를 보낸 나라는?', es: '¿Cuál fue el único país latinoamericano que envió tropas de combate a la Guerra de Corea?' },
       options: [
         { ko: '브라질', es: 'Brasil' },
         { ko: '콜롬비아', es: 'Colombia' },
@@ -249,7 +249,7 @@ window.STATIONS = [
         { ko: '아르헨티나', es: 'Argentina' }
       ],
       answer: 1,
-      explain: { ko: '콜롬비아! 콜롬비아는 남아메리카 대륙 북서쪽에 있는 나라예요. 6·25 전쟁 때 함께 피를 흘리며 싸웠기 때문에 한국과 콜롬비아는 "피를 나눈 형제 나라"라고 불려요.', es: 'Colombia, en el noroeste de Sudamérica. Como lucharon y derramaron sangre juntos en la Guerra de Corea, a Corea y Colombia se les llama "naciones hermanas de sangre".' }
+      explain: { ko: '콜롬비아! 콜롬비아는 남아메리카 대륙 북서쪽에 있는 나라예요. 6·25전쟁 때 함께 피를 흘리며 싸웠기 때문에 한국과 콜롬비아는 "피를 나눈 형제 나라"라고 불려요.', es: 'Colombia, en el noroeste de Sudamérica. Como lucharon y derramaron sangre juntos en la Guerra de Corea, a Corea y Colombia se les llama "naciones hermanas de sangre".' }
     },
     questions: ['q1']
   },
@@ -535,7 +535,7 @@ window.STATIONS = [
     date: { ko: '1975. 9. 24. 세움 → 2018. 7. 25. 경명공원으로 옮김', es: 'Erigido el 24 sep. 1975 → trasladado el 25 jul. 2018' },
     place: { ko: '인천 경명공원', es: 'Parque Gyeongmyeong, Incheon' },
     // 📚 중·고등 '역사 더 보기' (한국어 화면 · ?grade=ms / hs) — 이야기 아래 상자로 보여요
-    deep: { ms: "6·25 전쟁으로 남북의 군인과 민간인 수백만 명이 죽거나 다쳤고, 수많은 피란민과 전쟁고아, 이산가족이 생겼어요. 해마다 11월 11일 오전 11시(한국 시간)에는 세계 곳곳에서 부산 유엔기념공원을 향해 1분 동안 묵념하는 \"부산을 향하여(Turn Toward Busan)\"가 열려요.", hs: "추산은 자료마다 다르지만, 남북의 군인과 민간인 사상자는 수백만 명에 이르고 전쟁으로 흩어진 이산가족은 1,000만 명에 이른다고도 해요. 전쟁은 분단을 굳혔고, 남한에서는 이승만 정부가 권력을 강화했으며 북한에서는 김일성이 반대파를 숙청하며 1인 독재 체제를 굳혔어요. 유엔군 전사자 가운데 일부는 부산 유엔기념공원에 잠들어 있고, 해마다 11월 11일 오전 11시(한국 시간) \"부산을 향하여(Turn Toward Busan)\"로 그들을 기려요." },
+    deep: { ms: "6·25전쟁으로 남북의 군인과 민간인 수백만 명이 죽거나 다쳤고, 수많은 피란민과 전쟁고아, 이산가족이 생겼어요. 해마다 11월 11일 오전 11시(한국 시간)에는 세계 곳곳에서 부산 유엔기념공원을 향해 1분 동안 묵념하는 \"부산을 향하여(Turn Toward Busan)\"가 열려요.", hs: "추산은 자료마다 다르지만, 남북의 군인과 민간인 사상자는 수백만 명에 이르고 전쟁으로 흩어진 이산가족은 1,000만 명에 이른다고도 해요. 전쟁은 분단을 굳혔고, 남한에서는 이승만 정부가 권력을 강화했으며 북한에서는 김일성이 반대파를 숙청하며 1인 독재 체제를 굳혔어요. 유엔군 전사자 가운데 일부는 부산 유엔기념공원에 잠들어 있고, 해마다 11월 11일 오전 11시(한국 시간) \"부산을 향하여(Turn Toward Busan)\"로 그들을 기려요." },
     story: {
       ko: '인천 경명공원에 콜롬비아군 참전기념비가 있어요. 칼을 든 군인과 무릎 꿇고 기도하는 여인의 조각, 그리고 배의 돛을 닮은 하얀 벽이 있어요. 비석에는 한국어와 스페인어로 611명의 희생을 기억하는 글이 새겨져 있어요. 해마다 이곳에서 돌아가신 분들을 기리는 행사(추모식)가 열려요.',
       es: 'En el parque Gyeongmyeong de Incheon se alza el monumento a los combatientes colombianos: la escultura de un soldado con una espada, una mujer arrodillada en oración y un muro blanco que evoca la vela de un barco. Su inscripción, en coreano y en español, honra el sacrificio de 611 combatientes. Cada año se celebra allí una ceremonia conmemorativa.'
@@ -724,12 +724,12 @@ window.INCHEON_OPS = [
     date: { ko: '1950. 9. 14. 밤 ~ 9. 15. 새벽', es: 'Noche del 14 a la madrugada del 15 de sep. de 1950' },
     // 출처: 국방일보 — 점등 명령은 0시 30분, 실제로는 조금 늦게 켜졌어요(기록마다 0시 50분~1시 50분). 모둠 글의 '0시 12분'은 고쳤어요.
     text: {
-      ko: '배들이 인천으로 들어오려면 캄캄한 밤바다를 밝혀 줄 팔미도 등대(1903년, 우리나라 최초의 근대식 등대)가 꼭 필요했어요. 미 해군 클라크 대위와 켈로부대 최규봉 대장, 한국군 장교들이 팔미도에 들어가 등대를 되찾고, 적이 빼돌린 부품을 찾아 고쳤어요. 9월 15일 자정을 넘긴 새벽, 등대에 불이 켜지자 261척의 유엔군 함대가 좁고 위험한 바닷길을 따라 인천으로 들어왔어요.',
-      es: 'Para que la flota pudiera entrar de noche en Incheon, era indispensable el faro de Palmido (1903, el primer faro moderno de Corea). El teniente Clark, de la Armada de EE. UU., Choi Gyu-bong, jefe de un grupo de la unidad KLO, y oficiales surcoreanos retomaron la isla, localizaron las piezas que el enemigo había sustraído y repararon el faro. Pasada la medianoche del 15 de septiembre se encendió la luz, y 261 buques de la ONU avanzaron por el estrecho y peligroso canal hacia Incheon.'
+      ko: '배들이 인천으로 들어오려면 캄캄한 밤바다를 밝혀 줄 팔미도 등대(1903년, 우리나라 최초의 근대식 등대)가 꼭 필요했어요. 미 해군 클라크 대위와 한국인 협력자들(계인주·연정 등)이 팔미도에 들어가 등대에 불을 밝힐 준비를 했어요. 9월 15일 자정을 넘긴 새벽, 등대에 불이 켜지자 261척의 유엔군 함대가 좁고 위험한 바닷길을 따라 인천으로 들어왔어요.',
+      es: 'Para que la flota pudiera entrar de noche en Incheon, era indispensable el faro de Palmido (1903, el primer faro moderno de Corea). El teniente Clark, de la Armada de EE. UU., y sus colaboradores coreanos (entre ellos Kye In-ju y Yeon Jeong) entraron en Palmido y prepararon el faro para encenderlo. Pasada la medianoche del 15 de septiembre se encendió la luz, y 261 buques de la ONU avanzaron por el estrecho y peligroso canal hacia Incheon.'
     },
     // ※ 모둠이 조사한 '안형석 등대원'은 믿을 만한 기록에서 찾을 수 없어 뺐어요
     heroes: [
-      { card: 'choigyubong', name: { ko: '최규봉 (켈로부대 대장)', es: 'Choi Gyu-bong (jefe de grupo KLO)' }, text: { ko: '클라크 대위와 함께 팔미도에 들어가 등대를 되찾고 불을 밝힌 켈로부대(KLO) 고트대 대장', es: 'Jefe del grupo Goat de la unidad KLO; junto al teniente Clark, retomó el faro de Palmido y lo encendió.' } },
+      { card: 'choigyubong', name: { ko: '최규봉 (켈로부대 대장)', es: 'Choi Gyu-bong (jefe de grupo KLO)' }, text: { ko: '켈로부대(KLO) 고트대 대장. 인천상륙작전을 앞두고 첩보 활동을 했고 2012년 충무무공훈장을 받았어요. 팔미도 등대 점등에 함께했다는 증언이 있지만, 자료마다 다르게 전해져요.', es: 'Jefe del grupo Goat de la unidad KLO. Antes del Desembarco de Incheon realizó labores de inteligencia y en 2012 recibió la Orden al Mérito Militar Chungmu. Hay testimonios de que participó en el encendido del faro de Palmido, pero las fuentes no coinciden.' } },
       { card: 'clark', name: { ko: '유진 클라크 대위', es: 'Teniente Eugene Clark' }, text: { ko: '상륙 2주 전부터 섬에 숨어 인천 바다를 살피고, 팔미도 등대에 불을 밝힌 미 해군 장교', es: 'Oficial de la Armada de EE. UU. que, oculto en las islas desde dos semanas antes, vigiló el mar de Incheon y encendió el faro de Palmido.' } }
     ],
     groups: [1, 3, 4, 5]
@@ -916,10 +916,10 @@ window.HERO_CARDS = [
     credit: { ko: '인물 사진 대신 팔미도 등대 · 국가유산청, 공공누리 제1유형', es: 'En lugar de un retrato: faro de Palmido · Servicio de Patrimonio Nacional de Corea, KOGL tipo 1' },
     deeds: [
       { ko: '적진 뒤에서 정보를 모으는 켈로부대의 고트대를 이끈 대장이었어요.', es: 'Dirigía el grupo Goat de la unidad KLO, que recopilaba información tras las líneas enemigas.' },
-      { ko: '1950년 9월 14일, 클라크 대위·한국군 장교들과 함께 팔미도에 들어가 등대를 되찾았어요.', es: 'El 14 de septiembre de 1950 desembarcó en Palmido con el teniente Clark y oficiales surcoreanos, y retomaron el faro.' },
-      { ko: '9월 15일 자정을 넘긴 새벽, 등대에 불을 밝혀 261척 함대의 길을 열었어요.', es: 'Pasada la medianoche del 15 de septiembre encendió el faro y abrió paso a una flota de 261 buques.' }
+      { ko: '인천상륙작전을 앞두고 첩보 활동을 했고, 2012년 충무무공훈장을 받았어요.', es: 'Antes del Desembarco de Incheon realizó labores de inteligencia; en 2012 recibió la Orden al Mérito Militar Chungmu.' },
+      { ko: '팔미도 등대 점등에 함께했다는 증언이 있지만, 자료마다 다르게 전해져요.', es: 'Hay testimonios de que participó en el encendido del faro de Palmido, pero las fuentes no coinciden.' }
     ],
-    // 출처: 국방일보(2016. 7. 7.) — 점등 명령 0시 30분, 실제 점등은 조금 늦음
+    // 출처: 주간경향(2021. 6. 25.) — 켈로부대 대장인 것은 이견 없음, 팔미도 작전 참여는 본인 증언 말고는 기록이 없음 · 2012년 충무무공훈장(인천상륙작전 이전 작전 공적)
     groups: [1]
   },
   {
@@ -959,10 +959,10 @@ window.HERO_CARDS = [
     credit: { ko: '인물 사진 대신 팔미도 등대 · 국가유산청, 공공누리 제1유형', es: 'En lugar de un retrato: faro de Palmido · Servicio de Patrimonio Nacional de Corea, KOGL tipo 1' },
     deeds: [
       { ko: '1950년 9월 1일 덕적도에 먼저 내린 뒤 영흥도로 옮겨, 2주 동안 인천 바다를 몰래 살폈어요.', es: 'El 1 de septiembre de 1950 desembarcó en Deokjeokdo y luego se trasladó a Yeongheungdo, desde donde vigiló en secreto el mar de Incheon durante dos semanas.' },
-      { ko: '한국인 대원들과 함께 팔미도 등대를 되찾았어요.', es: 'Junto a sus compañeros coreanos, retomó el faro de Palmido.' },
+      { ko: '한국인 협력자들(계인주·연정 등)과 함께 팔미도에 들어갔어요.', es: 'Entró en Palmido con sus colaboradores coreanos (entre ellos Kye In-ju y Yeon Jeong).' },
       { ko: '9월 15일 자정을 넘긴 새벽 등대에 불을 켜 함대를 안내했고, 은성무공훈장을 받았어요.', es: 'Pasada la medianoche del 15 de septiembre encendió el faro para guiar a la flota; fue condecorado con la Estrella de Plata.' }
     ],
-    // 출처: 국방일보, 위키백과(Eugene F. Clark)
+    // 출처: 국방일보, 위키백과(Eugene F. Clark), 유엔군사령부 보도자료(2025. 9. 15.), 클라크 수기 The Secrets of Inchon(2002) — 동행한 한국인: 계인주·연정, 9월 15일 0시 50분 점등
     groups: [3, 5]
   }
 ];
@@ -983,7 +983,7 @@ window.GLOSSARY = {
     ['상륙', '배에서 내려 바다에서 육지로 올라오는 것이에요.'],
     ['첩보', '적의 비밀 정보를 몰래 알아내는 일이에요.'],
     ['수색대', '적이 어디에 있는지 찾아 살피는 일을 맡은 부대예요.'],
-    ['켈로부대', '6·25 전쟁 때 적의 뒤쪽에서 몰래 정보를 모은 한국인 첩보부대(KLO)예요.'],
+    ['켈로부대', '6·25전쟁 때 적의 뒤쪽에서 몰래 정보를 모은 한국인 첩보부대(KLO)예요.'],
     ['함대', '여러 척의 군함이 한데 모인 무리예요.'],
     ['프리깃함', '다른 배를 지키고 바다를 순찰하는 중간 크기의 군함이에요. 호위함이라고도 해요.'],
     ['호위함', '다른 배를 곁에서 지켜 주는 군함이에요.'],
@@ -1117,7 +1117,7 @@ window.QUESTIONS = {
   q2: {
     asker: '원○율', askerRoman: 'Won S.', askerGiven: '서율 W', askerGivenRoman: 'Seoyul W',
     en: 'What was the most difficult or painful moment you experienced during the Korean War? How did you keep going?',
-    text: { ko: '6·25 전쟁 중에 겪은 가장 힘들거나 아팠던 순간은 언제였나요? 어떻게 계속 버틸 수 있었나요?', es: '¿Cuál fue el momento más difícil o doloroso que vivió en la Guerra de Corea? ¿Cómo pudo seguir adelante?' },
+    text: { ko: '6·25전쟁 중에 겪은 가장 힘들거나 아팠던 순간은 언제였나요? 어떻게 계속 버틸 수 있었나요?', es: '¿Cuál fue el momento más difícil o doloroso que vivió en la Guerra de Corea? ¿Cómo pudo seguir adelante?' },
     answers: [
       {
         veteran: 'jorge',
@@ -1243,13 +1243,14 @@ window.LINKS = [
 
 /* 학생 모둠 작품 — 인터랙티브 지도 (엔딩 화면 갤러리 · 크레딧 · 영웅 카드의 [모둠 작품 보러 가기])
    아이들이 캔바로 만든 자료를 선생님이 사실 확인해서 웹페이지로 다시 꾸민 판이에요 (maps 폴더, 인터넷 없이도 열려요)
-   ※ 모둠 이름은 지도 안에 적힌 그대로예요 (캔바 모둠 기준 — 위인전 모둠 번호와 달라요) */
+   ※ 모둠 이름은 지도 안에 적힌 그대로예요 (캔바 모둠 기준 — 위인전 모둠 번호와 달라요)
+   ※ was: 예전 캔바 사이트 번호 — 작전 지점의 「N모둠 ↗」 링크가 예전처럼 같은 작품으로 가게 해요 */
 window.GROUP_WORKS = [
-  { name: { ko: '1모둠 · 인천상륙작전과 콜롬비아의 6·25전쟁 참전', es: 'Grupo 1 · El Desembarco de Incheon y la participación de Colombia en la Guerra de Corea' }, url: 'maps/1-team.html' },
-  { name: { ko: '2모둠 · 기억해야 할 그날, 6·25전쟁 속 인천', es: 'Grupo 2 · Un día para recordar: Incheon en la Guerra de Corea' }, url: 'maps/2-team.html' },
-  { name: { ko: '3모둠 · 콜롬비아, 잊지 않은 우정', es: 'Grupo 3 · Colombia, una amistad que no olvidamos' }, url: 'maps/3-team.html' },
-  { name: { ko: '4모둠 · 6·25전쟁 참전국가, 콜롬비아', es: 'Grupo 4 · Colombia, país participante en la Guerra de Corea' }, url: 'maps/4-team.html' },
-  { name: { ko: '전투모둠 · 인천상륙작전과 6·25전쟁의 주요 작전', es: 'Grupo de batallas · El Desembarco de Incheon y las principales operaciones de la Guerra de Corea' }, url: 'maps/battle-team.html' }
+  { name: { ko: '1모둠 · 인천상륙작전과 콜롬비아의 6·25전쟁 참전', es: 'Grupo 1 · El Desembarco de Incheon y la participación de Colombia en la Guerra de Corea' }, url: 'maps/1-team.html', was: 1 },
+  { name: { ko: '2모둠 · 기억해야 할 그날, 6·25전쟁 속 인천', es: 'Grupo 2 · Un día para recordar: Incheon en la Guerra de Corea' }, url: 'maps/2-team.html', was: 5 },
+  { name: { ko: '3모둠 · 콜롬비아, 잊지 않은 우정', es: 'Grupo 3 · Colombia, una amistad que no olvidamos' }, url: 'maps/3-team.html', was: 3 },
+  { name: { ko: '4모둠 · 6·25전쟁 참전국가, 콜롬비아', es: 'Grupo 4 · Colombia, país participante en la Guerra de Corea' }, url: 'maps/4-team.html', was: 4 },
+  { name: { ko: '전투모둠 · 인천상륙작전과 6·25전쟁의 주요 작전', es: 'Grupo de batallas · El Desembarco de Incheon y las principales operaciones de la Guerra de Corea' }, url: 'maps/battle-team.html', was: 2 }
 ];
 
 /* 🎬 엔딩 크레딧 — 아이들 이름은 성 없이 이름만 (개인정보 이용 동의 받음, 2026. 10.)
@@ -1284,7 +1285,7 @@ window.REVIEW_SURVEY = {
       low: { ko: '별로였어요', es: 'No me gustó', en: 'Not good' }, high: { ko: '아주 좋았어요', es: 'Me encantó', en: 'Excellent' } },
     { id: 'fun', type: 'scale', q: { ko: '얼마나 재미있었나요?', es: '¿Qué tan divertido fue?', en: 'How fun was it?' },
       low: { ko: '지루했어요', es: 'Aburrido', en: 'Boring' }, high: { ko: '아주 재미있었어요', es: 'Muy divertido', en: 'Very fun' } },
-    { id: 'learned', type: 'scale', q: { ko: '6·25 전쟁과 콜롬비아에 대해 새로 알게 된 것이 많았나요?', es: '¿Aprendiste cosas nuevas sobre la Guerra de Corea y Colombia?', en: 'Did you learn new things about the Korean War and Colombia?' },
+    { id: 'learned', type: 'scale', q: { ko: '6·25전쟁과 콜롬비아에 대해 새로 알게 된 것이 많았나요?', es: '¿Aprendiste cosas nuevas sobre la Guerra de Corea y Colombia?', en: 'Did you learn new things about the Korean War and Colombia?' },
       low: { ko: '거의 없어요', es: 'Casi nada', en: 'Almost nothing' }, high: { ko: '아주 많아요', es: 'Muchísimo', en: 'A lot' } },
     { id: 'diff', type: 'scale', faces: false, q: { ko: '문제와 내용은 얼마나 어려웠나요?', es: '¿Qué tan difíciles fueron las preguntas y los textos?', en: 'How difficult were the questions and texts?' },
       low: { ko: '너무 쉬웠어요', es: 'Muy fáciles', en: 'Too easy' }, mid: { ko: '딱 알맞았어요', es: 'Justo bien', en: 'Just right' }, high: { ko: '너무 어려웠어요', es: 'Muy difíciles', en: 'Too hard' } },
@@ -1318,7 +1319,7 @@ window.REVIEW_SURVEY = {
       low: { ko: '아니요', es: 'No', en: 'No' }, high: { ko: '꼭 해 보라고 할래요', es: 'Sí, sin duda', en: 'Definitely' } },
     { id: 'good', type: 'text', q: { ko: '좋았던 점을 적어 주세요.', es: '¿Qué te gustó?', en: 'What did you like?' } },
     { id: 'improve', type: 'text', q: { ko: '고칠 점이나 바뀌면 좋을 점을 적어 주세요. (어려웠던 곳, 막혔던 곳, 오류도 좋아요)', es: '¿Qué deberíamos mejorar o cambiar? (partes difíciles, lugares donde te trabaste o errores)', en: 'What should we fix or change? (hard parts, places you got stuck, or errors)' } },
-    { id: 'reflect', type: 'text', q: { ko: '이 게임을 하고 나서, 6·25 전쟁이나 참전용사, 평화에 대한 내 생각이나 마음이 어떻게 달라졌나요?', es: 'Después de este juego, ¿cómo cambió lo que piensas o sientes sobre la Guerra de Corea, los veteranos y la paz?', en: 'After this game, how have your thoughts or feelings about the Korean War, the veterans and peace changed?' } },
+    { id: 'reflect', type: 'text', q: { ko: '이 게임을 하고 나서, 6·25전쟁이나 참전용사, 평화에 대한 내 생각이나 마음이 어떻게 달라졌나요?', es: 'Después de este juego, ¿cómo cambió lo que piensas o sientes sobre la Guerra de Corea, los veteranos y la paz?', en: 'After this game, how have your thoughts or feelings about the Korean War, the veterans and peace changed?' } },
     { id: 'message', type: 'text', q: { ko: '참전용사님이나 이 게임을 만든 6학년 8반 친구들에게 하고 싶은 말이 있나요?', es: '¿Quieres dejar un mensaje para los veteranos o para los estudiantes de 6.º grado que hicieron este juego?', en: 'Any message for the veterans or for the 6th graders who made this game?' } }
   ]
 };
@@ -1330,7 +1331,7 @@ window.EXTRA_ACTIVITIES = [
     name: { ko: '유엔참전용사 디지털 아카이브', es: 'Archivo digital de veteranos de la ONU', en: 'UN Veterans Digital Archive' },
     by: { ko: '국가보훈부', es: 'Ministerio de Asuntos de Patriotas y Veteranos de Corea', en: 'Ministry of Patriots and Veterans Affairs (Korea)' },
     desc: {
-      ko: '6·25 전쟁 유엔 참전용사들이 직접 들려주는 구술 인터뷰와 참전 기록을 모아 둔 곳이에요.',
+      ko: '6·25전쟁 유엔 참전용사들이 직접 들려주는 구술 인터뷰와 참전 기록을 모아 둔 곳이에요.',
       es: 'Reúne entrevistas y registros en los que los veteranos de la ONU cuentan su propia experiencia en la Guerra de Corea.',
       en: 'A collection of interviews and records in which UN veterans of the Korean War tell their own stories.'
     },
@@ -1346,7 +1347,7 @@ window.EXTRA_ACTIVITIES = [
     name: { ko: 'Korean War Legacy', es: 'Korean War Legacy', en: 'Korean War Legacy' },
     by: { ko: '한국전쟁유업재단 (영어 사이트)', es: 'Korean War Legacy Foundation (sitio en inglés)', en: 'Korean War Legacy Foundation' },
     desc: {
-      ko: '세계 여러 나라 참전용사의 인터뷰 영상과 6·25 전쟁 이야기를 모아 둔 곳이에요.',
+      ko: '세계 여러 나라 참전용사의 인터뷰 영상과 6·25전쟁 이야기를 모아 둔 곳이에요.',
       es: 'Reúne videos de entrevistas a veteranos de muchos países e historias sobre la Guerra de Corea.',
       en: 'Interview videos with veterans from many countries, plus stories about the Korean War.'
     },
@@ -1371,7 +1372,7 @@ window.KNOW_CHECK = {
   // 인식 변화 (1~5) — 사전·사후 모두. 성과보고서 '유엔참전용사에 대한 인식 변화'
   attitude: [
     { id: 'know',
-      q: { ko: '6·25 전쟁과 유엔참전용사에 대해 얼마나 알고 있나요?', es: '¿Cuánto sabes sobre la Guerra de Corea y los veteranos de la ONU?', en: 'How much do you know about the Korean War and the UN veterans?' },
+      q: { ko: '6·25전쟁과 유엔참전용사에 대해 얼마나 알고 있나요?', es: '¿Cuánto sabes sobre la Guerra de Corea y los veteranos de la ONU?', en: 'How much do you know about the Korean War and the UN veterans?' },
       low: { ko: '거의 몰라요', es: 'Casi nada', en: 'Almost nothing' }, high: { ko: '아주 잘 알아요', es: 'Mucho', en: 'A lot' } },
     { id: 'care',
       q: { ko: '먼 나라에서 와서 싸운 참전용사들을 기억하는 일이 중요하다고 생각하나요?', es: '¿Crees que es importante recordar a los veteranos que vinieron a luchar desde países lejanos?', en: 'Do you think it is important to remember the veterans who came from faraway countries to fight?' },
@@ -1386,9 +1387,9 @@ window.KNOW_CHECK = {
   reflect: { ko: '이 활동으로 새로 알게 된 것이나 느낀 점을 한 줄로 써 보세요.', es: 'Escribe en una línea algo que aprendiste o sentiste con esta actividad.', en: 'Write one line about something you learned or felt in this activity.' },
   levels: {
     '34': [
-      { id: 'j1', type: 'ox', topic: 'war', q: { ko: '6·25 전쟁은 1950년 6월 25일에 일어났다.' }, answer: true,
+      { id: 'j1', type: 'ox', topic: 'war', q: { ko: '6·25전쟁은 1950년 6월 25일에 일어났다.' }, answer: true,
         why: { ko: '맞아요! 1950년 6월 25일 새벽, 북한군이 38도선을 넘어 쳐들어오면서 전쟁이 시작됐어요.' } },
-      { id: 'j2', type: 'ox', topic: 'war', q: { ko: '6·25 전쟁 때 우리나라를 도우러 온 나라는 하나도 없었다.' }, answer: false,
+      { id: 'j2', type: 'ox', topic: 'war', q: { ko: '6·25전쟁 때 우리나라를 도우러 온 나라는 하나도 없었다.' }, answer: false,
         why: { ko: '아니에요! 세계 여러 나라가 유엔의 이름으로 우리나라를 도우러 왔어요.' } },
       { id: 'j3', type: 'choice', topic: 'colombia', q: { ko: '콜롬비아는 우리나라에서 어디쯤에 있을까요?' },
         options: [{ ko: '바로 옆 나라' }, { ko: '지구 반대편' }, { ko: '바다 한가운데 섬' }], answer: 1,
@@ -1408,18 +1409,18 @@ window.KNOW_CHECK = {
     ],
     '56': [
       { id: 'e1', type: 'choice', topic: 'war',
-        q: { ko: '6·25 전쟁이 시작된 날은 언제일까요?', es: '¿Cuándo empezó la Guerra de Corea?', en: 'When did the Korean War begin?' },
+        q: { ko: '6·25전쟁이 시작된 날은 언제일까요?', es: '¿Cuándo empezó la Guerra de Corea?', en: 'When did the Korean War begin?' },
         options: [{ ko: '1945년 8월 15일', es: '15 de agosto de 1945', en: 'August 15, 1945' }, { ko: '1950년 6월 25일', es: '25 de junio de 1950', en: 'June 25, 1950' }, { ko: '1953년 7월 27일', es: '27 de julio de 1953', en: 'July 27, 1953' }, { ko: '1919년 3월 1일', es: '1 de marzo de 1919', en: 'March 1, 1919' }], answer: 1,
         why: { ko: '1950년 6월 25일 새벽, 북한군이 38도선을 넘어 쳐들어왔어요. 1953년 7월 27일은 정전협정을 맺은 날이에요.', es: 'El 25 de junio de 1950 el ejército norcoreano cruzó el paralelo 38. El 27 de julio de 1953 se firmó el armisticio.', en: 'At dawn on June 25, 1950, North Korean troops crossed the 38th parallel. July 27, 1953 is the day the armistice was signed.' } },
       { id: 'e2', type: 'ox', topic: 'war',
-        q: { ko: '6·25 전쟁 때 세계 여러 나라가 유엔의 이름으로 대한민국을 도왔다.', es: 'Durante la Guerra de Corea, muchos países ayudaron a Corea del Sur bajo la bandera de la ONU.', en: 'During the Korean War, many countries helped South Korea under the UN flag.' }, answer: true,
+        q: { ko: '6·25전쟁 때 세계 여러 나라가 유엔의 이름으로 대한민국을 도왔다.', es: 'Durante la Guerra de Corea, muchos países ayudaron a Corea del Sur bajo la bandera de la ONU.', en: 'During the Korean War, many countries helped South Korea under the UN flag.' }, answer: true,
         why: { ko: '맞아요. 전투 병력과 의료 지원을 합쳐 22개 나라가 함께했어요.', es: 'Correcto. En total, 22 países enviaron tropas de combate o apoyo médico.', en: 'Yes. In all, 22 countries sent combat troops or medical support.' } },
       { id: 'e3', type: 'choice', topic: 'incheon',
         q: { ko: '인천상륙작전이 펼쳐진 날은 언제일까요?', es: '¿Cuándo fue el desembarco de Incheon?', en: 'When did the Incheon Landing take place?' },
         options: [{ ko: '1950년 9월 15일', es: '15 de septiembre de 1950', en: 'September 15, 1950' }, { ko: '1950년 6월 25일', es: '25 de junio de 1950', en: 'June 25, 1950' }, { ko: '1951년 6월 15일', es: '15 de junio de 1951', en: 'June 15, 1951' }, { ko: '1953년 7월 27일', es: '27 de julio de 1953', en: 'July 27, 1953' }], answer: 0,
         why: { ko: '1950년 9월 15일 새벽 월미도부터 상륙했고, 9월 28일 서울을 되찾았어요.', es: 'Al amanecer del 15 de septiembre de 1950 se desembarcó primero en Wolmido, y el 28 de septiembre se recuperó Seúl.', en: 'At dawn on September 15, 1950, troops landed first on Wolmido, and Seoul was retaken on September 28.' } },
       { id: 'e4', type: 'ox', topic: 'colombia',
-        q: { ko: '콜롬비아는 라틴아메리카(중남미)에서 유일하게 6·25 전쟁에 싸우는 군대(전투 병력)를 보낸 나라다.', es: 'Colombia fue el único país de América Latina que envió tropas de combate a la Guerra de Corea.', en: 'Colombia was the only Latin American country to send combat troops to the Korean War.' }, answer: true,
+        q: { ko: '콜롬비아는 라틴아메리카(중남미)에서 유일하게 6·25전쟁에 싸우는 군대(전투 병력)를 보낸 나라다.', es: 'Colombia fue el único país de América Latina que envió tropas de combate a la Guerra de Corea.', en: 'Colombia was the only Latin American country to send combat troops to the Korean War.' }, answer: true,
         why: { ko: '맞아요. 콜롬비아는 육군 콜롬비아대대와 해군 배(프리깃함)를 보냈어요.', es: 'Correcto. Colombia envió el Batallón Colombia y fragatas de su Armada.', en: 'Yes. Colombia sent the Colombia Battalion and navy frigates.' } },
       { id: 'e5', type: 'choice', topic: 'busan',
         q: { ko: '콜롬비아대대가 처음 도착한 우리나라 항구는?', es: '¿A qué puerto coreano llegó primero el Batallón Colombia?', en: 'At which Korean port did the Colombia Battalion first arrive?' },
@@ -1440,7 +1441,7 @@ window.KNOW_CHECK = {
         q: { ko: '정전협정은 전쟁을 완전히 끝낸 약속(종전)이다.', es: 'El armisticio puso fin definitivo a la guerra.', en: 'The armistice ended the war completely.' }, answer: false,
         why: { ko: '정전은 싸움을 잠시 멈춘 것이에요. 그래서 지금도 휴전선이 있어요.', es: 'El armisticio solo detuvo los combates; por eso todavía existe la línea de demarcación.', en: 'The armistice only stopped the fighting. That is why the demarcation line still exists.' } },
       { id: 'e10', type: 'choice', topic: 'memorial',
-        q: { ko: '6·25 전쟁 때 가족과 헤어져 남과 북으로 흩어진 뒤, 지금까지도 만나지 못하는 사람들을 무엇이라고 할까요?', es: '¿Cómo se llama a las personas que quedaron separadas de su familia entre el Norte y el Sur durante la Guerra de Corea?', en: 'What are people called who were separated from their families between North and South during the Korean War?' },
+        q: { ko: '6·25전쟁 때 가족과 헤어져 남과 북으로 흩어진 뒤, 지금까지도 만나지 못하는 사람들을 무엇이라고 할까요?', es: '¿Cómo se llama a las personas que quedaron separadas de su familia entre el Norte y el Sur durante la Guerra de Corea?', en: 'What are people called who were separated from their families between North and South during the Korean War?' },
         options: [{ ko: '이산가족', es: 'Familias separadas', en: 'Separated families' }, { ko: '다문화 가족', es: 'Familias multiculturales', en: 'Multicultural families' }, { ko: '핵가족', es: 'Familias nucleares', en: 'Nuclear families' }, { ko: '대가족', es: 'Familias extensas', en: 'Extended families' }], answer: 0,
         why: { ko: '전쟁으로 많은 가족이 남과 북으로 흩어졌어요. 이들을 이산가족이라고 해요. 전쟁은 군인뿐 아니라 수많은 사람의 삶에 깊은 상처를 남겼어요.', es: 'La guerra separó a muchas familias entre el Norte y el Sur. Se les llama "familias separadas": la guerra dejó heridas profundas en millones de personas, no solo en los soldados.', en: 'The war split many families between North and South; they are called separated families. The war left deep wounds on millions of people, not only soldiers.' } }
     ],
@@ -1457,7 +1458,7 @@ window.KNOW_CHECK = {
       { id: 'm4', type: 'choice', topic: 'war', q: { ko: '1950년 10월 이후 국군과 유엔군이 다시 남쪽으로 물러난(1·4 후퇴) 까닭은?' },
         options: [{ ko: '중국군이 전쟁에 뛰어들어서' }, { ko: '정전협정을 맺어서' }, { ko: '유엔군이 모두 돌아가서' }, { ko: '인천상륙작전이 실패해서' }], answer: 0,
         why: { ko: '중국군이 참전하면서 국군과 유엔군은 다시 남쪽으로 물러났고, 1951년 1월 4일 서울을 다시 내주었어요.' } },
-      { id: 'm5', type: 'choice', topic: 'colombia', q: { ko: '6·25 전쟁에 함께한 나라 가운데 콜롬비아만의 특별한 점은?' },
+      { id: 'm5', type: 'choice', topic: 'colombia', q: { ko: '6·25전쟁에 함께한 나라 가운데 콜롬비아만의 특별한 점은?' },
         options: [{ ko: '라틴아메리카에서 유일하게 전투 병력을 보냈다' }, { ko: '가장 먼저 군대를 보냈다' }, { ko: '가장 많은 군대를 보냈다' }, { ko: '한국과 국경이 맞닿아 있었다' }], answer: 0,
         why: { ko: '콜롬비아는 라틴아메리카에서 유일하게 육군 콜롬비아대대와 해군 프리깃함을 보냈어요. 가장 먼저, 가장 많이 보낸 나라는 미국이에요.' } },
       { id: 'm6', type: 'choice', topic: 'war', q: { ko: "북한의 남침 직후 유엔이 한 일로 옳은 것은?" },
@@ -1466,7 +1467,7 @@ window.KNOW_CHECK = {
       { id: 'm7', type: 'choice', topic: 'hill400', q: { ko: '1951년부터 1953년까지 전쟁의 모습으로 가장 알맞은 것은?' },
         options: [{ ko: '38도선 근처의 높은 산(고지)을 서로 차지하려는 치열한 싸움' }, { ko: '바다에서만 벌어진 싸움' }, { ko: '부산 근처에서만 벌어진 싸움' }, { ko: '싸움이 완전히 멈춘 시기' }], answer: 0,
         why: { ko: '전선이 38도선 근처에 머무는 동안 고지를 둘러싼 고지전이 이어졌어요. 콜롬비아대대도 이때 싸웠어요.' } },
-      { id: 'm8', type: 'choice', topic: 'memorial', q: { ko: "6·25 전쟁이 남긴 피해로 알맞지 않은 것은?" },
+      { id: 'm8', type: 'choice', topic: 'memorial', q: { ko: "6·25전쟁이 남긴 피해로 알맞지 않은 것은?" },
         options: [{ ko: "남북한 인구가 크게 늘었다" }, { ko: "많은 피란민과 전쟁고아가 생겼다" }, { ko: "가족이 남북으로 흩어진 이산가족이 생겼다" }, { ko: "집·학교·공장·도로가 크게 부서졌다" }], answer: 0,
         why: { ko: "전쟁으로 수많은 사람이 죽거나 다쳤고, 피란민·전쟁고아·이산가족이 생겼으며 국토가 크게 파괴되었어요." } },
       { id: 'm9', type: 'choice', topic: 'armistice', q: { ko: '오늘날 한반도의 상태를 바르게 설명한 것은?' },
@@ -1477,7 +1478,7 @@ window.KNOW_CHECK = {
         why: { ko: '비문에는 "611명의 고귀한 생명이 피를 흘렸다"고 새겨져 있어요. 목숨을 잃거나 다친 콜롬비아 군인들을 기억하는 숫자예요.' } }
     ],
     hs: [
-      { id: 'h1', type: 'choice', topic: 'war', q: { ko: "6·25 전쟁이 국제전으로 커진 까닭을 냉전과 관련지어 옳게 설명한 것은?" },
+      { id: 'h1', type: 'choice', topic: 'war', q: { ko: "6·25전쟁이 국제전으로 커진 까닭을 냉전과 관련지어 옳게 설명한 것은?" },
         options: [{ ko: "미국과 소련이 대립하는 냉전 속에서 유엔군과 중국군이 각각 참전했다" }, { ko: "남과 북이 각자 유럽 나라들과 군사 동맹을 맺었다" }, { ko: "정전협정을 맺은 뒤에 여러 나라가 들어왔다" }, { ko: "일본이 군대를 보내 양쪽을 모두 도왔다" }], answer: 0,
         why: { ko: "북한의 남침은 소련의 승인과 지원 속에 이루어졌어요. 유엔은 안보리 결의로 16개국 전투 병력을 보냈고, 1950년 10월에는 중국군이 참전했어요." } },
       { id: 'h2', type: 'choice', topic: 'war', q: { ko: '다음 사건을 일어난 순서대로 바르게 늘어놓은 것은?' },
@@ -1495,7 +1496,7 @@ window.KNOW_CHECK = {
       { id: 'h6', type: 'choice', topic: 'hill400', q: { ko: '1951년 하반기부터 1953년까지 고지를 둘러싼 전투가 특히 치열했던 까닭으로 가장 알맞은 것은?' },
         options: [{ ko: '정전 회담이 이어지는 동안 조금이라도 유리한 경계선을 차지하려고' }, { ko: '고지마다 금광이 있어서' }, { ko: '평지에서는 싸우지 않기로 약속해서' }, { ko: '바다가 얼어 배가 다닐 수 없어서' }], answer: 0,
         why: { ko: '1951년 7월부터 정전 회담이 이어졌고, 그동안 양쪽은 더 유리한 선을 차지하려고 고지에서 치열하게 싸웠어요.' } },
-      { id: 'h7', type: 'choice', topic: 'memorial', q: { ko: "6·25 전쟁이 남긴 영향으로 옳지 않은 것은?" },
+      { id: 'h7', type: 'choice', topic: 'memorial', q: { ko: "6·25전쟁이 남긴 영향으로 옳지 않은 것은?" },
         options: [{ ko: "남북 사이의 교류와 왕래가 활발해졌다" }, { ko: "분단이 굳어지고 남북의 적대감이 깊어졌다" }, { ko: "수많은 이산가족과 전쟁고아가 생겼다" }, { ko: "한미상호방위조약이 맺어져 한미 동맹이 시작되었다" }], answer: 0,
         why: { ko: "전쟁은 분단을 굳히고 남북의 적대감을 깊게 했어요. 수많은 이산가족과 전쟁고아가 생겼고, 1953년 10월 한미상호방위조약이 맺어졌어요." } },
       { id: 'h8', type: 'choice', topic: 'war', q: { ko: "북한의 남침 직후 유엔군 파견이 빠르게 결정될 수 있었던 배경으로 옳은 것은?" },
@@ -1522,7 +1523,7 @@ window.LEVEL_QUIZ = {
     incheon: { type: 'choice', q: { ko: "인천이 상륙 작전을 펼치기에 매우 어려운 곳으로 꼽힌 까닭으로 가장 알맞은 것은?" },
       options: [{ ko: "밀물과 썰물의 차이가 크고 바닷길이 좁아서" }, { ko: "항구가 하나도 없어서" }, { ko: "북한군이 인천에 한 명도 없어서" }, { ko: "유엔군에 배가 거의 없어서" }], answer: 0,
       explain: { ko: "인천은 밀물과 썰물 차이가 최대 약 10m이고 바닷길이 좁아, \"성공하기가 5,000대 1만큼 어렵다\"는 말까지 나올 만큼 위험한 작전이었어요. 밀물 때를 맞춰 9월 15일 상륙했고, 9월 28일 서울을 되찾았어요." } },
-    colombia: { type: 'choice', q: { ko: '콜롬비아가 6·25 전쟁에 보낸 병력으로 옳은 것은?' },
+    colombia: { type: 'choice', q: { ko: '콜롬비아가 6·25전쟁에 보낸 병력으로 옳은 것은?' },
       options: [{ ko: '육군 대대와 해군 프리깃함' }, { ko: '의료 지원단만' }, { ko: '공군 전투기 부대만' }, { ko: '식량과 물자만' }], answer: 0,
       explain: { ko: '콜롬비아는 라틴아메리카에서 유일하게 전투 병력을 보냈어요. 육군 "콜롬비아대대"와 해군 프리깃함 3척이에요.' } },
     busan: { type: 'choice', q: { ko: '전쟁 동안 한국에 온 콜롬비아 군인은 모두 약 몇 명일까요?' },
@@ -1552,13 +1553,13 @@ window.LEVEL_QUIZ = {
       explain: { ko: "1975년 세운 기념비는 2018년 경명공원으로 옮겨졌어요. 해마다 이곳에서 한국과 콜롬비아가 함께 추모식을 열어요." } }
   },
   hs: {
-    war: { type: 'choice', q: { ko: "1945년 광복부터 6·25 전쟁 직전까지의 상황으로 옳은 것은?" },
+    war: { type: 'choice', q: { ko: "1945년 광복부터 6·25전쟁 직전까지의 상황으로 옳은 것은?" },
       options: [{ ko: "미·소 분할 점령 뒤 1948년 남과 북에 각각 정부가 세워졌다" }, { ko: "광복 직후 남북이 하나의 정부를 세웠다" }, { ko: "38도선은 1953년에 처음 그어졌다" }, { ko: "유엔은 북한 정부만 승인했다" }], answer: 0,
       explain: { ko: "광복 뒤 38도선을 경계로 미군과 소련군이 남북을 나누어 점령했고, 1948년 8월 대한민국 정부, 9월 북한 정권이 각각 수립되었어요. 유엔 총회는 1948년 12월 대한민국 정부를 승인했어요." } },
     incheon: { type: 'choice', q: { ko: '인천상륙작전이 전쟁의 흐름에 준 영향으로 가장 알맞은 것은?' },
       options: [{ ko: '북한군의 보급로를 끊어 반격과 9월 28일 서울 수복으로 이어졌다' }, { ko: '곧바로 정전협정이 맺어졌다' }, { ko: '중국군이 전쟁에 들어오지 않게 되었다' }, { ko: '국군과 유엔군이 낙동강까지 밀려났다' }], answer: 0,
       explain: { ko: '북한군의 뒤를 끊어 낙동강 전선의 반격이 가능해졌고, 13일 뒤 서울을 되찾았어요. 중국군은 그 뒤인 1950년 10월에 참전했어요.' } },
-    colombia: { type: 'choice', q: { ko: "콜롬비아가 6·25 전쟁에 군대를 보낸 국제적 배경으로 가장 알맞은 것은?" },
+    colombia: { type: 'choice', q: { ko: "콜롬비아가 6·25전쟁에 군대를 보낸 국제적 배경으로 가장 알맞은 것은?" },
       options: [{ ko: "유엔 안보리의 결의에 따라 회원국으로서 군사 지원에 나섰다" }, { ko: "한국과 맺은 군사 동맹 조약 때문이었다" }, { ko: "정전협정을 감시하기 위해서였다" }, { ko: "중국군을 돕기 위해서였다" }], answer: 0,
       explain: { ko: "유엔 안보리 결의 83호(1950.6.27.)는 회원국에 대한민국을 돕도록 권고했어요. 콜롬비아는 라틴아메리카에서 유일하게 전투 병력(육군 대대·해군 프리깃함)을 보냈어요." } },
     busan: { type: 'choice', q: { ko: "부산이 전쟁 내내 유엔군이 들어오는 관문 역할을 할 수 있었던 까닭은?" },

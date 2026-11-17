@@ -221,9 +221,9 @@
       },
       palmido: {
         short: 'Lighthouse', name: 'Operation Palmido Lighthouse', date: 'Night of Sep 14 – early Sep 15, 1950',
-        text: 'For ships to reach Incheon at night, they needed the Palmido lighthouse (built in 1903, Korea\'s first modern lighthouse) to light the dark sea. US Navy Lieutenant Clark, KLO group leader Choi Gyu-bong and Korean officers went onto Palmido, took back the lighthouse, and found and repaired the parts the enemy had taken. Just after midnight on September 15, the light came on, and 261 UN ships followed the narrow, dangerous channel into Incheon.',
+        text: 'For ships to reach Incheon at night, they needed the Palmido lighthouse (built in 1903, Korea\'s first modern lighthouse) to light the dark sea. US Navy Lieutenant Clark and his Korean collaborators (including Kye In-ju and Yeon Jeong) went onto Palmido and got the lighthouse ready to be lit. Just after midnight on September 15, the light came on, and 261 UN ships followed the narrow, dangerous channel into Incheon.',
         heroes: [
-          { name: 'Choi Gyu-bong (KLO group leader)', text: 'Leader of the KLO "Goat" group, who went onto Palmido with Lt. Clark, retook the lighthouse and lit it' },
+          { name: 'Choi Gyu-bong (KLO group leader)', text: 'Leader of the KLO "Goat" group. He carried out intelligence work before the Incheon Landing and received the Chungmu Order of Military Merit in 2012. There are accounts that he helped light the Palmido lighthouse, but sources differ.' },
           { name: 'Lt. Eugene Clark', text: 'US Navy officer who hid on the islands two weeks before the landing to watch the sea at Incheon, and lit the Palmido lighthouse' }
         ]
       },
@@ -328,8 +328,8 @@
         credit: 'Palmido lighthouse (in place of a portrait) · Korea Heritage Service, KOGL Type 1',
         deeds: [
           'He led the "Goat" group of the KLO unit, which gathered intelligence behind enemy lines.',
-          'On September 14, 1950, he went onto Palmido with Lt. Clark and Korean officers and took back the lighthouse.',
-          'Just after midnight on September 15, the lighthouse was lit, opening the way for 261 ships.'
+          'He carried out intelligence work before the Incheon Landing, and in 2012 he received the Chungmu Order of Military Merit.',
+          'There are accounts that he helped light the Palmido lighthouse, but sources differ.'
         ]
       },
       kimdongseok: {
@@ -353,7 +353,7 @@
         credit: 'Palmido lighthouse (in place of a portrait) · Korea Heritage Service, KOGL Type 1',
         deeds: [
           'On September 1, 1950, he landed first on Deokjeokdo and then moved to Yeongheungdo, secretly watching the sea at Incheon for two weeks.',
-          'Together with Korean team members, he took back the Palmido lighthouse.',
+          'He went onto Palmido with his Korean collaborators, including Kye In-ju and Yeon Jeong.',
           'Just after midnight on September 15, he lit the lighthouse to guide the fleet, and he received the Silver Star.'
         ]
       }
