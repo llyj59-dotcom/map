@@ -1250,7 +1250,7 @@ window.GROUP_WORKS = [
   { name: { ko: '2모둠 · 기억해야 할 그날, 6·25전쟁 속 인천', es: 'Grupo 2 · Un día para recordar: Incheon en la Guerra de Corea' }, url: 'maps/2-team.html', was: 5 },
   { name: { ko: '3모둠 · 콜롬비아, 잊지 않은 우정', es: 'Grupo 3 · Colombia, una amistad que no olvidamos' }, url: 'maps/3-team.html', was: 3 },
   { name: { ko: '4모둠 · 6·25전쟁 참전국가, 콜롬비아', es: 'Grupo 4 · Colombia, país participante en la Guerra de Corea' }, url: 'maps/4-team.html', was: 4 },
-  { name: { ko: '전투모둠 · 인천상륙작전과 6·25전쟁의 주요 작전', es: 'Grupo de batallas · El Desembarco de Incheon y las principales operaciones de la Guerra de Corea' }, url: 'maps/battle-team.html', was: 2 }
+  { name: { ko: '5모둠 · 인천상륙작전과 6·25전쟁의 주요 작전', es: 'Grupo 5 · El Desembarco de Incheon y las principales operaciones de la Guerra de Corea' }, url: 'maps/battle-team.html', was: 2 }
 ];
 
 /* 🎬 엔딩 크레딧 — 아이들 이름은 성 없이 이름만 (개인정보 이용 동의 받음, 2026. 10.)
