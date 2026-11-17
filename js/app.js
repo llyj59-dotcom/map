@@ -342,7 +342,7 @@
       albumSections: { co: '콜롬비아', kr: '대한민국', us: '유엔군' },
       albumTap: '모은 카드를 누르면 영웅의 업적을 볼 수 있어요.',
       deedsTitle: '업적',
-      cardBy: (g) => `🎒 ${g}모둠이 조사한 영웅`,
+      cardBy: (g) => `🎒 ${g}이 조사한 영웅`,
       cardMet: (w) => `만난 곳: ${w}`,
       pieceLabel: '🧩 평화의 지도 조각',
       piecePop: '🧩 지도 조각을 찾았어요!',
@@ -560,7 +560,7 @@
       kQuiz: '추리 퀴즈',
       kQuestion: '질문 카드',
       kVideo: '영상으로 보기',
-      videoGroup: (g) => `${g}모둠이 찾은 영상`,
+      videoGroup: (g) => `${g}이 찾은 영상`,
       videoLong: '긴 영상이에요. 앞부분만 보거나 집에서 보세요.',
       videoPick: '다른 영상',
       videoOptional: '영상은 골라서 봐도 돼요.',
@@ -702,7 +702,7 @@
       worldVoyage: '태평양을 건너 한국으로',
       kOps: '친구들이 만든 인천 지도',
       opsHint: '지도 위 번호나 아래 목록을 눌러 보세요. 친구들이 조사한 인천상륙작전 5대 작전이에요! (다 보지 않아도 다음으로 넘어갈 수 있어요)',
-      opsBy: (g) => `🎒 ${g}모둠 친구들이 조사했어요`,
+      opsBy: (g) => `🎒 ${g} 친구들이 조사했어요`,
       opsSeen: (n, t) => `${t}곳 중 ${n}곳 살펴봤어요`,
       opsHeroes: '이 작전의 영웅',
       opsWorks: '모둠 사이트 보기 ↗',
@@ -1074,7 +1074,7 @@
       albumSections: { co: 'Colombia', kr: 'Corea del Sur', us: 'Fuerzas de la ONU' },
       albumTap: 'Toca una tarjeta para ver lo que hizo cada héroe.',
       deedsTitle: 'Lo que hizo',
-      cardBy: (g) => `🎒 Investigado por el Grupo ${g} (estudiantes coreanos)`,
+      cardBy: (g) => `🎒 Investigado por el ${g} (estudiantes coreanos)`,
       cardMet: (w) => `Dónde lo conociste: ${w}`,
       pieceLabel: '🧩 Piezas del mapa de la paz',
       piecePop: '🧩 Encontraste una pieza del mapa',
@@ -1292,7 +1292,7 @@
       kQuiz: 'Ponte a prueba',
       kQuestion: 'Tarjeta de pregunta',
       kVideo: 'Ver en video',
-      videoGroup: (g) => `Video encontrado por el Grupo ${g}`,
+      videoGroup: (g) => `Video encontrado por el ${g}`,
       videoLong: 'Es un video largo. Mira el comienzo o termínalo en casa.',
       videoPick: 'Otros videos',
       videoOptional: 'Puedes elegir qué videos ver.',
@@ -1414,7 +1414,7 @@
       worldVoyage: 'Cruzando el Pacífico hacia Corea',
       kOps: 'Incheon según los estudiantes coreanos',
       opsHint: 'Toca los números del mapa o la lista: son las 5 operaciones de Incheon que investigaron los estudiantes coreanos. (Opcional: puedes seguir sin verlas todas)',
-      opsBy: (g) => `🎒 Investigado por el Grupo ${g} (estudiantes coreanos)`,
+      opsBy: (g) => `🎒 Investigado por el ${g} (estudiantes coreanos)`,
       opsSeen: (n, t) => `Viste ${n} de ${t} lugares`,
       opsHeroes: 'Héroes de esta operación',
       opsWorks: 'Ver la página del grupo ↗',
@@ -1785,7 +1785,7 @@
       albumSections: { co: 'Colombia', kr: 'Republic of Korea', us: 'UN forces' },
       albumTap: 'Tap a card you collected to see what the hero did.',
       deedsTitle: 'What they did',
-      cardBy: (g) => `🎒 Researched by Group ${g}`,
+      cardBy: (g) => `🎒 Researched by ${g}`,
       cardMet: (w) => `Met at: ${w}`,
       pieceLabel: '🧩 Pieces of the map of peace',
       piecePop: '🧩 You found a map piece!',
@@ -2003,7 +2003,7 @@
       kQuiz: 'Guess quiz',
       kQuestion: 'Question card',
       kVideo: 'Watch a video',
-      videoGroup: (g) => `Video found by Group ${g}`,
+      videoGroup: (g) => `Video found by ${g}`,
       videoLong: "It's a long video. Watch the beginning, or finish it at home.",
       videoPick: 'Other videos',
       videoOptional: 'You can choose which videos to watch.',
@@ -2125,7 +2125,7 @@
       worldVoyage: 'Across the Pacific to Korea',
       kOps: 'Incheon map made by our classmates',
       opsHint: 'Tap the numbers on the map or the list below. These are the 5 Incheon Landing operations our classmates researched. (Optional: you can go on without opening them all)',
-      opsBy: (g) => `🎒 Researched by Group ${g}`,
+      opsBy: (g) => `🎒 Researched by ${g}`,
       opsSeen: (n, t) => `You looked at ${n} of ${t} places`,
       opsHeroes: 'Heroes of this operation',
       opsWorks: "See the group's site ↗",
@@ -2985,7 +2985,7 @@
         <div class="cd-top">${flagHtml(c.flag)}<span class="hcard-role">${esc(L(c.role))}</span>${L(c.years) ? `<span class="hcard-years">${esc(L(c.years))}</span>` : ''}</div>
         <h4>🏅 ${esc(T('deedsTitle'))}</h4>
         <ol class="deeds">${(c.deeds || []).map((d) => `<li>${esc(L(d))}</li>`).join('')}</ol>
-        ${(c.groups || []).length ? `<p class="op-by">${esc(T('cardBy', c.groups.join('·')))}</p>` : ''}
+        ${(c.groups || []).length ? `<p class="op-by">${esc(T('cardBy', groupsText(c.groups)))}</p>` : ''}
         <p class="t-help">${esc(T('cardMet', whereName(c)))}</p>
         ${isGold(c) ? `<p class="gold-note got">✨ ${esc(T('goldLabel'))}</p>`
           : `<div class="gold-note"><b>✨ ${esc(T('goldHowTitle'))}</b><span>${esc(c.where === 'ending' ? T('goldHowEnding') : T('goldHow'))}</span>
@@ -4714,8 +4714,8 @@
         <p>${esc(L(op.text))}</p>
         ${(op.heroes || []).length ? `<h4>🎖️ ${esc(T('opsHeroes'))}</h4>
           <ul class="op-heroes">${op.heroes.map((h) => `<li><b>${esc(L(h.name))}</b><span>${esc(L(h.text))}</span></li>`).join('')}</ul>` : ''}
-        <p class="op-by">${esc(T('opsBy', op.groups.join('·')))}</p>
-        <div class="op-works">${op.groups.map((g) => { const w = works.find((x) => (x.was || 0) === g); return w ? `<a href="${esc(w.url)}" target="_blank" rel="noopener">🗺️ ${esc(L(w.name).split(' · ')[0])} ↗</a>` : ''; }).join('')}</div>
+        <p class="op-by">${esc(T('opsBy', groupsText(op.groups)))}</p>
+        <div class="op-works">${works.filter((w) => op.groups.includes(w.was)).map((w) => { return w ? `<a href="${esc(w.url)}" target="_blank" rel="noopener">🗺️ ${esc(L(w.name).split(' · ')[0])} ↗</a>` : ''; }).join('')}</div>
       </article>`;
     annotate($('opDetail'));
     showOpFx(op.id);
@@ -4876,7 +4876,7 @@
   function videoCardHtml(s) {
     const list = videosOf(s);
     const v = list[Math.min(cur.video, list.length - 1)];
-    const credit = v.group ? `<span class="v-group">🎒 ${esc(T('videoGroup', v.group))}</span>` : '';
+    const credit = v.group ? `<span class="v-group">🎒 ${esc(T('videoGroup', groupsText([v.group])))}</span>` : '';
     const must = mustWatch(s);
     // 🔒 꼭 볼 영상 안내: 지금 보는 영상이 그 영상이면 진행 막대, 아니면 그 영상으로 가는 버튼
     const gate = !must ? '' : must.yt === v.yt
@@ -7213,6 +7213,21 @@
      · 담임 선생님: 첫 화면 [우리 반 만들기] → 학생용 주소(?class=…) + 선생님용 결과 주소(?view=반.열쇠)
      · 관리하는 선생님: 구글 시트 「결과」에서 전체를 봐요
      ===================================================================== */
+  // 🎒 데이터의 모둠 번호(groups·group)는 예전 캔바 모둠 사이트 번호예요 → 지도(GROUP_WORKS)에 적힌 모둠 이름으로 보여 줘요
+  //    (사이트 5번 = 2모둠, 사이트 2번 = 전투모둠) · 지도 순서대로, 예: '1·2·3·4모둠·전투모둠'
+  function groupsText(nums) {
+    const works = window.GROUP_WORKS || [];
+    const at = (g) => { const i = works.findIndex((w) => w.was === g); return i < 0 ? 99 + g : i; };
+    const nOnly = [], named = [];
+    [...new Set(nums)].sort((a, b) => at(a) - at(b)).forEach((g) => {
+      const w = works.find((x) => x.was === g);
+      const label = w ? L(w.name).split(' · ')[0] : T('groupN', g);
+      const m = /^(?:(\d+)모둠|Grupo (\d+)|Group (\d+))$/.exec(label);
+      if (m) nOnly.push(m[1] || m[2] || m[3]); else named.push(label);
+    });
+    const parts = (nOnly.length ? [T('groupN', nOnly.join('·'))] : []).concat(named);
+    return parts.join(lang === 'ko' ? '·' : lang === 'es' ? ' y el ' : ' and ');
+  }
   const classOn = () => !!CONFIG.classApi && !SANDBOX;
   function classSync(ev) {
     if (!classOn() || previewMode || !player) return;
