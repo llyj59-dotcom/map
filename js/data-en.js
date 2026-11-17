@@ -47,7 +47,7 @@
         quiz: {
           q: 'Where did the troops land first in the Incheon Landing?',
           options: ['Wolmido', 'Ganghwado', 'Jejudo', 'Ulleungdo'],
-          explain: 'Wolmido. The landing began there at about 6:30 a.m. on September 15, 1950.'
+          explain: 'Wolmido. The landing began there at 6:33 a.m. on September 15, 1950.'
         }
       },
       colombia: {
@@ -228,7 +228,7 @@
         ]
       },
       wolmido: {
-        short: 'Wolmido', name: 'Landing on Wolmido', date: 'Sep 15, 1950, about 6:30 a.m.',
+        short: 'Wolmido', name: 'Landing on Wolmido', date: 'Sep 15, 1950, 6:33 a.m.',
         text: 'Wolmido is the island that guards the port of Incheon, so it had to be taken first before the main force could come in safely. Incheon\'s tide rises and falls by up to 10 meters and almost everyone was against the plan, but at about 6:30 a.m. on September 15, at high tide, US Marines landed on Wolmido first and destroyed the North Korean positions.',
         heroes: [
           { name: 'General Douglas MacArthur', text: 'UN commander who planned and led the Incheon Landing, an operation so hard that people said the odds against it were 5,000 to 1' },

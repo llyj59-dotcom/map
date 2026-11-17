@@ -430,6 +430,7 @@
       certUpOpen: '패들렛 열기',
       certUp3: '패들렛 화면을 한 번 누르고 Ctrl + V 를 눌러요. 인증서 그림이 붙으면 [게시]를 눌러 올려요!',
       certUp3Save: '패들렛에서 ＋ → 이미지(파일) 올리기로 저장한 그림을 골라 [게시]를 눌러요.',
+      certUpSeen: '패들렛에 올린 인증서는 다른 사람도 볼 수 있어요. 그림 속 이름과 학교도 함께 보여요.',
       certUpTablet: '태블릿·휴대폰은 Ctrl+V가 없어요. 아래 [인증서 그림으로 저장]이나 [공유]로 사진에 저장한 뒤, 패들렛의 ＋ → 이미지 올리기로 올려요.',
       certSavePad: '인증서 사진으로 저장하기',
       certUp1Pad: '[📸 인증서 사진으로 저장하기]를 눌러요. 그림이 크게 나오면 손가락으로 꾹 눌러 저장해요.',
@@ -1161,6 +1162,7 @@
       certUpOpen: 'Abrir Padlet',
       certUp3: 'Haz clic una vez en el Padlet y pulsa Ctrl + V. Cuando aparezca el certificado, pulsa [Publicar].',
       certUp3Save: 'En el Padlet, pulsa ＋ → subir imagen, elige el certificado guardado y pulsa [Publicar].',
+      certUpSeen: 'Otras personas podrán ver el certificado que subas al Padlet, incluidos el nombre y el colegio que aparecen en él.',
       certUpTablet: 'En tableta o celular no hay Ctrl+V: guarda la imagen con [Guardar] o [Compartir] y súbela en el Padlet con ＋ → imagen.',
       certSavePad: 'Guardar el certificado en Fotos',
       certUp1Pad: 'Pulsa [📸 Guardar el certificado en Fotos]. Cuando salga grande, mantén el dedo sobre la imagen para guardarla.',
@@ -1871,6 +1873,7 @@
       certUpOpen: 'Open Padlet',
       certUp3: 'Click once on the Padlet and press Ctrl + V. When your certificate appears, click [Publish]!',
       certUp3Save: 'On the Padlet, tap ＋ → upload image, choose your saved certificate and tap [Publish].',
+      certUpSeen: 'Other people can see the certificate you post on the Padlet, including the name and school on it.',
       certUpTablet: 'Tablets and phones have no Ctrl+V: save the picture with [Save] or [Share], then on the Padlet tap ＋ → image.',
       certSavePad: 'Save certificate to Photos',
       certUp1Pad: 'Tap [📸 Save certificate to Photos]. When it appears big, press and hold the picture to save it.',
@@ -4712,7 +4715,7 @@
         ${(op.heroes || []).length ? `<h4>🎖️ ${esc(T('opsHeroes'))}</h4>
           <ul class="op-heroes">${op.heroes.map((h) => `<li><b>${esc(L(h.name))}</b><span>${esc(L(h.text))}</span></li>`).join('')}</ul>` : ''}
         <p class="op-by">${esc(T('opsBy', op.groups.join('·')))}</p>
-        <div class="op-works">${op.groups.map((g) => { const w = works.find((x) => (x.was || 0) === g); return w ? `<a href="${esc(w.url)}" target="_blank" rel="noopener">${esc(T('groupN', g))} ↗</a>` : ''; }).join('')}</div>
+        <div class="op-works">${op.groups.map((g) => { const w = works.find((x) => (x.was || 0) === g); return w ? `<a href="${esc(w.url)}" target="_blank" rel="noopener">🗺️ ${esc(L(w.name).split(' · ')[0])} ↗</a>` : ''; }).join('')}</div>
       </article>`;
     annotate($('opDetail'));
     showOpFx(op.id);
@@ -6651,6 +6654,7 @@
               <button id="certPadlet" class="btn btn-blue cert-need" type="button">🗂️ ${esc(T('certUpOpen'))}</button></div></li>` : ''}
             <li id="cu3"><span class="cu-n">${CONFIG.padletUrl ? 3 : 2}</span><div><p>${esc(T(canCopy ? 'certUp3' : pad ? 'certUp3Pad' : 'certUp3Save'))}</p></div></li>
           </ol>
+          <p class="t-help">👀 ${esc(T('certUpSeen'))}</p>
           ${pad ? '' : `<p class="t-help">📱 ${esc(T('certUpTablet'))}</p>`}
           <div class="cert-actions">
             ${canCopy ? `<button id="certSave" class="btn btn-ghost btn-sm cert-need" type="button">💾 ${esc(T('certSave'))}</button>` : ''}

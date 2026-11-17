@@ -202,7 +202,7 @@ window.STATIONS = [
         { ko: '울릉도', es: 'Ulleungdo' }
       ],
       answer: 0,
-      explain: { ko: '월미도! 1950년 9월 15일 새벽 6시 30분, 월미도부터 상륙이 시작됐어요.', es: 'Wolmido. El desembarco comenzó allí el 15 de septiembre de 1950, a las 6:30 de la mañana.' }
+      explain: { ko: '월미도! 1950년 9월 15일 오전 6시 33분, 월미도부터 상륙이 시작됐어요.', es: 'Wolmido. El desembarco comenzó allí el 15 de septiembre de 1950, a las 6:33 de la mañana.' }
     },
     questions: []
   },
@@ -738,7 +738,7 @@ window.INCHEON_OPS = [
     id: 'wolmido',
     pin: [126.597, 37.475], short: { ko: '월미도 상륙', es: 'Wolmido' },
     name: { ko: '월미도 상륙 전투', es: 'Desembarco en Wolmido' },
-    date: { ko: '1950. 9. 15. 새벽 6시 30분', es: '15 sep. 1950, 6:30' },
+    date: { ko: '1950. 9. 15. 오전 6시 33분', es: '15 sep. 1950, 6:33' },
     text: {
       ko: '월미도는 인천항을 지키는 섬이라, 먼저 차지해야 큰 부대가 안전하게 들어올 수 있었어요. 인천은 밀물과 썰물의 차이가 최대 10m나 되어 모두가 반대했지만, 밀물이 차오르는 9월 15일 새벽 6시 30분쯤, 미 해병대가 월미도에 먼저 상륙해 북한군의 진지를 무너뜨렸어요.',
       es: 'Wolmido custodiaba la entrada al puerto de Incheon: había que tomarla primero para que el grueso de las tropas pudiera entrar con seguridad. La marea de Incheon varía hasta 10 metros y casi todos se oponían al plan, pero hacia las 6:30 del 15 de septiembre, con la marea subiendo, los marines de EE. UU. desembarcaron en Wolmido y desarticularon las posiciones norcoreanas.'
