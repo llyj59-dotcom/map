@@ -175,7 +175,7 @@
         place: 'Yellow Sea (Cho-do to Sok-do) · East Sea',
         story: 'In May 1951, the Almirante Padilla, the Colombian Navy\'s first ship, arrived in Korea. From May 14 it patrolled the Yellow Sea between the islands of Cho-do and Sok-do to stop enemy ships. In the East Sea, it fired its guns to help soldiers on land. The Colombian Navy kept guarding Korea\'s seas until 1955, even after the fighting stopped.',
         heroes: [
-          { author: 'Story written by Group 5', name: 'The Colombian Navy that guarded the Yellow Sea', role: 'Defending the Yellow Sea', body: 'The Colombian Navy firmly guarded the waters of the Yellow Sea. To remember the sacrifice of the Colombian soldiers, there is a memorial in Gyeongmyeong Park in Incheon today.' },
+          { author: 'Story written by Group 2', name: 'The Colombian Navy that guarded the Yellow Sea', role: 'Defending the Yellow Sea', body: 'The Colombian Navy firmly guarded the waters of the Yellow Sea. To remember the sacrifice of the Colombian soldiers, there is a memorial in Gyeongmyeong Park in Incheon today.' },
           { author: 'Heroes researched by Group 1', name: 'The captain and crew of the Almirante Padilla', role: 'Colombian Navy', body: 'Heroes of the Colombian Navy who patrolled the Yellow Sea, blocked the enemy\'s sea routes and protected the UN forces\' sea lanes.' },
           { author: 'Story researched by Group 4', name: 'Frigates in the Yellow Sea and the East Sea', role: 'Naval blockade', body: 'The Colombian Navy sent frigates to help block the Yellow Sea and the East Sea. They cut off enemy supply lines, fired on the coast and supported UN landings to keep the seas safe.' }
         ],

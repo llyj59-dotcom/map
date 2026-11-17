@@ -69,15 +69,15 @@ window.MAP_CONFIG = {
   //   선생님이 큰 화면으로 같이 볼 때는 false로 바꾸세요.
   requireVideos: true,
 
-  // 🎵 배경음악 — 우리 반 모둠이 만든 mp3를 audio 폴더에 넣고 파일 이름을 적어요 (비워 두면 배경음악 없이, 효과음만)
+  // 🎵 배경음악 — 6학년 8반이 직접 만든 mp3를 audio 폴더에 넣고 파일 이름을 적어요 (비워 두면 배경음악 없이, 효과음만)
   //    영상이 나올 때는 저절로 멈추고, 오른쪽 위 🔊 버튼으로 끌 수 있어요
   bgm: {
-    start: 'audio/1_start.mp3',     // 1모둠: 시작 화면·지도·① 6·25전쟁·② 인천 (A dignified swell)
-    mission: 'audio/2_mission.mp3', // 2모둠: 팔미도 등대 미션 (Midnight Sea Mission)
-    voyage: 'audio/3_voyage.mp3',   // 3모둠: ③ 콜롬비아 → ④ 부산 항해 (Marcha hacia Busan)
-    battle: 'audio/4_battle.mp3',   // 4모둠: ⑤ 흑운토령 ~ ⑩ 판문점 (전장의 숨결)
-    ending: 'audio/5_ending.mp3',   // 5모둠: ⑪ 서해 · ⑫ 기념비 · 내일의 문 · 엔딩
-    credits: 'audio/1_start.mp3',   // 🎬 엔딩 크레딧: 1모둠의 시작 곡을 다시 (여정의 처음과 끝이 이어지게)
+    start: 'audio/1_start.mp3',     // 시작 화면·지도·① 6·25전쟁·② 인천 (A dignified swell)
+    mission: 'audio/2_mission.mp3', // 팔미도 등대 미션 (Midnight Sea Mission)
+    voyage: 'audio/3_voyage.mp3',   // ③ 콜롬비아 → ④ 부산 항해 (Marcha hacia Busan)
+    battle: 'audio/4_battle.mp3',   // ⑤ 흑운토령 ~ ⑩ 판문점 (전장의 숨결)
+    ending: 'audio/5_ending.mp3',   // ⑪ 서해 · ⑫ 기념비 · 내일의 문 · 엔딩
+    credits: 'audio/1_start.mp3',   // 🎬 엔딩 크레딧: 시작 곡을 다시 (여정의 처음과 끝이 이어지게)
     volume: 0.12,  // 배경음악 기본 크기 (0~1) — 헤드셋으로 들어도 귀가 아프지 않게 아주 작게
     // 곡마다 원래 크기가 달라서 따로 맞춰요 (큰 부분이 약 -32dB 가 되도록 측정해서 정한 값)
     levels: { start: 0.13, mission: 0.11, voyage: 0.12, battle: 0.13, ending: 0.13, credits: 0.13 }
@@ -481,7 +481,7 @@ window.STATIONS = [
     // ※ 모둠 글의 '강화도·인천 앞바다'는 공식 기록에서 확인되지 않아 '서해'로 바꿨어요
     heroes: [
       {
-        author: { ko: '5모둠 친구들이 쓴 이야기', es: 'Relato escrito por el Grupo 5 (Incheon)' },
+        author: { ko: '2모둠 친구들이 쓴 이야기', es: 'Relato escrito por el Grupo 2 (Incheon)' },
         name: { ko: '서해를 지킨 콜롬비아 해군', es: 'La Armada que protegió el Mar Amarillo' },
         role: { ko: '서해 방어 작전', es: 'Defensa del Mar Amarillo' },
         body: {

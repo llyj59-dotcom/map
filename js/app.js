@@ -798,7 +798,7 @@
       crClassAll: '인천신검단초 6학년 8반 일동',
       crWorks: '모둠 조사 작품',
       crMusic: '배경음악',
-      crMusicBy: '6학년 8반 1~5모둠이 직접 만든 노래',
+      crMusicBy: '6학년 8반이 직접 만든 노래',
       crSfx: '효과음',
       crSfxBy: '게임 안에서 직접 만든 소리',
       crPartner: '함께한 학교',
@@ -1509,7 +1509,7 @@
       crClassAll: 'Todo el grupo 8 de 6.º, Escuela Primaria Singeomdan (Incheon)',
       crWorks: 'Investigaciones de los grupos',
       crMusic: 'Música',
-      crMusicBy: 'Canciones creadas por los grupos 1 a 5 del grupo 8 de 6.º',
+      crMusicBy: 'Canciones creadas por el grupo 8 de 6.º',
       crSfx: 'Efectos de sonido',
       crSfxBy: 'Sonidos creados dentro del juego',
       crPartner: 'Colegio aliado',
@@ -2220,7 +2220,7 @@
       crClassAll: 'All of Class 6-8, Singeomdan Elementary School (Incheon)',
       crWorks: 'Group research projects',
       crMusic: 'Background music',
-      crMusicBy: 'Songs made by Groups 1–5 of Class 6-8',
+      crMusicBy: 'Songs made by Class 6-8',
       crSfx: 'Sound effects',
       crSfxBy: 'Sounds made inside the game',
       crPartner: 'Partner school',
@@ -2532,7 +2532,7 @@
 
   /* =====================================================================
      🔊 소리: 효과음은 파일 없이 브라우저가 직접 만들어요 (Web Audio)
-     배경음악은 우리 반 모둠이 만든 mp3 (data.js 의 MAP_CONFIG.bgm) — 비어 있으면 조용히
+     배경음악은 6학년 8반이 직접 만든 mp3 (data.js 의 MAP_CONFIG.bgm) — 비어 있으면 조용히
      오른쪽 위 🔊 버튼으로 끄고 켜요 (이 기기에 기억)
      ===================================================================== */
   const Sound = (() => {
@@ -6873,7 +6873,7 @@
     ov.innerHTML = `<button type="button" class="credits-skip" id="creditsSkip">${esc(T('creditsSkip'))} ⏭</button>
       <div class="credits-roll" id="creditsRoll">${creditsHtml()}</div>`;
     document.body.appendChild(ov);
-    Sound.bgm('credits'); // 🎵 크레딧 음악 (1모둠의 시작 곡을 다시)
+    Sound.bgm('credits'); // 🎵 크레딧 음악 (시작 곡을 다시)
     const roll = $('creditsRoll');
     // 글 길이에 맞춰 천천히 (1초에 약 45px)
     const dist = roll.offsetHeight + ov.clientHeight;
